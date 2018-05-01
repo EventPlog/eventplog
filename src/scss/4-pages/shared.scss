@@ -1,0 +1,52 @@
+.full-height {
+  height: 100vh;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+}
+
+
+header {
+  height: 100px;
+  background: #eee;
+}
+.toast-nav-top-right {
+  top: 65px;
+  right: 12px;
+}
+
+#toast-container > div {
+  border-radius: $border-radius;
+  -moz-box-shadow: 0 0 12px $box-shadow;
+  -webkit-box-shadow: 0 0 12px $box-shadow;
+  box-shadow: 0 0 12px $box-shadow;
+}
+
+#toast-container > .toast-error {
+  background-image: none !important;
+
+  .toast-message {
+    margin-left: -30px;
+  }
+}
+
+.btn {
+  &:focus {
+    outline: none;
+  }
+}
+
+.socials {
+  margin: 50px auto;
+  text-align: center;
+  .share-link {
+    color: lighten($gray-dark, 60%);
+    margin: 0 5px;
+    cursor: pointer;
+    &:hover {
+      color: $gray-dark;
+    }
+  }
+}

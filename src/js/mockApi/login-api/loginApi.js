@@ -1,0 +1,4 @@
+class LoginApi {
+  static index() {
+  }
+}
