@@ -29,9 +29,9 @@ export const Auth = {
     }
   },
   user_token: cookie.get('user_token'),
-  loginUser(params, cb) {
+  loginUser(params) {
     return (dispatch) => {
-       return processRequest('/api/v1/web/login_with_fb', 'POST', params)
+       return processRequest('/api/v1/web/login/oauth', 'POST', params)
         .then(res => {
           if (!(res && res.user)) return
           cookie.set('current_user', res.user)

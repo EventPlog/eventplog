@@ -39,6 +39,14 @@ class Login extends Component {
       .then(r => this.props.history.push('/'))
   }
 
+  loginUser = (payload) =>  {
+    this.props.loginUser(payload)
+      .then(res => {
+        // this.props.history.push('/')
+        window.location.replace('/')
+      })
+  }
+
   fbResponse = (response) => {
     const [ first_name, ...otherNames ] = response.name.split(' ')
     const payload = {
@@ -46,12 +54,24 @@ class Login extends Component {
       last_name: otherNames.join(' '),
       avatar_url: response.picture.data.url,
       email: response.email,
-      facebook_user_id: response.userID,
+      oauth_user_id: response.userID,
     }
-    this.props.loginUser(payload)
-      .then(res => {
-        this.props.history.push('/')
-      })
+    this.loginUser(payload)
+  }
+
+  googleResponse = (res) => {
+    const {
+      email,
+      familyName: last_name,
+      givenName: first_name,
+      imageUrl: avatar_url,
+      googleId: oauth_user_id
+    } = res.profileObj
+
+    const payload = {
+      email, first_name, last_name, avatar_url, oauth_user_id
+    }
+    this.loginUser(payload)
   }
 
   render() {
@@ -98,8 +118,8 @@ class Login extends Component {
                 <GoogleLogin
                   clientId="530846686194-8auql2abnck2m3cjbqqpitlhtm7k9ot9.apps.googleusercontent.com"
                   buttonText="Login with Google"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle} />
+                  onSuccess={this.googleResponse}
+                  onFailure={this.googleResponse} />
 
                 <Form size='large'>
                   <Segment stacked>

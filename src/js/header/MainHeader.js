@@ -47,7 +47,10 @@ const StyledHeader = styled.div`
 class Header extends Component {
   state = { activeItem: 'Events' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    this.props.history.push(`/${name.replace(' ', '_').toLowerCase()}`)
+    this.setState({ activeItem: name })
+  }
 
   // handleLogout = async (e) => {
   //   let res = await this.props.logout()
@@ -60,7 +63,7 @@ class Header extends Component {
   }
 
   render() {
-    const menu = ['Events', 'Organizations', 'Explore']
+    const menu = ['Events', 'Communities', 'Explore']
     const { activeItem } = this.state
     return (
       <StyledHeader className="header">

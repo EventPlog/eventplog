@@ -40,7 +40,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={(props) =>
                !Auth.isLoggedIn
-               ? <Homepage/>
+               ? <Login/>
                : <TmnTracker {...props} />
             } />
             <Route exact path="/login" component={Login} />
