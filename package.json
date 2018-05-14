@@ -67,14 +67,14 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
+      "src/js/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/src/js/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/js/**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
