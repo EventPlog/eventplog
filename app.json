@@ -2,6 +2,7 @@
   "name": "eventplog",
   "description": "Config for review apps",
   "scripts": {
+    "postdeploy": "npm run build"
   },
   "env": {
   },
