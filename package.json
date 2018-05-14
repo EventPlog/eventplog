@@ -30,6 +30,8 @@
     "js-cookie": "^2.2.0",
     "keymirror": "^0.1.1",
     "object-assign": "4.1.1",
+    "node-sass": "^4.8.3",
+    "sass-loader": "^6.0.7",
     "polished": "^1.9.2",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -109,8 +111,6 @@
   },
   "devDependencies": {
     "flow-bin": "^0.69.0",
-    "node-sass": "^4.8.3",
-    "redux-devtools": "^3.4.1",
-    "sass-loader": "^6.0.7"
+    "redux-devtools": "^3.4.1"
   }
 }
