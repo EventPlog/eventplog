@@ -9,4 +9,5 @@ install:
     - yarn install
 
 build:
-    - yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+    - yarn test --coverage --coverageReporters=text-lcov |  ./node_modules/coveralls/bin/coveralls.js
+
