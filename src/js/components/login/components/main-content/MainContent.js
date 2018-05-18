@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import backgroundImg from '../../../../../img/login-bg.jpg'
 import colors from '../../../../../theme/colors'
+import LoginForm from '../login-form'
 
 const StyledMainContent = styled.div`
   background-image: url(${backgroundImg});
@@ -16,7 +17,7 @@ const StyledMainContent = styled.div`
     top: 0;
     bottom: 0;
     background: ${colors.black};
-    opacity: 0.4;
+    opacity: 0.6;
     z-index: 0
   }
   
@@ -64,9 +65,7 @@ const MainContent = () => (
       <small>Be part of ecosystems you love.</small>
     </div>
 
-    <div className="form-holder">
-
-    </div>
+    <LoginForm />
   </StyledMainContent>
 )
 
