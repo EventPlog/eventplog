@@ -17,6 +17,7 @@ const StyledApp = styled.div`
   --bg: ${props => props.theme.bg};
   --activeLink: ${props => props.theme.activeLink};
   --gray: ${props => props.theme.gray};
+  height: 100%;
   
   a, a:hover {
     color: var(--activeLink);
