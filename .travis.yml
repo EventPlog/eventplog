@@ -2,3 +2,6 @@ language: node_js
 
 install:
     - yarn install
+
+build:
+    - yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
