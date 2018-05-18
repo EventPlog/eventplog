@@ -21,6 +21,10 @@ Commits format should generally be `#[ticket id] [description]` e.g. `#323212334
 
 We believe in _atomic_ commits. Try to make commits as regularly as you can so it will be easy to step through them or make reverts where neccessary.
 
+## Write tests
+
+Write tests!! Strive to increase coverage or at least keep it where it was before your PR. You could run `yarn test --coverage` to see more information about the test coverage for individual files.
+
 ## Closing an issue/Raising a PR
 
 All PRs should close an issue. If a ticket hasn't yet been created for an issue you're working on, please ensure it's created.
