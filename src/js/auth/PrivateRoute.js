@@ -4,7 +4,7 @@ import { Auth } from './actions'
 
 const PrivateRoute = ({ component: Component, ...otherProps }) => (
   <Route {...otherProps} render={(props) => (
-    !Auth.isLoggedIn
+    Auth.isLoggedIn
       ? <Component {...props} />
       : <Redirect to='/login' />
   )} />
