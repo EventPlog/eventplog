@@ -1,8 +1,8 @@
 export default {
   primary: '#F851F6',
   blueLighter: '#f7ffff',
-  blueLight: '#84a4a7',
-  blueDark: '#335578',
+  blueLight:'#48536c',
+  blueDark: '#2f3c5b',
   gold: '#f7af1e',
   orange: '#e17034',
   blue: '#1eb7fc',

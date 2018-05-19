@@ -15,11 +15,9 @@ injectGlobal`
     margin: 0;
     overflow-x: hidden;
 	  font-family: 'proxima-nova', sans-serif;
+    
   }
-  
-  #root {
-    height: 100%;
-  }
+
 `;
 
 
