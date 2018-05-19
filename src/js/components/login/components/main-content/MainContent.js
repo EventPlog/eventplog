@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import backgroundImg from '../../../../../img/login-bg.jpg'
 import colors from '../../../../../theme/colors'
 import LoginForm from '../login-form'
+import SignupForm from '../signup-form'
 
 const StyledMainContent = styled.div`
   background-image: url(${backgroundImg});
   background-size: cover;
   position: relative;
-  display: flex;
   
   .overlay {
     position: absolute;
@@ -19,6 +19,11 @@ const StyledMainContent = styled.div`
     background: ${colors.black};
     opacity: 0.6;
     z-index: 0
+  }
+  
+  > .app-container {
+    display: flex;
+    z-index: 1
   }
   
   .caption {
@@ -49,23 +54,31 @@ const StyledMainContent = styled.div`
     background: ${colors.white};
     border-radius: 5px;
     box-shadow: 0 2px 4px #000;
-    height: 600px;
+    height: auto;
     margin: 100px;
+    margin-right: 0;
     width: 400px;
     z-index: 1;
   }
 `
 
-const MainContent = () => (
+const loadLoginComponentByPath = (path) => (
+  path == '/login'
+    ? <LoginForm/>
+    : <SignupForm />
+)
+const MainContent = ({ currentPath }) => (
   <StyledMainContent className="main-content">
     <div className="overlay"></div>
 
-    <div className="caption">
-      <h1>Event Organizers meet guests.</h1>
-      <small>Be part of ecosystems you love.</small>
-    </div>
+    <div className="app-container">
+      <div className="caption">
+        <h1>Event Organizers meet guests.</h1>
+        <small>Be part of ecosystems you love.</small>
+      </div>
 
-    <LoginForm />
+      {loadLoginComponentByPath(currentPath)}
+    </div>
   </StyledMainContent>
 )
 
