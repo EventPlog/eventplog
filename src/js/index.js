@@ -17,7 +17,16 @@ injectGlobal`
 	  font-family: 'proxima-nova', sans-serif;
     
   }
+<<<<<<< HEAD
 
+=======
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+  }
+>>>>>>> b6d217665745c025b6df8ebc063cf56e4bd50828
 `;
 
 

@@ -30,7 +30,7 @@ const StyledLogin = styled.div`
   flex-direction: column;
   height: 100%;
   
-  .header {
+  > .header {
     height: 70px;
   }
   
@@ -98,9 +98,8 @@ class Login extends Component {
     return (
       <StyledLogin>
         <LoginHeader />
-        <MainContent/>
+        <MainContent currentPath={this.props.match.path} />
         <LoginFooter/>
-
       </StyledLogin>
     )
   }

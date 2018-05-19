@@ -45,6 +45,7 @@ class App extends Component {
                : <TmnTracker {...props} />
             } />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Login} />
             <Route path="/leads/:id" component={Lead} />
             <PrivateRoute path="/events" component={TmnTracker} />
           </Switch>

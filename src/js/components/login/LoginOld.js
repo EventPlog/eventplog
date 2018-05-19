@@ -13,7 +13,6 @@ import { Link, withRouter } from 'react-router-dom'
 import GoogleLogin from 'react-google-login';
 
 const responseGoogle = (response) => {
-  debugger
   console.log(response);
 }
 
