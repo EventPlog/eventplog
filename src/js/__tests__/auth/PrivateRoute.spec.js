@@ -12,5 +12,5 @@ describe('PrivateRoute component', () => {
     it('PrivateRoute should render without crashing', () => {
     expect(true).toBe(true)
     });
-)};
+};
 	
