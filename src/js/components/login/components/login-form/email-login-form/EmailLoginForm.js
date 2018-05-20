@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import {Form, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { lighten, modularScale } from 'polished'
-import colors from '../../../../../theme/colors'
-import Input from '../../../shared/input'
-import Button from '../../../shared/button'
+import { lighten } from 'polished'
+import colors from '../../../../../../theme/colors'
+import Input from '../../../../shared/input'
+import Button from '../../../../shared/button'
 
-const StyledSignupForm = styled.div`
+const StyledLogInForm = styled.div`
   > .ui.form {
     .field {
       label {
@@ -40,43 +40,25 @@ const StyledSignupForm = styled.div`
       }
     }
   }
+  
 `
 
-const SignupForm = ({
+
+const LoginForm = ({
   user = {},
   handleChange,
   handleSubmit,
-  success,
   loading,
-  feedback_url,
+  error
 }) => {
   return (
-    <StyledSignupForm>
-      <Form loading={loading} success={success}>
+    <StyledLogInForm>
+      <Form loading={loading} error={!!error}>
         <Message
-          success
-          header='Welcome!'
-          content="You've successfully checked into this event!"
+          error
+          header="Error"
+          content={error}
         />
-
-        <Form.Group widths='equal'>
-          <Form.Field>
-            <label>First Name</label>
-            <Input name="first_name"
-                   value={user.first_name}
-                   placeholder='Ciroma'
-                   onChange={handleChange}/>
-          </Form.Field>
-
-          <Form.Field>
-            <label>Last Name</label>
-            <Input name="last_name"
-                   type="text"
-                   value={user.last_name}
-                   placeholder='Chukwuma' onChange={handleChange}/>
-          </Form.Field>
-        </Form.Group>
-
         <Form.Field>
           <label>Email</label>
           <Input name="email"
@@ -89,25 +71,23 @@ const SignupForm = ({
           <label>Password</label>
           <Input name="password"
                  type="password"
-                 value={user.email}
+                 value={user.password}
                  placeholder='*****' onChange={handleChange}/>
         </Form.Field>
 
         <div className="checkbox-holder">
           <Form.Field>
             <input type="checkbox" name="vehicle" value="Bike" />
-            <label>I agree to the &nbsp;
-              <Link to="/terms-and-conditions">Terms and Conditions</Link>
-            </label>
+            <label>Keep me logged in</label>
           </Form.Field>
         </div>
 
         <Button type='submit' onClick={handleSubmit}>
-          Sign Up
+          Login
         </Button>
       </Form>
-    </StyledSignupForm>
+    </StyledLogInForm>
   )
 }
 
-export default SignupForm;
+export default LoginForm;
