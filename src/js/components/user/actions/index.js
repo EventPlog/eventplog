@@ -1,17 +1,5 @@
 import actionTypes from './types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
-import mockEventApi from '../../../mockApi/lead-api'
-
-export const mockCheckIn = (eventId, user) => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.CHECK_IN_START })
-
-    return mockEventApi.create(eventId).then(res => {
-      dispatch({type: actionTypes.CHECK_IN_COMPLETE, payload: {...user}})
-      return {feedback_url: 'http://feedback_url.com'}
-    })
-  }
-}
 
 export const confirmEmail = (data) => {
   let actions = baseActions({

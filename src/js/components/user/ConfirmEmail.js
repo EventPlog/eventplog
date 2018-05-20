@@ -1,25 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import defaults from '../../../theme/variables'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import LoginHeader from '../login/components/header'
 import MainContent from './components/main-content'
 import LoginFooter from '../login/components/footer'
-import { Auth } from '../../auth'
 import { confirmEmail } from './actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
-import GoogleLogin from 'react-google-login';
-
-const responseGoogle = (response) => {
-  console.log(response);
-}
-
-const responseFacebook = (response) => {
-  console.log(response);
-}
-
 
 const StyledLogin = styled.div`
   --fg: ${defaults.fg};
