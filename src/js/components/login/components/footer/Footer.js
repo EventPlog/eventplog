@@ -81,6 +81,9 @@ const StyledFooter = styled.div`
    .twitter{
     float : right;
    }
+   h4{
+    text-transform: uppercase
+   }
 
 
 `
@@ -102,10 +105,10 @@ const Footer = () => (
             <div className="footer-menu">
               <div className="footer-menu-list">
                   <ul>
-                      <li><h3>Company</h3><Link to="/about-us"><h5>About us</h5></Link></li>
-                      <li><h3>Products</h3><Link to="/about-us"><h5>Why Eventplog?</h5></Link></li>
-                      <li><h3>Resources</h3><Link to="/about-us"><h5>Events</h5></Link></li>
-                      <li><h3>Extras</h3><Link to="/about-us"><h5>Communities</h5></Link></li>
+                      <li><h4>Company</h4><Link to="/about-us"><h5>About us</h5></Link></li>
+                      <li><h4>Products</h4><Link to="/about-us"><h5>Why Eventplog?</h5></Link></li>
+                      <li><h4>Resources</h4><Link to="/about-us"><h5>Events</h5></Link></li>
+                      <li><h4>Extras</h4><Link to="/about-us"><h5>Communities</h5></Link></li>
                   </ul>
               </div>
             </div>
