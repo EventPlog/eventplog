@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
-import EmailSignupForm from './email-signup-form'
+import EmailLoginForm from './EmailSignupForm'
 import { Button, Form, Message, Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
 import colors from '../../../../../theme/colors'
@@ -138,7 +138,7 @@ const LoginForm = () => (
       <div>OR</div>
     </div>
 
-    <EmailSignupForm />
+    <EmailLoginForm/>
     <div className="alt-signin">
       Already have an account? &nbsp;
       <Link to="/login">Sign In</Link>

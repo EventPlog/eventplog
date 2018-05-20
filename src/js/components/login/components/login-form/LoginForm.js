@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
-import EmailLoginForm from './EmailLoginForm'
+import EmailLoginForm from './email-login-form'
 import { Button, Form, Message, Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
 import colors from '../../../../../theme/colors'

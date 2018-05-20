@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
-import EmailSignupForm from './email-signup-form'
+import EmailLoginForm from './EmailLoginForm'
 import { Button, Form, Message, Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
 import colors from '../../../../../theme/colors'
@@ -111,7 +111,7 @@ const Btn = ({color, inverted = false, ...otherProps}) => (
 const LoginForm = () => (
   <StyledLoginForm className="form-holder">
     <div className="header">
-      Sign up
+      Welcome back!
     </div>
     <div className="social-media-buttons">
 
@@ -129,6 +129,8 @@ const LoginForm = () => (
       <GoogleLogin
         clientId="530846686194-8auql2abnck2m3cjbqqpitlhtm7k9ot9.apps.googleusercontent.com"
         buttonText="Google"
+        autoLoad={false}
+        disabled={false}
         className="ui button google-login-btn"
         onSuccess={googleResponse}
         onFailure={googleResponse} />
@@ -138,10 +140,10 @@ const LoginForm = () => (
       <div>OR</div>
     </div>
 
-    <EmailSignupForm />
+    <EmailLoginForm/>
     <div className="alt-signin">
-      Already have an account? &nbsp;
-      <Link to="/login">Sign In</Link>
+      Haven't joined yet? &nbsp;
+      <Link to="/signup">Sign Up</Link>
     </div>
   </StyledLoginForm>
 )

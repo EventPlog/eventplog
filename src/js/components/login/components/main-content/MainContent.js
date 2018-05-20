@@ -4,6 +4,7 @@ import backgroundImg from '../../../../../img/login-bg.jpg'
 import colors from '../../../../../theme/colors'
 import LoginForm from '../login-form'
 import SignupForm from '../signup-form'
+import { Message } from 'semantic-ui-react'
 
 const StyledMainContent = styled.div`
   background-image: url(${backgroundImg});
@@ -24,6 +25,11 @@ const StyledMainContent = styled.div`
   > .app-container {
     display: flex;
     z-index: 1
+    
+    > .message {
+      flex: 1;
+      margin: 20px 0 0;
+    }
   }
   
   .caption {
@@ -67,9 +73,33 @@ const loadLoginComponentByPath = (path) => (
     ? <LoginForm/>
     : <SignupForm />
 )
-const MainContent = ({ currentPath }) => (
+
+class ShowFlashMsg extends React.Component {
+  state = { visible: true }
+
+  handleDismiss = () => {
+    this.setState({ visible: false })
+  }
+  render() {
+    const {flashMsg} = this.props
+    if (!flashMsg || !this.state.visible) return null
+    return (
+      <div className="app-container">
+        <Message
+          floating
+          success
+          content={flashMsg}
+          onDismiss={this.handleDismiss}
+        />
+      </div>
+    )
+  }
+}
+
+const MainContent = ({ currentPath, flashMsg=null }) => (
   <StyledMainContent className="main-content">
     <div className="overlay"></div>
+    <ShowFlashMsg flashMsg={flashMsg} />
 
     <div className="app-container">
       <div className="caption">

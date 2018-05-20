@@ -8,7 +8,7 @@ import LoginFooter from './components/footer'
 import { Auth } from '../../auth'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import GoogleLogin from 'react-google-login';
 
 const responseGoogle = (response) => {
@@ -95,10 +95,14 @@ class Login extends Component {
     const menu = [
       {text: 'I want to create my first event >', url: '/leads/1'}
     ]
+    if (Auth.isLoggedIn) <Redirect to="/" />
+    const {state} = this.props.location
     return (
       <StyledLogin>
         <LoginHeader />
-        <MainContent currentPath={this.props.match.path} />
+        <MainContent currentPath={this.props.match.path}
+                     flashMsg={state ? state.flash_msg : null}
+        />
         <LoginFooter/>
       </StyledLogin>
     )
