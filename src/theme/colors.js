@@ -1,6 +1,6 @@
 export default {
-  primaryLight: '#F851F6',
-  primary: '#CF30CE',
+  primary: '#F851F6',
+  primaryDark: '#CF30CE',
   blueLighter: '#f7ffff',
   blueLight:'#48536c',
   blueDark: '#2f3c5b',
