@@ -24,6 +24,7 @@ const StyledLogin = styled.div`
   
   .main-content {
     flex: 1;
+    margin-top: 60px;
   }
   
   .footer {

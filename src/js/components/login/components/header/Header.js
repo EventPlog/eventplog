@@ -5,6 +5,8 @@ import logo from '../../../../../img/eventplog-logo-small.png'
 import defaults from '../../../../../theme/variables'
 
 const StyledHeader = styled.div`
+  border-bottom: 1px solid #eee;
+  
   > .app-container {
     display: flex;
     justify-content: space-between; 

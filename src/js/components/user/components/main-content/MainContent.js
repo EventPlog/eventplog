@@ -1,62 +1,50 @@
 import React from 'react'
 import styled from 'styled-components'
 import colors from '../../../../../theme/colors'
+import welcomeImg from '../../../../../img/giphys/people-dancing.gif'
 
 const StyledMainContent = styled.div`
-  > .app-container {
-    display: flex;
-    z-index: 1
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  > h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    font-family: "Andale Mono", AndaleMono, monospace;
   }
   
-  .caption {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    color: #fff;
-    margin: 50px;
-    z-index: 1;
-    flex-direction: column;
-    text-align: left;
-    text-shadow: 0 2px 4px ${colors.black};
-    
-    h1 {
-      font-size: 4rem;
-      font-weight: 300;
-      font-family: "Andale Mono", AndaleMono, monospace;
-    }
-    
-    small {
-      font-size: 1.7rem;
-      font-weight: 600;
-      margin-top: 10px;
-    }
+  > p {
+    margin: 20px 0 50px;
   }
   
-  .form-holder {
-    background: ${colors.white};
-    border-radius: 5px;
-    box-shadow: 0 2px 4px #000;
-    height: auto;
-    margin: 100px;
-    margin-right: 0;
-    width: 400px;
-    z-index: 1;
+  > img {
+    width: 500px;
+    margin: 10px 0 100px;
   }
 `
 
 const MainContent = ({ status, token, confirmed }) => (
-  <StyledMainContent className="app-container">
-    <h3>Confirm your email!</h3>
-    {token && <div>
-      {status == 'processing' && 'Confirming your email, please wait....'}
-      {confirmed() && 'Your email is confirmed! Redirecting you back to login page ...'}
-      {(status == 'failed') && 'You email confirmation failed. Please try again'}
-    </div>}
+  <StyledMainContent className="main-content app-container">
+    <h1>One Step left!</h1>
+    {token &&
+      [
+        <p>
+          {status == 'processing' && 'Confirming your email, please wait....'}
+          {confirmed() && 'Your email is confirmed! Redirecting you back to login page ...'}
+          {(status == 'failed') && 'You email confirmation failed. Please request for a new one.'}
+        </p>,
+        <img src={welcomeImg} alt="welcome-image" />,
+      ]
+    }
     {!token &&
-    <div>
-      We've sent you a mail with a link to confirm your email address. &nbsp;
-      Please check your emal to get started.
-    </div>
+      [
+        <p className="confirmation-text">
+          We've sent you an email with a link to confirm your email address. &nbsp;
+          Please click on that link to get started.
+        </p>,
+        <img src={welcomeImg} alt="welcome-image" />,
+      ]
     }
   </StyledMainContent>
 )
