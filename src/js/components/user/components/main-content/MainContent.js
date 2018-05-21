@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import backgroundImg from '../../../../../img/login-bg.jpg'
 import colors from '../../../../../theme/colors'
-import LoginForm from '../login-form'
-import SignupForm from '../signup-form'
+import LoginForm from '../../../login/components/login-form'
+import SignupForm from '../../../login/components/signup-form'
 
 const StyledMainContent = styled.div`
   > .app-container {
