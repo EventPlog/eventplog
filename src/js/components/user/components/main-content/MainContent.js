@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import backgroundImg from '../../../../../img/login-bg.jpg'
 import colors from '../../../../../theme/colors'
-import LoginForm from '../login-form'
-import SignupForm from '../signup-form'
 
 const StyledMainContent = styled.div`
   > .app-container {
@@ -47,11 +44,6 @@ const StyledMainContent = styled.div`
   }
 `
 
-const loadLoginComponentByPath = (path) => (
-  path == '/login'
-    ? <LoginForm/>
-    : <SignupForm />
-)
 const MainContent = ({ status, token, confirmed }) => (
   <StyledMainContent className="app-container">
     <h3>Confirm your email!</h3>

@@ -79,6 +79,7 @@ class ShowFlashMsg extends React.Component {
 
   handleDismiss = () => {
     this.setState({ visible: false })
+
   }
   render() {
     const {flashMsg} = this.props
