@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import colors from '../../../../../theme/colors'
-import welcomeImg from '../../../../../img/giphys/people-dancing.gif'
+import welcomeImg from '../../../../../img/giphys/welcome.gif'
+import peopleDancing from '../../../../../img/giphys/people-dancing.gif'
 
 const StyledMainContent = styled.div`
   display: flex;
@@ -32,18 +33,18 @@ const MainContent = ({ status, token, confirmed }) => (
         <p>
           {status == 'processing' && 'Confirming your email, please wait....'}
           {confirmed() && 'Your email is confirmed! Redirecting you back to login page ...'}
-          {(status == 'failed') && 'You email confirmation failed. Please request for a new one.'}
+          {(status == 'failed') && 'Your email confirmation failed. Please request for a new one.'}
         </p>,
         <img src={welcomeImg} alt="welcome-image" />,
       ]
     }
     {!token &&
       [
-        <p className="confirmation-text">
+        <p>
           We've sent you an email with a link to confirm your email address. &nbsp;
           Please click on that link to get started.
         </p>,
-        <img src={welcomeImg} alt="welcome-image" />,
+        <img src={peopleDancing} alt="people-dancing" />,
       ]
     }
   </StyledMainContent>

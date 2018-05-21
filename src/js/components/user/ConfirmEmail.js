@@ -33,17 +33,22 @@ const StyledLogin = styled.div`
   }
 `
 
-class ConfirmEmail extends Component {
+export class ConfirmEmail extends Component {
   state = {
     confirmed: false
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    return({token: nextProps.match.params.token})
+    let token = nextProps.match ? nextProps.match.params.token : null
+    return({ token })
   }
 
   componentDidMount() {
-    let token = this.props.match.params.token
+    this.confirmToken();
+  }
+
+  confirmToken = () => {
+    let token = this.props.match ? this.props.match.params.token : null
     if (!token) return
     this.props.confirmEmail({token})
   }
