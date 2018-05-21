@@ -24,8 +24,10 @@ const StyledHeader = styled.div`
       display: inline-flex;
       margin: auto 0 auto 50px;
       line-height: 70px;
-      font-weight: 600;
-      
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1.2px;
     }
     
     li:not(:last-child) {
@@ -51,7 +53,7 @@ const Header = () => (
       <div className="menu">
         <ul>
           <li><Link to="/why-eventplog">Why EventPlog?</Link></li>
-          <li><Link to="/about-us">About Us?</Link></li>
+          <li><Link to="/about-us">About Us</Link></li>
         </ul>
       </div>
     </div>
