@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import defaults from '../../../theme/variables'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import TmnCaptionedWrapper from '../shared/tmn-captioned-wrapper'
-import LeadsHeader from '../leads/leads-header'
-import winningCup from '../../../img/vector-ball.jpg'
-import FacebookLogin from 'react-facebook-login';
+import LoginHeader from './components/header'
+import MainContent from './components/main-content'
+import LoginFooter from './components/footer'
 import { Auth } from '../../auth'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import GoogleLogin from 'react-google-login';
 
 const responseGoogle = (response) => {
@@ -26,6 +25,23 @@ const StyledLogin = styled.div`
   --fg: ${defaults.fg};
   --bg: ${defaults.bg};
   --activeLink: ${defaults.activeLink};
+  
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  > .header {
+    height: 70px;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .footer {
+    height: 200px;
+    background: #eee;
+  }
 `
 
 class Login extends Component {
@@ -60,6 +76,7 @@ class Login extends Component {
   }
 
   googleResponse = (res) => {
+    if (!!res) return
     const {
       email,
       familyName: last_name,
@@ -78,77 +95,15 @@ class Login extends Component {
     const menu = [
       {text: 'I want to create my first event >', url: '/leads/1'}
     ]
+    if (Auth.isLoggedIn) <Redirect to="/" />
+    const {state} = this.props.location
     return (
       <StyledLogin>
-        <LeadsHeader menu={menu} />
-        <TmnCaptionedWrapper title="Do more with your team."
-                             subtitle="Keep track of who's doing what, and why."
-                             iconImage={winningCup}>
-          <div className='login-form'>
-            {/*
-             Heads up! The styles below are necessary for the correct render of this example.
-             You can do same with CSS, the main idea is that all the elements up to the `Grid`
-             below must have a height of 100%.
-             */}
-            <style>{`
-      body > div,
-      body > div > div,
-      body > div > div > div.login-form {
-        height: 100%;
-      }
-    `}</style>
-            <Grid
-              textAlign='center'
-              style={{ height: '100%' }}
-              verticalAlign='middle'
-            >
-              <Grid.Column style={{ maxWidth: 450 }}>
-                <Header as='h2' color='white' textAlign='center'>
-                  <Image src='/logo.png' />
-                  {' '}Log-in to your account
-                </Header>
-
-                <FacebookLogin
-                  appId="160154634571372"
-                  autoLoad={false}
-                  fields="name,email,picture"
-                  callback={this.fbResponse} />
-
-
-                <GoogleLogin
-                  clientId="530846686194-8auql2abnck2m3cjbqqpitlhtm7k9ot9.apps.googleusercontent.com"
-                  buttonText="Login with Google"
-                  onSuccess={this.googleResponse}
-                  onFailure={this.googleResponse} />
-
-                <Form size='large'>
-                  <Segment stacked>
-                    <Form.Input
-                      fluid
-                      icon='user'
-                      iconPosition='left'
-                      placeholder='E-mail address'
-                    />
-                    <Form.Input
-                      fluid
-                      icon='lock'
-                      iconPosition='left'
-                      placeholder='Password'
-                      type='password'
-                    />
-
-                    <Button color='teal'
-                            onClick={this.bypassAuth}
-                            fluid size='large'>Login</Button>
-                  </Segment>
-                </Form>
-                <Message>
-                  New to us? <Link to="/signup">Sign Up</Link>
-                </Message>
-              </Grid.Column>
-            </Grid>
-          </div>
-        </TmnCaptionedWrapper>
+        <LoginHeader />
+        <MainContent currentPath={this.props.match.path}
+                     flashMsg={state ? state.flash_msg : null}
+        />
+        <LoginFooter/>
       </StyledLogin>
     )
   }
