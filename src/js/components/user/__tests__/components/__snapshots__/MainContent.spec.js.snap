@@ -19,7 +19,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <h1>
-          One Step left!
+          One step left!
 </h1>,
         undefined,
         Array [
@@ -41,10 +41,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "One Step left!",
+          "children": "One step left!",
         },
         "ref": null,
-        "rendered": "One Step left!",
+        "rendered": "One step left!",
         "type": "h1",
       },
       undefined,
@@ -82,7 +82,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <h1>
-            One Step left!
+            One step left!
 </h1>,
           undefined,
           Array [
@@ -104,10 +104,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "One Step left!",
+            "children": "One step left!",
           },
           "ref": null,
-          "rendered": "One Step left!",
+          "rendered": "One step left!",
           "type": "h1",
         },
         undefined,
