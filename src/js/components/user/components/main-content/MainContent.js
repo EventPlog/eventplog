@@ -25,14 +25,28 @@ const StyledMainContent = styled.div`
   }
 `
 
+const headerMsg = (token, status) => {
+  if (!token) {
+    return 'One step left!'
+  }
+  switch (status) {
+    case 'procesing':
+      return 'Hang on ...'
+    case 'failed':
+      return 'Uh oh!'
+    default:
+      return 'Yayyy! Welcome!!'
+  }
+}
+
 const MainContent = ({ status, token, confirmed }) => (
   <StyledMainContent className="main-content app-container">
-    <h1>One Step left!</h1>
+    <h1>{headerMsg(token, status)}</h1>
     {token &&
       [
         <p>
           {status == 'processing' && 'Confirming your email, please wait....'}
-          {confirmed() && 'Your email is confirmed! Redirecting you back to login page ...'}
+          {confirmed() && 'Your email is confirmed! Loggin you in in a sec ...'}
           {(status == 'failed') && 'Your email confirmation failed. Please request for a new one.'}
         </p>,
         <img src={welcomeImg} alt="welcome-image" />,

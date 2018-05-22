@@ -45,57 +45,11 @@ const StyledLogin = styled.div`
 `
 
 class Login extends Component {
-
-  onSubmit = () => {
-    // change username and password states
-  }
-  bypassAuth = async (e) => {
-    e.preventDefault();
-    this.props.loginUser({ facebook_user_id: "1705553739457939" })
-      .then(r => this.props.history.push('/'))
-  }
-
-  loginUser = (payload) =>  {
-    this.props.loginUser(payload)
-      .then(res => {
-        // this.props.history.push('/')
-        window.location.replace('/')
-      })
-  }
-
-  fbResponse = (response) => {
-    const [ first_name, ...otherNames ] = response.name.split(' ')
-    const payload = {
-      first_name,
-      last_name: otherNames.join(' '),
-      avatar_url: response.picture.data.url,
-      email: response.email,
-      oauth_user_id: response.userID,
-    }
-    this.loginUser(payload)
-  }
-
-  googleResponse = (res) => {
-    if (!!res) return
-    const {
-      email,
-      familyName: last_name,
-      givenName: first_name,
-      imageUrl: avatar_url,
-      googleId: oauth_user_id
-    } = res.profileObj
-
-    const payload = {
-      email, first_name, last_name, avatar_url, oauth_user_id
-    }
-    this.loginUser(payload)
-  }
-
   render() {
     const menu = [
       {text: 'I want to create my first event >', url: '/leads/1'}
     ]
-    if (Auth.isLoggedIn) <Redirect to="/" />
+    if (Auth.isLoggedIn) return <Redirect to="/" />
     const {state} = this.props.location
     return (
       <StyledLogin>

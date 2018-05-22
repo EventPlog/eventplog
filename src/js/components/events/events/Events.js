@@ -3,6 +3,7 @@ import { Card, Header } from 'semantic-ui-react'
 import EventCard from './components/event-card'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import colors from '../../../../theme/colors'
 
 import src from '../../../../img/tech_is_in_you.png'
 
@@ -26,7 +27,7 @@ const StyledEvents = styled.div`
 
 const createEventGroup = (title, events) => (
   <div class="event-group">
-    <Header as="h3" className="event-group-header">{title}</Header>
+    <h4>{title}</h4>
     <Card.Group itemsPerRow={4}>
       {events && events.map((event, index) => {
           return <EventCard key={index} event={event} />

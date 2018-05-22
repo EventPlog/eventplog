@@ -4,11 +4,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getEvent } from '../actions'
 
-class MainContentContainer extends Component {
-  componentWillMount(props) {
-    const {events} = this.props
+class EventContainer extends Component {
+  state = {}
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {events} = nextProps
     if(events && events.length > 0) return
-    this.props.getEvent(this.props.match.params.id);
+    nextProps.getEvent(nextProps.match.params.id);
+    return {}
   }
 
   render () {
@@ -26,4 +29,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainContentContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventContainer))

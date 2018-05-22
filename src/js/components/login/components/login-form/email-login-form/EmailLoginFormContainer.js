@@ -22,7 +22,7 @@ class LoginFormContainer extends Component {
     this.setState({loading: true})
     this.props.loginByEmail(this.state.user)
       .then(res => {
-        this.props.history.push('/events')
+        window.location.replace('/')
       })
       .catch(err => {
         this.setState({loading: false, error: err.errors[0]})

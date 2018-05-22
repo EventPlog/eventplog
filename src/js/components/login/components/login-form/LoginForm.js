@@ -9,20 +9,6 @@ import colors from '../../../../../theme/colors'
 import { lighten } from 'polished'
 
 
-const bypassAuth = async (e) => {
-  e.preventDefault();
-  this.props.loginUser({ facebook_user_id: "1705553739457939" })
-    .then(r => this.props.history.push('/'))
-}
-
-const loginUser = (payload) =>  {
-  this.props.loginUser(payload)
-    .then(res => {
-      // this.props.history.push('/')
-      window.location.replace('/')
-    })
-}
-
 const fbResponse = (response) => {
   const [ first_name, ...otherNames ] = response.name.split(' ')
   const payload = {
