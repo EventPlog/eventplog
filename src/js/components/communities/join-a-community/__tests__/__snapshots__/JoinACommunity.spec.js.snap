@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConfirmEmail should render correctly 1`] = `
+exports[`JoinACommunity should render correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ConfirmEmail />,
+  Symbol(enzyme.__unrendered__): <JoinACommunity />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -18,9 +18,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <MainContent
-        confirmed={[Function]}
-        status={undefined}
-        token={null}
+        communities={undefined}
 />,
     },
     "ref": null,
@@ -29,9 +27,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "confirmed": [Function],
-        "status": undefined,
-        "token": null,
+        "communities": undefined,
       },
       "ref": null,
       "rendered": null,
@@ -46,9 +42,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <MainContent
-          confirmed={[Function]}
-          status={undefined}
-          token={null}
+          communities={undefined}
 />,
       },
       "ref": null,
@@ -57,9 +51,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "confirmed": [Function],
-          "status": undefined,
-          "token": null,
+          "communities": undefined,
         },
         "ref": null,
         "rendered": null,

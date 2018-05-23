@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import defaults from '../../../theme/variables'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import LoginHeader from './components/header'
 import MainContent from './components/main-content'
-import LoginFooter from './components/footer'
 import { Auth } from '../../auth'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -53,11 +51,9 @@ class Login extends Component {
     const {state} = this.props.location
     return (
       <StyledLogin>
-        <LoginHeader />
         <MainContent currentPath={this.props.match.path}
                      flashMsg={state ? state.flash_msg : null}
         />
-        <LoginFooter/>
       </StyledLogin>
     )
   }

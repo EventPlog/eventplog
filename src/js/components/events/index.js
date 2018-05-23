@@ -1,7 +1,1 @@
-import Events from './events'
-import Event from './event'
-
-export {
-  Event,
-  Events,
-}
+export { default } from './EventsWithContainer'

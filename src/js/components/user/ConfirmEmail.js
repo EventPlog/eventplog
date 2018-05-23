@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import defaults from '../../../theme/variables'
-import LoginHeader from '../login/components/header'
 import MainContent from './components/main-content'
-import LoginFooter from '../login/components/footer'
 import { confirmEmail } from './actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -67,12 +65,10 @@ export class ConfirmEmail extends Component {
 
     return (
       <StyledLogin>
-        <LoginHeader />
         <MainContent confirmed={this.confirmed}
                      status={this.props.status}
                      token={this.state.token}
         />
-        <LoginFooter/>
       </StyledLogin>
     )
   }
