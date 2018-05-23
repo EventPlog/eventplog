@@ -7,7 +7,7 @@ import LoginFooter from '../login/components/footer'
 import { confirmEmail } from './actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link, withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 const StyledLogin = styled.div`
   --fg: ${defaults.fg};
@@ -53,7 +53,8 @@ export class ConfirmEmail extends Component {
     this.props.confirmEmail({token})
   }
 
-  confirmed = () => this.props.status == 'confirmed'
+  confirmed = () => this.props.status ===
+   'confirmed'
 
   render() {
     if (this.confirmed()) {

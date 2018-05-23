@@ -8,7 +8,7 @@ import defaults from '../theme/variables';
 import createLoadable from './components/shared/loading/createLoadable'
 
 
-const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
+//const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
 const Login = createLoadable(() => import('./components/login'  /* webpackChunkName: "login" */))
 const TmnTracker = createLoadable(() => import('./TmnTracker'  /* webpackChunkName: "TmnTracker" */))
 const User = createLoadable(() => import('./components/user'  /* webpackChunkName: "TmnTracker" */))
@@ -34,8 +34,8 @@ class App extends Component {
       ...this.props.currentTheme
     };
 
-    const { activeItem } = this.state
-    let url = '../img/tech is in you.png';
+    //const { activeItem } = this.state
+    //let url = '../img/tech is in you.png';
     return (
       <ThemeProvider theme={theme}>
         <StyledApp>

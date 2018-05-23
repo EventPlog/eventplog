@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Checkbox, Form, Select, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
 
