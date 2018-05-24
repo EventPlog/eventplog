@@ -6,9 +6,8 @@ import { createLogger } from 'redux-logger'
 
 const configureStore = () => {
   return createStore(
-    rootReducer,
-    compose.apply(null, getMiddleware())
-  );
+    rootReducer,getMiddleware()
+    )
 }
 
 const getMiddleware = () => {
