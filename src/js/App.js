@@ -27,12 +27,6 @@ const StyledApp = styled.div`
   a, a:hover {
     color: var(--activeLink);
   }
-  
-  .footer {
-    margin-top: 100px;
-    background: #eee;
-    height: 200px;
-  }
 `
 
 class App extends Component {

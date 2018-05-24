@@ -20,7 +20,8 @@ class SignupFormContainer extends Component {
 
   handleSubmit = async (e) => {
     this.setState({loading: true})
-    this.props.signupByEmail({user: this.state.user})
+
+    this.props.signupByEmail(this.state.user)
       .then(res => {
         this.props.history.push('/user/confirm')
       })
