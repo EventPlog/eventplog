@@ -84,6 +84,8 @@ class Validator {
           this.testMaxLength(validatorOption, fieldName);
           break;
         }
+        default:
+          break;
         }
       })
     })
