@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
+<styled.div>
+  <p>
+    Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.
+  </p>
+  <img
+    alt="people-dancing"
+    src="people-dancing.gif"
+  />
+</styled.div>
+`;

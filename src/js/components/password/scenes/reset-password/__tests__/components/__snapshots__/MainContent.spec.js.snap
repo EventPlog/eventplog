@@ -65,9 +65,6 @@ exports[`main content - join a community component should render correctly 1`] =
         />
       </FormField>
     </div>
-    <div
-      className="options"
-    />
   </div>
 </styled.div>
 `;

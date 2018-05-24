@@ -79,6 +79,7 @@
       "<rootDir>/config/polyfills.js"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "testMatch": [
       "<rootDir>/src/js/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/js/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -115,6 +116,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "enzyme-to-json": "3.3.4",
     "flow-bin": "^0.69.0",
     "redux-devtools": "^3.4.1"
   }
