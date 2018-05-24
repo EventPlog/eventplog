@@ -1,13 +1,11 @@
 import React from 'react';
-import JoinACommunity from '../ResetPassword';
-import LoggedinHeader from '../../../header'
-import Footer from '../../../footer'
+import ResetPassword from '../ResetPassword';
 import MainContent from '../components/main-content'
 import { shallow } from 'enzyme';
 
-describe('JoinACommunity', () => {
+describe('ResetPassword', () => {
   it('should render correctly', () => {
-    const wrapper = shallow( <JoinACommunity/> );
+    const wrapper = shallow( <ResetPassword /> );
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(MainContent).length).toEqual(1);

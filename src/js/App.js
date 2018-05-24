@@ -11,7 +11,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 
 
-const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
+//const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
 const Login = createLoadable(() => import('./components/login'  /* webpackChunkName: "login" */))
 const Events = createLoadable(() => import('./components/events'  /* webpackChunkName: "EventPlog" */))
 const User = createLoadable(() => import('./components/user'  /* webpackChunkName: "EventPlog" */))
@@ -27,11 +27,6 @@ const StyledApp = styled.div`
   
   a, a:hover {
     color: var(--activeLink);
-  }
-  
-  .footer {
-    background: #eee;
-    height: 200px;
   }
 `
 

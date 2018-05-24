@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import defaults from '../../../../../../../theme/variables'
 import ContentBeforeEmailSubmit from '../content-before-email-submit'
+import ContentAfterEmailSubmit from '../content-after-email-submit'
 
 const StyledMainContent = styled.div`
   display: flex;
@@ -28,33 +29,20 @@ const StyledMainContent = styled.div`
     }
   },
   
-  
 `
 
 
-const ContentAfterEmailSubmit = ({ email, handleChange }) => ([
-  <p>We'll send you an email with specific instructions on how to reset it.</p>,
-  <div className="submit-form">
-    <Input type="text"
-           value={email}
-           onChange={handleChange}
-           placeholder="john@gmail.com" />
-    <Button>Reset</Button>
-  </div>,
-])
-
 const MainContent = ({
-  token,
   email,
-  isSubmitted,
+  emailSubmitted,
   handleChange,
   submitEmail
 }) => (
-  <StyledMainContent className="main-content app-container">
-    <h3>Forgot your password?</h3>
-    { !isSubmitted && <ContentBeforeEmailSubmit {...{email, handleChange}} />}
-    { isSubmitted && <ContentAfterEmailSubmit {...{email, handleChange}} /> }
-  </StyledMainContent>
-)
+    <StyledMainContent className="main-content app-container">
+      <h3>Forgot your password?</h3>
+      { !emailSubmitted && <ContentBeforeEmailSubmit {...{email, handleChange}} />}
+      { emailSubmitted && <ContentAfterEmailSubmit {...{email, handleChange}} /> }
+    </StyledMainContent>
+    )
 
-export default MainContent
+    export default MainContent

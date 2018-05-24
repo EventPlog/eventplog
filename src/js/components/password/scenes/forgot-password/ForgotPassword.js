@@ -20,13 +20,15 @@ const StyledForgotPassword = styled.div`
 `
 
 type forgotPasswordType = {
-  token?: string,
+  email: string,
+  emailSubmitted?: boolean,
+  handleChange: () => {},
   submitEmail: () => {}
 }
 
-const ForgotPassword = ({ submitEmail, token }: forgotPasswordType) => (
+const ForgotPassword = (props: forgotPasswordType) => (
   <StyledForgotPassword>
-    <MainContent {...{submitEmail, token}} />
+    <MainContent {...props } />
   </StyledForgotPassword>
 )
 

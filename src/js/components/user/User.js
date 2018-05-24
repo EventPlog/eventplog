@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import createLoadable from '../../components/shared/loading/createLoadable'
 
-const ConfirmEmail = createLoadable(() => import('./ConfirmEmail'  /* webpackChunkName: "confirmEmail" */))
+const ConfirmEmail = createLoadable(() => import('./scenes/confirm-email'  /* webpackChunkName: "confirmEmail" */))
 
 const User = () => (
   <Switch>

@@ -18,9 +18,9 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <MainContent
-        confirmed={[Function]}
+        confirmed={undefined}
         status={undefined}
-        token={null}
+        token={undefined}
 />,
     },
     "ref": null,
@@ -29,9 +29,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "confirmed": [Function],
+        "confirmed": undefined,
         "status": undefined,
-        "token": null,
+        "token": undefined,
       },
       "ref": null,
       "rendered": null,
@@ -46,9 +46,9 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <MainContent
-          confirmed={[Function]}
+          confirmed={undefined}
           status={undefined}
-          token={null}
+          token={undefined}
 />,
       },
       "ref": null,
@@ -57,9 +57,9 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "confirmed": [Function],
+          "confirmed": undefined,
           "status": undefined,
-          "token": null,
+          "token": undefined,
         },
         "ref": null,
         "rendered": null,

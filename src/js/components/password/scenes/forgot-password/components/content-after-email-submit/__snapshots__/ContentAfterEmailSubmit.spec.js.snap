@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`main content - forgot password component should render correctly 1`] = `
+exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <MainContent />,
+  Symbol(enzyme.__unrendered__): <ContentAfterEmailSubmit />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -18,16 +18,14 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <h3>
-          Forgot your password?
-</h3>,
-        <ContentBeforeEmailSubmit
-          email={undefined}
-          handleChange={undefined}
+        <p>
+          Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.
+</p>,
+        <img
+          alt="people-dancing"
+          src="people-dancing.gif"
 />,
-        undefined,
       ],
-      "className": "main-content app-container",
     },
     "ref": null,
     "rendered": Array [
@@ -36,25 +34,24 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "Forgot your password?",
+          "children": "Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.",
         },
         "ref": null,
-        "rendered": "Forgot your password?",
-        "type": "h3",
+        "rendered": "Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.",
+        "type": "p",
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "host",
         "props": Object {
-          "email": undefined,
-          "handleChange": undefined,
+          "alt": "people-dancing",
+          "src": "people-dancing.gif",
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": "img",
       },
-      undefined,
     ],
     "type": [Function],
   },
@@ -65,16 +62,14 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <h3>
-            Forgot your password?
-</h3>,
-          <ContentBeforeEmailSubmit
-            email={undefined}
-            handleChange={undefined}
+          <p>
+            Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.
+</p>,
+          <img
+            alt="people-dancing"
+            src="people-dancing.gif"
 />,
-          undefined,
         ],
-        "className": "main-content app-container",
       },
       "ref": null,
       "rendered": Array [
@@ -83,25 +78,24 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Forgot your password?",
+            "children": "Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.",
           },
           "ref": null,
-          "rendered": "Forgot your password?",
-          "type": "h3",
+          "rendered": "Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.",
+          "type": "p",
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "host",
           "props": Object {
-            "email": undefined,
-            "handleChange": undefined,
+            "alt": "people-dancing",
+            "src": "people-dancing.gif",
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": "img",
         },
-        undefined,
       ],
       "type": [Function],
     },

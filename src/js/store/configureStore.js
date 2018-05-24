@@ -8,7 +8,7 @@ const configureStore = () => {
   return createStore(
     rootReducer,
     compose.apply(null, getMiddleware())
-  );
+  )
 }
 
 const getMiddleware = () => {

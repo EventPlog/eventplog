@@ -79,11 +79,6 @@ ShallowWrapper {
                               />
                     </FormField>
           </div>
-          <div
-                    className="options"
-          >
-                    
-          </div>
 </div>,
       ],
       "className": "main-content app-container",
@@ -117,8 +112,372 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [
+          "children": <div
+            className="selection-dropdown"
+>
+            <FormField>
+                        <label>
+                                    Active location:
+                        </label>
+                        <Select
+                                    defaultValue="Lagos"
+                                    onChange={[Function]}
+                                    options={
+                                                Array [
+                                                            Object {
+                                                              "key": "lagos",
+                                                              "text": "Lagos",
+                                                              "value": "lagos",
+                                                            },
+                                                            Object {
+                                                              "key": "abuja",
+                                                              "text": "Lagos",
+                                                              "value": "abuja",
+                                                            },
+                                                          ]
+                                    }
+                                    placeholder="State"
+                        />
+            </FormField>
+            <FormField>
+                        <label>
+                                    Community focus: 
+                        </label>
+                        <Select
+                                    defaultValue="Technology"
+                                    onChange={[Function]}
+                                    options={
+                                                Array [
+                                                            Object {
+                                                              "key": "tech",
+                                                              "text": "Technology",
+                                                              "value": "Technology",
+                                                            },
+                                                            Object {
+                                                              "key": "software",
+                                                              "text": "Software",
+                                                              "value": "Software",
+                                                            },
+                                                          ]
+                                    }
+                                    placeholder="Gender"
+                        />
+            </FormField>
+</div>,
+          "className": "selection",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <FormField>
+                <label>
+                                Active location:
+                </label>
+                <Select
+                                defaultValue="Lagos"
+                                onChange={[Function]}
+                                options={
+                                                Array [
+                                                                Object {
+                                                                  "key": "lagos",
+                                                                  "text": "Lagos",
+                                                                  "value": "lagos",
+                                                                },
+                                                                Object {
+                                                                  "key": "abuja",
+                                                                  "text": "Lagos",
+                                                                  "value": "abuja",
+                                                                },
+                                                              ]
+                                }
+                                placeholder="State"
+                />
+</FormField>,
+              <FormField>
+                <label>
+                                Community focus: 
+                </label>
+                <Select
+                                defaultValue="Technology"
+                                onChange={[Function]}
+                                options={
+                                                Array [
+                                                                Object {
+                                                                  "key": "tech",
+                                                                  "text": "Technology",
+                                                                  "value": "Technology",
+                                                                },
+                                                                Object {
+                                                                  "key": "software",
+                                                                  "text": "Software",
+                                                                  "value": "Software",
+                                                                },
+                                                              ]
+                                }
+                                placeholder="Gender"
+                />
+</FormField>,
+            ],
+            "className": "selection-dropdown",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <label>
+                    Active location:
+</label>,
+                  <Select
+                    defaultValue="Lagos"
+                    onChange={[Function]}
+                    options={
+                                        Array [
+                                                            Object {
+                                                              "key": "lagos",
+                                                              "text": "Lagos",
+                                                              "value": "lagos",
+                                                            },
+                                                            Object {
+                                                              "key": "abuja",
+                                                              "text": "Lagos",
+                                                              "value": "abuja",
+                                                            },
+                                                          ]
+                    }
+                    placeholder="State"
+/>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Active location:",
+                  },
+                  "ref": null,
+                  "rendered": "Active location:",
+                  "type": "label",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "defaultValue": "Lagos",
+                    "onChange": [Function],
+                    "options": Array [
+                      Object {
+                        "key": "lagos",
+                        "text": "Lagos",
+                        "value": "lagos",
+                      },
+                      Object {
+                        "key": "abuja",
+                        "text": "Lagos",
+                        "value": "abuja",
+                      },
+                    ],
+                    "placeholder": "State",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <label>
+                    Community focus: 
+</label>,
+                  <Select
+                    defaultValue="Technology"
+                    onChange={[Function]}
+                    options={
+                                        Array [
+                                                            Object {
+                                                              "key": "tech",
+                                                              "text": "Technology",
+                                                              "value": "Technology",
+                                                            },
+                                                            Object {
+                                                              "key": "software",
+                                                              "text": "Software",
+                                                              "value": "Software",
+                                                            },
+                                                          ]
+                    }
+                    placeholder="Gender"
+/>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Community focus: ",
+                  },
+                  "ref": null,
+                  "rendered": "Community focus: ",
+                  "type": "label",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "defaultValue": "Technology",
+                    "onChange": [Function],
+                    "options": Array [
+                      Object {
+                        "key": "tech",
+                        "text": "Technology",
+                        "value": "Technology",
+                      },
+                      Object {
+                        "key": "software",
+                        "text": "Software",
+                        "value": "Software",
+                      },
+                    ],
+                    "placeholder": "Gender",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <h2>
+            Follow your favorite communities
+</h2>,
+          <p>
+            To know when they might host an event or share an event-related news
+</p>,
+          <div
+            className="selection"
+>
             <div
+                        className="selection-dropdown"
+            >
+                        <FormField>
+                                    <label>
+                                                Active location:
+                                    </label>
+                                    <Select
+                                                defaultValue="Lagos"
+                                                onChange={[Function]}
+                                                options={
+                                                            Array [
+                                                                        Object {
+                                                                          "key": "lagos",
+                                                                          "text": "Lagos",
+                                                                          "value": "lagos",
+                                                                        },
+                                                                        Object {
+                                                                          "key": "abuja",
+                                                                          "text": "Lagos",
+                                                                          "value": "abuja",
+                                                                        },
+                                                                      ]
+                                                }
+                                                placeholder="State"
+                                    />
+                        </FormField>
+                        <FormField>
+                                    <label>
+                                                Community focus: 
+                                    </label>
+                                    <Select
+                                                defaultValue="Technology"
+                                                onChange={[Function]}
+                                                options={
+                                                            Array [
+                                                                        Object {
+                                                                          "key": "tech",
+                                                                          "text": "Technology",
+                                                                          "value": "Technology",
+                                                                        },
+                                                                        Object {
+                                                                          "key": "software",
+                                                                          "text": "Software",
+                                                                          "value": "Software",
+                                                                        },
+                                                                      ]
+                                                }
+                                                placeholder="Gender"
+                                    />
+                        </FormField>
+            </div>
+</div>,
+        ],
+        "className": "main-content app-container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Follow your favorite communities",
+          },
+          "ref": null,
+          "rendered": "Follow your favorite communities",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "To know when they might host an event or share an event-related news",
+          },
+          "ref": null,
+          "rendered": "To know when they might host an event or share an event-related news",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
               className="selection-dropdown"
 >
               <FormField>
@@ -170,17 +529,10 @@ ShallowWrapper {
                             />
               </FormField>
 </div>,
-            <div
-              className="options"
->
-              
-</div>,
-          ],
-          "className": "selection",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
+            "className": "selection",
+          },
+          "ref": null,
+          "rendered": Object {
             "instance": null,
             "key": undefined,
             "nodeType": "host",
@@ -384,410 +736,6 @@ ShallowWrapper {
             ],
             "type": "div",
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [],
-              "className": "options",
-            },
-            "ref": null,
-            "rendered": Array [],
-            "type": "div",
-          },
-        ],
-        "type": "div",
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": Array [
-          <h2>
-            Follow your favorite communities
-</h2>,
-          <p>
-            To know when they might host an event or share an event-related news
-</p>,
-          <div
-            className="selection"
->
-            <div
-                        className="selection-dropdown"
-            >
-                        <FormField>
-                                    <label>
-                                                Active location:
-                                    </label>
-                                    <Select
-                                                defaultValue="Lagos"
-                                                onChange={[Function]}
-                                                options={
-                                                            Array [
-                                                                        Object {
-                                                                          "key": "lagos",
-                                                                          "text": "Lagos",
-                                                                          "value": "lagos",
-                                                                        },
-                                                                        Object {
-                                                                          "key": "abuja",
-                                                                          "text": "Lagos",
-                                                                          "value": "abuja",
-                                                                        },
-                                                                      ]
-                                                }
-                                                placeholder="State"
-                                    />
-                        </FormField>
-                        <FormField>
-                                    <label>
-                                                Community focus: 
-                                    </label>
-                                    <Select
-                                                defaultValue="Technology"
-                                                onChange={[Function]}
-                                                options={
-                                                            Array [
-                                                                        Object {
-                                                                          "key": "tech",
-                                                                          "text": "Technology",
-                                                                          "value": "Technology",
-                                                                        },
-                                                                        Object {
-                                                                          "key": "software",
-                                                                          "text": "Software",
-                                                                          "value": "Software",
-                                                                        },
-                                                                      ]
-                                                }
-                                                placeholder="Gender"
-                                    />
-                        </FormField>
-            </div>
-            <div
-                        className="options"
-            >
-                        
-            </div>
-</div>,
-        ],
-        "className": "main-content app-container",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Follow your favorite communities",
-          },
-          "ref": null,
-          "rendered": "Follow your favorite communities",
-          "type": "h2",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "To know when they might host an event or share an event-related news",
-          },
-          "ref": null,
-          "rendered": "To know when they might host an event or share an event-related news",
-          "type": "p",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div
-                className="selection-dropdown"
->
-                <FormField>
-                                <label>
-                                                Active location:
-                                </label>
-                                <Select
-                                                defaultValue="Lagos"
-                                                onChange={[Function]}
-                                                options={
-                                                                Array [
-                                                                                Object {
-                                                                                  "key": "lagos",
-                                                                                  "text": "Lagos",
-                                                                                  "value": "lagos",
-                                                                                },
-                                                                                Object {
-                                                                                  "key": "abuja",
-                                                                                  "text": "Lagos",
-                                                                                  "value": "abuja",
-                                                                                },
-                                                                              ]
-                                                }
-                                                placeholder="State"
-                                />
-                </FormField>
-                <FormField>
-                                <label>
-                                                Community focus: 
-                                </label>
-                                <Select
-                                                defaultValue="Technology"
-                                                onChange={[Function]}
-                                                options={
-                                                                Array [
-                                                                                Object {
-                                                                                  "key": "tech",
-                                                                                  "text": "Technology",
-                                                                                  "value": "Technology",
-                                                                                },
-                                                                                Object {
-                                                                                  "key": "software",
-                                                                                  "text": "Software",
-                                                                                  "value": "Software",
-                                                                                },
-                                                                              ]
-                                                }
-                                                placeholder="Gender"
-                                />
-                </FormField>
-</div>,
-              <div
-                className="options"
->
-                
-</div>,
-            ],
-            "className": "selection",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <FormField>
-                    <label>
-                                        Active location:
-                    </label>
-                    <Select
-                                        defaultValue="Lagos"
-                                        onChange={[Function]}
-                                        options={
-                                                            Array [
-                                                                                Object {
-                                                                                  "key": "lagos",
-                                                                                  "text": "Lagos",
-                                                                                  "value": "lagos",
-                                                                                },
-                                                                                Object {
-                                                                                  "key": "abuja",
-                                                                                  "text": "Lagos",
-                                                                                  "value": "abuja",
-                                                                                },
-                                                                              ]
-                                        }
-                                        placeholder="State"
-                    />
-</FormField>,
-                  <FormField>
-                    <label>
-                                        Community focus: 
-                    </label>
-                    <Select
-                                        defaultValue="Technology"
-                                        onChange={[Function]}
-                                        options={
-                                                            Array [
-                                                                                Object {
-                                                                                  "key": "tech",
-                                                                                  "text": "Technology",
-                                                                                  "value": "Technology",
-                                                                                },
-                                                                                Object {
-                                                                                  "key": "software",
-                                                                                  "text": "Software",
-                                                                                  "value": "Software",
-                                                                                },
-                                                                              ]
-                                        }
-                                        placeholder="Gender"
-                    />
-</FormField>,
-                ],
-                "className": "selection-dropdown",
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": Array [
-                      <label>
-                        Active location:
-</label>,
-                      <Select
-                        defaultValue="Lagos"
-                        onChange={[Function]}
-                        options={
-                                                Array [
-                                                                        Object {
-                                                                          "key": "lagos",
-                                                                          "text": "Lagos",
-                                                                          "value": "lagos",
-                                                                        },
-                                                                        Object {
-                                                                          "key": "abuja",
-                                                                          "text": "Lagos",
-                                                                          "value": "abuja",
-                                                                        },
-                                                                      ]
-                        }
-                        placeholder="State"
-/>,
-                    ],
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": "Active location:",
-                      },
-                      "ref": null,
-                      "rendered": "Active location:",
-                      "type": "label",
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "function",
-                      "props": Object {
-                        "defaultValue": "Lagos",
-                        "onChange": [Function],
-                        "options": Array [
-                          Object {
-                            "key": "lagos",
-                            "text": "Lagos",
-                            "value": "lagos",
-                          },
-                          Object {
-                            "key": "abuja",
-                            "text": "Lagos",
-                            "value": "abuja",
-                          },
-                        ],
-                        "placeholder": "State",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                  ],
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": Array [
-                      <label>
-                        Community focus: 
-</label>,
-                      <Select
-                        defaultValue="Technology"
-                        onChange={[Function]}
-                        options={
-                                                Array [
-                                                                        Object {
-                                                                          "key": "tech",
-                                                                          "text": "Technology",
-                                                                          "value": "Technology",
-                                                                        },
-                                                                        Object {
-                                                                          "key": "software",
-                                                                          "text": "Software",
-                                                                          "value": "Software",
-                                                                        },
-                                                                      ]
-                        }
-                        placeholder="Gender"
-/>,
-                    ],
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": "Community focus: ",
-                      },
-                      "ref": null,
-                      "rendered": "Community focus: ",
-                      "type": "label",
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "function",
-                      "props": Object {
-                        "defaultValue": "Technology",
-                        "onChange": [Function],
-                        "options": Array [
-                          Object {
-                            "key": "tech",
-                            "text": "Technology",
-                            "value": "Technology",
-                          },
-                          Object {
-                            "key": "software",
-                            "text": "Software",
-                            "value": "Software",
-                          },
-                        ],
-                        "placeholder": "Gender",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                  ],
-                  "type": [Function],
-                },
-              ],
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [],
-                "className": "options",
-              },
-              "ref": null,
-              "rendered": Array [],
-              "type": "div",
-            },
-          ],
           "type": "div",
         },
       ],

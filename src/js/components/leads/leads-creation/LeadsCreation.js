@@ -1,11 +1,8 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import backgroundImg from '../../../../img/winning-cup.png';
 import { CreateEvent, CreateUser } from './steps'
 import TmnCaptionedWrapper from '../../shared/tmn-captioned-wrapper'
-import defaults from '../../../../theme/variables'
 import LeadsHeader from '../leads-header'
 
 const StyledLeadsCreation = styled.div`

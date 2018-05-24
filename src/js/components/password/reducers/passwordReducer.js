@@ -14,4 +14,4 @@ const passwordReducer = (state=initialState, action) => {
   }
 };
 
-export default communityReducer
+export default passwordReducer

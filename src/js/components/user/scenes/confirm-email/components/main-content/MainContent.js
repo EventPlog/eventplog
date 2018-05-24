@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../../../../../theme/colors'
-import welcomeImg from '../../../../../img/giphys/welcome.gif'
-import peopleDancing from '../../../../../img/giphys/people-dancing.gif'
+import colors from '../../../../../../../theme/colors'
+import welcomeImg from '../../../../../../../img/giphys/welcome.gif'
+import peopleDancing from '../../../../../../../img/giphys/people-dancing.gif'
 
 const StyledMainContent = styled.div`
   display: flex;

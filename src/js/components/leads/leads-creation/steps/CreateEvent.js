@@ -8,7 +8,7 @@ import {
 } from '../../actions'
 import RegisterTeamMembers from './register-team-members'
 import RegisterOrganizer from './register-organizer'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import {
   Icon,
@@ -30,7 +30,7 @@ class StepExampleAttached extends Component {
     return (
       <div>
         <Step.Group stackable='tablet'>
-          <Step active={this.state.step == 1}>
+          <Step active={this.state.step === 1}>
             <Icon name='truck'/>
             <Step.Content>
               <Step.Title>Bring Team members in</Step.Title>
@@ -108,7 +108,7 @@ class CreateEvent extends Component {
   })
 
   renderCurrentStep = () => (
-    this.state.step == 1
+    this.state.step === 1
       ? <RegisterTeamMembers {...this.getPropsAndActions()}
         handleSubmit={this.submitTeamMembers} />
       : <RegisterOrganizer handleChange={this.changeOrganizer}

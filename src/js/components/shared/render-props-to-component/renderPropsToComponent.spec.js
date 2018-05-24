@@ -9,7 +9,8 @@ describe('renderPropsToComponent', () => {
   let wrapper;
 
   beforeAll(() => {
-    wrapper = mount( renderPropsToComponent(Container, ChildComponent) );
+    const RenderedComponent = renderPropsToComponent(Container, ChildComponent)
+    wrapper = mount( <RenderedComponent /> );
   })
 
   test('it should render correctly', () => {

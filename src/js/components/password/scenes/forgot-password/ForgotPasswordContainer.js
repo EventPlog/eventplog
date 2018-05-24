@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import { submitEmail, mockSubmitEmail } from '../../actions'
 
 export class ForgotPasswordContainer extends Component {
-  state = {}
+  state = {email: ''}
 
   handleChange = ({name, value}: e.target) => this.setState({[name]: value})
 

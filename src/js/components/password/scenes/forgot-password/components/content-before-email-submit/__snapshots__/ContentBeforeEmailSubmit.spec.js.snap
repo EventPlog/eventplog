@@ -44,7 +44,7 @@ ShallowWrapper {
                                         />
                               </FormField>
                               <Button>
-                                        Submit
+                                        Reset
                               </Button>
                     </FormGroup>
           </Form>
@@ -89,7 +89,7 @@ ShallowWrapper {
                                     />
                         </FormField>
                         <Button>
-                                    Submit
+                                    Reset
                         </Button>
             </FormGroup>
 </Form>,
@@ -117,7 +117,7 @@ ShallowWrapper {
                             />
               </FormField>
               <Button>
-                            Submit
+                            Reset
               </Button>
 </FormGroup>,
             "error": false,
@@ -142,7 +142,7 @@ ShallowWrapper {
                   />
 </FormField>,
                 <Button>
-                  Submit
+                  Reset
 </Button>,
               ],
               "inline": true,
@@ -186,10 +186,10 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": "Submit",
+                  "children": "Reset",
                 },
                 "ref": null,
-                "rendered": "Submit",
+                "rendered": "Reset",
                 "type": [Function],
               },
             ],
@@ -235,7 +235,7 @@ ShallowWrapper {
                                                 />
                                     </FormField>
                                     <Button>
-                                                Submit
+                                                Reset
                                     </Button>
                         </FormGroup>
             </Form>
@@ -280,7 +280,7 @@ ShallowWrapper {
                                           />
                             </FormField>
                             <Button>
-                                          Submit
+                                          Reset
                             </Button>
               </FormGroup>
 </Form>,
@@ -308,7 +308,7 @@ ShallowWrapper {
                                 />
                 </FormField>
                 <Button>
-                                Submit
+                                Reset
                 </Button>
 </FormGroup>,
               "error": false,
@@ -333,7 +333,7 @@ ShallowWrapper {
                     />
 </FormField>,
                   <Button>
-                    Submit
+                    Reset
 </Button>,
                 ],
                 "inline": true,
@@ -377,10 +377,10 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "function",
                   "props": Object {
-                    "children": "Submit",
+                    "children": "Reset",
                   },
                   "ref": null,
-                  "rendered": "Submit",
+                  "rendered": "Reset",
                   "type": [Function],
                 },
               ],
