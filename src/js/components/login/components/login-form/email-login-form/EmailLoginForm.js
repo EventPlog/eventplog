@@ -36,7 +36,6 @@ const StyledLogInForm = styled.div`
       
       label {
         display: inline-flex;
-        margin: auto 10px;
       }
     }
   }
