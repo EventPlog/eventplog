@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import backgroundImg from '../../../../img/homepage-bg.JPG';
+//import backgroundImg from '../../../../img/homepage-bg.JPG';
 import featuredImage from '../../../../img/TmnTracker-EventsPage.png';
-import PlanningPage from '../../../../img/TmnTracker-PlanningPage.png';
+//import PlanningPage from '../../../../img/TmnTracker-PlanningPage.png';
 
 const StyledTmnCaptionedWrapper = styled.div`
   --local-bg: var(--bg, #2196f3ed);
@@ -113,7 +112,7 @@ const TmnCaptionedWrapper = ( { title, subtitle, iconImage, children }) =>
     <div className="overlay" />
     <div className="main-content">
       <div className="banner">
-        {iconImage && <img src={iconImage} />}
+        {iconImage && <img src={iconImage} alt=""/>}
         <span className="title">
           {title}
         </span>

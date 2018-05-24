@@ -74,8 +74,8 @@ class Header extends Component {
         </div>
         <Menu pointing secondary>
           {menu.map(item =>
-            <Menu.Item name={item}
-                       active={activeItem === item}
+            <Menu.Item key={item} name={item}
+                       active ={activeItem === item}
                        onClick={this.handleItemClick} />
           )}
           <Menu.Menu position='right'>
