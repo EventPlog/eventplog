@@ -294,4 +294,7 @@ module.exports = {
   performance: {
     hints: false,
   },
+  // alias: {
+  //   'Shared': path.resolve(__dirname, './src/js/components/shared'),
+  // }
 };

@@ -16,6 +16,7 @@ const Login = createLoadable(() => import('./components/login'  /* webpackChunkN
 const Events = createLoadable(() => import('./components/events'  /* webpackChunkName: "EventPlog" */))
 const User = createLoadable(() => import('./components/user'  /* webpackChunkName: "EventPlog" */))
 const Communities = createLoadable(() => import('./components/communities' /* webpackChunkName: "JoinACommunity" */))
+const Password = createLoadable(() => import('./components/password' /* webpackChunkName: "Password" */))
 
 const StyledApp = styled.div`
   --fg: ${defaults.fg};
@@ -29,7 +30,6 @@ const StyledApp = styled.div`
   }
   
   .footer {
-    margin-top: 100px;
     background: #eee;
     height: 200px;
   }
@@ -54,6 +54,7 @@ class App extends Component {
           <Route exact path="/signup" component={Login} />
           <Route path="/leads/:id" component={Lead} />
           <Route path="/user" component={User} />
+          <Route path="/password" component={Password} />
           <PrivateRoute path="/events" component={Events} />
           <PrivateRoute path="/communities" component={Communities} />
         </Switch>
