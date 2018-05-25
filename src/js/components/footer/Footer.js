@@ -42,7 +42,6 @@ const StyledFooter = styled.div`
    .footer-menu {
     flex: 1;
     margin: 0;
-
    }
    
    .footer-menu-list {
