@@ -1,5 +1,5 @@
-// external
-import React, { Component } from 'react'
+// libraries
+import React from 'react'
 
 // local
 import ResetPassword  from './ResetPassword'

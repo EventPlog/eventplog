@@ -61,14 +61,12 @@ const handleApiCall = ({
             return response;
           }
         })
-        .catch((errors = {}) => {
+        .catch(errors => {
           dispatch(actions.fail(errors))
-          throw(errorMessage)
           // errorMessage && dispatch(receiveError(errorMessage, caller))
         });
     } else {
       dispatch(actions.fail(concatenatedErrors))
-      return Promise.reject(concatenatedErrors)
       // errorMessage && dispatch(receiveError(concatenatedErrors, caller))
     }
   }

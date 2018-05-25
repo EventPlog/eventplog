@@ -1,18 +1,11 @@
 import React from 'react';
-import ForgotPassword from '../ResetPassword';
+import ResetPassword from '../ResetPassword';
 import MainContent from '../components/main-content'
 import { shallow } from 'enzyme';
 
-describe('ForgotPassword', () => {
-  const props = {
-    email: 'john@gmail.com',
-    emailSubmitted: false,
-    handleChange: () => {},
-    submitEmail: () => {}
-  }
-
+describe('ResetPassword', () => {
   it('should render correctly', () => {
-    const wrapper = shallow( <ForgotPassword {...props} /> );
+    const wrapper = shallow( <ResetPassword /> );
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(MainContent).length).toEqual(1);

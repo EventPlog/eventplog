@@ -1,5 +1,5 @@
 import React from'react'
-import ContentBeforeEmailSubmit from '../ContentAfterEmailSubmit'
+import ContentBeforeEmailSubmit from './ContentBeforeEmailSubmit'
 import {shallow, mount} from 'enzyme'
 
 describe('ContentBeforeEmailSubmit', () => {
