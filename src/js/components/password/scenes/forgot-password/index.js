@@ -8,6 +8,3 @@ import renderPropsToComponent from '../../../shared/render-props-to-component'
 
 export default renderPropsToComponent(ForgotPasswordContainer, ForgotPassword)
 
-const Check = () => <div>checking oo</div>
-
-// export default Check

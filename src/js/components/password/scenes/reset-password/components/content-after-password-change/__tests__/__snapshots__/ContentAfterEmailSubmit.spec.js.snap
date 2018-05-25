@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
+<styled.div>
+  <p>
+    You've changed your password! 
+  </p>
+  <img
+    alt="people-dancing"
+    src="congratulations.gif"
+  />
+  <p>
+    Click 
+    <Link
+      replace={false}
+      to="/logout"
+    >
+      here
+    </Link>
+     if you want to log out and log back in with your new password.
+  </p>
+</styled.div>
+`;

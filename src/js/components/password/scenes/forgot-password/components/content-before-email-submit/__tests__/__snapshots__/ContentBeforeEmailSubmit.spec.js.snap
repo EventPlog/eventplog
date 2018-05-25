@@ -12,6 +12,10 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
       as="form"
       error={false}
     >
+      <Message
+        error={true}
+        header="Error"
+      />
       <FormGroup
         inline={true}
       >
