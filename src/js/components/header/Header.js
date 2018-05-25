@@ -17,7 +17,7 @@ const StyledHeader = styled.div`
     }
     
     img {
-      width: 200px;
+      width: 180px;
     }
     
     ul {
