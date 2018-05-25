@@ -3,7 +3,7 @@
 exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
 <styled.div>
   <p>
-    We've received your request to reset your password. if we have an account with that email,  then within the next five minutes we'll send you an email containing a link to reset your password.
+    Check your email. if we have an account with that email,   then within the next five minutes we'll send you a link to reset your password.
   </p>
   <img
     alt="people-dancing"

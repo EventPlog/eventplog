@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import defaults from '../../../../../theme/variables'
 import MainContent from './components/main-content'
 
-const StyledResetPassword = styled.div`
+const StyledLogin = styled.div`
   --fg: ${defaults.fg};
   --bg: ${defaults.bg};
   --activeLink: ${defaults.activeLink};
@@ -11,29 +11,26 @@ const StyledResetPassword = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-bottom: 200px;
+  
+  > .header {
+    height: 70px;
+  }
   
   .main-content {
     flex: 1;
     margin-top: 60px;
   }
   
+  .footer {
+    height: 200px;
+    background: #eee;
+  }
 `
 
-type resetPasswordType = {
-  token: string,
-  password: string,
-  error: string,
-  loading: boolean,
-  passwordChanged?: boolean,
-  handleChange: () => {},
-  resetPassword: () => {}
-}
-
-const ResetPassword = (props: resetPasswordType) => (
-  <StyledResetPassword>
-    <MainContent {...props } />
-  </StyledResetPassword>
+const ResetPassword = ({ token, confirmed }) => (
+  <StyledLogin>
+    <MainContent {...{token, confirmed}} />
+  </StyledLogin>
 )
 
 export default ResetPassword

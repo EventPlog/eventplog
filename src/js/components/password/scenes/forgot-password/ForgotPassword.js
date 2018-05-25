@@ -11,7 +11,6 @@ const StyledForgotPassword = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-bottom: 200px;
   
   .main-content {
     flex: 1;
@@ -22,8 +21,6 @@ const StyledForgotPassword = styled.div`
 
 type forgotPasswordType = {
   email: string,
-  error: any,
-  loading: boolean,
   emailSubmitted?: boolean,
   handleChange: () => {},
   submitEmail: () => {}
