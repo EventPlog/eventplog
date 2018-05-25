@@ -52,7 +52,7 @@ const SignupForm = ({
     <StyledSignupForm>
       <Form loading={loading}>
 
-        <Form.Group widths='equal'>
+        <Form.Group widths='equal' className="col-md-12">
           <Form.Field>
             <label>First Name</label>
             <Input name="first_name"
@@ -61,9 +61,9 @@ const SignupForm = ({
                    onChange={handleChange}/>
           </Form.Field>
 
-          <Form.Field>
+          <Form.Field className="col-md-1">
             <label>Last Name</label>
-            <Input name="last_name"
+            <Input className="col-md-1" name="last_name"
                    type="text"
                    value={user.last_name}
                    placeholder='Chukwuma' onChange={handleChange}/>

@@ -1,0 +1,150 @@
+
+   .row{
+    display: flex ;
+    flex-wrap: wrap ;
+   }
+
+   .form-holder {
+    margin: 30px !important;
+    margin-right: 0 !important;
+
+   }
+
+
+
+   @media only screen and (max-width: 600px){
+    .col-xs-1 {flex: 8.33% !important ; max-width: 8.33% !important ;}
+    .col-xs-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
+    .col-xs-3 {flex: 25%  !important ; max-width: 25% !important ;}
+    .col-xs-4 {flex: 33.33%  !important ; max-width: 33.33% !important ;}
+    .col-xs-5 {flex: 41.66%  !important ; max-width: 41.66% !important ;}
+    .col-xs-6 {flex: 50%  !important ; max-width: 50% !important ;}
+    .col-xs-7 {flex: 58.33%  !important ; max-width: 58.33% !important ;}
+    .col-xs-8 {flex:  66.66% !important ; max-width: 66.66% !important ;}
+    .col-xs-9 {flex: 75%  !important ; max-width: 75% !important ;}
+    .col-xs-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
+    .col-xs-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
+    .col-xs-12 {flex: 100%  !important ; max-width: 100% !important ;}
+    .column{
+        flex: 100% !important ;
+        max-width: 100% !important ;
+    }
+    .caption {
+        margin: 0 !important ;
+    }
+    .app-container {
+        padding: 0 5% !important ;
+    }
+    .form-holder {
+        margin: 0 !important;
+        margin-top: 4% !important;
+
+    }
+   }
+   @media only screen and (min-width: 600px){
+    .col-s-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
+    .col-s-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
+    .col-s-3 {flex: 25%  !important ; max-width: 25% !important ;}
+    .col-s-4 {flex: 33.33%  !important ; max-width: 33.33% !important ;}
+    .col-s-5 {flex: 41.66%  !important ; max-width: 41.66% !important ;}
+    .col-s-6 {flex: 50%  !important ; max-width: 50% !important ;}
+    .col-s-7 {flex: 58.33%  !important ; max-width: 58.33% !important ;}
+    .col-s-8 {flex:  66.66% !important ; max-width: 66.66% !important ;}
+    .col-s-9 {flex: 75%  !important ; max-width: 75% !important ;}
+    .col-s-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
+    .col-s-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
+    .col-s-12 {flex: 100%  !important ; max-width: 100% !important ;}
+    .caption {
+        margin: 0 !important ;
+    }
+    .app-container {
+        padding: 0 2% !important ;
+    }
+    .form-holder {
+        margin: 2% !important;
+
+    }
+   }
+   @media only screen and (min-width: 768px){
+    .col-m-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
+    .col-m-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
+    .col-m-3 {flex: 25%  !important ; max-width: 25% !important ;}
+    .col-m-4 {flex: 33.33%  !important ; max-width: 33.33% !important ;}
+    .col-m-5 {flex: 41.66%  !important ; max-width: 41.66% !important ;}
+    .col-m-6 {flex: 50%  !important ; max-width: 50% !important ;}
+    .col-m-7 {flex:  58.33% !important ; max-width: 58.33% !important ;}
+    .col-m-8 {flex: 66.66%  !important ; max-width: 66.66% !important ;}
+    .col-m-9 {flex: 75%  !important ; max-width: 75% !important ;}
+    .col-m-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
+    .col-m-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
+    .col-m-12 {flex: 100%  !important ; max-width: 100% !important ;}
+    column{
+        flex: 50% !important ;
+        max-width: 50% !important ;
+    }
+    .caption {
+        margin: 0 !important ;
+    }
+    .app-container {
+        padding: 0 2% !important ;
+    }
+    .form-holder {
+        margin: 0 !important;
+        margin-top: 4% !important;
+
+    }
+   }
+   @media only screen and (min-width: 992px){
+    .col-l-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
+    .col-l-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
+    .col-l-3 {flex: 25%  !important ; max-width: 25% !important ;}
+    .col-l-4 {flex: 33.33%  !important ; max-width: 33.33% !important ;}
+    .col-l-5 {flex: 41.66%  !important ; max-width: 41.66% !important ;}
+    .col-l-6 {flex:  50% !important ; max-width: 50% !important ;}
+    .col-l-7 {flex: 58.33%  !important ; max-width: 58.33% !important ;}
+    .col-l-8 {flex: 66.66%  !important ; max-width: 66.66% !important ;}
+    .col-l-9 {flex: 75%  !important ; max-width: 75% !important ;}
+    .col-l-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
+    .col-l-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
+    .col-l-12 {flex: 100%  !important ; max-width: 100% !important ;}
+    .caption {
+        margin: 2% !important ;
+    }
+    .app-container {
+        padding: 0 2% !important ;
+    }
+    .form-holder {
+        margin: 0 !important;
+        margin-top: 4% !important;
+    }
+
+   }
+   @media only screen and (min-width: 1200px){
+    .col-xl-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
+    .col-xl-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
+    .col-xl-3 {flex: 25%  !important ; max-width: 25% !important ;}
+    .col-xl-4 {flex: 33.33%  !important ; max-width: 33.33% !important ;}
+    .col-xl-5 {flex: 41.66%  !important ; max-width: 41.66% !important ;}
+    .col-xl-6 {flex: 50%  !important ; max-width: 50% !important ;}
+    .col-xl-7 {flex:  58.33% !important ; max-width: 58.33% !important ;}
+    .col-xl-8 {flex: 66.66%  !important ; max-width: 66.66% !important ;}
+    .col-xl-9 {flex: 75%  !important ; max-width: 75% !important ;}
+    .col-xl-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
+    .col-xl-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
+    .col-xl-12 {flex:  100% !important ; 
+        max-width: 100% !important !important ;
+    }
+    .column{
+        flex: 25% !important ;
+        max-width: 25% !important ;
+    }
+    .caption {
+        margin: 2% !important ;
+
+    }
+    .app-container {
+        padding: 0 2% !important ;
+    }
+   }
+
+

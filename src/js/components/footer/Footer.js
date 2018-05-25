@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom'
 
 const StyledFooter = styled.div`
 
-   display: flex;
+   /**display: flex;**/
    flex-direction: column;
+   width: 100%
 
     a{
       color:${color.grayLight}
@@ -16,7 +17,6 @@ const StyledFooter = styled.div`
    .footer-content{
     background: ${color.blueDark}; 
     display: flex;
-    flex: 1;
     flex-direction: row; 
     justify-content: space-between;
     justify-content: center;
@@ -81,7 +81,7 @@ const StyledFooter = styled.div`
    .twitter{
     float : right;
    }
-   h4{
+   .footer-captions{
     text-transform: uppercase
    }
 
@@ -93,22 +93,22 @@ const Footer = () => (
   <StyledFooter className="footer">
 
 
-    <div className="footer-content">
+    <div className="footer-content ">
 
-      <div className="footer-image">
+      <div className="footer-image ">
         <Link to="/">
           <img src={footerLogo} alt='eventplog-logo' />
         </Link>
       </div>
 
 
-      <div className="footer-menu">
-        <div className="footer-menu-list">
-          <ul>
-            <li><h4>Company</h4><Link to="/about-us"><h5>About us</h5></Link></li>
-            <li><h4>Products</h4><Link to="/about-us"><h5>Why Eventplog?</h5></Link></li>
-            <li><h4>Resources</h4><Link to="/about-us"><h5>Events</h5></Link></li>
-            <li><h4>Extras</h4><Link to="/about-us"><h5>Communities</h5></Link></li>
+      <div className="footer-menu ">
+        <div className="footer-menu-list col-s-12 col-xs-12 col-m-12 col-l-12">
+          <ul className="col-s-12 col-xs-12 col-m-12 col-l-12">
+            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Company</p><Link to="/about-us"><h5>About us</h5></Link></li>
+            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Products</p><Link to="/about-us"><h5>Why Eventplog?</h5></Link></li>
+            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Resources</p><Link to="/about-us"><h5>Events</h5></Link></li>
+            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Extras</p><Link to="/about-us"><h5>Communities</h5></Link></li>
           </ul>
         </div>
       </div>
