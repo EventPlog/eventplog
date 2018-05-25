@@ -38,6 +38,7 @@ const StyledMainContent = styled.div`
     justify-content: center;
     color: #fff;
     margin: 50px;
+    margin-left: 0;
     z-index: 1;
     flex-direction: column;
     text-align: left;
@@ -105,7 +106,7 @@ const MainContent = ({ currentPath, flashMsg=null }) => (
 
     <div className="app-container">
       <div className="caption">
-        <h1>Event Organizers meet guests.</h1>
+        <h1>Event <br />organizers <br />meet guests.</h1>
         <small>Be part of ecosystems you love.</small>
       </div>
 

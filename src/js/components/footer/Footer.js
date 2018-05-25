@@ -1,29 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
-import color from '../../../theme/colors'
+import color from '../../../theme/variables'
 import footerLogo from '../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { lighten } from 'polished'
 
 const StyledFooter = styled.div`
    display: flex;
    flex-direction: column;
-
+   border-top: 1px solid #ccc;
+   color: var(--fg);
+   
     a{
       color:${color.grayLight}
     }
    .footer-content {
      background: ${color.white}; 
-     border-top: 1px solid #ccc;
      display: flex;
      flex: 1;
      flex-direction: row; 
      justify-content: space-between;
      justify-content: center;
-     padding: 40px 0;
+     padding-top: 40px;
+     padding-bottom: 40px;
+     width: 100%;
    }
    
-   h6 {
+   .header {
+     color: var(--fg);
      text-transform: uppercase;
      margin: 0 0 1.4em 0;
    }
@@ -31,27 +36,33 @@ const StyledFooter = styled.div`
    .footer-image {
       display: inline-flex; 
       justify-content: center;
-      margin: auto 30px;
-      padding-left: 85px;
-      width:200px
+      margin: auto 60px auto 0;
+      padding: 0;
    }
    .footer-menu {
     flex: 1;
     margin: 0;
 
    }
-   img {
-    width: 150px;
+   
+   .footer-menu-list {
+      float: right;
    }
+   
+   img {
+     width: 150px;
+   }
+   
+   
    .footer-text-header {
       list-style: none;
    }
    ul {
         list-style: none;
         display: inline-flex;
+        padding: 0;
    }
    li {
-      color: ${color.grayMedium}
       margin: auto 70px;
       white-space: nowrap;
       font-weight: 500;
@@ -59,6 +70,20 @@ const StyledFooter = styled.div`
       font-size: 0.9rem;
       letter-spacing: 1.2px;
       
+      &:last-child {
+        margin-right: 0;
+      }
+     
+       
+     a {
+       color: ${color.grayMedium};
+       font-size: 0.9em;
+       
+       &:hover {
+         color: color.activeLink;
+         color: var(--activeLink);
+       }
+     }
    }
    .footer-legal-section{
      background: ${color.white};
@@ -67,7 +92,15 @@ const StyledFooter = styled.div`
      justify-content: space-between;
      background: #fff;
      background: #eee;
-     color: ${color.grayMedium};
+     
+     li {
+       margin: 0;
+       margin-right: 50px;
+       
+      &:last-child {
+        margin-right: 0;
+      }
+     }
      
      .left-wing, .right-wing {
        display: flex;
@@ -78,14 +111,10 @@ const StyledFooter = styled.div`
        width: 100%;
        display: flex;
        justify-content: space-between;
-       padding: 0;
      }
    }
    
-   .copyright-text { 
-   }
-   
-   .footer-icons {
+   i {
      justify-content: center;
      font-size: 25px;
    }
@@ -93,12 +122,6 @@ const StyledFooter = styled.div`
      margin: 15px;
      display: inherit;
    }
-   .privacy-terms{
-   }
-   .twitter{
-     float : right;
-   }
-
 `
 
 
@@ -119,27 +142,27 @@ const Footer = () => (
         <div className="footer-menu-list">
           <ul>
             <li>
-              <h6>Company</h6>
+              <div className="header">Company</div>
               <Link to="/about-us">
-                <p>About us</p>
+                About us
               </Link>
             </li>
             <li>
-              <h6>Products</h6>
+              <div className="header">Products</div>
               <Link to="/about-us">
-                <p>Why Eventplog?</p>
+                Why Eventplog?
               </Link>
             </li>
             <li>
-              <h6>Resources</h6>
+              <div className="header">Resources</div>
               <Link to="/about-us">
-                <p>Events</p>
+                Events
               </Link>
             </li>
             <li>
-              <h6>Extras</h6>
+              <div className="header">Extras</div>
               <Link to="/about-us">
-                <p>Communities</p>
+                Communities
               </Link>
             </li>
           </ul>
@@ -152,7 +175,9 @@ const Footer = () => (
         <div className="right-links">
           <ul>
             <li>
-              Copyright (c) {(new Date().getFullYear())}
+              <Link to="/">
+                Copyright (c) {(new Date().getFullYear())}
+              </Link>
             </li>
           </ul>
         </div>
@@ -165,10 +190,14 @@ const Footer = () => (
               </Link>
             </li>
             <li>
-              <div className="footer-icons">
+              <Link to="/">
                 <Icon name="facebook"/>
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
                 <Icon name="twitter square" className="twitter"/>
-              </div>
+              </Link>
             </li>
           </ul>
 
