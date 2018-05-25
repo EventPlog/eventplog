@@ -8,17 +8,27 @@ import { withRouter } from 'react-router-dom'
 import { submitEmail, mockSubmitEmail } from '../../actions'
 
 export class ForgotPasswordContainer extends Component {
-  state = {email: ''}
+  state = {
+    email: '',
+    error: false,
+    emailSubmitted: false
+  }
 
-  handleChange = ({name, value}: e.target) => this.setState({[name]: value})
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
 
   submitEmail = () => {
-    this.props.submitEmail(this.state.email, this.props.token)
+    this.setState({ loading: true })
+    this.props.submitEmail({email: this.state.email}).then(res => {
+      this.setState({loading: false, emailSubmitted: true})
+    })
+      .catch(error => this.setState({loading: false, error}))
   }
 
   getProps = () => ({
+    ...this.state,
     token: this.props.token,
-    email: this.state.email,
     handleChange: this.handleChange,
     submitEmail: this.submitEmail,
   })
@@ -35,7 +45,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    submitEmail: mockSubmitEmail
+    submitEmail
   }, dispatch)
 )
 

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
+<styled.div>
+  <p>
+    Type in your email address so we send you an email with specific instructions on how to reset it.
+  </p>
+  <div
+    className="submit-form"
+  >
+    <Form
+      as="form"
+      error={false}
+    >
+      <FormGroup
+        inline={true}
+      >
+        <FormField
+          className="email-holder"
+        >
+          <Input
+            name="email"
+            placeholder="ciroma@chukwuma.com"
+            type="email"
+          />
+        </FormField>
+        <Button>
+          Reset
+        </Button>
+      </FormGroup>
+    </Form>
+  </div>
+</styled.div>
+`;

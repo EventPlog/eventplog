@@ -25,7 +25,7 @@ export const submitEmail = (data) => {
     errorMessage: 'Something prevented us from resetting your password',
     caller: 'submitEmail',
     route: `/api/v1/web/password/forgot`,
-    requestMethod: 'GET'
+    requestMethod: 'POST'
   })
 }
 

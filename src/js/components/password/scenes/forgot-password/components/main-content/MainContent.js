@@ -8,6 +8,7 @@ const StyledMainContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-items: center;
   
   h3 {
     color: ${defaults.grayMedium};
@@ -19,28 +20,22 @@ const StyledMainContent = styled.div`
     font-weight: 300;
   }
   
-  .selection {
-    width: 100%;
-    
-    .selection-dropdown {
-      display: flex;
-      justify-content: space-around;
-      margin: 30px 0;
-    }
-  },
-  
 `
 
 
 const MainContent = ({
   email,
+  error,
+  loading,
   emailSubmitted,
   handleChange,
   submitEmail
 }) => (
     <StyledMainContent className="main-content app-container">
       <h3>Forgot your password?</h3>
-      { !emailSubmitted && <ContentBeforeEmailSubmit {...{email, handleChange}} />}
+      { !emailSubmitted &&
+        <ContentBeforeEmailSubmit {...{loading, error, email, handleChange, submitEmail}} />}
+
       { emailSubmitted && <ContentAfterEmailSubmit {...{email, handleChange}} /> }
     </StyledMainContent>
     )

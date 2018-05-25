@@ -13,7 +13,7 @@ const StyledHeader = styled.div`
     justify-content: space-between; 
     
     .logo {
-      margin: auto 50px;
+      margin: auto 0;
     }
     
     img {

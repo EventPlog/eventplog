@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Label } from 'semantic-ui-react'
+import { Form, Message } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
@@ -21,11 +21,25 @@ const StyledContent = styled.div`
   
 `
 
-const ContentBeforeEmailSubmit = ({ email, handleChange, loading, error }) => (
+const ContentBeforeEmailSubmit = ({
+  email,
+  handleChange,
+  submitEmail,
+  loading,
+  error
+}) => (
   <StyledContent>
     <p>Type in your email address so we send you an email with specific instructions on how to reset it.</p>
     <div className="submit-form">
+
       <Form loading={loading} error={!!error}>
+
+        <Message
+          error
+          header="Error"
+          content={error && error.toString()}
+        />
+
         <Form.Group inline>
           <Form.Field className="email-holder">
             <Input name="email"
@@ -34,7 +48,7 @@ const ContentBeforeEmailSubmit = ({ email, handleChange, loading, error }) => (
                    placeholder='ciroma@chukwuma.com' onChange={handleChange}/>
 
           </Form.Field>
-          <Button>Reset</Button>
+          <Button onClick={submitEmail}>Reset</Button>
         </Form.Group>
       </Form>
     </div>
