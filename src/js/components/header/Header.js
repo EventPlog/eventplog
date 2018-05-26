@@ -13,11 +13,11 @@ const StyledHeader = styled.div`
     justify-content: space-between; 
     
     .logo {
-      margin: auto 50px;
+      margin: auto 0;
     }
     
     img {
-      width: 200px;
+      width: 180px;
     }
     
     ul {
@@ -40,6 +40,7 @@ const StyledHeader = styled.div`
       color: var(--activeLink);
     }
   }
+  
 `
 
 const Header = () => (

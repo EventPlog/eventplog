@@ -1,91 +1,129 @@
 import React from 'react'
 import styled from 'styled-components'
-import color from '../../../theme/colors'
-import footerLogo from '../../../img/eventplog-logo-name-inverted-small.png'
+import color from '../../../theme/variables'
+import footerLogo from '../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { lighten } from 'polished'
 
 const StyledFooter = styled.div`
-
-   /**display: flex;**/
+   display: flex;
    flex-direction: column;
-   width: 100%
-
+   border-top: 1px solid #ccc;
+   color: var(--fg);
+   
     a{
       color:${color.grayLight}
     }
-   .footer-content{
-    background: ${color.blueDark}; 
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between;
-    justify-content: center;
+   .footer-content {
+     background: ${color.white}; 
+     display: flex;
+     flex: 1;
+     flex-direction: row; 
+     justify-content: space-between;
+     justify-content: center;
+     padding-top: 40px;
+     padding-bottom: 40px;
+     width: 100%;
+     padding: 2% !important;
    }
    
-   .footer-image{
+   .header {
+     color: var(--fg);
+     text-transform: uppercase;
+     margin: 0 0 1.4em 0;
+   }
+   
+   .footer-image {
       display: inline-flex; 
       justify-content: center;
-      margin: auto 50px;
-      padding-left: 85px;
-      width:200px
+      margin: 1% auto auto 0;
+      padding: 0;
    }
-   .footer-menu{
-    flex: 1;
-    margin: auto 30px 
-
+   .footer-menu {
+      flex: 1;
+      margin: 0;
+      .footer-item{
+        margin-bottom: 15px !important;
+      }
    }
-   img{
-    width: 150px;
+   
+   .footer-menu-list {
+      /*float: right;*/
    }
-   .footer-text-header{
+   
+   img {
+     width: 150px;
+   }
+   
+   
+   .footer-text-header {
       list-style: none;
    }
-   ul{
+   ul {
         list-style: none;
         display: inline-flex;
+        padding: 0;
    }
-   li{
-      color: ${color.white}
-      margin: auto 70px;
+   li {
+      white-space: nowrap;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1.2px;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+     
+       
+     a {
+       color: ${color.grayMedium};
+       font-size: 0.9em;
+       
+       &:hover {
+         color: color.activeLink;
+         color: var(--activeLink);
+       }
+     }
    }
    .footer-legal-section{
-    background: ${color.blueLight};
-    height:50px;
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-
+     background: ${color.white};
+     flex-direction: row;
+     display: flex;
+     justify-content: space-between;
+     background: #fff;
+     background: #eee;
+     
+     li {
+       margin: 0;
+       margin-right: 50px;
+       
+      &:last-child {
+        margin-right: 0;
+      }
+     }
+     
+     .left-wing, .right-wing {
+       display: flex;
+       align-items: center;
+     }
+     
+     .app-container {
+       width: 100%;
+       display: flex;
+       justify-content: space-between;
+     }
    }
-   .copyright-text{ 
-    color: ${color.white}
-    justify-content: center;
-    margin: auto 50px;
-    width: 850px;
-   }
-   .footer-icons{
-    color: ${color.white};
-    flex:1;
-    margin: auto 95px;
-    justify-content: center;
-    font-size: 30px;
-    padding-top: 10px;
-    width: 100px;
+   
+   i {
+     justify-content: center;
+     font-size: 25px;
    }
    .privacy-term-text{
-    margin: 15px;
-    display: inherit;
+     margin: 15px;
+     display: inherit;
    }
-   .privacy-terms{
-      color: ${color.white};
-   }
-   .twitter{
-    float : right;
-   }
-   .footer-captions{
-    text-transform: uppercase
-   }
-
-
 `
 
 
@@ -93,35 +131,79 @@ const Footer = () => (
   <StyledFooter className="footer">
 
 
-    <div className="footer-content ">
+    <div className="footer-content app-container col-xs-12 col-s-12 col-m-12 col-l-12">
 
-      <div className="footer-image ">
+      <div className="footer-image col-xs-12 col-s-12 col-m-3 col-l-3">
         <Link to="/">
           <img src={footerLogo} alt='eventplog-logo' />
         </Link>
       </div>
 
 
-      <div className="footer-menu ">
-        <div className="footer-menu-list col-s-12 col-xs-12 col-m-12 col-l-12">
-          <ul className="col-s-12 col-xs-12 col-m-12 col-l-12">
-            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Company</p><Link to="/about-us"><h5>About us</h5></Link></li>
-            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Products</p><Link to="/about-us"><h5>Why Eventplog?</h5></Link></li>
-            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Resources</p><Link to="/about-us"><h5>Events</h5></Link></li>
-            <li><p className="footer-captions col-s-6 col-xs-6 col-m-4 col-l-4">Extras</p><Link to="/about-us"><h5>Communities</h5></Link></li>
-          </ul>
+      <div className="footer-menu col-xs-12 col-s-12 col-m-9 col-l-9">
+        <div className="row">
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+              <div className="header ">Company</div>
+              <Link to="/about-us">
+                About us
+              </Link>
+            </div>
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+              <div className="header">Products</div>
+              <Link to="/about-us">
+                Why Eventplog?
+              </Link>
+            </div>
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+              <div className="header">Resources</div>
+              <Link to="/about-us">
+                Events
+              </Link>
+            </div>
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+              <div className="header">Extras</div>
+              <Link to="/about-us">
+                Communities
+              </Link>
+            </div>
         </div>
       </div>
     </div>
 
     <div className="footer-legal-section">
-      <div className="copyright-text"> copyright (c) {(new Date().getFullYear())}</div>
-      <div className="privacy-term-text"> <Link to="/privacy-terms" className="privacy-terms">Privacy Terms</Link>  </div>
+      <div className="app-container row">
+        <div className="right-links col-xs-12 col-s-6 col-m-6 col-l-6">
+          <ul>
+            <li>
+              <Link to="/">
+                Copyright (c) {(new Date().getFullYear())}
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-      <div className="footer-icons">
-        <Icon name="facebook"/>
-        <Icon name="twitter square" className="twitter"/>
+        <div className="left-links col-xs-12 col-s-6 col-m-6 col-l-6">
+          <ul>
+            <li>
+              <Link to="/privacy-policy">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
+                <Icon name="facebook"/>
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
+                <Icon name="twitter square" className="twitter"/>
+              </Link>
+            </li>
+          </ul>
+
+        </div>
       </div>
+
 
     </div>
 

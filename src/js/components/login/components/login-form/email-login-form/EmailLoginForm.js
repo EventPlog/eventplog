@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {Form, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { lighten } from 'polished'
@@ -36,7 +36,6 @@ const StyledLogInForm = styled.div`
       
       label {
         display: inline-flex;
-        margin: auto 10px;
       }
     }
   }
@@ -77,8 +76,9 @@ const LoginForm = ({
 
         <div className="checkbox-holder">
           <Form.Field>
-            <input type="checkbox" name="vehicle" value="Bike" />
-            <label>Keep me logged in</label>
+            <label>
+              <Link to="/password/forgot">Forgot your password?</Link>
+            </label>
           </Form.Field>
         </div>
 

@@ -3,14 +3,17 @@ import { Loader } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledLoading = styled.div`
-  margin-top: 100px;
+  margin: 100px;
 `
 
+const isDevelopment = process.env.NODE_ENV != 'production'
+
 const Loading = (props) =>
-  props.error
-    ? <div>An error occured :(</div>
-    : <StyledLoading>
-        <Loader active inline='centered' />
-      </StyledLoading>
+  <StyledLoading>
+    { props.error
+        ? <div>An error occured :( {isDevelopment && props.error.message}</div>
+        : <Loader active inline='centered'/>
+    }
+  </StyledLoading>
 
 export default Loading

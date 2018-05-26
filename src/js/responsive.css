@@ -4,12 +4,109 @@
     flex-wrap: wrap ;
    }
 
+
    .form-holder {
     margin: 30px !important;
     margin-right: 0 !important;
-
+    margin-bottom: 4% !important;
    }
 
+   .navBar {
+    min-width: 100%;
+    z-index: 2;
+    position: relative;
+  }
+
+  .logo img{
+      width: 40% !important;
+      padding: 20px;
+  }
+  
+  .menu-items{
+      width: 280px;
+  }
+
+  
+.wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 2%;
+    display: flex;
+     
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 280px;
+    text-align: right;
+  }
+  nav ul a {
+    text-decoration: none;
+    transition: all .5s ease;
+  }
+  nav ul a:hover {
+    color: #903749;
+  }
+  nav li {
+    display: inline-block;
+    width: 100%;
+  }
+  nav #menu-toggle {
+    display: none;
+  }
+  nav .label-toggle {
+    display: none;
+  }
+  nav .wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media screen and (max-width: 768px) {
+    nav nav ul a {
+      color: #53354A;
+    }
+    nav ul {
+      display: block;
+      height: 0;
+      list-style-type: none;
+      opacity: 0;
+      text-align: center;
+      transition: all 1s ease;
+      width: 100%;
+      visibility: hidden;
+    }
+    nav li {
+      border-bottom: 2px solid #53354A;
+      color: #53354A;
+      display: block;
+      font-size: 1.5em;
+      padding: 2em 0;
+    }
+    nav #menu-toggle:checked ~ ul {
+      opacity: 1;
+      height: auto;
+      visibility: visible;
+    }
+    nav .label-toggle {
+      background: linear-gradient(to bottom, #F851F6 0%, #F851F6 20%, transparent 20%, transparent 40%, #F851F6 40%, #F851F6 60%, transparent 60%, transparent 80%, #F851F6 80%, #F851F6 100%);
+      cursor: pointer;
+      display: block;
+      float: right;
+      height: 35px;
+      margin-top: 1em;
+      width: 35px;
+      position: absolute;
+        top: 5px;
+        right: 15px;
+    }
+    nav .wrapper {
+      display: block;
+    }
+  }
+  
 
 
    @media only screen and (max-width: 600px){
@@ -31,6 +128,7 @@
     }
     .caption {
         margin: 0 !important ;
+        margin-top: 20% !important;
     }
     .app-container {
         padding: 0 5% !important ;
@@ -38,6 +136,16 @@
     .form-holder {
         margin: 0 !important;
         margin-top: 4% !important;
+        margin-bottom: 4% !important;
+
+    }
+    .left-links{
+        padding-left: 0;
+    }
+    .app-container ul{
+        display: none !important;;
+    }
+    .app-container .drop-menu span:hover {
 
     }
    }
@@ -55,14 +163,22 @@
     .col-s-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
     .col-s-12 {flex: 100%  !important ; max-width: 100% !important ;}
     .caption {
-        margin: 0 !important ;
+        margin: 1% !important ;
+        margin-top: 20% !important;
     }
     .app-container {
         padding: 0 2% !important ;
     }
     .form-holder {
         margin: 2% !important;
+        margin-bottom: 4% !important;
 
+    }
+    .left-links{
+        padding-left: 0;
+    }
+    .app-container ul{
+        display: none !important;;
     }
    }
    @media only screen and (min-width: 768px){
@@ -78,12 +194,16 @@
     .col-m-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
     .col-m-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
     .col-m-12 {flex: 100%  !important ; max-width: 100% !important ;}
+    .left-links{
+        padding-left: 12%;
+    }
     column{
         flex: 50% !important ;
         max-width: 50% !important ;
     }
     .caption {
         margin: 0 !important ;
+        margin-top: 20% !important;
     }
     .app-container {
         padding: 0 2% !important ;
@@ -91,8 +211,19 @@
     .form-holder {
         margin: 0 !important;
         margin-top: 4% !important;
+        margin-bottom: 4% !important;
 
     }
+    .app-container ul {
+        list-style: none;
+        display: inline-flex !important;
+        margin: auto 0 auto 50px;
+        line-height: 70px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1.2px;
+      }
    }
    @media only screen and (min-width: 992px){
     .col-l-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
@@ -107,8 +238,11 @@
     .col-l-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
     .col-l-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
     .col-l-12 {flex: 100%  !important ; max-width: 100% !important ;}
+    .left-links{
+        padding-left: 15%;
+    }
     .caption {
-        margin: 2% !important ;
+        margin: 0 !important ;
     }
     .app-container {
         padding: 0 2% !important ;
@@ -116,7 +250,9 @@
     .form-holder {
         margin: 0 !important;
         margin-top: 4% !important;
+        margin-bottom: 4% !important;
     }
+    
 
    }
    @media only screen and (min-width: 1200px){
@@ -132,18 +268,21 @@
     .col-xl-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
     .col-xl-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
     .col-xl-12 {flex:  100% !important ; 
-        max-width: 100% !important !important ;
+        max-width: 100% !important ;
     }
     .column{
         flex: 25% !important ;
         max-width: 25% !important ;
     }
     .caption {
-        margin: 2% !important ;
+        margin: 0 !important ;
 
     }
     .app-container {
         padding: 0 2% !important ;
+    }
+    .left-links{
+        padding-left: 24%;
     }
    }
 

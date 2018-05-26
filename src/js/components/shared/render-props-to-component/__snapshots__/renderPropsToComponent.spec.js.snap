@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderPropsToComponent it should render correctly 1`] = `
+<Component>
+  <ComponentWithContainerProps
+    component={[Function]}
+    container={[Function]}
+  >
+    <Container>
+      <div>
+        <ChildComponent
+          name="John Doe"
+        >
+          <p>
+            John Doe
+          </p>
+        </ChildComponent>
+      </div>
+    </Container>
+  </ComponentWithContainerProps>
+</Component>
+`;

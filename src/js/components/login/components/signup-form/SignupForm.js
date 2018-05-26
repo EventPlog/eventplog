@@ -109,7 +109,7 @@ const Btn = ({color, inverted = false, ...otherProps}) => (
 )
 
 const LoginForm = () => (
-  <StyledLoginForm className="form-holder col-s-12 col-xs-12 col-m-6 col-l-5">
+  <StyledLoginForm className="form-holder col-s-12 col-xs-12 col-m-6 col-l-6">
     <div className="header">
       Sign up
     </div>
