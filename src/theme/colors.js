@@ -1,13 +1,17 @@
 export default {
-  primary: '#57c6d4',
+  primary: '#F851F6',
+  primaryDark: '#CF30CE',
   blueLighter: '#f7ffff',
-  blueLight: '#84a4a7',
-  blueDark: '#335578',
+  blueLight:'#48536c',
+  blueDark: '#2f3c5b',
   gold: '#f7af1e',
   orange: '#e17034',
-  blue: '#1eb7fc',
+  blue: '#4968B7',
+  red: '#B33F62',
   white: '#ffffff',
+  black: '#000',
   green: '#2db528',
   gray: '#eee',
-  grayLight: '#778899'
+  grayLight: '#778899',
+  grayMedium: '#a2a3a5'
 }

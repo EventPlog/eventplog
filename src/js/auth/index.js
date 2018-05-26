@@ -5,3 +5,5 @@ export {
   Auth,
   PrivateRoute
 }
+
+export default Auth

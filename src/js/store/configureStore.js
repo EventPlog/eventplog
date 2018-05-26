@@ -7,22 +7,24 @@ import { createLogger } from 'redux-logger'
 const configureStore = () => {
   return createStore(
     rootReducer,
-    compose(
-      getMiddleware(),
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
-  );
+    compose.apply(null, getMiddleware())
+  )
 }
 
 const getMiddleware = () => {
   let logger = createLogger();
-  let middleware = applyMiddleware(thunk);
+  let middleware = applyMiddleware(thunk)
 
   if (process.ENV !== 'production') {
-    middleware = applyMiddleware(thunk, logger);
+    middleware = applyMiddleware(thunk, logger)
   }
-  return middleware;
-};
 
-export default configureStore;
+  if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+    middleware = [middleware, window.__REDUX_DEVTOOLS_EXTENSION__()]
+  }
+
+  return middleware
+}
+
+export default configureStore
 

@@ -1,6 +1,6 @@
 import React, { Component }  from 'react'
 import logo from '../../img/logo.svg';
-import { Menu, Input, Button, Icon } from 'semantic-ui-react'
+import { Menu, Input, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
 import defaults from '../../theme/variables'
@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom'
 import { Auth } from '../auth/actions'
 
 import styled from 'styled-components'
+import Button from '../components/shared/button'
 
 const StyledHeader = styled.div`
   --bg: ${lighten(0.6, defaults.fg)};
@@ -27,7 +28,6 @@ const StyledHeader = styled.div`
     }
   }
   
-  
   .logo img {
     height: 50px;
     margin: 20px;
@@ -42,6 +42,11 @@ const StyledHeader = styled.div`
     padding: 8px 15px 6px;
     margin: 5px;
   }
+  
+  button {
+    margin: -.5em 0;
+    padding: 0.7rem 1rem;
+  }
 `
 
 class Header extends Component {
@@ -52,14 +57,9 @@ class Header extends Component {
     this.setState({ activeItem: name })
   }
 
-  // handleLogout = async (e) => {
-  //   let res = await this.props.logout()
-  //   if (res) this.props.history.push('/login')
-  // }
-
   handleLogout = (e) => {
     this.props.logout()
-      .then(res => this.props.history.push('/login'))
+      .then(res => window.location.replace('/login'))
   }
 
   render() {
@@ -74,8 +74,8 @@ class Header extends Component {
         </div>
         <Menu pointing secondary>
           {menu.map(item =>
-            <Menu.Item name={item}
-                       active={activeItem === item}
+            <Menu.Item key={item} name={item}
+                       active ={activeItem === item}
                        onClick={this.handleItemClick} />
           )}
           <Menu.Menu position='right'>
@@ -84,10 +84,10 @@ class Header extends Component {
             </Menu.Item>
 
             <Menu.Item link>
-              <Link to="/events/new" className="ui primary button">
+              <Button onClick={() => this.props.history.push('/events/new')}>
                 <Icon name="plus"/>
                 Create Event
-              </Link>
+              </Button>
             </Menu.Item>
 
             <Menu.Item name='logout'

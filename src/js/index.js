@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
-import '../scss/main.scss';
+// import '../scss/main.scss';
+import './index.css'
 import App from './App.js';
 import { BrowserRouter } from 'react-router-dom'
 import registerServiceWorker from '../registerServiceWorker';
@@ -15,6 +16,13 @@ injectGlobal`
     margin: 0;
     overflow-x: hidden;
 	  font-family: 'proxima-nova', sans-serif;
+    
+  }
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
   }
 `;
 
@@ -24,7 +32,7 @@ const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <App store={store} />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'));

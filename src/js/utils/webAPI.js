@@ -39,7 +39,11 @@ export default function processRequest(path, method, data = {}) {
     cache   : 'default',
     body    : requestBody(data, method)
   })
-  .then(response => response.json())
+  .then(async(response) => {
+    if (response.ok) return response.json()
+    let message  = await response.json()
+    throw(message)
+  })
   .catch(err => {
     throw (err);
   });
