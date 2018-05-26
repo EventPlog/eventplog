@@ -7,7 +7,8 @@ import { withRouter } from 'react-router-dom'
 class SignupFormContainer extends Component {
   state = {
     user: {},
-    loading: false
+    loading: false,
+    agreeToTerms: true
   }
 
   handleChange = (e, label ) => {
@@ -16,6 +17,10 @@ class SignupFormContainer extends Component {
       ...this.state.user,
       [name || label]: Boolean(value) ? value : innerText
     }})
+  }
+
+  handleAgreeToTerms = (e) => {
+    this.setState({agreeToTerms: e.target.checked})
   }
 
   handleSubmit = async (e) => {
@@ -39,6 +44,7 @@ class SignupFormContainer extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    handleAgreeToTerms: this.handleAgreeToTerms
   })
 
   render () {

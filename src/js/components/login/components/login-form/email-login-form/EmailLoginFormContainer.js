@@ -25,7 +25,8 @@ class LoginFormContainer extends Component {
         window.location.replace('/')
       })
       .catch(err => {
-        this.setState({loading: false, error: err.errors[0]})
+        console.log(err.message)
+        this.setState({loading: false, error: err.error})
       })
   }
 
