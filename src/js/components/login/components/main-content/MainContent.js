@@ -38,7 +38,6 @@ const StyledMainContent = styled.div`
     justify-content: center;
     color: #fff;
     margin: 50px;
-    margin-left: 0;
     z-index: 1;
     flex-direction: column;
     text-align: left;
@@ -47,7 +46,6 @@ const StyledMainContent = styled.div`
     h1 {
       font-size: 4rem;
       font-weight: 300;
-      color: white;
       font-family: "Andale Mono", AndaleMono, monospace;
     }
     
@@ -65,7 +63,7 @@ const StyledMainContent = styled.div`
     height: auto;
     margin: 100px;
     margin-right: 0;
-    width: 400px;
+    width: 100%;
     z-index: 1;
   }
 `
@@ -100,13 +98,13 @@ class ShowFlashMsg extends React.Component {
 }
 
 const MainContent = ({ currentPath, flashMsg=null }) => (
-  <StyledMainContent className="main-content">
+  <StyledMainContent className="main-content ">
     <div className="overlay"></div>
     <ShowFlashMsg flashMsg={flashMsg} />
 
-    <div className="app-container">
-      <div className="caption">
-        <h1>Event <br />organizers <br />meet guests.</h1>
+    <div className="app-container row">
+      <div className="caption col-s-12 col-xs-12 col-m-6 col-l-6">
+        <h1>Event Organizers meet guests.</h1>
         <small>Be part of ecosystems you love.</small>
       </div>
 

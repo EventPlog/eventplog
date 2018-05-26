@@ -22,7 +22,7 @@ class MainContentContainer extends Component {
       });
     }
     catch(err) {
-      console.log(erf)
+      console.log(err)
     }
   }
 

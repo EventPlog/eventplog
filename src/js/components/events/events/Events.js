@@ -26,7 +26,7 @@ const StyledEvents = styled.div`
 `
 
 const createEventGroup = (title, events) => (
-  <div class="event-group">
+  <div className="event-group">
     <h4>{title}</h4>
     <Card.Group itemsPerRow={4}>
       {events && events.map((event, index) => {

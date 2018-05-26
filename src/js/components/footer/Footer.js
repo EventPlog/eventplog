@@ -25,6 +25,7 @@ const StyledFooter = styled.div`
      padding-top: 40px;
      padding-bottom: 40px;
      width: 100%;
+     padding: 2% !important;
    }
    
    .header {
@@ -36,17 +37,19 @@ const StyledFooter = styled.div`
    .footer-image {
       display: inline-flex; 
       justify-content: center;
-      margin: auto 60px auto 0;
+      margin: 1% auto auto 0;
       padding: 0;
    }
    .footer-menu {
-    flex: 1;
-    margin: 0;
-
+      flex: 1;
+      margin: 0;
+      .footer-item{
+        margin-bottom: 15px !important;
+      }
    }
    
    .footer-menu-list {
-      float: right;
+      /*float: right;*/
    }
    
    img {
@@ -63,7 +66,6 @@ const StyledFooter = styled.div`
         padding: 0;
    }
    li {
-      margin: auto 70px;
       white-space: nowrap;
       font-weight: 500;
       text-transform: uppercase;
@@ -129,50 +131,48 @@ const Footer = () => (
   <StyledFooter className="footer">
 
 
-    <div className="footer-content app-container">
+    <div className="footer-content app-container col-xs-12 col-s-12 col-m-12 col-l-12">
 
-      <div className="footer-image">
+      <div className="footer-image col-xs-12 col-s-12 col-m-3 col-l-3">
         <Link to="/">
           <img src={footerLogo} alt='eventplog-logo' />
         </Link>
       </div>
 
 
-      <div className="footer-menu">
-        <div className="footer-menu-list">
-          <ul>
-            <li>
-              <div className="header">Company</div>
+      <div className="footer-menu col-xs-12 col-s-12 col-m-9 col-l-9">
+        <div className="row">
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+              <div className="header ">Company</div>
               <Link to="/about-us">
                 About us
               </Link>
-            </li>
-            <li>
+            </div>
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
               <div className="header">Products</div>
               <Link to="/about-us">
                 Why Eventplog?
               </Link>
-            </li>
-            <li>
+            </div>
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
               <div className="header">Resources</div>
               <Link to="/about-us">
                 Events
               </Link>
-            </li>
-            <li>
+            </div>
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
               <div className="header">Extras</div>
               <Link to="/about-us">
                 Communities
               </Link>
-            </li>
-          </ul>
+            </div>
         </div>
       </div>
     </div>
 
     <div className="footer-legal-section">
-      <div className="app-container">
-        <div className="right-links">
+      <div className="app-container row">
+        <div className="right-links col-xs-12 col-s-6 col-m-6 col-l-6">
           <ul>
             <li>
               <Link to="/">
@@ -182,7 +182,7 @@ const Footer = () => (
           </ul>
         </div>
 
-        <div className="left-links">
+        <div className="left-links col-xs-12 col-s-6 col-m-6 col-l-6">
           <ul>
             <li>
               <Link to="/privacy-policy">

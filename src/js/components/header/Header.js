@@ -40,6 +40,7 @@ const StyledHeader = styled.div`
       color: var(--activeLink);
     }
   }
+  
 `
 
 const Header = () => (

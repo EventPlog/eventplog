@@ -1,3 +1,5 @@
+@import "responsive.css";
+
 body {
   margin: 0;
   padding: 0;
@@ -34,7 +36,7 @@ h4 {
 }
 
 h5 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
@@ -46,5 +48,5 @@ h6 {
 .app-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 5%;
 }
