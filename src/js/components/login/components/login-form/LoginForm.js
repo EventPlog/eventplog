@@ -8,35 +8,6 @@ import styled from 'styled-components'
 import colors from '../../../../../theme/colors'
 import { lighten } from 'polished'
 
-
-const fbResponse = (response) => {
-  const [ first_name, ...otherNames ] = response.name.split(' ')
-  const payload = {
-    first_name,
-    last_name: otherNames.join(' '),
-    avatar_url: response.picture.data.url,
-    email: response.email,
-    oauth_user_id: response.userID,
-  }
-  this.loginUser(payload)
-}
-
-const googleResponse = (res) => {
-  if (!!res) return
-  const {
-    email,
-    familyName: last_name,
-    givenName: first_name,
-    imageUrl: avatar_url,
-    googleId: oauth_user_id
-  } = res.profileObj
-
-  const payload = {
-    email, first_name, last_name, avatar_url, oauth_user_id
-  }
-  this.loginUser(payload)
-}
-
 const StyledLoginForm = styled.div`
   padding: 50px 30px;
   
@@ -94,7 +65,10 @@ const Btn = ({color, inverted = false, ...otherProps}) => (
   />
 )
 
-const LoginForm = () => (
+const LoginForm = ({
+  googleResponse,
+  fbResponse
+}) => (
   <StyledLoginForm className="form-holder">
     <div className="header">
       Welcome back!
@@ -102,7 +76,7 @@ const LoginForm = () => (
     <div className="social-media-buttons">
 
       <FacebookLogin
-        appId={`${process.env.REACT_APP_FB_APP_ID}`}
+        appId={`1753770681362792`}
         autoLoad={false}
         fields="name,email,picture"
         render={renderProps => (
@@ -113,7 +87,7 @@ const LoginForm = () => (
         callback={fbResponse} />
 
       <GoogleLogin
-        clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+        clientId={`530846686194-8auql2abnck2m3cjbqqpitlhtm7k9ot9.apps.googleusercontent.com`}
         buttonText="Google"
         autoLoad={false}
         disabled={false}
