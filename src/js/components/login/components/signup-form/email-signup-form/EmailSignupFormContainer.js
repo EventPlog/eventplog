@@ -29,9 +29,11 @@ class SignupFormContainer extends Component {
     this.props.signupByEmail(this.state.user)
       .then(res => {
         this.props.history.push('/user/confirm')
-      })
-      .finally(err => {
         this.setState({loading: false})
+      })
+      .catch((err = {}) => {
+        console.log(err.message)
+        this.setState({loading: false, error: err.error || 'Something prevented this form from submitting. Please try again or contact support.'})
       })
   }
 
