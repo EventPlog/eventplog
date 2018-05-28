@@ -51,14 +51,15 @@ class Login extends Component {
       })
   }
 
-  fbResponse = (response) => {
-    const [ first_name, ...otherNames ] = response.name.split(' ')
+  fbResponse = (res) => {
+    if (!res) return
+    const [ first_name, ...otherNames ] = res.name.split(' ')
     const payload = {
       first_name,
       last_name: otherNames.join(' '),
-      avatar_url: response.picture.data.url,
-      email: response.email,
-      oauth_user_id: response.userID,
+      avatar_url: res.picture.data.url,
+      email: res.email,
+      oauth_user_id: res.userID,
     }
     this.loginUser(payload)
   }
