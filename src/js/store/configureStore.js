@@ -3,13 +3,13 @@ import rootReducer from '../reducers/index';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger'
 
-const configureStore = () => (
-  createStore (
+
+const configureStore = () => {
+  return createStore(
     rootReducer,
     compose.apply(null, getMiddleware())
   )
-)
-
+}
 
 const getMiddleware = () => {
   let logger = createLogger();
