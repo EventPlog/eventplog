@@ -24,6 +24,11 @@ injectGlobal`
     margin: 0 auto;
     padding: 0 50px;
   }
+  
+  *:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 

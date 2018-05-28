@@ -70,10 +70,10 @@ const StyledMainContent = styled.div`
   }
 `
 
-const loadLoginComponentByPath = (path) => (
-  path == '/login'
-    ? <LoginForm/>
-    : <SignupForm />
+const loadLoginComponentByPath = ({currentPath, ...otherProps}) => (
+  currentPath == '/login'
+    ? <LoginForm {...otherProps} />
+    : <SignupForm {...otherProps} />
 )
 
 class ShowFlashMsg extends React.Component {
@@ -99,7 +99,7 @@ class ShowFlashMsg extends React.Component {
   }
 }
 
-const MainContent = ({ currentPath, flashMsg=null }) => (
+const MainContent = ({flashMsg = null, ...otherProps }) => (
   <StyledMainContent className="main-content">
     <div className="overlay"></div>
     <ShowFlashMsg flashMsg={flashMsg} />
@@ -110,7 +110,7 @@ const MainContent = ({ currentPath, flashMsg=null }) => (
         <small>Be part of ecosystems you love.</small>
       </div>
 
-      {loadLoginComponentByPath(currentPath)}
+      {loadLoginComponentByPath(otherProps)}
     </div>
   </StyledMainContent>
 )

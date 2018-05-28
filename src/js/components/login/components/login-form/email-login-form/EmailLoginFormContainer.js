@@ -24,8 +24,9 @@ class LoginFormContainer extends Component {
       .then(res => {
         window.location.replace('/')
       })
-      .catch(err => {
-        this.setState({loading: false, error: err.errors[0]})
+      .catch((err = {}) => {
+        console.log(err.message)
+        this.setState({loading: false, error: err.error || 'Something prevented this form from submitting. Please try again or contact support.'})
       })
   }
 
