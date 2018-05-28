@@ -77,7 +77,7 @@ const LoginForm = ({
     <div className="social-media-buttons">
 
       <FacebookLogin
-        appId="160154634571372"
+        appId="1753770681362792"
         autoLoad={false}
         fields="name,email,picture"
         render={renderProps => (
