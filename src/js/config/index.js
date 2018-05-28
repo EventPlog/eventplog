@@ -1,4 +1,5 @@
-export default {
-  // host: process.env.EVENTPLOG_API || 'http://localhost:8000',
-  host: 'http://techmeetupsng-backend-staging.herokuapp.com'
+if (process.env.NODE_ENV == 'production') {
+  module.exports = require('./prod')
+} else {
+  module.exports = require('./dev')
 }

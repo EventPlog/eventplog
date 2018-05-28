@@ -47,6 +47,8 @@ const SignupForm = ({
   handleChange,
   handleSubmit,
   loading,
+  agreeToTerms,
+  handleAgreeToTerms
 }) => {
   return (
     <StyledSignupForm>
@@ -88,14 +90,22 @@ const SignupForm = ({
 
         <div className="checkbox-holder">
           <Form.Field>
-            <input type="checkbox" name="vehicle" value="Bike" />
+            <input type="checkbox"
+                   name="terms"
+                   value="agree"
+                   checked={agreeToTerms}
+                   onClick={handleAgreeToTerms}
+            />
             <label>I agree to the &nbsp;
               <Link to="/terms-and-conditions">Terms and Conditions</Link>
             </label>
           </Form.Field>
         </div>
 
-        <Button type='submit' onClick={handleSubmit}>
+        <Button type='submit'
+                onClick={handleSubmit}
+                disabled={!agreeToTerms}
+        >
           Sign Up
         </Button>
       </Form>
