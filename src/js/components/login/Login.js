@@ -51,7 +51,8 @@ class Login extends Component {
       })
   }
 
-  fbResponse = (res = {}) => {
+  fbResponse = (res) => {
+    if (!res) return
     const [ first_name, ...otherNames ] = res.name.split(' ')
     const payload = {
       first_name,
@@ -63,7 +64,7 @@ class Login extends Component {
     this.loginUser(payload)
   }
 
-  googleResponse = (res = {}) => {
+  googleResponse = (res) => {
     if (!res) return
     const {
       email,
