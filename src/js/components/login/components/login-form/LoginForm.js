@@ -102,7 +102,7 @@ const LoginForm = () => (
     <div className="social-media-buttons">
 
       <FacebookLogin
-        appId="160154634571372"
+        appId={`${process.env.REACT_APP_FB_APP_ID}`}
         autoLoad={false}
         fields="name,email,picture"
         render={renderProps => (
@@ -113,7 +113,7 @@ const LoginForm = () => (
         callback={fbResponse} />
 
       <GoogleLogin
-        clientId="530846686194-8auql2abnck2m3cjbqqpitlhtm7k9ot9.apps.googleusercontent.com"
+        clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
         buttonText="Google"
         autoLoad={false}
         disabled={false}

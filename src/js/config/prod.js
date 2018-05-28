@@ -1,3 +1,4 @@
+
 export default {
-  host: process.env.EVENTPLOG_API || 'https://api-prod.eventplog.com'
+  host: process.env.REACT_APP_EVENTPLOG_API || 'https://api-prod.eventplog.com'
 }
