@@ -42,32 +42,40 @@
     width: 280px;
     text-align: right;
   }
+
   nav ul a {
     text-decoration: none;
     transition: all .5s ease;
   }
+
   nav ul a:hover {
     color: #903749;
   }
+
   nav li {
     display: inline-block;
     width: 100%;
   }
+
   nav #menu-toggle {
     display: none;
   }
+
   nav .label-toggle {
     display: none;
   }
+
   nav .wrapper {
     align-items: center;
     display: flex;
     justify-content: space-between;
   }
+
   @media screen and (max-width: 768px) {
     nav nav ul a {
       color: #53354A;
     }
+
     nav ul {
       display: block;
       height: 0;
@@ -78,6 +86,7 @@
       width: 100%;
       visibility: hidden;
     }
+
     nav li {
       border-bottom: 2px solid #53354A;
       color: #53354A;
@@ -85,11 +94,13 @@
       font-size: 1.5em;
       padding: 2em 0;
     }
+
     nav #menu-toggle:checked ~ ul {
       opacity: 1;
       height: auto;
       visibility: visible;
     }
+
     nav .label-toggle {
       background: linear-gradient(to bottom, #F851F6 0%, #F851F6 20%, transparent 20%, transparent 40%, #F851F6 40%, #F851F6 60%, transparent 60%, transparent 80%, #F851F6 80%, #F851F6 100%);
       cursor: pointer;
@@ -102,6 +113,7 @@
         top: 5px;
         right: 15px;
     }
+
     nav .wrapper {
       display: block;
     }
@@ -110,6 +122,7 @@
 
 
    @media only screen and (max-width: 500px){
+
     .col-xs-1 {flex: 8.33% !important ; max-width: 8.33% !important ;}
     .col-xs-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
     .col-xs-3 {flex: 25%  !important ; max-width: 25% !important ;}
@@ -122,32 +135,39 @@
     .col-xs-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
     .col-xs-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
     .col-xs-12 {flex: 100%  !important ; max-width: 100% !important ;}
-    .column{
+
+    .column {
         flex: 100% !important ;
         max-width: 100% !important ;
     }
+
     .caption {
         margin: 0 !important ;
         margin-top: 20% !important;
     }
+
     .app-container {
         padding: 0 5% !important ;
     }
+
     .form-holder {
         margin: 0 !important;
         margin-top: 4% !important;
         margin-bottom: 4% !important;
 
     }
-    .left-links{
+    .left-links {
         padding-left: 0;
     }
-    .app-container ul{
+
+    .app-container ul {
        /* display: none !important;*/
     }
     
    }
-   @media only screen and (min-width: 500px){
+
+   @media only screen and (min-width: 500px) {
+
     .col-s-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
     .col-s-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
     .col-s-3 {flex: 25%  !important ; max-width: 25% !important ;}
@@ -160,19 +180,22 @@
     .col-s-10 {flex: 83.33%  !important ; max-width: 83.33% !important ;}
     .col-s-11 {flex: 91.66%  !important ; max-width: 91.66% !important ;}
     .col-s-12 {flex: 100%  !important ; max-width: 100% !important ;}
+
     .caption {
         margin: 1% !important ;
         margin-top: 20% !important;
     }
+
     .app-container {
         padding: 0 2% !important ;
     }
+
     .form-holder {
-        margin: 2% !important;
-        
+        margin: 2% !important;  
         margin-bottom: 4% !important;
 
     }
+
     .left-links{
         padding-left: 0;
     }
@@ -180,7 +203,8 @@
         /*display: none !important;*/
     }
    }
-   @media only screen and (min-width: 768px){
+
+   @media only screen and (min-width: 768px) {
     .col-m-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
     .col-m-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
     .col-m-3 {flex: 25%  !important ; max-width: 25% !important ;}
@@ -226,6 +250,7 @@
         letter-spacing: 1.2px;
       }
    }
+
    @media only screen and (min-width: 992px){
     .col-l-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
     .col-l-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
@@ -258,6 +283,7 @@
     
 
    }
+   
    @media only screen and (min-width: 1200px){
     .col-xl-1 {flex: 8.33%  !important ; max-width: 8.33% !important ;}
     .col-xl-2 {flex: 16.66%  !important ; max-width: 16.66% !important ;}
