@@ -64,7 +64,7 @@ class Login extends Component {
     this.loginUser(payload)
   }
 
-  /*googleResponse = (res) => {
+  googleResponse = (res) => {
     if (!res) return
     const {
       email,
@@ -78,7 +78,7 @@ class Login extends Component {
       email, first_name, last_name, avatar_url, oauth_user_id
     }
     this.loginUser(payload)
-  }*/
+  }
 
   render() {
     const menu = [
