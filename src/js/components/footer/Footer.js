@@ -11,6 +11,7 @@ const StyledFooter = styled.div`
    flex-direction: column;
    border-top: 1px solid #ccc;
    color: var(--fg);
+   font-family: "proxima-nova", sans-serif;
    
     a{
       color:${color.grayLight}
@@ -25,7 +26,7 @@ const StyledFooter = styled.div`
      padding-top: 40px;
      padding-bottom: 40px;
      width: 100%;
-     padding: 5% !important;
+     padding: 4% !important;
    }
    
    .header {
@@ -39,12 +40,22 @@ const StyledFooter = styled.div`
       justify-content: center;
       margin: 1% auto auto 0;
       padding: 0;
+      padding-right: 81px;
    }
    .footer-menu {
       flex: 1;
+      text-transform: uppercase;
       margin: 0;
       .footer-item{
+        
         margin-bottom: 15px !important;
+          a{
+            color: ${color.grayMedium};
+            font-size: 0.8em;
+          }
+          a:hover{
+            color: var(--activeLink);
+          }
       }
    }
    
@@ -133,14 +144,14 @@ const Footer = () => (
 
     <div className="footer-content app-container col-xs-12 col-s-12 col-m-12 col-l-12">
 
-      <div className="footer-image col-xs-12 col-s-12 col-m-3 col-l-3">
+      <div className="footer-image col-xs-12 col-s-12 col-m-4 col-l-4">
         <Link to="/">
           <img src={footerLogo} alt='eventplog-logo' />
         </Link>
       </div>
 
 
-      <div className="footer-menu col-xs-12 col-s-12 col-m-9 col-l-9">
+      <div className="footer-menu col-xs-12 col-s-12 col-m-8 col-l-8">
         <div className="row">
             <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
               <div className="header ">Company</div>
