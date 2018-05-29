@@ -9,48 +9,6 @@ import colors from '../../../../../theme/colors'
 import { lighten } from 'polished'
 
 
-const bypassAuth = async (e) => {
-  e.preventDefault();
-  this.props.loginUser({ facebook_user_id: "1705553739457939" })
-    .then(r => this.props.history.push('/'))
-}
-
-const loginUser = (payload) =>  {
-  this.props.loginUser(payload)
-    .then(res => {
-      // this.props.history.push('/')
-      window.location.replace('/')
-    })
-}
-
-const fbResponse = (response) => {
-  const [ first_name, ...otherNames ] = response.name.split(' ')
-  const payload = {
-    first_name,
-    last_name: otherNames.join(' '),
-    avatar_url: response.picture.data.url,
-    email: response.email,
-    oauth_user_id: response.userID,
-  }
-  this.loginUser(payload)
-}
-
-const googleResponse = (res) => {
-  if (!!res) return
-  const {
-    email,
-    familyName: last_name,
-    givenName: first_name,
-    imageUrl: avatar_url,
-    googleId: oauth_user_id
-  } = res.profileObj
-
-  const payload = {
-    email, first_name, last_name, avatar_url, oauth_user_id
-  }
-  this.loginUser(payload)
-}
-
 const StyledLoginForm = styled.div`
   padding: 50px 30px;
   
@@ -108,7 +66,10 @@ const Btn = ({color, inverted = false, ...otherProps}) => (
   />
 )
 
-const LoginForm = () => (
+const LoginForm = ({
+  googleResponse,
+  fbResponse
+}) => (
   <StyledLoginForm className="form-holder col-s-12 col-xs-12 col-m-4 col-l-4">
     <div className="header">
       Sign up
@@ -116,7 +77,7 @@ const LoginForm = () => (
     <div className="social-media-buttons">
 
       <FacebookLogin
-        appId="160154634571372"
+        appId="1753770681362792"
         autoLoad={false}
         fields="name,email,picture"
         render={renderProps => (
