@@ -41,6 +41,7 @@ const StyledFooter = styled.div`
       margin: 1% auto auto 0;
       padding: 0;
       padding-right: 81px;
+      padding-bottom: 20px;
    }
    .footer-menu {
       flex: 1;
@@ -142,7 +143,7 @@ const Footer = () => (
   <StyledFooter className="footer">
 
 
-    <div className="footer-content app-container col-xs-12 col-s-12 col-m-12 col-l-12">
+    <div className="footer-content app-container row">
 
       <div className="footer-image col-xs-12 col-s-12 col-m-4 col-l-4">
         <Link to="/">
@@ -153,25 +154,25 @@ const Footer = () => (
 
       <div className="footer-menu col-xs-12 col-s-12 col-m-8 col-l-8">
         <div className="row">
-            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
-              <div className="header ">Company</div>
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+              <div className="header">Company</div>
               <Link to="/about-us">
                 About us
               </Link>
             </div>
-            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
               <div className="header">Products</div>
               <Link to="/about-us">
                 Why Eventplog?
               </Link>
             </div>
-            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
               <div className="header">Resources</div>
               <Link to="/about-us">
                 Events
               </Link>
             </div>
-            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
+            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
               <div className="header">Extras</div>
               <Link to="/about-us">
                 Communities
