@@ -43,6 +43,43 @@ const StyledLogin = styled.div`
 `
 
 class Login extends Component {
+  loginUser = (payload) =>  {
+    this.props.loginUser(payload)
+      .then(res => {
+        // this.props.history.push('/')
+        window.location.replace('/')
+      })
+  }
+
+  fbResponse = (res) => {
+    if (!res) return
+    const [ first_name, ...otherNames ] = res.name.split(' ')
+    const payload = {
+      first_name,
+      last_name: otherNames.join(' '),
+      avatar_url: res.picture.data.url,
+      email: res.email,
+      oauth_user_id: res.userID,
+    }
+    this.loginUser(payload)
+  }
+
+  googleResponse = (res) => {
+    if (!res) return
+    const {
+      email,
+      familyName: last_name,
+      givenName: first_name,
+      imageUrl: avatar_url,
+      googleId: oauth_user_id
+    } = res.profileObj
+
+    const payload = {
+      email, first_name, last_name, avatar_url, oauth_user_id
+    }
+    this.loginUser(payload)
+  }
+
   render() {
     const menu = [
       {text: 'I want to create my first event >', url: '/leads/1'}
@@ -53,6 +90,8 @@ class Login extends Component {
       <StyledLogin>
         <MainContent currentPath={this.props.match.path}
                      flashMsg={state ? state.flash_msg : null}
+                     googleResponse={this.googleResponse}
+                     fbResponse={this.fbResponse}
         />
       </StyledLogin>
     )
