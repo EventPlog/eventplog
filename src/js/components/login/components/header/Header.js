@@ -44,7 +44,7 @@ const StyledHeader = styled.div`
 const Header = () => (
   <StyledHeader className="header ">
     <div className="app-container col-xs-6 col-s-6 col-m-6 col-l-6">
-      <div className="logo col-xs-12 col-s-6 col-m-6 col-l-6">
+      <div className="logo col-xs-6 col-s-6 col-m-6 col-l-6">
         <Link to="/">
           <img src={logo} alt='eventplog-logo' />
         </Link>

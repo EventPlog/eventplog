@@ -160,9 +160,9 @@
         padding-left: 0;
     }
 
-    .app-container ul {
-       /* display: none !important;*/
-    }
+    
+
+   
     
    }
 
@@ -199,9 +199,7 @@
     .left-links{
         padding-left: 0;
     }
-    .app-container ul{
-        /*display: none !important;*/
-    }
+   
    }
 
    @media only screen and (min-width: 768px) {
