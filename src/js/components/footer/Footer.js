@@ -25,7 +25,7 @@ const StyledFooter = styled.div`
      padding-top: 40px;
      padding-bottom: 40px;
      width: 100%;
-     padding: 2% !important;
+     padding: 5% !important;
    }
    
    .header {
@@ -142,25 +142,25 @@ const Footer = () => (
 
       <div className="footer-menu col-xs-12 col-s-12 col-m-9 col-l-9">
         <div className="row">
-            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
               <div className="header ">Company</div>
               <Link to="/about-us">
                 About us
               </Link>
             </div>
-            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
               <div className="header">Products</div>
               <Link to="/about-us">
                 Why Eventplog?
               </Link>
             </div>
-            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
               <div className="header">Resources</div>
               <Link to="/about-us">
                 Events
               </Link>
             </div>
-            <div className="footer-item col-xs-6 col-s-6 col-m-3 col-l-3">
+            <div className="footer-item col-xs-12 col-s-6 col-m-3 col-l-3">
               <div className="header">Extras</div>
               <Link to="/about-us">
                 Communities

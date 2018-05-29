@@ -103,7 +103,7 @@ const MainContent = ({ currentPath, flashMsg=null }) => (
     <ShowFlashMsg flashMsg={flashMsg} />
 
     <div className="app-container row">
-      <div className="caption col-s-12 col-xs-12 col-m-6 col-l-6">
+      <div className="caption col-s-12 col-xs-12 col-m-5 col-l-5">
         <h1>Event Organizers meet guests.</h1>
         <small>Be part of ecosystems you love.</small>
       </div>
