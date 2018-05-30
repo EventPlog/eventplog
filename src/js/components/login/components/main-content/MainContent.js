@@ -47,6 +47,7 @@ const StyledMainContent = styled.div`
       font-size: 4rem;
       font-weight: 300;
       font-family: "Andale Mono", AndaleMono, monospace;
+      color: #ffffff;
     }
     
     small {

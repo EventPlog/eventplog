@@ -54,8 +54,8 @@ const SignupForm = ({
     <StyledSignupForm>
       <Form loading={loading}>
 
-        <Form.Group widths='equal' className="col-md-12">
-          <Form.Field>
+        <Form.Group widths='equal' >
+          <Form.Field className="col-xs-12 col-s-6 col-m-6 col-l-6">
             <label>First Name</label>
             <Input name="first_name"
                    value={user.first_name}
@@ -63,7 +63,7 @@ const SignupForm = ({
                    onChange={handleChange}/>
           </Form.Field>
 
-          <Form.Field className="col-md-1">
+          <Form.Field className="col-xs-12 col-s-6 col-m-6 col-l-6">
             <label>Last Name</label>
             <Input className="col-md-1" name="last_name"
                    type="text"
