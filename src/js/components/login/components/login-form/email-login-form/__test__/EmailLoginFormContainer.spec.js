@@ -68,4 +68,5 @@ describe(' LoginFormContainer component', () => {
         wrapper.instance().getStateAndActions();
         expect(Object.keys(wrapper.instance().getStateAndActions()).length).toEqual(6)
     })
+   
 })
