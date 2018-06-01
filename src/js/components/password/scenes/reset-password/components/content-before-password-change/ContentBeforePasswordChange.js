@@ -5,6 +5,7 @@ import styled from 'styled-components'
 // local
 import Input from '../../../../../shared/input'
 import Button from '../../../../../shared/button'
+import { media } from '../../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
   .ui.form {
