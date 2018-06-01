@@ -10,6 +10,7 @@ import configureStore from './store/configureStore'
 
 import { injectGlobal } from 'styled-components';
 import { media } from '../styles/mixins'
+import colors from '../theme/variables'
 
 injectGlobal`
   body {
@@ -36,6 +37,15 @@ injectGlobal`
   *:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+  
+  ::selection {
+    background: ${ colors.yellow };
+    color: ${ colors.white };
+  }
+  
+  ::-moz-selection {
+    background: #ffb7b7; /* Gecko Browsers */
   }
 `;
 
