@@ -5,14 +5,33 @@ import styled from 'styled-components'
 // local
 import Input from '../../../../../shared/input'
 import Button from '../../../../../shared/button'
+import { media } from '../../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
   .ui.form {
     max-width: 500px;
     margin: 60px auto;
     
-    .password-holder {
+    ${
+      media.phone`
+        margin: 50px 0;
+        
+        .inline.fields {
+          flex-direction: column;
+          align-items: baseline; 
+        }
+      `
+    }
+    
+    .field.password-holder {
       flex: 1;
+      
+      ${
+        media.phone`
+          width: 100%;
+          margin-bottom: 1.5rem;
+        `
+      }   
       
       input[type='password'] {
         width: 100%;

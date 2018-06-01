@@ -4,6 +4,7 @@ import LoggedinHeader from './logged-in-header'
 import Auth from '../../auth'
 import styled from 'styled-components'
 import defaults from '../../../theme/variables'
+import { media } from '../../../styles/mixins'
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid #eee;
@@ -14,10 +15,37 @@ const StyledHeader = styled.div`
     
     .logo {
       margin: auto 0;
+      
+      ${
+        media.phone`
+         color: var(--activeLink);
+         display: flex;
+         justify-content: space-between;
+         align-items: flex-end;
+        ` 
+      }
+      
     }
-    
     img {
       width: 180px;
+      
+      ${
+        media.phone`
+          width: 150px;
+        `
+      }
+    }
+    
+    .menu {
+      transition: display 2s;
+     
+      &.hidden {
+        ${
+          media.phone`
+            display: none;
+          `
+        }
+      }
     }
     
     ul {
@@ -29,24 +57,60 @@ const StyledHeader = styled.div`
       text-transform: uppercase;
       font-size: 0.9rem;
       letter-spacing: 1.2px;
+      
+      ${
+        media.tablet`
+          margin: 0;
+          padding: 0;
+        `
+      } 
+      
+      ${
+        media.phone`
+          flex-direction: column;
+          margin-top: 2rem;
+        `
+      }
     }
     
     li:not(:last-child) {
       margin: auto 50px;
+      
+      ${
+        media.tablet`
+          margin: auto 20px
+        `
+      }
+      
+      ${
+        media.phone`
+          margin: 0;
+        `
+      }
     }
     
     a {
       color: ${defaults.activeLink};
       color: var(--activeLink);
     }
+    
+    i {
+      display: none;
+      ${
+        media.phone`
+          display: block;
+          font-size: 2rem;
+        `
+      }
+    }
   }
 `
 
-const Header = () => (
+const Header = (props) => (
   <StyledHeader className="app-header">
     {  Auth.isLoggedIn
-        ? <LoggedinHeader />
-        : <LoginHeader />
+        ? <LoggedinHeader {...props} />
+        : <LoginHeader {...props} />
     }
   </StyledHeader>
 )

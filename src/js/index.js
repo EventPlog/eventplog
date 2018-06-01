@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
-// import '../scss/main.scss';
 import './index.css'
 import App from './App.js';
 import { BrowserRouter } from 'react-router-dom'
@@ -10,6 +9,8 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 
 import { injectGlobal } from 'styled-components';
+import { media } from '../styles/mixins'
+import colors from '../theme/variables'
 
 injectGlobal`
   body {
@@ -23,11 +24,28 @@ injectGlobal`
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 50px;
+    
+    ${
+      media.phone`
+        flex-direction: column;
+        padding: 2rem;
+
+      `
+    }
   }
   
   *:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+  
+  ::selection {
+    background: ${ colors.yellow };
+    color: ${ colors.white };
+  }
+  
+  ::-moz-selection {
+    background: ${ colors.yellow };
   }
 `;
 

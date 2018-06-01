@@ -13,5 +13,6 @@ export default {
   green: '#2db528',
   gray: '#eee',
   grayLight: '#778899',
-  grayMedium: '#a2a3a5'
+  grayMedium: '#a2a3a5',
+  yellow: '#fdee0c'
 }
