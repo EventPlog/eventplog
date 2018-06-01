@@ -58,6 +58,12 @@ const StyledMainContent = styled.div`
       font-family: "Andale Mono", AndaleMono, monospace;
       
       ${
+        media.tablet`
+          font-size: 3rem;
+        `
+      }
+      
+      ${
         media.phone`
           font-size: 3rem;
         `
@@ -69,6 +75,12 @@ const StyledMainContent = styled.div`
       font-weight: 600;
       margin-top: 10px;
       
+      ${
+        media.tablet`
+          line-height: 2.5rem;
+        `
+      }
+  
       ${
         media.phone`
           font-size: 1.3rem;
@@ -83,9 +95,9 @@ const StyledMainContent = styled.div`
     border-radius: 5px;
     box-shadow: 0 2px 4px #000;
     height: auto;
-    margin: 100px;
+    margin: 100px auto;
     margin-right: 0;
-    width: 400px;
+    width: 300px;
     z-index: 1;
     
     ${

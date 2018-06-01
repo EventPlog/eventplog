@@ -22,18 +22,23 @@ const StyledFooter = styled.div`
      flex: 1;
      flex-direction: row; 
      justify-content: space-between;
-     justify-content: center;
      padding-top: 40px;
      padding-bottom: 40px;
      width: 100%;
      
-    ${
-      media.phone`
-        display: flex;
-        flex-direction: column;
-        padding: 2rem;
-      `
-    }
+     ${
+       media.tablet`
+         flex-direction: column;
+       `
+     }
+     
+     ${
+       media.phone`
+         display: flex;
+         flex-direction: column;
+         padding: 2rem;
+       `
+     }
    }
    
    .header {
@@ -44,9 +49,9 @@ const StyledFooter = styled.div`
    
    .footer-image {
       display: inline-flex; 
-      justify-content: center;
       margin: auto 60px auto 0;
       padding: 0;
+      justify-content: end;
       
      ${
        media.phone`
@@ -69,11 +74,14 @@ const StyledFooter = styled.div`
    .footer-menu {
       flex: 1;
       margin: 0;
+      width: 100%;
+      max-width: 780px;
    }
    
    .footer-menu-list {
-      float: right;
-      
+      width: 100%;
+      max-width: 780px;
+    
       ${
         media.phone`
           width: 100%;
@@ -81,6 +89,15 @@ const StyledFooter = styled.div`
       }
       
       ul {
+        margin-top: 2.5rem;
+        justify-content: space-between;
+        display: flex;
+        width: 100%;
+        
+        li {
+          margin: 0;
+        }
+    
         ${
           media.phone`
             display: inline-block;
@@ -165,9 +182,16 @@ const StyledFooter = styled.div`
        width: 100%;
        display: flex;
        justify-content: space-between;
+       align-items: baseline;
+       
+       ${
+         media.tablet`
+         `
+       }
        
        ${
         media.phone`
+          flex-direction: column;
           padding: 2rem;
         `
        }

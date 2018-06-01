@@ -40,7 +40,11 @@ const StyledHeader = styled.div`
       transition: display 2s;
      
       &.hidden {
-        display: none;
+        ${
+          media.phone`
+            display: none;
+          `
+        }
       }
     }
     
@@ -80,8 +84,10 @@ const StyledHeader = styled.div`
     }
     
     i {
+      display: none;
       ${
         media.phone`
+          display: block;
           font-size: 2rem;
         `
       }
