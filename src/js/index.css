@@ -5,7 +5,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Andale Mono WT", AndaleMono, "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Open Sans";
+  font-family: AndaleMono, "Andale Mono WT", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Open Sans";
   color: #a2a3a5;
 }
 
