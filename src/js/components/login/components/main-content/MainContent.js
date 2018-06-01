@@ -97,9 +97,15 @@ const StyledMainContent = styled.div`
     height: auto;
     margin: 100px auto;
     margin-right: 0;
-    width: 300px;
+    width: 400px;
     z-index: 1;
     
+    ${
+      media.tablet`
+        width: 300px;
+        
+      `
+    }
     ${
       media.phone`
         margin: 0;
