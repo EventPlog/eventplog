@@ -13,14 +13,14 @@ const configureStore = () => {
 
 const getMiddleware = () => {
   let logger = createLogger();
-  let middleware = applyMiddleware(thunk)
+  let middleware = [applyMiddleware(thunk)]
 
   if (process.ENV !== 'production') {
-    middleware = applyMiddleware(thunk, logger)
+    middleware = [applyMiddleware(thunk, logger)]
   }
 
   if (window.__REDUX_DEVTOOLS_EXTENSION__) {
-    middleware = [middleware, window.__REDUX_DEVTOOLS_EXTENSION__()]
+    middleware = [...middleware, window.__REDUX_DEVTOOLS_EXTENSION__()]
   }
 
   return middleware
