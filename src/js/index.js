@@ -45,7 +45,7 @@ injectGlobal`
   }
   
   ::-moz-selection {
-    background: #ffb7b7; /* Gecko Browsers */
+    background: ${ colors.yellow };
   }
 `;
 
