@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
-// import '../scss/main.scss';
 import './index.css'
 import App from './App.js';
 import { BrowserRouter } from 'react-router-dom'

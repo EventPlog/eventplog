@@ -59,9 +59,14 @@ const StyledHeader = styled.div`
       letter-spacing: 1.2px;
       
       ${
-        media.phone`
+        media.tablet`
           margin: 0;
           padding: 0;
+        `
+      } 
+      
+      ${
+        media.phone`
           flex-direction: column;
           margin-top: 2rem;
         `
@@ -70,6 +75,12 @@ const StyledHeader = styled.div`
     
     li:not(:last-child) {
       margin: auto 50px;
+      
+      ${
+        media.tablet`
+          margin: auto 20px
+        `
+      }
       
       ${
         media.phone`

@@ -75,8 +75,8 @@ class Login extends Component {
     this.loginUser(payload)
   }
 
-  googleResponse = (res) => {
-    if (!res) return
+  googleResponse = (res = {}) => {
+    if (!res || !res.profileObj) return
     const {
       email,
       familyName: last_name,
