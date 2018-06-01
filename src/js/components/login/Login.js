@@ -41,7 +41,6 @@ const StyledLogin = styled.div`
     ${
       media.phone`
         padding: 0;
-        flex-direction: column;
       `
     }
     

@@ -59,9 +59,9 @@ const StyledFooter = styled.div`
      a {
         ${
           media.phone`
-              position: absolute;
-              left: 0;
-            `
+            position: absolute;
+            left: 0;
+          `
         }
      }
    }
@@ -89,6 +89,8 @@ const StyledFooter = styled.div`
             li {
               width: 50%;
               margin: 30px 0;
+              display: inline-block;
+              font-size: 70%;
             }
           `
         }
@@ -119,7 +121,6 @@ const StyledFooter = styled.div`
       &:last-child {
         margin-right: 0;
       }
-     
        
      a {
        color: ${color.grayMedium};
@@ -143,9 +144,16 @@ const StyledFooter = styled.div`
        margin: 0;
        margin-right: 50px;
        
-      &:last-child {
-        margin-right: 0;
-      }
+      
+       ${
+         media.phone`
+          margin-right: 2rem;
+         `
+       }
+       
+       &:last-child {
+         margin-right: 0;
+       }
      }
      
      .left-wing, .right-wing {
@@ -157,6 +165,12 @@ const StyledFooter = styled.div`
        width: 100%;
        display: flex;
        justify-content: space-between;
+       
+       ${
+        media.phone`
+          padding: 2rem;
+        `
+       }
      }
    }
    
