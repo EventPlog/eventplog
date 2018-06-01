@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 
 import { injectGlobal } from 'styled-components';
+import { media } from '../styles/mixins'
 
 injectGlobal`
   body {
@@ -23,6 +24,14 @@ injectGlobal`
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 50px;
+    
+    ${
+      media.phone`
+        flex-direction: column;
+        padding: 2rem;
+
+      `
+    }
   }
   
   *:disabled {
