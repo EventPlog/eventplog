@@ -5,6 +5,7 @@ import footerLogo from '../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
+import { media } from '../../../styles/mixins'
 
 const StyledFooter = styled.div`
    display: flex;
@@ -25,6 +26,14 @@ const StyledFooter = styled.div`
      padding-top: 40px;
      padding-bottom: 40px;
      width: 100%;
+     
+    ${
+      media.phone`
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+      `
+    }
    }
    
    .header {
@@ -38,15 +47,52 @@ const StyledFooter = styled.div`
       justify-content: center;
       margin: auto 60px auto 0;
       padding: 0;
+      
+     ${
+       media.phone`
+         position: relative;
+         margin-top: 2rem;
+         margin-bottom: 2rem;
+       `
+     }
+     
+     a {
+        ${
+          media.phone`
+              position: absolute;
+              left: 0;
+            `
+        }
+     }
    }
+   
    .footer-menu {
-    flex: 1;
-    margin: 0;
-
+      flex: 1;
+      margin: 0;
    }
    
    .footer-menu-list {
       float: right;
+      
+      ${
+        media.phone`
+          width: 100%;
+        `
+      }
+      
+      ul {
+        ${
+          media.phone`
+            display: inline-block;
+            width: 100%;
+            
+            li {
+              width: 50%;
+              margin: 30px 0;
+            }
+          `
+        }
+      }
    }
    
    img {

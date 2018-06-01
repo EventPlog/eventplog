@@ -5,6 +5,7 @@ import colors from '../../../../../theme/colors'
 import LoginForm from '../login-form'
 import SignupForm from '../signup-form'
 import { Message } from 'semantic-ui-react'
+import { media } from '../../../../../styles/mixins'
 
 const StyledMainContent = styled.div`
   background-image: url(${backgroundImg});
@@ -44,17 +45,36 @@ const StyledMainContent = styled.div`
     text-align: left;
     text-shadow: 0 2px 4px ${colors.black};
     
+    ${
+      media.phone`
+        margin: 4rem 2rem;
+      `
+    }
+  
     h1 {
       font-size: 4rem;
       font-weight: 300;
       color: white;
       font-family: "Andale Mono", AndaleMono, monospace;
+      
+      ${
+        media.phone`
+          font-size: 3rem;
+        `
+      }
     }
     
     small {
       font-size: 1.7rem;
       font-weight: 600;
       margin-top: 10px;
+      
+      ${
+        media.phone`
+          font-size: 1.3rem;
+          line-height: 2rem;
+        `
+      }
     }
   }
   
@@ -67,6 +87,15 @@ const StyledMainContent = styled.div`
     margin-right: 0;
     width: 400px;
     z-index: 1;
+    
+    ${
+      media.phone`
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+        box-shadow: none;
+            `
+    }
   }
 `
 
