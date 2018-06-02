@@ -18,6 +18,7 @@ const StyledMainContent = styled.div`
     margin: 20px 0 50px;
     font-size: 1.2rem;
     font-weight: 300;
+    line-height: 1.9rem;
   }
   
 `
