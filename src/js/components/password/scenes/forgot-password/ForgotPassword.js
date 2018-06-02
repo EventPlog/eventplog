@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import defaults from '../../../../../theme/variables'
 import MainContent from './components/main-content'
+import { media } from '../../../../../styles/mixins'
 
 const StyledForgotPassword = styled.div`
   --fg: ${defaults.fg};
@@ -16,6 +17,13 @@ const StyledForgotPassword = styled.div`
   .main-content {
     flex: 1;
     margin-top: 60px;
+    
+    ${
+      media.phone`
+        width: 100%;
+        align-items: end;
+      `
+    }
   }
   
 `

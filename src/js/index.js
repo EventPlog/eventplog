@@ -47,6 +47,10 @@ injectGlobal`
   ::-moz-selection {
     background: ${ colors.yellow };
   }
+  
+  p {
+    line-height: 1.9rem;
+  }
 `;
 
 
