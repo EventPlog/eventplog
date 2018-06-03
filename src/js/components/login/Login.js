@@ -35,6 +35,13 @@ const StyledLogin = styled.div`
   
   .main-content {
     flex: 1;
+    
+    ${
+      media.phone`
+        background-repeat: no-repeat;
+        background-size: contain;
+      `
+    }
   }
   
   .app-container {
