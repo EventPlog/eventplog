@@ -53,7 +53,7 @@ const handleApiCall = ({
     if (isValid) {
       return webAPI(route, requestMethod, data)
         .then(response => {
-          if (response.errors) {
+          if (response.error) {
             dispatch(actions.fail(response.errors))
             // errorMessage && dispatch(receiveError(errorMessage, caller))
           } else {
