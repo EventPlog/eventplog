@@ -5,13 +5,31 @@ import styled from 'styled-components'
 // local
 import Input from '../../../../../shared/input'
 import Button from '../../../../../shared/button'
+import { media } from '../../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
   .ui.form {
     margin: 60px;
     
-    .email-holder {
+    ${
+      media.phone`
+        margin: 50px 0;
+        
+        .inline.fields {
+          flex-direction: column;
+          align-items: baseline; 
+        }
+      `
+    }
+    .field.email-holder {
       flex: 1;
+      
+      ${
+        media.phone`
+          width: 100%;
+          margin-bottom: 1.5rem;
+        `
+      }   
       
       input[type='email'] {
         width: 100%;

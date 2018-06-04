@@ -5,6 +5,7 @@ import footerLogo from '../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
+import { media } from '../../../styles/mixins'
 
 const StyledFooter = styled.div`
    display: flex;
@@ -21,10 +22,23 @@ const StyledFooter = styled.div`
      flex: 1;
      flex-direction: row; 
      justify-content: space-between;
-     justify-content: center;
      padding-top: 40px;
      padding-bottom: 40px;
      width: 100%;
+     
+     ${
+       media.tablet`
+         flex-direction: column;
+       `
+     }
+     
+     ${
+       media.phone`
+         display: flex;
+         flex-direction: column;
+         padding: 2rem;
+       `
+     }
    }
    
    .header {
@@ -35,18 +49,69 @@ const StyledFooter = styled.div`
    
    .footer-image {
       display: inline-flex; 
-      justify-content: center;
       margin: auto 60px auto 0;
       padding: 0;
+      justify-content: end;
+      
+     ${
+       media.phone`
+         position: relative;
+         margin-top: 2rem;
+         margin-bottom: 2rem;
+       `
+     }
+     
+     a {
+        ${
+          media.phone`
+            position: absolute;
+            left: 0;
+          `
+        }
+     }
    }
+   
    .footer-menu {
-    flex: 1;
-    margin: 0;
-
+      flex: 1;
+      margin: 0;
+      width: 100%;
+      max-width: 780px;
    }
    
    .footer-menu-list {
-      float: right;
+      width: 100%;
+      max-width: 780px;
+    
+      ${
+        media.phone`
+          width: 100%;
+        `
+      }
+      
+      ul {
+        margin-top: 2.5rem;
+        justify-content: space-between;
+        display: flex;
+        width: 100%;
+        
+        li {
+          margin: 0;
+        }
+    
+        ${
+          media.phone`
+            display: inline-block;
+            width: 100%;
+            
+            li {
+              width: 50%;
+              margin: 30px 0;
+              display: inline-block;
+              font-size: 70%;
+            }
+          `
+        }
+      }
    }
    
    img {
@@ -73,7 +138,6 @@ const StyledFooter = styled.div`
       &:last-child {
         margin-right: 0;
       }
-     
        
      a {
        color: ${color.grayMedium};
@@ -97,9 +161,16 @@ const StyledFooter = styled.div`
        margin: 0;
        margin-right: 50px;
        
-      &:last-child {
-        margin-right: 0;
-      }
+      
+       ${
+         media.phone`
+          margin-right: 2rem;
+         `
+       }
+       
+       &:last-child {
+         margin-right: 0;
+       }
      }
      
      .left-wing, .right-wing {
@@ -111,6 +182,19 @@ const StyledFooter = styled.div`
        width: 100%;
        display: flex;
        justify-content: space-between;
+       align-items: baseline;
+       
+       ${
+         media.tablet`
+         `
+       }
+       
+       ${
+        media.phone`
+          flex-direction: column;
+          padding: 2rem;
+        `
+       }
      }
    }
    

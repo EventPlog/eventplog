@@ -3,9 +3,8 @@ import { Form, Label } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
-import Input from '../../../../../shared/input'
-import Button from '../../../../../shared/button'
 import peopleDancing from '../../../../../../../img/giphys/people-dancing.gif'
+import { media } from '../../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
   display: flex;
@@ -14,6 +13,12 @@ const StyledContent = styled.div`
   
   > img {
     max-width: 500px;
+    
+    ${
+      media.phone`
+        width: 100%;
+      `
+    }
   }
 `
 

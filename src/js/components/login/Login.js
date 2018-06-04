@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import GoogleLogin from 'react-google-login';
+import { media } from '../../../styles/mixins'
 
 const responseGoogle = (response) => {
   debugger
@@ -34,6 +35,23 @@ const StyledLogin = styled.div`
   
   .main-content {
     flex: 1;
+    
+    ${
+      media.phone`
+        background-repeat: no-repeat;
+        background-size: contain;
+      `
+    }
+  }
+  
+  .app-container {
+    ${
+      media.phone`
+        padding: 0;
+      `
+    }
+    
+    
   }
   
   .footer {
@@ -64,8 +82,8 @@ class Login extends Component {
     this.loginUser(payload)
   }
 
-  googleResponse = (res) => {
-    if (!res) return
+  googleResponse = (res = {}) => {
+    if (!res || !res.profileObj) return
     const {
       email,
       familyName: last_name,
