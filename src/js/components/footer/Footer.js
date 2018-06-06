@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import color from '../../../theme/variables'
+import color from '../../../styles/theme/variables'
 import footerLogo from '../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'

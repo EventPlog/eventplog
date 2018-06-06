@@ -4,11 +4,13 @@ import { Switch, Route } from 'react-router-dom';
 import {Auth, PrivateRoute} from './auth'
 import Lead from './components/leads/leads-creation'
 import styled from 'styled-components';
-import defaults from '../theme/variables';
+import defaults from '../styles/theme/variables';
 import createLoadable from './components/shared/loading/createLoadable'
 import handleLogout from './utils/handleLogout'
 import Header from './components/header'
 import Footer from './components/footer'
+import universalStyles from '../styles/universalStyles'
+import { media } from '../styles/mixins'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -19,15 +21,7 @@ const Communities = createLoadable(() => import('./components/communities' /* we
 const Password = createLoadable(() => import('./components/password' /* webpackChunkName: "Password" */))
 
 const StyledApp = styled.div`
-  --fg: ${defaults.fg};
-  --bg: ${defaults.bg};
-  --activeLink: ${defaults.activeLink};
-  --gray: ${defaults.gray};
-  height: 100%;
-  
-  a, a:hover {
-    color: var(--activeLink);
-  }
+  ${universalStyles}
 `
 
 class App extends Component {

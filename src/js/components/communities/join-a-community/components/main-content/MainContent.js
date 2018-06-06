@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import defaults from '../../../../../../theme/variables'
+import defaults from '../../../../../../styles/theme/variables'
 import { Form, Label, Select } from 'semantic-ui-react'
 import CommunityCard from '../community-card'
 

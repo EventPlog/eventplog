@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import defaults from '../../../../../theme/variables'
+import defaults from '../../../../../styles/theme/variables'
 import MainContent from './components/main-content'
 import { media } from '../../../../../styles/mixins'
 

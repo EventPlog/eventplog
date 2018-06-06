@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {Form, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { lighten } from 'polished'
-import colors from '../../../../../../theme/colors'
+import colors from '../../../../../../styles/theme/colors'
 import Input from '../../../../shared/input'
 import Button from '../../../../shared/button'
 

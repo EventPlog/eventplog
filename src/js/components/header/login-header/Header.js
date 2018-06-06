@@ -13,7 +13,7 @@ const Header = ({ hideMenu, onHideMenu }) => (
       <Icon name='content' onClick={onHideMenu} />
     </div>
 
-    <div className={`menu ${hideMenu ? 'hidden' : '' }`}>
+    <div className={`menu ${hideMenu ? 'hidden-xs' : '' }`}>
       <ul>
         <li><Link to="/why-eventplog">Why EventPlog?</Link></li>
         <li><Link to="/about-us">About Us</Link></li>

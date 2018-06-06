@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
+<styled.div>
+  <h3>
+    Create a community
+  </h3>
+  <p>
+    What's the name of your awesome community?
+  </p>
+  <div
+    className="submit-form"
+  >
+    <Form
+      as="form"
+      error={false}
+    >
+      <Message
+        error={true}
+        header="Error"
+      />
+      <FormGroup
+        inline={true}
+      >
+        <FormField
+          className="email-holder"
+        >
+          <Input
+            name="text"
+            placeholder="Community name"
+            type="text"
+          />
+        </FormField>
+        <Button>
+          Create
+        </Button>
+      </FormGroup>
+    </Form>
+  </div>
+</styled.div>
+`;
