@@ -1,12 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`main content - forgot password component should render correctly 1`] = `
+exports[`main content - New Community component should render correctly 1`] = `
 <styled.div
   className="main-content app-container"
 >
-  <h3>
-    Forgot your password?
-  </h3>
-  <ContentBeforeEmailSubmit />
+  <ContentBeforeCommunitySubmit />
 </styled.div>
 `;

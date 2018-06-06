@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import defaults from '../../../theme/variables'
+import defaults from '../../../styles/theme/variables'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import MainContent from './components/main-content'
 import { Auth } from '../../auth'

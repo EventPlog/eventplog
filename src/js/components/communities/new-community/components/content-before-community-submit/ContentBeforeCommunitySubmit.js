@@ -8,11 +8,27 @@ import Button from '../../../../shared/button'
 import { media } from '../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+  ${
+    media.phone`
+      align-items: baseline;
+    `
+  }
+    
+    
+  .submit-form {
+    width: 100%;
+    max-width: 600px;
+  }
   .ui.form {
-    margin: 60px;
+    margin: 60px 0;
     
     ${
-  media.phone`
+      media.phone`
         margin: 50px 0;
         
         .inline.fields {
@@ -20,7 +36,7 @@ const StyledContent = styled.div`
           align-items: baseline; 
         }
       `
-  }
+    }
     .field.email-holder {
       flex: 1;
       
@@ -47,6 +63,7 @@ const ContentBeforeCommunitySubmit = ({
   error
 }) => (
   <StyledContent>
+    <h3>Create a community</h3>
     <p>What's the name of your awesome community?</p>
       <div className="submit-form">
         <Form loading={loading} error={!!error}>

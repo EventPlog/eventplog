@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import defaults from '../../../../../../theme/variables'
+import defaults from '../../../../../../styles/theme/variables'
 import ContentBeforeCommunitySubmit from '../content-before-community-submit'
 import ContentAfterCommunitySubmit from '../content-after-community-submit'
 
@@ -33,7 +33,6 @@ const MainContent = ({
   submitCommunity
 }) => (
     <StyledMainContent className="main-content app-container">
-      <h3>Create a community</h3>
       { !communityCreated &&
         <ContentBeforeCommunitySubmit {...{loading, error, community, handleChange, submitCommunity}} />}
 

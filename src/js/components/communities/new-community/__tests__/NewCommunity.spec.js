@@ -1,9 +1,9 @@
 import React from 'react';
-import ForgotPassword from '../NewCommunity';
+import NewCommunity from '../NewCommunity';
 import MainContent from '../components/main-content'
 import { shallow } from 'enzyme';
 
-describe('ForgotPassword', () => {
+describe('NewCommunity', () => {
   const props = {
     email: 'john@gmail.com',
     emailSubmitted: false,
@@ -12,7 +12,7 @@ describe('ForgotPassword', () => {
   }
 
   it('should render correctly', () => {
-    const wrapper = shallow( <ForgotPassword {...props} /> );
+    const wrapper = shallow( <NewCommunity {...props} /> );
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(MainContent).length).toEqual(1);

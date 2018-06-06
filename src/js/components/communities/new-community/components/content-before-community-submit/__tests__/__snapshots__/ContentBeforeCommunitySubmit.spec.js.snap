@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
+exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
 <styled.div>
+  <h3>
+    Create a community
+  </h3>
   <p>
-    Type in your email address so we send you an email with specific instructions on how to reset it.
+    What's the name of your awesome community?
   </p>
   <div
     className="submit-form"
@@ -23,13 +26,13 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
           className="email-holder"
         >
           <Input
-            name="email"
-            placeholder="ciroma@chukwuma.com"
-            type="email"
+            name="text"
+            placeholder="Community name"
+            type="text"
           />
         </FormField>
         <Button>
-          Reset
+          Create
         </Button>
       </FormGroup>
     </Form>

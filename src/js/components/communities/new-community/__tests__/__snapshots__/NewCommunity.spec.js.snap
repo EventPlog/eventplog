@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ForgotPassword should render correctly 1`] = `
+exports[`NewCommunity should render correctly 1`] = `
 <styled.div>
   <MainContent
     email="john@gmail.com"

@@ -3,7 +3,7 @@ import LoginHeader from './login-header'
 import LoggedinHeader from './logged-in-header'
 import Auth from '../../auth'
 import styled from 'styled-components'
-import defaults from '../../../theme/variables'
+import defaults from '../../../styles/theme/variables'
 import { media } from '../../../styles/mixins'
 
 const StyledHeader = styled.div`
@@ -25,7 +25,18 @@ const StyledHeader = styled.div`
         ` 
       }
       
+      i {
+        display: none;
+        
+        ${
+          media.phone`
+            display: block;
+            font-size: 2rem;
+          `
+        }
+      }
     }
+    
     img {
       width: 180px;
       
@@ -39,7 +50,7 @@ const StyledHeader = styled.div`
     .menu {
       transition: display 2s;
      
-      &.hidden {
+      &.hidden-xs {
         ${
           media.phone`
             display: none;
@@ -94,15 +105,6 @@ const StyledHeader = styled.div`
       color: var(--activeLink);
     }
     
-    i {
-      display: none;
-      ${
-        media.phone`
-          display: block;
-          font-size: 2rem;
-        `
-      }
-    }
   }
 `
 
