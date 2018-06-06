@@ -5,8 +5,8 @@ import { shallow } from 'enzyme';
 
 describe('NewCommunity', () => {
   const props = {
-    email: 'john@gmail.com',
-    emailSubmitted: false,
+    community: {name: 'A new community'},
+    communitySubmitted: false,
     handleChange: () => {},
     submitEmail: () => {}
   }

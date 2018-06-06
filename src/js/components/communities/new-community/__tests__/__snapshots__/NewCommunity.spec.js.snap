@@ -3,8 +3,12 @@
 exports[`NewCommunity should render correctly 1`] = `
 <styled.div>
   <MainContent
-    email="john@gmail.com"
-    emailSubmitted={false}
+    community={
+      Object {
+        "name": "A new community",
+      }
+    }
+    communitySubmitted={false}
     handleChange={[Function]}
     submitEmail={[Function]}
   />
