@@ -22,13 +22,6 @@ const Password = createLoadable(() => import('./components/password' /* webpackC
 
 const StyledApp = styled.div`
   ${universalStyles}
-  
-  .hidden-md {
-    ${
-  media.tablet`
-        display: none !important;
-      `
-  }
 `
 
 class App extends Component {
