@@ -24,3 +24,24 @@ export const getCommunities = (data) => {
   })
 }
 
+export const mockCreateCommunity = () => dispatch =>
+  mockIndexApi().then(res => {
+    dispatch({type: actionTypes.COMMUNITY_INDEX_COMPLETE, payload: res.communities})
+  })
+
+export const createCommunity = (data) => {
+  let actions = baseActions({
+    requestType: actionTypes.COMMUNITY_INDEX_START,
+    receiveType: actionTypes.COMMUNITY_INDEX_COMPLETE,
+    failType: actionTypes.COMMUNITY_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data,
+    errorMessage: 'Something prevented us from creating a community',
+    caller: 'createCommunity',
+    route: `/api/v1/web/communities`,
+    requestMethod: 'POST'
+  })
+}

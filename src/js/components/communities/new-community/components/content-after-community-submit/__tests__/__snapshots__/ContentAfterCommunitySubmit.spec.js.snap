@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
+<styled.div
+  className="text-center"
+>
+  <h3>
+    You just created a community!!!
+  </h3>
+  <img
+    alt="people dancing"
+    src="black-guy-celebrating2.gif"
+  />
+  <p>
+    Thank you for all you do to strengthen the ecosytem.
+  </p>
+  <p>
+    You community is not yet live since you might want to change the banner image, theme color, etc.
+  </p>
+  <p>
+    To get the best out of eventplog as an community leader, consider going through the following resources:
+  </p>
+  <ul>
+    <li>
+      <Link
+        replace={false}
+        to="help.eventplog.com/working-with-untrained-volunteers"
+      >
+        Setting up your community page.
+      </Link>
+    </li>
+    <li>
+      <Link
+        replace={false}
+        to="help.eventplog.com/working-with-untrained-volunteers"
+      >
+        Working best with untrained volunteers on community projects.
+      </Link>
+    </li>
+    <li>
+      <Link
+        replace={false}
+        to="help.eventplog.com/working-with-untrained-volunteers"
+      >
+        Handling check-ins in ways that sets you up for an engaging meetup.
+      </Link>
+    </li>
+    <li>
+      <Link
+        replace={false}
+        to="help.eventplog.com/working-with-untrained-volunteers"
+      >
+        Use feedback to improve your team at every opportunity.
+      </Link>
+    </li>
+  </ul>
+  <Component
+    className="medium lowercase"
+    inverted={true}
+    to="/communities/1"
+  >
+    Take me to my community so I can complete setup and publish.
+  </Component>
+</styled.div>
+`;

@@ -10,7 +10,7 @@ import configureStore from './store/configureStore'
 
 import { injectGlobal } from 'styled-components';
 import { media } from '../styles/mixins'
-import colors from '../theme/variables'
+import colors from '../styles/theme/variables'
 
 injectGlobal`
   body {

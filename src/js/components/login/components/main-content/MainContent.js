@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import backgroundImg from '../../../../../img/login-bg.jpg'
-import colors from '../../../../../theme/colors'
+import colors from '../../../../../styles/theme/colors'
 import LoginForm from '../login-form'
 import SignupForm from '../signup-form'
 import { Message } from 'semantic-ui-react'
