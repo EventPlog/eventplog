@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
+import Nav from '../../shared/nav'
 
 const Header = ({ hideMenu, onHideMenu }) => (
   <div className="app-container">
@@ -13,12 +14,15 @@ const Header = ({ hideMenu, onHideMenu }) => (
       <Icon name='content' onClick={onHideMenu} />
     </div>
 
-    <div className={`menu ${hideMenu ? 'hidden-xs' : '' }`}>
-      <ul>
-        <li><Link to="/why-eventplog">Why EventPlog?</Link></li>
-        <li><Link to="/about-us">About Us</Link></li>
-      </ul>
-    </div>
+    <Nav hideOnMobile={hideMenu}>
+      <Nav.Item>
+        <Link to="/why-eventplog">Why EventPlog?</Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Link to="/about-us">About Us</Link>
+      </Nav.Item>
+    </Nav>
   </div>
 )
 
