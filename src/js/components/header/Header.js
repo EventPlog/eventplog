@@ -7,7 +7,7 @@ import defaults from '../../../styles/theme/variables'
 import { media } from '../../../styles/mixins'
 
 const StyledHeader = styled.div`
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid ${defaults.gray};
   
   > .app-container {
     display: flex;
@@ -47,57 +47,8 @@ const StyledHeader = styled.div`
       }
     }
     
-    .menu {
-      transition: display 2s;
-     
-      &.hidden-xs {
-        ${
-          media.phone`
-            display: none;
-          `
-        }
-      }
-    }
-    
     ul {
-      list-style: none;
-      display: inline-flex;
       margin: auto 0 auto 50px;
-      line-height: 70px;
-      font-weight: 500;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1.2px;
-      
-      ${
-        media.tablet`
-          margin: 0;
-          padding: 0;
-        `
-      } 
-      
-      ${
-        media.phone`
-          flex-direction: column;
-          margin-top: 2rem;
-        `
-      }
-    }
-    
-    li:not(:last-child) {
-      margin: auto 50px;
-      
-      ${
-        media.tablet`
-          margin: auto 20px
-        `
-      }
-      
-      ${
-        media.phone`
-          margin: 0;
-        `
-      }
     }
     
     a {
