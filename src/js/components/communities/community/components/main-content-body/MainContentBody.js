@@ -1,34 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
 
-// internal components
-import EventPageContent from './EventPageContent';
-
-// assets
-import techIsInYou from '../../../../../../img/tech_is_in_you.png'
-
-
 const StyledMainContent = styled.div`
   flex: 1;
-  height: 100vh;
+  height: 30vh;
+  margin-top: 100px
 `
 
-const MainContentBody = ({ event = {}, ...otherProps }) =>
+const MainContentBody = (props) =>
   <StyledMainContent>
-    <div className="event-workplace full-height">
-      <div style={{ backgroundImage: `url(${event.featured_image || techIsInYou})` }}
-           className="banner-image absolute-positioned"/>
-      <div className="overlay">
-      </div>
-      <div className="event-workplace-holder full-height absolute-positioned">
-        <div className="container full-height">
-          <div className="title">
-            { event.title }
-          </div>
-          <EventPageContent {...{event, ...otherProps}} />
-        </div>
-      </div>
-    </div>
+    <h4>Community Page</h4>
   </StyledMainContent>
 
 export default MainContentBody;
