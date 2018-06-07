@@ -24,10 +24,6 @@ const StyledHeader = styled.div`
     }
   }
   
-  li:first-child {
-    margin-right: 50px
-  }
-  
   .nav-holder {
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};

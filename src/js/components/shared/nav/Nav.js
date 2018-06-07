@@ -32,12 +32,21 @@ const Styles = styled.div`
       }
     }
     
-    li:not(:first-child):not(:last-child) {
-      margin: auto 50px;
+    li {
+      margin: auto 50px auto 0;
       
+      &:last-child {
+        margin-right: 0;
+      }
       ${
         media.tablet`
-          margin: auto 20px
+          margin: auto 20px auto 0;
+          
+          &:last-child {
+            margin-right: 0;
+          }
+          
+          
         `
       }
       

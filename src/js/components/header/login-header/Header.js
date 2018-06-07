@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
+import Nav from '../../shared/nav'
 
 const Header = ({ hideMenu, onHideMenu }) => (
   <div className="app-container">
