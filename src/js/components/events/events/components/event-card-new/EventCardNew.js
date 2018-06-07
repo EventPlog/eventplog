@@ -19,8 +19,9 @@ box-shadow: 0 1px 3px 0 #d4d4d5,0 0 0 1px #d4d4d5;
 }
 img{
     display: inline-table;
-    width: 100px;
     height: 100px;
+    width: 100px;
+    
 }
 .event-card-title{
     color: ${colors.primary}
