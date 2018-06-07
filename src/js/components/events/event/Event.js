@@ -1,28 +1,18 @@
-// @flow
+import React from 'react'
+import styled from 'styled-components'
 
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Sidebar from './components/sidebar';
-import MainContent from './components/main-content-body'
-
-const StyledMain = styled.div`
+const StyledEvent = styled.div`
   flex: 1;
-  display: flex;
+  height: 30vh;
+  margin-top: 100px
+`
 
-  > .container {
-    flex: 1;
-  }
-`;
+const Event = () => {
+  return (
+    <StyledEvent>
+      <h4>Event Page</h4>
+    </StyledEvent>
+  )
+}
 
-type Props = {
-  defaultTheme: object,
-};
-
-const Main = (props) => (
-  <StyledMain>
-    <Sidebar {...props} />
-    <MainContent {...props} />
-  </StyledMain>
-)
-
-export default Main;
+export default Event;
