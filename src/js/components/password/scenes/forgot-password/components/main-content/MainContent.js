@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import defaults from '../../../../../../../theme/variables'
+import defaults from '../../../../../../../styles/theme/variables'
 import ContentBeforeEmailSubmit from '../content-before-email-submit'
 import ContentAfterEmailSubmit from '../content-after-email-submit'
 

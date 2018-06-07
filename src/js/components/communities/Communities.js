@@ -8,7 +8,7 @@ import { Switch } from 'react-router-dom';
 import Header from '../../header/MainHeader';
 import createLoader from '../shared/loading/createLoadable'
 import styled, { ThemeProvider } from 'styled-components';
-import defaults from '../../../theme/variables';
+import defaults from '../../../styles/theme/variables';
 import {fakeAuth, PrivateRoute} from '../../auth'
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../../../../../../theme/colors'
+import colors from '../../../../../../styles/theme/colors'
 import Button from '../../../../shared/button'
 import {Link} from 'react-router-dom'
 

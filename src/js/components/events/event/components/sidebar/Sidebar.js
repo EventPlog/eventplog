@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss';
 import styled, { ThemeProvider } from 'styled-components';
-import defaults from '../../../../../../theme/variables';
+import defaults from '../../../../../../styles/theme/variables';
 
 const Aside = styled.aside`
   width: 200px;
