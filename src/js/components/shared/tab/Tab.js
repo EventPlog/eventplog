@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tab } from 'semantic-ui-react'
-import defaults from '../../../../styles/theme/variables';
+import defaults from '../../../styles/theme/variables';
 import styled, { ThemeProvider } from 'styled-components';
 
 // internal components

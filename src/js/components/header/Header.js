@@ -3,8 +3,8 @@ import LoginHeader from './login-header'
 import LoggedinHeader from './logged-in-header'
 import Auth from '../../auth'
 import styled from 'styled-components'
-import defaults from '../../../styles/theme/variables'
-import { media } from '../../../styles/mixins'
+import defaults from '../../styles/theme/variables'
+import { media } from '../../styles/mixins'
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid ${defaults.gray};

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContent should render correctly 1`] = `
+<styled.div>
+  <section
+    className="main-body"
+  >
+    <CommunitySection
+      communities={
+        Array [
+          1,
+          2,
+          3,
+        ]
+      }
+      title="My communities"
+    />
+    <CommunitySection
+      communities={
+        Array [
+          1,
+          2,
+          3,
+        ]
+      }
+      title="Other related communities"
+    />
+  </section>
+  <div>
+    <div
+      className="sidebar"
+    >
+      <div
+        className="header"
+      >
+        Events you may like
+      </div>
+      <EventsSection
+        events={
+          Array [
+            1,
+            2,
+          ]
+        }
+      />
+    </div>
+  </div>
+</styled.div>
+`;

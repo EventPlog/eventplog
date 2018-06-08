@@ -9,8 +9,8 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 
 import { injectGlobal } from 'styled-components';
-import { media } from '../styles/mixins'
-import colors from '../styles/theme/variables'
+import { media } from './styles/mixins'
+import colors from './styles/theme/variables'
 
 injectGlobal`
   body {
@@ -41,7 +41,6 @@ injectGlobal`
   
   ::selection {
     background: ${ colors.yellow };
-    color: ${ colors.white };
   }
   
   ::-moz-selection {

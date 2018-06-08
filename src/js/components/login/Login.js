@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import defaults from '../../../styles/theme/variables'
+import defaults from '../../styles/theme/variables'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import MainContent from './components/main-content'
 import { Auth } from '../../auth'
@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import GoogleLogin from 'react-google-login';
-import { media } from '../../../styles/mixins'
+import { media } from '../../styles/mixins'
 
 const responseGoogle = (response) => {
   debugger

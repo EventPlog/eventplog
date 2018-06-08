@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { lighten} from 'polished'
 
-import colors from '../../../../styles/theme/colors'
+import colors from '../../../styles/theme/colors'
 
 
 

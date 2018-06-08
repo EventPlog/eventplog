@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { media } from '../../../../styles/mixins'
+import { media } from '../../../styles/mixins'
 import Button from '../button'
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
@@ -38,6 +38,7 @@ const Styles = styled.div`
       &:last-child {
         margin-right: 0;
       }
+      
       ${
         media.tablet`
           margin: auto 20px auto 0;
@@ -50,11 +51,6 @@ const Styles = styled.div`
         `
       }
       
-      ${
-        media.phone`
-          margin: 0;
-        `
-      }
     }
     
 `

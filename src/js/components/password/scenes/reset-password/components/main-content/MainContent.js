@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import defaults from '../../../../../../../styles/theme/variables'
+import defaults from '../../../../../../styles/theme/variables'
 import ContentBeforePasswordChange from '../content-before-password-change'
 import ContentAfterPasswordChange from '../content-after-password-change'
 

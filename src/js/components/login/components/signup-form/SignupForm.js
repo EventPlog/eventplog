@@ -5,7 +5,7 @@ import GoogleLogin from 'react-google-login';
 import EmailSignupForm from './email-signup-form'
 import { Button, Form, Message, Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
-import colors from '../../../../../styles/theme/colors'
+import colors from '../../../../styles/theme/colors'
 import { lighten } from 'polished'
 
 
