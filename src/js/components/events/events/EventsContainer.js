@@ -17,7 +17,7 @@ class MainContentContainer extends Component {
       if(events && events.length > 0) return
       props.getEvents(Auth.currentUser().id).then((res = {}) => {
         if (!res.user_events || (res.user_events.length == 0 && res.communities_events.length == 0)) {
-          return props.history.push('/communities/join-a-community')
+         // return props.history.push('/communities/join-a-community')
         }
       });
     }
@@ -42,3 +42,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainContentContainer))
+
+export {
+  MainContentContainer
+}
