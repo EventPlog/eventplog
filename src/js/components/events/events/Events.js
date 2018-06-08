@@ -10,7 +10,7 @@ import CommunityDiv from './components/community-interest'
 
 const StyledEvents = styled.div`
 
-  .eventpagediv{
+  .event-page-div{
     display: flex;
     flex-direction:row;
   }  
@@ -30,14 +30,13 @@ const StyledEvents = styled.div`
     width: 100%;
     padding: 40px;
   }
-  .eventmenudiv{
+  .event-menu-div{
     border-bottom: 1px solid #eeee;
     height: 30px;
   }
-  .eventmenu{
+  .event-menu{
     color: ${colors.primary};
     list-style: none;
-    display:
      
   }
   ul{
@@ -49,14 +48,14 @@ const StyledEvents = styled.div`
     margin: auto 15px;
   }
  
-  .announcementnotifiermessage{
+  .announcement-notifier-message{
     background: #f0f9f0;
     color: ${colors.green};
     font-weight: bold;
     margin: 15px;
     margin-left: 130px;
   }
-  .eventpagecommunitydiv{
+  .event-page-community-div{
     margin:50px;
     padding-left: 125px;
   }
@@ -64,8 +63,8 @@ const StyledEvents = styled.div`
 `
 const EventsMiniHeader = ()=>{
   return(
-    <div className="eventmenudiv">
-    <ul className="eventmenu">
+    <div className="event-menudiv">
+    <ul className="event-menu">
       <li>Events</li>
       <li> Communities</li>
     </ul>
@@ -81,8 +80,8 @@ const EventsMiniHeader = ()=>{
 
 const AnnouncementNotifier = () =>{
   return(
-    <div className="announcementnotifier">
-      <p className="announcementnotifiermessage">We'll let you know if there are any announcements regarding this event</p>
+    <div className="announcement-notifier">
+      <p className="announcement-notifier-message">We'll let you know if there are any announcements regarding this event</p>
     </div>
   )
 }
@@ -115,13 +114,13 @@ const Events = ({ events }) => (
     
     <EventsMiniHeader/>
     
-   <div className="eventpagediv"> 
-      <div className="cardsdiv">
+   <div className="event-page-div"> 
+      <div className="cards-div">
         <AnnouncementNotifier/>
         {createEventGroup("Upcoming Events", eventss)}
         {createEventGroup("Events you might be interested in", eventss)}
       </div>
-      <div className="eventpagecommunitydiv">
+      <div className="event-page-community-div">
         <CommunityDiv/>
       </div>
     </div>
