@@ -1,10 +1,12 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Auth from '../../../../../auth/actions'
 import { withRouter } from 'react-router-dom'
 
-class LoginFormContainer extends Component {
+// internal
+import Auth from 'js/auth/actions'
+
+ class LoginFormContainer extends Component {
   state = {
     user: {},
     loading: false

@@ -2,11 +2,6 @@ import React from 'react'
 
 import LoginFormContainer from './EmailLoginFormContainer'
 import LoginForm from './EmailLoginForm'
+import renderPropsToComponents from 'js/components/shared/render-props-to-component'
 
-const LoginFormWithContainer = () => (
-  <LoginFormContainer>
-    {(props) => <LoginForm {...props} />}
-  </LoginFormContainer>
-)
-
-export default LoginFormWithContainer
+export default renderPropsToComponents(LoginFormContainer, LoginForm)
