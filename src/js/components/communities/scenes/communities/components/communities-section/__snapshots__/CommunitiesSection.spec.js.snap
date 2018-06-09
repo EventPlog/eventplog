@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommunitiesSection should render correctly 1`] = `
+<styled.div
+  className="communities-section"
+>
+  <h5
+    className="header"
+  />
+  <ul />
+</styled.div>
+`;

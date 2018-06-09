@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventsSection should render correctly 1`] = `
+<styled.div
+  className="events-section"
+/>
+`;

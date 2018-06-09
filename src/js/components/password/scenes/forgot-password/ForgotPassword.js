@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import defaults from '../../../../../styles/theme/variables'
+import defaults from '../../../../styles/theme/variables'
 import MainContent from './components/main-content'
-import { media } from '../../../../../styles/mixins'
+import { media } from '../../../../styles/mixins'
 
 const StyledForgotPassword = styled.div`
   --fg: ${defaults.fg};

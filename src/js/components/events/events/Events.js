@@ -3,7 +3,7 @@ import { Card, Header } from 'semantic-ui-react'
 import EventCard from './components/event-card'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import colors from '../../../../styles/theme/colors'
+import colors from '../../../styles/theme/colors'
 
 import src from '../../../../img/tech_is_in_you.png'
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import color from '../../../styles/theme/variables'
+import color from '../../styles/theme/variables'
 import footerLogo from '../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
-import { media } from '../../../styles/mixins'
+import { media } from '../../styles/mixins'
 
 const StyledFooter = styled.div`
    display: flex;
