@@ -72,12 +72,11 @@ const StyledEventsSection = styled.div`
     font-weight: 100;
     
     a {
-      color: #888;
+      color: #444;
       font-weight: 500;
       
       ${
         media.tablet`
-          font-weight: 600;
           letter-spacing: 0.5px; 
         `
       }

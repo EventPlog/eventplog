@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 
-import sampleCommunityImg from 'img/devc-team.png'
+import sampleCommunityImg from 'img/homepage-bg.JPG'
 
 const StyledCommunitySection = styled.div`
   > ul {
@@ -35,6 +35,8 @@ const StyledCommunitySection = styled.div`
     ${
       media.phone`
         flex-direction: column;
+        border: 1px solid #ddd;
+        padding: 0 0 10px 0;
       `
     }
     .img-holder {
@@ -75,8 +77,8 @@ const StyledCommunitySection = styled.div`
       position: relative
     
       a {
-        color: #888;
-        font-weight: 600;
+        color: #444;
+        font-weight: 500;
       }
        
       button {
