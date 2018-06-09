@@ -31,7 +31,7 @@ class LoginFormContainer extends Component {
   }
 
   componentWillMount(props) {
-    if (Auth.currentUser) this.setState({user: Auth.currentUser})
+    if (Auth.currentUser) this.setState({user: Auth.currentUser()})
   }
 
   getStateAndActions = () => ({
@@ -57,3 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer))
+
+export {
+  LoginFormContainer
+}

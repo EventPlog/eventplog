@@ -57,6 +57,7 @@ const StyledHeader = styled.div`
     }
     
   }
+  
 `
 
 const Header = (props) => (
