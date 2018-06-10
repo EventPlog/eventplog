@@ -30,7 +30,7 @@ const StyledMainContent = styled.div`
     
     ${
       media.phone`
-        margin: 2rem;
+        margin: 0;
       `
     }
   }
