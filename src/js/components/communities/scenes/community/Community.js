@@ -13,7 +13,7 @@ import CommunityHeader from './components/community-header'
 
 
 const Event = createLoader(() =>
-  import('js/components/events/event' /* webpackChunkName: "Event" */))
+  import('js/components/events/scenes/event' /* webpackChunkName: "Event" */))
 
 const StyledMain = styled.div`
   flex: 1;

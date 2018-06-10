@@ -101,7 +101,7 @@ const MainContent = ({
         <EventsSection title="Events you may like" {...{events}} />
       </section>
 
-      <Sidebar title="Other awesome communities">
+      <Sidebar title="Awesome communities">
         <CommunitiesSection {...{communities}} />
       </Sidebar>
 
