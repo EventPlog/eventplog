@@ -12,14 +12,14 @@ const StyledMainContent = styled.div`
   margin: 4rem 0;
   
   ${
-  media.tablet`
+    media.tablet`
       flex-direction: column;
     `
   }
   
     
   ${
-  media.phone`
+    media.phone`
       flex-direction: column;
     `
   }
@@ -29,10 +29,10 @@ const StyledMainContent = styled.div`
     margin-right: 2rem; 
     
     ${
-  media.phone`
+      media.phone`
         margin: 2rem;
       `
-  }
+    }
   }
   
   img {
@@ -44,23 +44,20 @@ const StyledMainContent = styled.div`
     padding-right: 2rem;
     
     ${
-  media.tablet`
+      media.tablet`
         padding-right: 0;
       `
-  }
+    }
     
     ${
-  media.phone`
+      media.phone`
         padding-right: 0;
       `
-  }  
+    }  
     .header {
       border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
     }
-  }
-  
-  .sidebar {
   }
 `
 
