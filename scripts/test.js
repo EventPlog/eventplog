@@ -23,5 +23,9 @@ if (!process.env.CI && argv.indexOf('--coverage') < 0) {
   argv.push('--watch');
 }
 
+if (process.env.CI) {
+  argv.push('--maxWorkers=3')
+}
+
 
 jest.run(argv);
