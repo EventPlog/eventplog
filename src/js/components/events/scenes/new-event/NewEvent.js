@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { createEvent } from '../actions'
-import RangeDateTimePicker from '../../shared/range-date-time-picker'
+import { createEvent } from '../../actions'
+import RangeDateTimePicker from 'js/components/shared/range-date-time-picker'
 
 import {
   Container,

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
-import CommunitiesSection from '../communities-section'
 import EventsSection from '../events-section'
+import CommunitiesSection from '../communities-section'
 import Sidebar from 'js/components/shared/sidebar'
 
 
@@ -51,8 +51,8 @@ const StyledMainContent = styled.div`
   
   .main-body {
     flex: 1;
-    margin-right: 2rem;
-        
+    margin-right: 2rem; 
+    
     ${
       media.phone`
         margin: 2rem;
@@ -64,7 +64,7 @@ const StyledMainContent = styled.div`
     max-width: 100px;
   }
   
-  .communities-section {
+  .events-section {
     margin-bottom: 6rem;
     padding-right: 2rem;
     
@@ -91,22 +91,18 @@ const StyledMainContent = styled.div`
 
 const MainContent = ({
   communities = [],
-  communities_suggestions = [],
-  events_suggestions = []
+  events = [],
 }) => {
   return (
     <StyledMainContent>
 
       <section className="main-body">
-        <CommunitiesSection title="My communities"
-                            showCTA={false}
-                            {...{communities}} />
-        <CommunitiesSection title="Other related communities"
-                            communities={communities_suggestions} />
+        <EventsSection title="Events you're interested in" {...{events}} />
+        <EventsSection title="Events you may like" {...{events}} />
       </section>
 
-      <Sidebar title="Events you may like">
-        <EventsSection events={events_suggestions} />
+      <Sidebar title="Other awesome communities">
+        <CommunitiesSection {...{communities}} />
       </Sidebar>
 
     </StyledMainContent>

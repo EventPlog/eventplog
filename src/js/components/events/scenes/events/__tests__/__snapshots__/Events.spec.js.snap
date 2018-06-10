@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Communities should render correctly 1`] = `
+exports[`Events should render correctly 1`] = `
 <styled.div>
   <CommunityHeader />
   <section
     className="app-container"
   >
     <MainContent
-      communities={
+      events={
         Array [
           1,
           2,
