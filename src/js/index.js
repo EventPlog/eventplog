@@ -29,7 +29,6 @@ injectGlobal`
       media.phone`
         flex-direction: column;
         padding: 2rem;
-
       `
     }
   }
