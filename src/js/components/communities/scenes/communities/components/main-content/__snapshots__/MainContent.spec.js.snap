@@ -12,7 +12,7 @@ exports[`MainContent should render correctly 1`] = `
     />
     <CommunitySection
       communities={Array []}
-      title="Other related communities"
+      title="Related communities"
     />
   </section>
   <Sidebar

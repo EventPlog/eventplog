@@ -2,27 +2,33 @@ import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-// import { getEvent } from '../actions'
+import { getCommunities, mockGetCommunities } from '../../actions'
+
+import mockData from '../../mockApi/data'
 
 class MainContentContainer extends Component {
   componentWillMount(props) {
     const {events} = this.props
     if(events && events.length > 0) return
-    // this.props.getEvent(this.props.match.params.id);
+    // this.props.getCommunities();
   }
-
   render () {
     return this.props.children({ ...this.props })
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {event: state.events.event}
+  return {
+    community: mockData.communities[0] || state.communities,
+    communities_suggestions: mockData.communities.filter(c => !c.joined).slice(0,2) || state.communities,
+    events: mockData.events.filter(e => e.interested) || state.events,
+    events_suggestions: mockData.events.filter(e => !e.interested).slice(0,2) || state.events,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    // getEvent
+    getCommunities: mockGetCommunities
   }, dispatch)
 }
 

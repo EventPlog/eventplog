@@ -19,8 +19,9 @@ class MainContentContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    events: mockData.events || state.events,
-    communities: mockData.communities.filter(c => c.joined) || state.communities,
+    events: mockData.events.filter(e => e.interested) || state.events,
+    events_suggestions: mockData.events.filter(e => !e.interested) || state.events,
+    communities_suggestions: mockData.communities.filter(c => c.joined).slice(0,1) || state.communities,
   }
 }
 

@@ -92,6 +92,10 @@ const StyledSidebarCard = styled.div`
     }
   }
   
+  .card-description {
+    margin: 0.5rem 0;
+  }
+  
   .card-meta {
     ${
       media.tablet`

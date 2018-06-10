@@ -67,7 +67,8 @@ export default {
       id: 1,
       title: 'Tech is in you',
       featured_image: '/tech_is_in_you.png',
-      interested: 211,
+      interested_persons: 211,
+      interested: false,
       community: {
         id: 1,
         name: 'Google Developer Group',
@@ -83,7 +84,42 @@ export default {
       id: 2,
       title: 'Writers corner workshop',
       featured_image: '/login-bg.jpg',
-      interested: 35,
+      interested_persons: 128,
+      interested: false,
+      community: {
+        id: 2,
+        name: 'Facebook Developer Circle Lagos',
+        description: 'A community of developers united in knowledge sharing',
+        featured_image: '/tech_is_in_you.png',
+        no_of_members: 200,
+        no_of_upcoming_events: 2,
+        focus: 'Technology',
+        joined: false,
+      }
+    },
+    {
+      id: 3,
+      title: 'Tech is in you',
+      featured_image: '/tech_is_in_you.png',
+      interested_persons: 221,
+      interested: true,
+      community: {
+        id: 1,
+        name: 'Google Developer Group',
+        description: 'Developer community bringing up community interest, powereed by google.',
+        featured_image: '/login-bg.jpg',
+        no_of_members: 200,
+        no_of_upcoming_events: 2,
+        focus: 'Developers',
+        joined: false,
+      }
+    },
+    {
+      id: 4,
+      title: 'Writers corner workshop',
+      featured_image: '/login-bg.jpg',
+      interested_persons: 18,
+      interested: true,
       community: {
         id: 2,
         name: 'Facebook Developer Circle Lagos',

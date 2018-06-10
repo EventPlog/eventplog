@@ -101,7 +101,7 @@ const MainContent = ({
         <CommunitiesSection title="My communities"
                             showCTA={false}
                             {...{communities}} />
-        <CommunitiesSection title="Other related communities"
+        <CommunitiesSection title="Related communities"
                             communities={communities_suggestions} />
       </section>
 
