@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCommunities, mockGetCommunities } from '../../actions'
+import { getEvents, mockGetEvent } from '../../actions'
 
 import mockData from '../../mockApi/data'
 
@@ -19,15 +19,14 @@ class MainContentContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    events: mockData.events || state.events,
     communities: mockData.communities.filter(c => c.joined) || state.communities,
-    communities_suggestions: mockData.communities.filter(c => !c.joined) || state.communities,
-    events_suggestions: mockData.events || state.events,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getCommunities: mockGetCommunities
+    getEvents
   }, dispatch)
 }
 

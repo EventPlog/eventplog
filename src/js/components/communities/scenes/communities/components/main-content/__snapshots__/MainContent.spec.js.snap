@@ -6,44 +6,21 @@ exports[`MainContent should render correctly 1`] = `
     className="main-body"
   >
     <CommunitySection
-      communities={
-        Array [
-          1,
-          2,
-          3,
-        ]
-      }
+      communities={Array []}
+      showCTA={false}
       title="My communities"
     />
     <CommunitySection
-      communities={
-        Array [
-          1,
-          2,
-          3,
-        ]
-      }
+      communities={Array []}
       title="Other related communities"
     />
   </section>
-  <div>
-    <div
-      className="sidebar"
-    >
-      <div
-        className="header"
-      >
-        Events you may like
-      </div>
-      <EventsSection
-        events={
-          Array [
-            1,
-            2,
-          ]
-        }
-      />
-    </div>
-  </div>
+  <Sidebar
+    title="Events you may like"
+  >
+    <EventsSection
+      events={Array []}
+    />
+  </Sidebar>
 </styled.div>
 `;

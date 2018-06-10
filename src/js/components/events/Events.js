@@ -11,13 +11,13 @@ import {fakeAuth, PrivateRoute} from '../../auth'
 
 
 const Events = createLoader(() =>
-  import('./events/index'  /* webpackChunkName: "Events" */))
+  import('./scenes/events/index'  /* webpackChunkName: "Events" */))
 
 const Event = createLoader(() =>
-  import('./event' /* webpackChunkName: "EventWithContainer" */))
+  import('./scenes/event' /* webpackChunkName: "EventWithContainer" */))
 
 const NewEvent = createLoader(() =>
-  import('./new-event' /* webpackChunkName: "NewEvent" */))
+  import('./scenes/new-event' /* webpackChunkName: "NewEvent" */))
 
 
 const StyledEventPlog = styled.div`

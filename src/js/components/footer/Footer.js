@@ -107,7 +107,7 @@ const StyledFooter = styled.div`
               width: 50%;
               margin: 30px 0;
               display: inline-block;
-              font-size: 70%;
+              font-size: 90%;
             }
           `
         }

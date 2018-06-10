@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // internal
-import CommunitiesNav from 'js/components/shared/user-secondary-menu'
+import UserNav from 'js/components/shared/user-secondary-menu'
 import MainContent from './components/main-content'
 import { media } from 'js/styles/mixins'
 
@@ -21,7 +21,7 @@ const StyledCommunities = styled.div`
 
 const Communities = (props) => (
   <StyledCommunities>
-    <CommunitiesNav />
+    <UserNav />
     <section className="app-container">
       <MainContent {...props} />
     </section>
