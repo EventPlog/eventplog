@@ -23,9 +23,9 @@ const generateDescription = (community) => (
   </span>
 )
 
-const generateMeta = (event) => {
-  `${event.interested_persons} people Interested`
-}
+const generateMeta = (event) => (
+  `${event.interested_persons} people interested`
+)
 
 
 const EventsSection = ({ events }) => (

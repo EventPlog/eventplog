@@ -40,13 +40,14 @@ const StyledHeader = styled.div`
   }
 `
 const CommunityHeader = ({
-  hideMenu = false
+  hideMenu = false,
+  community = {}
 }) => (
   <StyledHeader>
     <div className="app-container">
       <img src={defaultLogo} />
-
     </div>
+
     <div className="nav-holder">
       <div className="app-container">
         <Nav hideOnMobile={hideMenu} StackUlOnMobile={false}>

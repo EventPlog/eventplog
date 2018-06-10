@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainContent should render correctly 1`] = `
+exports[`MainContentBody should render correctly 1`] = `
 <styled.div>
   <section
     className="main-body"
   >
     <EventSection
       events={Array []}
-      title="Your events"
+      title="Events"
     />
     <EventSection
       events={Array []}
-      title="Events you may like"
+      title="Similar events from other communities"
     />
   </section>
   <Sidebar

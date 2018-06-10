@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // intenal
-import Nav from '../../../../../shared/nav'
-import colors from '../../../../../../styles/theme/colors'
-import { media } from '../../../../../../styles/mixins'
+import Nav from 'js/components/shared/nav'
+import colors from 'js/styles/theme/colors'
+import { media } from 'js/styles/mixins'
 
 
 

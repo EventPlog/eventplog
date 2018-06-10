@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommunityHeader should render correctly 1`] = `
+<styled.div>
+  <div
+    className="app-container"
+  >
+    <img
+      src="dev-c-lagos-logo.png"
+    />
+  </div>
+  <div
+    className="nav-holder"
+  >
+    <div
+      className="app-container"
+    >
+      <Nav
+        StackUlOnMobile={false}
+        hideOnMobile={false}
+      >
+        <Component>
+          <Link
+            replace={false}
+            to="/communities/1/events"
+          >
+            Events
+          </Link>
+        </Component>
+        <Component>
+          <Link
+            replace={false}
+            to="/communities/1"
+          >
+            Organizers
+          </Link>
+        </Component>
+      </Nav>
+    </div>
+  </div>
+</styled.div>
+`;

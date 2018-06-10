@@ -22,32 +22,6 @@ const StyledMainContent = styled.div`
       flex-direction: column;
     `
   }
-  .sidebar {
-    width: 300px;
-    /*background: #607d8b14;*/
-    padding: 2rem;
-    background: #eee;
-    color: #aaa;
-    border-radius: 10px;
-    
-    ${
-      media.tablet`
-        width: 100%;
-      `
-    }
-    
-    ${
-      media.phone`
-        width: 100%;
-      `
-    }
-    
-    .header {
-      border-bottom: 1px solid #ccc;
-      margin: 1rem 0;
-      text-transform: uppercase;
-    }
-  }
   
   .main-body {
     flex: 1;
@@ -84,25 +58,24 @@ const StyledMainContent = styled.div`
       padding-bottom: 5px;
     }
   }
-  
-  .sidebar {
-  }
 `
 
 const MainContent = ({
-  communities = [],
   events = [],
+  events_suggestions = [],
+  communities_suggestions = [],
 }) => {
   return (
     <StyledMainContent>
 
       <section className="main-body">
-        <EventsSection title="Events you're interested in" {...{events}} />
-        <EventsSection title="Events you may like" {...{events}} />
+        <EventsSection title="Your events" {...{events}} />
+        <EventsSection title="Events you may like"
+                       events={events_suggestions} />
       </section>
 
       <Sidebar title="Awesome communities">
-        <CommunitiesSection {...{communities}} />
+        <CommunitiesSection {...{communities: communities_suggestions}} />
       </Sidebar>
 
     </StyledMainContent>

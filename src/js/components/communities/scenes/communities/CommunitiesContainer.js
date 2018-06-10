@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     communities: mockData.communities.filter(c => c.joined) || state.communities,
     communities_suggestions: mockData.communities.filter(c => !c.joined) || state.communities,
-    events_suggestions: mockData.events || state.events,
+    events_suggestions: mockData.events.filter(e => e.interested).slice(0,2) || state.events,
   }
 }
 

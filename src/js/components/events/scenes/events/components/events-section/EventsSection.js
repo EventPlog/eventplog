@@ -27,7 +27,7 @@ const StyledEventSection = styled.div`
 `
 
 const generateTitle = (event) => (
-  <Link to={`/events/${event.id}`}>
+  <Link to={`/communities/${event.community.id}/events/${event.id}`}>
     {event.title}
   </Link>
 )
@@ -71,7 +71,7 @@ const EventSection = ({ title, events }) => (
            <MainContentCard
               {...{title, description, featured_image, meta}}
               showButton={!event.interested}
-              btnText="Join" />
+              btnText="Interested" />
           )
         }
       )}
