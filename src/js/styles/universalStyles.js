@@ -1,5 +1,5 @@
 import defaults from './theme/variables'
-import { media } from './mixins'
+import { media, maxMedia } from './mixins'
 import { css } from 'styled-components'
 
 const styles = css`
@@ -35,7 +35,7 @@ const styles = css`
     width: 100%;
     
     ${
-      media.phone`
+      maxMedia.phone`
         flex-direction: column;
         
         > * {

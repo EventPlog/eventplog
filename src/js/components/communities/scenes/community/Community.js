@@ -10,24 +10,13 @@ import { PrivateRoute } from 'js/auth'
 import MainContent from './components/main-content-body'
 import createLoader from 'js/components/shared/loading/createLoadable'
 import CommunityHeader from './components/community-header'
+import { media } from 'js/styles/mixins'
 
 
 const Event = createLoader(() =>
   import('js/components/events/scenes/event' /* webpackChunkName: "Event" */))
 
 const StyledMain = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-
-  > .container {
-    flex: 1;
-  }
-  
-  .app-container img {
-    max-height: 50px;
-    margin: 2em 0; 
-  }
 `;
 
 type Props = {

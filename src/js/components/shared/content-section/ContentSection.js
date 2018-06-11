@@ -7,7 +7,8 @@ import ContentSidebar from './ContentSidebar'
 const StyledMainContent = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 4rem 0;
+  width: 100%;
+  margin: 4rem 2rem;
   
   ${
     media.tablet`
@@ -18,7 +19,8 @@ const StyledMainContent = styled.div`
   ${
     media.phone`
       flex-direction: column;
-      margin-bottom: 0;
+      margin: 0;
+      margin: 4rem 2rem 0 2rem;
     `
   }
   

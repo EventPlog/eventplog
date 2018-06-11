@@ -3,15 +3,28 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // intenal
-import Nav from '../../../../../shared/nav'
-import colors from '../../../../../../styles/theme/colors'
-import { media } from '../../../../../../styles/mixins'
+import Nav from 'js/components/shared/nav'
+import colors from 'js/styles/theme/colors'
+import { media } from 'js/styles/mixins'
 
 // images
-import defaultLogo from '../../../../../../../img/dev-c-lagos-logo.png'
-
+import defaultLogo from 'img/dev-c-lagos-logo.png'
 
 const StyledHeader = styled.div`
+
+  > .community-logo {
+    padding: 2rem;
+    img {
+      max-height: 50px;
+      
+      ${
+        media.phone`  
+          max-height: auto;
+        `
+      }  
+    }
+  }
+  
   ul {
     margin: 0;
     padding: 0;
@@ -25,11 +38,12 @@ const StyledHeader = styled.div`
   }
   
   .nav-holder {
+    --line-height: 10px;
+    
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};
     
-    --line-height: 10px;
-    
+    padding: 1rem 2rem;
   }
 `
 const CommunityHeader = ({
@@ -37,7 +51,7 @@ const CommunityHeader = ({
   community = {}
 }) => (
   <StyledHeader>
-    <div className="app-container">
+    <div className="app-container community-logo">
       <img src={defaultLogo} />
     </div>
 
