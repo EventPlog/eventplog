@@ -63,19 +63,21 @@ const MainContent = ({
   communities_suggestions = [],
 }) => {
   return (
-    <ContentSection className="community-content">
+    <div className="app-container">
+      <ContentSection className="community-content">
 
-      <ContentSection.Body>
-        <EventsSection title="Events" {...{events}} />
-        <EventsSection title="Similar events from other communities"
-                       events={events_suggestions} />
-      </ContentSection.Body>
+        <ContentSection.Body>
+          <EventsSection title="Events" {...{events}} />
+          <EventsSection title="Similar events from other communities"
+                         events={events_suggestions} />
+        </ContentSection.Body>
 
-      <ContentSection.Sidebar>
-        <CommunitiesSection {...{communities: communities_suggestions}} />
-      </ContentSection.Sidebar>
+        <ContentSection.Sidebar>
+          <CommunitiesSection {...{communities: communities_suggestions}} />
+        </ContentSection.Sidebar>
 
-    </ContentSection>
+      </ContentSection>
+    </div>
   )
 }
 

@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 import ContentBody from './ContentBody'
 import ContentSidebar from './ContentSidebar'
+import ContentRow from './ContentRow'
 
 const StyledMainContent = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
   margin: 4rem 2rem;
+  flex-wrap: wrap;
   
   ${
     media.tablet`
@@ -40,6 +42,7 @@ const StyledMainContent = styled.div`
       `
     }  
   }
+  
 `
 
 const ContentSection = function({
@@ -56,5 +59,6 @@ const ContentSection = function({
 
 ContentSection.Body = ContentBody
 ContentSection.Sidebar = ContentSidebar
+ContentSection.FullRow = ContentRow
 
 export default ContentSection

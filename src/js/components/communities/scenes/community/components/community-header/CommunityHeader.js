@@ -19,7 +19,7 @@ const StyledHeader = styled.div`
       
       ${
         media.phone`  
-          max-height: auto;
+          max-height: none;
         `
       }  
     }
@@ -39,11 +39,14 @@ const StyledHeader = styled.div`
   
   .nav-holder {
     --line-height: 10px;
+    width: 100%;
     
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};
     
-    padding: 1rem 2rem;
+    .app-container {
+      padding: 1rem 2rem;
+    }
   }
 `
 const CommunityHeader = ({

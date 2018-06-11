@@ -12,17 +12,6 @@ const StyledMainContent = styled.div`
   background-size: cover;
   position: relative;
   
-  .overlay {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: ${colors.black};
-    opacity: 0.6;
-    z-index: 0
-  }
-  
   > .app-container {
     display: flex;
     z-index: 1

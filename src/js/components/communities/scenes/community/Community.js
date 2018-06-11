@@ -28,11 +28,9 @@ type Props = {
 const Main = (props) => (
   <StyledMain>
     <CommunityHeader />
-    <div className="app-container">
-      <PrivateRoute exact path="/communities/:id" render={(routerProps) => <MainContent {...props} />}/>
-      <PrivateRoute exact path="/communities/:id/events" render={() => <MainContent {...props} />}/>
-      <PrivateRoute exact path="/communities/:id/events/:id" render={() => <Event {...props} />}/>
-    </div>
+    <PrivateRoute exact path="/communities/:id" render={(routerProps) => <MainContent {...props} />}/>
+    <PrivateRoute exact path="/communities/:id/events" render={() => <MainContent {...props} />}/>
+    <PrivateRoute exact path="/communities/:id/events/:id" render={() => <Event {...props} />}/>
   </StyledMain>
 )
 

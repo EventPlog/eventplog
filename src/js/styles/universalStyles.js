@@ -27,6 +27,21 @@ const styles = css`
     text-align: center;
   }
   
+  .img-bg {
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.6;
+    z-index: 0
+  } 
+  
   .app-container {
     display: flex;
     align-items: center; 
