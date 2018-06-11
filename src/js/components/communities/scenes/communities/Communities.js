@@ -12,7 +12,6 @@ const StyledCommunities = styled.div`
     
     ${
       media.phone`
-        padding: 0;
         margin-bottom: 0;
       `
     } 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // internal
-import SidebarCard from 'js/components/shared/sidebar-card'
+import Sidebar from 'js/components/shared/sidebar'
 
 
 const StyledEventsSection = styled.div`
@@ -29,15 +29,15 @@ const generateMeta = (event) => (
 
 
 const EventsSection = ({ events }) => (
-  <StyledEventsSection className="events-section">
+  <Sidebar title="Events you may like">
     {events && events.map(({community, description: d, featured_image,...event}) => {
         const title = generateTitle(event, community.id);
         const description = generateDescription(community);
         const meta = generateMeta(event)
-        return <SidebarCard {...{title, description, featured_image, meta}} />
+        return <Sidebar.Card {...{title, description, featured_image, meta}} />
       }
     )}
-  </StyledEventsSection>
+  </Sidebar>
 )
 
 export default EventsSection

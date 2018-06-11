@@ -9,7 +9,8 @@ import { media } from '../../styles/mixins'
 const StyledHeader = styled.div`
   border-bottom: 1px solid ${defaults.gray};
   
-  > .app-container {
+  .main-header {
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between; 
     
@@ -22,6 +23,7 @@ const StyledHeader = styled.div`
          display: flex;
          justify-content: space-between;
          align-items: flex-end;
+         width: 100%; 
         ` 
       }
       
@@ -49,6 +51,20 @@ const StyledHeader = styled.div`
     
     ul {
       margin: auto 0 auto 50px;
+      
+      ${
+        media.phone`
+          margin: 2rem 0;
+          
+          li {
+            margin: 2rem 0;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        `
+      }
     }
     
     a {

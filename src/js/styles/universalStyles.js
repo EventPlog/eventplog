@@ -27,6 +27,24 @@ const styles = css`
     text-align: center;
   }
   
+  .app-container {
+    display: flex;
+    align-items: center; 
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    
+    ${
+      media.phone`
+        flex-direction: column;
+        
+        > * {
+          width: 100%;
+        }
+      `
+    }
+  }
+  
   .hidden {
     display: none !important;
   }

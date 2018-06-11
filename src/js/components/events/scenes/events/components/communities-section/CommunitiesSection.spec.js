@@ -7,6 +7,5 @@ describe('CommunitiesSection', () => {
     const wrapper = shallow( <CommunitiesSection/> );
 
     expect(wrapper).toMatchSnapshot()
-    expect(wrapper.find('.communities-section').length).toEqual(1);
   })
 });

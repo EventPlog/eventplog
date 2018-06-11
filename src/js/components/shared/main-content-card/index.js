@@ -1,1 +1,1 @@
-export { default } from './MainContentCard'
+export { default } from '../content-panel/ContentPanelCard'

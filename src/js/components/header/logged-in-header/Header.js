@@ -6,7 +6,7 @@ import Button from '../../shared/button'
 import Nav from '../../shared/nav'
 
 const Header = ({ hideMenu, onHideMenu}) => (
-  <div className="app-container">
+  <div className="main-header app-container">
     <div className="logo">
       <Link to="/">
         <img src={logo} alt='eventplog-logo' />

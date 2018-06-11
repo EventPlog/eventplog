@@ -28,15 +28,8 @@ const StyledHeader = styled.div`
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};
     
-    --line-height: 50px;
+    --line-height: 10px;
     
-    .app-container {
-      ${
-        media.phone`
-          padding: 0 2rem;
-        `
-      }
-    }
   }
 `
 const CommunityHeader = ({

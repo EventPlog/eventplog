@@ -3,28 +3,8 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // internal
-import { media } from 'js/styles/mixins'
 import MainContentCard from 'js/components/shared/main-content-card'
-
-
-const StyledEventSection = styled.div`
-  > ul {
-    margin-left: 2rem;
-    
-    ${
-      media.tablet`
-        margin: 0;
-      `
-    }
-        
-    ${
-      media.phone`
-        margin: 0;
-      `
-    }
-  }
-  
-`
+import ContentPanel from 'js/components/shared/content-panel'
 
 const generateTitle = (event) => (
   <Link to={`/communities/${event.community.id}/events/${event.id}`}>
@@ -60,23 +40,20 @@ const generateMeta = (event) => ([
 ])
 
 const EventSection = ({ title, events }) => (
-  <StyledEventSection className="events-section">
-    <h5 className="header">{ title }</h5>
-    <ul>
-      {events && events.map(({featured_image, ...event}) => {
+  <ContentPanel title={title}>
+    {events && events.map(({featured_image, ...event}) => {
         const title = generateTitle(event)
         const description = generateDescription(event.community)
         const meta = generateMeta(event)
-         return (
-           <MainContentCard
-              {...{title, description, featured_image, meta}}
-              showButton={!event.interested}
-              btnText="Interested" />
-          )
-        }
-      )}
-    </ul>
-  </StyledEventSection>
+        return (
+          <ContentPanel.Card
+            {...{title, description, featured_image, meta}}
+            showButton={!event.interested}
+            btnText="Interested" />
+        )
+      }
+    )}
+  </ContentPanel>
 )
 
 export default EventSection

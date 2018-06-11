@@ -15,11 +15,7 @@ const StyledHeader = styled.div`
   --line-height: 50px;
   
   .app-container {
-    ${
-      media.phone`
-          padding: 0 2rem;
-        `
-    }
+    padding: 1rem 2rem;
   }
   
   ul {

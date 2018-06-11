@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // internal
-import SidebarCard from 'js/components/shared/sidebar-card'
-
-
-const StyledEventsSection = styled.div`
-`
+import Sidebar from 'js/components/shared/sidebar'
 
 const generateTitle = (community) => (
   <Link to={`/communities/${community.id}/`}>
@@ -25,16 +21,16 @@ const generateMeta = (community) => (
 
 
 const CommunitiesSection = ({ communities }) => (
-  <StyledEventsSection className="communities-section">
+  <Sidebar title="Awesome communities">
     {communities && communities.map(({featured_image, ...community}) => {
         const title = generateTitle(community);
         const description = generateDescription(community.focus)
         const meta = generateMeta(community)
         const btnText = 'Join'
-        return <SidebarCard {...{title, description, featured_image, btnText, meta}} />
+        return <Sidebar.Card {...{title, description, featured_image, btnText, meta}} />
       }
     )}
-  </StyledEventsSection>
+  </Sidebar>
 )
 
 export default CommunitiesSection

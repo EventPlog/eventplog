@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 import EventsSection from 'js/components/events/scenes/events/components/events-section'
 import CommunitiesSection from 'js/components/events/scenes/events/components/communities-section'
-import Sidebar from 'js/components/shared/sidebar'
+import ContentSection from 'js/components/shared/content-section'
 
 
 const StyledMainContent = styled.div`
@@ -12,14 +12,14 @@ const StyledMainContent = styled.div`
   margin: 4rem 0;
   
   ${
-    media.tablet`
+  media.tablet`
       flex-direction: column;
     `
   }
   
     
   ${
-    media.phone`
+  media.phone`
       flex-direction: column;
     `
   }
@@ -29,14 +29,10 @@ const StyledMainContent = styled.div`
     margin-right: 2rem; 
     
     ${
-      media.phone`
+  media.phone`
         margin: 0;
       `
-    }
   }
-  
-  img {
-    max-width: 100px;
   }
   
   .events-section {
@@ -44,16 +40,16 @@ const StyledMainContent = styled.div`
     padding-right: 2rem;
     
     ${
-      media.tablet`
+  media.tablet`
         padding-right: 0;
       `
-    }
+  }
     
     ${
-      media.phone`
+  media.phone`
         padding-right: 0;
       `
-    }  
+  }  
     .header {
       border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
@@ -67,19 +63,19 @@ const MainContent = ({
   communities_suggestions = [],
 }) => {
   return (
-    <StyledMainContent>
+    <ContentSection className="community-content">
 
-      <section className="main-body">
+      <ContentSection.Body>
         <EventsSection title="Events" {...{events}} />
         <EventsSection title="Similar events from other communities"
                        events={events_suggestions} />
-      </section>
+      </ContentSection.Body>
 
-      <Sidebar title="Awesome communities">
+      <ContentSection.Sidebar>
         <CommunitiesSection {...{communities: communities_suggestions}} />
-      </Sidebar>
+      </ContentSection.Sidebar>
 
-    </StyledMainContent>
+    </ContentSection>
   )
 }
 
