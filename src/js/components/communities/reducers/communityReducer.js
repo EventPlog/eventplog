@@ -9,6 +9,13 @@ const communityReducer = (state=initialState, action) => {
       return {...state, communities: action.payload };
     case actionTypes.COMMUNITY_INDEX_FAIL:
       return {...state, status: 'failed'};
+
+    case actionTypes.COMMUNITY_SHOW_START:
+      return {...state, status: 'processing'};
+    case actionTypes.COMMUNITY_SHOW_COMPLETE:
+      return {...state, community: action.payload };
+    case actionTypes.COMMUNITY_SHOW_FAIL:
+      return {...state, status: 'failed'};
     default:
       return state;
   }

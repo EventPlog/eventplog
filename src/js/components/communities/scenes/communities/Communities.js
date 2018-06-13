@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import CommunitiesNav from 'js/components/shared/user-secondary-menu'
 import MainContent from './components/main-content'
 import { media } from 'js/styles/mixins'
+import Loading from 'js/components/shared/loading'
 
 const StyledCommunities = styled.div`
   section.app-container {
@@ -18,13 +19,18 @@ const StyledCommunities = styled.div`
   }
 `
 
-const Communities = (props) => (
-  <StyledCommunities>
-    <CommunitiesNav />
-    <section className="app-container">
-      <MainContent {...props} />
-    </section>
-  </StyledCommunities>
-)
+const Communities = (props) => {
+  if (props.loading) {
+    return <Loading />
+  }
+  return (
+    <StyledCommunities>
+      <CommunitiesNav />
+      <section className="app-container">
+        <MainContent {...props} />
+      </section>
+    </StyledCommunities>
+  )
+}
 
 export default Communities

@@ -2,15 +2,30 @@ import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCommunities, mockGetCommunities } from '../../actions'
+import {
+  getCommunities,
+  mockGetCommunities,
+  mockGetCommunity
+} from '../../actions'
+import { getEvents, mockGetEvents } from 'js/components/events/actions'
+import checkEqual from 'js/utils/checkEqual'
 
-import mockData from '../../mockApi/data'
 
 class MainContentContainer extends Component {
   componentWillMount(props) {
-    const {events} = this.props
-    if(events && events.length > 0) return
-    // this.props.getCommunities();
+    this.getData()
+  }
+
+  componentDidUpdate(props, prevProps) {
+    if (!checkEqual(props.match.params, this.props.match.params)) {
+      this.getData()
+    }
+  }
+
+  getData() {
+    this.props.getCommunity(this.props.match.params.id)
+    this.props.getCommunities()
+    this.props.getEvents()
   }
   render () {
     return this.props.children({ ...this.props })
@@ -18,16 +33,23 @@ class MainContentContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const {community_id, id} = ownProps.match.params
+  const {events = [], loading} = state.events
+  const {community = {}, communities = []} = state.communities
   return {
-    community: mockData.communities[0] || state.communities,
-    communities_suggestions: mockData.communities.filter(c => !c.joined).slice(0,1) || state.communities,
-    events: mockData.events.filter(e => e.interested) || state.events,
-    events_suggestions: mockData.events.filter(e => !e.interested).slice(0,2) || state.events,
+    activeLink: community.link_color,
+    loading,
+    community,
+    communities_suggestions: communities.filter(c => !c.joined).slice(0,1) || state.communities,
+    events: events.filter(e => e.interested) || state.events,
+    events_suggestions: events.filter(e => !e.interested).slice(0,2) || state.events,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    getEvents: mockGetEvents,
+    getCommunity: mockGetCommunity,
     getCommunities: mockGetCommunities
   }, dispatch)
 }

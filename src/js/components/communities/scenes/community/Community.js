@@ -17,6 +17,7 @@ const Event = createLoader(() =>
   import('js/components/events/scenes/event' /* webpackChunkName: "Event" */))
 
 const StyledMain = styled.div`
+  --activeLink: ${ props=> props ? props.activeLink : 'var(--activeLink)'};
 `;
 
 type Props = {
@@ -25,12 +26,12 @@ type Props = {
 
 
 
-const Main = (props) => (
-  <StyledMain>
+const Main = ({activeLink, ...props}) => (
+  <StyledMain activeLink={activeLink}>
     <CommunityHeader />
     <PrivateRoute exact path="/communities/:id" render={(routerProps) => <MainContent {...props} />}/>
-    <PrivateRoute exact path="/communities/:id/events" render={() => <MainContent {...props} />}/>
-    <PrivateRoute exact path="/communities/:id/events/:id" render={() => <Event {...props} />}/>
+    <PrivateRoute exact path="/communities/:community_id/events" render={() => <MainContent {...props} />}/>
+    <PrivateRoute exact path="/communities/:community_id/events/:id" render={() => <Event {...props} />}/>
   </StyledMain>
 )
 

@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainContent should render correctly 1`] = `
-<styled.div>
-  <section
-    className="main-body"
-  >
+exports[`Communities::Communities::MainContent should render correctly 1`] = `
+<ContentSection
+  className="user-communities"
+>
+  <ContentBody>
     <CommunitySection
       communities={Array []}
       showCTA={false}
@@ -14,13 +14,11 @@ exports[`MainContent should render correctly 1`] = `
       communities={Array []}
       title="Related communities"
     />
-  </section>
-  <Sidebar
-    title="Events you may like"
-  >
+  </ContentBody>
+  <ContentSidebar>
     <EventsSection
       events={Array []}
     />
-  </Sidebar>
-</styled.div>
+  </ContentSidebar>
+</ContentSection>
 `;

@@ -6,6 +6,7 @@ const StyledMainContentSidebar = styled.div`
   .sidebar {
     width: 300px;
     padding: 2rem;
+    margin-bottom: 3rem;
     
     ${
       media.tablet`

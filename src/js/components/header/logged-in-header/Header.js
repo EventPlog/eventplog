@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import logo from '../../../../img/eventplog-logo-small.png'
+import logo from 'img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
-import Button from '../../shared/button'
-import Nav from '../../shared/nav'
+import Button from 'js/components/shared/button'
+import Nav from 'js/components/shared/nav'
+import grayLogo from 'img/logo-gray-full.png'
 
-const Header = ({ hideMenu, onHideMenu}) => (
+const Header = ({ activeLink, hideMenu, onHideMenu}) => (
   <div className="main-header app-container">
     <div className="logo">
       <Link to="/">
-        <img src={logo} alt='eventplog-logo' />
+        <img src={activeLink ? grayLogo : logo } alt='eventplog-logo' />
       </Link>
       <Icon name='content' onClick={onHideMenu} />
     </div>

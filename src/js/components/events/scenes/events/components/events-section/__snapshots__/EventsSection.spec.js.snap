@@ -1,12 +1,143 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EventsSection should render correctly 1`] = `
-<styled.div
-  className="events-section"
+exports[`Communities::Communities::EventsSection should render correctly 1`] = `
+<ContentPanel
+  title="Events Section"
 >
-  <h5
-    className="header"
+  <MainContentCard
+    btnText="Interested"
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/communities/1"
+        >
+          Facebook Developer Circle Lagos
+        </Link>
+      </span>
+    }
+    featured_image="/tech_is_in_you.png"
+    meta={
+      Array [
+        <ul>
+          <li>
+              28 June, 2018
+          </li>
+          <li>
+              10:00am
+          </li>
+          <li>
+              StartZone, Gbagada
+          </li>
+      </ul>,
+        <ul>
+          <li>
+              211
+               people interested
+          </li>
+      </ul>,
+      ]
+    }
+    showButton={false}
+    title={
+      <Link
+        replace={false}
+        to="/communities/1/events/1"
+      >
+        Tech is in you
+      </Link>
+    }
   />
-  <ul />
-</styled.div>
+  <MainContentCard
+    btnText="Interested"
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/communities/2"
+        >
+          Google Developer Group
+        </Link>
+      </span>
+    }
+    featured_image="/login-bg.jpg"
+    meta={
+      Array [
+        <ul>
+          <li>
+              28 June, 2018
+          </li>
+          <li>
+              10:00am
+          </li>
+          <li>
+              StartZone, Gbagada
+          </li>
+      </ul>,
+        <ul>
+          <li>
+              211
+               people interested
+          </li>
+      </ul>,
+      ]
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/communities/2/events/2"
+      >
+        Writers corner workshop with writing and use of English
+      </Link>
+    }
+  />
+  <MainContentCard
+    btnText="Interested"
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/communities/3"
+        >
+          ForLoop Lagos
+        </Link>
+      </span>
+    }
+    featured_image="/tech_is_in_you.png"
+    meta={
+      Array [
+        <ul>
+          <li>
+              28 June, 2018
+          </li>
+          <li>
+              10:00am
+          </li>
+          <li>
+              StartZone, Gbagada
+          </li>
+      </ul>,
+        <ul>
+          <li>
+              108
+               people interested
+          </li>
+      </ul>,
+      ]
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/communities/3/events/3"
+      >
+        Figma Design Series
+      </Link>
+    }
+  />
+</ContentPanel>
 `;

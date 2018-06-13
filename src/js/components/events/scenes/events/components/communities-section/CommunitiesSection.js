@@ -5,17 +5,17 @@ import styled from 'styled-components'
 // internal
 import Sidebar from 'js/components/shared/sidebar'
 
-const generateTitle = (community) => (
+export const generateTitle = (community) => (
   <Link to={`/communities/${community.id}/`}>
     {community.name}
   </Link>
 )
 
-const generateDescription = (focus) => (
+export const generateDescription = (focus) => (
   `${focus} community`
 )
 
-const generateMeta = (community) => (
+export const generateMeta = (community) => (
   `${community.no_of_members} members`
 )
 

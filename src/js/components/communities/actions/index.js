@@ -1,11 +1,6 @@
 import actionTypes from './types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
-import { mockIndexApi } from '../mockApi'
-
-export const mockGetCommunities = () => dispatch =>
-  mockIndexApi().then(res => {
-    dispatch({type: actionTypes.COMMUNITY_INDEX_COMPLETE, payload: res.communities})
-  })
+import mockApi from 'js/mock-api/community-api'
 
 export const getCommunities = (data) => {
   let actions = baseActions({
@@ -44,4 +39,26 @@ export const createCommunity = (data) => {
     route: `/api/v1/web/communities`,
     requestMethod: 'POST'
   })
+}
+
+export const mockGetCommunities = () => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.COMMUNITY_INDEX_START })
+
+    return mockApi.index().then(res => {
+      dispatch({type: actionTypes.COMMUNITY_INDEX_COMPLETE, payload: res})
+      return res
+    })
+  }
+}
+
+export const mockGetCommunity = (communityId) => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.COMMUNITY_SHOW_START })
+
+    return mockApi.show(communityId).then(res => {
+      dispatch({type: actionTypes.COMMUNITY_SHOW_COMPLETE, payload: res})
+      return res
+    })
+  }
 }

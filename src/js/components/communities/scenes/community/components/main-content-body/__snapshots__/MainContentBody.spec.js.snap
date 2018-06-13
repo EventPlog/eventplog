@@ -1,25 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainContentBody should render correctly 1`] = `
-<styled.div>
-  <section
-    className="main-body"
+exports[`Communities::Community::MainContent should render correctly 1`] = `
+<div
+  className="app-container"
+>
+  <ContentSection
+    className="community-event"
   >
-    <EventSection
-      events={Array []}
-      title="Events"
-    />
-    <EventSection
-      events={Array []}
-      title="Similar events from other communities"
-    />
-  </section>
-  <Sidebar
-    title="Awesome communities"
-  >
-    <CommunitiesSection
-      communities={Array []}
-    />
-  </Sidebar>
-</styled.div>
+    <ContentBody>
+      <EventsSection
+        events={Array []}
+        title="Events"
+      />
+      <EventsSection
+        events={Array []}
+        title="Similar events from other communities"
+      />
+    </ContentBody>
+    <ContentSidebar>
+      <CommunitiesSection
+        communities={Array []}
+      />
+    </ContentSidebar>
+  </ContentSection>
+</div>
 `;

@@ -8,22 +8,29 @@ const StyledSidebar = styled.div`
   color: #888;
   border-radius: 10px;
   
+  ${
+    media.phone`
+      border-radius: 0;
+    `
+  }
+  
   .header {
     border-bottom: 1px solid #ccc;
     margin: 1rem 0;
-    text-transform: uppercase;
+    font-size: 1.3rem;
   }
 `
 
 const Sidebar = function({
   title,
   children,
+  ...otherProps
 }) {
   return (
-    <StyledSidebar className="sidebar">
-      <div className="header">
+    <StyledSidebar className="sidebar" {...otherProps}>
+      <h5 className="header">
         {title}
-      </div>
+      </h5>
       {children}
     </StyledSidebar>
   )

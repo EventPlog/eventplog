@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import LoginHeader from './login-header'
 import LoggedinHeader from './logged-in-header'
 import Auth from '../../auth'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import defaults from '../../styles/theme/variables'
 import { media } from '../../styles/mixins'
 
 const StyledHeader = styled.div`
+  --activeLink: ${props => props.linkColor ? props.linkColor : defaults.activeLink};
+  
   border-bottom: 1px solid ${defaults.gray};
   
   .main-header {
@@ -40,11 +42,11 @@ const StyledHeader = styled.div`
     }
     
     img {
-      width: 180px;
+      width: 150px;
       
       ${
         media.phone`
-          width: 150px;
+          width: 120px;
         `
       }
     }
@@ -76,13 +78,15 @@ const StyledHeader = styled.div`
   
 `
 
-const Header = (props) => (
-  <StyledHeader className="app-header">
-    {  Auth.isLoggedIn
+const Header = (props) => {
+  return (
+    <StyledHeader linkColor={props.activeLink} className="app-header">
+      {  Auth.isLoggedIn
         ? <LoggedinHeader {...props} />
         : <LoginHeader {...props} />
-    }
-  </StyledHeader>
-)
+      }
+    </StyledHeader>
+  )
+}
 
 export default Header

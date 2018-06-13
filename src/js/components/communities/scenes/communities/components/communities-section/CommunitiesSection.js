@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
 
-const generateTitle = (community) => (
+export const generateTitle = (community) => (
   <Link to={`/communities/${community.id}`}>
     {community.name}
   </Link>
 )
 
-const generateMeta = (community) => (
+export const generateMeta = (community) => (
   <ul>
     <li>
       {community.no_of_members} members
@@ -33,6 +33,7 @@ const CommunitySection = ({ title, showCTA = true, communities }) => (
         const meta = generateMeta(community)
         return (
           <ContentPanel.Card
+            key={community.id}
             {...{title, description, featured_image, meta}}
             showButton={showCTA && !community.joined}
             btnText="Join" />

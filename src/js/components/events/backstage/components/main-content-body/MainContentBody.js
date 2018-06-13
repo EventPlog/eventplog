@@ -10,7 +10,6 @@ import techIsInYou from '../../../../../../img/tech_is_in_you.png'
 
 const StyledMainContent = styled.div`
   flex: 1;
-  height: 100vh;
 `
 
 const MainContentBody = ({ event = {}, ...otherProps }) =>

@@ -4,7 +4,7 @@ import { media } from 'js/styles/mixins'
 import EventsSection from 'js/components/events/scenes/events/components/events-section'
 import CommunitiesSection from 'js/components/events/scenes/events/components/communities-section'
 import ContentSection from 'js/components/shared/content-section'
-
+import Loading from 'js/components/shared/loading'
 
 const StyledMainContent = styled.div`
   display: flex;
@@ -12,14 +12,13 @@ const StyledMainContent = styled.div`
   margin: 4rem 0;
   
   ${
-  media.tablet`
+    media.tablet`
       flex-direction: column;
     `
   }
-  
     
   ${
-  media.phone`
+    media.phone`
       flex-direction: column;
     `
   }
@@ -29,10 +28,10 @@ const StyledMainContent = styled.div`
     margin-right: 2rem; 
     
     ${
-  media.phone`
+      media.phone`
         margin: 0;
       `
-  }
+    }
   }
   
   .events-section {
@@ -40,16 +39,17 @@ const StyledMainContent = styled.div`
     padding-right: 2rem;
     
     ${
-  media.tablet`
+      media.tablet`
         padding-right: 0;
       `
-  }
+    }
     
     ${
-  media.phone`
+      media.phone`
         padding-right: 0;
       `
-  }  
+    }  
+    
     .header {
       border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
@@ -58,13 +58,17 @@ const StyledMainContent = styled.div`
 `
 
 const MainContent = ({
+  loading,
   events = [],
   events_suggestions = [],
   communities_suggestions = [],
 }) => {
+  if (loading) {
+    return <Loading />
+  }
   return (
     <div className="app-container">
-      <ContentSection className="community-content">
+      <ContentSection className="community-event">
 
         <ContentSection.Body>
           <EventsSection title="Events" {...{events}} />

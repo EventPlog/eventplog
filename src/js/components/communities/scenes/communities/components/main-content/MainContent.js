@@ -1,6 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
-import { media } from 'js/styles/mixins'
 import CommunitiesSection from '../communities-section'
 import EventsSection from '../events-section'
 import ContentSection from 'js/components/shared/content-section'

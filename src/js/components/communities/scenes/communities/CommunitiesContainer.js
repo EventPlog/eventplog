@@ -2,32 +2,48 @@ import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCommunities, mockGetCommunities } from '../../actions'
-
-import mockData from '../../mockApi/data'
+import { getCommunities, mockGetCommunities, mockGetCommunity } from '../../actions'
+import { getEvents, mockGetEvents } from 'js/components/events/actions'
+import checkEqual from 'js/utils/checkEqual'
 
 class MainContentContainer extends Component {
   componentWillMount(props) {
-    const {events} = this.props
-    if(events && events.length > 0) return
-    // this.props.getCommunities();
+    this.getData()
   }
+
+  componentDidUpdate(props, prevProps) {
+    if (!checkEqual(props.match.params, this.props.match.params)) {
+      this.getData()
+    }
+  }
+
+  getData() {
+    this.props.getCommunities()
+    this.props.getEvents()
+  }
+
   render () {
     return this.props.children({ ...this.props })
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const {community_id, id} = ownProps.match.params
+  const {loading, events = []} = state.events
+  const {communities = []} = state.communities
   return {
-    communities: mockData.communities.filter(c => c.joined) || state.communities,
-    communities_suggestions: mockData.communities.filter(c => !c.joined) || state.communities,
-    events_suggestions: mockData.events.filter(e => e.interested).slice(0,2) || state.events,
+    loading,
+    communities: communities.filter(c => c.joined) || state.communities,
+    communities_suggestions: communities.filter(c => !c.joined) || state.communities,
+    events_suggestions: events.filter(e => e.interested).slice(0,2) || state.events,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getCommunities: mockGetCommunities
+    getCommunities: mockGetCommunities,
+    getEvents: mockGetEvents,
+    getCommunity: mockGetCommunity
   }, dispatch)
 }
 

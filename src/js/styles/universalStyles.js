@@ -23,6 +23,10 @@ const styles = css`
     padding: 0;
   }
   
+  code {
+    font-family: Andalemono;
+  }
+  
   .text-center {
     text-align: center;
   }

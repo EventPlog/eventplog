@@ -3,16 +3,15 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // internal
-import MainContentCard from 'js/components/shared/main-content-card'
 import ContentPanel from 'js/components/shared/content-panel'
 
-const generateTitle = (event) => (
+export const generateTitle = (event) => (
   <Link to={`/communities/${event.community.id}/events/${event.id}`}>
     {event.title}
   </Link>
 )
 
-const generateDescription = (community) => (
+export const generateDescription = (community) => (
   <span>
     By <Link to={`/communities/${community.id}`}>
       {community.name}
@@ -20,7 +19,7 @@ const generateDescription = (community) => (
   </span>
 )
 
-const generateMeta = (event) => ([
+export const generateMeta = (event) => ([
   <ul>
     <li>
       {event.start_date}
@@ -39,7 +38,7 @@ const generateMeta = (event) => ([
   </ul>
 ])
 
-const EventSection = ({ title, events }) => (
+const EventsSection = ({ title, events }) => (
   <ContentPanel title={title}>
     {events && events.map(({featured_image, ...event}) => {
         const title = generateTitle(event)
@@ -56,4 +55,4 @@ const EventSection = ({ title, events }) => (
   </ContentPanel>
 )
 
-export default EventSection
+export default EventsSection
