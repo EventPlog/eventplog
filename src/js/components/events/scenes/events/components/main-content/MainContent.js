@@ -1,64 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
-import { media } from 'js/styles/mixins'
 import EventsSection from '../events-section'
 import CommunitiesSection from '../communities-section'
-import Sidebar from 'js/components/shared/sidebar'
+import ContentSection from 'js/components/shared/content-section'
 
-
-const StyledMainContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  
-  ${
-    media.tablet`
-      flex-direction: column;
-    `
-  }
-  
-    
-  ${
-  media.phone`
-      flex-direction: column;
-    `
-  }
-  
-  .main-body {
-    flex: 1;
-    margin-right: 2rem; 
-    
-    ${
-      media.phone`
-        margin: 2rem;
-      `
-    }
-  }
-  
-  img {
-    max-width: 100px;
-  }
-  
-  .events-section {
-    margin-bottom: 6rem;
-    padding-right: 2rem;
-    
-    ${
-      media.tablet`
-        padding-right: 0;
-      `
-    }
-    
-    ${
-      media.phone`
-        padding-right: 0;
-      `
-    }  
-    .header {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
-  }
-`
 
 const MainContent = ({
   events = [],
@@ -66,19 +10,19 @@ const MainContent = ({
   communities_suggestions = [],
 }) => {
   return (
-    <StyledMainContent>
+    <ContentSection>
 
-      <section className="main-body">
+      <ContentSection.Body>
         <EventsSection title="Your events" {...{events}} />
         <EventsSection title="Events you may like"
                        events={events_suggestions} />
-      </section>
+      </ContentSection.Body>
 
-      <Sidebar title="Awesome communities">
+      <ContentSection.Sidebar>
         <CommunitiesSection {...{communities: communities_suggestions}} />
-      </Sidebar>
+      </ContentSection.Sidebar>
 
-    </StyledMainContent>
+    </ContentSection>
   )
 }
 

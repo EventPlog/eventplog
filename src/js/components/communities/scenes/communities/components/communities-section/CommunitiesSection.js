@@ -2,37 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+
 // internal
-import { media } from 'js/styles/mixins'
-import MainContentCard from 'js/components/shared/main-content-card'
+import ContentPanel from 'js/components/shared/content-panel'
 
-
-const StyledCommunitySection = styled.div`
-  > ul {
-    margin: 2rem;
-    
-    ${
-      media.tablet`
-        margin: 0;
-      `
-    }
-        
-    ${
-      media.phone`
-        margin: 0;
-      `
-    }
-  }
-  
-`
-
-const generateTitle = (community) => (
+export const generateTitle = (community) => (
   <Link to={`/communities/${community.id}`}>
     {community.name}
   </Link>
 )
 
-const generateMeta = (community) => (
+export const generateMeta = (community) => (
   <ul>
     <li>
       {community.no_of_members} members
@@ -47,22 +27,20 @@ const generateMeta = (community) => (
 )
 
 const CommunitySection = ({ title, showCTA = true, communities }) => (
-  <StyledCommunitySection className="communities-section">
-    <h5 className="header">{ title }</h5>
-    <ul>
-      {communities && communities.map(({description, featured_image, ...community}) => {
+  <ContentPanel title={title}>
+    {communities && communities.map(({description, featured_image, ...community}) => {
         const title = generateTitle(community)
         const meta = generateMeta(community)
-         return (
-           <MainContentCard
-              {...{title, description, featured_image, meta}}
-              showButton={showCTA && !community.joined}
-              btnText="Join" />
-          )
-        }
-      )}
-    </ul>
-  </StyledCommunitySection>
+        return (
+          <ContentPanel.Card
+            key={community.id}
+            {...{title, description, featured_image, meta}}
+            showButton={showCTA && !community.joined}
+            btnText="Join" />
+        )
+      }
+    )}
+  </ContentPanel>
 )
 
 export default CommunitySection

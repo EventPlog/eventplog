@@ -11,7 +11,6 @@ const Styles = styled.div`
     ul {
       list-style: none;
       display: inline-flex;
-      line-height: var(--line-height, 70px);
       font-weight: 500;
       text-transform: uppercase;
       font-size: var(--font-size, 0.9rem);

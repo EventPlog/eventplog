@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Events should render correctly 1`] = `
-<styled.div>
+<div>
   <CommunityHeader />
   <section
     className="app-container"
@@ -16,5 +16,5 @@ exports[`Events should render correctly 1`] = `
       }
     />
   </section>
-</styled.div>
+</div>
 `;

@@ -1,50 +1,41 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
+import SidebarCard from './SidebarCard'
 
 const StyledSidebar = styled.div`
-  .sidebar {
-    width: 300px;
-    /*background: #607d8b14;*/
-    padding: 2rem;
-    background: #eee;
-    color: #888;
-    border-radius: 10px;
-    
-    ${
-      media.tablet`
-        width: 100%;
-      `
-    }
-    
-    ${
-      media.phone`
-        width: 100%;
-      `
-    }
-    
-    .header {
-      border-bottom: 1px solid #ccc;
-      margin: 1rem 0;
-      text-transform: uppercase;
-    }
+  background: #eee;
+  color: #888;
+  border-radius: 10px;
+  
+  ${
+    media.phone`
+      border-radius: 0;
+    `
+  }
+  
+  .header {
+    border-bottom: 1px solid #ccc;
+    margin: 1rem 0;
+    font-size: 1.3rem;
   }
 `
 
-const Sidebar = ({
+const Sidebar = function({
   title,
   children,
-}) => {
+  ...otherProps
+}) {
   return (
-    <StyledSidebar>
-      <div className="sidebar">
-        <div className="header">
-          {title}
-        </div>
-        {children}
-      </div>
+    <StyledSidebar className="sidebar" {...otherProps}>
+      <h5 className="header">
+        {title}
+      </h5>
+      {children}
     </StyledSidebar>
   )
 }
+
+Sidebar.Card = SidebarCard
 
 export default Sidebar

@@ -359,7 +359,7 @@ justify-content: space-between;
         list-style: none;
         display: inline-flex !important;
         margin: auto 0 auto 50px;
-        line-height: 70px;
+        /*line-height: 70px;*/
         font-weight: 500;
         text-transform: uppercase;
         font-size: 0.9rem;

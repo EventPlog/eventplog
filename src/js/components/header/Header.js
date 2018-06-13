@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import LoginHeader from './login-header'
 import LoggedinHeader from './logged-in-header'
 import Auth from '../../auth'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import defaults from '../../styles/theme/variables'
 import { media } from '../../styles/mixins'
 
 const StyledHeader = styled.div`
+  --activeLink: ${props => props.linkColor ? props.linkColor : defaults.activeLink};
+  
   border-bottom: 1px solid ${defaults.gray};
   
-  > .app-container {
+  .main-header {
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between; 
     
@@ -22,6 +25,7 @@ const StyledHeader = styled.div`
          display: flex;
          justify-content: space-between;
          align-items: flex-end;
+         width: 100%; 
         ` 
       }
       
@@ -38,17 +42,31 @@ const StyledHeader = styled.div`
     }
     
     img {
-      width: 180px;
+      width: 150px;
       
       ${
         media.phone`
-          width: 150px;
+          width: 120px;
         `
       }
     }
     
     ul {
       margin: auto 0 auto 50px;
+      
+      ${
+        media.phone`
+          margin: 2rem 0;
+          
+          li {
+            margin: 2rem 0;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        `
+      }
     }
     
     a {
@@ -60,13 +78,15 @@ const StyledHeader = styled.div`
   
 `
 
-const Header = (props) => (
-  <StyledHeader className="app-header">
-    {  Auth.isLoggedIn
+const Header = (props) => {
+  return (
+    <StyledHeader linkColor={props.activeLink} className="app-header">
+      {  Auth.isLoggedIn
         ? <LoggedinHeader {...props} />
         : <LoginHeader {...props} />
-    }
-  </StyledHeader>
-)
+      }
+    </StyledHeader>
+  )
+}
 
 export default Header

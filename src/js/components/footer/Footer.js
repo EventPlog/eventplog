@@ -13,6 +13,10 @@ const StyledFooter = styled.div`
    border-top: 1px solid #ccc;
    color: var(--fg);
    
+   .app-container {
+    padding: 1rem 2rem;
+   }
+   
     a{
       color:${color.grayLight}
     }
@@ -57,7 +61,7 @@ const StyledFooter = styled.div`
        media.phone`
          position: relative;
          margin-top: 2rem;
-         margin-bottom: 2rem;
+         align-self: baseline;
        `
      }
      
@@ -180,21 +184,8 @@ const StyledFooter = styled.div`
      
      .app-container {
        width: 100%;
-       display: flex;
        justify-content: space-between;
        align-items: baseline;
-       
-       ${
-         media.tablet`
-         `
-       }
-       
-       ${
-        media.phone`
-          flex-direction: column;
-          padding: 2rem;
-        `
-       }
      }
    }
    

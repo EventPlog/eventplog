@@ -44,7 +44,6 @@ const EventPlog = ({user = {}}) => (
         <PrivateRoute exact path="/" render={() => <Events {...{user}} />} />
         <PrivateRoute exact path="/events" component={Events} />
         <PrivateRoute exact path="/events/new" component={NewEvent} />
-        <PrivateRoute exact path="/events/:id" component={Event} />
       </Switch>
     </StyledEventPlog>
   </ThemeProvider>

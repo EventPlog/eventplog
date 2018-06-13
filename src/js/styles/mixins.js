@@ -8,7 +8,11 @@ const sizes = {
 }
 
 // Iterate through the sizes and create a media template
-const mediaS = Object.keys(sizes).reduce((acc, label) => {
+/*
+  @return rules that apply to max width. e.g.
+  maxMedia.tablet applies to both phones and tablets
+ */
+const maxMedia = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media only screen and (max-width: ${sizes[label].max / 16}em) {
       ${css(...args)}
@@ -29,5 +33,6 @@ const media = Object.keys(sizes).reduce((acc, label) => {
   return acc
 }, {})
 export {
-  media
+  media,
+  maxMedia
 }

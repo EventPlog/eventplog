@@ -1,6 +1,6 @@
 import actionTypes from '../actions/types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
-import mockApi from '../../../mockApi/lead-api'
+import mockApi from '../../../mock-api/lead-api'
 
 const updateLead = (data) => {
   let actions = baseActions({

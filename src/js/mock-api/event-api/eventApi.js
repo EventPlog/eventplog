@@ -1,6 +1,14 @@
 import delay from '../delay'
+import data from '../data'
 
 class EventApi {
+  static index = () =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(data.events)
+      }, delay)
+    })
+
   static create = (leadData) =>
     new Promise((resolve, reject) => {
       setTimeout(resolve, delay, leadData)
@@ -11,16 +19,9 @@ class EventApi {
       setTimeout(resolve, delay, {id: 1, ...leadData})
     })
 
-  static get = (eventId) =>
+  static show = (eventId) =>
     new Promise((resolve, reject) => {
-      const event = {
-        id: eventId,
-        title: 'An event title',
-        team_members: [{id: 1, first_name: 'Ugonna', last_name: 'Okere'}],
-        organizer: {id: 1},
-        tasks: [{id: 1}]
-      }
-      setTimeout(resolve, delay, event)
+      setTimeout(resolve, delay, data.events.find(e => e.id == eventId))
     })
 }
 

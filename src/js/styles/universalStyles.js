@@ -1,5 +1,5 @@
 import defaults from './theme/variables'
-import { media } from './mixins'
+import { media, maxMedia } from './mixins'
 import { css } from 'styled-components'
 
 const styles = css`
@@ -23,8 +23,45 @@ const styles = css`
     padding: 0;
   }
   
+  code {
+    font-family: Andalemono;
+  }
+  
   .text-center {
     text-align: center;
+  }
+  
+  .img-bg {
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.6;
+    z-index: 0
+  } 
+  
+  .app-container {
+    display: flex;
+    align-items: center; 
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    
+    ${
+      maxMedia.phone`
+        flex-direction: column;
+        
+        > * {
+          width: 100%;
+        }
+      `
+    }
   }
   
   .hidden {

@@ -54,18 +54,14 @@ const StyledMainContentCard = styled.div`
     font-weight: 400;
     font-size: 1.2em;
     margin-bottom: 0.5rem;
-    
-    position: relative
+    display: flex;
+    justify-content: space-between; 
   
     a {
       color: #444;
       font-weight: 500;
     }
      
-    button {
-      position: absolute;
-      right: 0;
-    }
   }
   
   .card-description {

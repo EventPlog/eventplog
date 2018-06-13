@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 import EventsSection from 'js/components/events/scenes/events/components/events-section'
 import CommunitiesSection from 'js/components/events/scenes/events/components/communities-section'
-import Sidebar from 'js/components/shared/sidebar'
-
+import ContentSection from 'js/components/shared/content-section'
+import Loading from 'js/components/shared/loading'
 
 const StyledMainContent = styled.div`
   display: flex;
@@ -16,7 +16,6 @@ const StyledMainContent = styled.div`
       flex-direction: column;
     `
   }
-  
     
   ${
     media.phone`
@@ -35,10 +34,6 @@ const StyledMainContent = styled.div`
     }
   }
   
-  img {
-    max-width: 100px;
-  }
-  
   .events-section {
     margin-bottom: 6rem;
     padding-right: 2rem;
@@ -54,6 +49,7 @@ const StyledMainContent = styled.div`
         padding-right: 0;
       `
     }  
+    
     .header {
       border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
@@ -62,24 +58,30 @@ const StyledMainContent = styled.div`
 `
 
 const MainContent = ({
+  loading,
   events = [],
   events_suggestions = [],
   communities_suggestions = [],
 }) => {
+  if (loading) {
+    return <Loading />
+  }
   return (
-    <StyledMainContent>
+    <div className="app-container">
+      <ContentSection className="community-event">
 
-      <section className="main-body">
-        <EventsSection title="Events" {...{events}} />
-        <EventsSection title="Similar events from other communities"
-                       events={events_suggestions} />
-      </section>
+        <ContentSection.Body>
+          <EventsSection title="Events" {...{events}} />
+          <EventsSection title="Similar events from other communities"
+                         events={events_suggestions} />
+        </ContentSection.Body>
 
-      <Sidebar title="Awesome communities">
-        <CommunitiesSection {...{communities: communities_suggestions}} />
-      </Sidebar>
+        <ContentSection.Sidebar>
+          <CommunitiesSection {...{communities: communities_suggestions}} />
+        </ContentSection.Sidebar>
 
-    </StyledMainContent>
+      </ContentSection>
+    </div>
   )
 }
 

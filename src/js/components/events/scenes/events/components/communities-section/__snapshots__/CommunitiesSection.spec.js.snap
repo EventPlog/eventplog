@@ -1,7 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CommunitiesSection should render correctly 1`] = `
-<styled.div
-  className="communities-section"
-/>
+exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
+<Sidebar
+  title="Awesome communities"
+>
+  <SidebarCard
+    btnText="Join"
+    description="Technology community"
+    featured_image="/login-bg.jpg"
+    meta="200 members"
+    title={
+      <Link
+        replace={false}
+        to="/communities/1/"
+      >
+        Facebook Developer Circle Lagos
+      </Link>
+    }
+  />
+  <SidebarCard
+    btnText="Join"
+    description="Developers community"
+    featured_image="/tech_is_in_you.png"
+    meta="200 members"
+    title={
+      <Link
+        replace={false}
+        to="/communities/2/"
+      >
+        Google Developer Group
+      </Link>
+    }
+  />
+  <SidebarCard
+    btnText="Join"
+    description="Technology community"
+    featured_image="/login-bg.jpg"
+    meta="200 members"
+    title={
+      <Link
+        replace={false}
+        to="/communities/3/"
+      >
+        ForLoop Lagos
+      </Link>
+    }
+  />
+</Sidebar>
 `;

@@ -1,7 +1,6 @@
 import React, { Component} from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, matchPath } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import Auth from '../../auth/actions'
 
 class HeaderContainer extends Component {
@@ -9,14 +8,15 @@ class HeaderContainer extends Component {
     hideMenu: true
   }
 
-
   onHideMenu = () => {
     this.setState((state) => ({hideMenu: !state.hideMenu}))
   }
 
   getProps = () => ({
     ...this.state,
-    onHideMenu: this.onHideMenu
+    onHideMenu: this.onHideMenu,
+    user: Auth.currentUser(),
+    activeLink: this.props.activeLink
   })
 
   render () {
@@ -24,4 +24,14 @@ class HeaderContainer extends Component {
   }
 }
 
-export default HeaderContainer
+const mapStateToProps = (state, ownProps) => {
+  const {community = {}} = state.communities
+  const match = matchPath(ownProps.location.pathname, '/communities/:id')
+  return {
+    activeLink: match && Object.keys(community).length > 0 ? community.link_color : null,
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(HeaderContainer))
+
+

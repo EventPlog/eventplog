@@ -20,18 +20,6 @@ injectGlobal`
     
   }
   
-  .app-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 50px;
-    
-    ${
-      media.phone`
-        flex-direction: column;
-        padding: 2rem;
-      `
-    }
-  }
   
   *:disabled {
     opacity: 0.5;

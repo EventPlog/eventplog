@@ -12,10 +12,6 @@ const StyledLogin = styled.div`
   flex-direction: column;
   height: 100%;
   
-  > .header {
-    height: 70px;
-  }
-  
   .main-content {
     flex: 1;
     margin-top: 60px;
