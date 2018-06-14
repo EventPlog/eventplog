@@ -3,11 +3,11 @@ import styled from 'styled-components'
 
 // internal
 import Comment from './Comment'
-import { media } from 'js/styles/mixins'
 import ReactMarkdown from 'react-markdown'
 
 const StyledComments = styled.div`
   margin-top: 2rem;
+  max-width: 820px;
   
   .comment-card + .comment-card {
     margin-top: 3rem;

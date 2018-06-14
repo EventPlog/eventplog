@@ -18,7 +18,7 @@ describe('Events::Events::CommunitiesSection', () => {
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(Sidebar).length).toEqual(1);
-    expect(wrapper.find(Sidebar).props().title).toEqual('Awesome communities');
+    expect(wrapper.find(Sidebar).props().title).toEqual('Communities suggestions');
     expect(wrapper.find(Sidebar.Card).length).toEqual(communities.length);
   })
 

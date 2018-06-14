@@ -100,14 +100,15 @@ const Comment = ({
         <div className="avatar" style={{
                   backgroundImage: `url(${avatar_url || '/sample-avatar.jpg'}`
                 }} />
-        <div className="meta">
-          <div className="full-name">
-            {`${first_name} ${last_name}`}
-          </div>
-          <div className="role">
-            {community_role || 'Member'}
-          </div>
-        </div>
+        {first_name &&
+          <div className="meta">
+            <div className="full-name">
+              {`${first_name} ${last_name}`}
+            </div>
+            <div className="role">
+              {community_role || 'Member'}
+            </div>
+          </div>}
       </div>
       <div className="comment">
         {children}

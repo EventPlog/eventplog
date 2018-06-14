@@ -1,3 +1,43 @@
+const users = [
+  {
+    id: 1,
+    first_name: 'Steve',
+    last_name: 'Omobola',
+    avatar_url: '/steve.jpg',
+    occupation: 'Software Engineer'
+  },
+  {
+    id: 2,
+    first_name: 'Chinwe',
+    last_name: 'Ifejikara',
+    avatar_url: '/sample-avatar.jpg',
+    occupation: 'Product Manager'
+  },
+  {
+    id: 3,
+    first_name: 'Sunday',
+    last_name: 'Nzeribe',
+    avatar_url: '/sunday.jpg',
+    occupation: 'Digital Analyst'
+  }
+]
+
+const announcements = [
+  {
+    id: 1,
+    body: "We’re moving the venue from `NG_HUB` to `CIVIC HIVE`. It’s on the *2nd* floor, 42 Montgomergy road",
+    announcer: users[0],
+    publish_date: '20th June, 2018',
+    publish_time: '5:04pm'
+  },
+  {
+    id: 2,
+    body: "Now you can sync with your team every Wednesday between 5pm and 8pm until 28th July, 2018 at `Civic Hive` to work on your idea.\n\nInternet and Power will be free, courtesy *Civic Hive*",
+    announcer: users[0],
+    publish_date: '20th June, 2018',
+    publish_time: '2:38pm'
+  }
+]
 
 const communities = [
   {
@@ -9,6 +49,7 @@ const communities = [
     no_of_upcoming_events: 2,
     focus: 'Technology',
     link_color: '#2291f9',
+    members: users,
     joined: true,
   },
   {
@@ -20,6 +61,7 @@ const communities = [
     no_of_upcoming_events: 2,
     link_color: 'red',
     focus: 'Developers',
+    members: users,
     joined: false,
   },
   {
@@ -31,6 +73,7 @@ const communities = [
     no_of_upcoming_events: 2,
     link_color: 'green',
     focus: 'Technology',
+    members: users,
     joined: true,
   },
 ]
@@ -49,6 +92,8 @@ const events = [
     end_time: '01:00pm',
     venue: 'StartZone, Gbagada',
     community: communities[0],
+    organizers: users,
+    announcements,
     comments: [
       {
         id: 1,
@@ -113,6 +158,7 @@ const events = [
     end_time: '01:00pm',
     venue: 'StartZone, Gbagada',
     community: communities[1],
+    organizers: users,
   },
   {
     id: 3,
@@ -127,6 +173,8 @@ const events = [
     end_time: '01:00pm',
     venue: 'StartZone, Gbagada',
     community: communities[2],
+    announcements,
+    organizers: users,
   }
 ]
 export default {

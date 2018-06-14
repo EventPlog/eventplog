@@ -21,7 +21,7 @@ export const generateMeta = (community) => (
 
 
 const CommunitiesSection = ({ communities }) => (
-  <Sidebar title="Awesome communities">
+  <Sidebar title="Communities suggestions">
     {communities && communities.map(({featured_image, ...community}) => {
         const title = generateTitle(community);
         const description = generateDescription(community.focus)
