@@ -25,19 +25,31 @@ exports[`Event should render correctly 1`] = `
           />
         </div>
       </ContentPanel>
-      <EventsSection
-        events={Array []}
-        title="Similar events from undefined"
-      />
       <ContentPanel
-        title="Ask the organizers"
+        title="Announcements"
       >
-        <Comments />
+        <EventAnnouncements />
+      </ContentPanel>
+      <ContentPanel
+        title="Meet the organizers"
+      >
+        <EventOrganizers />
       </ContentPanel>
     </ContentBody>
     <EventSidebar
       communities_suggestions={Array []}
+      events_suggestions={Array []}
     />
+    <FullRow>
+      <ContentBody>
+        <ContentPanel
+          title="Ask the organizers"
+        >
+          <AddComment />
+          <Comments />
+        </ContentPanel>
+      </ContentBody>
+    </FullRow>
   </ContentSection>
 </styled.div>
 `;
