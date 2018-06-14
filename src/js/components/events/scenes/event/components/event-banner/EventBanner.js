@@ -20,6 +20,11 @@ const eventBannerStyles = css`
     `
   } 
   
+  
+  .overlay {
+    opacity: 0.3;
+  }
+  
   > *:not(.overlay) {
     z-index: 1;
     position: relative;
@@ -43,7 +48,6 @@ const eventBannerStyles = css`
     .title {
       font-size: 3rem;
       font-weight: 300;
-      margin-bottom: 2rem;
       margin-top: 4rem;
       line-height: initial;
     }

@@ -11,6 +11,9 @@ import ReactMarkdown from 'react-markdown'
 import EventSidebar from './components/event-sidebar'
 import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
+import EventOrganizers from './components/event-organizers'
+import EventAnnouncements from './components/event-announcements'
+import AddComment from './components/add-comment'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -38,7 +41,7 @@ const Event = ({
   }
 
   const {title, description, featured_image, start_date, start_time,
-          interested_persons, comments} = event
+          interested_persons, organizers, announcements, comments} = event
   return (
     <StyledEvent activeLink={activeLink} className="app-container">
       <ContentSection>
@@ -51,15 +54,26 @@ const Event = ({
             </div>
           </ContentPanel>
 
-          <EventsSection title={`Similar events from ${community.name}`}
-                         events={events_suggestions} />
-
-          <ContentPanel title="Ask the organizers">
-            <Comments comments={comments} />
+          <ContentPanel title="Announcements">
+            <EventAnnouncements {...{announcements}} />
           </ContentPanel>
+
+          <ContentPanel title="Meet the organizers">
+            <EventOrganizers {...{organizers}} />
+          </ContentPanel>
+
         </ContentSection.Body>
 
-        <EventSidebar {...{communities_suggestions}}/>
+        <EventSidebar {...{announcements, events_suggestions, communities_suggestions}}/>
+
+        <ContentSection.FullRow>
+          <ContentSection.Body>
+            <ContentPanel title="Ask the organizers">
+              <AddComment />
+              <Comments comments={comments} />
+            </ContentPanel>
+          </ContentSection.Body>
+        </ContentSection.FullRow>
 
       </ContentSection>
 
