@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+
+// internal
 import logo from 'img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import Button from 'js/components/shared/button'

@@ -34,7 +34,7 @@ const Styles = styled.div`
     li {
       margin: auto 50px auto 0;
       
-      &:last-child {
+      &:last-child, .right-last-child {
         margin-right: 0;
       }
       
@@ -42,7 +42,7 @@ const Styles = styled.div`
         media.tablet`
           margin: auto 20px auto 0;
           
-          &:last-child {
+          &:last-child, .right-last-child {
             margin-right: 0;
           }
           

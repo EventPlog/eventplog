@@ -16,6 +16,7 @@ class HeaderContainer extends Component {
     ...this.state,
     onHideMenu: this.onHideMenu,
     user: Auth.currentUser(),
+    location: this.props.location,
     activeLink: this.props.activeLink
   })
 
