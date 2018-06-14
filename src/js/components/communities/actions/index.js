@@ -20,8 +20,8 @@ export const getCommunities = (data) => {
 }
 
 export const mockCreateCommunity = () => dispatch =>
-  mockIndexApi().then(res => {
-    dispatch({type: actionTypes.COMMUNITY_INDEX_COMPLETE, payload: res.communities})
+  mockApi.create().then(res => {
+    dispatch({type: actionTypes.COMMUNITY_CREATE_COMPLETE, payload: res})
   })
 
 export const createCommunity = (data) => {

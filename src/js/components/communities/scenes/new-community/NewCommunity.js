@@ -22,6 +22,7 @@ const StyledNewCommunity = styled.div`
       media.phone`
         width: 100%;
         align-items: end;
+        padding: 1rem 2rem;
       `
     }
   }
@@ -29,7 +30,6 @@ const StyledNewCommunity = styled.div`
   ul {
     margin: 0
   }
-  
 `
 
 type CommunityType = {
