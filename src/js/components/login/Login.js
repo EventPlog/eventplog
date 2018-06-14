@@ -10,16 +10,6 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
 import GoogleLogin from 'react-google-login';
 import { media, maxMedia } from '../../styles/mixins'
 
-const responseGoogle = (response) => {
-  debugger
-  console.log(response);
-}
-
-const responseFacebook = (response) => {
-  console.log(response);
-}
-
-
 const StyledLogin = styled.div`
   --fg: ${defaults.fg};
   --bg: ${defaults.bg};
@@ -88,7 +78,6 @@ class Login extends Component {
   }
 
   fbResponse = (res) => {
-    debugger;
     if (!res) return
     const [ first_name, ...otherNames ] = res.name.split(' ')
     const payload = {
