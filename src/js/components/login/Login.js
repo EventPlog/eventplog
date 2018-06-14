@@ -8,17 +8,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import GoogleLogin from 'react-google-login';
-import { media } from '../../styles/mixins'
-
-const responseGoogle = (response) => {
-  debugger
-  console.log(response);
-}
-
-const responseFacebook = (response) => {
-  console.log(response);
-}
-
+import { media, maxMedia } from '../../styles/mixins'
 
 const StyledLogin = styled.div`
   --fg: ${defaults.fg};
@@ -45,10 +35,28 @@ const StyledLogin = styled.div`
   }
   
   .app-container {
+    padding: 0 2rem
+    
+    ${
+      media.tablet`
+        padding-left: 0;
+      `
+    }
+    
     ${
       media.phone`
         padding: 0;
       `
+    }
+    
+    
+    .caption {
+      ${
+        maxMedia.tablet`
+          padding: 0 2rem;
+        `
+      }
+      
     }
     
     
