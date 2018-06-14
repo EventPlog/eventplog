@@ -12,8 +12,8 @@ const StyledComment = styled.div`
   }
     
   .avatar {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin: 0 auto 0.7rem auto;
     background-size: cover;
     border-radius: 50%;
