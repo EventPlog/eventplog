@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Communities should render correctly 1`] = `
+<styled.div>
+  <CommunityHeader />
+  <section
+    className="app-container"
+  >
+    <MainContent
+      communities={
+        Array [
+          1,
+          2,
+          3,
+        ]
+      }
+    />
+  </section>
+</styled.div>
+`;

@@ -1,17 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import color from '../../../theme/variables'
+import color from '../../styles/theme/variables'
 import footerLogo from '../../../img/eventplog-logo-small.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
-import { media } from '../../../styles/mixins'
+import { media } from '../../styles/mixins'
 
 const StyledFooter = styled.div`
    display: flex;
    flex-direction: column;
    border-top: 1px solid #ccc;
    color: var(--fg);
+   
+   .app-container {
+    padding: 1rem 2rem;
+   }
    
     a{
       color:${color.grayLight}
@@ -57,7 +61,7 @@ const StyledFooter = styled.div`
        media.phone`
          position: relative;
          margin-top: 2rem;
-         margin-bottom: 2rem;
+         align-self: baseline;
        `
      }
      
@@ -107,7 +111,7 @@ const StyledFooter = styled.div`
               width: 50%;
               margin: 30px 0;
               display: inline-block;
-              font-size: 70%;
+              font-size: 90%;
             }
           `
         }
@@ -180,21 +184,8 @@ const StyledFooter = styled.div`
      
      .app-container {
        width: 100%;
-       display: flex;
        justify-content: space-between;
        align-items: baseline;
-       
-       ${
-         media.tablet`
-         `
-       }
-       
-       ${
-        media.phone`
-          flex-direction: column;
-          padding: 2rem;
-        `
-       }
      }
    }
    

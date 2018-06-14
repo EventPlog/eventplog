@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Communities::Community::MainContent should render correctly 1`] = `
+<div
+  className="app-container"
+>
+  <ContentSection
+    className="community-event"
+  >
+    <ContentBody>
+      <EventsSection
+        events={Array []}
+        title="Events"
+      />
+      <EventsSection
+        events={Array []}
+        title="Similar events from other communities"
+      />
+    </ContentBody>
+    <ContentSidebar>
+      <CommunitiesSection
+        communities={Array []}
+      />
+    </ContentSidebar>
+  </ContentSection>
+</div>
+`;

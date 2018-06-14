@@ -6,7 +6,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: AndaleMono, "Andale Mono WT", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Open Sans";
-  color: #a2a3a5;
+  /*color: #a2a3a5;*/
+  color: #444;
 }
 
 h1, h2, h3 {
@@ -36,15 +37,10 @@ h4 {
 h5 {
   font-size: 1.5rem;
   font-weight: 500;
+  letter-spacing: -0.08rem;
 }
 
 h6 {
   font-size: 1.2rem;
   font-weight: 500;
-}
-
-.app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 50px;
 }

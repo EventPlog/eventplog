@@ -3,7 +3,7 @@ import logo from '../../img/logo.svg';
 import { Menu, Input, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
-import defaults from '../../theme/variables'
+import defaults from '../styles/theme/variables'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'

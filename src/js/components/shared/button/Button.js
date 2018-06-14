@@ -1,9 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
-import colors from '../../../../theme/colors'
+import styled, { css } from 'styled-components'
+import colors from '../../../styles/theme/colors'
+import { NavLink } from 'react-router-dom';
 
-
-const StyledBtn = styled.button`
+const btnSizes = {
+  medium: {fontSize: '1.2em'},
+}
+const commonStyles = css`
   border: 1px solid var(--activeLink);
   color: var(--activeLink);
   background: transparent;
@@ -20,8 +23,45 @@ const StyledBtn = styled.button`
   }
 `
 
-const Button = (props) => (
-  <StyledBtn {...props} />
+const inverted = css`
+  background: var(--activeLink);
+  color: ${ colors.white} !important;
+  
+  &:hover {
+    background: ${ colors.white };
+    color: var(--activeLink) !important;
+  }
+`
+
+const StyledBtn = styled.button`
+  ${ commonStyles }
+`
+
+const StyledLink = styled(NavLink)`
+  ${ commonStyles }
+  
+  &:hover {
+    color: ${colors.white} !important;
+  }
+`;
+
+const InvertedBtn = (Component, props) => (
+  props.inverted
+  ? Component.extend`
+      ${ inverted }
+    `
+  : Component
 )
+
+const Button = function(props) {
+  const Component = InvertedBtn(StyledBtn, props)
+  return <Component {...props} />
+}
+
+Button.Link = function(props) {
+  const Component = InvertedBtn(StyledLink, props)
+  return <Component {...props} />
+}
+
 
 export default Button

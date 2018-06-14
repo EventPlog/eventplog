@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import logo from '../../../../../img/eventplog-logo-small.png'
-import defaults from '../../../../../theme/variables'
+import defaults from '../../../../styles/theme/variables'
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid #eee;
@@ -42,15 +42,15 @@ const StyledHeader = styled.div`
 `
 
 const Header = () => (
-  <StyledHeader className="header">
-    <div className="app-container">
-      <div className="logo">
+  <StyledHeader className="header ">
+    <div className="app-container col-xs-6 col-s-6 col-m-6 col-l-6">
+      <div className="logo col-xs-6 col-s-6 col-m-6 col-l-6">
         <Link to="/">
           <img src={logo} alt='eventplog-logo' />
         </Link>
       </div>
 
-      <div className="menu">
+      <div className="menu col-xs-12 col-s-6 col-m-6 col-l-6">
         <ul>
           <li><Link to="/why-eventplog">Why EventPlog?</Link></li>
           <li><Link to="/about-us">About Us</Link></li>

@@ -68,17 +68,18 @@ export const Auth = {
         })
     },
   logout(params, cb) {
-    return (dispatch) =>
-       processRequest('/api/v1/web/logout', 'POST', params)
+    return (dispatch) => {
+      cookie.remove('current_user')
+      cookie.remove('user_token')
+      return processRequest('/api/v1/web/logout', 'POST', params)
         .then(res => {
-          cookie.remove('current_user')
-          cookie.remove('user_token')
           return res
         })
         .catch(err => {
           console.log(err)
           throw(err)
         })
+    }
   }
 }
 

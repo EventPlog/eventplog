@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Events should render correctly 1`] = `
+<div>
+  <CommunityHeader />
+  <section
+    className="app-container"
+  >
+    <MainContent
+      events={
+        Array [
+          1,
+          2,
+          3,
+        ]
+      }
+    />
+  </section>
+</div>
+`;

@@ -8,21 +8,21 @@ import { Switch } from 'react-router-dom';
 import Header from '../../header/MainHeader';
 import createLoader from '../shared/loading/createLoadable'
 import styled, { ThemeProvider } from 'styled-components';
-import defaults from '../../../theme/variables';
+import defaults from '../../styles/theme/variables';
 import {fakeAuth, PrivateRoute} from '../../auth'
 
 
 const Communities = createLoader(() =>
-  import('./communities/index'  /* webpackChunkName: "Communities" */))
+  import('./scenes/communities/index'  /* webpackChunkName: "Communities" */))
 
 const Community = createLoader(() =>
-  import('./community' /* webpackChunkName: "CommunityWithContainer" */))
+  import('./scenes/community' /* webpackChunkName: "CommunityWithContainer" */))
 
 const NewCommunity = createLoader(() =>
-  import('./new-community' /* webpackChunkName: "NewCommunity" */))
+  import('./scenes/new-community' /* webpackChunkName: "NewCommunity" */))
 
 const JoinACommunity = createLoader(() =>
-  import('./join-a-community' /* webpackChunkName: "JoinACommunity" */))
+  import('./scenes/join-a-community' /* webpackChunkName: "JoinACommunity" */))
 
 const StyledCommunityPlog = styled.div`
   --fg: ${props => props.theme.fg};

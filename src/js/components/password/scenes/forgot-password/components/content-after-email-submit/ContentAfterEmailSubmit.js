@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 // local
 import peopleDancing from '../../../../../../../img/giphys/people-dancing.gif'
-import { media } from '../../../../../../../styles/mixins'
+import { media } from '../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
   display: flex;

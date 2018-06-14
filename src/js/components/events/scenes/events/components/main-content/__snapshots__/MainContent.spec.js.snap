@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContent should render correctly 1`] = `
+<ContentSection>
+  <ContentBody>
+    <EventsSection
+      events={Array []}
+      title="Your events"
+    />
+    <EventsSection
+      events={Array []}
+      title="Events you may like"
+    />
+  </ContentBody>
+  <ContentSidebar>
+    <CommunitiesSection
+      communities={Array []}
+    />
+  </ContentSidebar>
+</ContentSection>
+`;

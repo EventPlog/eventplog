@@ -1,27 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import backgroundImg from '../../../../../img/login-bg.jpg'
-import colors from '../../../../../theme/colors'
+import colors from '../../../../styles/theme/colors'
 import LoginForm from '../login-form'
 import SignupForm from '../signup-form'
 import { Message } from 'semantic-ui-react'
-import { media } from '../../../../../styles/mixins'
+import { media } from '../../../../styles/mixins'
 
 const StyledMainContent = styled.div`
   background-image: url(${backgroundImg});
   background-size: cover;
   position: relative;
-  
-  .overlay {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: ${colors.black};
-    opacity: 0.6;
-    z-index: 0
-  }
   
   > .app-container {
     display: flex;

@@ -1,6 +1,6 @@
 import actionTypes from './types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
-import mockEventApi from '../../../mockApi/lead-api'
+import mockEventApi from 'js/mock-api/event-api'
 
 export const getEvent = (eventId) => {
   let actions = baseActions({
@@ -21,10 +21,10 @@ export const getEvent = (eventId) => {
 
 export const mockGetEvent = (eventId) => {
   return (dispatch) => {
-    dispatch({ type: actionTypes.EVENT_GET_START })
+    dispatch({ type: actionTypes.EVENT_SHOW_START })
 
     return mockEventApi.show(eventId).then(res => {
-      dispatch({type: actionTypes.EVENT_GET_COMPLETE, payload: res})
+      dispatch({type: actionTypes.EVENT_SHOW_COMPLETE, payload: res})
       return res
     })
   }
@@ -62,4 +62,15 @@ export const getEvents = (eventParams) => {
     route: `/api/v1/web/events`,
     requestMethod: 'GET'
   })
+}
+
+export const mockGetEvents = (eventId) => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.EVENT_INDEX_START })
+
+    return mockEventApi.index().then(res => {
+      dispatch({type: actionTypes.EVENT_INDEX_COMPLETE, payload: res})
+      return res
+    })
+  }
 }

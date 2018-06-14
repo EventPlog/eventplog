@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import LoginHeader from './login-header'
 import LoggedinHeader from './logged-in-header'
 import Auth from '../../auth'
-import styled from 'styled-components'
-import defaults from '../../../theme/variables'
-import { media } from '../../../styles/mixins'
+import styled, { css } from 'styled-components'
+import defaults from '../../styles/theme/variables'
+import { media } from '../../styles/mixins'
 
 const StyledHeader = styled.div`
-  border-bottom: 1px solid #eee;
+  --activeLink: ${props => props.linkColor ? props.linkColor : defaults.activeLink};
   
-  > .app-container {
+  border-bottom: 1px solid ${defaults.gray};
+  
+  .main-header {
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between; 
     
@@ -22,69 +25,46 @@ const StyledHeader = styled.div`
          display: flex;
          justify-content: space-between;
          align-items: flex-end;
+         width: 100%; 
         ` 
       }
       
-    }
-    img {
-      width: 180px;
-      
-      ${
-        media.phone`
-          width: 150px;
-        `
-      }
-    }
-    
-    .menu {
-      transition: display 2s;
-     
-      &.hidden {
+      i {
+        display: none;
+        
         ${
           media.phone`
-            display: none;
+            display: block;
+            font-size: 2rem;
           `
         }
       }
     }
     
-    ul {
-      list-style: none;
-      display: inline-flex;
-      margin: auto 0 auto 50px;
-      line-height: 70px;
-      font-weight: 500;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1.2px;
-      
-      ${
-        media.tablet`
-          margin: 0;
-          padding: 0;
-        `
-      } 
+    img {
+      width: 150px;
       
       ${
         media.phone`
-          flex-direction: column;
-          margin-top: 2rem;
+          width: 120px;
         `
       }
     }
     
-    li:not(:last-child) {
-      margin: auto 50px;
-      
-      ${
-        media.tablet`
-          margin: auto 20px
-        `
-      }
+    ul {
+      margin: auto 0 auto 50px;
       
       ${
         media.phone`
-          margin: 0;
+          margin: 2rem 0;
+          
+          li {
+            margin: 2rem 0;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
         `
       }
     }
@@ -94,25 +74,19 @@ const StyledHeader = styled.div`
       color: var(--activeLink);
     }
     
-    i {
-      display: none;
-      ${
-        media.phone`
-          display: block;
-          font-size: 2rem;
-        `
-      }
-    }
   }
+  
 `
 
-const Header = (props) => (
-  <StyledHeader className="app-header">
-    {  Auth.isLoggedIn
+const Header = (props) => {
+  return (
+    <StyledHeader linkColor={props.activeLink} className="app-header">
+      {  Auth.isLoggedIn
         ? <LoggedinHeader {...props} />
         : <LoginHeader {...props} />
-    }
-  </StyledHeader>
-)
+      }
+    </StyledHeader>
+  )
+}
 
 export default Header

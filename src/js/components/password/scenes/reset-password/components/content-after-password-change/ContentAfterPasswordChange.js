@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Input from '../../../../../shared/input'
 import Button from '../../../../../shared/button'
 import peopleDancing from '../../../../../../../img/giphys/congratulations.gif'
-import { media } from '../../../../../../../styles/mixins'
+import { media } from '../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
   display: flex;

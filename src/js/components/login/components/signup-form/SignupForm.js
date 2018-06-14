@@ -5,7 +5,7 @@ import GoogleLogin from 'react-google-login';
 import EmailSignupForm from './email-signup-form'
 import { Button, Form, Message, Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
-import colors from '../../../../../theme/colors'
+import colors from '../../../../styles/theme/colors'
 import { lighten } from 'polished'
 
 
@@ -70,7 +70,7 @@ const LoginForm = ({
   googleResponse,
   fbResponse
 }) => (
-  <StyledLoginForm className="form-holder">
+  <StyledLoginForm className="form-holder col-s-12 col-xs-12 col-m-4 col-l-4">
     <div className="header">
       Sign up
     </div>
