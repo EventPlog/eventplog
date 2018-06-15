@@ -11,6 +11,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
+import TermsAndConditions from './components/terms-and-conditions/TermsAndConditions'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -42,6 +43,7 @@ class App extends Component {
           <Route exact path="/logout" render={() => handleLogout(this.props.store)} />
           <Route exact path="/signup" component={Login} />
           <Route path="/leads/:id" component={Lead} />
+          <Route path="/terms-and-conditions" component={TermsAndConditions}/>
           <Route path="/user" component={User} />
           <Route path="/password" component={Password} />
           <PrivateRoute path="/events" component={Events} />
