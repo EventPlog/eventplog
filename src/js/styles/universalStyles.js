@@ -5,7 +5,6 @@ import { css } from 'styled-components'
 const styles = css`
   --fg: ${defaults.fg};
   --bg: ${defaults.bg};
-  --activeLink: ${defaults.activeLink};
   --gray: ${defaults.gray};
   height: 100%;
   

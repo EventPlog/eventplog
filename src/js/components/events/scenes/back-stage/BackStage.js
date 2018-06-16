@@ -8,6 +8,10 @@ import MainContent from './components/main-content-body'
 const StyledMain = styled.div`
   flex: 1;
   display: flex;
+  
+  &.app-container {
+    align-items: end;
+  }
 
   > .container {
     flex: 1;
@@ -19,7 +23,7 @@ type Props = {
 };
 
 const Main = (props) => (
-  <StyledMain>
+  <StyledMain className="app-container">
     <Sidebar {...props} />
     <MainContent {...props} />
   </StyledMain>

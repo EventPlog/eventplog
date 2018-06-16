@@ -1,17 +1,10 @@
 import React, { Component} from 'react'
 import { withRouter, matchPath } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Auth from '../../auth/actions'
+import defaults from 'js/styles/theme/variables'
+import Auth from 'js/auth'
 
-class HeaderContainer extends Component {
-  state = {
-    hideMenu: true
-  }
-
-  onHideMenu = () => {
-    this.setState((state) => ({hideMenu: !state.hideMenu}))
-  }
-
+class AppContainer extends Component {
   getProps = () => ({
     ...this.state,
     onHideMenu: this.onHideMenu,
@@ -28,9 +21,11 @@ class HeaderContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
   const match = matchPath(ownProps.location.pathname, '/communities/:id')
-  return { }
+  return {
+    activeLink: match && Object.keys(community).length > 0 ? community.link_color : defaults.activeLink,
+  }
 }
 
-export default withRouter(connect(mapStateToProps)(HeaderContainer))
+export default withRouter(connect(mapStateToProps)(AppContainer))
 
 
