@@ -13,10 +13,10 @@ const StyledPageHeader = styled.div`
   }
 `
 
-const PageHeader = ({ title }) => (
+const PageHeader = ({ title, icon }) => (
   <StyledPageHeader className="page-header">
     <Header as='h4'>
-      <Icon name='users' />
+      <Icon name={icon || 'users'} />
       <Header.Content>
         {title}
       </Header.Content>

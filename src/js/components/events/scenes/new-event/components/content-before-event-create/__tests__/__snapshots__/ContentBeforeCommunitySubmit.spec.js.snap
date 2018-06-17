@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
+<styled.div>
+  <h3>
+    Create a event
+  </h3>
+  <p>
+    What's the title of your event?
+  </p>
+  <div
+    className="submit-form"
+  >
+    <Form
+      as="form"
+      error={false}
+    >
+      <Message
+        error={true}
+        header="Error"
+      />
+      <FormGroup
+        inline={true}
+      >
+        <FormField
+          className="email-holder"
+        >
+          <Input
+            name="text"
+            placeholder="Event name"
+            type="text"
+          />
+        </FormField>
+        <Button>
+          Create
+        </Button>
+      </FormGroup>
+    </Form>
+  </div>
+</styled.div>
+`;

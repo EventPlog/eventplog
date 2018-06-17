@@ -2,18 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 // internal components
-import EventsSection from 'js/components/events/scenes/events/components/events-section'
 import ContentSection from 'js/components/shared/content-section'
-import { media } from 'js/styles/mixins'
 import ContentPanel from 'js/components/shared/content-panel'
 import Comments from 'js/components/shared/comments'
 import ReactMarkdown from 'react-markdown'
 import EventSidebar from './components/event-sidebar'
 import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
-import EventOrganizers from './components/event-organizers'
 import EventAnnouncements from './components/event-announcements'
-import AddComment from './components/add-comment'
+import AddComment from 'js/components/shared/add-comment'
+import Members from 'js/components/shared/members'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -59,7 +57,7 @@ const Event = ({
           </ContentPanel>
 
           <ContentPanel title="Meet the organizers">
-            <EventOrganizers {...{organizers}} />
+            <Members {...{members: organizers}} />
           </ContentPanel>
 
         </ContentSection.Body>
@@ -69,7 +67,7 @@ const Event = ({
         <ContentSection.FullRow>
           <ContentSection.Body>
             <ContentPanel title="Ask the organizers">
-              <AddComment />
+              <AddComment placeholder="What would you like to ask/suggest?" />
               <Comments comments={comments} />
             </ContentPanel>
           </ContentSection.Body>

@@ -47,6 +47,17 @@ export const createEvent = (eventParams) => {
   })
 }
 
+export const mockCreateEvent = (event) => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.EVENT_CREATE_START })
+
+    return mockEventApi.create(event).then(res => {
+      dispatch({type: actionTypes.EVENT_CREATE_COMPLETE, payload: res})
+      return res
+    })
+  }
+}
+
 export const getEvents = (eventParams) => {
   let actions = baseActions({
     requestType: actionTypes.EVENT_INDEX_START,

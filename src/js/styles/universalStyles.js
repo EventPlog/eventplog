@@ -77,6 +77,11 @@ const styles = css`
       `
     }
     
+    ${
+      media.phone`
+        display: inherit !important;
+      `
+    }
   }
   
   .hidden-md {
@@ -99,6 +104,12 @@ const styles = css`
         display: none !important;
       `
     }
+  }
+  
+  .sticky-container {
+    position: fixed !important;
+    z-index: 100;
+    top: 0;
   }
   
 `

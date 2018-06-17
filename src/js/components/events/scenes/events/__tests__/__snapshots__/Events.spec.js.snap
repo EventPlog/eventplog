@@ -2,7 +2,6 @@
 
 exports[`Events should render correctly 1`] = `
 <div>
-  <CommunityHeader />
   <section
     className="app-container"
   >

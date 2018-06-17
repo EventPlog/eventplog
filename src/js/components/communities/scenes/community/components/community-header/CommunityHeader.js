@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import Nav from 'js/components/shared/nav'
 import colors from 'js/styles/theme/colors'
 import { media } from 'js/styles/mixins'
+import Button from 'js/components/shared/button'
+import { Icon } from 'semantic-ui-react'
 
 // images
 import defaultLogo from 'img/dev-c-lagos-logo.png'
@@ -67,6 +69,16 @@ const CommunityHeader = ({
 
           <Nav.Item>
             <Link to="/communities/1">Organizers</Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Button.Link to="/communities/1/events/new" activeClassName="hidden">
+              <span className="hidden-lg">
+                <Icon name="plus" />
+                <Icon name="handshake outline" />
+              </span>
+              <span className="hidden-md hidden-xs">Create an event</span>
+            </Button.Link>
           </Nav.Item>
         </Nav>
       </div>

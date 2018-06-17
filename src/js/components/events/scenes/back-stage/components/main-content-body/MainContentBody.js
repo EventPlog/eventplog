@@ -43,9 +43,13 @@ const StyledMainContent = styled.div`
     background: #fff;
     border-radius: 10px;
     
+    > div {
+      margin: 2rem 0;
+    }
+    
     ${
       media.phone`
-       border-radius: none;
+       border-radius: 0;
       `
     }
   }

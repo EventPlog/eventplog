@@ -35,6 +35,30 @@ exports[`CommunityHeader should render correctly 1`] = `
             Organizers
           </Link>
         </Component>
+        <Component>
+          <Component
+            activeClassName="hidden"
+            to="/communities/1/events/new"
+          >
+            <span
+              className="hidden-lg"
+            >
+              <Icon
+                as="i"
+                name="plus"
+              />
+              <Icon
+                as="i"
+                name="handshake outline"
+              />
+            </span>
+            <span
+              className="hidden-md hidden-xs"
+            >
+              Create an event
+            </span>
+          </Component>
+        </Component>
       </Nav>
     </div>
   </div>

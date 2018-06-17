@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
+import { Icon } from 'semantic-ui-react'
+
 import defaults from 'js/styles/theme/variables';
 import { media, maxMedia } from 'js/styles/mixins'
 
@@ -38,6 +40,7 @@ const Aside = styled.aside`
       ${
         media.phone`
           padding: 0.5rem;
+          border-bottom: none;
         `
       }
     }
@@ -52,27 +55,38 @@ const Aside = styled.aside`
         line-height: 50px;
       `
     }
+    
+    i {
+      margin-right: 1rem;
+    }
   }
 `
 
 Aside.defaultProps = {
 }
 
-const Sidebar = ({ themeColors, event = {} }) => {
-  const menuItems = ["Tasks", "Check-in", "Guests", "Settings"];
+const Sidebar = ({ className, event = {} }) => {
+  const menuItems = [
+    { name: "Tasks", icon: 'settings' },
+    { name: "Guests", icon: 'users' },
+    { name: "Feedback", icon: 'send' },
+    {name: "Settings", icon: 'settings' }
+  ];
   return (
     <ThemeProvider theme={{
       ...defaults,
-      ...themeColors
     }}>
-      <Aside>
+      <Aside className={className}>
         <ul>
           {
-            menuItems.map((menuItem, index) =>
+            menuItems.map(({name, icon}, index) =>
               <li key={index}>
-                <NavLink to={`/communities/1/events/${1}/backstage/${menuItem.toLowerCase()}`}
+                <NavLink to={`/communities/1/events/${1}/backstage/${name.toLowerCase()}`}
                          activeClassName="active">
-                  {menuItem}
+                  <span className="hidden-xs">
+                    <Icon name={icon || 'users'} />
+                  </span>
+                  {name}
                 </NavLink>
               </li>
             )

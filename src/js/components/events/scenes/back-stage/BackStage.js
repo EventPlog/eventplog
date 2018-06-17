@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Sidebar from './components/sidebar';
 import MainContent from './components/main-content-body'
+import Sticky from 'js/components/shared/sticky'
 
 const StyledMain = styled.div`
   flex: 1;
