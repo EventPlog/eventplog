@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import colors from '../../../styles/theme/colors'
 import { NavLink } from 'react-router-dom';
+import { media } from 'js/styles/mixins'
 
 const btnSizes = {
   medium: {fontSize: '1.2em'},
@@ -17,6 +18,11 @@ const commonStyles = css`
   font-weight: 600;
   letter-spacing: 1px;
   
+  ${
+    media.phone`
+      padding: 0.8rem;
+    `
+  }
   &:hover {
     background: var(--activeLink);
     color: ${colors.white};

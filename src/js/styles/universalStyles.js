@@ -5,7 +5,6 @@ import { css } from 'styled-components'
 const styles = css`
   --fg: ${defaults.fg};
   --bg: ${defaults.bg};
-  --activeLink: ${defaults.activeLink};
   --gray: ${defaults.gray};
   height: 100%;
   
@@ -78,6 +77,11 @@ const styles = css`
       `
     }
     
+    ${
+      media.phone`
+        display: inherit !important;
+      `
+    }
   }
   
   .hidden-md {
@@ -100,6 +104,12 @@ const styles = css`
         display: none !important;
       `
     }
+  }
+  
+  .sticky-container {
+    position: fixed !important;
+    z-index: 100;
+    top: 0;
   }
   
 `

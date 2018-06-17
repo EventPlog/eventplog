@@ -29,10 +29,17 @@ const StyledComment = styled.div`
   
   .commenter {
     margin-right: 1rem;
+    max-width: 100px;
     
     ${
       media.phone`
-        margin-right: 1rem;
+        max-width: 100%;
+      `
+    }
+    
+    ${
+      media.phone`
+        margin-right: 0.5rem;
         display: flex;
       `
     }
@@ -69,13 +76,6 @@ const StyledComment = styled.div`
     > .comment-card {
        padding-top: 1rem; 
        
-       ${
-         media.phone`
-           padding-left: 10px;
-           margin-left: 5px;
-           border-left: 1px solid #aaa;
-         `
-       }
     }
     
     
@@ -116,5 +116,14 @@ const Comment = ({
     </StyledComment>
   )
 }
+
+Comment.Replies = ({
+  className,
+  children
+}) => (
+  <div className={`replies comment-card ${className}`}>
+    { children }
+  </div>
+)
 
 export default Comment

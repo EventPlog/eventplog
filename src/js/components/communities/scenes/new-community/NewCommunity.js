@@ -5,10 +5,6 @@ import MainContent from './components/main-content'
 import { media } from 'js/styles/mixins'
 
 const StyledNewCommunity = styled.div`
-  --fg: ${defaults.fg};
-  --bg: ${defaults.bg};
-  --activeLink: ${defaults.activeLink};
-  
   display: flex;
   flex-direction: column;
   height: 100%;
