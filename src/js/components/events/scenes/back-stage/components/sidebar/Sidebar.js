@@ -14,7 +14,7 @@ const Aside = styled.aside`
 
   ${
     media.tablet`
-      width: 100px;
+      width: 150px;
     `
   }
   
@@ -34,7 +34,7 @@ const Aside = styled.aside`
       border-bottom: 1px solid ${defaults.activeLink};
       border-bottom: 1px solid var(--activeLink, ${defaults.activeLink});
       margin-bottom: 15px;
-      padding: 0 0 15px 50px;
+      padding: 0 0 15px 10px;
       color: #444;
       
       ${
