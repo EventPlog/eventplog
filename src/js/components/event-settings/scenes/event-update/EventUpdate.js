@@ -5,7 +5,6 @@ import ContentPanel from 'js/components/shared/content-panel'
 import { Form, label, Message, Checkbox } from 'semantic-ui-react'
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
-import RangeDateTimePicker from 'js/components/shared/range-date-time-picker'
 import DateTimePicker from 'react-datetime-picker';
 
 const StyleEventUpdate = styled.div`
@@ -87,7 +86,7 @@ const EventUpdate = ({
               <DateTimePicker
                 className="date-time-picker"
                 onChange={handleChange}
-                value={new Date(start_date)}
+                value={new Date()}
               />
             </Form.Field>
 
@@ -96,7 +95,7 @@ const EventUpdate = ({
               <DateTimePicker
                 className="date-time-picker"
                 onChange={handleChange}
-                value={new Date(start_date)}
+                value={new Date()}
               />
             </Form.Field>
 

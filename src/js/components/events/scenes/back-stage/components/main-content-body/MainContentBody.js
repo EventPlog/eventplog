@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // internal components
 import EventPageContent from './EventPageContent';
-import { media } from 'js/styles/mixins'
+import { media, maxMedia } from 'js/styles/mixins'
 
 // assets
 import techIsInYou from 'img/tech_is_in_you.png'
@@ -44,11 +44,10 @@ const StyledMainContent = styled.div`
     border-radius: 10px;
     
     > div {
-      margin: 2rem 0;
     }
     
     ${
-      media.phone`
+      maxMedia.tablet`
        border-radius: 0;
       `
     }
