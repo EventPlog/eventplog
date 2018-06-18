@@ -85,7 +85,7 @@ const EventUpdate = ({
               <label>Starts at</label>
               <DateTimePicker
                 className="date-time-picker"
-                onChange={handleChange}
+                onChange={() => {}}
                 value={new Date()}
               />
             </Form.Field>
