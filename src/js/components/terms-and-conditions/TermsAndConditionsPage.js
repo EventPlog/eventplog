@@ -1,4 +1,4 @@
-giimport React from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const StyledTermsAndConditionsPage =styled.div`
