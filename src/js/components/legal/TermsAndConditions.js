@@ -5,7 +5,6 @@ import TermsAndConditionsPage from './TermsAndConditionsPage'
 import {media} from '../../styles/mixins'
 
 const StyledTermsAndConditions = styled.div`
-display: flex;
 margin: 50px 100px;
   ${
     media.phone`
@@ -17,7 +16,7 @@ margin: 50px 100px;
 const TermsAndConditions = () => (
   <StyledTermsAndConditions>
   <Switch>
-    <Route exact path="/privacy-policy" component={TermsAndConditions}/>
+    <Route exact path="/privacy-policy" component={TermsAndConditionsPage}/>
     <Route exact path="/terms-and-conditions" component={TermsAndConditionsPage} />
   </Switch>
 </StyledTermsAndConditions>

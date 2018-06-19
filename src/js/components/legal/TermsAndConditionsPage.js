@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {media} from '../../styles/mixins'
+import Button from '../shared/button/Button'
 
 const StyledTermsAndConditionsPage =styled.div`
 
@@ -38,6 +39,11 @@ ${
       `
     }
   }
+
+  .close-button{
+   display:flex;
+    justify-content: center;
+  }
   
 `
 
@@ -54,7 +60,9 @@ const TermsAndConditionsPage =()=>{
           <text className="content">A Terms and Conditions agreement is the agreement that includes the terms, the rules and the guidelines of acceptable behavior, plus other useful sections, to which users must agree in order to use or access your website and mobile app.</text>
           <subtitle><h6 className="subtitle">Limitation of liability</h6></subtitle>
           <text className="content">A Terms and Conditions agreement is the agreement that includes the terms, the rules and the guidelines of acceptable behavior, plus other useful sections, to which users must agree in order to use or access your website and mobile app.</text>
-
+          <div classname="close-button">
+          <Button >close</Button>
+          </div>
     </div>
     </StyledTermsAndConditionsPage>
   )

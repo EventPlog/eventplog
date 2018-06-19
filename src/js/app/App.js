@@ -10,7 +10,7 @@ import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
-import TermsAndConditions from '../components/terms-and-conditions';
+import TermsAndConditions from '../components/legal';
 
 
 
