@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 import TermsAndConditionsPage from './TermsAndConditionsPage'
+import PrivacyPolicy from './PrivacyPolicy'
 import {media} from '../../styles/mixins'
 
 const StyledTermsAndConditions = styled.div`
@@ -16,7 +17,7 @@ margin: 50px 100px;
 const TermsAndConditions = () => (
   <StyledTermsAndConditions>
   <Switch>
-    <Route exact path="/privacy-policy" component={TermsAndConditionsPage}/>
+    <Route exact path="/privacy-policy" component={PrivacyPolicy}/>
     <Route exact path="/terms-and-conditions" component={TermsAndConditionsPage} />
   </Switch>
 </StyledTermsAndConditions>
