@@ -113,7 +113,7 @@ const EventBanner = ({
         </div>
       </div>
     </div>
-    <Button.Link className="cta" to={`/communities/${community.id}/events/${id}`}>
+    <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
       Go Backstage
     </Button.Link>
   </ContentSection.FullRow>

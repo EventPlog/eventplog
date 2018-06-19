@@ -13,11 +13,10 @@ import CommunityHeader from './components/community-header'
 import { media } from 'js/styles/mixins'
 
 
-const Event = createLoader(() =>
-  import('js/components/events/scenes/event' /* webpackChunkName: "Event" */))
+const Events = createLoader(() =>
+  import('js/components/events' /* webpackChunkName: "Event" */))
 
 const StyledMain = styled.div`
-  --activeLink: ${ props=> props ? props.activeLink : 'var(--activeLink)'};
 `;
 
 type Props = {
@@ -28,10 +27,12 @@ type Props = {
 
 const Main = ({activeLink, ...props}) => (
   <StyledMain activeLink={activeLink}>
-    <CommunityHeader />
-    <PrivateRoute exact path="/communities/:id" render={(routerProps) => <MainContent {...props} />}/>
-    <PrivateRoute exact path="/communities/:community_id/events" render={() => <MainContent {...props} />}/>
-    <PrivateRoute exact path="/communities/:community_id/events/:id" render={() => <Event {...props} />}/>
+    <CommunityHeader community={props.community} />
+    <Switch>
+      <PrivateRoute exact path="/communities/:id" render={(routerProps) => <MainContent {...props} />}/>
+      <PrivateRoute exact path="/communities/:community_id/events" render={() => <MainContent {...props} />}/>
+      <PrivateRoute path="/communities/:community_id/events/*" render={() => <Events {...props} />}/>
+    </Switch>
   </StyledMain>
 )
 

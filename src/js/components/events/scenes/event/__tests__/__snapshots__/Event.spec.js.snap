@@ -33,7 +33,7 @@ exports[`Event should render correctly 1`] = `
       <ContentPanel
         title="Meet the organizers"
       >
-        <EventOrganizers />
+        <Members />
       </ContentPanel>
     </ContentBody>
     <EventSidebar
@@ -45,7 +45,9 @@ exports[`Event should render correctly 1`] = `
         <ContentPanel
           title="Ask the organizers"
         >
-          <AddComment />
+          <AddComment
+            placeholder="What would you like to ask/suggest?"
+          />
           <Comments />
         </ContentPanel>
       </ContentBody>

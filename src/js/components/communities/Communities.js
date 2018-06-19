@@ -25,10 +25,6 @@ const JoinACommunity = createLoader(() =>
   import('./scenes/join-a-community' /* webpackChunkName: "JoinACommunity" */))
 
 const StyledCommunityPlog = styled.div`
-  --fg: ${props => props.theme.fg};
-  --bg: ${props => props.theme.bg};
-  --activeLink: ${props => props.theme.activeLink};
-  --gray: ${props => props.theme.gray};
   height: 100%;
   
   a, a:hover {

@@ -8,7 +8,7 @@ import createLoader from '../shared/loading/createLoadable'
 import styled, { ThemeProvider } from 'styled-components';
 import defaults from '../../styles/theme/variables';
 import {fakeAuth, PrivateRoute} from '../../auth'
-
+import UserNav from 'js/components/shared/user-secondary-menu'
 
 const Events = createLoader(() =>
   import('./scenes/events/index'  /* webpackChunkName: "Events" */))
@@ -19,12 +19,10 @@ const Event = createLoader(() =>
 const NewEvent = createLoader(() =>
   import('./scenes/new-event' /* webpackChunkName: "NewEvent" */))
 
+const BackStage = createLoader(() =>
+  import('./scenes/back-stage' /* webpackChunkName: "NewEvent" */))
 
 const StyledEventPlog = styled.div`
-  --fg: ${props => props.theme.fg};
-  --bg: ${props => props.theme.bg};
-  --activeLink: ${props => props.theme.activeLink};
-  --gray: ${props => props.theme.gray};
   height: 100%;
   
   a, a:hover {
@@ -32,21 +30,24 @@ const StyledEventPlog = styled.div`
   }
 `
 
+const UserEvents = () => (
+  [
+    <UserNav />,
+    <Events />
+  ]
+)
 const EventPlog = ({user = {}}) => (
-  <ThemeProvider theme={{
-      ...defaults,
-      ...user.theme,
-    }}>
     <StyledEventPlog>
       {/*<EPHeader/>*/}
       {/*<Header />*/}
       <Switch>
-        <PrivateRoute exact path="/" render={() => <Events {...{user}} />} />
-        <PrivateRoute exact path="/events" component={Events} />
-        <PrivateRoute exact path="/events/new" component={NewEvent} />
+        <PrivateRoute exact path="/" component={UserEvents} />
+        <PrivateRoute exact path="/events" component={UserEvents} />
+        <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
+        <PrivateRoute exact path="/communities/:community_id/events/:id" component={Event} />
+        <PrivateRoute path="/communities/:community_id/events/:id/backstage" component={BackStage} />
       </Switch>
     </StyledEventPlog>
-  </ThemeProvider>
 )
 
 export default EventPlog

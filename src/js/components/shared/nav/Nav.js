@@ -27,6 +27,8 @@ const Styles = styled.div`
         media.phone`
           flex-direction: column;
           margin-top: 2rem;
+          width: 100%;
+          justify-content: space-between;
         `
       }
     }
@@ -36,6 +38,12 @@ const Styles = styled.div`
       
       &:last-child, .right-last-child {
         margin-right: 0;
+      }
+      
+      ${
+        media.phone`
+          margin: 0;
+        `
       }
       
       ${

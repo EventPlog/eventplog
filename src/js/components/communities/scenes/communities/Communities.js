@@ -9,7 +9,6 @@ import Loading from 'js/components/shared/loading'
 
 const StyledCommunities = styled.div`
   section.app-container {
-    margin: 50px auto;
     
     ${
       media.phone`

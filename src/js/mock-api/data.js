@@ -45,6 +45,7 @@ const communities = [
     name: 'Facebook Developer Circle Lagos',
     description: 'A community of developers united in knowledge sharing.',
     featured_image: '/login-bg.jpg',
+    logo: '/dev-c-lagos-logo.png',
     no_of_members: 200,
     no_of_upcoming_events: 2,
     focus: 'Technology',
@@ -55,6 +56,7 @@ const communities = [
   {
     id: 2,
     name: 'Google Developer Group',
+    display_name: 'Google Developer Group',
     description: 'Developer community bringing up community interest, powereed by google',
     featured_image: '/tech_is_in_you.png',
     no_of_members: 200,
@@ -67,6 +69,7 @@ const communities = [
   {
     id: 3,
     name: 'ForLoop Lagos',
+    display_name: 'ForLoop Lagos',
     description: 'A community of developers united in knowledge sharing',
     featured_image: '/login-bg.jpg',
     no_of_members: 200,
@@ -76,6 +79,48 @@ const communities = [
     members: users,
     joined: true,
   },
+]
+
+const feedback = [
+  {
+    id: 1,
+    satisfaction: 60,
+    nps: 0.5,
+    swags: 0,
+    comment: "I **Loved** this event!! Thank you so much for putting it together!",
+    user: {
+      id: 3,
+      first_name: 'Sarah',
+      last_name: 'Omoloye',
+      community_role: 'Top Contributor'
+    },
+  },
+  {
+    id: 1,
+    satisfaction: 60,
+    nps: 0.5,
+    swags: 0,
+    comment: "This was awesome crew! Might it be great **if** we used `eventbrite` for this?&nbsp; I would love to test out my  design skills if you guys permit? \n\nPS: Never done this before though. Lol!",
+    user: {
+      id: 3,
+      first_name: 'John',
+      last_name: 'Dariye',
+      community_role: 'First Time Contributor'
+    },
+  },
+  {
+    id: 1,
+    satisfaction: 60,
+    nps: 0.5,
+    swags: 0,
+    comment: "I had a rant to give and never planned on sharing feedback. But the bot asked nicely, so I did. Love the concept :)",
+    user: {
+      id: 3,
+      first_name: 'Chineye',
+      last_name: 'Ogbonna',
+      community_role: 'Member'
+    },
+  }
 ]
 
 const events = [
@@ -179,5 +224,6 @@ const events = [
 ]
 export default {
   communities,
+  feedback,
   events
 }

@@ -7,8 +7,6 @@ import defaults from '../../styles/theme/variables'
 import { media } from '../../styles/mixins'
 
 const StyledHeader = styled.div`
-  --activeLink: ${props => props.linkColor ? props.linkColor : defaults.activeLink};
-  
   border-bottom: 1px solid ${defaults.gray};
   
   .main-header {
@@ -69,10 +67,6 @@ const StyledHeader = styled.div`
       }
     }
     
-    a {
-      color: ${defaults.activeLink};
-      color: var(--activeLink);
-    }
     
   }
   
@@ -80,7 +74,7 @@ const StyledHeader = styled.div`
 
 const Header = (props) => {
   return (
-    <StyledHeader linkColor={props.activeLink} className="app-header">
+    <StyledHeader  className="app-header">
       {  Auth.isLoggedIn
         ? <LoggedinHeader {...props} />
         : <LoginHeader {...props} />

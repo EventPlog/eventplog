@@ -8,25 +8,36 @@ import Button from 'js/components/shared/button'
 import Nav from 'js/components/shared/nav'
 import grayLogo from 'img/logo-gray-full.png'
 
-const Header = ({ activeLink, hideMenu, onHideMenu}) => (
+const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
   <div className="main-header app-container">
     <div className="logo">
       <Link to="/">
-        <img src={activeLink ? grayLogo : logo } alt='eventplog-logo' />
+        <img src={inCommunity ? grayLogo : logo } alt='eventplog-logo' />
       </Link>
       <Icon name='content' onClick={onHideMenu} />
     </div>
 
     <Nav hideOnMobile={hideMenu}>
       <Nav.Item>
-        <Button.Link to="/communities/new"
+        {!inCommunity &&
+          <Button.Link to="/communities/new"
                      activeClassName="hidden">
-              <span className="hidden-lg">
+              <span className="hidden-lg hidden-xs">
                 <Icon name="plus" />
                 <Icon name="users" />
               </span>
-          <span className="hidden-md">Create a community</span>
-        </Button.Link>
+            <span className="hidden-md">Create a community</span>
+          </Button.Link>}
+
+        {inCommunity &&
+          <Link to="/communities/new"
+                     activeClassName="hidden">
+              <span className="hidden-lg hidden-xs">
+                <Icon name="plus" />
+                <Icon name="users" />
+              </span>
+            <span className="hidden-md">Create a community</span>
+          </Link>}
       </Nav.Item>
 
       <Nav.Item>

@@ -17,7 +17,7 @@ class HeaderContainer extends Component {
     onHideMenu: this.onHideMenu,
     user: Auth.currentUser(),
     location: this.props.location,
-    activeLink: this.props.activeLink
+    inCommunity: this.props.inCommunity
   })
 
   render () {
@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
   const match = matchPath(ownProps.location.pathname, '/communities/:id')
   return {
-    activeLink: match && Object.keys(community).length > 0 ? community.link_color : null,
+    inCommunity: match && Object.keys(community).length > 0 && community.link_color
   }
 }
 
