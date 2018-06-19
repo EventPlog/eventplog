@@ -27,7 +27,7 @@ type Props = {
 
 const Main = ({activeLink, ...props}) => (
   <StyledMain activeLink={activeLink}>
-    <CommunityHeader />
+    <CommunityHeader community={props.community} />
     <Switch>
       <PrivateRoute exact path="/communities/:id" render={(routerProps) => <MainContent {...props} />}/>
       <PrivateRoute exact path="/communities/:community_id/events" render={() => <MainContent {...props} />}/>

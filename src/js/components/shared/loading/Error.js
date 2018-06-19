@@ -6,7 +6,7 @@ const ErrorComponent = ({msg}) => (
   <div className="app-container">
     <div>
       <h5> Oops ... Something went wrong. </h5>
-      <p>{msg}</p>
+      <p>{isDevelopment ? msg : ''}</p>
     </div>
   </div>
 )
