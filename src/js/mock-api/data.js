@@ -56,6 +56,7 @@ const communities = [
   {
     id: 2,
     name: 'Google Developer Group',
+    display_name: 'Google Developer Group',
     description: 'Developer community bringing up community interest, powereed by google',
     featured_image: '/tech_is_in_you.png',
     no_of_members: 200,
@@ -68,6 +69,7 @@ const communities = [
   {
     id: 3,
     name: 'ForLoop Lagos',
+    display_name: 'ForLoop Lagos',
     description: 'A community of developers united in knowledge sharing',
     featured_image: '/login-bg.jpg',
     no_of_members: 200,

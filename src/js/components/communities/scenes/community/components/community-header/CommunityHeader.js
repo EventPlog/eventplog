@@ -81,7 +81,7 @@ const CommunityHeader = ({
     <div className="app-container community-logo">
       <Link to={`/communities/${community.id}`} >
         <img src={community.logo || defaultLogo} />
-        {!community.logo && <h3>{community.name}</h3>}
+        {community.display_name && <h3>{community.display_name}</h3>}
       </Link>
     </div>
 
