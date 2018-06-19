@@ -13,7 +13,10 @@ class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {event: state.events.event}
+  return {
+    event: state.events.event,
+    community: state.communities.community
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -65,7 +65,11 @@ const Aside = styled.aside`
 Aside.defaultProps = {
 }
 
-const Sidebar = ({ className, event = {} }) => {
+const Sidebar = ({
+  className,
+  community = {},
+  event = {}
+}) => {
   const menuItems = [
     { name: "Tasks", icon: 'settings' },
     { name: "Guests", icon: 'users' },
@@ -73,27 +77,23 @@ const Sidebar = ({ className, event = {} }) => {
     {name: "Settings", icon: 'settings' }
   ];
   return (
-    <ThemeProvider theme={{
-      ...defaults,
-    }}>
-      <Aside className={className}>
-        <ul>
-          {
-            menuItems.map(({name, icon}, index) =>
-              <li key={index}>
-                <NavLink to={`/communities/1/events/${1}/backstage/${name.toLowerCase()}`}
-                         activeClassName="active">
-                  <span className="hidden-xs">
-                    <Icon name={icon || 'users'} />
-                  </span>
-                  {name}
-                </NavLink>
-              </li>
-            )
-          }
-        </ul>
-      </Aside>
-    </ThemeProvider>
+    <Aside className={className}>
+      <ul>
+        {
+          menuItems.map(({name, icon}, index) =>
+            <li key={index}>
+              <NavLink to={`/communities/${community.id}/events/${event.id}/backstage/${name.toLowerCase()}`}
+                       activeClassName="active">
+                <span className="hidden-xs">
+                  <Icon name={icon || 'users'} />
+                </span>
+                {name}
+              </NavLink>
+            </li>
+          )
+        }
+      </ul>
+    </Aside>
   )
 
 }

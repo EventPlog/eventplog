@@ -10,6 +10,7 @@ exports[`CommunityHeader should render correctly 1`] = `
       to="/communities/undefined"
     >
       <img
+        className=""
         src="react-logo.png"
       />
     </Link>

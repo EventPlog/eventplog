@@ -38,7 +38,10 @@ const StyledHeader = styled.div`
           max-height: none;
           max-width: 100%;
           margin-right: 0;
-          width: 70px;
+          
+          &.logo-only {
+            width: 70px;
+          }
         `
       }  
     }
@@ -80,7 +83,7 @@ const CommunityHeader = ({
   <StyledHeader>
     <div className="app-container community-logo">
       <Link to={`/communities/${community.id}`} >
-        <img src={community.logo || defaultLogo} />
+        <img src={community.logo || defaultLogo} className={community.display_name ? 'logo-only' : '' } />
         {community.display_name && <h3>{community.display_name}</h3>}
       </Link>
     </div>
