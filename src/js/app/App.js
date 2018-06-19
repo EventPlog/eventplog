@@ -10,7 +10,8 @@ import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
-import TermsAndConditions from '../components/legal';
+import Legal from '../components/legal';
+//import PrivacyPolicy from '../components/legal/PrivacyPolicy';
 
 
 
@@ -45,7 +46,7 @@ class App extends Component {
                    : <Login/>
               } />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/terms-and-conditions" component={TermsAndConditions} />
+            <Route path="/legal" component={Legal} />
             <Route exact path="/logout" render={() => handleLogout(this.props.store)} />
             <Route exact path="/signup" component={Login} />
             <Route path="/leads/:id" component={Lead} />
