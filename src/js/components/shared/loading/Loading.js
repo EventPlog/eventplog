@@ -9,7 +9,7 @@ const StyledLoading = styled.div`
 
 const renderError = (error) => {
   console.log(error)
-  return <Error msg={JSON.stringify(error)} />
+  return <Error msg={error.message} />
 }
 
 const Loading = (props) =>
