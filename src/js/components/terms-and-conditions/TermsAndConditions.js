@@ -8,13 +8,13 @@ display: flex;
 margin: 50px 100px;
 `
 
-const TermAndConditions = () => (
+const TermsAndConditions = () => (
   <StyledTermsAndConditions>
   <Switch>
-    <Route exact path="/" render={() => <div>Coming Soon...</div>}/>
+    
     <Route exact path="/terms-and-conditions" component={TermsAndConditionsPage} />
   </Switch>
 </StyledTermsAndConditions>
 )
 
-export default TermAndConditions
+export default TermsAndConditions
