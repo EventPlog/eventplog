@@ -5,9 +5,14 @@ exports[`CommunityHeader should render correctly 1`] = `
   <div
     className="app-container community-logo"
   >
-    <img
-      src="dev-c-lagos-logo.png"
-    />
+    <Link
+      replace={false}
+      to="/communities/undefined"
+    >
+      <img
+        src="react-logo.png"
+      />
+    </Link>
   </div>
   <div
     className="nav-holder"
@@ -22,7 +27,7 @@ exports[`CommunityHeader should render correctly 1`] = `
         <Component>
           <Link
             replace={false}
-            to="/communities/1/events"
+            to="/communities/undefined/events"
           >
             Events
           </Link>
@@ -30,7 +35,7 @@ exports[`CommunityHeader should render correctly 1`] = `
         <Component>
           <Link
             replace={false}
-            to="/communities/1"
+            to="/communities/undefined"
           >
             Organizers
           </Link>
@@ -38,7 +43,7 @@ exports[`CommunityHeader should render correctly 1`] = `
         <Component>
           <Component
             activeClassName="hidden"
-            to="/communities/1/events/new"
+            to="/communities/undefined/events/new"
           >
             <span
               className="hidden-lg"
