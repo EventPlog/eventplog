@@ -45,6 +45,7 @@ const communities = [
     name: 'Facebook Developer Circle Lagos',
     description: 'A community of developers united in knowledge sharing.',
     featured_image: '/login-bg.jpg',
+    logo: '/dev-c-lagos-logo.png',
     no_of_members: 200,
     no_of_upcoming_events: 2,
     focus: 'Technology',
