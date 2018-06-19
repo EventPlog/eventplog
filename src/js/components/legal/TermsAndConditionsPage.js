@@ -21,7 +21,7 @@ ${
     }
   }
   .subtitle{
-    
+    margin: 15px auto;
     ${
       media.phone`
         display: block;
