@@ -4,11 +4,12 @@ import {media} from '../../styles/mixins'
 import Button from '../shared/button/Button'
 
 const StyledPrivacyPolicy =styled.div`
-${
-  media.phone`
-    margin:5px;
-  `
-}
+
+  ${
+    media.phone`
+      margin: 10px 20px;
+    `
+  }
   .title{
     text-align:center;
     ${
@@ -20,7 +21,8 @@ ${
     }
   }
   .subtitle{
-    
+    margin: 15px auto;
+    font-weight:bold;
     ${
       media.phone`
         display: block;
@@ -40,8 +42,10 @@ ${
   }
 
   .close-button{
-   display:flex;
-    justify-content: center;
+    .button{
+      margin-left: 500px;
+    }
+    
   }
   
 `
@@ -192,7 +196,7 @@ const PrivacyPolicy =()=>{
 
 
           <div classname="close-button">
-          <Button >close</Button>
+          <Button classname="button">close</Button>
           </div>
     </div>
     </StyledPrivacyPolicy>
