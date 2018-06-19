@@ -20,11 +20,12 @@ ${
     }
   }
   .subtitle{
+    
     ${
       media.phone`
         display: block;
         font-size: 1rem;
-        margin: 6px auto;
+        margin: 8px auto;
       `
     }
   }
