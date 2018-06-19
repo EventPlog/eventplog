@@ -7,11 +7,15 @@ const StyledLoading = styled.div`
   margin: 100px;
 `
 
+const renderError = (error) => {
+  console.log(error)
+  return <Error msg={JSON.stringify(error)} />
+}
 
 const Loading = (props) =>
   <StyledLoading>
     { props.error
-        ? <Error msg={props.error.message} />
+        ? renderError(props.error)
         : <Loader active inline='centered'/>
     }
   </StyledLoading>

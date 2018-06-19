@@ -5,9 +5,12 @@ import ContentPanel from 'js/components/shared/content-panel'
 import { Form, label, Message, Checkbox } from 'semantic-ui-react'
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
-import DateTimePicker from 'react-datetime-picker';
+import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle'
+import DateTimePickerStyles from 'js/styles/thirdparty/date-time-picker-styles'
 
 const StyleEventUpdate = styled.div`
+  ${ DateTimePickerStyles }
+  
   > img {
     width: 100%;
   }
@@ -90,14 +93,14 @@ const EventUpdate = ({
               />
             </Form.Field>
 
-            {/*<Form.Field>
+            <Form.Field>
               <label>Ends at</label>
               <DateTimePicker
                 className="date-time-picker"
                 onChange={handleChange}
                 value={new Date()}
               />
-            </Form.Field>*/}
+            </Form.Field>
 
           </Form.Group>
 
