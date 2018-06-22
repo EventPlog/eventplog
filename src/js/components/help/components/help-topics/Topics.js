@@ -14,13 +14,16 @@ const StyledHelpPage =styled.div`
 li{
   line-height: 30px;
 }
+hr{
+  color:pink;
+}
 
 `
 const TopicsSection =()=>{
   return(
     <StyledHelpPage>
   <div className="topics-section">
-    <Link to="/help">Getting Started</Link><br/><br/>
+    <Link to="/help">Getting Started</Link><br/><hr/>
     <Link to="/communities/help">Communities</Link>
     <ul>
         <li><Link to="/communities/help">Follow your favorite communities</Link></li>
@@ -31,13 +34,14 @@ const TopicsSection =()=>{
         <li><Link to="/communities/help">Connect with organisers</Link></li>
         <li><Link to="/communities/help">Create a community</Link></li>
       </ul>
+      <hr/>
     <Link to="/communities/help">Events</Link>
     <ul>
         <li><Link to="/communities/help">Upcoming events</Link></li>
-        <li><Link to="/communities/help">My communities</Link></li>
+        <li><Link to="/communities/help">My events</Link></li>
         <li><Link to="/communities/help">Event Suggestions</Link></li>
         <li><Link to="/communities/help">Create an event</Link></li>
-      </ul>
+      </ul><hr/>
     <Link to="/communities/help">Backstage</Link>
     <ul>
         <li><Link to="/communities/help">Event Planning</Link></li>
