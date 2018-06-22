@@ -10,6 +10,8 @@ import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
+import HelpPage from '../components/help';
+
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -45,11 +47,13 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" render={() => handleLogout(this.props.store)} />
             <Route exact path="/signup" component={Login} />
+            <Route path="/help" component={HelpPage}/>
             <Route path="/leads/:id" component={Lead} />
             <Route path="/user" component={User} />
             <Route path="/password" component={Password} />
             <PrivateRoute path="/events" component={Events} />
             <PrivateRoute path="/communities" component={Communities} />
+            
           </Switch>
           <Footer />
         </StyledApp>
