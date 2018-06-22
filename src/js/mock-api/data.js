@@ -209,7 +209,7 @@ const events = [
     id: 3,
     title: 'Figma Design Series',
     description: "##### Task Ready: \n\n * Article writing, \n * Blogging \n * Technical writing\n *  Social media : define your realm of influence",
-    featured_image: '/tech_is_in_you.png',
+    featured_image: '/login-bg.jpg',
     interested: false,
     interested_persons: 108,
     start_date: '28 June, 2018',

@@ -17,17 +17,17 @@ class ComponentWithContainerProps extends Component {
       return <Error msg={this.state.msg} />
     }
 
-    const {container: Container, component: Component} = this.props
+    const {container: Container, component: Component, ...otherProps} = this.props
     return (
-      <Container>
-        {(props) => <Component {...props} />}
+      <Container {...otherProps}>
+        {(props) => <Component {...props}  />}
       </Container>
     )
   }
 }
 
-const renderComponentWithProps = (container, component) => () => (
-  <ComponentWithContainerProps {...{container, component}} />
+const renderComponentWithProps = (container, component) => (props) => (
+  <ComponentWithContainerProps {...{container, component, ...props}} />
 )
 
 export default renderComponentWithProps
