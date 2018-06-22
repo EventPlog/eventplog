@@ -12,8 +12,6 @@ import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
 import HelpPage from '../components/help';
 
-
-
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
 const Login = createLoadable(() => import('js/components/login'  /* webpackChunkName: "login" */))
 const Events = createLoadable(() => import('js/components/events'  /* webpackChunkName: "EventPlog" */))
