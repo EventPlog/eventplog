@@ -15,16 +15,6 @@ const StyledHelpPage =styled.div`
 const HelpPage =()=>{
   return(
     <StyledHelpPage>
-
-    <Switch>
-        <PrivateRoute exact path="/" component={UserEvents} />
-        <PrivateRoute exact path="/events" component={UserEvents} />
-        <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
-        <PrivateRoute exact path="/communities/:community_id/events/:id" component={Event} />
-        <PrivateRoute path="/communities/:community_id/events/:id/backstage" component={BackStage} />
-    </Switch>
-
-
       <div className="help-page">
         <HelpTopics/>
         <HelpDescription/>
