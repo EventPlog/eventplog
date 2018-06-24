@@ -7,10 +7,9 @@ import Auth from 'js/auth'
 class AppContainer extends Component {
   getProps = () => ({
     ...this.state,
+    ...this.props,
     onHideMenu: this.onHideMenu,
     user: Auth.currentUser(),
-    location: this.props.location,
-    activeLink: this.props.activeLink
   })
 
   render () {
@@ -22,6 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
   const match = matchPath(ownProps.location.pathname, '/communities/:id')
   return {
+    ...ownProps,
     activeLink: match && Object.keys(community).length > 0 ? community.link_color : defaults.activeLink,
   }
 }

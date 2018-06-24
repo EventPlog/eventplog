@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import Error from 'js/components/shared/loading/Error'
 
 
 class ComponentWithContainerProps extends Component {
-  state = { hasError: false }
+  state = { hasError: false, msg: '' }
 
   componentDidCatch(error, info) {
     this.setState({ hasError: true });
@@ -13,25 +14,20 @@ class ComponentWithContainerProps extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <h5 className="app-container" style={{
-                  marginTop: '100px',
-                  textAlign: 'center',
-                }}>
-              Oops ... Something went wrong.
-             </h5>;
+      return <Error msg={this.state.msg} />
     }
 
-    const {container: Container, component: Component} = this.props
+    const {container: Container, component: Component, ...otherProps} = this.props
     return (
-      <Container>
-        {(props) => <Component {...props} />}
+      <Container {...otherProps}>
+        {(props) => <Component {...props}  />}
       </Container>
     )
   }
 }
 
-const renderComponentWithProps = (container, component) => () => (
-  <ComponentWithContainerProps {...{container, component}} />
+const renderComponentWithProps = (container, component) => (props) => (
+  <ComponentWithContainerProps {...{container, component, ...props}} />
 )
 
 export default renderComponentWithProps

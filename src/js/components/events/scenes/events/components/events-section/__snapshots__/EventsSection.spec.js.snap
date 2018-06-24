@@ -107,7 +107,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         </Link>
       </span>
     }
-    featured_image="/tech_is_in_you.png"
+    featured_image="/login-bg.jpg"
     meta={
       Array [
         <ul>

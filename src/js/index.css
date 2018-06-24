@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #444;
 }
 
-h1, h2, h3 {
+h1, h2 {
   letter-spacing: -1px;
 }
 
@@ -24,6 +24,10 @@ h2 {
   font-weight: 300;
 }
 
+h3, h4 {
+  letter-spacing: -0.05rem;
+}
+
 h3 {
   font-size: 2rem;
   font-weight: 500;
@@ -34,13 +38,17 @@ h4 {
   font-weight: 500;
 }
 
+h5, h6 {
+  letter-spacing: -0.08rem;
+}
+
 h5 {
   font-size: 1.5rem;
   font-weight: 500;
-  letter-spacing: -0.08rem;
 }
 
 h6 {
   font-size: 1.2rem;
   font-weight: 500;
 }
+
