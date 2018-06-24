@@ -1,4 +1,6 @@
 export default {
-  communities: [],
   community: {},
+  communities: [],
+  communities_suggestions: [],
+  loading: false
 }

@@ -11,6 +11,7 @@ import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
 import HelpPage from '../components/help';
+import ScrollToTop from '../components/shared/scroll-to-top'
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
 const Login = createLoadable(() => import('js/components/login'  /* webpackChunkName: "login" */))
@@ -29,32 +30,33 @@ class App extends Component {
   state = { activeItem: 'home' };
 
   render() {
-    const { activeLink } = this.props;
+    const { activeLink, store } = this.props;
     return (
       <ThemeProvider theme={{
         activeLink
       }}>
-        <StyledApp>
-          <Header />
-          <Switch>
-            <Route exact path="/" render={(props) =>
-                 Auth.isLoggedIn
-                   ? <Events {...props} />
-                   : <Login/>
-              } />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/logout" render={() => handleLogout(this.props.store)} />
-            <Route exact path="/signup" component={Login} />
-            <Route path="/help" component={HelpPage}/>
-            <Route path="/leads/:id" component={Lead} />
-            <Route path="/user" component={User} />
-            <Route path="/password" component={Password} />
-            <PrivateRoute path="/events" component={Events} />
-            <PrivateRoute path="/communities" component={Communities} />
-            
-          </Switch>
-          <Footer />
-        </StyledApp>
+        <ScrollToTop>
+          <StyledApp>
+            <Header />
+            <Switch>
+              <Route exact path="/" render={(props) =>
+                   Auth.isLoggedIn
+                     ? <Events {...props} />
+                     : <Login/>
+                } />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/logout" render={() => handleLogout(store)} />
+              <Route exact path="/signup" component={Login} />
+              <Route path="/leads/:id" component={Lead} />
+              <Route path="/user" component={User} />
+              <Route path="/password" component={Password} />
+              <Route path="/help" component={HelpPage} />              
+              <PrivateRoute path="/events" component={Events} />
+              <PrivateRoute path="/communities" component={Communities} />
+            </Switch>
+            <Footer />
+          </StyledApp>
+        </ScrollToTop>
       </ThemeProvider>
     )
   }

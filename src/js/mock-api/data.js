@@ -45,6 +45,7 @@ const communities = [
     name: 'Facebook Developer Circle Lagos',
     description: 'A community of developers united in knowledge sharing.',
     featured_image: '/login-bg.jpg',
+    logo: '/dev-c-lagos-logo.png',
     no_of_members: 200,
     no_of_upcoming_events: 2,
     focus: 'Technology',
@@ -55,6 +56,7 @@ const communities = [
   {
     id: 2,
     name: 'Google Developer Group',
+    display_name: 'Google Developer Group',
     description: 'Developer community bringing up community interest, powereed by google',
     featured_image: '/tech_is_in_you.png',
     no_of_members: 200,
@@ -67,6 +69,7 @@ const communities = [
   {
     id: 3,
     name: 'ForLoop Lagos',
+    display_name: 'ForLoop Lagos',
     description: 'A community of developers united in knowledge sharing',
     featured_image: '/login-bg.jpg',
     no_of_members: 200,
@@ -206,7 +209,7 @@ const events = [
     id: 3,
     title: 'Figma Design Series',
     description: "##### Task Ready: \n\n * Article writing, \n * Blogging \n * Technical writing\n *  Social media : define your realm of influence",
-    featured_image: '/tech_is_in_you.png',
+    featured_image: '/login-bg.jpg',
     interested: false,
     interested_persons: 108,
     start_date: '28 June, 2018',
