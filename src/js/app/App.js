@@ -11,8 +11,6 @@ import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
 import Legal from '../components/legal';
-//import PrivacyPolicy from '../components/legal/PrivacyPolicy';
-
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
