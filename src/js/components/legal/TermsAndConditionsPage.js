@@ -17,7 +17,6 @@ ${
       media.phone`
         display: block;
         font-size: 1.2rem;
-        
       `
     }
   }
@@ -41,20 +40,17 @@ ${
       `
     }
   }
-
   .close-button{
    display:flex;
     justify-content: center;
   }
-  
 `
-
 const TermsAndConditionsPage =()=>{
   return(
     <StyledTermsAndConditionsPage>
     <div className="terms-and-conditions-container">
         <heading><h5 className="title"> Terms of service</h5></heading>
-        
+     
         <text className="content">
           Welcome to EventPlog!<br/><br/>
           These Terms govern your use of EventPlog and the products, features, apps, services, technologies, 
@@ -115,7 +111,6 @@ const TermsAndConditionsPage =()=>{
               You shall not use a false e-mail address, pretend to be someone other than yourself or 
               otherwise mislead us or third parties as to the origin of any Submissions. We may, but 
               shall not be obligated to, remove or edit any Submissions.
-
               By completing an order or signing up, you agree to receive <br/><br/>
               a) emails containing relevant 
               offers from third parties, and <br/><br/>
@@ -123,7 +118,6 @@ const TermsAndConditionsPage =()=>{
               EventPlog. You may unsubscribe from promotional emails via a link provided in each email. 
               If you would like us to remove your personal information from our database, unsubscribe 
               from emails and/or SMS, please email Support.
-
           </text>
           <subtitle><h6 className="subtitle">The permissions you give us</h6></subtitle>
           <text className="content">We need certain permissions from you to provide our services:<br/><br/>
@@ -132,7 +126,6 @@ const TermsAndConditionsPage =()=>{
               takes away the rights you have to your own content. You are free to share your content 
               with anyone else, wherever you want. To provide our services, though, we need you to give 
               us some legal permissions to use that content.<br/><br/>
-
               Specifically, when you share, post, or upload content that is covered by intellectual 
               property rights (like photos or videos) on or in connection with our Products, you grant
                us a non-exclusive, transferable, sub-licensable, royalty-free, and worldwide license to
@@ -141,13 +134,11 @@ const TermsAndConditionsPage =()=>{
               settings). <br/><br/>This means, for example, that if you share a photo on EventPlog, 
               you give us permission to store, copy, and share it with others (again, consistent with your settings) 
               such as service providers that support our service or other EventPlog Products you use.<br/><br/>
-              
               You can end this license any time by deleting your content or account. 
               You should know that, for technical reasons, content you delete may persist for a 
               limited period of time in backup copies (though it will not be visible to other users). 
               In additionn, content you delete may continue to appear if you have shared it with others 
               and they have not deleted it.<br/><br/>
-
               2. Permission to use your name, profile picture, and information about your actions 
               with ads and sponsored content: <br/><br/>You give us permission to use your name and profile picture 
               and information about actions you have taken on EventPlog next to or in connection with ads, 
@@ -167,7 +158,6 @@ const TermsAndConditionsPage =()=>{
               our Brand Usage Guidelines or with our prior written permission. You must obtain our written
                permission (or permission under an open source license) to modify, create derivative works of, 
                decompile, or otherwise attempt to extract source code from us.
-
           </text>
           <subtitle><h6 className="subtitle">Our Platform</h6></subtitle>
           <text className="content">We try hard to make sure that our Platform is always available and working,
@@ -181,7 +171,6 @@ const TermsAndConditionsPage =()=>{
            make no representation of that nature and reserves the right to terminate the website at any time 
            and without notice. You accept that service interruption may occur in order to allow for website 
            improvements, scheduled maintenance or may also be due to outside factors beyond our control.
-
           </text>
           <subtitle><h6 className="subtitle">Links and Third Party Websites</h6></subtitle>
           <text className="content">We may include links to third party websites at any time. However, the 
@@ -192,7 +181,6 @@ const TermsAndConditionsPage =()=>{
                and services, available on third party websites.<br/><br/>
               Creating a link to this website is strictly forbidden without our prior written consent. 
               Furthermore, we reserve the right to revoke our consent without notice or justification.
-
           </text>
           <subtitle><h6 className="subtitle">Intellectual Property</h6></subtitle>
           <text className="content">Both parties agree that all intellectual property rights and database rights, 
@@ -205,12 +193,10 @@ const TermsAndConditionsPage =()=>{
                you agree not to, or facilitate any third party to, copy, reproduce, transmit, publish, 
                display, distribute, commercially exploit or create derivative works of such material and 
                content.
-
           </text>
           <subtitle><h6 className="subtitle">Data Protection</h6></subtitle>
           <text className="content">Any personal information collected in relation to the use of this 
           website will be held and used in accordant with our Privacy Policy.
-
           </text>
           <subtitle><h6 className="subtitle">Additional provisions</h6></subtitle>
           <text className="content"><br/>
