@@ -28,7 +28,6 @@ class MainContentContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {community_id, id} = ownProps.match.params
   const {loading, events = []} = state.events
   const {communities = []} = state.communities
   return {
