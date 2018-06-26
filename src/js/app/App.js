@@ -10,7 +10,9 @@ import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
+import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
+
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
 const Login = createLoadable(() => import('js/components/login'  /* webpackChunkName: "login" */))
@@ -34,6 +36,7 @@ class App extends Component {
       <ThemeProvider theme={{
         activeLink
       }}>
+      
         <ScrollToTop>
           <StyledApp>
             <Header />
@@ -44,6 +47,7 @@ class App extends Component {
                      : <Login/>
                 } />
               <Route exact path="/login" component={Login} />
+              <Route path="/legal" component={Legal} />
               <Route exact path="/logout" render={() => handleLogout(store)} />
               <Route exact path="/signup" component={Login} />
               <Route path="/leads/:id" component={Lead} />
