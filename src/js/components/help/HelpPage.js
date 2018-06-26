@@ -1,26 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import {Switch, Route,Link} from 'react-router-dom'
 import HelpDescription from './components/help-description'
 import HelpTopics from './components/help-topics'
+import createLoader from '../../components/shared/loading/createLoadable'
 
 const StyledHelpPage =styled.div`
-.help-page{
-  display:flex;
-  margin:50px;
-  font-size: 18px;
-}
-
 `
+const GettingStarted= createLoader(() => import('./components/pages/getting-started' /* webpackChunckName : "GettingStarted" */))
+
 const HelpPage =()=>{
   return(
-    <StyledHelpPage>
-      <div className="help-page">
-        <HelpTopics/>
-        <HelpDescription/>
-    </div>
+  <StyledHelpPage>
+    <Switch>
+      <Route path="/" component={GettingStarted} />
+      <Route path="/help/getting-started" component={GettingStarted} />
+      {/* {<Route exact path="/help/communities" component={Communities} />*/}
+    
+    </Switch>
   </StyledHelpPage>
-  )
+  );
 }
 
 export default HelpPage
+
