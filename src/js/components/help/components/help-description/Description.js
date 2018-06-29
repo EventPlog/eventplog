@@ -7,6 +7,7 @@ const StyledDescription =styled.div`
 .help-description{
   font-size: 15px;
   max width:650px;
+  line-height=30px;
 }
 `
 
