@@ -23,32 +23,41 @@ const TopicsSection =()=>{
   return(
     <StyledHelpPage>
   <div className="topics-section">
-    <Link to="/help">Getting Started</Link><br/><hr/>
-    <Link to="/communities/help">Communities</Link>
+    <Link to="/help/getting-started">Getting Started</Link><br/><hr/>
+    <Link to="/help/communities">Communities</Link>
     <ul>
-        <li><Link to="/communities/help">Follow your favorite communities</Link></li>
-        <li><Link to="/communities/help">My communities</Link></li>
-        <li><Link to="/communities/help">Community suggestions</Link></li>
-        <li><Link to="/communities/help">Community events</Link></li>
-        <li><Link to="/communities/help">Announcements</Link></li>
-        <li><Link to="/communities/help">Connect with organisers</Link></li>
-        <li><Link to="/communities/help">Create a community</Link></li>
-      </ul>
-      <hr/>
-    <Link to="/communities/help">Events</Link>
+      <li><Link to="/help/communities/follow-a-community">Follow your favorite communities</Link></li>
+      <li><Link to="/help/communities/discover-new-communities">Discover New Communities</Link></li>
+      <li><Link to="/help/communities/communities-i-follow">Communities I Follow</Link></li>
+      <li><Link to="/help/communities/community-suggestions">Community suggestions</Link></li>
+      <li><Link to="/help/communities/announcements">Announcements</Link></li>
+      <li><Link to="/help/communities/connect-with-organizers">Find and connect with organisers</Link></li>
+    </ul>
+    <hr/>
+    <Link to="/help/events/">Events</Link>
     <ul>
-        <li><Link to="/communities/help">Upcoming events</Link></li>
-        <li><Link to="/communities/help">My events</Link></li>
-        <li><Link to="/communities/help">Event Suggestions</Link></li>
-        <li><Link to="/communities/help">Create an event</Link></li>
-      </ul><hr/>
-    <Link to="/communities/help">Backstage</Link>
+      <li><Link to="/help/events/upcoming-events">Upcoming events</Link></li>
+      <li><Link to="/help/events/discover-new-events">Discover new events</Link></li>
+      <li><Link to="/help/events/my-events">My events</Link></li>
+      <li><Link to="/help/events/event-suggestions">Event Suggestions</Link></li>
+      <li><Link to="/help/events/create-an-event">Create an event</Link></li>
+    </ul>
+    <hr/>
+    <Link to="/help/backstage">Backstage</Link>
     <ul>
-        <li><Link to="/communities/help">Event Planning</Link></li>
-        <li><Link to="/communities/help">Event Guests</Link></li>
-        <li><Link to="/communities/help">Event Feedback</Link></li>
-        <li><Link to="/communities/help">Event Settings</Link></li>
-      </ul>
+      <li><Link to="/help/backstage/">Event Planning</Link></li>
+      <li><Link to="/help/backstage/">Event Guests</Link></li>
+      <li><Link to="/help/backstage/">Event Feedback</Link></li>
+      <li><Link to="/help/backstage/">Event Settings</Link></li>
+    </ul>
+    <hr/>
+    <Link to="/help/backstage">Organizers</Link>
+    <ul>
+      <li><Link to="/help/organizers/create-a-community">Create a community</Link></li>
+      <li><Link to="/help/backstage/">Create an Event</Link></li>
+      <li><Link to="/help/backstage/">My communities</Link></li>
+      <li><Link to="/help/backstage/">Create Announcements</Link></li>
+    </ul>
   </div>
   </StyledHelpPage>
   )
