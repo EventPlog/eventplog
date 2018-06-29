@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 //import image from '../../../../../img/help-pages/help login page desktop.jpg'
 import image from '../../../../../../img/help-pages/help login page desktop.jpg'
-import {Switch, Route, Link} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import Topic from '../../topic'
 import Description from '../../help-description'
 import Sidebar from '../../help-topics'
@@ -35,7 +35,7 @@ const GettingStarted = ()=>{
       <div className="help-main-content">
       <Topic>Getting Started</Topic>
       <Description>
-        <br/>Are you new on Eventplog? <br/><br/>
+        Are you new on Eventplog? <br/><br/>
         If yes, you are at the right place to be and we are delighted to have you here. <br/><br/>
         Welcome to Eventplog!
       <br/><br/>These guides will take you on fun, quick and easy steps to using Eventplog.<br/><br/>
@@ -50,7 +50,7 @@ const GettingStarted = ()=>{
           <br/><br/>
           For community owners, you might be interested in knowing how to <Link to="create-event/help">create events</Link> for your community or how
           to <Link to="/backstage/help">plan your event</Link> from inception to finish
-          <br/><br/> 
+          <br/><br/> <Link to="https://eventplog.com">Go to eventplog</Link>
       </Description>
       </div>
     </div>
