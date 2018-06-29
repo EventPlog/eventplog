@@ -6,6 +6,7 @@ const StyledTopic =styled.div`
 .topic{
   text-align: center;
   font-weight:bold;
+  margin: 25px;
 }
 `
 
