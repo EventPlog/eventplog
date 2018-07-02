@@ -43,21 +43,21 @@ const TopicsSection =()=>{
       <li><Link to="/help/events/event">About an event</Link></li>
     </ul>
     <hr/>
+    <Link to="/help/backstage">Organizers</Link>
+    <ul>
+      <li><Link to="/help/organizers/create-a-community">Create a community</Link></li>
+      <li><Link to="/help/organizers/create-an-event">Create an Event</Link></li>
+      <li><Link to="/help/organizers/create-a-community">My communities</Link></li>
+      <li><Link to="/help/organizers/create-announcements">Create Announcements</Link></li>
+      <li><Link to="/help/backstage/">Plan your event</Link></li>
+    </ul><hr/>
     <Link to="/help/backstage">Backstage</Link>
     <ul>
       <li><Link to="/help/backstage/">Event Planning</Link></li>
       <li><Link to="/help/backstage/">Event Guests</Link></li>
       <li><Link to="/help/backstage/">Event Feedback</Link></li>
       <li><Link to="/help/backstage/">Event Settings</Link></li>
-    </ul>
-    <hr/>
-    <Link to="/help/backstage">Organizers</Link>
-    <ul>
-      <li><Link to="/help/organizers/create-a-community">Create a community</Link></li>
-      <li><Link to="/help/backstage/">Create an Event</Link></li>
-      <li><Link to="/help/backstage/">My communities</Link></li>
-      <li><Link to="/help/backstage/">Create Announcements</Link></li>
-    </ul>
+    </ul> 
   </div>
   </StyledHelpPage>
   )
