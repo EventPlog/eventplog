@@ -45,7 +45,6 @@ const Announcements = () =>{
             Usually, most recent announcements are highlighted with a green background while older
             announcements can be found on the announcements section. <br/><br/>
           </Description> 
-          <div className="button"><Button>Go to eventplog</Button></div>
         </div>
       </div>
     </StyledAnnouncements>
