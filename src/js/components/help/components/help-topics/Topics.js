@@ -36,11 +36,11 @@ const TopicsSection =()=>{
     <hr/>
     <Link to="/help/events/">Events</Link>
     <ul>
-      <li><Link to="/help/events/upcoming-events">Upcoming events</Link></li>
+      {/* {<li><Link to="/help/events/upcoming-events">Upcoming events</Link></li>} */}
       <li><Link to="/help/events/discover-new-events">Discover new events</Link></li>
-      <li><Link to="/help/events/my-events">My events</Link></li>
+      <li><Link to="/help/events/upcoming-and-past-events">My events</Link></li>
       <li><Link to="/help/events/event-suggestions">Event Suggestions</Link></li>
-      <li><Link to="/help/events/create-an-event">Create an event</Link></li>
+      <li><Link to="/help/events/event">About an event</Link></li>
     </ul>
     <hr/>
     <Link to="/help/backstage">Backstage</Link>
