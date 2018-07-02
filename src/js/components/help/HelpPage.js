@@ -7,7 +7,7 @@ const StyledHelpPage =styled.div`
 `
 const GettingStarted= createLoader(() => import('./components/pages/getting-started' /* webpackChunckName : "GettingStarted" */))
 const CommunitiesHelp= createLoader(() => import('./components/pages/communities' /*webpackChunkName : "CommunitiesHelp" */))
-//const Events= createLoader(() => import('./components/pages/events' /*webpackChunkName : "EventsHelp" */))
+const Events= createLoader(() => import('./components/pages/events' /*webpackChunkName : "EventsHelp" */))
 
 const HelpPage =()=>{
   return(
@@ -16,6 +16,7 @@ const HelpPage =()=>{
         <Route exact path="/help" component={GettingStarted} />
         <Route exact path="/help/getting-started" component={GettingStarted} />
         <Route path="/help/communities" component={CommunitiesHelp}/> 
+        <Route path="/help/events" component={Events}/> 
       </Switch>
     </StyledHelpPage>
   );
