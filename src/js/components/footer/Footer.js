@@ -224,20 +224,20 @@ const Footer = () => (
             </li>
             <li>
               <div className="header">Products</div>
-              <Link to="/about-us">
+              <Link to="/why-eventplog">
                 Why Eventplog?
               </Link>
             </li>
             <li>
               <div className="header">Resources</div>
-              <Link to="/about-us">
+              <Link to="/events">
                 Events
               </Link>
             </li>
             <li>
               <div className="header">Extras</div>
-              <Link to="/about-us">
-                Communities
+              <Link to="/help">
+                Help
               </Link>
             </li>
           </ul>
