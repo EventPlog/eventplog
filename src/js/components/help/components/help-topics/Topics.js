@@ -37,26 +37,27 @@ const TopicsSection =()=>{
     <Link to="/help/events/">Events</Link>
     <ul>
       {/* {<li><Link to="/help/events/upcoming-events">Upcoming events</Link></li>} */}
+      <li><Link to="/help/events/event-suggestions">Event Suggestions</Link></li>
       <li><Link to="/help/events/discover-new-events">Discover new events</Link></li>
       <li><Link to="/help/events/upcoming-and-past-events">My events</Link></li>
-      <li><Link to="/help/events/event-suggestions">Event Suggestions</Link></li>
+      <li><Link to="/help/organizers/create-an-event">Create an Event</Link></li>
       <li><Link to="/help/events/event">About an event</Link></li>
     </ul>
     <hr/>
-    <Link to="/help/backstage">Organizers</Link>
+    <Link to="/help/organizers">Organizers</Link>
     <ul>
       <li><Link to="/help/organizers/create-a-community">Create a community</Link></li>
       <li><Link to="/help/organizers/create-an-event">Create an Event</Link></li>
-      <li><Link to="/help/organizers/create-a-community">My communities</Link></li>
+      <li><Link to="/help/organizers/create-a-community">My communities and Events</Link></li>
       <li><Link to="/help/organizers/create-announcements">Create Announcements</Link></li>
       <li><Link to="/help/backstage/">Plan your event</Link></li>
     </ul><hr/>
     <Link to="/help/backstage">Backstage</Link>
     <ul>
-      <li><Link to="/help/backstage/">Event Planning</Link></li>
-      <li><Link to="/help/backstage/">Event Guests</Link></li>
-      <li><Link to="/help/backstage/">Event Feedback</Link></li>
-      <li><Link to="/help/backstage/">Event Settings</Link></li>
+      <li><Link to="/help/backstage/event-planning">Event Planning</Link></li>
+      <li><Link to="/help/backstage/event-guests">Event Guests</Link></li>
+      <li><Link to="/help/backstage/event-feedback">Event Feedback</Link></li>
+      <li><Link to="/help/backstage/event-settings">Event Settings</Link></li>
     </ul> 
   </div>
   </StyledHelpPage>
