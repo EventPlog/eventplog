@@ -6,6 +6,22 @@ import Topic from '../../../../topic'
 import Description from '../../../../help-description'
 
 const StyledDiscoverEvents=styled.div`
+.help-description-container{
+  display:flex;
+  margin 5px;
+  padding: 5px;
+}
+
+img{
+width:700px;
+height: 500px;
+}
+
+.help-main-content{
+  font-size: 15px;
+  margin-left:80px;
+  max-width: 650px;
+}
 
 `
 
@@ -16,14 +32,11 @@ const EventSuggestions = ()=>{
         <div ><Sidebar/></div> 
 
         <div className="help-main-content"> 
-          <Topic>Event Suggestion</Topic>
+          <Topic>Event Suggestions</Topic>
           <Description>
-            Anouncements are used by event organizers to notify you of any important information
-            regarding an event or a community.<br/><br/> Announcements can be found on all <Link to="">Event</Link>
-            and <Link to="">Community</Link> pages. <br/><br/>
-
-            Usually, most recent announcements are highlighted with a green background while older
-            announcements can be found on the announcements section. <br/><br/>
+            Based on your interest in certain events or communitites, we suggest events you might be 
+            interested in.<br/><br/> Find event suggestions on <Link to=""> communities </Link>
+            pages. <br/><br/>
           </Description> 
         </div>
       </div>

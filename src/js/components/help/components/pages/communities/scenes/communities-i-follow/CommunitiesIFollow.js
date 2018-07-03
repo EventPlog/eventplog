@@ -36,13 +36,12 @@ const CommunitiesIFollow = ()=>{
         <div><Sidebar/></div>
         <div className="help-main-content"><Topic>Communities I Follow</Topic>
           <Description>
-            If you are looking for communities you follow, you can click on communities at the
+            Click on communities at the
             top navigation bar of the first page you see after you have followed or joined a 
-            community.
-            From this page, you can decide to go to the community's page or you can decide to 
+            community, if you are looking for communities you follow.<br/><br/>
+            From this page, you can decide to go to the community's home page. You can also
             <Link to =""> unfollow a community</Link> you already follow.<br/><br/>
           </Description>
-          <div className="button"><Button>Go to eventplog</Button></div>
         </div>
       </div>
     </StyledCommunitiesIFollow>

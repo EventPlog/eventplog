@@ -32,13 +32,12 @@ const ConnectWithOrganizers = () =>{
         <div className="help-main-content"><Topic> Find and Connect With the Organizers</Topic>     
           <Description>
           Connecting with event organizers can be a fun activity. Whether it is for enquiries or for fun,
-          we have made it easier for you to connect with organizers. To connect with organizers, you have 
-          to find them first! 
+          we have made it easier for you to connect with organizers.<br/><br/> To connect with organizers, you have 
+          to find them first!<br/> You find organizers when you are interested in their events.<br/><br/>
           The comments section helps you connect with organizers. Leave them a comment to start
-          a conversation. 
+          a conversation. <br/>
           NB: We have made communications with them open so that other guests or organizers can benefit
           from the conversations. 
-          <Link to ="">events page </Link> 
           </Description>
           </div>
       </div>

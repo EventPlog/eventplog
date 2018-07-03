@@ -55,8 +55,8 @@ const TopicsSection =()=>{
     <Link to="/help/backstage">Backstage</Link>
     <ul>
       <li><Link to="/help/backstage/event-planning">Event Planning</Link></li>
-      <li><Link to="/help/backstage/event-guests">Event Guests</Link></li>
-      <li><Link to="/help/backstage/event-feedback">Event Feedback</Link></li>
+      <li><Link to="/help/backstage/event-guests">Guest Information</Link></li>
+      <li><Link to="/help/backstage/event-feedback">Event Feedback and Reports</Link></li>
       <li><Link to="/help/backstage/event-settings">Event Settings</Link></li>
     </ul> 
   </div>

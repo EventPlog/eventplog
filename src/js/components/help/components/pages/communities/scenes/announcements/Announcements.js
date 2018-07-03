@@ -25,8 +25,6 @@ height: 500px;
   max-width: 650px;
 }
 
-.button
-
 `
 
 const Announcements = () =>{
@@ -39,8 +37,8 @@ const Announcements = () =>{
           <Topic>Announcements</Topic>
           <Description>
             Anouncements are used by event organizers to notify you of any important information
-            regarding an event or a community.<br/><br/> Announcements can be found on all <Link to="">Event</Link>
-            and <Link to="">Community</Link> pages. <br/><br/>
+            regarding an event or a community.<br/><br/> Announcements can be found on event
+            and  community pages. <br/><br/>
 
             Usually, most recent announcements are highlighted with a green background while older
             announcements can be found on the announcements section. <br/><br/>

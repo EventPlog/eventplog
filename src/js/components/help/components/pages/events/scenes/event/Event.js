@@ -6,6 +6,22 @@ import Topic from '../../../../topic'
 import Description from '../../../../help-description'
 
 const StyledDiscoverEvents=styled.div`
+.help-description-container{
+  display:flex;
+  margin 5px;
+  padding: 5px;
+}
+
+img{
+width:700px;
+height: 500px;
+}
+
+.help-main-content{
+  font-size: 15px;
+  margin-left:80px;
+  max-width: 650px;
+}
 
 `
 
@@ -18,12 +34,10 @@ const Event = ()=>{
         <div className="help-main-content"> 
           <Topic>Event</Topic>
           <Description>
-            Anouncements are used by event organizers to notify you of any important information
-            regarding an event or a community.<br/><br/> Announcements can be found on all <Link to="">Event</Link>
-            and <Link to="">Community</Link> pages. <br/><br/>
-
-            Usually, most recent announcements are highlighted with a green background while older
-            announcements can be found on the announcements section. <br/><br/>
+           Every information about an event can be found once you click on the event you want topic
+           to know about.  <br/><br/>
+           Information about venue, date, time, organizers and even the number of people interested in
+           the event
           </Description> 
         </div>
       </div>
