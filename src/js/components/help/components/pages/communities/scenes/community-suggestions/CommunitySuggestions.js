@@ -28,17 +28,17 @@ height: 500px;
 const Communitysuggestions = () =>{
   return(
     <StyledCommunitySuggestions>
-      <div className="help-description-container">
-        <div><Sidebar/></div>
-        <div className="help-main-content"><Topic>Community Suggestions</Topic>  
-          <Description>
-            Communities you might be interested in are always shown to you based on your previous 
-            event interests or communities you already follow. Community suggestions can be found as a section
-            on the <Link to ="">events page </Link> 
-          </Description>
-        </div>
+    <div className="help-description-container">
+      <div><Sidebar/></div>
+      <div className="help-main-content"><Topic>Community Suggestions</Topic>  
+        <Description>
+          Communities you might be interested in are always shown to you based on your previous 
+          event interests or communities you already follow.<br/><br/> Community suggestions can be found as a section
+          on the <Link to ="">events page </Link> 
+        </Description>
       </div>
-    </StyledCommunitySuggestions>
+    </div>
+  </StyledCommunitySuggestions>
   )
 }
 

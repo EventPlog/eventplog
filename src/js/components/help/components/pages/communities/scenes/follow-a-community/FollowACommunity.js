@@ -34,7 +34,7 @@ const FollowAcommunity = () =>{
           <Description>
           If you are new to eventplog, you might want to follow a community.
           To follow a community, click on  
-          <Link to ="">join </Link> and tada.. you have started following the community.
+          <Link to =""> join </Link> and tada.. you have started following the community.<br/><br/>
           You will also start getting notifications and updates on events from this community.
           </Description>
       </div>

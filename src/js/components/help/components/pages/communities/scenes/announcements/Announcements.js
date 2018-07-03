@@ -32,22 +32,22 @@ height: 500px;
 const Announcements = () =>{
   return(
     <StyledAnnouncements>
-      <div className="help-description-container">
-        <div ><Sidebar/></div> 
+    <div className="help-description-container">
+      <div ><Sidebar/></div> 
 
-        <div className="help-main-content"> 
-          <Topic>Announcements</Topic>
-          <Description>
-            Anouncements are used by event organizers to notify you of any important information
-            regarding an event or a community.<br/><br/> Announcements can be found on all <Link to="">Event</Link>
-            and <Link to="">Community</Link> pages. <br/><br/>
+      <div className="help-main-content"> 
+        <Topic>Announcements</Topic>
+        <Description>
+          Anouncements are used by event organizers to notify you of any important information
+          regarding an event or a community.<br/><br/> Announcements can be found on event
+          and  community pages. <br/><br/>
 
-            Usually, most recent announcements are highlighted with a green background while older
-            announcements can be found on the announcements section. <br/><br/>
-          </Description> 
-        </div>
+          Usually, most recent announcements are highlighted with a green background while older
+          announcements can be found on the announcements section. <br/><br/>
+        </Description> 
       </div>
-    </StyledAnnouncements>
+    </div>
+  </StyledAnnouncements>
   )
 }
 
