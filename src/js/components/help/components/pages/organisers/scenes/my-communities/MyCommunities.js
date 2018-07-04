@@ -36,7 +36,7 @@ const MyCommunities = ()=>{
             As an organizer, you can find all events you have created and communities you manage
             by 
             <br/><br/> 
-            <Link to="">Community</Link> pages. <br/><br/>
+            <br/><br/>
 
            
           </Description> 

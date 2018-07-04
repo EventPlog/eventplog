@@ -5,6 +5,7 @@ import Topic from '../../../../topic'
 import Desrciption from '../../../../help-description'
 import Description from '../../../../help-description';
 import {Link} from 'react-router-dom'
+import createcommunityimage from '../../../../../../../../img/help-pages/create-a-community.png'
 
 const StyledEventGuests=styled.div`
 .help-description-container{
