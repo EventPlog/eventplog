@@ -10,6 +10,7 @@ import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import { media } from '../styles/mixins'
+import HelpPage from '../components/help';
 import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
 
@@ -53,6 +54,7 @@ class App extends Component {
               <Route path="/leads/:id" component={Lead} />
               <Route path="/user" component={User} />
               <Route path="/password" component={Password} />
+              <Route path="/help" component={HelpPage} />              
               <PrivateRoute path="/events" component={Events} />
               <PrivateRoute path="/communities" component={Communities} />
             </Switch>
