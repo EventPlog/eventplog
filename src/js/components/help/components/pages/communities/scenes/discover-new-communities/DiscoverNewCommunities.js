@@ -30,11 +30,11 @@ const DiscoverNewCommunities = () =>{
     <StyledDiscoverNewCommunities>
     <div className="help-description-container">
       <div><Sidebar/></div>
-      <div className="help-main-content"><Topic>Discover New Communities</Topic>
+      <div className="help-main-content"><Topic>Discover Communities</Topic>
         <Description>
           The way to change the world is through individual responsibility and taking local action in your own community.
           -Jeff Bridges<br/><br/>
-          Ready to change the world? <Link to ="">join or follow</Link> a community.
+          Ready to change the world? <Link to ="">join or follow</Link> a community.<br/><br/>
           Have a look at <Link to ="">community Suggestions</Link> if you are new or just head to
          <Link to =""> search</Link> to discover other communities!  
         </Description>

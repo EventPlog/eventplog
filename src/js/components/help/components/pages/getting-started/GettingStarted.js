@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-//import image from '../../../../../img/help-pages/help login page desktop.jpg'
-import image from '../../../../../../img/help-pages/help login page desktop.jpg'
+import image from '../../../../../../img/help-pages/getting-started.png'
 import { Link} from 'react-router-dom'
 import Topic from '../../topic'
 import Description from '../../help-description'
@@ -17,7 +16,7 @@ const StyledGettingStarted =styled.div`
 
 img{
 width:700px;
-height: 500px;
+height: 400px;
 }
 
 .help-main-content{
@@ -39,7 +38,8 @@ const GettingStarted = ()=>{
         If yes, you are at the right place and we are delighted to have you here. <br/><br/>
         Welcome to Eventplog!
       <br/><br/>These guides will take you on fun, quick and easy steps to using Eventplog.<br/><br/>
-        <img src={image} alt="Getting Started image"></img>
+      <br/><br/><br/><br/>
+        <img src={image} alt="Getting Started image"></img> <br/><br/>
         <br/><br/>To get started on Eventplog, you need to Signup or Login if you already have an account!
         <br/><br/>
           You can also learn how to <Link to="/help/communities/follow-a-community">follow</Link> a community that interests you or how to 

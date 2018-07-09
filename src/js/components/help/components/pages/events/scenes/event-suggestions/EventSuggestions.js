@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import Sidebar from '../../../../help-topics'
 import Topic from '../../../../topic'
 import Description from '../../../../help-description'
+import eventimage from '../../../../../../../../img/help-pages/your-communities.png'
 
 const StyledDiscoverEvents=styled.div`
 .help-description-container{
@@ -35,8 +36,9 @@ const EventSuggestions = ()=>{
           <Topic>Event Suggestions</Topic>
           <Description>
             Based on your interest in certain events or communitites, we suggest events you might be 
-            interested in.<br/><br/> Find event suggestions on <Link to=""> communities </Link>
+            interested in.<br/><br/> Find event suggestions  the right side of all <Link to=""> communities </Link>
             pages. <br/><br/>
+            <img src={eventimage} alt="Event suggestions"/>
           </Description> 
         </div>
       </div>

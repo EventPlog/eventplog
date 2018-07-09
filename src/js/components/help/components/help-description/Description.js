@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import image from '../../../../../img/help-pages/help login page desktop.jpg'
+import image from '../../../../../img/help-pages/getting-started.png'
 import {Link} from 'react-router-dom'
 
 const StyledDescription =styled.div`
