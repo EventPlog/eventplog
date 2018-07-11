@@ -10,9 +10,6 @@ import createcommunity from 'img/help-pages/createcommunitystep2.png'
 import HelpImage from 'js/components/help/components/image'
 
 const StyledEventGuests=styled.div`
-  img{
-    width:700px;
-  }
 `
 const CreateCommunity = () => {
   return(

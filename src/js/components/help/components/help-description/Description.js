@@ -4,8 +4,8 @@ import image from '../../../../../img/help-pages/getting-started.png'
 import {Link} from 'react-router-dom'
 
 const StyledDescription =styled.div`
-  font-size: 15px;
-  max width: 650px;
+  font-size: 1.1em;
+  max-width: 750px;
   line-height: 30px;
   margin: 2rem;
 `

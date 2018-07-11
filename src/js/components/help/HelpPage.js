@@ -10,7 +10,7 @@ const StyledHelpPage = styled.div`
   &.help-page.app-container {
     align-items: flex-start;
   }
-
+  
   img {
     max-width: 100%;
   }
