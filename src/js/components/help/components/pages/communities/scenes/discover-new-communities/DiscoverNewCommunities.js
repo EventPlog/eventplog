@@ -1,9 +1,9 @@
 import React from 'react'
 import Description from 'js/components/help/components/help-description'
-import Topic from 'js/components/help/components//topic'
+import Topic from 'js/components/help/components/topic'
 import {Link } from 'react-router-dom'
 
-const DiscoverNewCommunities = () =>{
+const DiscoverNewCommunities = () => {
   return(
     <div>
       <Topic>Discover Communities</Topic>

@@ -5,7 +5,7 @@ import Topic from 'js/components/help/components/topic'
 import Description from 'js/components/help/components/help-description'
 import {Link } from 'react-router-dom'
 
-const FollowAcommunity = () =>{
+const FollowAcommunity = () => {
   return(
     <div>
       <Topic>Follow a Community</Topic>
