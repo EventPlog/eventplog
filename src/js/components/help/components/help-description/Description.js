@@ -4,17 +4,16 @@ import image from '../../../../../img/help-pages/getting-started.png'
 import {Link} from 'react-router-dom'
 
 const StyledDescription =styled.div`
-.help-description{
   font-size: 15px;
-  max width:650px;
-  line-height=30px;
-}
+  max width: 650px;
+  line-height: 30px;
+  margin: 2rem;
 `
 
 const Description = (props)=>{
   return(
-    <StyledDescription>
-      <div className="help-description">{props.children}</div>
+    <StyledDescription className="help-description">
+      {props.children}
     </StyledDescription>
   )
 }

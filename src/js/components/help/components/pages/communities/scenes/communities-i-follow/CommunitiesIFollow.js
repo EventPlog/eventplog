@@ -9,32 +9,15 @@ import styled from 'styled-components';
 import Button from '../../../../../../shared/button'
 
 const StyledCommunitiesIFollow = styled.div`
-.help-description-container{
-  display:flex;
-  margin 5px;
-  padding: 5px;
-}
-
 img{
-width:700px;
-height: 500px;
-}
-
-.help-main-content{
-  font-size: 15px;
-  margin-left:80px;
-  max-width: 650px;
-}
-.button{
-  display:flex;
-  justify-content: center;
+  width:700px;
 }
 `
 
 const CommunitiesIFollow = ()=>{
   return(
     <StyledCommunitiesIFollow>
-      <div className="help-description-container">
+      <div className="app-container">
         <div><Sidebar/></div>
         <div className="help-main-content"><Topic>Communities I Follow</Topic>
           <Description>

@@ -7,27 +7,14 @@ import Description from '../../../../help-description';
 import {Link} from 'react-router-dom'
 
 const StyledEventGuests=styled.div`
-.help-description-container{
-  display:flex;
-  margin 5px;
-  padding: 5px;
-}
-
 img{
-width:700px;
-height: 500px;
-}
-
-.help-main-content{
-  font-size: 15px;
-  margin-left:80px;
-  max-width: 650px;
+  width:700px;
 }
 `
 const EventPlanning = ()=>{
   return(
     <StyledEventGuests>
-      <div className="help-description-container">
+      <div className="app-container">
         <div ><Sidebar/></div> 
         <div className="help-main-content"> 
           <Topic>Event Feedback and Reports</Topic>

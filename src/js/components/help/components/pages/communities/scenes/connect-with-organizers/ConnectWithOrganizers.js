@@ -7,28 +7,15 @@ import Description from '../../../../help-description'
 import {Link } from 'react-router-dom'
 
 const StyledConnectWithOgrganizers = styled.div`
-.help-description-container{
-  display:flex;
-  margin 5px;
-  padding: 5px;
-}
-
 img{
-width:700px;
-height: 500px;
-}
-
-.help-main-content{
-  font-size: 15px;
-  margin-left:80px;
-  max-width: 650px;
+  width:700px;
 }
 `
 
 const ConnectWithOrganizers = () =>{
   return(
     <StyledConnectWithOgrganizers>
-      <div className="help-description-container">
+      <div className="app-container">
         <div><Sidebar/></div>
         <div className="help-main-content"><Topic> Find and Connect With the Organizers</Topic>     
           <Description>

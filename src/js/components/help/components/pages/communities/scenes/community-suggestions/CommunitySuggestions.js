@@ -8,29 +8,15 @@ import communitysuggestionimage from '../../../../../../../../img/help-pages/com
 
 
 const StyledCommunitySuggestions = styled.div`
-.help-description-container{
-  display:flex;
-  margin 5px;
-  padding: 5px;
-}
-
 img{
-width:700px;
-height: 500px;
+  width:700px;
 }
-
-.help-main-content{
-  font-size: 15px;
-  margin-left:80px;
-  max-width: 650px;
-}
-
 `
 
 const Communitysuggestions = () =>{
   return(
     <StyledCommunitySuggestions>
-      <div className="help-description-container">
+      <div className="app-container">
         <div><Sidebar/></div>
         <div className="help-main-content"><Topic>Community Suggestions</Topic>  
           <Description>

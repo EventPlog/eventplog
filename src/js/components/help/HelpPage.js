@@ -3,7 +3,17 @@ import styled from 'styled-components'
 import {Switch, Route,Link} from 'react-router-dom'
 import createLoader from '../../components/shared/loading/createLoadable'
 
-const StyledHelpPage =styled.div`
+import HelpTopics from './components/help-topics'
+import HelpDescription from './components/help-description'
+
+const StyledHelpPage = styled.div`
+  &.help-page.app-container {
+    align-items: flex-start;
+  }
+
+  img {
+    max-width: 100%;
+  }
 `
 const GettingStarted= createLoader(() => import('./components/pages/getting-started' /* webpackChunckName : "GettingStartedHelp" */))
 const CommunitiesHelp= createLoader(() => import('./components/pages/communities' /*webpackChunkName : "CommunitiesHelp" */))
@@ -11,17 +21,21 @@ const Events= createLoader(() => import('./components/pages/events' /*webpackChu
 const BackStage= createLoader(()=>import('./components/pages/backstage/' /*webpackChunckName : "BackStageHelp" */))
 const Organizers =createLoader(()=>import('./components/pages/organisers/' /*webpackChunckName : "OrganizersHelp" */))
 
-const HelpPage =()=>{
+const HelpPage = () => {
   return(
-    <StyledHelpPage>
-      <Switch>
-        <Route exact path="/help" component={GettingStarted} />
-        <Route exact path="/help/getting-started" component={GettingStarted} />
-        <Route path="/help/communities" component={CommunitiesHelp}/> 
-        <Route path="/help/events" component={Events}/> 
-        <Route path ="/help/backstage" component={BackStage}/>
-        <Route path ="/help/organizers" component={Organizers}/>
-      </Switch>
+    <StyledHelpPage  className="help-page app-container">
+
+        <HelpTopics />
+        <HelpDescription>
+          <Switch>
+            <Route exact path="/help" component={GettingStarted} />
+            <Route exact path="/help/getting-started" component={GettingStarted} />
+            <Route path="/help/communities" component={CommunitiesHelp}/> 
+            <Route path="/help/events" component={Events}/> 
+            <Route path ="/help/backstage" component={BackStage}/>
+            <Route path ="/help/organizers" component={Organizers}/>
+          </Switch>
+        </HelpDescription>
     </StyledHelpPage>
   );
 }

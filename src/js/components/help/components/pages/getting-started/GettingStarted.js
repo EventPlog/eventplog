@@ -7,30 +7,11 @@ import Description from '../../help-description'
 import Sidebar from '../../help-topics'
 
 const StyledGettingStarted =styled.div`
-
-.help-description-container{
-  display:flex;
-  margin 5px;
-  padding: 5px;
-}
-
-img{
-width:700px;
-height: 400px;
-}
-
-.help-main-content{
-  font-size: 15px;
-  margin-left:80px;
-  max-width: 650px;
-}
 `
 
 const GettingStarted = ()=>{
   return(
   <StyledGettingStarted>
-    <div className="help-description-container">
-      <div><Sidebar/></div>
       <div className="help-main-content">
       <Topic>Getting Started</Topic>
       <Description>
@@ -53,7 +34,7 @@ const GettingStarted = ()=>{
           <br/><br/> 
       </Description>
       </div>
-    </div>
+
   </StyledGettingStarted>
   )
 }
