@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {media } from '../../../../styles/mixins'
+import {media } from 'js/styles/mixins'
 
 const StyledTopic = styled.div`
   text-align: center;
