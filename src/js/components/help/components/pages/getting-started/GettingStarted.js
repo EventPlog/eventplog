@@ -5,7 +5,7 @@ import Topic from 'js/components/help/components/topic'
 import Description from 'js/components/help/components/help-description'
 import HelpImage from 'js/components/help/components/image'
 
-const GettingStarted = ()=>{
+const GettingStarted = () => {
   return(
     <div>
       <Topic>Getting Started</Topic>
