@@ -5,6 +5,7 @@ import createLoader from '../../components/shared/loading/createLoadable'
 
 import HelpTopics from './components/help-topics'
 import HelpDescription from './components/help-description'
+import GoToEventplog from './components/go-to-eventplog-button'
 
 const StyledHelpPage = styled.div`
   &.help-page.app-container {
@@ -36,6 +37,7 @@ const HelpPage = () => {
             <Route path ="/help/organizers" component={Organizers}/>
           </Switch>
         </HelpDescription>
+        <GoToEventplog/>
     </StyledHelpPage>
   );
 }
