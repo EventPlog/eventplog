@@ -20,7 +20,8 @@ const requestBody = (data, method) => {
 export function requestHeaders() {
   return new Headers({
     'Authorization': `Bearer ${Auth.user_token}`,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
   });
 }
 
@@ -42,7 +43,7 @@ export default function processRequest(path, method, data = {}) {
   .then(async(response) => {
     if (response.ok) return response.json()
     let message  = await response.json()
-    throw(message)
+    throw(message || response.status)
   })
   .catch(err => {
     throw (err);

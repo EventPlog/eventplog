@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 import SidebarCard from './SidebarCard'
 
+import SidebarEvents from './events-section'
+import SidebarCommunities from './communities-section'
+
 const StyledSidebar = styled.div`
   background: #eee;
   color: #888;
@@ -37,5 +40,7 @@ const Sidebar = function({
 }
 
 Sidebar.Card = SidebarCard
+Sidebar.Events = SidebarEvents
+Sidebar.Communities = SidebarCommunities
 
 export default Sidebar

@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
   const match = matchPath(ownProps.location.pathname, '/communities/:id')
   return {
     ...ownProps,
-    activeLink: match && Object.keys(community).length > 0 ? community.link_color : defaults.activeLink,
+    activeLink: match && Object.keys(community).length > 0 ? (community.brand_color || defaults.activeLink) : defaults.activeLink,
   }
 }
 

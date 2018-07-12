@@ -16,16 +16,22 @@ const StyledHeader = styled.div`
 
   > .community-logo {
     padding: 2rem;
+    justify-content: space-between;
     
-    a {
+    > a {
       display: flex;
       align-content: center;
       align-items: center;
       
       ${
         media.phone`
+          text-align: center;
           flex-direction: column;
         `
+      }
+      
+      &.active {
+        color: ${colors.peach};
       }
     }
     
@@ -76,7 +82,16 @@ const StyledHeader = styled.div`
       padding: 1rem 2rem;
     }
   }
+  
+  .edit-community {
+  }
+  
+  .right-pull {
+    align-self: center;
+    margin: 2rem 0 0;
+  }
 `
+
 const CommunityHeader = ({
   hideMenu = false,
   community = {}
@@ -85,8 +100,20 @@ const CommunityHeader = ({
     <div className="app-container community-logo">
       <Link to={`/communities/${community.id}`} >
         <img src={community.logo || defaultLogo} className={community.display_name ? 'logo-only' : '' } />
-        {community.display_name && <h3>{community.display_name}</h3>}
+        <div>
+          {community.display_name && <h3>{community.display_name}</h3>}
+          {community.description && <small>{community.description}</small>}
+          {community.interests && <small>{community.interests.map(i => <span className="hashtags">{i.name}</span>)}</small>}
+        </div>
       </Link>
+      <div className="right-pull">
+        {community.is_owner && <Button.Link
+                                  className="edit-community"
+                                  activeClassName="hidden"
+                                  to={`/communities/${community.id}/edit`}>
+                                  Edit
+                                </Button.Link>}
+      </div>
     </div>
 
     <div className="nav-holder">
@@ -97,7 +124,7 @@ const CommunityHeader = ({
           </Nav.Item>
 
           <Nav.Item>
-            <Link to={`/communities/${community.id}`}>Organizers</Link>
+            <Link to={`/communities/${community.id}`}>Team</Link>
           </Nav.Item>
 
           <Nav.Item>

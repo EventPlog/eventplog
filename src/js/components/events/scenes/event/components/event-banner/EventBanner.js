@@ -5,7 +5,23 @@ import styled, { css } from 'styled-components'
 import { media } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
+import ContentEditable from 'js/components/shared/content-editable'
 
+const validDate = (input) => {
+  const _date = new Date(input)
+  return _date.getDate().toString() !== 'NaN' ? _date : new Date()
+}
+
+const pluralize = (word, number) => {
+  const knownWords = {
+    person: 'people'
+  }
+  return number = 1 ? word : knownWords[word]
+}
+
+const signifyInterest = (event) => {
+
+}
 const eventBannerStyles = css`
   min-height: 400px;
   display: flex;
@@ -80,17 +96,44 @@ const eventBannerStyles = css`
     }
   }
   
+  .date-time-picker {
+    max-width: 400px;
+    background: #fff;
+  }
+  
 `
+
+const Editables = ({children, ...ownProps}) => (
+  <ContentEditable {...ownProps}>
+    {
+      ({onClick, ...props}) =>
+        <div onClick={(e) => onClick(e, ownProps.defaultValue)} {...props}>
+          {children}
+        </div>
+    }
+  </ContentEditable>
+)
+
 const EventBanner = ({
   id,
   title,
   featured_image,
   interested_persons,
+  link,
+  time,
+  date,
   start_time,
+  display_start_time,
   end_time,
+  display_end_time,
   start_date,
   end_date,
   community = {},
+  handleChange,
+  handleSubmit,
+  attendEvent,
+  is_organizer,
+  is_attending,
   className,
 }) => (
   <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
@@ -100,22 +143,56 @@ const EventBanner = ({
     <div className="content">
       <div className="caption">
         <div className="title">
-          {title}
+          <ContentEditable onChange={handleChange}
+                           onSubmit={handleSubmit}
+                           type="input"
+                           propName="title">
+            {
+              ({onClick, ...props}) =>
+                <div onClick={(e) => onClick(e, title)} {...props}>
+                  {title}
+                </div>
+            }
+          </ContentEditable>
         </div>
         <div className="meta">
           <ul>
-            <li>{start_date}</li>
-            <li>{start_time} - {end_time}</li>
+            <li>
+              <Editables propName="start_time"
+                         type="datetime"
+                         defaultValue={validDate(`${start_date} ${display_start_time}`)}
+                         onChange={handleChange}
+                         onSubmit={handleSubmit}>
+                {start_time ? `Starts on ${start_date} at ${display_start_time}` : 'Click to add start date/time'}
+              </Editables>
+            </li>
+            <li>
+              <Editables propName="end_time"
+                         type="datetime"
+                         defaultValue={validDate(`${end_date} ${display_start_time}`)}
+                         onChange={handleChange}
+                         onSubmit={handleSubmit}>
+                {end_time ? `Ends on ${end_date} at ${display_end_time}` : 'Click to add end date/time'}
+              </Editables>
+              </li>
           </ul>
           <ul>
-            <li>{interested_persons} people interested.</li>
+            <li>{interested_persons} {pluralize('person', interested_persons)} interested.</li>
           </ul>
         </div>
       </div>
     </div>
-    <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
-      Go Backstage
-    </Button.Link>
+    {is_organizer
+      ? <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
+          Go Backstage
+        </Button.Link>
+      : is_attending
+          ? <Button.Link className="cta" to={link || '#'} >
+              RSVP
+            </Button.Link>
+          : <Button className="cta" onClick={() => attendEvent(event)}>
+              Interested
+            </Button>}
   </ContentSection.FullRow>
 )
 

@@ -28,19 +28,19 @@ const TabHolder = styled.div`
   }
 `
 
-const generatePanes = (panes) =>
+const generatePanes = (panes, props) =>
   panes.map(Pane => (
     {
       menuItem: Pane.name,
       render: () => <Tab.Pane attached={false}>
-                       <Pane.content />
+                       <Pane.content {...props} />
                      </Tab.Pane>
     })
   )
 
-const TmnTab = ({ panes }) => (
+const TmnTab = ({ panes, ...otherProps }) => (
   <TabHolder>
-    <Tab menu={{ secondary: true, pointing: true }} panes={generatePanes(panes)} />
+    <Tab menu={{ secondary: true, pointing: true }} panes={generatePanes(panes, otherProps)} />
   </TabHolder>
 )
 

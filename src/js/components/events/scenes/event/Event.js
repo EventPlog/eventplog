@@ -10,8 +10,9 @@ import EventSidebar from './components/event-sidebar'
 import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
 import EventAnnouncements from './components/event-announcements'
-import AddComment from 'js/components/shared/add-comment'
+import AddComment from 'js/components/shared/comments/add-comment'
 import Members from 'js/components/shared/members'
+import ContentEditable from 'js/components/shared/content-editable'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -22,7 +23,21 @@ const StyledEvent = styled.div`
     color: #444;
   }
   
-  .comments-section {
+  .event-description {
+    ul {
+      list-style: inherit;
+      margin-left: 2rem;
+    }
+    
+    textarea {
+      min-height: 200px;
+    }
+  }
+  
+  .content-body {
+    > .add-comment {
+      margin-top: 2rem;
+    }
   }
 `
 
@@ -31,7 +46,12 @@ const Event = ({
   community,
   activeLink,
   events_suggestions = [],
-  communities_suggestions = []
+  communities_suggestions = [],
+  handleChange,
+  handleSubmit,
+  attendEvent,
+  createComment,
+  updateComment,
 }) => {
 
   if (event.loading) {
@@ -43,12 +63,22 @@ const Event = ({
   return (
     <StyledEvent activeLink={activeLink} className="app-container">
       <ContentSection>
-        <EventBanner {...event} />
+        <EventBanner {...{...event, handleChange, handleSubmit, attendEvent}} />
 
         <ContentSection.Body>
           <ContentPanel title="Description">
             <div className="event-description">
-              <ReactMarkdown escapeHtml={false} source={description} />
+              <ContentEditable onChange={handleChange}
+                               onSubmit={handleSubmit}
+                               type="textarea"
+                               propName="description">
+                {
+                  ({onClick, ...props}) =>
+                  <div onClick={(e) => onClick(e, description)} {...props}>
+                    <ReactMarkdown escapeHtml={false} source={description || 'Click to edit. In markdown, if you wish :)'} />
+                  </div>
+                }
+              </ContentEditable>
             </div>
           </ContentPanel>
 
@@ -62,13 +92,23 @@ const Event = ({
 
         </ContentSection.Body>
 
-        <EventSidebar {...{announcements, events_suggestions, communities_suggestions}}/>
+        <EventSidebar  {...{community,
+                            announcements,
+                            events_suggestions,
+                            attendEvent}}/>
 
         <ContentSection.FullRow>
           <ContentSection.Body>
             <ContentPanel title="Ask the organizers">
-              <AddComment placeholder="What would you like to ask/suggest?" />
-              <Comments comments={comments} />
+              <Comments {...{comments, createComment, updateComment }} />
+
+              <AddComment placeholder="What would you like to ask/suggest?"
+                          recipient_id={event.id}
+                          recipient_type="Event"
+                          trackable_id={event.id}
+                          trackable_type="Event"
+                          createComment={createComment} />
+
             </ContentPanel>
           </ContentSection.Body>
         </ContentSection.FullRow>

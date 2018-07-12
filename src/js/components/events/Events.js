@@ -32,8 +32,8 @@ const StyledEventPlog = styled.div`
 
 const UserEvents = () => (
   [
-    <UserNav />,
-    <Events />
+    <UserNav key="user-nav" />,
+    <Events key="user-events" />
   ]
 )
 const EventPlog = ({user = {}}) => (

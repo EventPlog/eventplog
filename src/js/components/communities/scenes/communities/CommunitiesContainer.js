@@ -2,8 +2,14 @@ import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCommunities, mockGetCommunities, mockGetCommunity } from '../../actions'
-import { getEvents, mockGetEvents } from 'js/components/events/actions'
+import {
+  getCommunities,
+  followCommunity,
+  mockGetCommunity,
+  mockGetCommunities,
+  getCommunitiesSuggestions,
+} from '../../actions'
+import { getEvents, getEventsSuggestions, mockGetEvents } from 'js/components/events/actions'
 import checkEqual from 'js/utils/checkEqual'
 
 class MainContentContainer extends Component {
@@ -19,7 +25,8 @@ class MainContentContainer extends Component {
 
   getData() {
     this.props.getCommunities()
-    this.props.getEvents()
+    this.props.getCommunitiesSuggestions()
+    this.props.getEventsSuggestions()
   }
 
   render () {
@@ -28,21 +35,22 @@ class MainContentContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {loading, events = []} = state.events
-  const {communities = []} = state.communities
+  const {loading, events = [], events_suggestions = []} = state.events
+  const {communities = [], communities_suggestions = []} = state.communities
   return {
     loading,
-    communities: communities.filter(c => c.joined) || state.communities,
-    communities_suggestions: communities.filter(c => !c.joined) || state.communities,
-    events_suggestions: events.filter(e => e.interested).slice(0,2) || state.events,
+    communities,
+    communities_suggestions,
+    events_suggestions
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getCommunities: mockGetCommunities,
-    getEvents: mockGetEvents,
-    getCommunity: mockGetCommunity
+    getCommunities,
+    followCommunity,
+    getEventsSuggestions,
+    getCommunitiesSuggestions,
   }, dispatch)
 }
 

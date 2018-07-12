@@ -1,6 +1,5 @@
 import React from 'react'
 import Tasks from './Tasks';
-import Comments from './comments/Comments'
 
 // internal components
 import Tab from '../shared/tab';

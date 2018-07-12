@@ -2,16 +2,19 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
 // internal
-import CommunitiesSection from 'js/components/events/scenes/events/components/communities-section'
 import Sidebar from 'js/components/shared/sidebar'
 import ContentSection from 'js/components/shared/content-section'
 
 const EventSidebar = ({
   announcements,
-  communities_suggestions
-}) => (
-  <ContentSection.Sidebar className="announcements">
-    {announcements &&
+  community,
+  events_suggestions,
+  attendEvent
+}) => {
+
+  return (
+    <ContentSection.Sidebar className="announcements">
+      {announcements &&
       <Sidebar title="Latest Announcement">
         <div>
           <div className="text-muted">
@@ -25,8 +28,10 @@ const EventSidebar = ({
           </p>
         </div>
       </Sidebar>}
-    <CommunitiesSection {...{communities: communities_suggestions}} />
-  </ContentSection.Sidebar>
-)
+      <Sidebar.Events title={`Other events from ${community.name}`}
+        {...{events: events_suggestions, attendEvent}} />
+    </ContentSection.Sidebar>
+  )
+}
 
 export default EventSidebar

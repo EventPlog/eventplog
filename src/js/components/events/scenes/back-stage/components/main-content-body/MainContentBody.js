@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 // internal components
 import EventPageContent from './EventPageContent';
@@ -59,11 +60,14 @@ const StyledMainContent = styled.div`
     margin: 4rem auto 2rem;
     text-shadow: 1px 2px 4px #000;
     
-    h3 {
+    h3 a {
       color: #fff;
       font-weight: 600; 
       padding: 0 2rem;
     
+      &:hover {
+        color: var(--activeLink);
+      }
     }
   }
 `
@@ -78,7 +82,9 @@ const MainContentBody = ({ event = {}, ...otherProps }) =>
       <div className="container">
         <div className="backstage-header">
           <h3>
-            { event.title || 'Tech is in you' }
+            { event.title
+              ? <Link to={`/communities/${event.community_id}/events/${event.id}`}>{event.title}</Link>
+              : <Link to={`/communities/${event.community_id}/events/${event.id}/backstage/settings`}>Change Title</Link> }
           </h3>
         </div>
         <div className="workplace full-height">

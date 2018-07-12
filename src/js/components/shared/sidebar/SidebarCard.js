@@ -130,16 +130,16 @@ const SidebarCard = ({
   title,
   description,
   featured_image,
-  btnText,
+  btn = {},
   meta,
 }: itemType) => (
   <StyledSidebarCard className="sidebar-card">
     <div className="img-holder" style={{
           backgroundImage: `url(${featured_image || sampleEventImg})`
         }}>
-      <Button>
-        {btnText || "I'm Interested"}
-      </Button>
+      {btn.text && <Button {...btn}>
+                     {btn.text}
+                   </Button>}
     </div>
     <div className="card-body">
       <div className="card-title">
@@ -149,7 +149,7 @@ const SidebarCard = ({
         {description}
       </div>
       <div className="card-meta">
-        { meta }
+        {meta}
       </div>
     </div>
   </StyledSidebarCard>

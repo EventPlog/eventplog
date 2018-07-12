@@ -1,6 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import ReactMarkdown from 'react-markdown'
+import { Icon } from 'semantic-ui-react'
+
+// ========= INTERNALS =========
+
 import { media } from 'js/styles/mixins'
+import CommentPanel from '../CommentPanel'
+import ContentEditable from 'js/components/shared/content-editable'
+import Button from 'js/components/shared/button'
 
 const StyledComment = styled.div`
   display: flex;
@@ -12,8 +20,8 @@ const StyledComment = styled.div`
   }
     
   .avatar {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     margin: 0 auto 0.7rem auto;
     background-size: cover;
     border-radius: 50%;
@@ -49,6 +57,7 @@ const StyledComment = styled.div`
     font-size: 0.9rem;
     text-transform: capitalize;
     color: #888;
+    
   }
   
   .full-name {
@@ -73,57 +82,49 @@ const StyledComment = styled.div`
       margin-top: 1rem;
     }
     
-    > .comment-card {
-       padding-top: 1rem; 
-       
-    }
-    
-    
     > div:not(.comment-card) {
       background: #eee;
       padding: 1rem;
       border-radius: 10px;
     }
   }
+  
 `
 
 const Comment = ({
   className = '',
   comment = {},
+  handleChange,
+  updateComment,
   children,
+  current_user,
+  deleteComment,
   ...otherProps
 }) => {
-  const {first_name, last_name, avatar_url, community_role} = comment.user;
+  const currentUserIsOwner = (!comment.deleted && comment.user.id == current_user.id)
+  const renderCommentText = comment.deleted
+    ? <div className="deleted-comment">This comment has been deleted</div>
+    : <ReactMarkdown source={comment.body} />
   return (
-    <StyledComment className={`comment-card ${className}`} {...otherProps}>
-      <div className="commenter">
-        <div className="avatar" style={{
-                  backgroundImage: `url(${avatar_url || '/sample-avatar.jpg'}`
-                }} />
-        {first_name &&
-          <div className="meta">
-            <div className="full-name">
-              {`${first_name} ${last_name}`}
+    <CommentPanel user={comment.deleted ? {} : comment.user}>
+      {currentUserIsOwner && <Button inverted className="btn-delete" onClick={deleteComment}>
+        <Icon className="delete" />
+      </Button>}
+      {!currentUserIsOwner && renderCommentText}
+      {currentUserIsOwner && <ContentEditable onChange={handleChange}
+                       onSubmit={updateComment}
+                       type="textarea"
+                       propName="body">
+        {
+          ({onClick, ...props}) =>
+            <div onClick={(e) => onClick(e, comment.body)} {...props}>
+              <ReactMarkdown source={comment.body} />
             </div>
-            <div className="role">
-              {community_role || 'Member'}
-            </div>
-          </div>}
-      </div>
-      <div className="comment">
-        {children}
-      </div>
-    </StyledComment>
+        }
+      </ContentEditable>}
+      {children}
+    </CommentPanel>
   )
 }
-
-Comment.Replies = ({
-  className,
-  children
-}) => (
-  <div className={`replies comment-card ${className}`}>
-    { children }
-  </div>
-)
 
 export default Comment
