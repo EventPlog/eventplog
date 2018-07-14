@@ -11,6 +11,7 @@ class EventUpdateContainer extends Component {
 
   getProps = () => ({
     ...this.props,
+    ...this.state,
     handleChange: this.handleChange,
   })
 
@@ -30,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps)(EventUpdateContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventUpdateContainer))

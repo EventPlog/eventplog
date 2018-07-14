@@ -42,7 +42,17 @@ const EventAnnouncements = ({ announcements }) => (
           <div className="meta">
             {announcement.publish_date} | {announcement.publish_time}
           </div>
-          <ReactMarkdown source={announcement.body} />
+          <ContentEditable onChange={handleChange}
+                           onSubmit={handleSubmit}
+                           type="textarea"
+                           propName="description">
+            {
+              ({onClick, ...props}) =>
+                <div onClick={(e) => onClick(e, announcement.body)} {...props}>
+                  <ReactMarkdown escapeHtml={false} source={announcement.body || 'Click to edit. In markdown, if you wish :)'} />
+                </div>
+            }
+          </ContentEditable>
         </li>
       ))}
     </ul>

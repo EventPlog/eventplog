@@ -72,26 +72,30 @@ const StyledMainContent = styled.div`
   }
 `
 
-const MainContentBody = ({ event = {}, ...otherProps }) =>
-  <StyledMainContent>
-    <div className="event-workplace full-height">
-      <div style={{ backgroundImage: `url(${event.featured_image || techIsInYou})` }}
-           className="banner-image absolute-positioned">
-        <div className="overlay"></div>
-      </div>
-      <div className="container">
-        <div className="backstage-header">
-          <h3>
-            { event.title
-              ? <Link to={`/communities/${event.community_id}/events/${event.id}`}>{event.title}</Link>
-              : <Link to={`/communities/${event.community_id}/events/${event.id}/backstage/settings`}>Change Title</Link> }
-          </h3>
+const MainContentBody = ({ event = {}, ...otherProps }) => {
+  const { community = {} } = event || {}
+  return (
+    <StyledMainContent>
+      <div className="event-workplace full-height">
+        <div style={{ backgroundImage: `url(${event.featured_image || techIsInYou})` }}
+             className="banner-image absolute-positioned">
+          <div className="overlay"></div>
         </div>
-        <div className="workplace full-height">
-          <EventPageContent {...{event, ...otherProps}} />
+        <div className="container">
+          <div className="backstage-header">
+            <h3>
+              { event.title
+                ? <Link to={`/communities/${community.id}/events/${event.id}`}>{event.title}</Link>
+                : <Link to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>Change Title</Link> }
+            </h3>
+          </div>
+          <div className="workplace full-height">
+            <EventPageContent {...{event, ...otherProps}} />
+          </div>
         </div>
       </div>
-    </div>
-  </StyledMainContent>
+    </StyledMainContent>
+  )
+}
 
 export default MainContentBody;

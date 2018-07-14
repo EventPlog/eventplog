@@ -182,7 +182,7 @@ const EventBanner = ({
         </div>
       </div>
     </div>
-    {is_organizer
+    {is_organizer || community.is_owner
       ? <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
           Go Backstage
         </Button.Link>

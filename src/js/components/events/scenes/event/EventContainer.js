@@ -12,6 +12,8 @@ import {
   updateEvent,
   createComment,
   updateComment,
+  createAnnouncement,
+  updateAnnouncement,
   getEventsSuggestions,
   attendEvent,
 } from '../../actions'
@@ -66,10 +68,10 @@ class EventContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {event = {}, events_suggestions = []} = state.events
-  const {link_color, community = {} } = event;
-  const { communities_suggestions } = state.communities
+  const {link_color } = event;
+  const { community, communities_suggestions } = state.communities
   return {
-    activeLink: link_color,
+    activeLink: community.brand_color,
     event,
     community,
     events_suggestions,
@@ -86,6 +88,8 @@ const mapDispatchToProps = (dispatch) => {
     attendEvent,
     createComment,
     updateComment,
+    createAnnouncement,
+    updateAnnouncement,
   }, dispatch)
 }
 

@@ -11,6 +11,7 @@ import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
 import EventAnnouncements from './components/event-announcements'
 import AddComment from 'js/components/shared/comments/add-comment'
+import Announcements from 'js/components/shared/announcements'
 import Members from 'js/components/shared/members'
 import ContentEditable from 'js/components/shared/content-editable'
 
@@ -52,6 +53,8 @@ const Event = ({
   attendEvent,
   createComment,
   updateComment,
+  createAnnouncement,
+  updateAnnouncement,
 }) => {
 
   if (event.loading) {
@@ -63,7 +66,7 @@ const Event = ({
   return (
     <StyledEvent activeLink={activeLink} className="app-container">
       <ContentSection>
-        <EventBanner {...{...event, handleChange, handleSubmit, attendEvent}} />
+        <EventBanner {...{...event, community, handleChange, handleSubmit, attendEvent}} />
 
         <ContentSection.Body>
           <ContentPanel title="Description">
@@ -83,7 +86,9 @@ const Event = ({
           </ContentPanel>
 
           <ContentPanel title="Announcements">
-            <EventAnnouncements {...{announcements}} />
+            <Announcements {...{announcements, createAnnouncement, updateAnnouncement,
+                            recipient: event, recipient_type: 'Event'}} />
+
           </ContentPanel>
 
           <ContentPanel title="Meet the organizers">

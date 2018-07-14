@@ -9,7 +9,7 @@ import handleLogout from '../utils/handleLogout'
 import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
-import { media } from '../styles/mixins'
+import NewInvitationBar from 'js/components/invitations/components/new-invitation-bar'
 import ScrollToTop from '../components/shared/scroll-to-top'
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -37,6 +37,7 @@ class App extends Component {
         <ScrollToTop>
           <StyledApp>
             <Header />
+            <NewInvitationBar />
             <Switch>
               <Route exact path="/" render={(props) =>
                    Auth.isLoggedIn

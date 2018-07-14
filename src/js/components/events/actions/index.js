@@ -106,10 +106,10 @@ export const getEventsSuggestions = (eventParams = {}, limit = 2) => {
   const communityDetails = community_id ? `/communities/${community_id}` : ''
   return handleApiCall({
     actions,
-    data: eventParams,
+    data: {...eventParams, limit},
     errorMessage: 'Something prevented us getting event suggestions.',
     caller: 'get events',
-    route: `/api/v1/web${communityDetails}/events/suggestions?limit=${limit}`,
+    route: `/api/v1/web${communityDetails}/events/suggestions`,
     requestMethod: 'GET'
   })
 }
@@ -165,13 +165,37 @@ export const updateComment = (comment, parentComment) => {
   })
 }
 
-export const mockGetEvents = (eventId) => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.EVENT_INDEX_START })
 
-    return mockEventApi.index().then(res => {
-      dispatch({type: actionTypes.EVENT_INDEX_COMPLETE, payload: res})
-      return res
-    })
-  }
+export const createAnnouncement = (announcement) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_START,
+    receiveType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_COMPLETE,
+    failType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_FAIL
+  })
+
+  return handleApiCall({
+    actions,
+    data: announcement,
+    errorMessage: 'Something prevented us from creating an announcement.',
+    caller: 'POST createAnnouncement',
+    route: `/api/v1/web/announcements`,
+    requestMethod: 'POST'
+  })
+}
+
+export const updateAnnouncement = (comment) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_START,
+    receiveType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_COMPLETE,
+    failType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_FAIL
+  })
+
+  return handleApiCall({
+    actions,
+    data: comment,
+    errorMessage: 'Something prevented us from creating a comment.',
+    caller: 'PATCH updateAnnouncement',
+    route: `/api/v1/web/announcements/${comment.id}`,
+    requestMethod: 'PATCH'
+  })
 }

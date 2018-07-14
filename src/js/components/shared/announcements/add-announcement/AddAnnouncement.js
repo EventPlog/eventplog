@@ -3,16 +3,16 @@ import styled, {css} from 'styled-components'
 import { Icon } from 'semantic-ui-react'
 
 // internal
-import CommentPanel from 'js/components/shared/comments/CommentPanel'
+import AnnouncementPanel from 'js/components/shared/announcements/announcement-panel'
 import Button from 'js/components/shared/button'
 import TextArea from 'js/components/shared/text-area'
 import Auth from 'js/auth'
 import { media } from 'js/styles/mixins'
 
-const AddCommentStyles = styled.div`
+const AddAnnouncementStyles = styled.div`
   max-width: 820px;
   
-  .new-comment-card {
+  .new-announcement-card {
     ${
       media.phone`
       `
@@ -33,7 +33,7 @@ const AddCommentStyles = styled.div`
     }
   }
   
-  .comment {
+  .announcement {
     display: flex;
       
     ${
@@ -60,37 +60,31 @@ const AddCommentStyles = styled.div`
   }
 `
 
-const AddComment = ({
+const AddAnnouncement = ({
   className,
   placeholder,
-  comment = {},
-  parentComment,
+  announcement = {},
+  parentAnnouncement,
   handleChange,
-  createComment,
+  createAnnouncement,
   current_user,
   ...otherProps,
 }) => {
-  const submitComment = () => {
-    const { recipient_id, recipient_type, trackable_id, trackable_type } = otherProps
-    const updatedComment = {...comment, recipient_id, recipient_type, trackable_id, trackable_type}
-    createComment(updatedComment, parentComment)
-  }
-
   return (
-    <AddCommentStyles className={`${className} add-comment`}>
-      <CommentPanel className="new-comment-card" user={current_user}>
+    <AddAnnouncementStyles className={`${className} add-announcement`}>
+      <AnnouncementPanel className="new-announcement-card" user={current_user}>
       <TextArea placeholder={placeholder}
                 name="body"
                 onChange={({target}) => handleChange(target.name, target.value)}
-                value={comment.body} />
+                value={announcement.body} />
 
-        <Button onClick={createComment}>
+        <Button onClick={createAnnouncement}>
           <Icon className="paper plane" />
         </Button>
-      </CommentPanel>
-    </AddCommentStyles>
+      </AnnouncementPanel>
+    </AddAnnouncementStyles>
   )
 }
 
 
-export default AddComment
+export default AddAnnouncement

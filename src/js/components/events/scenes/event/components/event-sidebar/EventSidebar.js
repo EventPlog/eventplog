@@ -14,12 +14,12 @@ const EventSidebar = ({
 
   return (
     <ContentSection.Sidebar className="announcements">
-      {announcements &&
+      {announcements && announcements.length > 0 &&
       <Sidebar title="Latest Announcement">
         <div>
           <div className="text-muted">
             <ul>
-              <li>{`${announcements[0].announcer.first_name} ${announcements[0].announcer.last_name}`}</li>
+              <li>{`${announcements[0].user.first_name} ${announcements[0].user.last_name}`}</li>
               <li>{announcements[0].publish_date} | {announcements[0].publish_time}</li>
             </ul>
           </div>
