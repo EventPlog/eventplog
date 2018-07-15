@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import { withRouter, matchPath } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
 import {
   getCommunity,
   updateCommunity,
@@ -19,6 +20,8 @@ import checkEqual from 'js/utils/checkEqual'
 
 
 class CommunityContainer extends Component {
+  state = {community: {}}
+
   componentWillMount(props) {
     this.getData()
   }
@@ -27,8 +30,8 @@ class CommunityContainer extends Component {
     this.setState({community: nextProps.community})
   }
 
-  handleChange = (e) => {
-    this.setState({community: {...this.state.community, [e.target.name]: e.target.value} })
+  handleChange = (e, value) => {
+    this.setState({community: {...this.state.community, [e.target.name]: value || e.target.value} })
   }
 
   componentDidUpdate(props, prevProps) {
@@ -49,9 +52,16 @@ class CommunityContainer extends Component {
   getParams = () => {
     return (matchPath(this.props.location.pathname, '/communities/:community_id/events/:id') || this.props.match).params
   }
+
   getData() {
     const {community_id, id} = this.getParams()
-    this.props.getCommunity(community_id || id)
+    const sureCommunityId = community_id || id
+
+    if(!this.props.community || this.props.community.id != sureCommunityId) {
+      this.props.getCommunity(community_id || id)
+    }
+
+    // return if we're in an event page. No need for suggestions
     if (community_id && id) { return }
     this.props.getEvents({ community_id })
     this.props.getEventsSuggestions({ community_id })

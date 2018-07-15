@@ -1,7 +1,8 @@
 export default {
-  primaryPink: '#F851F6',
-  primaryTemp: '#A62240',
-  primary: '#a87ef5',
+  primary: '#F851F6',
+  primary1: '#A62240',
+  primary2: '#a87ef5',
+  primary3: '#9b8bb9',
   primaryDark: '#CF30CE',
   blueLighter: '#f7ffff',
   blueLight:'#48536c',
@@ -19,4 +20,6 @@ export default {
   brown: '#A2666F',
   yellow: '#fdee0c',
   peach: '#FAF8D4',
+
+  weird: '#adaeca',
 }

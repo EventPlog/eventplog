@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { lighten } from 'polished'
 
 // intenal
 import Nav from 'js/components/shared/nav'
@@ -36,18 +37,16 @@ const StyledHeader = styled.div`
     }
     
     img {
-      max-height: 50px;
-      margin-right: 0.5rem;
+      max-height: 70px;
+      margin-right: 1rem;
       
       ${
         media.phone`  
           max-height: none;
           max-width: 100%;
           margin-right: 0;
+          margin-bottom: 2rem;
           
-          &.logo-only {
-            width: 70px;
-          }
         `
       }  
     }
@@ -74,12 +73,17 @@ const StyledHeader = styled.div`
   .nav-holder {
     --line-height: 10px;
     width: 100%;
+    background: ${props => lighten(-0.4, props.theme.activeLink)};
     
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};
     
     .app-container {
       padding: 1rem 2rem;
+    }
+    
+    a {
+      color: ${colors.white};
     }
   }
   
@@ -88,7 +92,27 @@ const StyledHeader = styled.div`
   
   .right-pull {
     align-self: center;
-    margin: 2rem 0 0;
+    
+    a {
+      display: inline-block;
+      
+      ${
+        media.phone`
+          margin: 2rem 0 0;
+        `
+      }
+    }
+  }
+  
+  .hashtags-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .hashtags {
+    font-size: 80%;
+    margin: 0.5rem 1rem 0 0;
   }
 `
 
@@ -99,11 +123,16 @@ const CommunityHeader = ({
   <StyledHeader>
     <div className="app-container community-logo">
       <Link to={`/communities/${community.id}`} >
-        <img src={community.logo || defaultLogo} className={community.display_name ? 'logo-only' : '' } />
+        {community.logo && <img src={community.logo} />}
         <div>
-          {community.display_name && <h3>{community.display_name}</h3>}
-          {community.description && <small>{community.description}</small>}
-          {community.interests && <small>{community.interests.map(i => <span className="hashtags">{i.name}</span>)}</small>}
+          {!community.logo && <h3>{community.display_name}</h3>}
+          {!community.logo && <small>{community.description}</small>}
+          {community.topic_interests &&
+            <div className="hashtags-holder">
+              {community.topic_interests.map(topic =>
+                <div className="hashtags">{topic}
+                </div>)}
+            </div>}
         </div>
       </Link>
       <div className="right-pull">
@@ -128,7 +157,7 @@ const CommunityHeader = ({
           </Nav.Item>
 
           <Nav.Item>
-            <Button.Link to={`/communities/${community.id}/events/new`} activeClassName="hidden">
+            <Button.Link inverted to={`/communities/${community.id}/events/new`} activeClassName="hidden">
               <span className="hidden-lg">
                 <Icon name="plus" />
                 <Icon name="handshake outline" />

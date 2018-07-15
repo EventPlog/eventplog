@@ -89,6 +89,10 @@ const eventBannerStyles = css`
     box-shadow: 1px 2px 4px #000;
     margin: 2rem 0; 
     
+    &:hover {
+      background: var(--activeLink);
+    }
+    
     ${
       media.phone`
         align-self: flex-start;
@@ -103,16 +107,6 @@ const eventBannerStyles = css`
   
 `
 
-const Editables = ({children, ...ownProps}) => (
-  <ContentEditable {...ownProps}>
-    {
-      ({onClick, ...props}) =>
-        <div onClick={(e) => onClick(e, ownProps.defaultValue)} {...props}>
-          {children}
-        </div>
-    }
-  </ContentEditable>
-)
 
 const EventBanner = ({
   id,
@@ -134,67 +128,70 @@ const EventBanner = ({
   attendEvent,
   is_organizer,
   is_attending,
+  is_stakeholder,
+  is_owner,
   className,
-}) => (
-  <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
+}) => {
+  return (
+    <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
           backgroundImage: `url(${featured_image || '/login-bg.jpg'})`
         }}>
-    <div className="overlay" />
-    <div className="content">
-      <div className="caption">
-        <div className="title">
-          <ContentEditable onChange={handleChange}
-                           onSubmit={handleSubmit}
-                           type="input"
-                           propName="title">
-            {
-              ({onClick, ...props}) =>
-                <div onClick={(e) => onClick(e, title)} {...props}>
-                  {title}
-                </div>
-            }
-          </ContentEditable>
-        </div>
-        <div className="meta">
-          <ul>
-            <li>
-              <Editables propName="start_time"
-                         type="datetime"
-                         defaultValue={validDate(`${start_date} ${display_start_time}`)}
-                         onChange={handleChange}
-                         onSubmit={handleSubmit}>
-                {start_time ? `Starts on ${start_date} at ${display_start_time}` : 'Click to add start date/time'}
-              </Editables>
-            </li>
-            <li>
-              <Editables propName="end_time"
-                         type="datetime"
-                         defaultValue={validDate(`${end_date} ${display_start_time}`)}
-                         onChange={handleChange}
-                         onSubmit={handleSubmit}>
-                {end_time ? `Ends on ${end_date} at ${display_end_time}` : 'Click to add end date/time'}
-              </Editables>
+      <div className="overlay" />
+      <div className="content">
+        <div className="caption">
+          <div className="title">
+            <ContentEditable propName="title"
+                       canEdit={is_stakeholder}
+                       type="input"
+                       defaultValue={title}
+                       onChange={handleChange}
+                       onSubmit={handleSubmit}>
+              {title}
+            </ContentEditable>
+          </div>
+          <div className="meta">
+            <ul>
+              <li>
+                <ContentEditable propName="start_time"
+                           canEdit={is_stakeholder}
+                           type="datetime"
+                           defaultValue={validDate(`${start_date} ${display_start_time}`)}
+                           onChange={handleChange}
+                           onSubmit={handleSubmit}>
+                  {(start_date && display_start_time) ? `Starts on ${start_date} at ${display_start_time}` : 'Click to add start date/time'}
+                </ContentEditable>
               </li>
-          </ul>
-          <ul>
-            <li>{interested_persons} {pluralize('person', interested_persons)} interested.</li>
-          </ul>
+              <li>
+                <ContentEditable propName="end_time"
+                           canEdit={is_stakeholder}
+                           type="datetime"
+                           defaultValue={validDate(`${end_date} ${display_start_time}`)}
+                           onChange={handleChange}
+                           onSubmit={handleSubmit}>
+                  {(end_date && display_end_time) ? `Ends on ${end_date} at ${display_end_time}` : 'Click to add end date/time'}
+                </ContentEditable>
+              </li>
+            </ul>
+            <ul>
+              <li>{interested_persons} {pluralize('person', interested_persons)} interested.</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    {is_organizer || community.is_owner
-      ? <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
+      {is_stakeholder
+        ? <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
           Go Backstage
         </Button.Link>
-      : is_attending
+        : is_attending
           ? <Button.Link className="cta" to={link || '#'} >
-              RSVP
-            </Button.Link>
+            RSVP
+          </Button.Link>
           : <Button className="cta" onClick={() => attendEvent(event)}>
-              Interested
-            </Button>}
-  </ContentSection.FullRow>
-)
+            Interested
+          </Button>}
+    </ContentSection.FullRow>
+  )
+}
 
 const StyledEventBanner= styled(EventBanner)`
   ${ eventBannerStyles }

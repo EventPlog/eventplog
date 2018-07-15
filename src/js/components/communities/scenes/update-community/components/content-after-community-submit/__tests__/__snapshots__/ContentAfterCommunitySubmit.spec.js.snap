@@ -57,7 +57,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
   <Component
     className="medium lowercase"
     inverted={true}
-    to="/communities/1"
+    to="/communities/undefined"
   >
     Take me to my community so I can complete setup and publish.
   </Component>

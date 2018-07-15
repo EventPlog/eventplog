@@ -2,14 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 import SidebarCard from './SidebarCard'
+import { lighten } from 'polished'
 
 import SidebarEvents from './events-section'
 import SidebarCommunities from './communities-section'
+import colors from 'js/styles/theme/variables'
 
 const StyledSidebar = styled.div`
-  background: #eee;
-  color: #888;
+  color: ${lighten(0.25, colors.blue)};
   border-radius: 10px;
+  background: ${lighten(-0.15, colors.blue)};
+  
+  p {
+    color: ${colors.white};
+  }
   
   ${
     media.phone`
@@ -21,6 +27,8 @@ const StyledSidebar = styled.div`
     border-bottom: 1px solid #ccc;
     margin: 1rem 0;
     font-size: 1.3rem;
+    color: ${lighten(0.35, colors.blue)};
+    font-weight: 800;
   }
 `
 

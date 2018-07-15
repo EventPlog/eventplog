@@ -6,6 +6,7 @@ import styled from 'styled-components'
 // internal
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
+import colors from 'js/styles/theme/colors';
 
 // images
 import sampleEventImg from 'img/tech_is_in_you.png'
@@ -14,6 +15,7 @@ const StyledSidebarCard = styled.div`
   margin: 2rem 0;
   background: white;
   padding-bottom: 1rem;
+  border: 1px solid ${colors.white};
   
   ${
     media.tablet`

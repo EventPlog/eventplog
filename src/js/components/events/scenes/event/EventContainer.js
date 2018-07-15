@@ -3,10 +3,13 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import checkEqual from 'js/utils/checkEqual'
+import Auth from 'js/auth'
+
 import {
   getCommunitiesSuggestions,
   mockGetCommunities
 } from 'js/components/communities/actions'
+
 import {
   getEvent,
   updateEvent,
@@ -48,7 +51,9 @@ class EventContainer extends Component {
 
   getData() {
     const {community_id, id} = this.props.match.params
-    this.props.getEvent(id).then(event => this.setState({event}))
+    if (!this.props.event || this.props.event.id != id) {
+      this.props.getEvent(id).then(event => this.setState({event}))
+    }
     this.props.getEventsSuggestions({id, community_id}, 2)
     this.props.getCommunitiesSuggestions()
   }
@@ -76,6 +81,7 @@ const mapStateToProps = (state, ownProps) => {
     community,
     events_suggestions,
     communities_suggestions,
+    currentUser: Auth.currentUser(),
   }
 }
 

@@ -32,7 +32,7 @@ class App extends Component {
     const { activeLink, store } = this.props;
     return (
       <ThemeProvider theme={{
-        activeLink
+        activeLink,
       }}>
         <ScrollToTop>
           <StyledApp>

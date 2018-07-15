@@ -5,10 +5,16 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
   title="Communities suggestions"
 >
   <SidebarCard
-    btnText="Join"
-    description="Technology community"
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="Generic community"
     featured_image="/login-bg.jpg"
-    meta="200 members"
+    key="1"
+    meta="undefined followers"
     title={
       <Link
         replace={false}
@@ -19,10 +25,16 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     }
   />
   <SidebarCard
-    btnText="Join"
-    description="Developers community"
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="Generic community"
     featured_image="/tech_is_in_you.png"
-    meta="200 members"
+    key="2"
+    meta="undefined followers"
     title={
       <Link
         replace={false}
@@ -33,10 +45,16 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     }
   />
   <SidebarCard
-    btnText="Join"
-    description="Technology community"
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="Generic community"
     featured_image="/login-bg.jpg"
-    meta="200 members"
+    key="3"
+    meta="undefined followers"
     title={
       <Link
         replace={false}

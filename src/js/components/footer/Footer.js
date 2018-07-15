@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import color from '../../styles/theme/variables'
-import footerLogo from '../../../img/eventplog-logo-small.png'
+import footerLogo from '../../../img/eventplog-logo-name-inverted-small-v2.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
@@ -12,43 +12,44 @@ const StyledFooter = styled.div`
    flex-direction: column;
    border-top: 1px solid #ccc;
    color: var(--fg);
+   background: ${props => lighten(-0.5, props.theme.activeLink)}; 
    
    .app-container {
     padding: 1rem 2rem;
    }
    
-    a{
-      color:${color.grayLight}
+    a {
+      color: ${color.grayLight}
     }
+    
    .footer-content {
-     background: ${color.white}; 
-     display: flex;
-     flex: 1;
-     flex-direction: row; 
-     justify-content: space-between;
-     padding-top: 40px;
-     padding-bottom: 40px;
-     width: 100%;
+      display: flex;
+      flex: 1;
+      flex-direction: row; 
+      justify-content: space-between;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      width: 100%;
      
-     ${
-       media.tablet`
-         flex-direction: column;
-       `
-     }
+      ${
+        media.tablet`
+          flex-direction: column;
+        `
+      }
      
-     ${
-       media.phone`
-         display: flex;
-         flex-direction: column;
-         padding: 2rem;
-       `
-     }
+      ${
+        media.phone`
+          display: flex;
+          flex-direction: column;
+          padding: 2rem;
+        `
+      }
    }
    
    .header {
-     color: var(--fg);
-     text-transform: uppercase;
-     margin: 0 0 1.4em 0;
+      color: ${lighten(0.3, color.fg)};
+      text-transform: uppercase;
+      margin: 0 0 1.4em 0;
    }
    
    .footer-image {
@@ -154,12 +155,10 @@ const StyledFooter = styled.div`
      }
    }
    .footer-legal-section{
-     background: ${color.white};
+     background: ${props => lighten(-0.7, props.theme.activeLink)};
      flex-direction: row;
      display: flex;
      justify-content: space-between;
-     background: #fff;
-     background: #eee;
      
      li {
        margin: 0;

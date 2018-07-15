@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
+exports[`ContentAfterEventCreate it renders correctly 1`] = `
 <styled.div
   className="text-center"
 >
@@ -57,7 +57,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
   <Component
     className="medium lowercase"
     inverted={true}
-    to="/communities/1/events/1"
+    to="/communities/undefined/events/undefined"
   >
     Take me to my event so I can complete setup and publish.
   </Component>

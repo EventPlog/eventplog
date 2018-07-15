@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { inviteOrganizers, deleteInvitation } from '../../actions'
+import Validator from 'js/utils/validator'
 
 class EventOrganizersContainer extends Component {
   state = { recipient_emails: '' }
@@ -18,8 +19,16 @@ class EventOrganizersContainer extends Component {
     const trackable_type = 'Event'
     const invite = {recipient_emails, trackable_id, trackable_type}
 
+    const data = recipient_emails.map(email => ({email}))
+    const validator = new Validator();
+    const invalidEmail = recipient_emails.find(email => !validator.validateEmail(email))
+    if (invalidEmail) {
+      return this.setState({error: 'One or more emails are invalid. Please cross-check.'})
+    }
+
+    this.setState({loading: true, error: null})
     this.props.inviteOrganizers(invite).then(res => {
-      this.setState({recipient_emails: ''})
+      this.setState({loading: false, recipient_emails: ''})
     })
   }
 

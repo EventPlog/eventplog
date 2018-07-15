@@ -38,7 +38,7 @@ const StyledContent = styled.div`
   }
 `
 
-const ContentAfterEventSubmit = ({ event, handleChange, loading, error }) => (
+const ContentAfterEventSubmit = ({ event = {}, handleChange, loading, error }) => (
   <StyledContent className="text-center">
     <h3>You just created a event!!!</h3>
     <img src={peopleDancing} alt="people dancing" />

@@ -9,7 +9,7 @@ import ReactMarkdown from 'react-markdown'
 import EventSidebar from './components/event-sidebar'
 import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
-import EventAnnouncements from './components/event-announcements'
+import Button from 'js/components/shared/button'
 import AddComment from 'js/components/shared/comments/add-comment'
 import Announcements from 'js/components/shared/announcements'
 import Members from 'js/components/shared/members'
@@ -61,8 +61,12 @@ const Event = ({
     return <Loading />
   }
 
+  const isStakeHolder = event.is_stakeholder
+
   const {title, description, featured_image, start_date, start_time,
           interested_persons, organizers, announcements, comments} = event
+
+  const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
   return (
     <StyledEvent activeLink={activeLink} className="app-container">
       <ContentSection>
@@ -71,28 +75,31 @@ const Event = ({
         <ContentSection.Body>
           <ContentPanel title="Description">
             <div className="event-description">
-              <ContentEditable onChange={handleChange}
-                               onSubmit={handleSubmit}
+              <ContentEditable propName="description"
                                type="textarea"
-                               propName="description">
-                {
-                  ({onClick, ...props}) =>
-                  <div onClick={(e) => onClick(e, description)} {...props}>
-                    <ReactMarkdown escapeHtml={false} source={description || 'Click to edit. In markdown, if you wish :)'} />
-                  </div>
-                }
+                               canEdit={isStakeHolder}
+                               defaultValue={description}
+                               onChange={handleChange}
+                               onSubmit={handleSubmit}>
+                <ReactMarkdown escapeHtml={false} source={description || 'Click to edit. In markdown, if you wish :)'} />
               </ContentEditable>
             </div>
           </ContentPanel>
 
           <ContentPanel title="Announcements">
             <Announcements {...{announcements, createAnnouncement, updateAnnouncement,
-                            recipient: event, recipient_type: 'Event'}} />
+                            canCreateAnnouncement: isStakeHolder,
+                            recipient: event,
+                            recipient_type: 'Event'}} />
 
           </ContentPanel>
 
           <ContentPanel title="Meet the organizers">
             <Members {...{members: organizers}} />
+            {noOrganizersYet && isStakeHolder &&
+              <Button.Link to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>
+                Go backstage to add organizers
+              </Button.Link>}
           </ContentPanel>
 
         </ContentSection.Body>

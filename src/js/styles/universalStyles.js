@@ -1,12 +1,15 @@
 import defaults from './theme/variables'
 import { media, maxMedia } from './mixins'
 import { css } from 'styled-components'
+import { lighten } from 'polished'
 
 const styles = css`
   --fg: ${defaults.fg};
   --bg: ${defaults.bg};
   --gray: ${defaults.gray};
   height: 100%;
+  
+  background: ${lighten(0.45, defaults.blue)};
   
   a, a:hover {
     color: var(--activeLink);
@@ -112,5 +115,11 @@ const styles = css`
     top: 0;
   }
   
+  
+  .hashtags {
+    padding: 0.3rem 0.5rem;
+    background: ${defaults.gray};
+    border-radius: 5px;
+  }
 `
 export default styles;

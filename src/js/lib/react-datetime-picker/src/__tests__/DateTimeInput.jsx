@@ -93,7 +93,7 @@ describe('DateTimeInput', () => {
     const nativeInput = component.find('input[type="datetime-local"]');
     const customInputs = component.find('input[type="number"]');
 
-    expect(nativeInput.getDOMNode().value).toBe('2017-09-30T22:17');
+    expect(nativeInput.getDOMNode().value).toBe('2017-09-30T22:17:00');
     expect(customInputs.at(0).getDOMNode().value).toBe('9');
     expect(customInputs.at(1).getDOMNode().value).toBe('30');
     expect(customInputs.at(2).getDOMNode().value).toBe('2017');

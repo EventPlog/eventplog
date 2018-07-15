@@ -40,11 +40,6 @@ type CommunityPtlogType = {
 }
 
 const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
-  <ThemeProvider theme={{
-      ...defaults,
-      ...user.theme,
-      ...community.theme,
-    }}>
     <StyledCommunityPlog>
       <Switch>
         {/*<EPHeader/>*/}
@@ -56,7 +51,6 @@ const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
         <PrivateRoute path="/communities/:id" component={Community} />
       </Switch>
     </StyledCommunityPlog>
-  </ThemeProvider>
 )
 
 export default CommunityPlog

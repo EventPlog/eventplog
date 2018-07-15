@@ -1,1 +1,2 @@
-export { default } from './ContentEditable'
+export { default } from './ContentEditableWrapper'
+

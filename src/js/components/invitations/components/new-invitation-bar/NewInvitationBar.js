@@ -1,12 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { lighten, modularScale }  from 'polished'
 
 import Button from 'js/components/shared/button'
 
 const StyledNewInvitationBar = styled.div`
   padding: 2rem;
-  background: var(--activeLink);
+  background: ${props => lighten(-0.6, props.theme.activeLink)};
   color: #fff;
   
   .description a {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, Form } from 'semantic-ui-react'
+import { Icon, Form, Message } from 'semantic-ui-react'
 
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
@@ -23,10 +23,19 @@ const EventOrganizers = ({
   handleChange,
   handleDelete,
   handleSubmit,
+  error,
+  loading,
 }) =>
   <StyleEventOrganizers>
     <ContentPanel title="Add organizers">
-      <Form>
+      <Form loading={loading} error={!!error}>
+
+      <Message
+        error
+        header="Error"
+        content={error && error.toString()}
+      />
+
         <Form.Field>
           <label>Type in email addresses of co-organizers, separated by commas</label>
           <Input onChange={handleChange}

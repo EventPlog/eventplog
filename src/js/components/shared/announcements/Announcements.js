@@ -42,6 +42,7 @@ const Announcements = function({
   updateAnnouncement,
   recipient,
   recipient_type,
+  canCreateAnnouncement,
   ...otherProps
 }) {
   return (
@@ -49,16 +50,18 @@ const Announcements = function({
       <ul>
         {announcements && announcements.map(announcement =>
           <li>
-            <Announcement {...{ announcement, createAnnouncement, updateAnnouncement}} />
+            <Announcement {...{ announcement, canCreateAnnouncement,
+                                createAnnouncement, updateAnnouncement}} />
           </li>
         )}
         <li>
-          <AddAnnouncement placeholder="What'd you like everyone to know?"
+          {canCreateAnnouncement &&
+            <AddAnnouncement placeholder="What'd you like everyone to know?"
                            recipient_id={recipient.id}
                            recipient_type={`${recipient_type}`}
                            trackable_id={`${recipient.id}`}
                            trackable_type={`${recipient_type}`}
-                           createAnnouncement={createAnnouncement} />
+                           createAnnouncement={createAnnouncement} />}
         </li>
       </ul>
 

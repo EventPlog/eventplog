@@ -38,7 +38,7 @@ const StyledContent = styled.div`
   }
 `
 
-const ContentAfterCommunitySubmit = ({ community, handleChange }) => (
+const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
   <StyledContent className="text-center">
     <h3>You just created a community!!!</h3>
     <img src={peopleDancing} alt="people dancing" />

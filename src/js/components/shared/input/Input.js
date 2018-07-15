@@ -5,7 +5,7 @@ import { lighten} from 'polished'
 import colors from '../../../styles/theme/colors'
 
 const StyledInput = styled.input`
-  background: ${lighten(0.42, colors.grayLight)} !important;
+  background: ${lighten(0.42, colors.gray)} !important;
   border: none !important;
 `
 

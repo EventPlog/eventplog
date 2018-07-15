@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
+import { lighten } from 'polished'
 
 // ========= INTERNALS =========
 
 import { media } from 'js/styles/mixins'
+import colors from 'js/styles/theme/variables'
 
 const StyledComment = styled.div`
   display: flex;
@@ -80,6 +82,7 @@ const StyledComment = styled.div`
     
     > div:not(.comment-card) {
       background: #eee;
+      background: ${props => lighten(0.35, props.theme.activeLink)}; 
       padding: 1rem;
       border-radius: 10px;
     }

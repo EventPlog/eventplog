@@ -37,6 +37,7 @@ const inverted = css`
   
   &:hover {
     background: ${ colors.white };
+    border-color: var(--activeLink);
     color: var(--activeLink) !important;
   }
 `

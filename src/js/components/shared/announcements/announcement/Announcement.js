@@ -16,11 +16,13 @@ const Announcement = ({
   handleChange,
   updateAnnouncement,
   children,
+  canCreateAnnouncement,
   current_user,
   deleteAnnouncement,
   ...otherProps
 }) => {
   const currentUserIsOwner = (!announcement.deleted && announcement.user.id == current_user.id)
+
   return (
     <AnnouncementPanel announcement={announcement}
                        user={announcement.deleted ? {} : announcement.user}>
@@ -28,18 +30,17 @@ const Announcement = ({
                                <Icon className="delete" />
                              </Button>}
       {!currentUserIsOwner && <ReactMarkdown source={announcement.body} />}
-      {currentUserIsOwner &&
-        <ContentEditable onChange={handleChange}
-                         onSubmit={updateAnnouncement}
-                         type="textarea"
-                         propName="body">
-          {
-            ({onClick, ...props}) =>
-              <div onClick={(e) => onClick(e, announcement.body)} {...props}>
-                <ReactMarkdown source={announcement.body} />
-              </div>
-          }
-        </ContentEditable>}
+      {currentUserIsOwner
+        ? <ContentEditable propName="body"
+                     canEdit={currentUserIsOwner}
+                     type="textarea"
+                     defaultValue={announcement.body}
+                     onChange={handleChange}
+                     onSubmit={updateAnnouncement}>
+            <ReactMarkdown source={announcement.body} />
+          </ContentEditable>
+        : <ReactMarkdown source={announcement.body} />
+      }
       {children}
     </AnnouncementPanel>
   )

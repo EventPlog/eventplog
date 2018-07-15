@@ -51,7 +51,7 @@ const EventUpdate = ({
     link,
     no_of_members,
     no_of_upcoming_events,
-    interests,
+    topic_interests = [],
     brand_color,
   } = community
   return (
@@ -102,9 +102,9 @@ const EventUpdate = ({
 
           <Form.Field>
             <label>Interests (separated by commas)</label>
-            <Input name="interests"
-                   value={interests}
-                   placeholder='technology, food' onChange={handleChange}/>
+            <Input name="topic_interests"
+                   value={topic_interests.join(',')}
+                   placeholder='technology, food' onChange={(e) => handleChange(e, e.target.value.split(','))}/>
           </Form.Field>
 
           <Form.Field>

@@ -5,6 +5,12 @@ exports[`EventsSection should render correctly 1`] = `
   title="Events you may like"
 >
   <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Interested",
+      }
+    }
     description={
       <span>
         By 
@@ -29,6 +35,12 @@ exports[`EventsSection should render correctly 1`] = `
     }
   />
   <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Interested",
+      }
+    }
     description={
       <span>
         By 
@@ -53,6 +65,12 @@ exports[`EventsSection should render correctly 1`] = `
     }
   />
   <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Interested",
+      }
+    }
     description={
       <span>
         By 
