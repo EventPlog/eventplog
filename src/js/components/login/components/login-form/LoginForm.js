@@ -76,7 +76,7 @@ const LoginForm = ({
     <div className="social-media-buttons">
 
       <FacebookLogin
-        appId={`1753770681362792`}
+        appId={process.env.REACT_APP_FACEBOOK_APP_ID}
         autoLoad={false}
         fields="name,email,picture"
         render={renderProps => (
