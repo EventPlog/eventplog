@@ -33,7 +33,7 @@ class MainContentContainer extends Component {
   }
 
   getData() {
-    this.props.getEvents();
+    this.props.getEvents({page: 1, per_page: 5});
     this.props.getEventsSuggestions();
     this.props.getCommunitiesSuggestions();
   }

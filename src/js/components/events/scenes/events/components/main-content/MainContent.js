@@ -16,7 +16,7 @@ const MainContent = ({
     <ContentSection>
 
       <ContentSection.Body>
-        <EventsSection title="Your events" {...{events}} />
+        <EventsSection title="Events you're part of" {...{events}} />
         <EventsSection title="Events you may like"
                        events={events_suggestions}
                        attendEvent={attendEvent} />
