@@ -1,19 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import {media } from '../../../../styles/mixins'
+import {media } from 'js/styles/mixins'
+import { lighten } from 'polished'
 
-const StyledTopic =styled.div`
-.topic{
+const StyledTopic = styled.div`
   text-align: center;
-  font-weight:bold;
-  margin: 25px;
-}
+  font-weight: bold;
+  margin: 15px;
+  border-bottom: 1px solid ${props => lighten(0.3, props.theme.blue)};
+  margin-top: 3rem;
 `
 
-const Topic = (props) =>{
+const Topic = (props) => {
   return(
-    <StyledTopic>
-      <div className="topic">{props.children}</div>
+    <StyledTopic className= "topic">
+      <h3>{props.children}</h3>
     </StyledTopic>
   )
 }

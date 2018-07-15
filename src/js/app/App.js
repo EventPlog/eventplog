@@ -14,6 +14,7 @@ import NewInvitationBar from 'js/components/invitations/components/new-invitatio
 import HelpPage from '../components/help';
 import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
+import appThemeColors from 'js/styles/theme/variables'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -36,6 +37,7 @@ class App extends Component {
     const { activeLink, store } = this.props;
     return (
       <ThemeProvider theme={{
+        ...appThemeColors,
         activeLink,
       }}>
       

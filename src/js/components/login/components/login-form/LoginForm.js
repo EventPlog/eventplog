@@ -5,7 +5,7 @@ import GoogleLogin from 'react-google-login';
 import EmailLoginForm from './email-login-form'
 import { Button, Form, Message, Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
-import colors from '../../../../styles/theme/colors'
+import colors from 'js/styles/theme/variables'
 import { lighten } from 'polished'
 
 const StyledLoginForm = styled.div`
@@ -50,7 +50,7 @@ const StyledLoginForm = styled.div`
       position: absolute;
       top: -28px;
       padding: 20px 50px;
-      background: #fff;
+      background: ${lighten(0.45, colors.blue)};
     }
     
     & + div {

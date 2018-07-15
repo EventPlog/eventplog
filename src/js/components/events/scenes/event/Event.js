@@ -24,6 +24,11 @@ const StyledEvent = styled.div`
     color: #444;
   }
   
+  p {
+    font-size: 1.2rem;
+    font-weigth: 300;
+  } 
+  
   .event-description {
     ul {
       list-style: inherit;
