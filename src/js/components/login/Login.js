@@ -91,7 +91,10 @@ class Login extends Component {
   }
 
   googleResponse = (res = {}) => {
-    if (!res || !res.profileObj) return
+    if (!res || !res.profileObj) {
+      console.log('Google response returned blank ', res)
+      return
+    }
     const {
       email,
       familyName: last_name,
