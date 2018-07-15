@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom';
+import styled, { ThemeProvider } from 'styled-components';
 
+// ======= INTERNAL ========
 import {Auth, PrivateRoute} from 'js/auth'
 import Lead from 'js/components/leads/leads-creation'
-import styled, { ThemeProvider } from 'styled-components';
 import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
 import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
 import NewInvitationBar from 'js/components/invitations/components/new-invitation-bar'
+import HelpPage from '../components/help';
+import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
+
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
 const Login = createLoadable(() => import('js/components/login'  /* webpackChunkName: "login" */))
@@ -34,6 +38,7 @@ class App extends Component {
       <ThemeProvider theme={{
         activeLink,
       }}>
+      
         <ScrollToTop>
           <StyledApp>
             <Header />
@@ -45,11 +50,13 @@ class App extends Component {
                      : <Login/>
                 } />
               <Route exact path="/login" component={Login} />
+              <Route path="/legal" component={Legal} />
               <Route exact path="/logout" render={() => handleLogout(store)} />
               <Route exact path="/signup" component={Login} />
               <Route path="/leads/:id" component={Lead} />
               <Route path="/user" component={User} />
               <Route path="/password" component={Password} />
+              <Route path="/help" component={HelpPage} />              
               <PrivateRoute path="/events" component={Events} />
               <PrivateRoute path="/communities" component={Communities} />
             </Switch>

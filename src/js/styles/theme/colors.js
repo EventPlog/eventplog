@@ -20,6 +20,4 @@ export default {
   brown: '#A2666F',
   yellow: '#fdee0c',
   peach: '#FAF8D4',
-
-  weird: '#adaeca',
 }
