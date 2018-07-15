@@ -1,20 +1,17 @@
 import React from 'react'
-import Button from '../../../shared/button'
+import Button from 'js/components/shared/button'
 import Styled from 'styled-components'
 import styled from 'styled-components';
 
 const StyledGoToEventPlog = styled.div`
-.button{
   display: flex;
   justify-content:center;
-}
 `
-const GoToEventPlog = ()=>{
+
+const GoToEventPlog = () => {
   return(
-    <StyledGoToEventPlog>
-      <div className="button">
-        <Button>Go To EventPlog</Button>
-      </div>
+    <StyledGoToEventPlog className="go-to-eventplog-button">
+      <Button>Go To EventPlog</Button>
     </StyledGoToEventPlog>
   )
 }
