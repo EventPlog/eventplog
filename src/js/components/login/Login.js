@@ -28,7 +28,7 @@ const StyledLogin = styled.div`
     
     ${
       media.phone`
-        background-repeat: repeat;
+        background-repeat: no-repeat;
         background-size: contain;
       `
     }

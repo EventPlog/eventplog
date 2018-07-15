@@ -8,7 +8,7 @@ import { media } from 'js/styles/mixins'
 import { lighten } from 'polished'
 
 const StyledMainContent = styled.div`
-  background-image: url('https://farm2.staticflickr.com/1761/28551545067_356419284c_t.jpg');
+  background-image: url('https://farm2.staticflickr.com/1761/28551545067_67de7285ac_o.jpg');
   background-size: cover;
   position: relative;
   
