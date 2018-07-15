@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, matchPath } from 'react-router-dom';
-import logo from 'img/eventplog-logo-small.png'
+import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
 import { Icon } from 'semantic-ui-react'
 import Button from 'js/components/shared/button'
 import Nav from 'js/components/shared/nav'

@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledImage =styled.div`  
-  .help-page-image {
-    width: 100%;
-  }
+  width: 100%;
+  margin: 2rem 0;
 `
 
 const HelpImage = ({

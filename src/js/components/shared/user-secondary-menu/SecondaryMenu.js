@@ -6,11 +6,13 @@ import styled from 'styled-components'
 import Nav from 'js/components/shared/nav'
 import colors from 'js/styles/theme/colors'
 import { media } from 'js/styles/mixins'
+import { lighten } from 'polished'
 
 
 
 const StyledHeader = styled.div`
-  border-bottom: 1px solid ${colors.gray};
+  border-bottom: 1px solid ${lighten(-0.1, colors.gray)};
+    background: ${props => lighten(-0.4, props.theme.activeLink)};
   
   --line-height: 50px;
   
@@ -21,6 +23,10 @@ const StyledHeader = styled.div`
   ul {
     margin: 0;
     padding: 0;
+    
+    a {
+      color: ${colors.white};
+    }
     
     ${
       media.phone`

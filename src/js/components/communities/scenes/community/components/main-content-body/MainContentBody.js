@@ -62,6 +62,7 @@ const MainContent = ({
   events = [],
   events_suggestions = [],
   communities_suggestions = [],
+  attendEvent,
 }) => {
   if (loading) {
     return <Loading />
@@ -71,9 +72,11 @@ const MainContent = ({
       <ContentSection className="community-event">
 
         <ContentSection.Body>
-          <EventsSection title="Events" {...{events}} />
+          <EventsSection title="Events" {...{events}}
+                         attendEvent={attendEvent} />
           <EventsSection title="Similar events from other communities"
-                         events={events_suggestions} />
+                         events={events_suggestions}
+                         attendEvent={attendEvent} />
         </ContentSection.Body>
 
         <ContentSection.Sidebar>

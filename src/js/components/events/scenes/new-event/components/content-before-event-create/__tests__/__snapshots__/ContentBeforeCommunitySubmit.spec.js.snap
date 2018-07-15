@@ -26,7 +26,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           className="email-holder"
         >
           <Input
-            name="text"
+            name="title"
             placeholder="Event name"
             type="text"
           />

@@ -9,9 +9,11 @@ import ReactMarkdown from 'react-markdown'
 import EventSidebar from './components/event-sidebar'
 import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
-import EventAnnouncements from './components/event-announcements'
-import AddComment from 'js/components/shared/add-comment'
+import Button from 'js/components/shared/button'
+import AddComment from 'js/components/shared/comments/add-comment'
+import Announcements from 'js/components/shared/announcements'
 import Members from 'js/components/shared/members'
+import ContentEditable from 'js/components/shared/content-editable'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -22,7 +24,26 @@ const StyledEvent = styled.div`
     color: #444;
   }
   
-  .comments-section {
+  p {
+    font-size: 1.2rem;
+    font-weigth: 300;
+  } 
+  
+  .event-description {
+    ul {
+      list-style: inherit;
+      margin-left: 2rem;
+    }
+    
+    textarea {
+      min-height: 200px;
+    }
+  }
+  
+  .content-body {
+    > .add-comment {
+      margin-top: 2rem;
+    }
   }
 `
 
@@ -31,44 +52,80 @@ const Event = ({
   community,
   activeLink,
   events_suggestions = [],
-  communities_suggestions = []
+  communities_suggestions = [],
+  handleChange,
+  handleSubmit,
+  attendEvent,
+  createComment,
+  updateComment,
+  createAnnouncement,
+  updateAnnouncement,
 }) => {
 
   if (event.loading) {
     return <Loading />
   }
 
+  const isStakeHolder = event.is_stakeholder
+
   const {title, description, featured_image, start_date, start_time,
           interested_persons, organizers, announcements, comments} = event
+
+  const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
   return (
     <StyledEvent activeLink={activeLink} className="app-container">
       <ContentSection>
-        <EventBanner {...event} />
+        <EventBanner {...{...event, community, handleChange, handleSubmit, attendEvent}} />
 
         <ContentSection.Body>
           <ContentPanel title="Description">
             <div className="event-description">
-              <ReactMarkdown escapeHtml={false} source={description} />
+              <ContentEditable propName="description"
+                               type="textarea"
+                               canEdit={isStakeHolder}
+                               defaultValue={description}
+                               onChange={handleChange}
+                               onSubmit={handleSubmit}>
+                <ReactMarkdown escapeHtml={false} source={description || 'Click to edit. In markdown, if you wish :)'} />
+              </ContentEditable>
             </div>
           </ContentPanel>
 
           <ContentPanel title="Announcements">
-            <EventAnnouncements {...{announcements}} />
+            <Announcements {...{announcements, createAnnouncement, updateAnnouncement,
+                            canCreateAnnouncement: isStakeHolder,
+                            recipient: event,
+                            recipient_type: 'Event'}} />
+
           </ContentPanel>
 
           <ContentPanel title="Meet the organizers">
             <Members {...{members: organizers}} />
+            {noOrganizersYet && isStakeHolder &&
+              <Button.Link to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>
+                Go backstage to add organizers
+              </Button.Link>}
           </ContentPanel>
 
         </ContentSection.Body>
 
-        <EventSidebar {...{announcements, events_suggestions, communities_suggestions}}/>
+        <EventSidebar  {...{community,
+                            announcements,
+                            events_suggestions,
+                            attendEvent}}/>
 
         <ContentSection.FullRow>
           <ContentSection.Body>
             <ContentPanel title="Ask the organizers">
-              <AddComment placeholder="What would you like to ask/suggest?" />
-              <Comments comments={comments} />
+              <Comments {...{comments, createComment, updateComment }} />
+
+              <AddComment placeholder="What would you like to ask/suggest?"
+                          recipient_id={event.id}
+                          recipient_type="Event"
+                          trackable_id={event.id}
+                          trackable_type="Event"
+                          createComment={createComment} />
+
             </ContentPanel>
           </ContentSection.Body>
         </ContentSection.FullRow>

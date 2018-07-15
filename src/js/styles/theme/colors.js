@@ -1,5 +1,8 @@
 export default {
-  primary: '#a87ef5',
+  primary: '#F851F6',
+  primary1: '#A62240',
+  primary2: '#a87ef5',
+  primary3: '#9b8bb9',
   primaryDark: '#CF30CE',
   blueLighter: '#f7ffff',
   blueLight:'#48536c',
@@ -14,5 +17,7 @@ export default {
   gray: '#eee',
   grayLight: '#778899',
   grayMedium: '#a2a3a5',
-  yellow: '#fdee0c'
+  brown: '#A2666F',
+  yellow: '#fdee0c',
+  peach: '#FAF8D4',
 }

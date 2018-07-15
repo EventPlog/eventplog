@@ -1,4 +1,5 @@
 export default {
-  events: [],
   event: {},
+  events: [],
+  events_suggestions: [],
 }

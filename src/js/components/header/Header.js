@@ -5,9 +5,12 @@ import Auth from '../../auth'
 import styled, { css } from 'styled-components'
 import defaults from '../../styles/theme/variables'
 import { media } from '../../styles/mixins'
+import { lighten } from 'polished'
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid ${defaults.gray};
+  background: ${props => lighten(-0.6, props.theme.activeLink)};
+  
   
   .main-header {
     padding: 1rem 2rem;
@@ -52,6 +55,10 @@ const StyledHeader = styled.div`
     ul {
       margin: auto 0 auto 50px;
       
+            a {
+              color: ${defaults.white};
+            }
+            
       ${
         media.phone`
           margin: 2rem 0;

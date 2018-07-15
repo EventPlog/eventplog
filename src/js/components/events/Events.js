@@ -5,7 +5,7 @@ import { Switch } from 'react-router-dom';
 // internal components
 import Header from '../../header/MainHeader';
 import createLoader from '../shared/loading/createLoadable'
-import styled, { ThemeProvider } from 'styled-components';
+import styled  from 'styled-components';
 import defaults from '../../styles/theme/variables';
 import {fakeAuth, PrivateRoute} from '../../auth'
 import UserNav from 'js/components/shared/user-secondary-menu'
@@ -32,8 +32,8 @@ const StyledEventPlog = styled.div`
 
 const UserEvents = () => (
   [
-    <UserNav />,
-    <Events />
+    <UserNav key="user-nav" />,
+    <Events key="user-events" />
   ]
 )
 const EventPlog = ({user = {}}) => (

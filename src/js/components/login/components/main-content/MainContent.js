@@ -1,16 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import backgroundImg from '../../../../../img/login-bg.jpg'
-import colors from '../../../../styles/theme/colors'
+import backgroundImg from 'img/login-bg-2.jpg'
+import colors from 'js/styles/theme/colors'
 import LoginForm from '../login-form'
 import SignupForm from '../signup-form'
 import { Message } from 'semantic-ui-react'
-import { media } from '../../../../styles/mixins'
+import { media } from 'js/styles/mixins'
+import { lighten } from 'polished'
 
 const StyledMainContent = styled.div`
   background-image: url(${backgroundImg});
   background-size: cover;
   position: relative;
+  
+  .overlay {
+    opacity: 0.4;
+  }
   
   > .app-container {
     display: flex;
@@ -80,7 +85,7 @@ const StyledMainContent = styled.div`
   }
   
   .form-holder {
-    background: ${colors.white};
+    background: ${lighten(0.45, colors.blue)};
     border-radius: 5px;
     box-shadow: 0 2px 4px #000;
     height: auto;

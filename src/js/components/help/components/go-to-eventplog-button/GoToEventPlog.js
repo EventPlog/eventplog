@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const StyledGoToEventPlog = styled.div`
   display: flex;
-  justify-content:center;
+  justify-content: flex-end;
 `
 
 const GoToEventPlog = () => {

@@ -26,15 +26,18 @@ const commonStyles = css`
   &:hover {
     background: var(--activeLink);
     color: ${colors.white};
+    cursor: pointer;
   }
 `
 
 const inverted = css`
   background: var(--activeLink);
   color: ${ colors.white} !important;
+  border-color: ${ colors.white };
   
   &:hover {
     background: ${ colors.white };
+    border-color: var(--activeLink);
     color: var(--activeLink) !important;
   }
 `

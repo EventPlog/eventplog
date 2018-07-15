@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 
 const StyledDescription =styled.div`
   font-size: 1.1em;
-  max-width: 750px;
   line-height: 30px;
   margin: 2rem;
 `
