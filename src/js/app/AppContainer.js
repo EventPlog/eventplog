@@ -19,10 +19,14 @@ class AppContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
-  const match = matchPath(ownProps.location.pathname, '/communities/:id')
+  const isCommunityPath = matchPath(ownProps.location.pathname, '/communities/:id')
+  const isHomePath = matchPath(ownProps.location.pathname, {path: '/', exact: true})
+  const isLoginPath = matchPath(ownProps.location.pathname, {path: '/login', exact: true})
+  const isSignuPath = matchPath(ownProps.location.pathname, {path: '/signup', exact: true})
   return {
     ...ownProps,
-    activeLink: match && Object.keys(community).length > 0 ? (community.brand_color || defaults.activeLink) : defaults.activeLink,
+    activeLink: isCommunityPath && Object.keys(community).length > 0 ? (community.brand_color || defaults.activeLink) : defaults.activeLink,
+    showBreadCrumb: !(isHomePath || isLoginPath || isSignuPath)
   }
 }
 
