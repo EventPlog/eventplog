@@ -7,7 +7,6 @@ import Auth from 'js/auth'
 
 import {
   getCommunitiesSuggestions,
-  mockGetCommunities
 } from 'js/components/communities/actions'
 
 import {
