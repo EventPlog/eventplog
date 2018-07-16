@@ -74,7 +74,7 @@ const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
       </li>
     </ul>
     <Button.Link to={`/communities/${community.id}`} inverted className="medium lowercase">
-      Take me to my community so I can complete setup and publish.
+      Take me to my community page
     </Button.Link>
   </StyledContent>
 )

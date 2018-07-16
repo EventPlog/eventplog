@@ -40,7 +40,7 @@ const StyledContent = styled.div`
 
 const ContentAfterEventSubmit = ({ event = {}, handleChange, loading, error }) => (
   <StyledContent className="text-center">
-    <h3>You just created a event!!!</h3>
+    <h3>You just created an event!!!</h3>
     <img src={peopleDancing} alt="people dancing" />
     <p>
       Thank you for all you do to strengthen the ecosytem.
@@ -74,7 +74,7 @@ const ContentAfterEventSubmit = ({ event = {}, handleChange, loading, error }) =
       </li>
     </ul>
     <Button.Link to={`/communities/${event.community_id}/events/${event.id}`} inverted className="medium lowercase">
-      Take me to my event so I can complete setup and publish.
+      Take me to my event
     </Button.Link>
   </StyledContent>
 )
