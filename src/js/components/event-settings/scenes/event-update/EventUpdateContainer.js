@@ -18,7 +18,8 @@ class EventUpdateContainer extends Component {
   }
 
   handleSubmit = () => {
-    return this.props.updateEvent(this.state.event).then(event => this.setState({event}))
+    return this.props.updateEvent(this.state.event)
+                     .then(event => this.setState({event}))
   }
 
   getProps = () => ({
