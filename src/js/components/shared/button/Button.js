@@ -46,13 +46,18 @@ const StyledBtn = styled.button`
   ${ commonStyles }
 `
 
-const StyledLink = styled(NavLink)`
-  ${ commonStyles }
-  
-  &:hover {
-    color: ${colors.white} !important;
-  }
-`;
+const StyledLink = (isAnchorTag) => {
+  const El = isAnchorTag ? styled.a`` : NavLink
+  return (
+    styled(El)`
+      ${ commonStyles }
+      
+      &:hover {
+        color: ${colors.white} !important;
+      }
+    `
+  )
+}
 
 const InvertedBtn = (Component, props) => (
   props.inverted
@@ -67,8 +72,8 @@ const Button = function(props) {
   return <Component {...props} />
 }
 
-Button.Link = function(props) {
-  const Component = InvertedBtn(StyledLink, props)
+Button.Link = function({isAnchorTag, ...props}) {
+  const Component = InvertedBtn(StyledLink(isAnchorTag), props)
   return <Component {...props} />
 }
 

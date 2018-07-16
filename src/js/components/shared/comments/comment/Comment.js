@@ -108,20 +108,16 @@ const Comment = ({
   return (
     <CommentPanel user={comment.deleted ? {} : comment.user}>
       {currentUserIsOwner && <Button inverted className="btn-delete" onClick={deleteComment}>
-        <Icon className="delete" />
-      </Button>}
-      {!currentUserIsOwner && renderCommentText}
-      {currentUserIsOwner && <ContentEditable onChange={handleChange}
-                       onSubmit={updateComment}
+                               <Icon className="delete" />
+                             </Button>}
+      <ContentEditable propName="body"
                        type="textarea"
-                       propName="body">
-        {
-          ({onClick, ...props}) =>
-            <div onClick={(e) => onClick(e, comment.body)} {...props}>
-              <ReactMarkdown source={comment.body} />
-            </div>
-        }
-      </ContentEditable>}
+                       canEdit={currentUserIsOwner}
+                       defaultValue={comment.body}
+                       onChange={handleChange}
+                       onSubmit={updateComment}>
+        {renderCommentText}
+      </ContentEditable>
       {children}
     </CommentPanel>
   )

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
+import Pagination from 'js/components/shared/pagination'
 
 export const generateTitle = (community) => (
   <Link to={`/communities/${community.id}`}>
@@ -30,20 +31,24 @@ export const generateMeta = (community) => (
 const CommunitySection = ({
   title,
   showCTA = true,
-  communities,
+  communities = {data: [], meta: {}},
+  getCommunities,
   followCommunity,
 }) => {
-  if (communities.loading) {
+
+  const {loading, error, data = [], meta = {}} = communities;
+
+  if (loading) {
     return <Loading />
   }
 
-  if (communities.error) {
+  if (error) {
     return <Error msg={communities.error} />
   }
 
   return (
     <ContentPanel title={title}>
-      {communities && communities.map(({description, featured_image, ...community}) => {
+      {data && data.map(({description, featured_image, ...community}) => {
           const title = generateTitle(community)
           const meta = generateMeta(community)
           return (
@@ -55,6 +60,14 @@ const CommunitySection = ({
           )
         }
       )}
+      {data && data.length < 1 && <p>This hall for communities seem empty ...</p>}
+      {
+        meta && meta.total_pages && data.length > 0
+          ? <Pagination totalPages={meta.total_pages}
+                        activePage={meta.current_page}
+                        onPageChange={getCommunities} />
+          : ''
+      }
     </ContentPanel>
   )
 }

@@ -4,17 +4,17 @@ exports[`MainContent should render correctly 1`] = `
 <ContentSection>
   <ContentBody>
     <EventsSection
-      events={Array []}
-      title="Your events"
+      events={Object {}}
+      title="Events you're part of"
     />
     <EventsSection
-      events={Array []}
+      events={Object {}}
       title="Events you may like"
     />
   </ContentBody>
   <ContentSidebar>
     <CommunitiesSection
-      communities={Array []}
+      communities={Object {}}
     />
   </ContentSidebar>
 </ContentSection>

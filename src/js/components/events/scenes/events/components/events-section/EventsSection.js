@@ -7,6 +7,7 @@ import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
+import Pagination from 'js/components/shared/pagination'
 
 export const generateTitle = (event) => (
   <Link to={`/communities/${event.community.id}/events/${event.id}`}>
@@ -49,15 +50,17 @@ export const generateCTA = (handleClick) => (
 
 const EventsSection = ({
   title,
-  events = [],
+  events = {},
   attendEvent,
+  getEvents,
 }) => {
-  const {loading, error} = events;
+  const {loading, error, data = [], meta = {}} = events;
+  const shouldDisplayData = (!loading && !error && data);
   return (
     <ContentPanel title={title}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
-      {(!loading && !error && !!events) && events.map(({featured_image, ...event}) => {
+      {shouldDisplayData && data.map(({featured_image, ...event}) => {
           const title = generateTitle(event)
           const description = generateDescription(event.community)
           const meta = generateMeta(event)
@@ -71,6 +74,14 @@ const EventsSection = ({
           )
         }
       )}
+      {shouldDisplayData && data.length < 1 && <p>No events to display today ...</p>}
+      {
+        meta && meta.total_pages && data.length > 0
+          ? <Pagination totalPages={meta.total_pages}
+                        activePage={meta.current_page}
+                        onPageChange={getEvents} />
+          : ''
+      }
     </ContentPanel>
   )
 }

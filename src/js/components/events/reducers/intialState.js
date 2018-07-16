@@ -1,5 +1,5 @@
 export default {
   event: {},
-  events: [],
-  events_suggestions: [],
+  events: {data: [], meta: {}, loading: false},
+  events_suggestions: {data: [], meta: {}, loading: false},
 }

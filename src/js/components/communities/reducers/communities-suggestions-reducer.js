@@ -3,19 +3,29 @@ import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
 const communityReducer = (state=initialState.communities_suggestions, action) => {
+  let data
   switch(action.type) {
     case actionTypes.COMMUNITY_SUGGESTIONS_INDEX_START:
-      return { loading: true }
+      return { ...state, loading: true }
 
     case actionTypes.COMMUNITY_SUGGESTIONS_INDEX_COMPLETE:
-      const currentState = state.map ? state : []
-      return [ ...currentState, ...action.payload].filter(c => !c.following)
+      return {...state, ...action.payload, loading: false}
 
     case actionTypes.COMMUNITY_SUGGESTIONS_INDEX_FAIL:
-      return {loading: false, error: action.payload}
+      return {...state, loading: false, error: action.payload}
 
     case actionTypes.COMMUNITY_FOLLOW_CREATE_COMPLETE:
-      return updateItemInCollection(state, action.payload)
+      data = updateItemInCollection(state.data, action.payload)
+      return {...state, data}
+
+    case actionTypes.EVENT_SUGGESTIONS_INDEX_COMPLETE:
+      // data = [...state.data, ...action.payload.data]
+      return {...state, ...action.payload}
+
+    case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:
+
+    case actionTypes.EVENT_SUGGESTIONS_INDEX_FAIL:
+      return {...state, loading: false, error: action.payload }
 
     default:
       return state;

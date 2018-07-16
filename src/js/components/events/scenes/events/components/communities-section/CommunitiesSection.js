@@ -22,7 +22,10 @@ export const generateMeta = (community) => (
   `${community.no_of_followers} followers`
 )
 
-const CommunitiesSection = ({ communities, followCommunity }) => {
+const CommunitiesSection = ({
+  communities = {data: [], meta: {}},
+  followCommunity
+}) => {
   if (communities.loading) {
     return <Loading />
   }
@@ -31,7 +34,7 @@ const CommunitiesSection = ({ communities, followCommunity }) => {
   }
   return (
     <Sidebar title="Communities suggestions">
-      {communities && communities.map(({featured_image, ...community}) => {
+      {communities.data && communities.data.map(({featured_image, ...community}) => {
           const title = generateTitle(community);
           const description = generateDescription(community.interest)
           const meta = generateMeta(community)

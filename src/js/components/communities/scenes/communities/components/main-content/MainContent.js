@@ -8,7 +8,10 @@ const MainContent = ({
   communities = [],
   communities_suggestions = [],
   events_suggestions = [],
+  getCommunities,
+  getCommunitiesSuggestions,
   followCommunity,
+  attendEvent,
 }) => {
   return (
     <ContentSection className="user-communities">
@@ -16,14 +19,16 @@ const MainContent = ({
       <ContentSection.Body>
         <CommunitiesSection title="My communities"
                             showCTA={false}
-          {...{communities}} />
+          {...{communities, getCommunities}} />
         <CommunitiesSection title="Related communities"
+                            getCommunities={getCommunitiesSuggestions}
                             followCommunity={followCommunity}
                             communities={communities_suggestions} />
       </ContentSection.Body>
 
       <ContentSection.Sidebar>
-        <Sidebar.Events events={events_suggestions} />
+        <Sidebar.Events events={events_suggestions}
+                        attendEvent={attendEvent} />
       </ContentSection.Sidebar>
 
     </ContentSection>
