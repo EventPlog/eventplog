@@ -260,7 +260,7 @@ const Footer = () => (
         <div className="left-links">
           <ul>
             <li>
-              <Link to="/privacy-policy">
+              <Link to="/legal/privacy-policy">
                 Privacy Policy
               </Link>
             </li>
