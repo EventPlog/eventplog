@@ -11,6 +11,7 @@ const CommunitiesIFollow = () => {
     <div>
       <Topic>Communities I Follow</Topic>
       <Description>
+        You want to find communities you follow to engage more with them. 
         Click on communities at the
         top navigation bar after you have followed or joined a 
         community, if you are looking for communities you follow.<br/>

@@ -10,7 +10,9 @@ const ConnectWithOrganizers = () => {
       <Topic> Find and Connect With the Organizers</Topic>     
       <Description>
         Connecting with event organizers can be a fun activity. Whether it is for enquiries or for fun,
-        we have made it easier for you to connect with organizers.<br/> To connect with organizers, you have 
+        we have made it easier for you to connect with organizers.<br/> When you connect with organisers,
+        you want to have person to person conversations to find out more about events they organisers or
+        to make suggestions to them. To connect with organizers, you have 
         to find them first! You find organizers when you are interested in their events.<br/>
         Click on an event and scroll right to the bottom to find 'ask the organizers'
         <br/> <img src={image} alt="connect with organizers"/>
