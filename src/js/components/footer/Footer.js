@@ -202,16 +202,12 @@ const StyledFooter = styled.div`
 const Footer = () => (
   <StyledFooter className="footer">
 
-
     <div className="footer-content app-container">
-
       <div className="footer-image">
         <Link to="/">
           <img src={footerLogo} alt='eventplog-logo' />
         </Link>
       </div>
-
-
       <div className="footer-menu">
         <div className="footer-menu-list">
           <ul>
@@ -243,7 +239,6 @@ const Footer = () => (
         </div>
       </div>
     </div>
-
     <div className="footer-legal-section">
       <div className="app-container">
         <div className="right-links">
@@ -255,7 +250,6 @@ const Footer = () => (
             </li>
           </ul>
         </div>
-
         <div className="left-links">
           <ul>
             <li>
@@ -274,13 +268,9 @@ const Footer = () => (
               </Link>
             </li>
           </ul>
-
         </div>
       </div>
-
-
     </div>
-
   </StyledFooter>
 )
 
