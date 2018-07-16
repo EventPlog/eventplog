@@ -11,6 +11,8 @@ const CreateCommunity = () => {
     <div className="help-main-content"> 
       <Topic>Create a Community</Topic>
       <Description>
+        I want to create community to be able to host people of similar interests together 
+        under a common umbrella.
         Creating a community is the first thing you have to do before going to 
         <Link to="/help/organizers/create-an-event"> 
         create an event.
@@ -24,11 +26,8 @@ const CreateCommunity = () => {
         <br/>
         <HelpImage src={createcommunity} alt="Edit my community"/>
         Make sure you review all the information you have enetered before publishing your community.
-        If you have entered an information in error however, you can
-        <Link to="">
-          edit
-        </Link> 
-         you community's information.
+        If you have entered an information in error however, you can edit
+         your community's information.
         <br/>
       </Description> 
     </div>

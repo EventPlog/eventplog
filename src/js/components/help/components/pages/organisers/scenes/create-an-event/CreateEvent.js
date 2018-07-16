@@ -10,8 +10,10 @@ const CreateEvent = () => {
     <div > 
       <Topic>Create an Event</Topic>
       <Description>
+        When I create an event I want to engage my comunity in meaningful offline activities so they can connect
+        with members of my community with similar interests.
         To create an event, you must have <Link to="/help/organizers/create-a-community">created a community! </Link>
-        <br/><br/> The CreateEvent button can be found on almost all page's top navigation bar. Click on the 
+        <br/> The CreateEvent button can be found on almost all page's top navigation bar. Click on the 
         button and to find a page that asks for the name of your event.<br/><br/>
         <img src={createeventimage} alt="create an event"/><br/><br/> After creating an event, select
         "take me to my events so I can setup and publish". This takes you to a template event page that is editable.
