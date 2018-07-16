@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import { Breadcrumb } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { lighten } from 'polished'
+import { media } from 'js/styles/mixins'
 
 const StyledBreadCrumb = styled.div`
   border-bottom: 1px solid ${props => lighten(0.4, props.theme.fg)};
@@ -11,8 +12,18 @@ const StyledBreadCrumb = styled.div`
     padding: 1rem 2rem;
   }
   
-  .ui.breadcrumb a {
-    color: var(--activeLink);
+  .ui.breadcrumb {
+    line-height: 1.3rem;
+    
+    ${
+      media.phone`
+        flex-direction: row
+      `
+    }
+    
+    a {
+      color: var(--activeLink);
+    }
   }
 `
 
@@ -40,7 +51,9 @@ const BreadcrumbComponent = (props) => {
 
   return (
     <StyledBreadCrumb>
-      <Breadcrumb className='app-container' size='tiny' sections={paths} />
+      <div className="app-container">
+        <Breadcrumb size='tiny' sections={paths} />
+      </div>
     </StyledBreadCrumb>
   )
 }
