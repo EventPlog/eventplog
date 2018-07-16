@@ -10,6 +10,10 @@ const StyledBreadCrumb = styled.div`
   .app-container {
     padding: 1rem 2rem;
   }
+  
+  .ui.breadcrumb a {
+    color: var(--activeLink);
+  }
 `
 
 const BreadcrumbComponent = (props) => {
