@@ -3,5 +3,66 @@
 exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
 <Sidebar
   title="Communities suggestions"
-/>
+>
+  <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="Generic community"
+    featured_image="/login-bg.jpg"
+    key="1"
+    meta="undefined followers"
+    title={
+      <Link
+        replace={false}
+        to="/communities/1/"
+      >
+        Facebook Developer Circle Lagos
+      </Link>
+    }
+  />
+  <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="Generic community"
+    featured_image="/tech_is_in_you.png"
+    key="2"
+    meta="undefined followers"
+    title={
+      <Link
+        replace={false}
+        to="/communities/2/"
+      >
+        Google Developer Group
+      </Link>
+    }
+  />
+  <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="Generic community"
+    featured_image="/login-bg.jpg"
+    key="3"
+    meta="undefined followers"
+    title={
+      <Link
+        replace={false}
+        to="/communities/3/"
+      >
+        ForLoop Lagos
+      </Link>
+    }
+  />
+</Sidebar>
 `;

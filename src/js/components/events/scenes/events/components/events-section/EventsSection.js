@@ -9,13 +9,13 @@ import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
 
-export const generateTitle = (event) => (
+export const generateTitle = (event = {community: {}}) => (
   <Link to={`/communities/${event.community.id}/events/${event.id}`}>
     {event.title}
   </Link>
 )
 
-export const generateDescription = (community) => (
+export const generateDescription = (community = {}) => (
   <span>
     By <Link to={`/communities/${community.id}`}>
       {community.name}
@@ -23,7 +23,7 @@ export const generateDescription = (community) => (
   </span>
 )
 
-export const generateMeta = (event) => ([
+export const generateMeta = (event = {}) => ([
   <ul key={`date${event.id}`}>
     <li>
       {event.date}

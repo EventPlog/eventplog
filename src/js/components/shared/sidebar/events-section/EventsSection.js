@@ -29,12 +29,12 @@ const EventsSection = ({
   events = {data: [], meta: {}},
   attendEvent
 }) => {
-  const {loading, error } = events
+  const {loading, error, data = {} } = events
   return (
     <Sidebar title={title || "Events you may like"}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
-      {(!loading && !error && events.data) && events.data.map(({community, description: d, featured_image, ...event}) => {
+      {(!loading && !error && data) && data.map(({community, description: d, featured_image, ...event}) => {
           const title = generateTitle(event, community.id);
           const description = generateDescription(community);
           const meta = generateMeta(event)

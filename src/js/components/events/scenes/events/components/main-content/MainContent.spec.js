@@ -30,7 +30,7 @@ describe('MainContent', () => {
     const communitySectionInstances = wrapper.find(Sidebar.Communities)
 
     // assert titles
-    expect(eventSectionInstances.at(0).props().title).toEqual('Your events')
+    expect(eventSectionInstances.at(0).props().title).toEqual("Events you're part of")
     expect(eventSectionInstances.at(1).props().title).toEqual('Events you may like')
 
     // assert other props

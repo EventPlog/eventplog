@@ -8,13 +8,13 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Pagination from 'js/components/shared/pagination'
 
-export const generateTitle = (community) => (
+export const generateTitle = (community = {}) => (
   <Link to={`/communities/${community.id}`}>
     {community.name}
   </Link>
 )
 
-export const generateMeta = (community) => (
+export const generateMeta = (community = {}) => (
   <ul>
     <li>
       {community.no_of_members} members

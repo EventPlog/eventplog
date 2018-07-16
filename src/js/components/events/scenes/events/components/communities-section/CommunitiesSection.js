@@ -8,7 +8,7 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 
-export const generateTitle = (community) => (
+export const generateTitle = (community = {}) => (
   <Link to={`/communities/${community.id}/`}>
     {community.name}
   </Link>
@@ -18,7 +18,7 @@ export const generateDescription = (interest) => (
   `${interest || 'Generic'} community`
 )
 
-export const generateMeta = (community) => (
+export const generateMeta = (community = {}) => (
   `${community.no_of_followers} followers`
 )
 
