@@ -49,14 +49,15 @@ const StyledComments = styled.div`
 
 const Comments = function({
   className,
-  comments,
+  comments = {},
   createComment,
   updateComment,
   ...otherProps
 }) {
+  const { loading, error, data = [], meta = {} } = comments
   return (
     <StyledComments className={`comments-section ${className}`} {...otherProps}>
-      {comments && comments.map(comment =>
+      {data && data.map(comment =>
         comment.deleted && comment.responses.length < 1
           ? ''
           : <Comment {...{ comment, createComment, updateComment}}>

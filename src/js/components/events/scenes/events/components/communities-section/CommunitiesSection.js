@@ -8,7 +8,7 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 
-export const generateTitle = (community) => (
+export const generateTitle = (community = {}) => (
   <Link to={`/communities/${community.id}/`}>
     {community.name}
   </Link>
@@ -18,11 +18,14 @@ export const generateDescription = (interest) => (
   `${interest || 'Generic'} community`
 )
 
-export const generateMeta = (community) => (
+export const generateMeta = (community = {}) => (
   `${community.no_of_followers} followers`
 )
 
-const CommunitiesSection = ({ communities, followCommunity }) => {
+const CommunitiesSection = ({
+  communities = {data: [], meta: {}},
+  followCommunity
+}) => {
   if (communities.loading) {
     return <Loading />
   }
@@ -31,7 +34,7 @@ const CommunitiesSection = ({ communities, followCommunity }) => {
   }
   return (
     <Sidebar title="Communities suggestions">
-      {communities && communities.map(({featured_image, ...community}) => {
+      {communities.data && communities.data.map(({featured_image, ...community}) => {
           const title = generateTitle(community);
           const description = generateDescription(community.interest)
           const meta = generateMeta(community)

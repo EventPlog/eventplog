@@ -54,8 +54,8 @@ class EventContainer extends Component {
     if (!this.props.event || this.props.event.id != id) {
       this.props.getEvent(id).then(event => this.setState({event}))
     }
-    this.props.getEventsSuggestions({id, community_id}, 2)
-    this.props.getCommunitiesSuggestions()
+    this.props.getEventsSuggestions({id, community_id, page: 1, per_page: 2})
+    this.props.getCommunitiesSuggestions({id: community_id, page: 1, per_page: 2})
   }
 
   getProps = () => ({

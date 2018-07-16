@@ -63,9 +63,19 @@ class CommunityContainer extends Component {
 
     // return if we're in an event page. No need for suggestions
     if (community_id && id) { return }
-    this.props.getEvents({ community_id })
-    this.props.getEventsSuggestions({ community_id })
-    this.props.getCommunitiesSuggestions()
+    this.props.getEvents({ community_id: sureCommunityId , page: 1, per_page: 5})
+    this.props.getEventsSuggestions({ community_id: sureCommunityId, page: 1, per_page: 5 })
+    this.props.getCommunitiesSuggestions({page: 1, per_page: 2})
+  }
+
+  getEvents = (e, meta) => {
+    const { per_page } = this.props.events.meta || {}
+    this.props.getEvents({page: meta.activePage, per_page})
+  }
+
+  getEventsSuggestions = (e, meta) => {
+    const { per_page } = this.props.events_suggestions.meta || {}
+    this.props.getEventsSuggestions({page: meta.activePage, per_page})
   }
 
   getProps = () => ({
@@ -73,6 +83,8 @@ class CommunityContainer extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    getEvents: this.getEvents,
+    getEventsSuggestions: this.getEventsSuggestions
   })
 
   render () {

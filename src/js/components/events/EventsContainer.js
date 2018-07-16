@@ -5,6 +5,11 @@ import { bindActionCreators } from 'redux'
 import Auth from '../../auth/actions'
 
 class MainContentContainer extends Component {
+  componentDidMount() {
+    if(this.props.match.isExact) {
+      // dispatch breadcrumb keys
+    }
+  }
   getProps = () => ({ user: Auth.currentUser() })
 
   render () {
@@ -12,4 +17,4 @@ class MainContentContainer extends Component {
   }
 }
 
-export default MainContentContainer
+export default withRouter(MainContentContainer)

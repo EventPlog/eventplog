@@ -26,24 +26,24 @@ export const generateMeta = (event) => (
 
 const EventsSection = ({
   title,
-  events,
+  events = {data: [], meta: {}},
   attendEvent
 }) => {
-  const {loading, error } = events
+  const {loading, error, data = {} } = events
   return (
     <Sidebar title={title || "Events you may like"}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
-      {(!loading && !error && events) && events.map(({community, description: d, featured_image, ...event}) => {
+      {(!loading && !error && data) && data.map(({community, description: d, featured_image, ...event}) => {
           const title = generateTitle(event, community.id);
           const description = generateDescription(community);
           const meta = generateMeta(event)
           const btn = event.is_attending
                       ? {}
                       : {onClick: () => attendEvent(event), text: 'Interested'}
-          return <Sidebar.Card
-            key={event.id}
-            {...{title, description, featured_image, meta, btn}} />
+          return <Sidebar.Card key={event.id}
+                               {...{title, description,
+                               featured_image, meta, btn}} />
         }
       )}
     </Sidebar>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { lighten } from 'polished'
 
 // internal
 import { media } from 'js/styles/mixins'
@@ -9,7 +10,7 @@ import ContentPanelCard from './ContentPanelCard'
 
 const StyledContentPanel = styled.div`
   .content-header {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${props => lighten(0.1, props.theme.blue)};
     padding-bottom: 5px;
   }
   

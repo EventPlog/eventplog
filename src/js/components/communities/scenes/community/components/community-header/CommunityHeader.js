@@ -23,6 +23,7 @@ const StyledHeader = styled.div`
       display: flex;
       align-content: center;
       align-items: center;
+      color: ${props => lighten(0.0, props.theme.activeLink)};
       
       ${
         media.phone`
@@ -55,6 +56,12 @@ const StyledHeader = styled.div`
       margin: 0;
       margin-top: 0.2em;
       color: inherit;
+      font-weight: 800;
+      color: ${lighten(-0.3, colors.gray)};
+    }
+    
+    small {
+      color: ${lighten(-0.5, colors.gray)};
     }
   }
   

@@ -19,9 +19,13 @@ const pluralize = (word, number) => {
   return number = 1 ? word : knownWords[word]
 }
 
-const signifyInterest = (event) => {
-
+const addhttp = (url) => {
+  if (!url.match("~^(?:f|ht)tps?://~i", url)) {
+    url = "http://" + url;
+  }
+  return url;
 }
+
 const eventBannerStyles = css`
   min-height: 400px;
   display: flex;
@@ -183,7 +187,7 @@ const EventBanner = ({
           Go Backstage
         </Button.Link>
         : is_attending
-          ? <Button.Link className="cta" to={link || '#'} >
+          ? <Button.Link isAnchorTag className="cta" href={link ? link : '#'} >
             RSVP
           </Button.Link>
           : <Button className="cta" onClick={() => attendEvent(event)}>

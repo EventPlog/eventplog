@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 
 // ======= INTERNAL ========
@@ -15,6 +15,7 @@ import HelpPage from '../components/help';
 import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
 import appThemeColors from 'js/styles/theme/variables'
+import BreadCrumb from 'js/components/shared/breadcrumb'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -44,6 +45,7 @@ class App extends Component {
         <ScrollToTop>
           <StyledApp>
             <Header />
+            <BreadCrumb {...this.props.location} />
             <NewInvitationBar />
             <Switch>
               <Route exact path="/" render={(props) =>
@@ -70,4 +72,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)
