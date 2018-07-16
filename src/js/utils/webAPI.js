@@ -3,11 +3,20 @@ import fetch from 'isomorphic-fetch';
 import Auth from '../auth/actions'
 
 const requestPath = (path, method, data = {}) => {
-  if (method === 'GET' && data.length > 0) {
-    return path + '?' + encodeURIComponent(JSON.stringify(data));
+  if (method === 'GET' && Object.keys(data).length > 0) {
+    return path + '?' + serialize(data);
   }
   return path;
 };
+
+const serialize = function(obj) {
+  let str = [];
+  for (let p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
 
 const requestBody = (data, method) => {
   return method === 'GET' ?
@@ -20,7 +29,8 @@ const requestBody = (data, method) => {
 export function requestHeaders() {
   return new Headers({
     'Authorization': `Bearer ${Auth.user_token}`,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
   });
 }
 
@@ -42,7 +52,7 @@ export default function processRequest(path, method, data = {}) {
   .then(async(response) => {
     if (response.ok) return response.json()
     let message  = await response.json()
-    throw(message)
+    throw(message || response.status)
   })
   .catch(err => {
     throw (err);

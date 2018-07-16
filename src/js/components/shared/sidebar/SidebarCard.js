@@ -6,6 +6,7 @@ import styled from 'styled-components'
 // internal
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
+import colors from 'js/styles/theme/colors';
 
 // images
 import sampleEventImg from 'img/tech_is_in_you.png'
@@ -14,6 +15,7 @@ const StyledSidebarCard = styled.div`
   margin: 2rem 0;
   background: white;
   padding-bottom: 1rem;
+  border: 1px solid ${colors.white};
   
   ${
     media.tablet`
@@ -130,16 +132,16 @@ const SidebarCard = ({
   title,
   description,
   featured_image,
-  btnText,
+  btn = {},
   meta,
 }: itemType) => (
   <StyledSidebarCard className="sidebar-card">
     <div className="img-holder" style={{
           backgroundImage: `url(${featured_image || sampleEventImg})`
         }}>
-      <Button>
-        {btnText || "I'm Interested"}
-      </Button>
+      {btn.text && <Button {...btn}>
+                     {btn.text}
+                   </Button>}
     </div>
     <div className="card-body">
       <div className="card-title">
@@ -149,7 +151,7 @@ const SidebarCard = ({
         {description}
       </div>
       <div className="card-meta">
-        { meta }
+        {meta}
       </div>
     </div>
   </StyledSidebarCard>

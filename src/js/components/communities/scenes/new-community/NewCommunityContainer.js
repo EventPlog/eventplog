@@ -20,9 +20,10 @@ export class CommunityContainer extends Component {
 
   submitCommunity = () => {
     this.setState({ loading: true })
-    this.props.createCommunity(this.state.community).then(res => {
-      this.setState({loading: false, communityCreated: true})
-    })
+    this.props.createCommunity({community: this.state.community})
+      .then(community => {
+        this.setState({community, loading: false, communityCreated: true})
+      })
       .catch(error => this.setState({loading: false, error}))
   }
 
@@ -45,7 +46,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    createCommunity: mockCreateCommunity
+    createCommunity
   }, dispatch)
 )
 

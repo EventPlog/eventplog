@@ -2,17 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 // internal
-import logo from 'img/eventplog-logo-small.png'
+import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
 import { Icon } from 'semantic-ui-react'
 import Button from 'js/components/shared/button'
 import Nav from 'js/components/shared/nav'
-import grayLogo from 'img/logo-gray-full.png'
+import grayLogo from 'img/logo-gray-full-v2.png'
 
 const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
   <div className="main-header app-container">
     <div className="logo">
       <Link to="/">
-        <img src={inCommunity ? grayLogo : logo } alt='eventplog-logo' />
+        <img src={logo} alt='eventplog-logo' />
       </Link>
       <Icon name='content' onClick={onHideMenu} />
     </div>

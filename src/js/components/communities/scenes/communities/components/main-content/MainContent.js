@@ -1,13 +1,17 @@
 import React from 'react'
 import CommunitiesSection from '../communities-section'
-import EventsSection from '../events-section'
 import ContentSection from 'js/components/shared/content-section'
+import Sidebar from 'js/components/shared/sidebar'
 
 
 const MainContent = ({
   communities = [],
   communities_suggestions = [],
-  events_suggestions = []
+  events_suggestions = [],
+  getCommunities,
+  getCommunitiesSuggestions,
+  followCommunity,
+  attendEvent,
 }) => {
   return (
     <ContentSection className="user-communities">
@@ -15,13 +19,16 @@ const MainContent = ({
       <ContentSection.Body>
         <CommunitiesSection title="My communities"
                             showCTA={false}
-          {...{communities}} />
+          {...{communities, getCommunities}} />
         <CommunitiesSection title="Related communities"
+                            getCommunities={getCommunitiesSuggestions}
+                            followCommunity={followCommunity}
                             communities={communities_suggestions} />
       </ContentSection.Body>
 
       <ContentSection.Sidebar>
-        <EventsSection events={events_suggestions} />
+        <Sidebar.Events events={events_suggestions}
+                        attendEvent={attendEvent} />
       </ContentSection.Sidebar>
 
     </ContentSection>

@@ -3,6 +3,7 @@ import MainContent from './MainContent';
 import EventsSection from '../events-section'
 import CommunitiesSection from '../communities-section'
 import ContentSection from 'js/components/shared/content-section'
+import Sidebar from 'js/components/shared/sidebar'
 import { shallow, mount } from 'enzyme';
 
 describe('MainContent', () => {
@@ -11,14 +12,14 @@ describe('MainContent', () => {
   const communities_suggestions = [{id: 5}, {id: 6}]
 
   it('should render correctly', () => {
-    const wrapper = shallow( <MainContent/> );
+    const wrapper = shallow( <MainContent /> );
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(EventsSection).length).toEqual(2)
     expect(wrapper.find(ContentSection).length).toEqual(1)
     expect(wrapper.find(ContentSection.Body).length).toEqual(1)
     expect(wrapper.find(ContentSection.Sidebar).length).toEqual(1)
-    expect(wrapper.find(CommunitiesSection).length).toEqual(1)
+    expect(wrapper.find(Sidebar.Communities).length).toEqual(1)
   })
 
   it('should pass the right props to EventsSection', () => {
@@ -26,10 +27,10 @@ describe('MainContent', () => {
 
     // retrieve child props instances
     const eventSectionInstances = wrapper.find(EventsSection)
-    const communitySectionInstances = wrapper.find(CommunitiesSection)
+    const communitySectionInstances = wrapper.find(Sidebar.Communities)
 
     // assert titles
-    expect(eventSectionInstances.at(0).props().title).toEqual('Your events')
+    expect(eventSectionInstances.at(0).props().title).toEqual("Events you're part of")
     expect(eventSectionInstances.at(1).props().title).toEqual('Events you may like')
 
     // assert other props

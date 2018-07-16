@@ -7,7 +7,7 @@ import TaskMeta from './TaskMeta';
 import ContentPanel from 'js/components/shared/content-panel'
 import data  from 'js/mock-api/data'
 import { media } from 'js/styles/mixins'
-import AddComment from 'js/components/shared/add-comment'
+import AddComment from 'js/components/shared/comments/add-comment'
 
 const StyledTasks = styled.div`
   

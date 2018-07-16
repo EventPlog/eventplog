@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import styled, { ThemeProvider } from 'styled-components';
 
+// ======= INTERNAL ========
 import {Auth, PrivateRoute} from 'js/auth'
 import Lead from 'js/components/leads/leads-creation'
-import styled, { ThemeProvider } from 'styled-components';
 import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
 import Header from 'js/components/header'
 import Footer from 'js/components/footer'
 import universalStyles from '../styles/universalStyles'
-import { media } from '../styles/mixins'
+import NewInvitationBar from 'js/components/invitations/components/new-invitation-bar'
+import HelpPage from '../components/help';
+import Legal from '../components/legal';
+import ScrollToTop from '../components/shared/scroll-to-top'
+import appThemeColors from 'js/styles/theme/variables'
+import BreadCrumb from 'js/components/shared/breadcrumb'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -29,33 +35,41 @@ class App extends Component {
   state = { activeItem: 'home' };
 
   render() {
-    const { activeLink } = this.props;
+    const { activeLink, showBreadCrumb, store } = this.props;
     return (
       <ThemeProvider theme={{
-        activeLink
+        ...appThemeColors,
+        activeLink,
       }}>
-        <StyledApp>
-          <Header />
-          <Switch>
-            <Route exact path="/" render={(props) =>
-                 Auth.isLoggedIn
-                   ? <Events {...props} />
-                   : <Login/>
-              } />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/logout" render={() => handleLogout(this.props.store)} />
-            <Route exact path="/signup" component={Login} />
-            <Route path="/leads/:id" component={Lead} />
-            <Route path="/user" component={User} />
-            <Route path="/password" component={Password} />
-            <PrivateRoute path="/events" component={Events} />
-            <PrivateRoute path="/communities" component={Communities} />
-          </Switch>
-          <Footer />
-        </StyledApp>
+      
+        <ScrollToTop>
+          <StyledApp>
+            <Header />
+            {showBreadCrumb && <BreadCrumb {...this.props.location} />}
+            <NewInvitationBar />
+            <Switch>
+              <Route exact path="/" render={(props) =>
+                   Auth.isLoggedIn
+                     ? <Events {...props} />
+                     : <Login/>
+                } />
+              <Route exact path="/login" component={Login} />
+              <Route path="/legal" component={Legal} />
+              <Route exact path="/logout" render={() => handleLogout(store)} />
+              <Route exact path="/signup" component={Login} />
+              <Route path="/leads/:id" component={Lead} />
+              <Route path="/user" component={User} />
+              <Route path="/password" component={Password} />
+              <Route path="/help" component={HelpPage} />              
+              <PrivateRoute path="/events" component={Events} />
+              <PrivateRoute path="/communities" component={Communities} />
+            </Switch>
+            <Footer />
+          </StyledApp>
+        </ScrollToTop>
       </ThemeProvider>
     )
   }
 }
 
-export default App
+export default withRouter(App)

@@ -1,16 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import styled  from 'styled-components';
 import { Icon } from 'semantic-ui-react'
+import { lighten } from 'polished'
 
 import defaults from 'js/styles/theme/variables';
 import { media, maxMedia } from 'js/styles/mixins'
+import colors from 'js/styles/theme/variables'
 
 const Aside = styled.aside`
   width: 200px;
-  border-right: 1px solid #eee;
+  border-right: 1px solid ${colors.gray}; 
   height: 100vh;
-  background: #eee;
+  background: ${props => lighten(-0.6, props.theme.activeLink)};
 
   ${
     media.tablet`
@@ -35,7 +37,7 @@ const Aside = styled.aside`
       border-bottom: 1px solid var(--activeLink, ${defaults.activeLink});
       margin-bottom: 15px;
       padding: 0 0 15px 10px;
-      color: #444;
+      color: ${colors.white};
       
       ${
         media.phone`

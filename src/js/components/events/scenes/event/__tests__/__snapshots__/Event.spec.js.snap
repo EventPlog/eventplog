@@ -5,7 +5,9 @@ exports[`Event should render correctly 1`] = `
   className="app-container"
 >
   <ContentSection>
-    <Styled(EventBanner) />
+    <Styled(EventBanner)
+      community={Object {}}
+    />
     <ContentBody>
       <ContentPanel
         title="Description"
@@ -13,22 +15,31 @@ exports[`Event should render correctly 1`] = `
         <div
           className="event-description"
         >
-          <ReactMarkdown
-            astPlugins={Array []}
-            escapeHtml={false}
-            plugins={Array []}
-            rawSourcePos={false}
-            renderers={Object {}}
-            skipHtml={false}
-            sourcePos={false}
-            transformLinkUri={[Function]}
-          />
+          <ContentEditableWrapper
+            propName="description"
+            type="textarea"
+          >
+            <ReactMarkdown
+              astPlugins={Array []}
+              escapeHtml={false}
+              plugins={Array []}
+              rawSourcePos={false}
+              renderers={Object {}}
+              skipHtml={false}
+              source="Click to edit. In markdown, if you wish :)"
+              sourcePos={false}
+              transformLinkUri={[Function]}
+            />
+          </ContentEditableWrapper>
         </div>
       </ContentPanel>
       <ContentPanel
         title="Announcements"
       >
-        <EventAnnouncements />
+        <Announcements
+          recipient={Object {}}
+          recipient_type="Event"
+        />
       </ContentPanel>
       <ContentPanel
         title="Meet the organizers"
@@ -37,7 +48,7 @@ exports[`Event should render correctly 1`] = `
       </ContentPanel>
     </ContentBody>
     <EventSidebar
-      communities_suggestions={Array []}
+      community={Object {}}
       events_suggestions={Array []}
     />
     <FullRow>
@@ -45,10 +56,12 @@ exports[`Event should render correctly 1`] = `
         <ContentPanel
           title="Ask the organizers"
         >
-          <AddComment
-            placeholder="What would you like to ask/suggest?"
-          />
           <Comments />
+          <Component
+            placeholder="What would you like to ask/suggest?"
+            recipient_type="Event"
+            trackable_type="Event"
+          />
         </ContentPanel>
       </ContentBody>
     </FullRow>

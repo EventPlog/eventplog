@@ -6,9 +6,9 @@ class ComponentWithContainerProps extends Component {
   state = { hasError: false, msg: '' }
 
   componentDidCatch(error, info) {
-    this.setState({ hasError: true });
-    // You can also log the error to an error reporting service
-    // logErrorToMyService(error, info);
+    this.setState({ hasError: true, msg: info });
+
+    // TODO: logToNewRelic(error, info);
     console.log(error, info)
   }
 
@@ -17,17 +17,17 @@ class ComponentWithContainerProps extends Component {
       return <Error msg={this.state.msg} />
     }
 
-    const {container: Container, component: Component} = this.props
+    const {container: Container, component: Component, children, ...otherProps} = this.props
     return (
-      <Container>
-        {(props) => <Component {...props} />}
+      <Container {...otherProps}>
+        {(props) => <Component {...props}>{children}</Component>}
       </Container>
     )
   }
 }
 
-const renderComponentWithProps = (container, component) => () => (
-  <ComponentWithContainerProps {...{container, component}} />
+const renderComponentWithProps = (container, component) => (props) => (
+  <ComponentWithContainerProps {...{container, component, ...props}} />
 )
 
 export default renderComponentWithProps

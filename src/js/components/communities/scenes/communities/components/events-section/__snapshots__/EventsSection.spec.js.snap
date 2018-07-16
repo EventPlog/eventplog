@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EventsSection should render correctly 1`] = `
+exports[`Communities::Communities::EventsSection should render correctly 1`] = `
 <Sidebar
   title="Events you may like"
 >
@@ -64,7 +64,7 @@ exports[`EventsSection should render correctly 1`] = `
         </Link>
       </span>
     }
-    featured_image="/tech_is_in_you.png"
+    featured_image="/login-bg.jpg"
     key="3"
     meta="108 people interested"
     title={

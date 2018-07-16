@@ -9,19 +9,24 @@ import { createEvent, mockCreateEvent } from '../../actions'
 
 export class EventContainer extends Component {
   state = {
-    event: {name: ''},
+    event: {
+      title: '',
+      start_time: new Date(),
+      end_time: new Date(),
+      community_id: this.props.community_id
+    },
     error: false,
     eventCreated: false
   }
 
   handleChange = (e) => {
-    this.setState({event: {[e.target.name]: e.target.value} })
+    this.setState({event: {...this.state.event, [e.target.name]: e.target.value} })
   }
 
   submitEvent = () => {
     this.setState({ loading: true })
-    this.props.createEvent(this.state.event).then(res => {
-      this.setState({loading: false, eventCreated: true})
+    this.props.createEvent(this.state.event).then(event => {
+      this.setState({event, loading: false, eventCreated: true})
     })
       .catch(error => this.setState({loading: false, error}))
   }
@@ -39,13 +44,13 @@ export class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let token = ownProps.match ? ownProps.match.params.token : null
-  return {token}
+  const {community_id} = ownProps.match.params
+  return { community_id }
 }
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    createEvent: mockCreateEvent
+    createEvent
   }, dispatch)
 )
 

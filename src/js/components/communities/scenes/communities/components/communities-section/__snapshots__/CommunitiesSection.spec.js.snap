@@ -5,7 +5,12 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
   title="Events Section"
 >
   <MainContentCard
-    btnText="Join"
+    btn={
+      Object {
+        "onClick": undefined,
+        "text": "Follow",
+      }
+    }
     description="A community of developers united in knowledge sharing."
     featured_image="/login-bg.jpg"
     key="1"
@@ -23,10 +28,19 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
           <span
             className="meta-label"
           >
-            Focus
+            Interests
           </span>
           : 
-          Technology
+          <span
+            className="hashtag"
+          >
+            Technology
+          </span>
+          <span
+            className="hashtag"
+          >
+            Software Engineering
+          </span>
         </li>
       </ul>
     }
@@ -41,7 +55,12 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
     }
   />
   <MainContentCard
-    btnText="Join"
+    btn={
+      Object {
+        "onClick": undefined,
+        "text": "Follow",
+      }
+    }
     description="Developer community bringing up community interest, powereed by google"
     featured_image="/tech_is_in_you.png"
     key="2"
@@ -59,10 +78,14 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
           <span
             className="meta-label"
           >
-            Focus
+            Interests
           </span>
           : 
-          Developers
+          <span
+            className="hashtag"
+          >
+            Developers
+          </span>
         </li>
       </ul>
     }
@@ -77,7 +100,12 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
     }
   />
   <MainContentCard
-    btnText="Join"
+    btn={
+      Object {
+        "onClick": undefined,
+        "text": "Follow",
+      }
+    }
     description="A community of developers united in knowledge sharing"
     featured_image="/login-bg.jpg"
     key="3"
@@ -95,10 +123,14 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
           <span
             className="meta-label"
           >
-            Focus
+            Interests
           </span>
           : 
-          Technology
+          <span
+            className="hashtag"
+          >
+            Technology
+          </span>
         </li>
       </ul>
     }

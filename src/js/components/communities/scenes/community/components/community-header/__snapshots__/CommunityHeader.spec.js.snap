@@ -9,11 +9,14 @@ exports[`CommunityHeader should render correctly 1`] = `
       replace={false}
       to="/communities/undefined"
     >
-      <img
-        className=""
-        src="react-logo.png"
-      />
+      <div>
+        <h3 />
+        <small />
+      </div>
     </Link>
+    <div
+      className="right-pull"
+    />
   </div>
   <div
     className="nav-holder"
@@ -38,12 +41,13 @@ exports[`CommunityHeader should render correctly 1`] = `
             replace={false}
             to="/communities/undefined"
           >
-            Organizers
+            Team
           </Link>
         </Component>
         <Component>
           <Component
             activeClassName="hidden"
+            inverted={true}
             to="/communities/undefined/events/new"
           >
             <span

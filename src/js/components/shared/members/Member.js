@@ -46,7 +46,7 @@ const Members = ({ member }) => (
         {`${member.first_name} ${member.last_name}`}
       </div>
       <div className="body">
-        {member.occupation}
+        {member.role || 'Member'}
       </div>
     </div>
   </StyledEventOrganizers>

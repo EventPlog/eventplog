@@ -1,4 +1,4 @@
-import communityReducer from '../../reducers/communityReducer'
+import communityReducer from '../../reducers/community-reducer'
 import actionTypes from '../../actions'
 
 test('eventsReducer', () => {

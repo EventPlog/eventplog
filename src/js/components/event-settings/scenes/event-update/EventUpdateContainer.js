@@ -3,14 +3,27 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-class MessengerCheckInContainer extends Component {
+class EventUpdateContainer extends Component {
+
+  handleChange = (e) => {
+    this.props.handleChange(e.target.name, e.target.value)
+  }
+
+  getProps = () => ({
+    ...this.props,
+    ...this.state,
+    handleChange: this.handleChange,
+  })
+
   render () {
-    return this.props.children({ ...this.props })
+    return this.props.children(this.getProps())
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {event: state.events.event}
+  return {
+    ...ownProps
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -18,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps)(MessengerCheckInContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventUpdateContainer))

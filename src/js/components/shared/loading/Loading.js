@@ -12,12 +12,17 @@ const renderError = (error) => {
   return <Error msg={error.message} />
 }
 
-const Loading = (props) =>
-  <StyledLoading>
-    { props.error
+function Loading (props) {
+  return (
+    <StyledLoading>
+      { props.error
         ? renderError(props.error)
         : <Loader active inline='centered'/>
-    }
-  </StyledLoading>
+      }
+    </StyledLoading>
+  )
+}
+
+Loading.Error = Error;
 
 export default Loading

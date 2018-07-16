@@ -7,10 +7,9 @@ import Auth from 'js/auth'
 class AppContainer extends Component {
   getProps = () => ({
     ...this.state,
+    ...this.props,
     onHideMenu: this.onHideMenu,
     user: Auth.currentUser(),
-    location: this.props.location,
-    activeLink: this.props.activeLink
   })
 
   render () {
@@ -20,9 +19,14 @@ class AppContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
-  const match = matchPath(ownProps.location.pathname, '/communities/:id')
+  const isCommunityPath = matchPath(ownProps.location.pathname, '/communities/:id')
+  const isHomePath = matchPath(ownProps.location.pathname, {path: '/', exact: true})
+  const isLoginPath = matchPath(ownProps.location.pathname, {path: '/login', exact: true})
+  const isSignuPath = matchPath(ownProps.location.pathname, {path: '/signup', exact: true})
   return {
-    activeLink: match && Object.keys(community).length > 0 ? community.link_color : defaults.activeLink,
+    ...ownProps,
+    activeLink: isCommunityPath && Object.keys(community).length > 0 ? (community.brand_color || defaults.activeLink) : defaults.activeLink,
+    showBreadCrumb: !(isHomePath || isLoginPath || isSignuPath)
   }
 }
 

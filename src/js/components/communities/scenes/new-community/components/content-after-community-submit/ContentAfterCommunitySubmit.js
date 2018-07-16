@@ -38,7 +38,7 @@ const StyledContent = styled.div`
   }
 `
 
-const ContentAfterCommunitySubmit = ({ email, handleChange, loading, error }) => (
+const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
   <StyledContent className="text-center">
     <h3>You just created a community!!!</h3>
     <img src={peopleDancing} alt="people dancing" />
@@ -73,8 +73,8 @@ const ContentAfterCommunitySubmit = ({ email, handleChange, loading, error }) =>
         </Link>
       </li>
     </ul>
-    <Button.Link to="/communities/1" inverted className="medium lowercase">
-      Take me to my community so I can complete setup and publish.
+    <Button.Link to={`/communities/${community.id}`} inverted className="medium lowercase">
+      Take me to my community page
     </Button.Link>
   </StyledContent>
 )

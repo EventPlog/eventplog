@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
+exports[`Communities::NewCommunity::ContentAfterCommunitySubmit it renders correctly 1`] = `
 <styled.div
   className="text-center"
 >
@@ -57,9 +57,9 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
   <Component
     className="medium lowercase"
     inverted={true}
-    to="/communities/1"
+    to="/communities/undefined"
   >
-    Take me to my community so I can complete setup and publish.
+    Take me to my community page
   </Component>
 </styled.div>
 `;
