@@ -5,7 +5,7 @@ exports[`ContentAfterEventCreate it renders correctly 1`] = `
   className="text-center"
 >
   <h3>
-    You just created a event!!!
+    You just created an event!!!
   </h3>
   <img
     alt="people dancing"
@@ -59,7 +59,7 @@ exports[`ContentAfterEventCreate it renders correctly 1`] = `
     inverted={true}
     to="/communities/undefined/events/undefined"
   >
-    Take me to my event so I can complete setup and publish.
+    Take me to my event
   </Component>
 </styled.div>
 `;

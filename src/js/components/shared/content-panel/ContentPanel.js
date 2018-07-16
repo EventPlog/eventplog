@@ -10,7 +10,7 @@ import ContentPanelCard from './ContentPanelCard'
 
 const StyledContentPanel = styled.div`
   .content-header {
-    border-bottom: 1px solid ${props => lighten(0.1, props.theme.blue)};
+    border-bottom: 1px solid ${props => lighten(0.2, props.theme.blue)};
     padding-bottom: 5px;
   }
   

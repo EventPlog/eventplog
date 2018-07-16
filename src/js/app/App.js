@@ -35,7 +35,7 @@ class App extends Component {
   state = { activeItem: 'home' };
 
   render() {
-    const { activeLink, store } = this.props;
+    const { activeLink, showBreadCrumb, store } = this.props;
     return (
       <ThemeProvider theme={{
         ...appThemeColors,
@@ -45,7 +45,7 @@ class App extends Component {
         <ScrollToTop>
           <StyledApp>
             <Header />
-            <BreadCrumb {...this.props.location} />
+            {showBreadCrumb && <BreadCrumb {...this.props.location} />}
             <NewInvitationBar />
             <Switch>
               <Route exact path="/" render={(props) =>
