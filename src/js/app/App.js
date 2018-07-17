@@ -14,6 +14,7 @@ import HelpPage from '../components/help';
 import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
 import Aboutus from 'js/components/about-us'
+import WhyEventplog from 'js/components/why-eventplog'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -56,7 +57,8 @@ class App extends Component {
               <Route path="/user" component={User} />
               <Route path="/password" component={Password} />
               <Route path="/help" component={HelpPage} />  
-              <Route path="/about-us" component={Aboutus} />            
+              <Route path="/about-us" component={Aboutus} />  
+              <Route path="/why-eventplog" component={WhyEventplog} />            
               <PrivateRoute path="/events" component={Events} />
               <PrivateRoute path="/communities" component={Communities} />
             </Switch>
