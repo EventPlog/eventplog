@@ -44,31 +44,6 @@ exports[`CommunityHeader should render correctly 1`] = `
             Team
           </Link>
         </Component>
-        <Component>
-          <Component
-            activeClassName="hidden"
-            inverted={true}
-            to="/communities/undefined/events/new"
-          >
-            <span
-              className="hidden-lg"
-            >
-              <Icon
-                as="i"
-                name="plus"
-              />
-              <Icon
-                as="i"
-                name="handshake outline"
-              />
-            </span>
-            <span
-              className="hidden-md hidden-xs"
-            >
-              Create an event
-            </span>
-          </Component>
-        </Component>
       </Nav>
     </div>
   </div>
