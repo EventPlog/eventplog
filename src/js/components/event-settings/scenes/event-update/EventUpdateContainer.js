@@ -4,15 +4,29 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class EventUpdateContainer extends Component {
+  state = { event: {} }
+
+  componentWillMount() {
+    this.setState({event: this.props.event})
+  }
 
   handleChange = (e) => {
-    this.props.handleChange(e.target.name, e.target.value)
+    this.setState({event: {
+      ...this.state.event,
+      [e.target.name]: e.target.value
+    }})
+  }
+
+  handleSubmit = () => {
+    return this.props.updateEvent(this.state.event)
+                     .then(event => this.setState({event}))
   }
 
   getProps = () => ({
     ...this.props,
     ...this.state,
     handleChange: this.handleChange,
+    handleSubmit: this.handleSubmit,
   })
 
   render () {

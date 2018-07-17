@@ -8,7 +8,7 @@ const eventReducer = (state=initialState.event, action) => {
     case actionTypes.EVENT_CREATE_START:
     case actionTypes.EVENT_SHOW_START:
     case actionTypes.EVENT_UPDATE_START:
-      return {loading: true}
+      return {...state, loading: true}
 
     case actionTypes.EVENT_CREATE_COMPLETE:
     case actionTypes.EVENT_SHOW_COMPLETE:
@@ -18,7 +18,7 @@ const eventReducer = (state=initialState.event, action) => {
     case actionTypes.EVENT_CREATE_FAIL:
     case actionTypes.EVENT_SHOW_FAIL:
     case actionTypes.EVENT_UPDATE_FAIL:
-      return {error: true}
+      return {...state, loading: false, error: true}
 
     case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:
       return {...state, ...action.payload}

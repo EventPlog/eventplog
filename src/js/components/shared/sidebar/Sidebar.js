@@ -14,7 +14,7 @@ const StyledSidebar = styled.div`
   background: ${lighten(-0.15, colors.blue)};
   
   p {
-    color: ${colors.white};
+    color: ${lighten(0.4, colors.blue)};
   }
   
   ${

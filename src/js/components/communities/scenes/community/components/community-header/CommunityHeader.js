@@ -163,15 +163,17 @@ const CommunityHeader = ({
             <Link to={`/communities/${community.id}`}>Team</Link>
           </Nav.Item>
 
-          <Nav.Item>
-            <Button.Link inverted to={`/communities/${community.id}/events/new`} activeClassName="hidden">
-              <span className="hidden-lg">
-                <Icon name="plus" />
-                <Icon name="handshake outline" />
-              </span>
-              <span className="hidden-md hidden-xs">Create an event</span>
-            </Button.Link>
-          </Nav.Item>
+          {(community.is_owner || community.is_admin) &&
+            <Nav.Item>
+              <Button.Link to={`/communities/${community.id}/events/new`} activeClassName="hidden">
+                <span className="hidden-lg">
+                  <Icon name="plus" />
+                  <Icon name="handshake outline" />
+                </span>
+                <span className="hidden-md hidden-xs">Create an event</span>
+              </Button.Link>
+            </Nav.Item>
+          }
         </Nav>
       </div>
     </div>
