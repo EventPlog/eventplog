@@ -7,6 +7,10 @@ import {Link} from 'react-router-dom'
 const StyledWhyEventplog = styled.div`
   display: flex;
   justify-content:center;
+
+  li {
+    margin-left:2em;
+  }
 `
 
 const WhyEventplog = () => {
@@ -60,11 +64,10 @@ const WhyEventplog = () => {
           For sponsors, we are making it easier to reliably sponsor events that are genuine, 
           have measurable impact and are very accountable.
         </Description> 
-
+        
         <Topic>
           The big picture
         </Topic>
-        
         <Description>
           Education systems around the world are getting more democratic. Communities are 
           becoming important centers for learning and bridging skill gaps.
