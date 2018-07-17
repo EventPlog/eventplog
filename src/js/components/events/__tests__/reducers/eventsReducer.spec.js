@@ -1,4 +1,4 @@
-import eventsReducer from '../../reducers/eventsReducer'
+import eventsReducer from '../../reducers/events-reducer'
 import actionTypes from '../../actions'
 
 test('eventsReducer', () => {

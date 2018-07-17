@@ -12,15 +12,16 @@ const StyledTextArea = styled.textarea`
   }
 `
 
-const TextArea = ({
+const TextArea = React.forwardRef(({
   className,
   placeholder,
   children,
   ...otherProps
-}) => (
-  <StyledTextArea className={className} placeholder={placeholder} {...otherProps}>
+}, ref) => (
+  <StyledTextArea innerRef={ref} className={className} placeholder={placeholder} {...otherProps}>
     {children}
   </StyledTextArea>
-)
-
+))
 export default TextArea
+
+

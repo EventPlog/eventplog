@@ -1,13 +1,10 @@
 import React from 'react'
-import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 // internal components
 import EventPageContent from './EventPageContent';
 import { media, maxMedia } from 'js/styles/mixins'
-
-// assets
-import techIsInYou from 'img/tech_is_in_you.png'
-
 
 const StyledMainContent = styled.div`
   display: flex;
@@ -59,33 +56,43 @@ const StyledMainContent = styled.div`
     margin: 4rem auto 2rem;
     text-shadow: 1px 2px 4px #000;
     
-    h3 {
+    h3 a {
       color: #fff;
       font-weight: 600; 
       padding: 0 2rem;
-    
+      display: inline-block; 
+      
+      &:hover {
+        color: var(--activeLink);
+      }
     }
   }
 `
 
-const MainContentBody = ({ event = {}, ...otherProps }) =>
-  <StyledMainContent>
-    <div className="event-workplace full-height">
-      <div style={{ backgroundImage: `url(${event.featured_image || techIsInYou})` }}
-           className="banner-image absolute-positioned">
-        <div className="overlay"></div>
-      </div>
-      <div className="container">
-        <div className="backstage-header">
-          <h3>
-            { event.title || 'Tech is in you' }
-          </h3>
+const MainContentBody = ({ event = {}, ...otherProps }) => {
+  const { community = {} } = event || {}
+  return (
+    <StyledMainContent>
+      <div className="event-workplace full-height">
+        <div style={{ backgroundImage: `url(${event.featured_image || '/sample-bg.jpg'})` }}
+             className="banner-image absolute-positioned">
+          <div className="overlay"></div>
         </div>
-        <div className="workplace full-height">
-          <EventPageContent {...{event, ...otherProps}} />
+        <div className="container">
+          <div className="backstage-header">
+            <h3>
+              { event.title
+                ? <Link to={`/communities/${community.id}/events/${event.id}`}>{event.title}</Link>
+                : <Link to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>Change Title</Link> }
+            </h3>
+          </div>
+          <div className="workplace full-height">
+            <EventPageContent {...{event, ...otherProps}} />
+          </div>
         </div>
       </div>
-    </div>
-  </StyledMainContent>
+    </StyledMainContent>
+  )
+}
 
 export default MainContentBody;

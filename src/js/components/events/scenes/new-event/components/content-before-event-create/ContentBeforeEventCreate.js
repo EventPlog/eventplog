@@ -78,7 +78,7 @@ const ContentBeforeEventCreate = ({
 
         <Form.Group inline>
           <Form.Field className="email-holder">
-            <Input name="text"
+            <Input name="title"
                    type="text"
                    value={event.name}
                    placeholder='Event name' onChange={handleChange} />

@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 
 // internal
 import Sidebar from 'js/components/shared/sidebar'
+import Loading from 'js/components/shared/loading'
 
-export const generateTitle = (event, communityId) => (
+export const generateTitle = (event = {}, communityId) => (
   <Link to={`/communities/${communityId}/events/${event.id}`}>
     {event.title}
   </Link>
@@ -23,18 +24,23 @@ export const generateMeta = (event) => (
 )
 
 
-const EventsSection = ({ events }) => (
-  <Sidebar title="Events you may like">
-    {events && events.map(({community, description: d, featured_image,...event}) => {
-        const title = generateTitle(event, community.id);
-        const description = generateDescription(community);
-        const meta = generateMeta(event)
-        return <Sidebar.Card
-                  key={event.id}
-                  {...{title, description, featured_image, meta}} />
-      }
-    )}
-  </Sidebar>
-)
+const EventsSection = ({ events }) => {
+  const {loading, error, data } = events
+  return (
+    <Sidebar title="Events you may like">
+      {loading && <Loading />}
+      {error && <Loading.Error msg={events.error} />}
+      {(!loading && !error && data) && data.map(({community, description: d, featured_image, ...event}) => {
+          const title = generateTitle(event, community.id);
+          const description = generateDescription(community);
+          const meta = generateMeta(event)
+          return <Sidebar.Card
+            key={event.id}
+            {...{title, description, featured_image, meta}} />
+        }
+      )}
+    </Sidebar>
+  )
+}
 
 export default EventsSection

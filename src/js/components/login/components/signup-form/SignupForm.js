@@ -51,7 +51,7 @@ const StyledLoginForm = styled.div`
       position: absolute;
       top: -28px;
       padding: 20px 50px;
-      background: #fff;
+      background: ${lighten(0.45, colors.blue)};
     }
     
     & + div {
@@ -77,7 +77,7 @@ const LoginForm = ({
     <div className="social-media-buttons">
 
       <FacebookLogin
-        appId="1753770681362792"
+        appId={process.env.REACT_APP_FACEBOOK_APP_ID}
         autoLoad={false}
         fields="name,email,picture"
         render={renderProps => (
@@ -88,7 +88,7 @@ const LoginForm = ({
         callback={fbResponse} />
 
       <GoogleLogin
-        clientId="530846686194-8auql2abnck2m3cjbqqpitlhtm7k9ot9.apps.googleusercontent.com"
+        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
         buttonText="Google"
         className="ui button google-login-btn"
         onSuccess={googleResponse}

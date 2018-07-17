@@ -11,7 +11,7 @@ class CommunityApi {
 
   static create = (leadData) =>
     new Promise((resolve, reject) => {
-      setTimeout(resolve, delay, leadData)
+      setTimeout(resolve, delay, {id: 2, ...leadData})
     })
 
   static update = (leadData) =>

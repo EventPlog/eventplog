@@ -2,12 +2,29 @@ import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getEvent, getEvents, mockGetEvent, mockGetEvents } from '../../actions'
-import { getCommunities, mockGetCommunities } from 'js/components/communities/actions'
 import checkEqual from 'js/utils/checkEqual'
+import Auth from 'js/auth'
+
+import {
+  getCommunitiesSuggestions,
+  mockGetCommunities
+} from 'js/components/communities/actions'
+
+import {
+  getEvent,
+  updateEvent,
+  createComment,
+  updateComment,
+  createAnnouncement,
+  updateAnnouncement,
+  getEventsSuggestions,
+  attendEvent,
+} from '../../actions'
 
 
-class MainContentContainer extends Component {
+class EventContainer extends Component {
+  state = {event: {}}
+
   componentWillMount() {
     this.getData()
   }
@@ -18,36 +35,68 @@ class MainContentContainer extends Component {
     }
   }
 
-  getData() {
-    this.props.getCommunities();
-    this.props.getEvent(this.props.match.params.id);
-    this.props.getEvents()
+  handleChange = (key, value) => {
+    this.setState({event: {...this.state.event, [key]: value }})
   }
+
+  handleSubmit = () => {
+    const {commuity, ...others} = this.state.event
+    return this.props.updateEvent(others).then(event => this.setState({event}))
+  }
+
+  attendEvent = () => {
+    const {commuity, ...others} = this.state.event
+    return this.props.attendEvent(others).then(event => this.setState({event}))
+  }
+
+  getData() {
+    const {community_id, id} = this.props.match.params
+    if (!this.props.event || this.props.event.id != id) {
+      this.props.getEvent(id).then(event => this.setState({event}))
+    }
+    this.props.getEventsSuggestions({id, community_id, page: 1, per_page: 2})
+    this.props.getCommunitiesSuggestions({id: community_id, page: 1, per_page: 2})
+  }
+
+  getProps = () => ({
+    ...this.state,
+    ...this.props,
+    handleChange: this.handleChange,
+    handleSubmit: this.handleSubmit,
+    attendEvent: this.attendEvent,
+  })
+
   render () {
-    return this.props.children({ ...this.props })
+    return this.props.children(this.getProps())
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {community_id, id} = ownProps.match.params
-  const {event = {}, events = []} = state.events
-  const {link_color, community = {} } = event;
-  const { communities } = state.communities
+  const {event = {}, events_suggestions = []} = state.events
+  const {link_color } = event;
+  const { community, communities_suggestions } = state.communities
   return {
-    activeLink: link_color,
+    activeLink: community.brand_color,
     event,
     community,
-    events_suggestions: events.filter(e => !e.interested && e.community.id != community_id),
-    communities_suggestions: communities.filter(c => c.joined).slice(0,1),
+    events_suggestions,
+    communities_suggestions,
+    currentUser: Auth.currentUser(),
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getEvent: mockGetEvent,
-    getEvents: mockGetEvents,
-    getCommunities: mockGetCommunities
+    getEvent,
+    getEventsSuggestions,
+    getCommunitiesSuggestions,
+    updateEvent,
+    attendEvent,
+    createComment,
+    updateComment,
+    createAnnouncement,
+    updateAnnouncement,
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainContentContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventContainer))

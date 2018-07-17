@@ -18,6 +18,12 @@ export const fakeAuth = {
   }
 }
 
+const setUserInCookie = (user) => {
+  if (!(user && user.id)) return
+  cookie.set('current_user', user)
+  cookie.set('user_token', user.auth_token)
+  return user
+}
 export const Auth = {
   isLoggedIn: Boolean(cookie.get('current_user')),
   currentUser: () => {
@@ -32,21 +38,15 @@ export const Auth = {
   loginUser(params) {
     return (dispatch) => {
        return processRequest('/api/v1/web/login/oauth', 'POST', params)
-        .then(res => {
-          if (!(res && res.user)) return
-          cookie.set('current_user', res.user)
-          cookie.set('user_token', res.auth_token)
-          return res
+        .then(user => {
+          return setUserInCookie(user)
         })
   }},
   loginByEmail(params) {
     return (dispatch) => {
       return processRequest('/api/v1/web/login/', 'POST', params)
-        .then(res => {
-          if (!(res && res.user)) return
-          cookie.set('current_user', res.user)
-          cookie.set('user_token', res.auth_token)
-          return res
+        .then(user => {
+          return setUserInCookie(user)
         })
         .catch(err => {
           console.log(err)
@@ -56,11 +56,8 @@ export const Auth = {
   signupByEmail(params) {
     return (dispatch) =>
       processRequest('/api/v1/web/users/', 'POST', params)
-        .then(res => {
-          if (!(res && res.user)) return
-          cookie.set('current_user', res.user)
-          cookie.set('user_token', res.auth_token)
-          return res
+        .then(user => {
+          return setUserInCookie(user)
         })
         .catch(err => {
           console.log(err)

@@ -1,4 +1,4 @@
-import actionTypes from './types'
+import actionTypes from 'js/components/events/actions/types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
 import mockEventApi from '../../../mock-api/lead-api'
 
@@ -30,3 +30,36 @@ export const checkInByForm = (eventId, user) => {
   })
 }
 
+export const inviteOrganizers = (invitation) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_ORGANIZER_INVITATION_CREATE_START,
+    receiveType: actionTypes.EVENT_ORGANIZER_INVITATION_CREATE_COMPLETE,
+    failType: actionTypes.EVENT_ORGANIZER_INVITATION_CREATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: invitation,
+    errorMessage: 'Something prevented creating these invations',
+    caller: 'new invitation',
+    route: `/api/v1/web/invitations`,
+    requestMethod: 'POST'
+  })
+}
+
+export const deleteInvitation = (invitation) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_ORGANIZER_INVITATION_DELETE_START,
+    receiveType: actionTypes.EVENT_ORGANIZER_INVITATION_DELETE_COMPLETE,
+    failType: actionTypes.EVENT_ORGANIZER_INVITATION_DELETE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: invitation,
+    errorMessage: 'Something prevented creating these invations',
+    caller: 'new invitation',
+    route: `/api/v1/web/invitations/${invitation.id}`,
+    requestMethod: 'PATCH'
+  })
+}

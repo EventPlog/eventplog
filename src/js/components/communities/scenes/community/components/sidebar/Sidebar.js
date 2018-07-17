@@ -38,10 +38,6 @@ Aside.defaultProps = {
 const Sidebar = ({ themeColors, event = {} }) => {
   const menuItems = ["Tasks", "Check-in", "Guests", "Settings"];
   return (
-    <ThemeProvider theme={{
-      ...defaults,
-      ...themeColors
-    }}>
       <Aside>
         <ul>
           {
@@ -56,7 +52,6 @@ const Sidebar = ({ themeColors, event = {} }) => {
           }
         </ul>
       </Aside>
-    </ThemeProvider>
   )
 
 }

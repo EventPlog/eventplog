@@ -1,30 +1,48 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import { lighten } from 'polished'
+
 import colors from 'js/styles/theme/colors';
+import Sidebar from 'js/components/shared/sidebar'
 
 const StyledHelpPage =styled.div`
-  background: #eee;
-  width: 300px;
-  min-width: 300px;
-  margin: 2rem 0;
-  padding: 2rem;
-  border-radius: 10px;
+  .sidebar {
+    border-radius: 0;
+    width: 300px;
+    min-width: 300px;
+    margin: 2rem 0;
+    padding: 2rem;
+    
+    a {
+      color: ${lighten(0.35, colors.blue)}
+      
+      &:hover {
+        color: var(--activeLink);
+      }
+      
+      &.top-level-topic {
+        margin: 1rem 0 0rem;
+        display: inline-block;
+        font-size: 110%;
+        font-weight: 800;
+      }
+    }
 
-  li {
-    line-height: 30px;
+    li {
+      line-height: 30px;
+    }
   }
 
 `
 const TopicsSection = () => {
+  const title = <Link to="/help/getting-started">
+                  Getting Started
+                </Link>
   return(
     <StyledHelpPage className="topics-section">
-        <Link to="/help/getting-started">
-          Getting Started
-        </Link>
-        <br/>
-        <hr/>
-        <Link to="/help/communities">
+      <Sidebar title={title}>
+        <Link className="top-level-topic" to="/help/communities">
           Communities
         </Link>
         <ul>
@@ -56,7 +74,7 @@ const TopicsSection = () => {
           </li>
         </ul>
         <hr/>
-        <Link to="/help/events/">
+        <Link className="top-level-topic" to="/help/events/">
           Events
         </Link>
         <ul>
@@ -84,7 +102,8 @@ const TopicsSection = () => {
           </li>
         </ul>
         <hr/>
-        <Link to="/help/organizers">
+
+        <Link className="top-level-topic" to="/help/organizers">
           Organizers
         </Link>
         <ul>
@@ -114,8 +133,10 @@ const TopicsSection = () => {
             </Link>
           </li>
           
-        </ul><hr/>
-        <Link to="/help/backstage">
+        </ul>
+        <hr/>
+
+        <Link className="top-level-topic" to="/help/backstage">
           Backstage
         </Link>
         <ul>
@@ -139,7 +160,8 @@ const TopicsSection = () => {
               Event Settings
             </Link>
           </li>
-        </ul> 
+        </ul>
+      </Sidebar>
     </StyledHelpPage>
   )
 }

@@ -53,9 +53,10 @@ const StyledMainContentCard = styled.div`
   .card-title {
     font-weight: 400;
     font-size: 1.2em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
     display: flex;
     justify-content: space-between; 
+    align-items :flex-end;
   
     a {
       color: #444;
@@ -65,7 +66,7 @@ const StyledMainContentCard = styled.div`
   }
   
   .card-description {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
     color: #aaa;
     
     ${
@@ -85,6 +86,7 @@ const StyledMainContentCard = styled.div`
       padding: 0;
       display: inline-flex;
       color: #aaa; 
+      margin: 0.1rem;
       
       
       li:not(:last-child) {
@@ -93,7 +95,7 @@ const StyledMainContentCard = styled.div`
     }
     
     > * + * {
-      margin-top: 0.5rem;
+      margin-top: 0.1rem;
       
       ${
         media.phone`
@@ -144,7 +146,7 @@ const MainContentCard = ({
   description,
   featured_image,
   showButton,
-  btnText,
+  btn = {},
   meta
 }) => (
   <StyledMainContentCard className="community-card">
@@ -152,16 +154,16 @@ const MainContentCard = ({
               backgroundImage: `url(${featured_image || sampleCommunityImg})`
             }}>
       {showButton &&
-        <Button className="img-btn hidden-md hidden-lg">
-          {btnText}
+        <Button {...btn} className="img-btn hidden-md hidden-lg">
+          {btn.text}
         </Button>
       }
     </div>
     <div className="card-body">
       <div className="card-title">
         {title}
-        {showButton && <Button className="hidden-xs">
-          {btnText}
+        {showButton && <Button {...btn} className="hidden-xs">
+          {btn.text}
         </Button>}
       </div>
       <div className="card-description">

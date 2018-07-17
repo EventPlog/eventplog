@@ -1,4 +1,3 @@
 export default {
-  host: process.env.EVENTPLOG_API || 'http://techmeetupsng-backend.herokuapp.com'
-  //host: process.env.EVENTPLOG_API || 'http://localhost:8000'
+  host: process.env.REACT_APP_EVENTPLOG_API
 }

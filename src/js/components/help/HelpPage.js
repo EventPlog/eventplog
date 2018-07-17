@@ -12,6 +12,10 @@ const StyledHelpPage = styled.div`
     align-items: flex-start;
   }
   
+  p {
+    font-size: 1rem;
+  }
+  
   img {
     max-width: 100%;
   }
@@ -28,6 +32,7 @@ const HelpPage = () => {
 
         <HelpTopics />
         <HelpDescription>
+          <GoToEventplog/>
           <Switch>
             <Route exact path="/help" component={GettingStarted} />
             <Route exact path="/help/getting-started" component={GettingStarted} />
@@ -37,7 +42,6 @@ const HelpPage = () => {
             <Route path ="/help/organizers" component={Organizers}/>
           </Switch>
         </HelpDescription>
-        <GoToEventplog/>
     </StyledHelpPage>
   );
 }

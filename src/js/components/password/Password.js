@@ -1,15 +1,13 @@
 // @flow
 
 import React, { Component } from 'react';
-
-import { Switch } from 'react-router-dom';
+import styled  from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
 
 // internal components
 import Header from '../../header/MainHeader';
 import createLoader from '../shared/loading/createLoadable'
-import styled, { ThemeProvider } from 'styled-components';
 import defaults from '../../styles/theme/variables';
-import { Route } from 'react-router-dom'
 
 
 const ForgotPassword = createLoader(() =>
@@ -37,9 +35,6 @@ type PasswordPlog = {
 }
 
 const Password = ({ token}) => (
-  <ThemeProvider theme={{
-      ...defaults,
-    }}>
     <StyledPassword>
       <Switch>
         <Route exact path="/password" component={ForgotPassword} />
@@ -47,7 +42,6 @@ const Password = ({ token}) => (
         <Route exact path="/password/reset/:token" component={ResetPassword} />
       </Switch>
     </StyledPassword>
-  </ThemeProvider>
 )
 
 export default Password

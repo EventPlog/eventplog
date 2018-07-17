@@ -1,19 +1,37 @@
 import React, { Component} from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, matchPath } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
 import {
-  getCommunities,
-  mockGetCommunities,
-  mockGetCommunity
+  getCommunity,
+  updateCommunity,
+  getCommunitiesSuggestions,
 } from '../../actions'
-import { getEvents, mockGetEvents } from 'js/components/events/actions'
+
+import {
+  getEvents,
+  getEventsSuggestions,
+  attendEvent,
+  mockGetEvents
+} from 'js/components/events/actions'
+
 import checkEqual from 'js/utils/checkEqual'
 
 
-class MainContentContainer extends Component {
+class CommunityContainer extends Component {
+  state = {community: {}}
+
   componentWillMount(props) {
     this.getData()
+  }
+
+  componentWillReceiveProps(nextProps, prevProps) {
+    this.setState({community: nextProps.community})
+  }
+
+  handleChange = (e, value) => {
+    this.setState({community: {...this.state.community, [e.target.name]: value || e.target.value} })
   }
 
   componentDidUpdate(props, prevProps) {
@@ -22,36 +40,81 @@ class MainContentContainer extends Component {
     }
   }
 
-  getData() {
-    this.props.getCommunity(this.props.match.params.id)
-    this.props.getCommunities()
-    this.props.getEvents()
+  handleSubmit = () => {
+    this.setState({ loading: true })
+    this.props.updateCommunity(this.state.community)
+      .then(community => {
+        this.setState({community, loading: false, communityCreated: true})
+      })
+      .catch(error => this.setState({loading: false, error}))
   }
+
+  getParams = () => {
+    return (matchPath(this.props.location.pathname, '/communities/:community_id/events/:id') || this.props.match).params
+  }
+
+  getData() {
+    const {community_id, id} = this.getParams()
+    const sureCommunityId = community_id || id
+
+    if(!this.props.community || this.props.community.id != sureCommunityId) {
+      this.props.getCommunity(community_id || id)
+    }
+
+    // return if we're in an event page. No need for suggestions
+    if (community_id && id) { return }
+    this.props.getEvents({ community_id: sureCommunityId , page: 1, per_page: 5})
+    this.props.getEventsSuggestions({ community_id: sureCommunityId, page: 1, per_page: 5 })
+    this.props.getCommunitiesSuggestions({page: 1, per_page: 2})
+  }
+
+  getEvents = (e, meta) => {
+    const { per_page } = this.props.events.meta || {}
+    this.props.getEvents({page: meta.activePage, per_page})
+  }
+
+  getEventsSuggestions = (e, meta) => {
+    const { per_page } = this.props.events_suggestions.meta || {}
+    this.props.getEventsSuggestions({page: meta.activePage, per_page})
+  }
+
+  getProps = () => ({
+    ...this.props,
+    ...this.state,
+    handleChange: this.handleChange,
+    handleSubmit: this.handleSubmit,
+    getEvents: this.getEvents,
+    getEventsSuggestions: this.getEventsSuggestions
+  })
+
   render () {
-    return this.props.children({ ...this.props })
+    return this.props.children(this.getProps())
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {community_id, id} = ownProps.match.params
-  const {events = [], loading} = state.events
-  const {community = {}, communities = []} = state.communities
+  const {events = [], events_suggestions = [], loading} = state.events
+  const {community = {}, communities = [], communities_suggestions} = state.communities
+
   return {
     activeLink: community.link_color,
     loading,
     community,
-    communities_suggestions: communities.filter(c => !c.joined).slice(0,1) || state.communities,
-    events: events.filter(e => e.interested) || state.events,
-    events_suggestions: events.filter(e => !e.interested).slice(0,2) || state.events,
+    communities_suggestions,
+    events,
+    events_suggestions
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getEvents: mockGetEvents,
-    getCommunity: mockGetCommunity,
-    getCommunities: mockGetCommunities
+    getEvents,
+    getEventsSuggestions,
+    attendEvent,
+    getCommunity,
+    updateCommunity,
+    getCommunitiesSuggestions,
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainContentContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommunityContainer))

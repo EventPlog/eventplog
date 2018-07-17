@@ -21,6 +21,7 @@ const Community = createLoader(() =>
 const NewCommunity = createLoader(() =>
   import('./scenes/new-community' /* webpackChunkName: "NewCommunity" */))
 
+
 const JoinACommunity = createLoader(() =>
   import('./scenes/join-a-community' /* webpackChunkName: "JoinACommunity" */))
 
@@ -39,11 +40,6 @@ type CommunityPtlogType = {
 }
 
 const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
-  <ThemeProvider theme={{
-      ...defaults,
-      ...user.theme,
-      ...community.theme,
-    }}>
     <StyledCommunityPlog>
       <Switch>
         {/*<EPHeader/>*/}
@@ -55,7 +51,6 @@ const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
         <PrivateRoute path="/communities/:id" component={Community} />
       </Switch>
     </StyledCommunityPlog>
-  </ThemeProvider>
 )
 
 export default CommunityPlog
