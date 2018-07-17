@@ -24,7 +24,7 @@ const WhyEventplog = () => {
         <Description>
           EventPlog is built by community organizers who are active administrators of more than five
           different communities. By the end of the first half of 2018, we directly planned 26 events 
-          (at least one event every week). We main a <Link to="techmeetupsng.com">widely-read</Link> blog that celebrate tech events, 
+          (at least one event every week). We main a <Link to="techmeetupsng.com">widely-read blog</Link> that celebrate tech events, 
           people and communities.
         </Description>
 
