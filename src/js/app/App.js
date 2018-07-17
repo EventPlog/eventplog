@@ -13,6 +13,7 @@ import { media } from '../styles/mixins'
 import HelpPage from '../components/help';
 import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
+import Aboutus from 'js/components/about-us'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -54,7 +55,8 @@ class App extends Component {
               <Route path="/leads/:id" component={Lead} />
               <Route path="/user" component={User} />
               <Route path="/password" component={Password} />
-              <Route path="/help" component={HelpPage} />              
+              <Route path="/help" component={HelpPage} />  
+              <Route path="/about-us" component={Aboutus} />            
               <PrivateRoute path="/events" component={Events} />
               <PrivateRoute path="/communities" component={Communities} />
             </Switch>
