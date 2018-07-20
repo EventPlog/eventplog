@@ -9,7 +9,7 @@ import { lighten } from 'polished'
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid ${defaults.gray};
-  background: ${props => lighten(-0.6, props.theme.activeLink)};
+  background: ${props => props.theme.black};
   
   
   .main-header {

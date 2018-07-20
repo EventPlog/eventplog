@@ -38,8 +38,6 @@ const UserEvents = () => (
 )
 const EventPlog = ({user = {}}) => (
     <StyledEventPlog>
-      {/*<EPHeader/>*/}
-      {/*<Header />*/}
       <Switch>
         <PrivateRoute exact path="/" component={UserEvents} />
         <PrivateRoute exact path="/events" component={UserEvents} />

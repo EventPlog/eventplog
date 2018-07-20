@@ -12,7 +12,7 @@ const Aside = styled.aside`
   width: 200px;
   border-right: 1px solid ${colors.gray}; 
   height: 100vh;
-  background: ${props => lighten(-0.6, props.theme.activeLink)};
+  background: ${props => props.theme.black};
 
   ${
     media.tablet`
@@ -73,7 +73,7 @@ const Sidebar = ({
   event = {}
 }) => {
   const menuItems = [
-    { name: "Tasks", icon: 'settings' },
+    { name: "Planning", icon: 'file alternate outline', link: 'tasks' },
     { name: "Guests", icon: 'users' },
     { name: "Feedback", icon: 'send' },
     {name: "Settings", icon: 'settings' }
@@ -82,9 +82,9 @@ const Sidebar = ({
     <Aside className={className}>
       <ul>
         {
-          menuItems.map(({name, icon}, index) =>
+          menuItems.map(({name, icon, link}, index) =>
             <li key={index}>
-              <NavLink to={`/communities/${community.id}/events/${event.id}/backstage/${name.toLowerCase()}`}
+              <NavLink to={`/communities/${community.id}/events/${event.id}/backstage/${link || name.toLowerCase()}`}
                        activeClassName="active">
                 <span className="hidden-xs">
                   <Icon name={icon || 'users'} />

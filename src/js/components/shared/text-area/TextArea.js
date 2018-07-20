@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import {TextArea} from 'semantic-ui-react'
 
-const StyledTextArea = styled.textarea`
+const styles = css`
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -12,16 +13,16 @@ const StyledTextArea = styled.textarea`
   }
 `
 
-const TextArea = React.forwardRef(({
+const TextAreaComponent = React.forwardRef(({
   className,
   placeholder,
   children,
   ...otherProps
 }, ref) => (
-  <StyledTextArea innerRef={ref} className={className} placeholder={placeholder} {...otherProps}>
+  <TextArea innerRef={ref} className={className} placeholder={placeholder} {...otherProps}>
     {children}
-  </StyledTextArea>
+  </TextArea>
 ))
-export default TextArea
+export default styled(TextAreaComponent)`${styles}`
 
 
