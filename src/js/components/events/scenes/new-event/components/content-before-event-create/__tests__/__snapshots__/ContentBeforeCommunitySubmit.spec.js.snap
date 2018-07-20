@@ -25,7 +25,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         <FormField
           className="email-holder"
         >
-          <Input
+          <Styled(Input)
             name="title"
             placeholder="Event name"
             type="text"
