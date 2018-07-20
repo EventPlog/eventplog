@@ -80,7 +80,7 @@ const StyledHeader = styled.div`
   .nav-holder {
     --line-height: 10px;
     width: 100%;
-  background: ${props => lighten(-0.6, props.theme.bg)};
+    background: ${props => lighten(-0.3, props.theme.activeLink)};
     
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};
