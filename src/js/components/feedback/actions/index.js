@@ -2,7 +2,7 @@ import actionTypes from './types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
 import mockEventApi from '../../../mock-api/lead-api'
 
-export const mockCheckIn = (eventId, user) => {
+export const mockCreateFeedback = (eventId, user) => {
   return (dispatch) => {
     dispatch({ type: actionTypes.CHECK_IN_START })
 
