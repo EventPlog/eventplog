@@ -69,8 +69,8 @@ const Comments = function({
                 <AddComment placeholder="Reply"
                             recipient_id={comment.id}
                             recipient_type="Comment"
-                            trackable_id={comment.recipient_id}
-                            trackable_type="Event"
+                            trackable_id={comment.trackable_id}
+                            trackable_type={comment.trackable_type}
                             parentComment={comment}
                             createComment={createComment} />
               </div>
