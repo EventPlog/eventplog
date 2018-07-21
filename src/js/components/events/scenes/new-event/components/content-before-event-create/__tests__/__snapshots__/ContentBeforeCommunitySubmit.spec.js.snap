@@ -23,7 +23,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         inline={true}
       >
         <FormField
-          className="email-holder"
+          className="wide email-holder"
         >
           <Styled(Input)
             name="title"
