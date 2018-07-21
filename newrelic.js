@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['My Application'],
+  app_name: ['EventPlog FE Prod'],
   /**
    * Your New Relic license key.
    */
