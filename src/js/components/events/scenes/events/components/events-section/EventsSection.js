@@ -10,7 +10,7 @@ import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
 
 export const generateTitle = (event = {}) => {
-  const { community = {}} = event || {}
+  const community = event.community || {}
   return (
     <Link to={`/communities/${community.id}/events/${event.id}`}>
       {event.title}
