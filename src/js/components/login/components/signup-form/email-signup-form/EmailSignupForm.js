@@ -14,6 +14,12 @@ const StyledSignupForm = styled.div`
         color: ${lighten(0.6, colors.black)};
         font-weight: 500;
       }
+      
+      .ui.input {
+        input {
+          width: inherit;
+        }
+      }
     }
     
     > .field {
@@ -39,6 +45,7 @@ const StyledSignupForm = styled.div`
         margin: auto 10px;
       }
     }
+    
   }
 `
 

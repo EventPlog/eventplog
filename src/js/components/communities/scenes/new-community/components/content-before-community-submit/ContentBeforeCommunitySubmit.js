@@ -77,7 +77,7 @@ const ContentBeforeCommunitySubmit = ({
         />
 
         <Form.Group inline>
-          <Form.Field className="email-holder">
+          <Form.Field className="wide email-holder">
             <Input name="name"
                    type="text"
                    value={community.name}
