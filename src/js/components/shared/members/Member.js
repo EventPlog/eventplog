@@ -43,7 +43,7 @@ const Members = ({ member }) => (
         }} />
     <div className="meta">
       <div className="title">
-        {`${member.first_name} ${member.last_name}`}
+        {`${member.display_name}`}
       </div>
       <div className="body">
         {member.role || 'Member'}
