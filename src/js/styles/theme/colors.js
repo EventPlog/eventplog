@@ -1,7 +1,7 @@
 export default {
-  primary: '#F851F6',
+  pink: '#F851F6',
+  primary: '#a87ef5',
   primary1: '#A62240',
-  primary2: '#a87ef5',
   primary3: '#9b8bb9',
   primaryDark: '#CF30CE',
   blueLighter: '#f7ffff',

@@ -82,7 +82,7 @@ const StyledComment = styled.div`
     
     > div:not(.comment-card) {
       background: #eee;
-      background: ${props => lighten(0.35, props.theme.activeLink)}; 
+      background: ${props => lighten(0, props.theme.gray)}; 
       padding: 1rem;
       border-radius: 10px;
     }

@@ -10,6 +10,8 @@ const Announcements = () => {
     <div> 
       <Topic>Announcements</Topic>
       <Description>
+        When you look out for announcements, you want to know the latest update about a community
+        or an event so that you don't miss out on important information.
         Anouncements are used by event organizers to notify you of any important information
         regarding an event or a community.<br/> Announcements can be found on event
         and  community pages. <br/>

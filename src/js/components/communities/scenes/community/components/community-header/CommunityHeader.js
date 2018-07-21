@@ -38,7 +38,7 @@ const StyledHeader = styled.div`
     }
     
     img {
-      max-height: 70px;
+      max-height: 40px;
       margin-right: 1rem;
       
       ${
@@ -80,7 +80,7 @@ const StyledHeader = styled.div`
   .nav-holder {
     --line-height: 10px;
     width: 100%;
-    background: ${props => lighten(-0.4, props.theme.activeLink)};
+    background: ${props => lighten(-0.3, props.theme.activeLink)};
     
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};
@@ -163,15 +163,17 @@ const CommunityHeader = ({
             <Link to={`/communities/${community.id}`}>Team</Link>
           </Nav.Item>
 
-          <Nav.Item>
-            <Button.Link inverted to={`/communities/${community.id}/events/new`} activeClassName="hidden">
-              <span className="hidden-lg">
-                <Icon name="plus" />
-                <Icon name="handshake outline" />
-              </span>
-              <span className="hidden-md hidden-xs">Create an event</span>
-            </Button.Link>
-          </Nav.Item>
+          {(community.is_owner || community.is_admin) &&
+            <Nav.Item>
+              <Button.Link to={`/communities/${community.id}/events/new`} activeClassName="hidden">
+                <span className="hidden-lg">
+                  <Icon name="plus" />
+                  <Icon name="handshake outline" />
+                </span>
+                <span className="hidden-md hidden-xs">Create an event</span>
+              </Button.Link>
+            </Nav.Item>
+          }
         </Nav>
       </div>
     </div>

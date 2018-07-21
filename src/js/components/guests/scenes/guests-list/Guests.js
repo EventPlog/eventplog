@@ -2,6 +2,9 @@ import React from 'react'
 import { Table, Icon, Menu } from 'semantic-ui-react'
 import styled from 'styled-components';
 import PageHeader from 'js/components/shared/PageHeader';
+import Loading from 'js/components/shared/loading'
+import Pagination from 'js/components/shared/pagination'
+import GuestRow from './guest-row'
 
 const StyledTable = styled.div`
   padding: 20px 0;
@@ -9,54 +12,54 @@ const StyledTable = styled.div`
   .page-header {
     margin-bottom: 20px;
   }
+  
 `
 
-const GuestsList = () => (
-  <StyledTable>
-    <PageHeader title="Guests" />
-    <Table celled unstackable>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell>S/N</Table.HeaderCell>
-          <Table.HeaderCell>Full Name</Table.HeaderCell>
-          <Table.HeaderCell>Checked In</Table.HeaderCell>
-          <Table.HeaderCell>Given Feedback</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-
-      <Table.Body>
-        {([1,2,3,4].map((guest, index) =>
+const GuestsList = ({
+  guests = {},
+  getGuests,
+}) => {
+  const { data = [], meta, loading, error }  = guests
+  if (loading) return <Loading />
+  if (error) return <Loading.Error msg={msg} />
+  return (
+    <StyledTable>
+      <PageHeader title="Guests" />
+      <p>Total no. of guests: {meta && meta.total_count}</p>
+      <Table celled unstackable>
+        <Table.Header>
           <Table.Row>
-            <Table.Cell>{index + 1}</Table.Cell>
-            <Table.Cell>John Charles Onwudike</Table.Cell>
-            <Table.Cell textAlign='center'>
-              <Icon color='green' name='checkmark' size='large' />
-            </Table.Cell>
-            <Table.Cell textAlign='center'>
-              <Icon color='red' name='close' size='large' />
-            </Table.Cell>
+            <Table.HeaderCell>S/N</Table.HeaderCell>
+            <Table.HeaderCell>Full Name</Table.HeaderCell>
+            <Table.HeaderCell>Checked In</Table.HeaderCell>
+            <Table.HeaderCell>Feedback</Table.HeaderCell>
+            <Table.HeaderCell> </Table.HeaderCell>
           </Table.Row>
-        ))}
-      </Table.Body>
-      <Table.Footer>
-        <Table.Row>
-          <Table.HeaderCell colSpan='4'>
-            <Menu floated='right' pagination>
-              <Menu.Item as='a' icon>
-                <Icon name='chevron left' />
-              </Menu.Item>
-              <Menu.Item as='a'>1</Menu.Item>
-              <Menu.Item as='a'>2</Menu.Item>
-              <Menu.Item as='a'>3</Menu.Item>
-              <Menu.Item as='a' icon>
-                <Icon name='chevron right' />
-              </Menu.Item>
-            </Menu>
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Footer>
-    </Table>
-  </StyledTable>
-)
+        </Table.Header>
+
+        <Table.Body>
+          {data && data.map((guest, index) =>
+            <GuestRow key={guest.id} {...{guest, index}} />
+          )}
+        </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+            <Table.HeaderCell colSpan='5'>
+              <Menu floated='right' pagination>
+                {
+                  meta && meta.total_pages && data.length > 0
+                    ? <Pagination totalPages={meta.total_pages}
+                                  activePage={meta.current_page}
+                                  onPageChange={getGuests} />
+                    : ''
+                }
+              </Menu>
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
+    </StyledTable>
+  )
+}
 
 export default GuestsList

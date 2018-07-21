@@ -13,6 +13,7 @@ const EventGuests = () => {
     <div> 
       <Topic>Guest Information</Topic>
       <Description>
+        When I navigate to guests, I want to to add new guests so I can have their information.
         Right after using the backstage button, you can find Guest related information on 
         the guest section.
         If your guests have indicated interest in the event through eventplog, you can find your guest

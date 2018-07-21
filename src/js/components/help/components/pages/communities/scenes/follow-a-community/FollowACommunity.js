@@ -11,6 +11,8 @@ const FollowAcommunity = () => {
       <Topic>Follow a Community</Topic>
       <Description>
         If you are new to eventplog, you might want to follow a community.
+        When you follow a community, you intend connecting with the events that community 
+        organises and participating in them. 
         To follow a community, click on  
         <Link to =""> join </Link> and tada.. you have started following the community.<br/><br/>
         You will also start getting notifications and updates on events from this community.

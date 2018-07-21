@@ -22,7 +22,7 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
         <FormField
           className="email-holder"
         >
-          <Input
+          <Styled(Input)
             name="email"
             placeholder="ciroma@chukwuma.com"
             type="email"

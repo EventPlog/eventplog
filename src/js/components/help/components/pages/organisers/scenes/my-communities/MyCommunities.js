@@ -8,8 +8,9 @@ const MyCommunities = () => {
     <div> 
       <Topic>My Communities and Events</Topic>
       <Description>
-        As an organizer, you can find all events you have created and communities you manage
-        by 
+        As an organizer, when I view my communities, I want to see all communities oe events I manage or have created
+        so I can access all of them from a common place.  You can find all events you have created and communities you manage
+        by ...
         <br/>   
       </Description> 
     </div>

@@ -30,8 +30,14 @@ class CommunityContainer extends Component {
     this.setState({community: nextProps.community})
   }
 
-  handleChange = (e, value) => {
-    this.setState({community: {...this.state.community, [e.target.name]: value || e.target.value} })
+  handleChange = (e, attr) => {
+    var elAttr = attr && attr.name ? attr : e
+    this.setState({
+      community: {
+        ...this.state.community,
+        [elAttr.name]: elAttr.value
+      }
+    })
   }
 
   componentDidUpdate(props, prevProps) {
