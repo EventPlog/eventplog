@@ -1,12 +1,5 @@
-import React from 'react'
-
-import CheckInFormContainer from './CheckInFormContainer'
 import CheckInForm from './CheckInForm'
+import GuestContainer from '../../GuestContainter'
+import renderComponentWithContainer from 'js/components/shared/render-props-to-component'
 
-const CheckInFormWithContainer = () => (
-  <CheckInFormContainer>
-    {(props) => <CheckInForm {...props} />}
-  </CheckInFormContainer>
-)
-
-export default CheckInFormWithContainer
+export default renderComponentWithContainer(GuestContainer, CheckInForm)

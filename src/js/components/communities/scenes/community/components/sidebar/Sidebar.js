@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import './sidebar.scss';
 import styled, { ThemeProvider } from 'styled-components';
 import defaults from 'js/styles/theme/variables';
 
 const Aside = styled.aside`
   width: 200px;
   border-right: 1px solid #eee;
-  height: 100vh;
+  height: 100%;
 
   > ul {
     margin: 100px 30px 0 0px;
