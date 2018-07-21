@@ -24,7 +24,8 @@ class InvitationsContainter extends Component {
   }
 
   handleConfirm = (id, status) => {
-    const invite = {id, status}
+    const { id: recipient_id } = this.props.user
+    const invite = {id, status, recipient_id, recipient_type: 'User'}
 
     this.props.updatePendingInvitation(invite)
   }

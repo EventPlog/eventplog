@@ -36,4 +36,17 @@ describe('Communities::Communities::EventsSection', () => {
     expect(controlPanelCardInstances.at(0).props().featured_image).toEqual(event.featured_image)
     expect(controlPanelCardInstances.at(0).props().meta).toEqual(generateMeta(event))
   })
+
+  describe('when data is not complete', () => {
+    it('should render without crashing', () => {
+      const shabbyEvents = {
+        data: [{id: 1}],
+        meta: {}
+      }
+
+      const wrapper = shallow(<EventsSection title={title} events={shabbyEvents} />)
+
+      expect(wrapper.find(ContentPanel).length).toEqual(1)
+    })
+  })
 });
