@@ -9,11 +9,14 @@ import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
 
-export const generateTitle = (event = {community: {}}) => (
-  <Link to={`/communities/${event.community.id}/events/${event.id}`}>
-    {event.title}
-  </Link>
-)
+export const generateTitle = (event = {}) => {
+  const { community = {}} = event || {}
+  return (
+    <Link to={`/communities/${community.id}/events/${event.id}`}>
+      {event.title}
+    </Link>
+  )
+}
 
 export const generateDescription = (community = {}) => (
   <span>

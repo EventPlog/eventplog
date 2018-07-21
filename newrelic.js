@@ -9,11 +9,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['My Application'],
+  app_name: ['EventPlog FE Prod'],
   /**
    * Your New Relic license key.
    */
-  license_key: process.env.NEW_RELIC_LICENSE_KEY,
+  license_key: '796a9271427c67ebc5faa6c77403d10a39fbbd57',
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
