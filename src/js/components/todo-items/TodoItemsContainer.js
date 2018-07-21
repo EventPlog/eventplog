@@ -55,12 +55,13 @@ class EventUpdateContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {event_checklist} = state.event_checklists
-  const { todo_items = {data: []} } = ownProps
+  const { todo_items  } = ownProps
   const { loading, error } = event_checklist
+  const { data = [] } = todo_items
 
-  const pending = todo_items.data.filter(item => item.status == 'pending')
-  const in_progress = todo_items.data.filter(item => item.status == 'in progress')
-  const completed = todo_items.data.filter(item => item.status == 'completed')
+  const pending = data ? data.filter(item => item.status == 'pending') : []
+  const in_progress = data ? data.filter(item => item.status == 'in progress') : []
+  const completed = data ? data.filter(item => item.status == 'completed') : []
 
   return {
     event_checklist,

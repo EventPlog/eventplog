@@ -33,6 +33,7 @@ const eventBannerStyles = css`
   align-items: flex-end;
   padding: 2rem;
   margin-bottom: 3rem;
+  background-size: cover;
 
   ${
     media.phone`

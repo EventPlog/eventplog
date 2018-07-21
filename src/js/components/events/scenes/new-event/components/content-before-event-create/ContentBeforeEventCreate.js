@@ -24,11 +24,12 @@ const StyledContent = styled.div`
     width: 100%;
     max-width: 600px;
   }
+  
   .ui.form {
     margin: 60px 0;
     
     ${
-  media.phone`
+      media.phone`
         margin: 50px 0;
         
         .inline.fields {
@@ -36,23 +37,21 @@ const StyledContent = styled.div`
           align-items: baseline; 
         }
       `
-  }
+    }
+    
     .field.email-holder {
       flex: 1;
       
       ${
-  media.phone`
+        media.phone`
           width: 100%;
           margin-bottom: 1.5rem;
         `
-  }   
-      
-      input {
-        width: 100%;
-      }
+      }   
+  
+  
     }
   }
-  
 `
 
 const ContentBeforeEventCreate = ({
@@ -77,7 +76,7 @@ const ContentBeforeEventCreate = ({
         />
 
         <Form.Group inline>
-          <Form.Field className="email-holder">
+          <Form.Field className="wide email-holder">
             <Input name="title"
                    type="text"
                    value={event.name}

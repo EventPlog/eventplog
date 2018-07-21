@@ -40,7 +40,7 @@ const EventComponent = (props) =>
       <Route path='/communities/:community_id/events/:event_id/backstage/tasks' render={withProps(Tasks, props)} />
       <Route path="/communities/:community_id/events/:event_id/backstage/guests" render={withProps(Guests, props)} />
       <Route path="/communities/:community_id/events/:event_id/backstage/feedback" render={withProps(Feedback, props)} />
-      <Route path="/communities/:community_id/events/:event_id/backstage/settings" component={Settings} />
+      <Route path="/communities/:community_id/events/:event_id/backstage/settings" component={withProps(Settings, props)} />
     </Switch>
   </StyledEventComponent>
 

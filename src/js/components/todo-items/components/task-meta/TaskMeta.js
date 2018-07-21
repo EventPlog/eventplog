@@ -18,7 +18,7 @@ const StyledTaskMeta = styled.div`
       font-weight: 300; 
     }
     
-    span {
+    span.title {
       font-weight: 400;
       
       &:after {
@@ -66,7 +66,7 @@ const TodoItemMeta = ({
                            defaultValue={deadlineDate}
                            onChange={handleChange}
                            onSubmit={handleSubmit}>
-            <span>Deadline</span> {deadlineDate.toDateString() || 'none yet'}
+            <span className="title">Deadline</span> {deadlineDate.toDateString() || 'none yet'}
           </ContentEditable>
         </p>
       </div>
@@ -79,7 +79,7 @@ const TodoItemMeta = ({
                            onChange={handleChange}
                            options={organizerOptions()}
                            onSubmit={handleSubmit}>
-            <span>Owner</span> {recipient.display_name || 'unassigned'}
+            <span className="title">Owner</span> {recipient.display_name || 'unassigned'}
           </ContentEditable>
         </p>
       </div>
@@ -92,7 +92,7 @@ const TodoItemMeta = ({
                            onChange={handleChange}
                            options={statusOptions}
                            onSubmit={handleSubmit}>
-            <span>Status</span> {status}
+            <span className="title">Status</span> {status}
           </ContentEditable>
         </p>
       </div>

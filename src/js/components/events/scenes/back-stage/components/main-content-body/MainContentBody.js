@@ -22,6 +22,7 @@ const StyledMainContent = styled.div`
     height: 400px;
     position: absolute;
     width: 100%;
+    background-size: cover;
   }
   
   .container {
