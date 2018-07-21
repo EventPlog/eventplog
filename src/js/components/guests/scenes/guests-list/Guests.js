@@ -19,9 +19,10 @@ const GuestsList = ({
   guests = {},
   getGuests,
 }) => {
-  const { data = [], meta, loading, error }  = guests
+  const { data = [], meta = {}, loading, error }  = guests
   if (loading) return <Loading />
   if (error) return <Loading.Error msg={msg} />
+  const startingIndex = meta.per_page * (meta.current_page - 1)
   return (
     <StyledTable>
       <PageHeader title="Guests" />
@@ -39,7 +40,7 @@ const GuestsList = ({
 
         <Table.Body>
           {data && data.map((guest, index) =>
-            <GuestRow key={guest.id} {...{guest, index}} />
+            <GuestRow key={guest.id} {...{guest, index: (index + startingIndex)}} />
           )}
         </Table.Body>
         <Table.Footer>
