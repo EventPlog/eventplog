@@ -22,10 +22,10 @@ const StyledEventPlanning = styled.div`
 
 const EventPlanningMainContent = ({todo_items = {data: []}, ...props}) => {
   const getPanes = () => {
-    const todoData = todo_items.data.filter(item => item.recipient_id == props.user.id)
-    const userTodo = {...todo_items, data: todoData}
+    const userTodo = todo_items.data.filter(item => item.recipient_id == props.user.id)
+    const todoData = {...todo_items, data: todoData}
     return [
-      {name: `My Task (${todoData.length})`, content: (props) => <TodoItems {...{...props, todo_items: userTodo}} /> },
+      {name: `My Task (${userTodo.length})`, content: (props) => <TodoItems {...{...props, todo_items: userTodo}} /> },
       {name: `All Tasks (${todoData.length})`, content: (props) => <TodoItems {...{...props, todo_items}} /> },
     ]
   }
