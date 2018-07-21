@@ -16,6 +16,7 @@ const StyledMain = styled.div`
   &.app-container {
     padding: 0 2rem;
     align-items: end;
+    align-items: stretch;
     
     ${
       media.phone`

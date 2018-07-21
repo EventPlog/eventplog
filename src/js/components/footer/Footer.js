@@ -13,6 +13,7 @@ const StyledFooter = styled.div`
    border-top: 1px solid #ccc;
    color: var(--fg);
    background: ${props => lighten(-0.5, props.theme.activeLink)}; 
+   z-index: 100;
    
    .app-container {
     padding: 1rem 2rem;

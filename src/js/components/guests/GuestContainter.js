@@ -1,10 +1,14 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { checkInByForm } from '../../actions'
 import Auth from 'js/auth/actions'
+import {
+  updateGuest,
+  deleteGuest,
+  checkInByForm
+} from './actions'
 
-class CheckInFormContainer extends Component {
+class GuestContainter extends Component {
   state = {
     user: {},
     success: false,
@@ -32,6 +36,12 @@ class CheckInFormContainer extends Component {
     }
   }
 
+  handleDelete = () => {
+    var confirmed = confirm('Are you sure you want to delete this guest?')
+    if (!confirmed) { return }
+    return this.props.deleteGuest(this.props.guest.id)
+  }
+
   componentWillMount(props) {
     if (Auth.currentUser) this.setState({user: Auth.currentUser})
   }
@@ -41,6 +51,7 @@ class CheckInFormContainer extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    handleDelete: this.handleDelete,
   })
 
   render () {
@@ -55,7 +66,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     checkInByForm,
+    updateGuest,
+    deleteGuest,
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CheckInFormContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(GuestContainter)

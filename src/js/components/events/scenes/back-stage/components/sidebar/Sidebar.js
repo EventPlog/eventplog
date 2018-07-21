@@ -11,7 +11,6 @@ import colors from 'js/styles/theme/variables'
 const Aside = styled.aside`
   width: 200px;
   border-right: 1px solid ${colors.gray}; 
-  height: 100vh;
   background: ${props => props.theme.black};
 
   ${

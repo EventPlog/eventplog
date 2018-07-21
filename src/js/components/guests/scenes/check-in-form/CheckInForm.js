@@ -48,7 +48,6 @@ const CheckInForm = ({
             content="You've successfully checked into this event!"
           />
 
-          {feedback_url && <FeedbackUrl url={feedback_url} />}
           <Form.Field>
             <label>First Name</label>
             <Input name="first_name"
