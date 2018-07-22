@@ -93,7 +93,7 @@ const FeedbackReport = ({ event = {} }) =>
     </ContentPanel>
 
     <ContentPanel title="What your guests said">
-      <Comments comments={data.feedback} textField="comment" />
+      <Comments comments={{data: data.feedback}} textField="comment" />
     </ContentPanel>
 
   </StyleFeedbackReport>

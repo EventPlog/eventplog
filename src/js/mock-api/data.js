@@ -81,48 +81,6 @@ const communities = [
   },
 ]
 
-const feedback = [
-  {
-    id: 1,
-    satisfaction: 60,
-    nps: 0.5,
-    swags: 0,
-    comment: "I **Loved** this event!! Thank you so much for putting it together!",
-    user: {
-      id: 3,
-      first_name: 'Sarah',
-      last_name: 'Omoloye',
-      community_role: 'Top Contributor'
-    },
-  },
-  {
-    id: 1,
-    satisfaction: 60,
-    nps: 0.5,
-    swags: 0,
-    comment: "This was awesome crew! Might it be great **if** we used `eventbrite` for this?&nbsp; I would love to test out my  design skills if you guys permit? \n\nPS: Never done this before though. Lol!",
-    user: {
-      id: 3,
-      first_name: 'John',
-      last_name: 'Dariye',
-      community_role: 'First Time Contributor'
-    },
-  },
-  {
-    id: 1,
-    satisfaction: 60,
-    nps: 0.5,
-    swags: 0,
-    comment: "I had a rant to give and never planned on sharing feedback. But the bot asked nicely, so I did. Love the concept :)",
-    user: {
-      id: 3,
-      first_name: 'Chineye',
-      last_name: 'Ogbonna',
-      community_role: 'Member'
-    },
-  }
-]
-
 const events = [
   {
     id: 1,
@@ -222,8 +180,80 @@ const events = [
     organizers: users,
   }
 ]
+
+const feedback = [
+  {
+    id: 1,
+    satisfaction: 60,
+    nps: 0.5,
+    swags: 0,
+    comment: "I **Loved** this event!! Thank you so much for putting it together!",
+    user: {
+      id: 3,
+      first_name: 'Sarah',
+      last_name: 'Omoloye',
+      community_role: 'Top Contributor'
+    },
+  },
+  {
+    id: 1,
+    satisfaction: 60,
+    nps: 0.5,
+    swags: 0,
+    comment: "This was awesome crew! Might it be great **if** we used `eventbrite` for this?&nbsp; I would love to test out my  design skills if you guys permit? \n\nPS: Never done this before though. Lol!",
+    user: {
+      id: 3,
+      first_name: 'John',
+      last_name: 'Dariye',
+      community_role: 'First Time Contributor'
+    },
+  },
+  {
+    id: 1,
+    satisfaction: 60,
+    nps: 0.5,
+    swags: 0,
+    comment: "I had a rant to give and never planned on sharing feedback. But the bot asked nicely, so I did. Love the concept :)",
+    user: {
+      id: 3,
+      first_name: 'Chineye',
+      last_name: 'Ogbonna',
+      community_role: 'Member'
+    },
+  }
+]
+
+const feedbackReport = {
+  summary: {
+    interested: {
+      total: 60,
+      male: 40,
+      female: 20
+    },
+    checked_in: {
+      total: 60,
+      male: 40,
+      female: 20
+    },
+    feedback_received: {
+      total: 20,
+      male: 12,
+      female: 8
+    },
+    percentage_avg_satisfaction: {
+      total: 20,
+      male: 12,
+      female: 8
+    },
+    nps: 0.5,
+  },
+  data: feedback
+}
+
+
 export default {
   communities,
   feedback,
-  events
+  events,
+  feedbackReport
 }

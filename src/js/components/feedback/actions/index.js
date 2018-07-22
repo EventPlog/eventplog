@@ -1,14 +1,14 @@
 import actionTypes from './types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
-import mockEventApi from '../../../mock-api/lead-api'
+import mockFeedbackApi from '../actions'
 
-export const mockCheckIn = (eventId, user) => {
+export const mockGetFeedbackReport = (eventId, user) => {
   return (dispatch) => {
-    dispatch({ type: actionTypes.CHECK_IN_START })
+    dispatch({ type: actionTypes.FEEDBACK_REPORT_INDEX_START })
 
-    return mockEventApi.create(eventId).then(res => {
+    return mockFeedbackApi.create(eventId).then(res => {
       dispatch({type: actionTypes.CHECK_IN_COMPLETE, payload: {...user}})
-      return {feedback_url: 'http://feedback_url.com'}
+      return res;
     })
   }
 }
