@@ -1,12 +1,11 @@
-import EventApi from './index'
+import FeedbackApi from './index'
 
 import data from '../data'
 
 describe('.show()', () => {
-  it('should return a single event matching an id', async () => {
-    const event = data.events[0]
-    let apiResponse = await EventApi.show(event.id)
-    expect(apiResponse.id).toEqual(event.id)
-    expect(apiResponse.title).toEqual(event.title)
+  it('should return a report for an event', async () => {
+    const report = data.feedbackReport
+    let apiResponse = await FeedbackApi.getReport()
+    expect(apiResponse.event_id).toEqual(report.event_id)
   })
 })

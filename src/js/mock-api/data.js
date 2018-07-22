@@ -224,6 +224,8 @@ const feedback = [
 ]
 
 const feedbackReport = {
+  id: 1,
+  event_id: 2,
   summary: {
     interested: {
       total: 60,
@@ -247,7 +249,8 @@ const feedbackReport = {
     },
     nps: 0.5,
   },
-  data: feedback
+  data: feedback,
+  meta: {}
 }
 
 
