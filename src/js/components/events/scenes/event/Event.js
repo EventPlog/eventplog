@@ -77,14 +77,6 @@ const Event = ({
         <EventBanner {...{...event, community, handleChange, handleSubmit, attendEvent}} />
 
         <ContentSection.Body>
-
-          <ContentPanel title="Announcements">
-            <p>
-              Your feedback adds to our community report, as well as helps us improve.
-            </p>
-
-          </ContentPanel>
-
           <ContentPanel title="Description">
             <div className="event-description">
               <ContentEditable propName="description"
