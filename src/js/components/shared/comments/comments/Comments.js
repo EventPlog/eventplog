@@ -52,6 +52,8 @@ const Comments = function({
   comments = {},
   createComment,
   updateComment,
+  textField = 'body',
+  canReply = true,
   ...otherProps
 }) {
   const { loading, error, data = [], meta = {} } = comments
@@ -60,19 +62,19 @@ const Comments = function({
       {data && data.map(comment =>
         comment.deleted && comment.responses.length < 1
           ? ''
-          : <Comment {...{ comment, createComment, updateComment}}>
+          : <Comment {...{ comment, createComment, textField, canReply, updateComment}}>
               <div className={`replies comment-card ${className}`}>
                 {comment.responses && comment.responses.map(response =>
-                  <Comment {...{ comment: response,
+                  <Comment {...{ comment: response, textField, canReply,
                             createComment, updateComment}} />
                 )}
-                <AddComment placeholder="Reply"
-                            recipient_id={comment.id}
-                            recipient_type="Comment"
-                            trackable_id={comment.trackable_id}
-                            trackable_type={comment.trackable_type}
-                            parentComment={comment}
-                            createComment={createComment} />
+                {canReply &&<AddComment placeholder="Reply"
+                                        recipient_id={comment.id}
+                                        recipient_type="Comment"
+                                        trackable_id={comment.trackable_id}
+                                        trackable_type={comment.trackable_type}
+                                        parentComment={comment}
+                                        createComment={createComment} />}
               </div>
             </Comment>
       )}

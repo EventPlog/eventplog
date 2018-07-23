@@ -61,7 +61,7 @@ const ContentBeforePasswordChange = ({
         />
 
         <Form.Group inline>
-          <Form.Field className="password-holder">
+          <Form.Field className="wide password-holder">
             <Input name="password"
                    type="password"
                    value={password}

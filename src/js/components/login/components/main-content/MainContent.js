@@ -10,7 +10,7 @@ import { lighten } from 'polished'
 import phoneBgImage from 'img/tinu_and_chris.jpeg'
 
 const StyledMainContent = styled.div`
-  background-image: url('https://farm2.staticflickr.com/1761/28551545067_67de7285ac_o.jpg');
+  background-image: url('https://farm1.staticflickr.com/859/29724493978_91d3a443cb_o.jpg');
   background-size: cover;
   position: relative;
   
