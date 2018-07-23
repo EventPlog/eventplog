@@ -159,9 +159,9 @@ const CommunityHeader = ({
             <Link to={`/communities/${community.id}/events`}>Events</Link>
           </Nav.Item>
 
-          <Nav.Item>
-            <Link to={`/communities/${community.id}`}>Team</Link>
-          </Nav.Item>
+          {/*<Nav.Item>*/}
+            {/*<Link to={`/communities/${community.id}/team`}>Team</Link>*/}
+          {/*</Nav.Item>*/}
 
           {(community.is_owner || community.is_admin) &&
             <Nav.Item>

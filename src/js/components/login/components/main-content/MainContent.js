@@ -7,16 +7,16 @@ import { Message } from 'semantic-ui-react'
 import { media } from 'js/styles/mixins'
 import { lighten } from 'polished'
 
-import phoneBgImage from 'img/tinu_and_chris.jpeg'
+import snapImg from 'img/login-bg-3.jpg'
 
 const StyledMainContent = styled.div`
-  background-image: url('https://farm1.staticflickr.com/859/29724493978_91d3a443cb_o.jpg');
+  background-image: url('https://farm1.staticflickr.com/840/43597608731_66edfae482_o.jpg');
   background-size: cover;
   position: relative;
   
   ${
     media.phone`
-      background-image: url(${phoneBgImage});
+      background-image: url(${snapImg});
     `
   }
   
