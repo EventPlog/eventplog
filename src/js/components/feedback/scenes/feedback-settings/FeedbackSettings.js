@@ -38,70 +38,43 @@ const FeedbackSettings = ({
   handleChange,
   handleSubmit
 }) => {
-  const { user = {}, feedback_url, value } = event;
+  const { feedback_url } = event;
   return (
     <StyleFeedbackSettings>
       <ContentPanel title="Feedback settings">
         <Form loading={loading} success={success}>
           <Message
             success
-            header='Welcome!'
-            content="You've successfully checked into this event!"
+            header='Success!'
+            content="You've successfully updated your settings."
           />
 
-          {feedback_url && <FeedbackUrl url={feedback_url} />}
           <Form.Group grouped>
-            <label>Active feedback form</label>
+            <label>Link to external feedback form</label>
             <Form.Field>
-              <Radio
-                label='Use the default form'
-                value='default'
-                checked={value === 'default'}
-                onChange={handleChange}
-              />
-            </Form.Field>
-
-            <Form.Field>
-              <Radio
-                label='Use a different form'
-                value='default'
-                checked={value === 'custom'}
-                onChange={handleChange}
-              />
-              <div className="radio-input">
-                <Input name="feedback_url"
-                       value={``}
-                       placeholder='url for feedback form' onChange={handleChange}/>
-              </div>
-            </Form.Field>
-
-          </Form.Group>
-
-          <Form.Group grouped>
-            <label>Send Prompt for feedback</label>
-            <Form.Field label='30 minutes before end of the event' control={Checkbox} />
-            <Form.Field label='At the end of the event' control={Checkbox} />
-            <Form.Field label='One day after the event' control={Checkbox} />
-            <Form.Field label='Three days after the event' control={Checkbox} />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Field>
-              <label>Custom message to appeal to guests to give feedback</label>
-              <TextArea name="feedback_message"
-                        value={``}
-                        placeholder='Could you help us improve by giving feedback? Thanks!' onChange={handleChange}/>
+              <Input name="feedback_url"
+                     value={feedback_url}
+                     placeholder='url for feedback form' onChange={handleChange}/>
             </Form.Field>
           </Form.Group>
 
-          <Form.Group>
-            <Form.Field>
-              <label>Custom message to appeal to guests to give feedback</label>
-              <TextArea name="post_feedback_message"
-                        value={``}
-                        placeholder="Thank you for giving feedback!" onChange={handleChange}/>
-            </Form.Field>
-          </Form.Group>
+          {/*<Form.Group grouped>*/}
+            {/*<label>Send Prompt for feedback</label>*/}
+            {/*<Form.Field label='30 minutes before end of the event' control={Checkbox} />*/}
+            {/*<Form.Field label='At the end of the event' control={Checkbox} />*/}
+            {/*<Form.Field label='One day after the event' control={Checkbox} />*/}
+            {/*<Form.Field label='Three days after the event' control={Checkbox} />*/}
+          {/*</Form.Group>*/}
+
+          {/*<Form.Group>*/}
+            {/*<Form.Field>*/}
+              {/*<label>Custom message to appeal to guests to give feedback</label>*/}
+              {/*<TextArea name="feedback_message"*/}
+                        {/*value={``}*/}
+                        {/*placeholder='Could you help us improve by giving feedback? Thanks!' onChange={handleChange}/>*/}
+            {/*</Form.Field>*/}
+          {/*</Form.Group>*/}
+
 
           <Button inverted type='submit' onClick={handleSubmit}>
             Save

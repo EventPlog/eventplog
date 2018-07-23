@@ -8,6 +8,7 @@ import invitations from 'js/components/invitations/reducers'
 import event_checklists from 'js/components/event-planning/reducers'
 import todo_items from 'js/components/todo-items/reducers'
 import guests from 'js/components/guests/reducers'
+import feedback from 'js/components/feedback/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -19,6 +20,7 @@ let rootReducer = combineReducers({
   event_checklists,
   todo_items,
   guests,
+  feedback,
 })
 
 export default rootReducer

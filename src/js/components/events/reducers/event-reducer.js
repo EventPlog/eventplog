@@ -1,5 +1,6 @@
 import initialState from './intialState';
 import actionTypes from '../actions/types'
+import feedbackActionTypes from 'js/components/feedback/actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
 const eventReducer = (state=initialState.event, action) => {
@@ -21,7 +22,7 @@ const eventReducer = (state=initialState.event, action) => {
       return {...state, loading: false, error: true}
 
     case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:
-      return {...state, ...action.payload}
+      return {...state, is_attending: true}
 
     case actionTypes.EVENT_COMMENT_UPDATE_COMPLETE:
       return {...state, comments: action.payload}
@@ -42,6 +43,9 @@ const eventReducer = (state=initialState.event, action) => {
       organizers_invitations = state.organizers_invitations
                                       .filter(invite => invite.id != action.payload.id)
       return {...state, organizers_invitations }
+
+    case feedbackActionTypes.EVENT_FEEDBACK_CREATE_COMPLETE:
+      return {...state, given_feedback: true, show_feedback_url: true}
 
     default:
       return state;

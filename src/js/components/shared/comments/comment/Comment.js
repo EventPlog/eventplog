@@ -31,21 +31,23 @@ const Comment = ({
   children,
   current_user,
   deleteComment,
+  textField = 'body',
+  canReply = true,
   ...otherProps
 }) => {
   const currentUserIsOwner = (!comment.deleted && comment.user.id == current_user.id)
   const renderCommentText = comment.deleted
     ? <div className="deleted-comment">This comment has been deleted</div>
-    : <ReactMarkdown source={comment.body} />
+    : <ReactMarkdown source={comment[textField]} />
   return (
     <CommentPanel className={className} user={comment.deleted ? {} : comment.user}>
       {currentUserIsOwner && <Button className="btn-delete" onClick={deleteComment}>
                                <Icon className="delete" />
                              </Button>}
-      <ContentEditable propName="body"
+      <ContentEditable propName={textField}
                        type="textarea"
                        canEdit={currentUserIsOwner}
-                       defaultValue={comment.body}
+                       defaultValue={comment[textField]}
                        onChange={handleChange}
                        onSubmit={updateComment}>
         {renderCommentText}

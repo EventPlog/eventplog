@@ -20,7 +20,7 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
         inline={true}
       >
         <FormField
-          className="password-holder"
+          className="wide password-holder"
         >
           <Styled(Input)
             name="password"

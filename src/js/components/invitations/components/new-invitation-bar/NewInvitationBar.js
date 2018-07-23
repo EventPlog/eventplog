@@ -55,7 +55,7 @@ const NewInvitationBar = ({
     return ''
   }
   const invitation = invitations[0]
-  const { owner, event } = invitation
+  const { owner = {}, event = {} } = invitation
   return (
     <StyledNewInvitationBar className="notifications-bar">
       <div className="app-container">

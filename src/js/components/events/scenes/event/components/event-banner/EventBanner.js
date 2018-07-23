@@ -6,25 +6,8 @@ import { media } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
+import { validDate, pluralize } from 'js/utils'
 
-const validDate = (input) => {
-  const _date = new Date(input)
-  return _date.getDate().toString() !== 'NaN' ? _date : new Date()
-}
-
-const pluralize = (word, number) => {
-  const knownWords = {
-    person: 'people'
-  }
-  return number = 1 ? word : knownWords[word]
-}
-
-const addhttp = (url) => {
-  if (!url.match("~^(?:f|ht)tps?://~i", url)) {
-    url = "http://" + url;
-  }
-  return url;
-}
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -88,11 +71,22 @@ const eventBannerStyles = css`
     }
   }
   
+  .cta-btns {
+    display: flex;
+    flex-direction: column;
+    
+    ${
+      media.phone`
+        align-self: flex-start;
+      `
+    }
+  }
+  
   .cta {
     background: #fff;
     border: #fff;
     box-shadow: 1px 2px 4px #000;
-    margin: 2rem 0; 
+    margin: 0.5rem 0; 
     
     &:hover {
       background: var(--activeLink);
@@ -183,17 +177,20 @@ const EventBanner = ({
           </div>
         </div>
       </div>
-      {is_stakeholder
-        ? <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
-          Go Backstage
-        </Button.Link>
-        : is_attending
-          ? <Button.Link isAnchorTag className="cta" href={link ? link : '#'} >
+      <div className="cta-btns">
+        {is_stakeholder &&
+          <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
+            Go Backstage
+          </Button.Link>}
+        {is_attending && !!link &&
+          <Button.Link isAnchorTag className="cta" href={link} >
             RSVP
-          </Button.Link>
-          : <Button className="cta" onClick={() => attendEvent(event)}>
+          </Button.Link>}
+        {!is_attending &&
+          <Button className="cta" onClick={() => attendEvent(event)}>
             Interested
           </Button>}
+        </div>
     </ContentSection.FullRow>
   )
 }

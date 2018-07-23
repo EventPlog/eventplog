@@ -57,7 +57,7 @@ const EventChecklist = ({
   const { description, data = [], loading, error } = todo_items
   if (loading) return <Loading />
   if (error) return <Loading.Error msg={error} />
-  const percentCompletion = (completed.length / data.length) * 100
+  const percentCompletion = Math.round((completed.length / data.length) * 100)
   return (
     <StyledTasks className="backstage-tasks">
 
