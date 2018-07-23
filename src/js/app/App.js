@@ -16,7 +16,7 @@ import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
 import appThemeColors from 'js/styles/theme/variables'
 import BreadCrumb from 'js/components/shared/breadcrumb'
-import { darken, adjustHue } from 'polished'
+import { darken } from 'polished'
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
