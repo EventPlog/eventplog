@@ -12,7 +12,7 @@ import Pagination from 'js/components/shared/pagination'
 export const generateTitle = (event = {}) => {
   const community = event.community || {}
   return (
-    <Link to={`/communities/${community.id}/events/${event.id}`}>
+    <Link to={`/communities/${event.community_id}/events/${event.id}`}>
       {event.title}
     </Link>
   )
@@ -70,10 +70,12 @@ const EventsSection = ({
           const btn = {onClick: () => attendEvent(event), text: 'interested'}
 
           return (
-            <ContentPanel.Card
-              key={event.id}
-              {...{title, description, featured_image, meta, btn}}
-              showButton={!event.is_attending} />
+            <Link to={`/communities/${event.community_id}/events/${event.id}`}>
+              <ContentPanel.Card
+                key={event.id}
+                {...{title, description, featured_image, meta, btn}}
+                showButton={!event.is_attending} />
+            </Link>
           )
         }
       )}

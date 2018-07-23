@@ -76,7 +76,7 @@ exports[`main content - New Community component should render correctly 1`] = `
           Brand Color
         </label>
         <Styled(Input)
-          defaultValue="#a87ef5"
+          defaultValue="#4968B7"
           name="brand_color"
           options={
             Array [

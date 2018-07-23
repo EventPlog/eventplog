@@ -30,8 +30,12 @@ const Aside = styled.aside`
     text-align: right;
     line-height: 60px;
     list-style: none;
+    
+    a {
+      color: ${props => lighten(0.1, props.theme.activeLink)};
+    }
 
-    .active {
+    a.active {
       border-bottom: 1px solid ${defaults.activeLink};
       border-bottom: 1px solid var(--activeLink, ${defaults.activeLink});
       margin-bottom: 15px;

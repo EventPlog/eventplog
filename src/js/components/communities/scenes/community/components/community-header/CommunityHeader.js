@@ -80,7 +80,7 @@ const StyledHeader = styled.div`
   .nav-holder {
     --line-height: 10px;
     width: 100%;
-    background: ${props => lighten(-0.3, props.theme.activeLink)};
+    background: ${props => props.theme.activeLinkBg};
     
     border-top: 1px solid ${colors.gray};
     border-bottom: 1px solid ${colors.gray};
@@ -159,9 +159,9 @@ const CommunityHeader = ({
             <Link to={`/communities/${community.id}/events`}>Events</Link>
           </Nav.Item>
 
-          <Nav.Item>
-            <Link to={`/communities/${community.id}`}>Team</Link>
-          </Nav.Item>
+          {/*<Nav.Item>*/}
+            {/*<Link to={`/communities/${community.id}/team`}>Team</Link>*/}
+          {/*</Nav.Item>*/}
 
           {(community.is_owner || community.is_admin) &&
             <Nav.Item>

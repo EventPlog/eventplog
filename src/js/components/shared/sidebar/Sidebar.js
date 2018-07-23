@@ -11,7 +11,7 @@ import colors from 'js/styles/theme/variables'
 const StyledSidebar = styled.div`
   color: ${props => lighten(0.25, props.theme.activeLink)};
   border-radius: 10px;
-  background: ${props => lighten(-0.3, props.theme.activeLink)};
+  background: ${props => props.theme.activeLinkBg};
   
   p {
     color: ${lighten(0.4, colors.blue)};

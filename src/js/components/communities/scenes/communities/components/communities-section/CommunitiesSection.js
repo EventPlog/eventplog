@@ -52,11 +52,13 @@ const CommunitySection = ({
           const title = generateTitle(community)
           const meta = generateMeta(community)
           return (
-            <ContentPanel.Card
-              key={community.id}
-              {...{title, description, featured_image, meta}}
-              showButton={showCTA && !community.joined}
-              btn={{onClick: followCommunity, text: 'Follow'}} />
+            <Link to={`/communities/${community.id}`}>
+              <ContentPanel.Card
+                key={community.id}
+                {...{title, description, featured_image, meta}}
+                showButton={showCTA && !community.joined}
+                btn={{onClick: followCommunity, text: 'Follow'}} />
+            </Link>
           )
         }
       )}

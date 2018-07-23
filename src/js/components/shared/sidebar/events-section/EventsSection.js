@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import Sidebar from 'js/components/shared/sidebar'
 import Loading from 'js/components/shared/loading'
 
-export const generateTitle = (event, communityId) => (
-  <Link to={`/communities/${communityId}/events/${event.id}`}>
+export const generateTitle = (event = {}) => (
+  <Link to={`/communities/${event.community_id}/events/${event.id}`}>
     {event.title}
   </Link>
 )
@@ -35,15 +35,19 @@ const EventsSection = ({
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
       {(!loading && !error && data) && data.map(({community, description: d, featured_image, ...event}) => {
-          const title = generateTitle(event, community.id);
+          const title = generateTitle(event);
           const description = generateDescription(community);
           const meta = generateMeta(event)
           const btn = event.is_attending
                       ? {}
                       : {onClick: () => attendEvent(event), text: 'Interested'}
-          return <Sidebar.Card key={event.id}
-                               {...{title, description,
-                               featured_image, meta, btn}} />
+          return (
+            <Link to={`/communities/${event.community_id}/events/${event.id}`}>
+              <Sidebar.Card key={event.id}
+                             {...{title, description,
+                             featured_image, meta, btn}} />
+            </Link>
+          )
         }
       )}
     </Sidebar>

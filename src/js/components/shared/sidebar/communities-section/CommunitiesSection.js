@@ -42,7 +42,11 @@ const CommunitiesSection = ({
           const btn = community.following
                         ? {}
                         : {onClick: () => {followCommunity(community)}, text: 'Follow'}
-          return <Sidebar.Card key={community.id} {...{title, description, featured_image, btn, meta}} />
+          return (
+            <Link to={`/communities/${community.id}/`}>
+              <Sidebar.Card key={community.id} {...{title, description, featured_image, btn, meta}} />
+            </Link>
+          )
         }
       )}
     </Sidebar>
