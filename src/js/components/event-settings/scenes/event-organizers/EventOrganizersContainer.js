@@ -21,7 +21,7 @@ class EventOrganizersContainer extends Component {
 
     const data = recipient_emails.map(email => ({email}))
     const validator = new Validator();
-    const invalidEmail = recipient_emails.find(email => !validator.validateEmail(email))
+    const invalidEmail = recipient_emails.find(email => !validator.validateEmail(email.trim()))
     if (invalidEmail) {
       return this.setState({error: 'One or more emails are invalid. Please cross-check.'})
     }

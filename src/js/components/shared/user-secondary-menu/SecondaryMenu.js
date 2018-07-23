@@ -12,7 +12,7 @@ import { lighten } from 'polished'
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid ${lighten(-0.1, colors.gray)};
-    background: ${props => lighten(-0.5, props.theme.activeLink)};
+    background: ${props => props.theme.activeLinkBg};
   
   --line-height: 50px;
   

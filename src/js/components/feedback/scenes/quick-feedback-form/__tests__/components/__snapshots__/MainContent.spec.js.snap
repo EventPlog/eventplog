@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main content - New Community component should render correctly 1`] = `
+<styled.div
+  className="main-content"
+>
+  <ContentPanel
+    title="Quick feedback"
+  >
+    <ContentBeforeFeedbackSubmit
+      event={Object {}}
+      feedback={Object {}}
+    />
+  </ContentPanel>
+</styled.div>
+`;

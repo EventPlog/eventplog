@@ -14,6 +14,7 @@ import AddComment from 'js/components/shared/comments/add-comment'
 import Announcements from 'js/components/shared/announcements'
 import Members from 'js/components/shared/members'
 import ContentEditable from 'js/components/shared/content-editable'
+import QuickFeedbackForm from 'js/components/feedback/scenes/quick-feedback-form'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -52,7 +53,6 @@ const Event = ({
   community,
   activeLink,
   events_suggestions = [],
-  communities_suggestions = [],
   handleChange,
   handleSubmit,
   attendEvent,
@@ -68,8 +68,10 @@ const Event = ({
 
   const isStakeHolder = event.is_stakeholder
 
-  const {title, description, featured_image, start_date, start_time,
-          interested_persons, organizers, announcements, comments} = event
+  const {title, description, featured_image, start_date,
+          start_time, given_feedback, show_feedback_url,
+          is_attending, interested_persons, organizers,
+          announcements, comments} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
   return (
@@ -78,6 +80,7 @@ const Event = ({
         <EventBanner {...{...event, community, handleChange, handleSubmit, attendEvent}} />
 
         <ContentSection.Body>
+          {is_attending && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
           <ContentPanel title="Description">
             <div className="event-description">
               <ContentEditable propName="description"

@@ -4,145 +4,160 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
 <ContentPanel
   title="Events Section"
 >
-  <MainContentCard
-    btn={
-      Object {
-        "onClick": undefined,
-        "text": "Follow",
+  <Link
+    replace={false}
+    to="/communities/1"
+  >
+    <MainContentCard
+      btn={
+        Object {
+          "onClick": undefined,
+          "text": "Follow",
+        }
       }
-    }
-    description="A community of developers united in knowledge sharing."
-    featured_image="/login-bg.jpg"
-    key="1"
-    meta={
-      <ul>
-        <li>
-          200
-           members
-        </li>
-        <li>
-          2
-           upcoming event
-        </li>
-        <li>
-          <span
-            className="meta-label"
-          >
-            Interests
-          </span>
-          : 
-          <span
-            className="hashtag"
-          >
-            Technology
-          </span>
-          <span
-            className="hashtag"
-          >
-            Software Engineering
-          </span>
-        </li>
-      </ul>
-    }
-    showButton={false}
-    title={
-      <Link
-        replace={false}
-        to="/communities/1"
-      >
-        Facebook Developer Circle Lagos
-      </Link>
-    }
-  />
-  <MainContentCard
-    btn={
-      Object {
-        "onClick": undefined,
-        "text": "Follow",
+      description="A community of developers united in knowledge sharing."
+      featured_image="/login-bg.jpg"
+      key="1"
+      meta={
+        <ul>
+          <li>
+            200
+             members
+          </li>
+          <li>
+            2
+             upcoming event
+          </li>
+          <li>
+            <span
+              className="meta-label"
+            >
+              Interests
+            </span>
+            : 
+            <span
+              className="hashtag"
+            >
+              Technology
+            </span>
+            <span
+              className="hashtag"
+            >
+              Software Engineering
+            </span>
+          </li>
+        </ul>
       }
-    }
-    description="Developer community bringing up community interest, powereed by google"
-    featured_image="/tech_is_in_you.png"
-    key="2"
-    meta={
-      <ul>
-        <li>
-          200
-           members
-        </li>
-        <li>
-          2
-           upcoming event
-        </li>
-        <li>
-          <span
-            className="meta-label"
-          >
-            Interests
-          </span>
-          : 
-          <span
-            className="hashtag"
-          >
-            Developers
-          </span>
-        </li>
-      </ul>
-    }
-    showButton={true}
-    title={
-      <Link
-        replace={false}
-        to="/communities/2"
-      >
-        Google Developer Group
-      </Link>
-    }
-  />
-  <MainContentCard
-    btn={
-      Object {
-        "onClick": undefined,
-        "text": "Follow",
+      showButton={false}
+      title={
+        <Link
+          replace={false}
+          to="/communities/1"
+        >
+          Facebook Developer Circle Lagos
+        </Link>
       }
-    }
-    description="A community of developers united in knowledge sharing"
-    featured_image="/login-bg.jpg"
-    key="3"
-    meta={
-      <ul>
-        <li>
-          200
-           members
-        </li>
-        <li>
-          2
-           upcoming event
-        </li>
-        <li>
-          <span
-            className="meta-label"
-          >
-            Interests
-          </span>
-          : 
-          <span
-            className="hashtag"
-          >
-            Technology
-          </span>
-        </li>
-      </ul>
-    }
-    showButton={false}
-    title={
-      <Link
-        replace={false}
-        to="/communities/3"
-      >
-        ForLoop Lagos
-      </Link>
-    }
-  />
+    />
+  </Link>
+  <Link
+    replace={false}
+    to="/communities/2"
+  >
+    <MainContentCard
+      btn={
+        Object {
+          "onClick": undefined,
+          "text": "Follow",
+        }
+      }
+      description="Developer community bringing up community interest, powereed by google"
+      featured_image="/tech_is_in_you.png"
+      key="2"
+      meta={
+        <ul>
+          <li>
+            200
+             members
+          </li>
+          <li>
+            2
+             upcoming event
+          </li>
+          <li>
+            <span
+              className="meta-label"
+            >
+              Interests
+            </span>
+            : 
+            <span
+              className="hashtag"
+            >
+              Developers
+            </span>
+          </li>
+        </ul>
+      }
+      showButton={true}
+      title={
+        <Link
+          replace={false}
+          to="/communities/2"
+        >
+          Google Developer Group
+        </Link>
+      }
+    />
+  </Link>
+  <Link
+    replace={false}
+    to="/communities/3"
+  >
+    <MainContentCard
+      btn={
+        Object {
+          "onClick": undefined,
+          "text": "Follow",
+        }
+      }
+      description="A community of developers united in knowledge sharing"
+      featured_image="/login-bg.jpg"
+      key="3"
+      meta={
+        <ul>
+          <li>
+            200
+             members
+          </li>
+          <li>
+            2
+             upcoming event
+          </li>
+          <li>
+            <span
+              className="meta-label"
+            >
+              Interests
+            </span>
+            : 
+            <span
+              className="hashtag"
+            >
+              Technology
+            </span>
+          </li>
+        </ul>
+      }
+      showButton={false}
+      title={
+        <Link
+          replace={false}
+          to="/communities/3"
+        >
+          ForLoop Lagos
+        </Link>
+      }
+    />
+  </Link>
 </ContentPanel>
 `;

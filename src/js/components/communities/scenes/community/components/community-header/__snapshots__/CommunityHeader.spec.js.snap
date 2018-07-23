@@ -36,14 +36,6 @@ exports[`CommunityHeader should render correctly 1`] = `
             Events
           </Link>
         </Component>
-        <Component>
-          <Link
-            replace={false}
-            to="/communities/undefined"
-          >
-            Team
-          </Link>
-        </Component>
       </Nav>
     </div>
   </div>

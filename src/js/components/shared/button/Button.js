@@ -14,6 +14,7 @@ const commonStyles = css`
   padding: 10px 30px;
   border-radius: 5px;
   text-transform: uppercase;
+  text-align: center;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 1px;

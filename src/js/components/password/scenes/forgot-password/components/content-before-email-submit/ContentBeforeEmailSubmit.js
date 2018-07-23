@@ -59,7 +59,7 @@ const ContentBeforeEmailSubmit = ({
         />
 
         <Form.Group inline>
-          <Form.Field className="email-holder">
+          <Form.Field className="wide email-holder">
             <Input name="email"
                    type="email"
                    value={email}

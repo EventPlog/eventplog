@@ -40,9 +40,9 @@ const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
           </Link>}
       </Nav.Item>
 
-      <Nav.Item>
-        <Link to="/user/profile">My Profile</Link>
-      </Nav.Item>
+      {/*<Nav.Item>*/}
+        {/*<Link to="/user/profile">My Profile</Link>*/}
+      {/*</Nav.Item>*/}
 
       <Nav.Item>
 

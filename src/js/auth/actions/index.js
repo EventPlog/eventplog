@@ -24,6 +24,7 @@ const setUserInCookie = (user) => {
   cookie.set('user_token', user.auth_token)
   return user
 }
+
 export const Auth = {
   isLoggedIn: Boolean(cookie.get('current_user')),
   currentUser: () => {
@@ -77,7 +78,16 @@ export const Auth = {
           throw(err)
         })
     }
-  }
+  },
+  getFromCookie(key) {
+    return  cookie.get(key)
+  },
+  setCookie(key, url) {
+    return  cookie.set(key, url)
+  },
+  deleteFromCookie(key) {
+    return  cookie.remove(key)
+  },
 }
 
 export default Auth
