@@ -15,6 +15,14 @@ const StyledCheckInForm = styled.div`
   .ui.form {
     max-width: 400px;
     margin: auto; 
+    
+    .check-user {
+       margin-bottom: 2rem;
+    }
+  }
+  
+  button + button {
+    margin-left: 1rem;
   }
 `
 
@@ -30,22 +38,32 @@ const FeedbackUrl = ({url}) =>
     <p>Claim your event swags by completing <a href={url} target="_blank">this feedback form</a> towards the end. Thank you and welcome again!</p>
   </Message>
 
+const emptyUser = {
+  first_name: '',
+  last_name: '',
+  email: '',
+  gender: 'Male'
+}
 const CheckInForm = ({
-  user = {},
+  user = emptyUser,
+  check_in_user,
   handleChange,
+  handleStateChange,
   handleSubmit,
   success,
   loading,
-  feedback_url,
 }) => {
+  const successMsg = check_in_user
+                      ? `You've successfully checked in ${user.first_name}`
+                      : `You've successfully registered ${user.first_name}`
   return (
     <StyledCheckInForm>
       <ContentPanel title="Register a guest">
-        <Form loading={loading} success={success}>
+        <Form loading={loading} success={!!user.email && success}>
           <Message
             success
-            header='Welcome!'
-            content="You've successfully checked into this event!"
+            header='Success!'
+            content={successMsg}
           />
 
           <Form.Field>
@@ -53,19 +71,20 @@ const CheckInForm = ({
             <Input name="first_name"
                    value={user.first_name}
                    placeholder='Ciroma'
-                   onChange={handleChange}/>
+                   onChange={({target}) => handleChange(target.name, target.value)}/>
           </Form.Field>
 
           <Form.Field>
             <label>Last Name</label>
             <Input name="last_name"
                    value={user.last_name}
-                   placeholder='Chukwuma' onChange={handleChange}/>
+                   placeholder='Chukwuma'
+                   onChange={({target}) => handleChange(target.name, target.value)}/>
           </Form.Field>
 
           <Form.Field>
             <label>Gender</label>
-            <Select onChange={(e) => handleChange(e, 'gender')}
+            <Select onChange={(e, attr) => handleChange('gender', attr.value)}
                     defaultValue={user.gender}
                     placeholder='Gender' options={genderOptions} />
           </Form.Field>
@@ -74,16 +93,23 @@ const CheckInForm = ({
             <label>Email</label>
             <Input name="email"
                    value={user.email}
-                   placeholder='ciroma@chukwuma.com' onChange={handleChange}/>
+                   placeholder='ciroma@chukwuma.com'
+                   onChange={({target}) => handleChange(target.name, target.value)}/>
           </Form.Field>
 
 
-          <Form.Field>
-            <Checkbox checked label='Check in this guest' />
+          <Form.Field className="check-user">
+            <Checkbox name="check_in_user"
+                      checked={check_in_user}
+                      label='Check in this guest'
+                      onChange={(el, attr) => handleStateChange(attr.name, attr.checked)}/>
           </Form.Field>
 
           <Button inverted type='submit' onClick={handleSubmit}>
             Submit
+          </Button>
+          <Button onClick={() => handleStateChange('user', emptyUser)}>
+            Clear
           </Button>
         </Form>
       </ContentPanel>

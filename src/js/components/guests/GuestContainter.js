@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth/actions'
+import { getValueOnChange } from 'js/utils/formHelpers'
 import {
   updateGuest,
   deleteGuest,
@@ -10,28 +11,38 @@ import {
 
 class GuestContainter extends Component {
   state = {
+    id: null,
     user: {},
+    check_in_user: false,
     success: false,
     loading: false,
     feedback_url: ''
   }
 
-  handleChange = (e, label ) => {
-    const {value, name, innerText} = e.target
+  handleChange = (key, value) => {
     this.setState({user: {
-      ...this.state.user,
-      [name || label]: Boolean(value) ? value : innerText
+      ...this.state.user, [key]: value
     }})
   }
 
+  handleStateChange = (key, value) => (
+    this.setState({[key]: value})
+  )
+
   handleSubmit = async (e) => {
     this.setState({loading: true})
-    let res = await this.props.checkInByForm(this.props.event.id, this.state.user)
+    const { id, user, check_in_user} = this.state
+    const payload = {
+      id, check_in_user,
+      event_id: this.props.event.id,
+      check_in: {id, ...user}
+    }
+    let res = await this.props.checkInByForm(payload)
     if (res) {
       this.setState({
         success: true,
         loading: false,
-        feedback_url: res.feedback_url
+        user: id ? user : user,
       })
     }
   }
@@ -51,6 +62,7 @@ class GuestContainter extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    handleStateChange: this.handleStateChange,
     handleDelete: this.handleDelete,
   })
 
