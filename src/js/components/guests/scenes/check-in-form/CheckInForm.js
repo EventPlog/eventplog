@@ -51,6 +51,7 @@ const CheckInForm = ({
   handleStateChange,
   handleSubmit,
   success,
+  error,
   loading,
 }) => {
   const successMsg = check_in_user
@@ -59,11 +60,17 @@ const CheckInForm = ({
   return (
     <StyledCheckInForm>
       <ContentPanel title="Register a guest">
-        <Form loading={loading} success={!!user.email && success}>
+        <Form loading={loading} success={!!user.email && success} error={error}>
           <Message
             success
             header='Success!'
             content={successMsg}
+          />
+
+          <Message
+            error
+            header='Error!'
+            content={error}
           />
 
           <Form.Field>

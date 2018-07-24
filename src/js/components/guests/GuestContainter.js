@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth/actions'
+import Validator from 'js/utils/validator'
 import {
   updateGuest,
   deleteGuest,
@@ -28,20 +29,29 @@ class GuestContainter extends Component {
     this.setState({[key]: value})
   )
 
-  handleSubmit = async (e) => {
-    this.setState({loading: true})
+  getPayload = () => {
     const { id, user, check_in_user} = this.state
-    const payload = {
+    return {
       id, check_in_user,
       event_id: this.props.event.id,
       check_in: {id, ...user}
     }
-    let res = await this.props.checkInByForm(payload)
+  }
+
+
+  handleSubmit = async (e) => {
+    const validator = new Validator();
+    if (!validator.validateEmail(this.state.user.email)) {
+      return this.setState({error: 'There seem to be an error on this form. Please cross-check.'})
+    }
+    this.setState({loading: true})
+    let res = await this.props.checkInByForm(this.getPayload())
     if (res) {
       this.setState({
         success: true,
+        error: false,
         loading: false,
-        user: id ? user : user,
+        user: this.state.user
       })
     }
   }
