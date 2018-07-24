@@ -2,7 +2,6 @@ import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth/actions'
-import { getValueOnChange } from 'js/utils/formHelpers'
 import {
   updateGuest,
   deleteGuest,
