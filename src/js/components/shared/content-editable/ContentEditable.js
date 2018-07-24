@@ -54,6 +54,7 @@ class ContentEditable extends React.Component {
         return e.target.innerText
     }
   }
+
   onChange = (el, attr) => {
     const value = this.getValue(el, attr)
     this.setState(() => {

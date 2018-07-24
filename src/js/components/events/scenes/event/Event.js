@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { darken } from 'polished'
+import ReactMarkdown from 'react-markdown'
 
 // internal components
 import ContentSection from 'js/components/shared/content-section'
 import ContentPanel from 'js/components/shared/content-panel'
 import Comments from 'js/components/shared/comments'
-import ReactMarkdown from 'react-markdown'
 import EventSidebar from './components/event-sidebar'
 import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
@@ -42,6 +43,10 @@ const StyledEvent = styled.div`
   }
   
   .content-body {
+    .comment > div:not(.comment-card) {
+      background: ${props => darken(0.085, props.theme.bg)};
+    }
+    
     > .add-comment {
       margin-top: 2rem;
     }

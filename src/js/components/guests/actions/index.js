@@ -30,7 +30,7 @@ export const getGuests = (data) => {
   })
 }
 
-export const checkInByForm = (eventId, user) => {
+export const checkInByForm = (payload = {}) => {
   let actions = baseActions({
     requestType: actionTypes.CHECK_IN_START,
     receiveType: actionTypes.CHECK_IN_COMPLETE,
@@ -39,10 +39,10 @@ export const checkInByForm = (eventId, user) => {
 
   return handleApiCall({
     actions,
-    data: user,
+    data: payload,
     errorMessage: 'Something prevented creating an event',
     caller: 'check in guest',
-    route: `/api/v1/web/events/${eventId}/check_ins`,
+    route: `/api/v1/web/events/${payload.event_id}/check_ins`,
     requestMethod: 'POST'
   })
 }

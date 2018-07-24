@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth/actions'
+import Validator from 'js/utils/validator'
 import {
   updateGuest,
   deleteGuest,
@@ -10,28 +11,47 @@ import {
 
 class GuestContainter extends Component {
   state = {
+    id: null,
     user: {},
+    check_in_user: false,
     success: false,
     loading: false,
     feedback_url: ''
   }
 
-  handleChange = (e, label ) => {
-    const {value, name, innerText} = e.target
+  handleChange = (key, value) => {
     this.setState({user: {
-      ...this.state.user,
-      [name || label]: Boolean(value) ? value : innerText
+      ...this.state.user, [key]: value
     }})
   }
 
+  handleStateChange = (key, value) => (
+    this.setState({[key]: value})
+  )
+
+  getPayload = () => {
+    const { id, user, check_in_user} = this.state
+    return {
+      id, check_in_user,
+      event_id: this.props.event.id,
+      check_in: {id, ...user}
+    }
+  }
+
+
   handleSubmit = async (e) => {
+    const validator = new Validator();
+    if (!validator.validateEmail(this.state.user.email)) {
+      return this.setState({error: 'There seem to be an error on this form. Please cross-check.'})
+    }
     this.setState({loading: true})
-    let res = await this.props.checkInByForm(this.props.event.id, this.state.user)
+    let res = await this.props.checkInByForm(this.getPayload())
     if (res) {
       this.setState({
         success: true,
+        error: false,
         loading: false,
-        feedback_url: res.feedback_url
+        user: this.state.user
       })
     }
   }
@@ -51,6 +71,7 @@ class GuestContainter extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    handleStateChange: this.handleStateChange,
     handleDelete: this.handleDelete,
   })
 
