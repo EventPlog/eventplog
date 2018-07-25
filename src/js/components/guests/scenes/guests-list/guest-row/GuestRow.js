@@ -6,7 +6,7 @@ import Button from 'js/components/shared/button'
 
 const styles = css`
   td {
-    /*text-transform: capitalize;*/
+    text-transform: capitalize;
   }
   
   button {
@@ -17,6 +17,7 @@ const styles = css`
   .small-text {
     font-size: 90%;
     color: ${props => props.theme.grayLight};
+    text-transform: none;
   }
 `
 
