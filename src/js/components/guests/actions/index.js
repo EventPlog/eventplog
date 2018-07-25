@@ -32,9 +32,9 @@ export const getGuests = (data) => {
 
 export const checkInByForm = (payload = {}) => {
   let actions = baseActions({
-    requestType: actionTypes.CHECK_IN_START,
-    receiveType: actionTypes.CHECK_IN_COMPLETE,
-    failType: actionTypes.CHECK_IN_FAIL,
+    requestType: actionTypes.GUEST_UPDATE_START,
+    receiveType: actionTypes.GUEST_UPDATE_COMPLETE,
+    failType: actionTypes.GUEST_UPDATE_FAIL,
   })
 
   return handleApiCall({
