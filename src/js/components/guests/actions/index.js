@@ -30,6 +30,22 @@ export const getGuests = (data) => {
   })
 }
 
+export const searchGuests = (data) => {
+  let actions = baseActions({
+    requestType: actionTypes.GUEST_INDEX_START,
+    receiveType: actionTypes.GUEST_INDEX_COMPLETE,
+    failType: actionTypes.GUEST_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: data,
+    errorMessage: 'Something prevented getting the guest list for this event.',
+    caller: 'new event',
+    route: `/api/v1/web/events/${data.event_id}/user_events/search`,
+    requestMethod: 'GET'
+  })
+}
 export const checkInByForm = (payload = {}) => {
   let actions = baseActions({
     requestType: actionTypes.GUEST_UPDATE_START,

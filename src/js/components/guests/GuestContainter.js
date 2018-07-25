@@ -61,7 +61,7 @@ class GuestContainter extends Component {
   handleSubmit = async (e) => {
     const validator = new Validator();
     if (!validator.validateEmail(this.state.user.email)) {
-      return this.setState({error: 'There seem to be an error on this form. Please cross-check.'})
+      return this.setState({error: "Hmmm.. something doesn't seem quite right with the email.."})
     }
     this.setState({loading: true})
     let res = await this.props.checkInByForm(this.getPayload())

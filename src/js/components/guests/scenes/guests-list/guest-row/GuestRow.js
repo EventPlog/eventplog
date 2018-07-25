@@ -16,7 +16,7 @@ const styles = css`
   
   .small-text {
     font-size: 90%;
-    color: ${props => props.theme.bg};
+    color: ${props => props.theme.grayLight};
   }
 `
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth'
 
-import { getGuests } from './actions'
+import { getGuests, searchGuests } from './actions'
 
 class GuestsContainter extends Component {
 
@@ -27,6 +27,17 @@ class GuestsContainter extends Component {
     this.props.getGuests(params)
   }
 
+  handleSearch = (e) => {
+    if (!(e.keyCode == 13 || e.charCode == 13)) return
+    const payload = {
+      event_id: this.props.event.id,
+      search_query: e.target.value,
+      per_page: 25,
+      page: 1,
+    }
+    this.props.searchGuests(payload)
+  }
+
   handleConfirm = (id, status) => {
     const invite = {id, status}
 
@@ -38,6 +49,7 @@ class GuestsContainter extends Component {
     ...this.props,
     handleConfirm: this.handleConfirm,
     getGuests: this.getGuests,
+    handleSearch: this.handleSearch,
   })
 
   render () {
@@ -59,6 +71,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getGuests,
+    searchGuests,
   }, dispatch)
 }
 
