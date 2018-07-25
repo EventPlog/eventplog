@@ -12,6 +12,7 @@ const StyledSidebar = styled.div`
   color: ${props => lighten(0.25, props.theme.activeLink)};
   border-radius: 10px;
   background: ${props => props.theme.activeLinkBg};
+  min-height: 50vh;
   
   p {
     color: ${lighten(0.4, colors.blue)};
