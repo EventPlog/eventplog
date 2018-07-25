@@ -18,14 +18,15 @@ const StyledTable = styled.div`
 const GuestsList = ({
   guests = {},
   getGuests,
+  handleSearch,
 }) => {
   const { data = [], meta = {}, loading, error }  = guests
   if (loading) return <Loading />
-  if (error) return <Loading.Error msg={msg} />
+  if (error) return <Loading.Error msg={error} />
   const startingIndex = meta.per_page * (meta.current_page - 1)
   return (
     <StyledTable>
-      <PageHeader title="Guests" />
+      <PageHeader title="Guests" handleSearch={handleSearch} />
       <p>Total no. of guests: {meta && meta.total_count}</p>
       <Table celled unstackable>
         <Table.Header>

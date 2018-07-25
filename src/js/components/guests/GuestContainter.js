@@ -6,8 +6,15 @@ import Validator from 'js/utils/validator'
 import {
   updateGuest,
   deleteGuest,
-  checkInByForm
+  checkInByForm,
 } from './actions'
+
+const emptyUser = {
+  first_name: '',
+  last_name: '',
+  email: '',
+  gender: 'Male'
+}
 
 class GuestContainter extends Component {
   state = {
@@ -38,20 +45,38 @@ class GuestContainter extends Component {
     }
   }
 
+  handleCheckIn = () => {
+    this.setState({loading: true})
+    const { event_id, user } = this.props.guest
+    const payload = {
+      check_in_user: true,
+      event_id,
+      check_in: user
+    }
+    this.props.checkInByForm(payload).then(res => {
+      this.setState({loading: false, user: res})
+    })
+  }
 
   handleSubmit = async (e) => {
     const validator = new Validator();
     if (!validator.validateEmail(this.state.user.email)) {
-      return this.setState({error: 'There seem to be an error on this form. Please cross-check.'})
+      return this.setState({error: "Hmmm.. something doesn't seem quite right with the email.."})
     }
     this.setState({loading: true})
     let res = await this.props.checkInByForm(this.getPayload())
     if (res) {
+      const { user, check_in_user } = this.state
+      const successMsg = this.state.check_in_user
+        ? `You've successfully checked in ${user.first_name}. Check in someone else.`
+        : `You've successfully registered ${user.first_name}. Register someone else.`
+
       this.setState({
-        success: true,
+        success: successMsg,
         error: false,
         loading: false,
-        user: this.state.user
+        user: emptyUser,
+        guest: res
       })
     }
   }
@@ -73,6 +98,7 @@ class GuestContainter extends Component {
     handleSubmit: this.handleSubmit,
     handleStateChange: this.handleStateChange,
     handleDelete: this.handleDelete,
+    handleCheckIn: this.handleCheckIn,
   })
 
   render () {

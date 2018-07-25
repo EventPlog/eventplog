@@ -54,17 +54,14 @@ const CheckInForm = ({
   error,
   loading,
 }) => {
-  const successMsg = check_in_user
-                      ? `You've successfully checked in ${user.first_name}`
-                      : `You've successfully registered ${user.first_name}`
   return (
     <StyledCheckInForm>
       <ContentPanel title="Register a guest">
-        <Form loading={loading} success={!!user.email && success} error={error}>
+        <Form loading={loading} success={success} error={error}>
           <Message
             success
             header='Success!'
-            content={successMsg}
+            content={success}
           />
 
           <Message
@@ -92,7 +89,8 @@ const CheckInForm = ({
           <Form.Field>
             <label>Gender</label>
             <Select onChange={(e, attr) => handleChange('gender', attr.value)}
-                    defaultValue={user.gender}
+                    value={user.gender}
+                    defaultValue={'male'}
                     placeholder='Gender' options={genderOptions} />
           </Form.Field>
 
