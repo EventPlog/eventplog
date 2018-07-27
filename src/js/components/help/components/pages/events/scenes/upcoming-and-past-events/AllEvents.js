@@ -8,9 +8,11 @@ const AllEvents = () => {
     <div> 
       <Topic>My Events</Topic>
       <Description>
-        To find all events you indicated interest in, whether past or upcoming, hit the MyEvents button
-        on ... <br/><br/>
-      </Description> 
+        <p>
+          To find all events you indicated interest in, whether past or upcoming, hit the MyEvents button
+          on ...
+        </p>
+      </Description>
     </div>
   )
 }

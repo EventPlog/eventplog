@@ -9,10 +9,14 @@ const EventPlanning = () => {
     <div > 
       <Topic>Event Settings</Topic>
       <Description>
-        To edit you event, <Link to=""> go backstage</Link> then click on the settings.
-        Edit each section as you would want it to appear on the event page.
-        <br/><br/> Right after using the backstage button, you can find the settings section
-        on the page and click on it. Here you 
+        <p>
+          To edit you event, <Link to=""> go backstage</Link> then click on the settings.
+          Edit each section as you would want it to appear on the event page.
+        </p>
+        <p>
+          Once you click the backstage button, you can find the settings section
+          on the page and click on it.
+        </p>
       </Description> 
     </div>
   )

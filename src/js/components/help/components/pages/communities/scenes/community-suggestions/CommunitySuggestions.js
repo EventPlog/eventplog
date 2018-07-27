@@ -10,11 +10,16 @@ const Communitysuggestions = () => {
     <div>
       <Topic>Community Suggestions</Topic>  
       <Description>
+        <p>
         Communities you might be interested in are always shown to you based on your previous 
-        event interests or communities you already follow.<br/> Community suggestions 
-        can be found as a section on the <Link to ="">communities page </Link>. Click on communities
-        on the navigation bar and then scroll right to the buttom of the page to find suggestions.
-        <br/><br/><img src={communitysuggestionimage} alt="community suggestions"/>
+        event interests or communities you already follow.
+        </p>
+        <p>
+          Community suggestions can be found as a section on the&nbsp;
+          <Link to ="">communities page </Link>. Click on communities&nbsp;
+          on the navigation bar and then scroll right to the buttom of the page to find suggestions.
+        </p>
+        <img src={communitysuggestionimage} alt="community suggestions"/>
       </Description>
     </div>
   )

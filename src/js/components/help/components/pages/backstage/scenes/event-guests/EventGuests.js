@@ -13,23 +13,43 @@ const EventGuests = () => {
     <div> 
       <Topic>Guest Information</Topic>
       <Description>
-        Right after using the backstage button, you can find Guest related information on 
-        the guest section.
-        If your guests have indicated interest in the event through eventplog, you can find your guest
-        information on the guest section of backstage. You can directly check them in from here.
+        <p>
+          Right after using the backstage button, you can find Guest related information on
+          the guest section.
+        </p>
+        <p>
+          If your guests have indicated interest in the event through eventplog, you can find your guest
+          information on the guest section of backstage. You can directly check them in from here.
+        </p>
+
         <HelpImage src={allguest} alt="all guest information"/>
+
         <Topic>Import Guest information</Topic>
-        You can also import your guest CSV if you have collected guest information on a different URL.
-        When you import the list, the guest information moves to the all guests section where you can
-        check them in.
+
+        <p>
+          You can also import your guest CSV if you have collected guest information on a different URL.
+          When you import the list, the guest information moves to the all guests section where you can
+          check them in.
+        </p>
+
         <HelpImage src={importcsv} alt="import csv"/><br/>
+
         <Topic>Unregistered guest</Topic>
-        If there are new guest that have arrived at the event venue but did not register, you can register and
-        check them in by clicking on resister new guest. 
+
+        <p>
+          If there are new guest that have arrived at the event venue but did not register, you can register and
+          check them in by clicking on resister new guest.
+        </p>
+
         <HelpImage src={newguest} alt="New guest"/><br/>
+
         <Topic>Messenger code for checkin</Topic>
-        Find your unique messenger code on the messenger code section. Your guests the
-        code to check into the event using messenger code scanner.
+
+        <p>
+          Find your unique messenger code on the messenger code section. Your guests the
+          code to check into the event using messenger code scanner.
+        </p>
+
         <HelpImage src={botcode} alt=" Messenger Bot Code"/>
       </Description> 
     </div>

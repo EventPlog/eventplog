@@ -7,17 +7,26 @@ import {Link } from 'react-router-dom'
 const ConnectWithOrganizers = () => {
   return(
     <div>
-      <Topic> Find and Connect With the Organizers</Topic>     
+      <Topic> Connect With the Organizers and other guests</Topic>
       <Description>
-        Connecting with event organizers can be a fun activity. Whether it is for enquiries or for fun,
-        we have made it easier for you to connect with organizers.<br/> To connect with organizers, you have 
-        to find them first! You find organizers when you are interested in their events.<br/>
-        Click on an event and scroll right to the bottom to find 'ask the organizers'
-        <br/> <img src={image} alt="connect with organizers"/>
-        The comments section helps you connect with organizers. Leave them a comment to start
-        a conversation. <br/>
-        NB: We have made communications with them open so that other guests or organizers can benefit
-        from the conversations. 
+        <p>
+        Connecting with event organizers and other guests can be fun. Whether it is for enquiries or to feel more welcome,
+        we have made it easier for you to connect with organizers.
+        </p>
+        <p>
+          To connect with organizers, you only need&nbsp;
+          to start a comment. Organizers get alerted when you post a comment in an event.
+        </p>
+        <p>
+          Click on an event and scroll right to the bottom to find 'Ask the organizers'
+        </p>
+        <img src={image} alt="connect with organizers"/>
+        <p>
+        Then leave a comment to start a conversation.
+        </p>
+        <p>
+          Don't feel held back to be the first person to start talking! Take the lead!
+        </p>
       </Description>
     </div>
   )
