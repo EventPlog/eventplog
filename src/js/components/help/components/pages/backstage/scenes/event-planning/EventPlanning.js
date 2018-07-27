@@ -23,9 +23,11 @@ const EventPlanning = () => {
 
             <HelpPage src={gobackstage} alt="Go backstage"/>
 
+            <Topic> Add Organizers</Topic>
             <p>
-              <Topic> Add Organizers</Topic>
-              You can add organizers to an event to ease the burden of working alone. &nbsp;
+              You can add organizers to an event to ease the burden of working alone.
+            </p>
+            <p>
               To add organizers, Click on settings, then organizers.&nbsp;
               Add an organizer by sending them an invitation by mail.
             </p>
@@ -35,9 +37,13 @@ const EventPlanning = () => {
             <Topic> Assign tasks</Topic>
 
             <p>
-              Assign tasks to organizers by going to all tasks on the backstage. If you created the event, you
-              can assign tasks to other organizers on this page. You can also view tasks assigned to you by clicking
-              on my tasks. Keep track of deadlines and milestone from your task board.
+              Assign tasks to organizers by going to all tasks on the backstage.
+            </p>
+            <p>
+              If you created the event, you can assign tasks to other organizers on this page.
+            </p>
+            <p>
+              You can also view tasks assigned to you by clicking on my tasks. This way you will easily keep track of deadlines and milestone from your task board.
             </p>
             <HelpPage src={assigntasks} alt="Assign tasks"/><br/>
           </Description> 
