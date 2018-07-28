@@ -13,7 +13,7 @@ const DiscoverEvents = () => {
           events you would love to be a part of.
         </p>
         <p>
-          Announcements can be found on all <Link to="">Event</Link>
+          Announcements can be found on all <Link to="">Event</Link>&nbsp;
           and <Link to="">Community</Link> pages.
         </p>
       </Description> 

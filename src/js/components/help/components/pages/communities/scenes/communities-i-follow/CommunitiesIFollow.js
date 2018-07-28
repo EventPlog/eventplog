@@ -12,9 +12,12 @@ const CommunitiesIFollow = () => {
       <Topic>Communities I Follow</Topic>
       <Description>
         <p>
-        Click on communities at the
-        top navigation bar after you have followed or joined a 
-        community, if you are looking for communities you follow.
+          Here, you want to find communities you follow to engage more with them.
+        </p>
+        <p>
+          Click on communities at the
+          top navigation bar after you have followed or joined a
+          community, if you are looking for communities you follow.
         </p>
 
         <HelpImage src ={mycommunitiesimage} alt="my communities"/>

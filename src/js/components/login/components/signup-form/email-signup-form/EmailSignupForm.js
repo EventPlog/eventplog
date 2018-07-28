@@ -104,7 +104,7 @@ const SignupForm = ({
                    onClick={handleAgreeToTerms}
             />
             <label>I agree to the &nbsp;
-              <Link to="/terms-and-conditions">Terms and Conditions</Link>
+              <Link to="/legal/terms-and-conditions">Terms and Conditions</Link>
             </label>
           </Form.Field>
         </div>

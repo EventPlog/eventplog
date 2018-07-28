@@ -14,7 +14,7 @@ const EventGuests = () => {
       <Topic>Guest Information</Topic>
       <Description>
         <p>
-          Right after using the backstage button, you can find Guest related information on
+          When you click on the backstage button, you can find Guest related information on
           the guest section.
         </p>
         <p>

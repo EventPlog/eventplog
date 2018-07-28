@@ -14,9 +14,12 @@ import NewInvitationBar from 'js/components/invitations/components/new-invitatio
 import HelpPage from '../components/help';
 import Legal from '../components/legal';
 import ScrollToTop from '../components/shared/scroll-to-top'
+import Aboutus from 'js/components/about-us'
+import WhyEventplog from 'js/components/why-eventplog'
 import appThemeColors from 'js/styles/theme/variables'
 import BreadCrumb from 'js/components/shared/breadcrumb'
 import { darken } from 'polished'
+
 
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
@@ -64,7 +67,9 @@ class App extends Component {
               <Route path="/leads/:id" component={Lead} />
               <Route path="/user" component={User} />
               <Route path="/password" component={Password} />
-              <Route path="/help" component={HelpPage} />              
+              <Route path="/help" component={HelpPage} />  
+              <Route path="/about-us" component={Aboutus} />  
+              <Route path="/why-eventplog" component={WhyEventplog} />            
               <PrivateRoute path="/events" component={Events} />
               <PrivateRoute path="/communities" component={Communities} />
             </Switch>

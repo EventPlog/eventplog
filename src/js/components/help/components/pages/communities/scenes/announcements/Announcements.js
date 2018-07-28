@@ -11,6 +11,10 @@ const Announcements = () => {
       <Topic>Announcements</Topic>
       <Description>
         <p>
+          When you look out for announcements, you want to know the latest update about a community
+          or an event so that you don't miss out on important information.
+        </p>
+        <p>
           Anouncements are used by event organizers to notify you of any important information
           regarding an event or a community.
         </p>
@@ -25,7 +29,7 @@ const Announcements = () => {
         <p>
           Click on an event or a community, scroll to announcements which can be found below the description of an event or community
         </p>
-      </Description> 
+      </Description>
     </div>
   )
 }

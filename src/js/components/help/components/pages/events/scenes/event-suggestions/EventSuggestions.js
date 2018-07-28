@@ -12,13 +12,13 @@ const EventSuggestions = () => {
       <Description>
         <p>
         Based on your interest in certain events or communitites, we suggest events you might be 
-        interested in.<br/><br/>
+        interested in.
         </p>
         <p>
           Find event suggestions  the right side of all <Link to=""> communities </Link>pages.
         </p>
         <HelpPageImage src={eventimage} alt="Event suggestions"/>
-      </Description> 
+      </Description>
     </div>
   )
 }

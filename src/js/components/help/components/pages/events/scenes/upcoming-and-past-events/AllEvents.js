@@ -9,8 +9,7 @@ const AllEvents = () => {
       <Topic>My Events</Topic>
       <Description>
         <p>
-          To find all events you indicated interest in, whether past or upcoming, hit the MyEvents button
-          on ...
+          To find all events you indicated interest in, within the past week or upcoming, click on the `My Events` link on the navbar.
         </p>
       </Description>
     </div>
