@@ -41,7 +41,13 @@ class GuestsContainter extends Component {
   handleConfirm = (id, status) => {
     const invite = {id, status}
 
-    this.props.updatePendingGuest(invite)
+    this.props.updatePendingGuest(invite).then(res => {
+      this.setState({success: 'You have successfully confirmed.'})
+    })
+  }
+
+  showChildrenSuccess = (success) => {
+    this.setState({success})
   }
 
   getProps = () => ({
@@ -50,6 +56,7 @@ class GuestsContainter extends Component {
     handleConfirm: this.handleConfirm,
     getGuests: this.getGuests,
     handleSearch: this.handleSearch,
+    showChildrenSuccess: this.showChildrenSuccess,
   })
 
   render () {

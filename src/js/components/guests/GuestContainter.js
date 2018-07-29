@@ -54,7 +54,14 @@ class GuestContainter extends Component {
       check_in: user
     }
     this.props.checkInByForm(payload).then(res => {
-      this.setState({loading: false, user: res})
+      const successMsg = `${res.user ? res.user.display_name : 'User'} has been checked in successfully.`
+
+      this.setState({
+        loading: false,
+        sucess: successMsg,
+        user: res
+      })
+      this.props.showChildrenSuccess(successMsg)
     })
   }
 
