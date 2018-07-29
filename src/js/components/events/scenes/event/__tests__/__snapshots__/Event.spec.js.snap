@@ -54,7 +54,7 @@ exports[`Event should render correctly 1`] = `
     <FullRow>
       <ContentBody>
         <ContentPanel
-          title="Ask the organizers"
+          title="Ask the organizers/Start a discussion"
         >
           <Comments />
           <Component

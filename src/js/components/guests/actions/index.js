@@ -80,6 +80,24 @@ export const updateGuest = (params) => {
   })
 }
 
+export const uploadGuestCSV = (eventId, formData) => {
+  let actions = baseActions({
+    requestType: actionTypes.GUEST_BATCH_UPDATE_START,
+    receiveType: actionTypes.GUEST_BATCH_UPDATE_COMPLETE,
+    failType: actionTypes.GUEST_BATCH_UPDATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: formData,
+    errorMessage: 'Something prevented us from updating this guest.',
+    caller: 'update guest',
+    route: `/api/v1/web/events/${eventId}/user_events/upload_guest_csv`,
+    requestMethod: 'POST',
+    uploadOp: true,
+  })
+}
+
 export const deleteGuest = (id) => {
   let actions = baseActions({
     requestType: actionTypes.GUEST_DELETE_START,
