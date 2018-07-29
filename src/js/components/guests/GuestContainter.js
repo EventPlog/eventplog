@@ -91,7 +91,10 @@ class GuestContainter extends Component {
   handleDelete = () => {
     var confirmed = confirm('Are you sure you want to delete this guest?')
     if (!confirmed) { return }
-    return this.props.deleteGuest(this.props.guest.id)
+    const { guest } = this.props
+    this.props.deleteGuest(guest.id).then(res => {
+      this.props.showChildrenSuccess(`${guest.user ? guest.user.display_name : 'User'} has been deleted successfully.`)
+    })
   }
 
   componentWillMount(props) {
