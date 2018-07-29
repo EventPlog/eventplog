@@ -6,11 +6,6 @@ import Button from 'js/components/shared/button'
 import ContentPanel from 'js/components/shared/content-panel'
 
 const StyledCheckInForm = styled.div`
-  padding: 20px 0;
-  
-  .content-header {
-    font-size: 120%;
-  }
   
   .ui.form {
     max-width: 400px;
@@ -31,12 +26,6 @@ const genderOptions = [
   { key: 'm', text: 'Male', value: 'male' },
   { key: 'f', text: 'Female', value: 'female' },
 ]
-
-const FeedbackUrl = ({url}) =>
-  <Message info>
-    <Message.Header>Help us get better with your feedback!</Message.Header>
-    <p>Claim your event swags by completing <a href={url} target="_blank">this feedback form</a> towards the end. Thank you and welcome again!</p>
-  </Message>
 
 const emptyUser = {
   first_name: '',

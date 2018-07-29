@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Guests should render correctly 1`] = `
+<styled.div>
+  <PageHeader
+    title="Guests"
+  />
+  <p>
+    Total no. of guests: 
+  </p>
+  <Table
+    as="table"
+    celled={true}
+    unstackable={true}
+  >
+    <TableHeader
+      as="thead"
+    >
+      <TableRow
+        as="tr"
+        cellAs="td"
+      >
+        <TableHeaderCell
+          as="th"
+        >
+          S/N
+        </TableHeaderCell>
+        <TableHeaderCell
+          as="th"
+        >
+          Full Name
+        </TableHeaderCell>
+        <TableHeaderCell
+          as="th"
+        >
+          Checked In
+        </TableHeaderCell>
+        <TableHeaderCell
+          as="th"
+        >
+          Feedback
+        </TableHeaderCell>
+        <TableHeaderCell
+          as="th"
+        >
+           
+        </TableHeaderCell>
+      </TableRow>
+    </TableHeader>
+    <TableBody
+      as="tbody"
+    />
+    <TableFooter
+      as="tfoot"
+    >
+      <TableRow
+        as="tr"
+        cellAs="td"
+      >
+        <TableHeaderCell
+          as="th"
+          colSpan="5"
+        >
+          <Menu
+            floated="right"
+            pagination={true}
+          />
+        </TableHeaderCell>
+      </TableRow>
+    </TableFooter>
+  </Table>
+</styled.div>
+`;

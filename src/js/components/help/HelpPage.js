@@ -19,6 +19,12 @@ const StyledHelpPage = styled.div`
   img {
     max-width: 100%;
   }
+  
+  blockquote {
+    background: #fff;
+    padding: 2rem;
+    font-style: italic;
+  }
 `
 const GettingStarted= createLoader(() => import('./components/pages/getting-started' /* webpackChunckName : "GettingStartedHelp" */))
 const CommunitiesHelp= createLoader(() => import('./components/pages/communities' /*webpackChunkName : "CommunitiesHelp" */))
