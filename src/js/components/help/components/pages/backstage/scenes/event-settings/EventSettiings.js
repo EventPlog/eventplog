@@ -9,13 +9,19 @@ const EventPlanning = () => {
     <div > 
       <Topic>Event Settings</Topic>
       <Description>
-        When I edit my event, I want to make corrections or updates so the right information 
-        can be displayed on my event page.
-        To edit you event, <Link to=""> go backstage</Link> then click on the settings.
-        Edit each section as you would want it to appear on the event page.
-        <br/><br/> Right after using the backstage button, you can find the settings section
-        on the page and click on it. Here you 
-      </Description> 
+        <p>
+           This section allows you make corrections or updates so the right information
+          can be displayed on your event page.
+        </p>
+        <p>
+          To edit you event, <Link to=""> go backstage</Link> then click on the settings.
+          Edit each section as you would want it to appear on the event page.
+        </p>
+        <p>
+          Once you click the backstage button, you can find the settings section
+          on the page and click on it.
+        </p>
+      </Description>
     </div>
   )
 }

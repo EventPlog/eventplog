@@ -124,7 +124,7 @@ const Event = ({
 
         <ContentSection.FullRow>
           <ContentSection.Body>
-            <ContentPanel title="Ask the organizers">
+            <ContentPanel title="Ask the organizers/Start a discussion">
               <Comments {...{comments, createComment, updateComment }} />
 
               <AddComment placeholder="What would you like to ask/suggest?"

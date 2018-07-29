@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Icon, Menu } from 'semantic-ui-react'
+import { Table, Icon, Menu, Message } from 'semantic-ui-react'
 import styled from 'styled-components';
 import PageHeader from 'js/components/shared/PageHeader';
 import Loading from 'js/components/shared/loading'
@@ -18,7 +18,9 @@ const StyledTable = styled.div`
 const GuestsList = ({
   guests = {},
   getGuests,
+  success,
   handleSearch,
+  showChildrenSuccess,
 }) => {
   const { data = [], meta = {}, loading, error }  = guests
   if (loading) return <Loading />
@@ -26,6 +28,10 @@ const GuestsList = ({
   const startingIndex = meta.per_page * (meta.current_page - 1)
   return (
     <StyledTable>
+      {success && <Message success
+                           header='Success!'
+                           content={success} />}
+
       <PageHeader title="Guests" handleSearch={handleSearch} />
       <p>Total no. of guests: {meta && meta.total_count}</p>
       <Table celled unstackable>
@@ -41,7 +47,11 @@ const GuestsList = ({
 
         <Table.Body>
           {data && data.map((guest, index) =>
-            <GuestRow key={guest.id} {...{guest, index: (index + startingIndex)}} />
+            <GuestRow key={guest.id}
+                      guest={guest}
+                      index={index + startingIndex}
+                      showChildrenSuccess={showChildrenSuccess}
+            />
           )}
         </Table.Body>
         <Table.Footer>

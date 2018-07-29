@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckInForm should render correctly 1`] = `
+<styled.div>
+  <ContentPanel
+    title="Register a guest"
+  >
+    <Form
+      as="form"
+    >
+      <Message
+        header="Success!"
+        success={true}
+      />
+      <Message
+        error={true}
+        header="Error!"
+      />
+      <FormField>
+        <label>
+          First Name
+        </label>
+        <Styled(Input)
+          name="first_name"
+          onChange={[Function]}
+          placeholder="Ciroma"
+          value=""
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Last Name
+        </label>
+        <Styled(Input)
+          name="last_name"
+          onChange={[Function]}
+          placeholder="Chukwuma"
+          value=""
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Gender
+        </label>
+        <Select
+          defaultValue="male"
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "key": "m",
+                "text": "Male",
+                "value": "male",
+              },
+              Object {
+                "key": "f",
+                "text": "Female",
+                "value": "female",
+              },
+            ]
+          }
+          placeholder="Gender"
+          value="Male"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Email
+        </label>
+        <Styled(Input)
+          name="email"
+          onChange={[Function]}
+          placeholder="ciroma@chukwuma.com"
+          value=""
+        />
+      </FormField>
+      <FormField
+        className="check-user"
+      >
+        <Checkbox
+          label="Check in this guest"
+          name="check_in_user"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </FormField>
+      <Button
+        inverted={true}
+        type="submit"
+      >
+        Submit
+      </Button>
+      <Button
+        onClick={[Function]}
+      >
+        Clear
+      </Button>
+    </Form>
+  </ContentPanel>
+</styled.div>
+`;

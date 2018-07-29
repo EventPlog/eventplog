@@ -12,6 +12,7 @@ const Aside = styled.aside`
   width: 200px;
   border-right: 1px solid ${colors.gray}; 
   background: ${props => props.theme.black};
+  min-height: 50vh;
 
   ${
     media.tablet`

@@ -54,13 +54,20 @@ class GuestContainter extends Component {
       check_in: user
     }
     this.props.checkInByForm(payload).then(res => {
-      this.setState({loading: false, user: res})
+      const successMsg = `${res.user ? res.user.display_name : 'User'} has been checked in successfully.`
+
+      this.setState({
+        loading: false,
+        sucess: successMsg,
+        user: res
+      })
+      this.props.showChildrenSuccess(successMsg)
     })
   }
 
   handleSubmit = async (e) => {
     const validator = new Validator();
-    if (!validator.validateEmail(this.state.user.email)) {
+    if (!validator.validateEmail(this.state.user.email.trim())) {
       return this.setState({error: "Hmmm.. something doesn't seem quite right with the email.."})
     }
     this.setState({loading: true})
@@ -68,8 +75,8 @@ class GuestContainter extends Component {
     if (res) {
       const { user, check_in_user } = this.state
       const successMsg = this.state.check_in_user
-        ? `You've successfully checked in ${user.first_name}. Check in someone else.`
-        : `You've successfully registered ${user.first_name}. Register someone else.`
+        ? `You've successfully checked in ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can check in another person.`
+        : `You've successfully registered ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can register another person.`
 
       this.setState({
         success: successMsg,
@@ -84,7 +91,10 @@ class GuestContainter extends Component {
   handleDelete = () => {
     var confirmed = confirm('Are you sure you want to delete this guest?')
     if (!confirmed) { return }
-    return this.props.deleteGuest(this.props.guest.id)
+    const { guest } = this.props
+    this.props.deleteGuest(guest.id).then(res => {
+      this.props.showChildrenSuccess(`${guest.user ? guest.user.display_name : 'User'} has been deleted successfully.`)
+    })
   }
 
   componentWillMount(props) {

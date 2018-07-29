@@ -10,11 +10,14 @@ const Event = () => {
     <div> 
       <Topic>Event</Topic>
       <Description>
-        Every information about an event can be found once you click on the event you want
-        to know about.  <br/> When I click on an event, I want to know more about the eventso I can
-        be better prepared for it.
-        Information about venue, date, time, organizers and even the number of people interested in
-        the event is found right on the event page. <br/><br/>
+        <p>
+          Every information about an event can be found once you click on the event you want
+          to know about.
+        </p>
+        <p>
+          Information about venue, date, time, organizers and even the number of people interested in
+          the event is found right on the event page.
+        </p>
         <HelpPage src={eventimage} alt="event"/>
       </Description> 
     </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Icon, Menu } from 'semantic-ui-react'
 import styled, { css } from 'styled-components';
+
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
 

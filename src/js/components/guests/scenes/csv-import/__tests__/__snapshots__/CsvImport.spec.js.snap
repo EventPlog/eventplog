@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CsvImport should render correctly 1`] = `
+<styled.div>
+  <ContentPanel
+    title="Import a guest lists as CSV."
+  >
+    <HeadsUpInfo />
+    <Form
+      as="form"
+    >
+      <Message
+        content="Your file upload process have been kicked off successfully. We'll let you know when it's done."
+        header="Success!"
+        success={true}
+      />
+      <Message
+        content="Something prevented us from successfully uploading your file. Please try again later."
+        error={true}
+        header="Error!"
+      />
+      <FormField>
+        <label>
+          Upload a CSV file
+        </label>
+        <Styled(Input)
+          accept=".csv"
+          id="csv_upload"
+          name="csv"
+          type="file"
+        />
+      </FormField>
+      <FormField>
+        <Button>
+          Submit
+        </Button>
+      </FormField>
+    </Form>
+  </ContentPanel>
+</styled.div>
+`;
