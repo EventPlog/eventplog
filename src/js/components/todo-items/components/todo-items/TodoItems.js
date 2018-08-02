@@ -60,6 +60,10 @@ const StyledTasks = styled.div`
     &.pending {
       background: ${props => props.theme.gray};
     }
+    
+    .item {
+      background: white;
+    }
   }
 `
 

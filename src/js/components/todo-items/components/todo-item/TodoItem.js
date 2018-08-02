@@ -36,6 +36,15 @@ const StyledTodoItem = styled.div`
     
     .item {
       padding: 1rem;
+      box-shadow: none;
+      
+      &:first-child {
+        border-radius: 0 0.5rem 0.5rem 0;
+      }
+      
+      &:last-child {
+        border-radius: 0.5rem 0 0 0.5rem;
+      }
     }
   }
 `

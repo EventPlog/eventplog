@@ -25,7 +25,7 @@ const styles = css`
   
   &::after {
     content: '\\1F58A';
-    opacity: 0.4;
+    opacity: 0.2;
     
     ${
       maxMedia.tablet`

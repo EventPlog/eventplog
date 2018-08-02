@@ -11,10 +11,14 @@ import ContentEditable from 'js/components/shared/content-editable'
 import Button from 'js/components/shared/button'
 
 const styles = css`
+  position: relative;
+  
   .btn-delete {
     background: white;
     color: #ccc;
     border-color: #ccc;
+    position: absolute;
+    right: 0;
     
     &:hover {
       background: var(--activeLink);
