@@ -5,7 +5,7 @@ import { updateItemInCollection } from 'js/reducers/helpers'
 
 const sortData = (data) => data.sort((next, prev) => next.id < prev.id)
 
-const eventsReducer = (state=initialState.organizers, action) => {
+const organizersReducer = (state=initialState.organizers, action) => {
   let organizers
   switch(action.type) {
     case eventActionTypes.EVENT_SHOW_COMPLETE:
@@ -37,4 +37,4 @@ const eventsReducer = (state=initialState.organizers, action) => {
   }
 };
 
-export default eventsReducer
+export default organizersReducer

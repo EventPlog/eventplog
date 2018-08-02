@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { lighten, modularScale }  from 'polished'
+import { media } from 'js/styles/mixins'
 
 import Button from 'js/components/shared/button'
 
@@ -9,6 +10,12 @@ const StyledNewInvitationBar = styled.div`
   padding: 2rem;
   background: ${props => lighten(-0.6, props.theme.activeLink)};
   color: #fff;
+  
+  ${
+    media.phone`
+      text-align: center;
+    `
+  }
   
   .description a {
     color: #fff;
@@ -21,10 +28,25 @@ const StyledNewInvitationBar = styled.div`
   
   .description {
      margin-right: 2rem;
+     
+     ${
+        media.phone`
+          margin: 0;
+          margin-bottom: 1rem;
+        `
+      }
   }
   
   button {
     margin-left: 2rem;
+    
+    ${
+      media.phone`
+        &:first-child {
+          margin-left: 0;
+        }
+      `
+    }
   }
 `
 
@@ -60,7 +82,7 @@ const NewInvitationBar = ({
     <StyledNewInvitationBar className="notifications-bar">
       <div className="app-container">
         <div className="description">
-          {owner.first_name} has invited you to help organize&nbsp;
+          {owner.less_formal_name} has invited you to help organize&nbsp;
           <Link to={`/communities/${event.community_id}/events/${event.id}`}>
             {event.title}
           </Link>

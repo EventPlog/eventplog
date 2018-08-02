@@ -35,7 +35,10 @@ class EventContainer extends Component {
   }
 
   handleChange = (key, value) => {
-    this.setState({event: {...this.state.event, [key]: value }})
+    const event = this.state.event && this.state.event.id
+                    ? this.state.event
+                    : this.props.event
+    this.setState({event: {...event, [key]: value }})
   }
 
   handleSubmit = () => {
