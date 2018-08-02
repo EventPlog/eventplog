@@ -32,7 +32,7 @@ const CommentPanel = ({
   return (
     <StyledComment className={`announcmement-panel ${className}`}>
       <div className="title">
-        {`${user.first_name} ${user.last_name}`}
+        {`${user.display_name}`}
       </div>
       <div className="meta">
         {announcement.publish_date || (new Date).toDateString() } | {announcement.publish_time || (new Date).toTimeString()}

@@ -10,8 +10,8 @@ import { lighten } from 'polished'
 const StyledMainContent = styled.div`
   display: flex;
   flex: 1;
-  border-right: 1px solid ${props => props.theme.grayLight};
   padding-bottom: 4rem;
+  background: ${props => props.theme.gray};
   
   .event-workplace {
     position: relative;
