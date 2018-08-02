@@ -27,9 +27,8 @@ const StyleFeedbackReport = styled.div`
 
 const FeedbackReport = ({
   feedback_report = {},
-  loading,
-  error,
 }) => {
+  const {loading, error} = feedback_report
 
   if (loading) return <Loading />
   if (error) return <Loading.Error msg={error} />

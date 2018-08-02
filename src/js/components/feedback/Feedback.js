@@ -13,8 +13,8 @@ const StyledGuests = styled.div`
 `
 const Guests = (props) => {
   const panes = [
-    {name: 'Settings', content: Settings},
     {name: 'Report', content: Report},
+    {name: 'Settings', content: Settings},
   ];
 
   return (

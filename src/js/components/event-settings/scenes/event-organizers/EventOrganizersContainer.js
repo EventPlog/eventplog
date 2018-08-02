@@ -7,17 +7,18 @@ import { inviteOrganizers, deleteInvitation } from '../../actions'
 import Validator from 'js/utils/validator'
 
 class EventOrganizersContainer extends Component {
-  state = { recipient_emails: '' }
+  state = { recipient_emails: '', role: 'volunteer' }
 
-  handleChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+  handleChange = (key, value) => {
+    this.setState({[key]: value})
   }
 
   handleSubmit = () => {
     const recipient_emails = this.state.recipient_emails.replace(' ', '').split(',')
     const trackable_id = this.props.event.id
     const trackable_type = 'Event'
-    const invite = {recipient_emails, trackable_id, trackable_type}
+    const details = `{"role": "${this.state.role}}`
+    const invite = {recipient_emails, details, trackable_id, trackable_type}
 
     const data = recipient_emails.map(email => ({email}))
     const validator = new Validator();
@@ -29,7 +30,7 @@ class EventOrganizersContainer extends Component {
     this.setState({loading: true, error: null})
     this.props.inviteOrganizers(invite).then(res => {
       this.setState({loading: false, recipient_emails: ''})
-    })
+    }).catch(error => this.setState({error}))
   }
 
   handleDelete = (id) => {
@@ -53,7 +54,12 @@ class EventOrganizersContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {event: state.events.event}
+  const { organizers = [], volunteers = {} } = state.organizers
+  return {
+    organizers,
+    volunteers,
+    events: state.events
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

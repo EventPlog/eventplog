@@ -125,7 +125,7 @@ const EventBanner = ({
   handleChange,
   handleSubmit,
   attendEvent,
-  is_organizer,
+  organizer_role,
   is_attending,
   is_stakeholder,
   is_owner,
@@ -178,7 +178,7 @@ const EventBanner = ({
         </div>
       </div>
       <div className="cta-btns">
-        {is_stakeholder &&
+        {(is_stakeholder || organizer_role) &&
           <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
             Go Backstage
           </Button.Link>}

@@ -55,6 +55,7 @@ const StyledEvent = styled.div`
 
 const Event = ({
   event = {},
+  organizers,
   community,
   activeLink,
   events_suggestions = [],
@@ -75,17 +76,19 @@ const Event = ({
 
   const {title, description, featured_image, start_date,
           start_time, given_feedback, show_feedback_url,
-          is_attending, interested_persons, organizers,
+          is_attending, interested_persons,
           announcements, comments} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
+  const eventDue = (new Date(start_time)) <= (new Date())
+
   return (
     <StyledEvent activeLink={activeLink} className="app-container">
       <ContentSection>
         <EventBanner {...{...event, community, handleChange, handleSubmit, attendEvent}} />
 
         <ContentSection.Body>
-          {is_attending && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
+          {is_attending && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
           <ContentPanel title="Description">
             <div className="event-description">
               <ContentEditable propName="description"
@@ -108,7 +111,11 @@ const Event = ({
           </ContentPanel>
 
           <ContentPanel title="Meet the organizers">
-            <Members {...{members: organizers}} />
+            <Members>
+              {organizers && organizers.map(member =>
+                <Members.Member member={member} />
+              )}
+            </Members>
             {noOrganizersYet && isStakeHolder &&
               <Button.Link to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>
                 Go backstage to add organizers
