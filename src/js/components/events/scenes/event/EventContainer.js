@@ -72,12 +72,14 @@ class EventContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {event = {}, events_suggestions = []} = state.events
+  const { organizers } = state.organizers
   const {link_color } = event;
   const { community, communities_suggestions } = state.communities
   return {
     activeLink: community.brand_color,
     event,
     community,
+    organizers,
     events_suggestions,
     communities_suggestions,
     currentUser: Auth.currentUser(),

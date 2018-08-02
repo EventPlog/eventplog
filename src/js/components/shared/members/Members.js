@@ -14,11 +14,9 @@ const StyledMembers = styled.div`
   }
 `
 
-const Members = ({ members}) => (
-  <StyledMembers>
-    {members && members.map(member =>
-      <Member member={member} />
-    )}
+const Members = ({ className, children }) => (
+  <StyledMembers className={className}>
+    {children}
   </StyledMembers>
 )
 

@@ -23,6 +23,7 @@ const Aside = styled.aside`
   ${
     media.phone`
       height: 50px;
+      min-height: 0;
     `
   }
   
@@ -76,17 +77,19 @@ const Sidebar = ({
   community = {},
   event = {}
 }) => {
+  const isAdmin = community.is_owner || (event.organizer_role && event.organizer_role == 'admin')
   const menuItems = [
-    { name: "Planning", icon: 'file alternate outline', link: 'tasks' },
+    (isAdmin ? { name: "Planning", icon: 'file alternate outline', link: 'tasks' } : {}),
     { name: "Guests", icon: 'users' },
     { name: "Feedback", icon: 'send' },
-    {name: "Settings", icon: 'settings' }
+    (isAdmin ? {name: "Settings", icon: 'settings' } : {})
   ];
   return (
     <Aside className={className}>
       <ul>
         {
           menuItems.map(({name, icon, link}, index) =>
+            name &&
             <li key={index}>
               <NavLink to={`/communities/${community.id}/events/${event.id}/backstage/${link || name.toLowerCase()}`}
                        activeClassName="active">

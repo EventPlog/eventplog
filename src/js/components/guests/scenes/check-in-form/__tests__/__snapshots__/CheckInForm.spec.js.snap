@@ -85,6 +85,7 @@ exports[`CheckInForm should render correctly 1`] = `
         />
       </FormField>
       <Button
+        disabled={true}
         inverted={true}
         type="submit"
       >

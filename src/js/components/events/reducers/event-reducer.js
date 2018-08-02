@@ -1,7 +1,9 @@
 import initialState from './intialState';
 import actionTypes from '../actions/types'
 import feedbackActionTypes from 'js/components/feedback/actions/types'
+import organizerActionTypes from 'js/components/event-settings/actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
+import { updateEventOrganizers } from './helpers'
 
 const eventReducer = (state=initialState.event, action) => {
   let organizers_invitations;
@@ -14,7 +16,7 @@ const eventReducer = (state=initialState.event, action) => {
     case actionTypes.EVENT_CREATE_COMPLETE:
     case actionTypes.EVENT_SHOW_COMPLETE:
     case actionTypes.EVENT_UPDATE_COMPLETE:
-      return {...action.payload}
+      return updateEventOrganizers(action.payload)
 
     case actionTypes.EVENT_CREATE_FAIL:
     case actionTypes.EVENT_SHOW_FAIL:
@@ -46,6 +48,9 @@ const eventReducer = (state=initialState.event, action) => {
 
     case feedbackActionTypes.EVENT_FEEDBACK_CREATE_COMPLETE:
       return {...state, given_feedback: true, show_feedback_url: true}
+
+    // case organizerActionTypes.EVENT_ORGANIZER_UPDATE_COMPLETE:
+    //   return updateEventOrganizers(state, action)
 
     default:
       return state;

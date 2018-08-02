@@ -10,6 +10,7 @@ import {
 class MessengerCheckInContainer extends Component {
   componentWillMount() {
     this.props.getFeedbackReport(this.props.event.id)
+      .catch(err => this.setState({error: err}))
   }
 
   render () {

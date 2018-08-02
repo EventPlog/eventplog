@@ -18,13 +18,6 @@ const StyledTodoItem = styled.div`
   .footer {
     margin-bottom: 1rem;
     
-    a {
-      display: contents;
-      
-      &:hover {
-        color: var(--activeLink) !important;
-      }
-    }
   }
 `
 const TodoItem = ({

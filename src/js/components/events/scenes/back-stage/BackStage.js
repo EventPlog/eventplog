@@ -35,12 +35,12 @@ type Props = {
 };
 
 const Main = (props) => {
-  if (props.community.loading || props.event.loading) {
+  if (!props.event.id || props.community.loading || props.event.loading) {
     return <Loading />
   }
   // Only community admins, event owner and event organizers have access
-  if (!props.currentUser.id || !(props.community.is_owner || props.event.is_owner || props.event.is_organizer)) {
-    return <Redirect to={`/communities/${props.community.id}/events/${props.event.id}`} />
+  if (!props.currentUser.id || !(props.event.is_stakeholder || props.event.organizer_role)) {
+    return <Redirect to={`/communities/${props.event.community_id}/events/${props.event.id}`} />
   }
   return (
     <StyledMain className="app-container">

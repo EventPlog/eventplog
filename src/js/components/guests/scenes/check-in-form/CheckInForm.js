@@ -99,7 +99,10 @@ const CheckInForm = ({
                       onChange={(el, attr) => handleStateChange(attr.name, attr.checked)}/>
           </Form.Field>
 
-          <Button inverted type='submit' onClick={handleSubmit}>
+          <Button inverted
+                  type='submit'
+                  disabled={!user.email}
+                  onClick={handleSubmit}>
             Submit
           </Button>
           <Button onClick={() => handleStateChange('user', emptyUser)}>

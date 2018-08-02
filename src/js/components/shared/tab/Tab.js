@@ -40,7 +40,9 @@ const generatePanes = (panes, props) =>
 
 const TmnTab = ({ panes, ...otherProps }) => (
   <TabHolder>
-    <Tab menu={{ secondary: true, pointing: true }} panes={generatePanes(panes, otherProps)} />
+    <Tab menu={{ secondary: true, pointing: true }}
+         panes={generatePanes(panes, otherProps)}
+    />
   </TabHolder>
 )
 
