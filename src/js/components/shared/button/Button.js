@@ -11,6 +11,7 @@ const commonStyles = css`
   border: 1px solid var(--activeLink);
   color: var(--activeLink);
   background: transparent;
+  display: inline-block;
   padding: 10px 30px;
   border-radius: 5px;
   text-transform: uppercase;

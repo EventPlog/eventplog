@@ -17,6 +17,7 @@ const StyledTable = styled.div`
 
 const GuestsList = ({
   guests = {},
+  event,
   getGuests,
   success,
   handleSearch,
@@ -49,6 +50,7 @@ const GuestsList = ({
           {data && data.map((guest, index) =>
             <GuestRow key={guest.id}
                       guest={guest}
+                      event={event}
                       index={index + startingIndex}
                       showChildrenSuccess={showChildrenSuccess}
             />

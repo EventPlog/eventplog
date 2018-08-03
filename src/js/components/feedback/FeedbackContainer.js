@@ -14,6 +14,12 @@ import checkEqual from 'js/utils/checkEqual'
 class FeedbackContainer extends Component {
   state = {feedback: {}}
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.guest_id == nextProps.guest_id) return
+    const { guest_id, guest_name } = nextProps
+    return { guest_id, guest_name, feedback: {} }
+  }
+
   handleChange = (key, value) => {
     this.setState({
       feedback: {
@@ -25,18 +31,14 @@ class FeedbackContainer extends Component {
 
   handleSubmit = () => {
     this.setState({ loading: true })
-    let payload = {...this.state.feedback, event_id: this.props.event.id}
+    const { event = {}, guest_id } = this.props
+    let payload = {...this.state.feedback, guest_id, event_id: event.id}
     this.props.submitFeedback(payload)
       .then(feedback => {
         this.setState({feedback, loading: false, feedbackCreated: true})
       })
       .catch(error => this.setState({loading: false, error}))
   }
-
-  getParams = () => {
-    return (matchPath(this.props.location.pathname, '/communities/:feedback_id/events/:id') || this.props.match).params
-  }
-
 
   getProps = () => ({
     ...this.props,
@@ -50,12 +52,22 @@ class FeedbackContainer extends Component {
   }
 }
 
+const getQueryParams = (str) => {
+  if (!str || !str.trim()) return {}
+  let params = {}
+  str.substr(1).split('&').forEach(query => {
+    const [key, value] = query.split('=')
+    params[key] = value
+  })
+  return params
+}
+
 const mapStateToProps = (state, ownProps) => {
   const {event = {}, events_suggestions = [], loading} = state.events
-  const {feedback = {}, communities = [], communities_suggestions} = state.communities
-
+  const queryParams = getQueryParams(ownProps.location.search)
   return {
-    event
+    event,
+    ...queryParams
   }
 }
 
