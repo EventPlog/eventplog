@@ -7,7 +7,7 @@ import {media} from '../../styles/mixins'
 
 const StyledTermsAndConditions = styled.div`
 max-width: 700px;
-margin: auto; 
+  margin: 4rem auto;
 `
 const Legal = () => (
   <StyledTermsAndConditions>
