@@ -76,10 +76,16 @@ exports[`main content - New Community component should render correctly 1`] = `
           Brand Color
         </label>
         <Styled(Input)
-          defaultValue="#4968B7"
+          defaultValue="#9448BC"
           name="brand_color"
           options={
             Array [
+              Object {
+                "icon": "point purple",
+                "key": "default",
+                "text": "default",
+                "value": "#9448BC",
+              },
               Object {
                 "icon": "point blue",
                 "key": "blue",
