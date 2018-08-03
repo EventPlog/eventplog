@@ -27,12 +27,4 @@ const Guests = (props) => {
   )
 }
 
-const GuestRoute = (props) => {
-  return (
-    <Switch>
-      <Route path="/communities/:community_id/events/:event_id/backstage/feedback"
-             render={() => <Guests {...props}/>} />
-    </Switch>
-  )
-}
 export default Guests;
