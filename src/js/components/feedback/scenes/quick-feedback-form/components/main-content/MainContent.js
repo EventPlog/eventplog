@@ -46,16 +46,20 @@ const colorOptions = [
 const EventUpdate = ({
   feedback = {},
   event = {},
+  guest_id,
+  guest_name,
   loading,
   success,
   handleChange,
-  handleSubmit
+  handleSubmit,
+  feedbackCreated,
 }) => {
 
+  const personalGreeting = guest_name && guest_name.trim() ? `for ${guest_name}` : '(Yours)'
   return (
     <StyleEventUpdate className="main-content">
-      <ContentPanel title="Quick feedback">
-        {event.show_feedback_url
+      <ContentPanel title={`Quick feedback ${personalGreeting}`}>
+        {feedbackCreated
           ? <ContentAfterFeedbackSubmit {...{event}} />
           : <ContentBeforeFeedbackSubmit {...{feedback, loading, success, handleChange, handleSubmit, event}} />
         }
