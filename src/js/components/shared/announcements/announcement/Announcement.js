@@ -29,7 +29,6 @@ const Announcement = ({
       {currentUserIsOwner && <Button inverted className="btn-delete" onClick={deleteAnnouncement}>
                                <Icon className="delete" />
                              </Button>}
-      {!currentUserIsOwner && <ReactMarkdown source={announcement.body} />}
       {currentUserIsOwner
         ? <ContentEditable propName="body"
                      canEdit={currentUserIsOwner}
