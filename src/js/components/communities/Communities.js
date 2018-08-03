@@ -42,8 +42,6 @@ type CommunityPtlogType = {
 const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
     <StyledCommunityPlog>
       <Switch>
-        {/*<EPHeader/>*/}
-        {/*<Header />*/}
         <PrivateRoute exact path="/" component={Communities} />
         <PrivateRoute exact path="/communities" component={Communities} />
         <PrivateRoute exact path="/communities/join-a-community" component={JoinACommunity} />

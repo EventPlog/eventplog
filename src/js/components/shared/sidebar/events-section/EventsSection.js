@@ -36,7 +36,7 @@ const EventsSection = ({
       {error && <Loading.Error msg={events.error} />}
       {(!loading && !error && data) && data.map(({community, description: d, featured_image, ...event}) => {
           const title = generateTitle(event);
-          const description = generateDescription(community);
+          const description = community ? generateDescription(community) : '';
           const meta = generateMeta(event)
           const btn = event.is_attending
                       ? {}
