@@ -18,6 +18,10 @@ const StyledEventPlanning = styled.div`
     list-style-type: initial;
     padding-left: 1rem;
   }
+  
+  .content-header {
+    padding: 1rem 0 0.5rem;
+  }
 `
 
 const EventPlanningMainContent = ({todo_items = {data: []}, ...props}) => {

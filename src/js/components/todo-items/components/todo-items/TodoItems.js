@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Icon } from 'semantic-ui-react'
 import styled from 'styled-components';
+import { lighten } from 'polished'
 
 // import {Select} from 'semantic-ui-react'
 import Select from 'js/components/shared/select'
@@ -15,7 +16,7 @@ const StyledTasks = styled.div`
   
   p {
     font-size: 1.3em;
-    font-weight: 300; 
+    font-weight: 500; 
   }
   
   .task {
@@ -39,9 +40,30 @@ const StyledTasks = styled.div`
   
   
   .task-meta {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 1rem;
+  }
+  
+  .tasks {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    
+    &.completed {
+      background: ${props => lighten(0.5, props.theme.green)};
+    }
+    
+    &.in-progress {
+      background: ${props => lighten(0.4, props.theme.yellow)};
+    }
+    
+    &.pending {
+      background: ${props => props.theme.gray};
+    }
+    
+    .item {
+      background: white;
+    }
   }
 `
 
@@ -72,7 +94,7 @@ const EventChecklist = ({
       </ContentPanel>
 
       {completed && completed.length > 0 &&
-        <ContentPanel title="Completed">
+        <ContentPanel className="tasks completed" title="Completed">
           <Accordion>
             {(props) => (
               completed.map((todo_item, index) => [
@@ -84,7 +106,7 @@ const EventChecklist = ({
       }
 
       {in_progress && in_progress.length > 0 &&
-        <ContentPanel title="In Progress">
+        <ContentPanel className="tasks in-progress" title="In Progress">
           <Accordion>
             {(props) => (
               in_progress.map((todo_item, index) => [
@@ -96,7 +118,7 @@ const EventChecklist = ({
       }
 
       {pending && pending.length > 0 &&
-        <ContentPanel title="Pending">
+        <ContentPanel className="tasks pending" title="Pending">
           <Accordion>
             {(props) => (
               pending.map((todo_item, index) => [

@@ -25,6 +25,28 @@ const StyledTodoItem = styled.div`
       padding: 1rem;
     }
   }
+  
+  .btn-back {
+    display: inline-block;
+    margin: 1rem 0;
+  }
+  
+  .task-meta {
+    margin: 2rem 0 4rem;
+    
+    .item {
+      padding: 1rem;
+      box-shadow: none;
+      
+      &:first-child {
+        border-radius: 0 0.5rem 0.5rem 0;
+      }
+      
+      &:last-child {
+        border-radius: 0.5rem 0 0 0.5rem;
+      }
+    }
+  }
 `
 const TodoItem = ({
   event_checklist = {},
@@ -55,7 +77,7 @@ const TodoItem = ({
   const { data = []} = comments
   return (
     <StyledTodoItem className="task">
-      <Button.Link to={`/communities/${community_id}/events/${event_id}/backstage/tasks`}>
+      <Button.Link className="btn-back" to={`/communities/${community_id}/events/${event_id}/backstage/tasks`}>
         Back
       </Button.Link>
       <TaskMeta {...{status, recipient, deadline, event,

@@ -6,23 +6,28 @@ import Tab from '../shared/tab';
 import EventUpdate from './scenes/event-update/';
 import EventOrganizers from './scenes/event-organizers'
 
-const StyledGuests = styled.div`
+const StyledEventSettings = styled.div`
   .content-panel {
     margin-top: 2rem;
   }
   
 `
-const Guests = (props) => {
+
+const activeIndex = {
+  settings: 0,
+  organizers: 1
+}
+const EventSettings = (props) => {
   const panes = [
-    {name: 'Event', content: EventUpdate},
     {name: 'Organizers', content: EventOrganizers},
+    {name: 'Event', content: EventUpdate},
   ];
 
   return (
-    <StyledGuests>
+    <StyledEventSettings>
       <Tab panes={panes} {...props} />
-    </StyledGuests>
+    </StyledEventSettings>
   )
 }
 
-export default Guests;
+export default EventSettings;

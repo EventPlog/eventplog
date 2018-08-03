@@ -27,9 +27,8 @@ const StyleFeedbackReport = styled.div`
 
 const FeedbackReport = ({
   feedback_report = {},
-  loading,
-  error,
 }) => {
+  const {loading, error} = feedback_report
 
   if (loading) return <Loading />
   if (error) return <Loading.Error msg={error} />
@@ -56,8 +55,8 @@ const FeedbackReport = ({
             <Table.Row>
               <Table.HeaderCell> </Table.HeaderCell>
               <Table.HeaderCell>Total</Table.HeaderCell>
-              <Table.HeaderCell>Male (%)</Table.HeaderCell>
-              <Table.HeaderCell>Female (%)</Table.HeaderCell>
+              <Table.HeaderCell>Male</Table.HeaderCell>
+              <Table.HeaderCell>Female</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 

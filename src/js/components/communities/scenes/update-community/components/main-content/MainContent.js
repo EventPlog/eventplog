@@ -35,6 +35,7 @@ const StyleEventUpdate = styled.div`
 `
 
 const colorOptions = [
+  { key: 'default', value: color.primary, icon: 'point purple', text: 'default' },
   { key: 'blue', value: color.blue, icon: 'point blue', text: 'blue' },
   { key: 'red', value: color.red, icon: 'point red', text: 'red' },
   { key: 'green', value: color.green, icon: 'point green', text: 'green' },

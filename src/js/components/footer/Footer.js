@@ -12,7 +12,7 @@ const StyledFooter = styled.div`
    flex-direction: column;
    border-top: 1px solid #ccc;
    color: var(--fg);
-   background: ${props => props.theme.activeLinkBg}; 
+   background: ${props => lighten(-0.1, props.theme.activeLinkBg)}; 
    z-index: 100;
    
    .app-container {

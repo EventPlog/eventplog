@@ -1,4 +1,5 @@
 import actionTypes from 'js/components/events/actions/types'
+import eventActionTypes from'./types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
 import mockEventApi from '../../../mock-api/lead-api'
 
@@ -30,6 +31,22 @@ export const checkInByForm = (eventId, user) => {
   })
 }
 
+export const updateEventOrganizer = (organizer) => {
+  let actions = baseActions({
+    requestType: eventActionTypes.EVENT_ORGANIZER_UPDATE_START,
+    receiveType: eventActionTypes.EVENT_ORGANIZER_UPDATE_COMPLETE,
+    failType: eventActionTypes.EVENT_ORGANIZER_UPDATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: organizer,
+    errorMessage: 'Something prevented us from creating these organizers',
+    caller: 'update organizer',
+    route: `/api/v1/web/event_organizers/${organizer.id}`,
+    requestMethod: 'PATCH'
+  })
+}
 export const inviteOrganizers = (invitation) => {
   let actions = baseActions({
     requestType: actionTypes.EVENT_ORGANIZER_INVITATION_CREATE_START,

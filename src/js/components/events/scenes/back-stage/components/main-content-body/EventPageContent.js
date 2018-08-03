@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 // internal
@@ -32,16 +32,22 @@ const StyledEventComponent = styled.div`
   }
 `
 
+const verifyAccess = (Component, props = {}) => {
+  const { community_id, id } = props.match.params
+  return props.event.is_stakeholder
+            ? withProps(Component, props)
+            : () => <Redirect to={`/communities/${community_id}/events/${id}/backstage/guests`} />
+}
 
 const EventComponent = (props) =>
   <StyledEventComponent>
     <Switch>
-      <Route exact path='/communities/:community_id/events/:event_id/backstage' render={withProps(Tasks, props)} />
-      <Route path='/communities/:community_id/events/:event_id/backstage/tasks' render={withProps(Tasks, props)} />
+      <Route exact path='/communities/:community_id/events/:event_id/backstage' render={verifyAccess(Tasks, props)} />
+      <Route path='/communities/:community_id/events/:event_id/backstage/tasks' render={verifyAccess(Tasks, props)} />
       <Route path="/communities/:community_id/events/:event_id/backstage/guests" render={withProps(Guests, props)} />
       <Route path="/communities/:community_id/events/:event_id/backstage/feedback" render={withProps(Feedback, props)} />
-      <Route path="/communities/:community_id/events/:event_id/backstage/settings" component={withProps(Settings, props)} />
+      <Route path="/communities/:community_id/events/:event_id/backstage/settings" component={verifyAccess(Settings, props)} />
     </Switch>
   </StyledEventComponent>
 
-export default EventComponent;
+export default withRouter(EventComponent);

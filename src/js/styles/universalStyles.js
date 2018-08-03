@@ -9,7 +9,7 @@ const styles = css`
   --gray: ${defaults.gray};
   height: 100%;
   
-  background: ${lighten(0.45, defaults.blue)};
+  /*background: ${lighten(0.45, defaults.blue)}*/;
   
   a, a:hover {
     color: var(--activeLink);
