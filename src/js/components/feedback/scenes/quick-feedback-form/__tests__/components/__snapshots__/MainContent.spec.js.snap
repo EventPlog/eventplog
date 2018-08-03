@@ -5,7 +5,7 @@ exports[`main content - New Community component should render correctly 1`] = `
   className="main-content"
 >
   <ContentPanel
-    title="Quick feedback"
+    title="Quick feedback (Yours)"
   >
     <ContentBeforeFeedbackSubmit
       event={Object {}}

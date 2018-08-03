@@ -10,7 +10,7 @@ const styles = css`
     text-transform: capitalize;
   }
   
-  button {
+  button, a.btn-link {
     padding: 0.5rem;
     font-size: x-small;
   }
@@ -26,6 +26,7 @@ const GuestRow = ({
   className,
   index,
   guest = {},
+  event = {},
   handleDelete,
   handleCheckIn,
   handleSubmit,
@@ -46,7 +47,12 @@ const GuestRow = ({
         }
       </Table.Cell>
       <Table.Cell textAlign='center'>
-        {guest.given_feedback && <Icon color='green' name='checkmark' size='large' />}
+        {guest.given_feedback
+          ? <Icon color='green' name='checkmark' size='large' />
+          : <Button.Link className="btn-link" to={`/communities/${event.community_id}/events/${event.id}/backstage/feedback/?guest_id=${guest.id}&guest_name=${guest.user.less_formal_name}`}>
+              Show form
+            </Button.Link>
+        }
       </Table.Cell>
       <Table.Cell textAlign='center'>
         <Icon className='btn-delete'
