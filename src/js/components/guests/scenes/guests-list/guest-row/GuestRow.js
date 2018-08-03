@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
+import { media } from 'js/styles/mixins'
 
 const styles = css`
   td {
@@ -13,6 +14,12 @@ const styles = css`
   button, a.btn-link {
     padding: 0.5rem;
     font-size: x-small;
+    
+    ${
+      media.phone`
+        display: inline-block;
+      `
+    } 
   }
   
   .small-text {
