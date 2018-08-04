@@ -77,7 +77,7 @@ const Sidebar = ({
   community = {},
   event = {}
 }) => {
-  const isAdmin = community.is_owner || (event.organizer_role && (['admin', 'owner'].find(role => event.organizer_role.toLowerCase()))
+  const isAdmin = community.is_owner || (event.organizer_role && (['admin', 'owner'].find(role => event.organizer_role.toLowerCase())))
   const menuItems = [
     (isAdmin ? { name: "Planning", icon: 'file alternate outline', link: 'tasks' } : {}),
     { name: "Guests", icon: 'users' },
