@@ -60,7 +60,7 @@ const Comments = function({
   return (
     <StyledComments className={`comments-section ${className}`} {...otherProps}>
       {data && data.map(comment =>
-        comment.deleted && comment.responses.length < 1
+        (comment.deleted && comment.responses.length < 1) || !comment[textField]
           ? ''
           : <Comment {...{ comment, createComment, textField, canReply, updateComment}}>
               <div className={`replies comment-card ${className}`}>

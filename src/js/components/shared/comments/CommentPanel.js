@@ -110,17 +110,17 @@ const CommentPanel = ({
   user = {},
   ...otherProps
 }) => {
-  const {first_name, last_name, avatar_url, community_role} = user
+  const {display_name, avatar_url, community_role} = user
   return (
     <StyledComment className={`comment-card ${className}`}>
       <div className="commenter">
         <div className="avatar" style={{
                   backgroundImage: `url(${avatar_url || '/sample-avatar.png'}`
                 }} />
-        {first_name &&
+        {display_name &&
         <div className="meta">
           <div className="full-name">
-            {`${first_name} ${last_name}`}
+            {`${display_name}`}
           </div>
           <div className="role">
             {community_role || 'Member'}

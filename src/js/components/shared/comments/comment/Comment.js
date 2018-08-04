@@ -44,7 +44,7 @@ const Comment = ({
     ? <div className="deleted-comment">This comment has been deleted</div>
     : <ReactMarkdown source={comment[textField]} />
   return (
-    <CommentPanel className={className} user={comment.deleted ? {} : comment.user}>
+    <CommentPanel className={className} user={comment.deleted || comment.anonymous ? {} : comment.user}>
       {currentUserIsOwner && <Button className="btn-delete" onClick={deleteComment}>
                                <Icon className="delete" />
                              </Button>}

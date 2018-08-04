@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Message } from 'semantic-ui-react'
+import { Form, Message, Checkbox } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
@@ -7,6 +7,7 @@ import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
 
 import TextArea from 'js/components/shared/text-area'
+import Input from 'js/components/shared/input'
 import Select from 'js/components/shared/select'
 import Rating from 'js/components/shared/rating'
 
@@ -24,6 +25,7 @@ const ContentBeforeFeedbackSubmit = ({
     satisfaction_level,
     net_promoter_score,
     feedback_note,
+    anonymous
   } = feedback
 
   return (
@@ -50,6 +52,15 @@ const ContentBeforeFeedbackSubmit = ({
                   value={feedback_note}
                   placeholder='Share your thoughts!'
                   onChange={({target}) => handleChange(target.name, target.value)} />
+      </Form.Field>
+
+      <Form.Field>
+        <Checkbox name="anonymous"
+                   value="anonymous"
+                   checked={anonymous}
+                   label="Keep me anonymous"
+                   onClick={(e, attr) => handleChange(attr.name, attr.checked)}
+        />
       </Form.Field>
 
       <Form.Group>
