@@ -14,7 +14,7 @@ import Button from 'js/components/shared/button'
 
 const StyledTodoItem = styled.div`
   .description {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
   
   .title {
@@ -29,6 +29,20 @@ const StyledTodoItem = styled.div`
   .btn-back {
     display: inline-block;
     margin: 1rem 0;
+  }
+  
+  .btn-delete-task {
+    float: right;
+    border: none;
+    font-size: 2rem;
+    color: ${props => props.theme.red};
+    opacity: 0.3;
+    
+    &:hover {
+      opacity: 1;
+      color: white;
+      background: ${props => props.theme.red};
+    }
   }
   
   .task-meta {
@@ -53,11 +67,12 @@ const TodoItem = ({
   todo_item = {},
   loading,
   error,
-  match = {},
   event,
+  link_back,
   createComment,
   updateComment,
   handleChange,
+  handleDelete,
   handleSubmit
 }) => {
   const {
@@ -73,13 +88,15 @@ const TodoItem = ({
   if (loading) return <Loading />
   if (error) return <Loading.Error msg={error} />
 
-  const { community_id, event_id } = match.params || {}
   const { data = []} = comments
   return (
     <StyledTodoItem className="task">
-      <Button.Link className="btn-back" to={`/communities/${community_id}/events/${event_id}/backstage/tasks`}>
+      <Button.Link className="btn-back" to={link_back}>
         Back
       </Button.Link>
+      <Button className="btn-delete-task" onClick={handleDelete}>
+        <Icon name='trash alternate' />
+      </Button>
       <TaskMeta {...{status, recipient, deadline, event,
                               handleChange, handleSubmit, isEditable: true,
                               commentsCount: data.length}} />

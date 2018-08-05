@@ -7,12 +7,16 @@ import { lighten } from 'polished'
 import Select from 'js/components/shared/select'
 import { media } from 'js/styles/mixins'
 import TodoItem from './TodoItem'
+import NewTodoItem from '../new-todo-item'
 import Loading from 'js/components/shared/loading'
 import ContentPanel from 'js/components/shared/content-panel'
 import ProgressBar from 'js/components/shared/progress-bar'
 import Accordion from 'js/components/shared/accordion'
 
 const StyledTasks = styled.div`
+  .content-panel:last-child {
+    border-bottom: none;
+  }
   
   p {
     font-size: 1.3em;
@@ -128,6 +132,9 @@ const EventChecklist = ({
           </Accordion>
         </ContentPanel>
       }
+      <ContentPanel title="Add a new task">
+        <NewTodoItem/>
+      </ContentPanel>
     </StyledTasks>
   )
 }

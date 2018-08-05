@@ -19,8 +19,13 @@ const eventChecklistReducer = (state=initialState.todo_items, action) => {
     case checklistTypes.EVENT_CHECKLIST_INDEX_COMPLETE:
       return {...state, data: action.payload.todo_items, loading: false}
 
+    case actionTypes.TODO_ITEM_CREATE_COMPLETE:
     case actionTypes.TODO_ITEM_UPDATE_COMPLETE:
-      data = updateItemInCollection(state.data, action.payload)
+      data = updateItemInCollection(state.data, action.payload, true)
+      return {...state, data, loading: false}
+
+    case actionTypes.TODO_ITEM_DELETE_COMPLETE:
+      data = state.data.filter(item => item.id != action.payload.id)
       return {...state, data, loading: false}
 
     case actionTypes.TODO_ITEM_COMMENT_CREATE_COMPLETE:
