@@ -16,7 +16,7 @@ import {
   mockGetEvents
 } from 'js/components/events/actions'
 
-import checkEqual, { isObjectEqual } from 'js/utils/checkEqual'
+import checkEqual  from 'js/utils/checkEqual'
 
 
 class CommunityContainer extends Component {
