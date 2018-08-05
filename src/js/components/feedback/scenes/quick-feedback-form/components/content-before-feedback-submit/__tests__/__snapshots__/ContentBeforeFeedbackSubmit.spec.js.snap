@@ -33,6 +33,15 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
       placeholder="Share your thoughts!"
     />
   </FormField>
+  <FormField>
+    <Checkbox
+      label="Keep me anonymous"
+      name="anonymous"
+      onClick={[Function]}
+      type="checkbox"
+      value="anonymous"
+    />
+  </FormField>
   <FormGroup>
     <FormField>
       <Button

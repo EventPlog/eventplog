@@ -34,6 +34,24 @@ export const updateTodoItem = (todo_item) => {
     requestMethod: 'PATCH'
   })
 }
+
+export const deleteTodoItem = (todo_item) => {
+  let actions = baseActions({
+    requestType: actionTypes.TODO_ITEM_DELETE_START,
+    receiveType: actionTypes.TODO_ITEM_DELETE_COMPLETE,
+    failType: actionTypes.TODO_ITEM_DELETE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: todo_item,
+    errorMessage: 'Something prevented updating this todo item. Please try again later or contact support.',
+    caller: 'update todo item',
+    route: `/api/v1/web/todo_items/${todo_item.id}`,
+    requestMethod: 'PATCH'
+  })
+}
+
 export const getTodoItems = (params) => {
   let actions = baseActions({
     requestType: actionTypes.TODO_ITEM_INDEX_START,
