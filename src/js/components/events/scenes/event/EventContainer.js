@@ -28,6 +28,9 @@ class EventContainer extends Component {
     this.getData()
   }
 
+  shouldComponentUpdate(nextProps) {
+    return !checkEqual(this.props, nextProps);
+  }
   componentDidUpdate(props, prevProps) {
     if (!checkEqual(props.match.params, this.props.match.params)) {
       this.getData()

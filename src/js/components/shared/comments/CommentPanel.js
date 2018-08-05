@@ -55,7 +55,8 @@ const StyledComment = styled.div`
     font-size: 0.9rem;
     text-transform: capitalize;
     color: #888;
-    
+    text-align: center;
+    overflow: hidden;
   }
   
   .full-name {
