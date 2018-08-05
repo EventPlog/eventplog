@@ -16,7 +16,7 @@ import {
   mockGetEvents
 } from 'js/components/events/actions'
 
-import checkEqual from 'js/utils/checkEqual'
+import checkEqual, { isObjectEqual } from 'js/utils/checkEqual'
 
 
 class CommunityContainer extends Component {
@@ -30,6 +30,16 @@ class CommunityContainer extends Component {
     this.setState({community: nextProps.community})
   }
 
+  componentDidUpdate(props, prevProps) {
+    if (!checkEqual(props.match.params, this.props.match.params)) {
+      this.getData()
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return !checkEqual(this.props, nextProps);
+  }
+
   handleChange = (e, attr) => {
     var elAttr = attr && attr.name ? attr : e
     this.setState({
@@ -38,12 +48,6 @@ class CommunityContainer extends Component {
         [elAttr.name]: elAttr.value
       }
     })
-  }
-
-  componentDidUpdate(props, prevProps) {
-    if (!checkEqual(props.match.params, this.props.match.params)) {
-      this.getData()
-    }
   }
 
   handleSubmit = () => {

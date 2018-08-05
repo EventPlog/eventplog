@@ -5,6 +5,7 @@ import { Icon, Form, Message } from 'semantic-ui-react'
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
 import Input from 'js/components/shared/input'
+import TextArea from 'js/components/shared/text-area'
 import Button from 'js/components/shared/button'
 import Members from 'js/components/shared/members'
 import PendingInvitationsList from './PendingInvitationsList'
@@ -23,6 +24,7 @@ const StyleEventOrganizers = styled.div`
 const EventOrganizers = ({
   event = {},
   role,
+  description,
   volunteers,
   organizers,
   recipient_emails,
@@ -58,6 +60,15 @@ const EventOrganizers = ({
                   value={role}
                   defaultValue={roleOptions[0].text}
                   onChange={(e, attr) => handleChange(attr.name, attr.value)}/>
+
+        </Form.Field>
+
+        <Form.Field>
+          <label>Personalized note (so your organizers know what the invitation is about).</label>
+          <TextArea onChange={(e) => handleChange(e.target.name, e.target.value)}
+                    name="description"
+                    value={description}
+                    placeholder="Hey Sarah, bringing you in here so we can collaborate better and document our planning process."/>
 
         </Form.Field>
         <Button onClick={handleSubmit}>
