@@ -7,7 +7,7 @@ import { inviteOrganizers, deleteInvitation } from '../../actions'
 import Validator from 'js/utils/validator'
 
 class EventOrganizersContainer extends Component {
-  state = { recipient_emails: '', role: 'volunteer' }
+  state = { recipient_emails: '', role: 'admin', description: '' }
 
   handleChange = (key, value) => {
     this.setState({[key]: value})
@@ -18,7 +18,8 @@ class EventOrganizersContainer extends Component {
     const trackable_id = this.props.event.id
     const trackable_type = 'Event'
     const details = `{"role": "${this.state.role}}`
-    const invite = {recipient_emails, details, trackable_id, trackable_type}
+    const description = this.state.description
+    const invite = {description, recipient_emails, details, trackable_id, trackable_type}
 
     const data = recipient_emails.map(email => ({email}))
     const validator = new Validator();
