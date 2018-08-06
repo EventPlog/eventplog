@@ -87,7 +87,7 @@ const EventChecklist = ({
   return (
     <StyledTasks className="backstage-tasks">
 
-      <ContentPanel title="Summary">
+      <ContentPanel className="padded" title="Summary">
         <ProgressBar percent={percentCompletion} />
         <div>
           <p>
@@ -132,7 +132,7 @@ const EventChecklist = ({
           </Accordion>
         </ContentPanel>
       }
-      <ContentPanel title="Add a new task">
+      <ContentPanel className="padded" title="Add a new task">
         <NewTodoItem/>
       </ContentPanel>
     </StyledTasks>

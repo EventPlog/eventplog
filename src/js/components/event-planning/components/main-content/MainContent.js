@@ -8,10 +8,23 @@ import TodoItems from 'js/components/todo-items';
 import ContentPanel from 'js/components/shared/content-panel'
 import ContentEditable from 'js/components/shared/content-editable'
 import Loading from 'js/components/shared/loading'
+import { media } from 'js/styles/mixins'
 
 const StyledEventPlanning = styled.div`
   .tasks .content-body {
     margin: 2rem 0;
+    
+    .ui.tab {
+      ${
+        media.phone`
+          padding: 0;
+          
+          .padded.content-panel {
+            padding: 1rem;
+          } 
+        `
+      }
+    }
   }
   
   ul {

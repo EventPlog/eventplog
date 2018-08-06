@@ -23,6 +23,7 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
         Facebook Developer Circle Lagos
       </Link>
     }
+    titleLink="/communities/1/"
   />
   <SidebarCard
     btn={
@@ -43,6 +44,7 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
         Google Developer Group
       </Link>
     }
+    titleLink="/communities/2/"
   />
   <SidebarCard
     btn={
@@ -63,6 +65,7 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
         ForLoop Lagos
       </Link>
     }
+    titleLink="/communities/3/"
   />
 </Sidebar>
 `;

@@ -26,7 +26,7 @@ const StyledEventComponent = styled.div`
     
     ${
       media.phone`  
-        margin: auto 1rem; 
+        margin: 1rem; 
       `
     }
   }

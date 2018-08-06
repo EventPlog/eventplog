@@ -14,7 +14,6 @@ import sampleEventImg from 'img/tech_is_in_you.png'
 const StyledSidebarCard = styled.div`
   margin: 2rem 0;
   background: white;
-  padding-bottom: 1rem;
   border: 1px solid ${colors.white};
   
   ${
@@ -49,7 +48,7 @@ const StyledSidebarCard = styled.div`
   
   .img-holder {
     width: 100%;
-    height: 150px;
+    height: 100px;
     background-size: cover;
     position: relative;
     
@@ -62,9 +61,15 @@ const StyledSidebarCard = styled.div`
     
     ${
       media.featurePhone`
-        height: 200px;
+        height: 100px;
       `
     }
+  }
+  
+  .title-link {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
   
   .card-title {
@@ -134,11 +139,13 @@ const SidebarCard = ({
   featured_image,
   btn = {},
   meta,
+  titleLink,
 }: itemType) => (
   <StyledSidebarCard className="sidebar-card">
     <div className="img-holder" style={{
-          backgroundImage: `url(${featured_image || sampleEventImg})`
+          backgroundImage: `url(${featured_image || "https://placeimg.com/640/480/tech"})`
         }}>
+      <Link className="title-link" to={titleLink || "#"} />
       {btn.text && <Button {...btn}>
                      {btn.text}
                    </Button>}

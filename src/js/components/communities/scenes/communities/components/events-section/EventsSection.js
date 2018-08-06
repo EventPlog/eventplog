@@ -35,8 +35,8 @@ const EventsSection = ({ events }) => {
           const description = community ? generateDescription(community) : '';
           const meta = generateMeta(event)
           return <Sidebar.Card
-            key={event.id}
-            {...{title, description, featured_image, meta}} />
+                    key={event.id}
+                    {...{title, description, featured_image, meta}} />
         }
       )}
     </Sidebar>

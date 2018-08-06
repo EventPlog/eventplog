@@ -65,6 +65,7 @@ const MainContent = ({
   getEvents,
   getEventsSuggestions,
   attendEvent,
+  followCommunity,
 }) => {
   if (loading) {
     return <Loading />
@@ -84,7 +85,7 @@ const MainContent = ({
         </ContentSection.Body>
 
         <ContentSection.Sidebar>
-          <CommunitiesSection {...{communities: communities_suggestions}} />
+          <CommunitiesSection {...{communities: communities_suggestions, followCommunity}} />
         </ContentSection.Sidebar>
 
       </ContentSection>

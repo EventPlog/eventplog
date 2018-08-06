@@ -57,7 +57,7 @@ export const inviteOrganizers = (invitation) => {
   return handleApiCall({
     actions,
     data: invitation,
-    errorMessage: 'Something prevented creating these invations',
+    errorMessage: 'Something prevented us from sending these invations',
     caller: 'new invitation',
     route: `/api/v1/web/invitations`,
     requestMethod: 'POST'

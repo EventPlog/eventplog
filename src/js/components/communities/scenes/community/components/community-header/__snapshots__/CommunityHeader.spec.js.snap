@@ -11,12 +11,17 @@ exports[`CommunityHeader should render correctly 1`] = `
     >
       <div>
         <h3 />
-        <small />
       </div>
     </Link>
     <div
       className="right-pull"
-    />
+    >
+      <Button
+        onClick={[Function]}
+      >
+        Follow
+      </Button>
+    </div>
   </div>
   <div
     className="nav-holder"

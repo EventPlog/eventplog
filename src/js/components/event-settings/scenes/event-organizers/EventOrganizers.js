@@ -32,11 +32,18 @@ const EventOrganizers = ({
   handleDelete,
   handleSubmit,
   error,
+  success,
   loading,
 }) =>
   <StyleEventOrganizers>
     <ContentPanel title="Add organizers">
-      <Form loading={loading} error={!!error}>
+      <Form loading={loading} success={success} error={!!error}>
+
+      <Message
+        success
+        header="Yay!"
+        content={success}
+      />
 
       <Message
         error
@@ -71,7 +78,7 @@ const EventOrganizers = ({
                     placeholder="Hey Sarah, bringing you in here so we can collaborate better and document our planning process."/>
 
         </Form.Field>
-        <Button onClick={handleSubmit}>
+        <Button disabled={!recipient_emails} onClick={handleSubmit}>
           Send Invitation
         </Button>
       </Form>

@@ -16,7 +16,7 @@ const eventsReducer = (state=initialState.events, action) => {
       return {...state, error: action.payload, loading: false }
 
     case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:
-      data = updateItemInCollection(state.data, action.payload)
+      data = state.data.filter(event => event.id != action.payload.id)
       return {...state, data, loading: false}
 
     default:

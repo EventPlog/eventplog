@@ -123,9 +123,9 @@ const CommentPanel = ({
           <div className="full-name">
             {`${display_name}`}
           </div>
-          <div className="role">
-            {community_role || 'Member'}
-          </div>
+          {community_role && <div className="role">
+                               {community_role}
+                             </div>}
         </div>}
       </div>
       <div className="comment">

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 // internal
 import sampleCommunityImg from 'img/homepage-bg.JPG'
@@ -31,8 +32,9 @@ const StyledMainContentCard = styled.div`
       media.phone`
         margin-bottom: 1rem;
         width: 100%;
-        height: 200px;
+        height: 100px;
         background-size: cover;
+        background: ${props => props.theme.gray}
       `
     }
   }
@@ -138,7 +140,13 @@ const StyledMainContentCard = styled.div`
       `
     } 
   }
-  
+   
+  .title-link {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+   
 `
 
 const MainContentCard = ({
@@ -147,12 +155,14 @@ const MainContentCard = ({
   featured_image,
   showButton,
   btn = {},
-  meta
+  meta,
+  titleLink,
 }) => (
   <StyledMainContentCard className="community-card">
     <div className="img-holder" style={{
               backgroundImage: `url(${featured_image || sampleCommunityImg})`
             }}>
+      <Link className="title-link" to={titleLink || "#"} />
       {showButton &&
         <Button {...btn} className="img-btn hidden-md hidden-lg">
           {btn.text}

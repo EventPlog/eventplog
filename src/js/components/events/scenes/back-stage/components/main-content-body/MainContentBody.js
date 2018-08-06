@@ -23,6 +23,12 @@ const StyledMainContent = styled.div`
     position: absolute;
     width: 100%;
     background-size: cover;
+    
+    ${
+      media.phone`
+        max-height: 250px;
+      `
+    }
   }
   
   .container {

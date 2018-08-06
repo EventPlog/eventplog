@@ -39,9 +39,9 @@ class MainContentContainer extends Component {
   }
 
   getData() {
-    this.props.getCommunities({page: 1, per_page: 5})
-    this.props.getCommunitiesSuggestions({page: 1, per_page: 5})
-    this.props.getEventsSuggestions({page: 1, per_page: 2})
+    this.props.getCommunities({page: 1, per_page: 10})
+    this.props.getCommunitiesSuggestions({page: 1, per_page: 10})
+    this.props.getEventsSuggestions({page: 1, per_page: 5})
   }
 
   getProps = () => ({

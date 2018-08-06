@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Comments from 'js/components/shared/comments'
 import TaskMeta from '../task-meta';
 import ContentPanel from 'js/components/shared/content-panel'
-import { media } from 'js/styles/mixins'
+import { maxMedia } from 'js/styles/mixins'
 import AddComment from 'js/components/shared/comments/add-comment'
 import Loading from 'js/components/shared/loading'
 import ContentEditable from 'js/components/shared/content-editable'
@@ -48,6 +48,13 @@ const StyledTodoItem = styled.div`
   .task-meta {
     margin: 2rem 0 4rem;
     
+    ${
+      maxMedia.tablet`
+        flex-direction: column;
+        padding: 0;
+      `
+    }
+    
     .item {
       padding: 1rem;
       box-shadow: none;
@@ -58,6 +65,23 @@ const StyledTodoItem = styled.div`
       
       &:last-child {
         border-radius: 0.5rem 0 0 0.5rem;
+      }
+      
+      ${
+        maxMedia.tablet`
+          padding: 0 1rem;
+        
+          &:first-child {
+            padding-top: 1rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+          }
+          
+          &:last-child {
+            padding: 1rem;
+            border-radius: 0 0 0.5rem 0.5rem ;
+          }
+        `
+
       }
     }
   }
