@@ -32,7 +32,7 @@ const StyledContentPanel = styled.div`
   
 `
 
-const ContentPanel = function({ className, title, children }) {
+const ContentPanel = function({ className = '', title, children }) {
   return (
     <StyledContentPanel className={`${className} content-panel`}>
       <h5 className="content-header">{ title }</h5>

@@ -121,6 +121,23 @@ export const followCommunity = (community) => {
   })
 }
 
+export const unFollowCommunity = (community) => {
+  let actions = baseActions({
+    requestType: actionTypes.COMMUNITY_FOLLOW_DELETE_START,
+    receiveType: actionTypes.COMMUNITY_FOLLOW_DELETE_COMPLETE,
+    failType: actionTypes.COMMUNITY_FOLLOW_DELETE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: community,
+    errorMessage: 'Something prevented us getting event suggestions.',
+    caller: 'post follow community',
+    route: `/api/v1/web/communities/${community.id}/user_communities/${community.id}`,
+    requestMethod: 'DELETE'
+  })
+}
+
 // =========== MOCKS ===============
 
 export const mockGetCommunities = () => {

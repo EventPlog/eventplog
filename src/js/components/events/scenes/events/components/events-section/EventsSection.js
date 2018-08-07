@@ -68,14 +68,13 @@ const EventsSection = ({
           const description = generateDescription(event.community)
           const meta = generateMeta(event)
           const btn = {onClick: () => attendEvent(event), text: 'interested'}
+          const titleLink = `/communities/${event.community_id}/events/${event.id}`
 
           return (
-            <Link to={`/communities/${event.community_id}/events/${event.id}`}>
-              <ContentPanel.Card
-                key={event.id}
-                {...{title, description, featured_image, meta, btn}}
-                showButton={!event.is_attending} />
-            </Link>
+            <ContentPanel.Card
+              key={event.id}
+              {...{title, description, featured_image, meta, btn, titleLink}}
+              showButton={!event.is_attending} />
           )
         }
       )}

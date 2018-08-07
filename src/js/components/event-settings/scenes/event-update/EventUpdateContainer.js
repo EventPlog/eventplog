@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+
 class EventUpdateContainer extends Component {
   state = { event: {} }
 

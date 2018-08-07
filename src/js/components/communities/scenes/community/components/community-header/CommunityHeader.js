@@ -1,4 +1,5 @@
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { lighten } from 'polished'
@@ -8,7 +9,6 @@ import Nav from 'js/components/shared/nav'
 import colors from 'js/styles/theme/colors'
 import { media } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
-import { Icon } from 'semantic-ui-react'
 
 // images
 import defaultLogo from 'img/react-logo.png'
@@ -62,7 +62,13 @@ const StyledHeader = styled.div`
     
     small {
       color: ${lighten(-0.5, colors.gray)};
-    }
+      
+      ${
+        media.tablet`
+          display: none;
+        `
+        }
+      }
   }
   
   ul {
@@ -94,9 +100,6 @@ const StyledHeader = styled.div`
     }
   }
   
-  .edit-community {
-  }
-  
   .right-pull {
     align-self: center;
     
@@ -115,6 +118,12 @@ const StyledHeader = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
+    ${
+      media.tablet`
+        justify-content: flex-start;
+      `
+    }
   }
   
   .hashtags {
@@ -125,7 +134,9 @@ const StyledHeader = styled.div`
 
 const CommunityHeader = ({
   hideMenu = false,
-  community = {}
+  community = {},
+  followCommunity,
+  unFollowCommunity,
 }) => (
   <StyledHeader>
     <div className="app-container community-logo">
@@ -133,7 +144,7 @@ const CommunityHeader = ({
         {community.logo && <img src={community.logo} />}
         <div>
           {!community.logo && <h3>{community.display_name}</h3>}
-          {!community.logo && <small>{community.description}</small>}
+          {community.description && <small>{community.description}</small>}
           {community.topic_interests &&
             <div className="hashtags-holder">
               {community.topic_interests.map(topic =>
@@ -143,12 +154,24 @@ const CommunityHeader = ({
         </div>
       </Link>
       <div className="right-pull">
-        {community.is_owner && <Button.Link
-                                  className="edit-community"
-                                  activeClassName="hidden"
-                                  to={`/communities/${community.id}/edit`}>
-                                  Edit
-                                </Button.Link>}
+        {community.is_owner
+          ? <Button.Link
+              className="edit-community"
+              activeClassName="hidden"
+              to={`/communities/${community.id}/edit`}>
+              Edit
+            </Button.Link>
+          : community.following
+            ? <Button
+                onClick={() => unFollowCommunity(community)}>
+                <Icon color='green' name='checkmark' size='large' />
+                Following
+              </Button>
+            : <Button
+                onClick={() => followCommunity(community)}>
+                Follow
+              </Button>
+        }
       </div>
     </div>
 

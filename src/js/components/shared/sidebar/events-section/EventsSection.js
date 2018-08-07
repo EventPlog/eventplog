@@ -38,15 +38,14 @@ const EventsSection = ({
           const title = generateTitle(event);
           const description = community ? generateDescription(community) : '';
           const meta = generateMeta(event)
+          const titleLink = `/communities/${event.community_id}/events/${event.id}`
           const btn = event.is_attending
                       ? {}
                       : {onClick: () => attendEvent(event), text: 'Interested'}
           return (
-            <Link to={`/communities/${event.community_id}/events/${event.id}`}>
-              <Sidebar.Card key={event.id}
-                             {...{title, description,
-                             featured_image, meta, btn}} />
-            </Link>
+            <Sidebar.Card key={event.id}
+                           {...{title, description, titleLink,
+                           featured_image, meta, btn}} />
           )
         }
       )}
