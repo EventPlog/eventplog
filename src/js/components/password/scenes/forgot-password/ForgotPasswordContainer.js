@@ -23,7 +23,7 @@ export class ForgotPasswordContainer extends Component {
     this.props.submitEmail({email: this.state.email}).then(res => {
       this.setState({loading: false, emailSubmitted: true})
     })
-      .catch(error => this.setState({loading: false, error}))
+      .catch(error => {this.setState({loading: false, error})} )
   }
 
   getProps = () => ({
