@@ -143,7 +143,7 @@ const EventUpdate = ({
             </Button>
 
             <Button.Link className="cancel" to={`/communities/${community.id}`}>
-              Cancel
+              Back to Community Page
             </Button.Link>
           </Form.Group>
         </Form>
