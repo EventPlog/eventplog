@@ -9,6 +9,8 @@ const communityReducer = (state=initialState.community, action) => {
 
     case actionTypes.COMMUNITY_SHOW_COMPLETE:
     case actionTypes.COMMUNITY_UPDATE_COMPLETE:
+    case actionTypes.COMMUNITY_FOLLOW_CREATE_COMPLETE:
+    case actionTypes.COMMUNITY_FOLLOW_DELETE_COMPLETE:
       return action.payload
 
     case actionTypes.COMMUNITY_SHOW_FAIL:

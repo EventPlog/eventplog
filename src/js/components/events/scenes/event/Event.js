@@ -51,6 +51,10 @@ const StyledEvent = styled.div`
       margin-top: 2rem;
     }
   }
+  
+  .btn-inline {
+    display: inline-block;
+  }
 `
 
 const Event = ({
@@ -117,7 +121,7 @@ const Event = ({
               )}
             </Members>
             {noOrganizersYet && isStakeHolder &&
-              <Button.Link to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>
+              <Button.Link className="btn-inline" to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>
                 Go backstage to add organizers
               </Button.Link>}
           </ContentPanel>

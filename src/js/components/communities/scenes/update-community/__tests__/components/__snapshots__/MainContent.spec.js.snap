@@ -144,7 +144,7 @@ exports[`main content - New Community component should render correctly 1`] = `
           className="cancel"
           to="/communities/undefined"
         >
-          Cancel
+          Back to Community Page
         </Component>
       </FormGroup>
     </Form>

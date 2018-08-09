@@ -18,7 +18,7 @@ const styles = css`
   p {
     font-size: 1em;
     font-weight: 500;
-    
+    word-break: break-word; 
   }
   
   ul {

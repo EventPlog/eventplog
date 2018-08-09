@@ -38,10 +38,11 @@ const CommunitiesSection = ({
           const title = generateTitle(community);
           const description = generateDescription(community.interest)
           const meta = generateMeta(community)
+          const titleLink = `/communities/${community.id}/`
           const btn = community.following
                         ? {}
-                        : {onClick: () => {followCommunity(community)}, text: 'Follow'}
-          return <Sidebar.Card key={community.id} {...{title, description, featured_image, btn, meta}} />
+                        : {onClick: () => followCommunity(community), text: 'Follow'}
+          return <Sidebar.Card key={community.id} {...{title, description, featured_image, btn, meta, titleLink}} />
         }
       )}
     </Sidebar>

@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux'
 import {
   getCommunity,
   updateCommunity,
+  followCommunity,
+  unFollowCommunity,
   getCommunitiesSuggestions,
 } from '../../actions'
 
@@ -75,7 +77,7 @@ class CommunityContainer extends Component {
     if (community_id && id) { return }
     this.props.getEvents({ community_id: sureCommunityId , page: 1, per_page: 5})
     this.props.getEventsSuggestions({ community_id: sureCommunityId, page: 1, per_page: 5 })
-    this.props.getCommunitiesSuggestions({page: 1, per_page: 2})
+    this.props.getCommunitiesSuggestions({page: 1, per_page: 3})
   }
 
   getEvents = (e, meta) => {
@@ -123,6 +125,8 @@ const mapDispatchToProps = (dispatch) => {
     attendEvent,
     getCommunity,
     updateCommunity,
+    followCommunity,
+    unFollowCommunity,
     getCommunitiesSuggestions,
   }, dispatch)
 }
