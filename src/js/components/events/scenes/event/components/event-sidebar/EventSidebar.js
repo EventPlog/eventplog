@@ -8,7 +8,7 @@ import ContentSection from 'js/components/shared/content-section'
 const EventSidebar = ({
   announcements,
   community,
-  events_suggestions,
+  past_events,
   attendEvent
 }) => {
 
@@ -28,8 +28,8 @@ const EventSidebar = ({
           </p>
         </div>
       </Sidebar>}
-      <Sidebar.Events title={`Other events from ${community.name}`}
-        {...{events: events_suggestions, attendEvent}} />
+      <Sidebar.Events title={`Past events from ${community.name}`}
+        {...{events: past_events, attendEvent}} />
     </ContentSection.Sidebar>
   )
 }
