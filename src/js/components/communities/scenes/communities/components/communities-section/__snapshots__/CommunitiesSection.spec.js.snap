@@ -26,7 +26,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
           </li>
           <li>
             2
-             upcoming event
+             upcoming events
           </li>
           <li>
             <span
@@ -81,7 +81,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
           </li>
           <li>
             2
-             upcoming event
+             upcoming events
           </li>
           <li>
             <span
@@ -131,7 +131,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
           </li>
           <li>
             2
-             upcoming event
+             upcoming events
           </li>
           <li>
             <span
