@@ -19,6 +19,23 @@ export const getEvent = (eventId) => {
   });
 }
 
+export const getPastEvents = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_PAST_INDEX_START,
+    receiveType: actionTypes.EVENT_PAST_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_PAST_INDEX_FAIL,
+  });
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from retrieving an event',
+    caller: 'leads',
+    route: `/api/v1/web/communities/${params.community_id}/events/past`,
+    requestMethod: 'GET'
+  });
+}
+
 export const mockGetEvent = (eventId) => {
   return (dispatch) => {
     dispatch({ type: actionTypes.EVENT_SHOW_START })
