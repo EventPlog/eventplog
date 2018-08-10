@@ -20,7 +20,7 @@ export const generateMeta = (community = {}) => (
       {community.no_of_members} members
     </li>
     <li>
-      {community.no_of_upcoming_events} upcoming event
+      {community.no_of_upcoming_events} upcoming events
     </li>
     <li>
       <span className="meta-label">Interests</span>: {community.interests && community.interests.map(interest => <span className="hashtag">{interest}</span> )}
