@@ -9,8 +9,6 @@ const eventsReducer = (state=initialState.past_events, action) => {
       return {...state, loading: true }
 
     case actionTypes.EVENT_PAST_INDEX_COMPLETE:
-      // replacing the data entirely with new ones from backend
-      // data = [...state.data, ...action.payload.data]
       return {...state, ...action.payload, loading: false}
 
     case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:

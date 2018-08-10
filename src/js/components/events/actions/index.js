@@ -29,7 +29,7 @@ export const getPastEvents = (params) => {
   return handleApiCall({
     actions,
     data: params,
-    errorMessage: 'Something prevented us from retrieving an event',
+    errorMessage: 'Something prevented us from retrieving past events.',
     caller: 'leads',
     route: `/api/v1/web/communities/${params.community_id}/events/past`,
     requestMethod: 'GET'

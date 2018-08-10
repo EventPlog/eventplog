@@ -49,12 +49,12 @@ exports[`Event should render correctly 1`] = `
     </ContentBody>
     <EventSidebar
       community={Object {}}
-      events_suggestions={Array []}
+      past_events={Object {}}
     />
     <FullRow>
       <ContentBody>
         <ContentPanel
-          title="Ask the organizers/Start a discussion"
+          title="Ask the organizers"
         >
           <Comments />
           <Component
