@@ -62,7 +62,7 @@ const Event = ({
   organizers,
   community,
   activeLink,
-  events_suggestions = [],
+  past_events = {},
   handleChange,
   handleSubmit,
   attendEvent,
@@ -130,12 +130,12 @@ const Event = ({
 
         <EventSidebar  {...{community,
                             announcements,
-                            events_suggestions,
+                            past_events,
                             attendEvent}}/>
 
         <ContentSection.FullRow>
           <ContentSection.Body>
-            <ContentPanel title="Ask the organizers/Start a discussion">
+            <ContentPanel title="Ask the organizers">
               <Comments {...{comments, createComment, updateComment }} />
 
               <AddComment placeholder="What would you like to ask/suggest?"

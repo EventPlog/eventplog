@@ -6,17 +6,13 @@ import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
 
 import {
-  getCommunitiesSuggestions,
-} from 'js/components/communities/actions'
-
-import {
   getEvent,
   updateEvent,
   createComment,
   updateComment,
   createAnnouncement,
   updateAnnouncement,
-  getEventsSuggestions,
+  getPastEvents,
   attendEvent,
 } from '../../actions'
 
@@ -60,8 +56,7 @@ class EventContainer extends Component {
     if (!this.props.event || this.props.event.id != id) {
       this.props.getEvent(id).then(event => this.setState({event}))
     }
-    this.props.getEventsSuggestions({id, community_id, page: 1, per_page: 2})
-    // this.props.getCommunitiesSuggestions({id: community_id, page: 1, per_page: 2})
+    this.props.getPastEvents({id, community_id, page: 1, per_page: 3})
   }
 
   getProps = () => ({
@@ -78,7 +73,7 @@ class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {event = {}, events_suggestions = []} = state.events
+  const {event = {}, past_events = {}} = state.events
   const { organizers } = state.organizers
   const {link_color } = event;
   const { community, communities_suggestions } = state.communities
@@ -87,7 +82,7 @@ const mapStateToProps = (state, ownProps) => {
     event,
     community,
     organizers,
-    events_suggestions,
+    past_events,
     communities_suggestions,
     currentUser: Auth.currentUser(),
   }
@@ -96,8 +91,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvent,
-    getEventsSuggestions,
-    getCommunitiesSuggestions,
+    getPastEvents,
     updateEvent,
     attendEvent,
     createComment,
