@@ -12,7 +12,7 @@ import {
 class EventUpdateContainer extends Component {
   state = { activeIndex: -1, event_checklist: {} }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getData()
   }
 

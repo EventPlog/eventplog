@@ -4,10 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import {
-  getCommunity,
-  updateCommunity,
   followCommunity,
-  unFollowCommunity,
   getCommunitiesSuggestions,
 } from '../../actions'
 
@@ -15,14 +12,9 @@ import checkEqual  from 'js/utils/checkEqual'
 
 
 class CommunityContainer extends Component {
-  state = {community: {}}
 
   componentDidMount(props) {
     this.getData()
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    return {community: nextProps.community}
   }
 
   componentDidUpdate(props, prevProps) {
@@ -35,25 +27,6 @@ class CommunityContainer extends Component {
     return !checkEqual(this.props, nextProps);
   }
 
-  handleChange = (e, attr) => {
-    var elAttr = attr && attr.name ? attr : e
-    this.setState({
-      community: {
-        ...this.state.community,
-        [elAttr.name]: elAttr.value
-      }
-    })
-  }
-
-  handleSubmit = () => {
-    this.setState({ loading: true })
-    this.props.updateCommunity(this.state.community)
-      .then(community => {
-        this.setState({community, loading: false, communityCreated: true})
-      })
-      .catch(error => this.setState({loading: false, error}))
-  }
-
   getParams = () => {
     return (matchPath(this.props.location.pathname, '/communities/:community_id/events/:id') || this.props.match).params
   }
@@ -62,17 +35,16 @@ class CommunityContainer extends Component {
     const {community_id, id} = this.getParams()
     const sureCommunityId = community_id || id
 
-    if(!this.props.community || this.props.community.id != sureCommunityId) {
-      this.props.getCommunity(community_id || id)
-    }
-    // this.props.getCommunitiesSuggestions({page: 1, per_page: 3})
+    this.props.getCommunitiesSuggestions({
+      community_id: sureCommunityId,
+      page: 1,
+      per_page: 3
+    })
   }
 
   getProps = () => ({
     ...this.props,
     ...this.state,
-    handleChange: this.handleChange,
-    handleSubmit: this.handleSubmit,
   })
 
   render () {
@@ -81,20 +53,17 @@ class CommunityContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {community = {}, communities = [], communities_suggestions} = state.communities
+  const {community = {}, communities_suggestions, loading} = state.communities
 
   return {
     activeLink: community.link_color,
-    community,
+    communities_suggestions,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getCommunity,
-    updateCommunity,
     followCommunity,
-    unFollowCommunity,
     getCommunitiesSuggestions,
   }, dispatch)
 }

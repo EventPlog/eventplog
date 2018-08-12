@@ -7,15 +7,9 @@ import { bindActionCreators } from 'redux'
 // ---------- Internal -----------
 
 import {
-  getEvents,
   getEventsSuggestions,
   attendEvent,
 } from '../../actions'
-
-import {
-  followCommunity,
-  getCommunitiesSuggestions
-} from 'js/components/communities/actions'
 
 import checkEqual from 'js/utils/checkEqual'
 
@@ -33,11 +27,17 @@ class MainContentContainer extends Component {
   }
 
   getData() {
-    this.props.getCommunitiesSuggestions({page: 1, per_page: 5});
+    this.props.getEventsSuggestions({page: 1, per_page: 10});
+  }
+
+  getEventsSuggestions = (e, meta) => {
+    const { per_page } = this.props.events_suggestions.meta || {}
+    this.props.getEventsSuggestions({page: meta.activePage, per_page})
   }
 
   getProps = () => ({
     ...this.props,
+    getEventsSuggestions: this.getEventsSuggestions,
   })
 
   render () {
@@ -46,19 +46,16 @@ class MainContentContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {communities_suggestions = {}} = state.communities
+  const {events_suggestions = {}} = state.events
   return {
-    communities_suggestions,
+    events_suggestions,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getEvents,
-    followCommunity,
     attendEvent,
     getEventsSuggestions,
-    getCommunitiesSuggestions,
   }, dispatch)
 }
 

@@ -18,7 +18,7 @@ import {
 import checkEqual from 'js/utils/checkEqual'
 
 class MainContentContainer extends Component {
-  componentWillMount(props) {
+  componentDidMount(props) {
     this.getData()
   }
 
@@ -41,7 +41,7 @@ class MainContentContainer extends Component {
   getData() {
     this.props.getCommunities({page: 1, per_page: 10})
     this.props.getCommunitiesSuggestions({page: 1, per_page: 10})
-    this.props.getEventsSuggestions({page: 1, per_page: 5})
+    this.props.getEventsSuggestions({page: 1, per_page: 3})
   }
 
   getProps = () => ({
