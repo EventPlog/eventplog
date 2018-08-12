@@ -59,7 +59,14 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   <script>
-    window.setTimeout(() => document.getElementById('loading-text').innerText = 'Something awesome is cooking...', 3000)
+    const wiseWords = [
+      'A single tree can never make a forest - Some wise men.',
+      'Alone we go fast. Together, we go far - An African Proverb.',
+      'Walk with faith, hope and love. But the greatest of these is love.',
+      'Treat everyone around you as you would family. And watch them become family.'
+    ]
+    const randIndex = Math.round(Math.random() * wiseWords.length - 1)
+    window.setTimeout(() => document.getElementById('loading-text').innerText = wiseWords[randIndex], 3000)
   </script>
   </body>
 </html>
