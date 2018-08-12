@@ -11,6 +11,10 @@ import ContentPanelCard from './ContentPanelCard'
 const StyledContentPanel = styled.div`
   .content-header {
     border-bottom: 1px solid ${props => lighten(0.2, props.theme.blue)};
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    margin: 0 1rem;
     padding-bottom: 5px;
   }
   
@@ -35,7 +39,7 @@ const StyledContentPanel = styled.div`
 const ContentPanel = function({ className = '', title, children }) {
   return (
     <StyledContentPanel className={`${className} content-panel`}>
-      <h5 className="content-header">{ title }</h5>
+      {title && <h5 className="content-header">{ title }</h5>}
       <div className="content-body">
         { children }
       </div>

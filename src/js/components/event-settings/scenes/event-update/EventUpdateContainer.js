@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 class EventUpdateContainer extends Component {
   state = { event: {} }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({event: this.props.event})
   }
 

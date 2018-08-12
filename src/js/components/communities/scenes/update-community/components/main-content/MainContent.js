@@ -85,6 +85,7 @@ const EventUpdate = ({
             <label>One-line Description</label>
             <Input name="description"
                    value={description}
+                   maxLength={70}
                    placeholder='An community of awesome people' onChange={handleChange}/>
           </Form.Field>
 

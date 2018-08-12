@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
-import EventsSection from 'js/components/events/scenes/events/components/events-section'
-import CommunitiesSection from 'js/components/events/scenes/events/components/communities-section'
 import ContentSection from 'js/components/shared/content-section'
+import CommunityEvents from 'js/components/communities/scenes/community-events'
+import CommunitySidebar from 'js/components/communities/scenes/community-sidebar'
 import Loading from 'js/components/shared/loading'
 
 const StyledMainContent = styled.div`
@@ -59,13 +59,6 @@ const StyledMainContent = styled.div`
 
 const MainContent = ({
   loading,
-  events = [],
-  events_suggestions = [],
-  communities_suggestions = [],
-  getEvents,
-  getEventsSuggestions,
-  attendEvent,
-  followCommunity,
 }) => {
   if (loading) {
     return <Loading />
@@ -75,17 +68,11 @@ const MainContent = ({
       <ContentSection className="community-event">
 
         <ContentSection.Body>
-          <EventsSection title="Events" {...{events}}
-                         getEvents={getEvents}
-                         attendEvent={attendEvent} />
-          <EventsSection title="Similar events from other communities"
-                         events={events_suggestions}
-                         getEvents={getEventsSuggestions}
-                         attendEvent={attendEvent} />
+          <CommunityEvents />
         </ContentSection.Body>
 
         <ContentSection.Sidebar>
-          <CommunitiesSection {...{communities: communities_suggestions, followCommunity}} />
+          <CommunitySidebar  />
         </ContentSection.Sidebar>
 
       </ContentSection>

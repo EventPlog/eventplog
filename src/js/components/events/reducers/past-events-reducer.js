@@ -11,11 +11,7 @@ const eventsReducer = (state=initialState.past_events, action) => {
     case actionTypes.EVENT_PAST_INDEX_COMPLETE:
       return {...state, ...action.payload, loading: false}
 
-    case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:
-      data = state.data.filter(event => event.id != action.payload.event_id)
-      return {...state, data, loading: false}
-
-    case actionTypes.EVENT_SUGGESTIONS_INDEX_FAIL:
+    case actionTypes.EVENT_PAST_INDEX_FAIL:
       return {loading: false, error: action.payload }
 
     default:

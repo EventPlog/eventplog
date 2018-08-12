@@ -1,27 +1,59 @@
 import React from 'react'
-import EventsSection from '../events-section'
+import styled, { css } from 'styled-components'
+
+//======== Internal Components =========
+import Tab from 'js/components/shared/tab'
 import ContentSection from 'js/components/shared/content-section'
+import UserEvents from 'js/components/events/scenes/user-events'
+import EventsSuggestions from 'js/components/events/scenes/events-suggestions'
 import Sidebar from 'js/components/shared/sidebar'
+import { media } from 'js/styles/mixins'
 
+const styles = css`
+  .ui.tab {
+    box-shadow: none;
+    border: 0;
+    padding: 1rem 0;
+    
+    .pagination.secondary.menu {
+       display: inline-flex;
+    }
+  }
+  
+  .content-header {
+    /*font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;*/
+    margin: 0 1rem;
+    letter-spacing: 0.01rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    
+      ${
+        media.phone`
+          margin: 0 0 2rem 0;
+        `
+      } 
+  }
+`
 
-const MainContent = ({
+export const MainContent = ({
   events = {},
-  events_suggestions = {},
   communities_suggestions = {},
   followCommunity,
-  getEvents,
-  getEventsSuggestions,
-  attendEvent,
+  className,
 }) => {
+
+  const getPanes = () => {
+    return [
+      {name: `My events`, content: UserEvents },
+      {name: `Suggestions`, content: EventsSuggestions },
+    ]
+  }
+
   return (
-    <ContentSection>
+    <ContentSection className={className}>
 
       <ContentSection.Body>
-        <EventsSection title="Events you're part of" {...{events, getEvents, attendEvent }} />
-        <EventsSection title="Events you may like"
-                       events={events_suggestions}
-                       getEvents={getEventsSuggestions}
-                       attendEvent={attendEvent} />
+        <Tab panes={getPanes()} />
       </ContentSection.Body>
 
       <ContentSection.Sidebar>
@@ -32,4 +64,4 @@ const MainContent = ({
   )
 }
 
-export default MainContent
+export default styled(MainContent)`${styles}`

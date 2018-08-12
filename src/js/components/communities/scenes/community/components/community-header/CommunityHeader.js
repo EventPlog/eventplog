@@ -144,7 +144,7 @@ const CommunityHeader = ({
         {community.logo && <img src={community.logo} />}
         <div>
           {!community.logo && <h3>{community.display_name}</h3>}
-          {community.description && <small>{community.description}</small>}
+          {community.description && <small>{community.description.substr(0, 70)}</small>}
           {community.topic_interests &&
             <div className="hashtags-holder">
               {community.topic_interests.map(topic =>
