@@ -11,35 +11,24 @@ import {
   getCommunitiesSuggestions,
 } from '../../actions'
 
-import {
-  getEvents,
-  getEventsSuggestions,
-  attendEvent,
-  mockGetEvents
-} from 'js/components/events/actions'
-
 import checkEqual  from 'js/utils/checkEqual'
 
 
 class CommunityContainer extends Component {
   state = {community: {}}
 
-  componentWillMount(props) {
+  componentDidMount(props) {
     this.getData()
   }
 
-  componentWillReceiveProps(nextProps, prevProps) {
-    this.setState({community: nextProps.community})
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {community: nextProps.community}
   }
 
   componentDidUpdate(props, prevProps) {
-    if (!checkEqual(props.match.params, this.props.match.params)) {
+    if (props.match.url !== this.props.match.url) {
       this.getData()
     }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return !checkEqual(this.props, nextProps);
   }
 
   handleChange = (e, attr) => {
@@ -72,22 +61,7 @@ class CommunityContainer extends Component {
     if(!this.props.community || this.props.community.id != sureCommunityId) {
       this.props.getCommunity(community_id || id)
     }
-
-    // return if we're in an event page. No need for suggestions
-    if (community_id && id) { return }
-    this.props.getEvents({ community_id: sureCommunityId , page: 1, per_page: 5})
-    this.props.getEventsSuggestions({ community_id: sureCommunityId, page: 1, per_page: 5 })
-    this.props.getCommunitiesSuggestions({page: 1, per_page: 3})
-  }
-
-  getEvents = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
-    this.props.getEvents({page: meta.activePage, per_page})
-  }
-
-  getEventsSuggestions = (e, meta) => {
-    const { per_page } = this.props.events_suggestions.meta || {}
-    this.props.getEventsSuggestions({page: meta.activePage, per_page})
+    // this.props.getCommunitiesSuggestions({page: 1, per_page: 3})
   }
 
   getProps = () => ({
@@ -95,8 +69,6 @@ class CommunityContainer extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
-    getEvents: this.getEvents,
-    getEventsSuggestions: this.getEventsSuggestions
   })
 
   render () {
@@ -105,24 +77,16 @@ class CommunityContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {events = [], events_suggestions = [], loading} = state.events
   const {community = {}, communities = [], communities_suggestions} = state.communities
 
   return {
     activeLink: community.link_color,
-    loading,
     community,
-    communities_suggestions,
-    events,
-    events_suggestions
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getEvents,
-    getEventsSuggestions,
-    attendEvent,
     getCommunity,
     updateCommunity,
     followCommunity,

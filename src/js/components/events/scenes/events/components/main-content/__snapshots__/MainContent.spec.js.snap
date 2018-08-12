@@ -3,13 +3,19 @@
 exports[`MainContent should render correctly 1`] = `
 <ContentSection>
   <ContentBody>
-    <EventsSection
-      events={Object {}}
-      title="Events you're part of"
-    />
-    <EventsSection
-      events={Object {}}
-      title="Events you may like"
+    <TmnTab
+      panes={
+        Array [
+          Object {
+            "content": [Function],
+            "name": "My events",
+          },
+          Object {
+            "content": [Function],
+            "name": "Suggestions",
+          },
+        ]
+      }
     />
   </ContentBody>
   <ContentSidebar>

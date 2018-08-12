@@ -80,7 +80,7 @@ const EventsSection = ({
       )}
       {shouldDisplayData && data.length < 1 && <p>No events to display today ...</p>}
       {
-        meta && meta.total_pages && data.length > 0
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
           ? <Pagination totalPages={meta.total_pages}
                         activePage={meta.current_page}
                         onPageChange={getEvents} />

@@ -8,19 +8,10 @@ exports[`Communities::Community::MainContent should render correctly 1`] = `
     className="community-event"
   >
     <ContentBody>
-      <EventsSection
-        events={Array []}
-        title="Events"
-      />
-      <EventsSection
-        events={Array []}
-        title="Similar events from other communities"
-      />
+      <Component />
     </ContentBody>
     <ContentSidebar>
-      <CommunitiesSection
-        communities={Array []}
-      />
+      <Component />
     </ContentSidebar>
   </ContentSection>
 </div>

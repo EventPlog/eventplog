@@ -1,7 +1,7 @@
 import React from 'react';
-import EventsSection from 'js/components/events/scenes/events/components/events-section'
-import CommunitiesSection from 'js/components/events/scenes/events/components/communities-section'
 import ContentSection from 'js/components/shared/content-section'
+import CommunityEvents from 'js/components/communities/scenes/community-events'
+import CommunitySidebar from 'js/components/communities/scenes/community-sidebar'
 import Loading from 'js/components/shared/loading'
 import MainContent from './MainContentBody'
 import { shallow, mount } from 'enzyme';
@@ -15,28 +15,11 @@ describe('Communities::Community::MainContent', () => {
     const wrapper = shallow( <MainContent/> );
 
     expect(wrapper).toMatchSnapshot()
-    expect(wrapper.find(EventsSection).length).toEqual(2)
+    expect(wrapper.find(CommunityEvents).length).toEqual(1)
     expect(wrapper.find(ContentSection).length).toEqual(1)
     expect(wrapper.find(ContentSection.Body).length).toEqual(1)
     expect(wrapper.find(ContentSection.Sidebar).length).toEqual(1)
-    expect(wrapper.find(CommunitiesSection).length).toEqual(1)
-  })
-
-  it('should pass the right props to EventsSection', () => {
-    const wrapper = shallow( <MainContent {...{events, events_suggestions, communities_suggestions}} /> );
-
-    // retrieve child props instances
-    const eventSectionInstances = wrapper.find(EventsSection)
-    const communitySectionInstances = wrapper.find(CommunitiesSection)
-
-    // assert titles
-    expect(eventSectionInstances.at(0).props().title).toEqual('Events')
-    expect(eventSectionInstances.at(1).props().title).toEqual('Similar events from other communities')
-
-    // assert other props
-    expect(eventSectionInstances.at(0).props().events).toEqual(events)
-    expect(eventSectionInstances.at(1).props().events).toEqual(events_suggestions)
-    expect(communitySectionInstances.at(0).props().communities).toEqual(communities_suggestions)
+    expect(wrapper.find(CommunitySidebar).length).toEqual(1)
   })
 
   it('should show the loading component when loading data', () => {

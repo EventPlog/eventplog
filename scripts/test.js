@@ -23,8 +23,8 @@ if (!process.env.CI && argv.indexOf('--coverage') < 0) {
   argv.push('--watch');
 }
 
+argv.push('--maxWorkers=3')
 if (process.env.CI) {
-  argv.push('--maxWorkers=3')
 }
 
 

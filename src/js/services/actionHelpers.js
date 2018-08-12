@@ -71,7 +71,7 @@ const handleApiCall = ({
         .catch((error = {}) => {
           // dispatch(actions.fail(error))
           console.log(error)
-          dispatch(actions.fail(`${errorMessage} ${error.error}`))
+          dispatch(actions.fail(`${errorMessage} ${error.error || ''}`))
           throw(error.error || errorMessage)
           // errorMessage && dispatch(receiveError(errorMessage, caller))
         });

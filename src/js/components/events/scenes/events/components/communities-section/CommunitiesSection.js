@@ -26,14 +26,11 @@ const CommunitiesSection = ({
   communities = {data: [], meta: {}},
   followCommunity
 }) => {
-  if (communities.loading) {
-    return <Loading />
-  }
-  if (communities.error) {
-    return <Error msg={communities.error} />
-  }
+  const {loading, error, data = []} = communities
   return (
     <Sidebar title="Communities suggestions">
+      {loading && <Loading />}
+      {error && <Error msg={communities.error} />}
       {communities.data && communities.data.map(({featured_image, ...community}) => {
           const title = generateTitle(community);
           const description = generateDescription(community.interest)

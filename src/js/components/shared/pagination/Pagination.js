@@ -3,6 +3,7 @@ import { Pagination } from 'semantic-ui-react'
 
 const PaginationComponent = (props) => (
   <Pagination
+    className="pagination"
     defaultActivePage={1}
     firstItem={null}
     lastItem={null}
