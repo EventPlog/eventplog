@@ -31,10 +31,6 @@ class CommunityContainer extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
-    return !checkEqual(this.props, nextProps);
-  }
-
   handleChange = (e, attr) => {
     var elAttr = attr && attr.name ? attr : e
     this.setState({
