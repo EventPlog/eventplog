@@ -29,6 +29,7 @@ exports[`main content - New Community component should render correctly 1`] = `
           One-line Description
         </label>
         <Styled(Input)
+          maxLength={70}
           name="description"
           placeholder="An community of awesome people"
         />
