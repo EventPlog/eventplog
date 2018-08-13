@@ -5,12 +5,17 @@ import Member from './Member'
 
 const StyledMembers = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly; 
   
   ${
     media.phone`
       flex-direction: column;
     `
+  }
+  
+  .member {
+    margin: 2rem;
   }
 `
 
