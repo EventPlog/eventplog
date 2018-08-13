@@ -39,8 +39,14 @@ const StyledEventOrganizers = styled.div`
   }
 `
 
-const Members = ({ member, handleChange, handleSubmit, children }) => (
-  <StyledEventOrganizers>
+const Members = ({
+  className,
+  member,
+  handleChange,
+  handleSubmit,
+  children
+}) => (
+  <StyledEventOrganizers className="member">
     <div className="member-img" style={{
           backgroundImage: `url(${member.avatar_url})`
         }} />
