@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 // internal
 import Sidebar from 'js/components/shared/sidebar'
 import Loading from 'js/components/shared/loading'
+import { pluralize } from 'js/utils'
 
 export const generateTitle = (event = {}) => (
   <Link to={`/communities/${event.community_id}/events/${event.id}`}>
@@ -20,7 +21,7 @@ export const generateDescription = (community) => (
 )
 
 export const generateMeta = (event) => (
-  `${event.interested_persons} people interested`
+  `${event.interested_persons} ${pluralize('person', event.interested_persons)} interested`
 )
 
 

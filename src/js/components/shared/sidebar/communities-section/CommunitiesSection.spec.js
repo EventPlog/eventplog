@@ -32,7 +32,7 @@ describe('Events::Events::CommunitiesSection', () => {
     const community = communities.data[0]
 
     expect(sidebarCardInstances.at(0).props().title).toEqual(generateTitle(community))
-    expect(sidebarCardInstances.at(0).props().description).toEqual(generateDescription(community.focus))
+    expect(sidebarCardInstances.at(0).props().description).toEqual(generateDescription(community.topic_interests))
     expect(sidebarCardInstances.at(0).props().featured_image).toEqual(community.featured_image)
     expect(sidebarCardInstances.at(0).props().meta).toEqual(generateMeta(community))
   })
