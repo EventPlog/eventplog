@@ -56,12 +56,12 @@ exports[`Event should render correctly 1`] = `
         <ContentPanel
           title="Ask the organizers"
         >
-          <Comments />
           <Component
             placeholder="What would you like to ask/suggest?"
             recipient_type="Event"
             trackable_type="Event"
           />
+          <Comments />
         </ContentPanel>
       </ContentBody>
     </FullRow>
