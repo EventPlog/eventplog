@@ -136,6 +136,8 @@ const Event = ({
         <ContentSection.FullRow>
           <ContentSection.Body>
             <ContentPanel title="Ask the organizers">
+              <Comments {...{comments, createComment, updateComment }} />
+
               <AddComment placeholder="What would you like to ask/suggest?"
                           recipient_id={event.id}
                           recipient_type="Event"
@@ -143,7 +145,6 @@ const Event = ({
                           trackable_type="Event"
                           createComment={createComment} />
 
-              <Comments {...{comments, createComment, updateComment }} />
             </ContentPanel>
           </ContentSection.Body>
         </ContentSection.FullRow>

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event should render correctly 1`] = `
+<styled.div
+  className="app-container"
+>
+  <ContentSection>
+    <Styled(EventBanner)
+      community={Object {}}
+    />
+    <ContentBody>
+      <ContentPanel
+        title="Description"
+      >
+        <div
+          className="event-description"
+        >
+          <ContentEditableWrapper
+            propName="description"
+            type="textarea"
+          >
+            <ReactMarkdown
+              astPlugins={Array []}
+              escapeHtml={false}
+              plugins={Array []}
+              rawSourcePos={false}
+              renderers={Object {}}
+              skipHtml={false}
+              source="Click to edit. In markdown, if you wish :)"
+              sourcePos={false}
+              transformLinkUri={[Function]}
+            />
+          </ContentEditableWrapper>
+        </div>
+      </ContentPanel>
+      <ContentPanel
+        title="Announcements"
+      >
+        <Announcements
+          recipient={Object {}}
+          recipient_type="Event"
+        />
+      </ContentPanel>
+      <ContentPanel
+        title="Meet the organizers"
+      >
+        <Members />
+      </ContentPanel>
+    </ContentBody>
+    <EventSidebar
+      community={Object {}}
+      past_events={Object {}}
+    />
+    <FullRow>
+      <ContentBody>
+        <ContentPanel
+          title="Ask the organizers"
+        >
+          <Comments />
+          <Component
+            placeholder="What would you like to ask/suggest?"
+            recipient_type="Event"
+            trackable_type="Event"
+          />
+        </ContentPanel>
+      </ContentBody>
+    </FullRow>
+  </ContentSection>
+</styled.div>
+`;

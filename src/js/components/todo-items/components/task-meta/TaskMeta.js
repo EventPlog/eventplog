@@ -42,6 +42,7 @@ const StyledTaskMeta = styled.div`
       align-items: center;
     }
   }
+ 
 `
 
 
@@ -76,40 +77,49 @@ const TodoItemMeta = ({
     <StyledTaskMeta className="task-meta">
       <div className="item">
         <p>
-          <ContentEditable propName="deadline"
-                           type="datetime"
-                           canEdit={isEditable}
-                           defaultValue={deadlineDate}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
-            <span className="title">Deadline</span> {deadlineDate.toDateString() || 'none yet'}
-          </ContentEditable>
+          <div className="child-column">
+            <span className="title">Deadline</span>
+            <ContentEditable propName="deadline"
+                             type="datetime"
+                             canEdit={isEditable}
+                             defaultValue={deadlineDate}
+                             onChange={handleChange}
+                             onSubmit={handleSubmit}>
+                {deadlineDate.toDateString() || 'none yet'}
+            </ContentEditable>
+          </div>
         </p>
       </div>
       <div className="item">
         <p>
-          <ContentEditable propName="recipient_id"
-                           type="select"
-                           canEdit={isEditable}
-                           defaultValue={recipient.display_name}
-                           onChange={handleChange}
-                           options={organizerOptions()}
-                           onSubmit={handleSubmit}>
-            <span className="title">Owner</span> {recipient.display_name || 'unassigned'}
-          </ContentEditable>
+          <div className="child-column">
+            <span className="title">Owner</span>
+            <ContentEditable propName="recipient_id"
+                             type="select"
+                             canEdit={isEditable}
+                             defaultValue={recipient.display_name}
+                             onChange={handleChange}
+                             options={organizerOptions()}
+                             onSubmit={handleSubmit}>
+                {recipient.display_name || 'unassigned'}
+            </ContentEditable>
+          </div>
         </p>
       </div>
       <div className="item">
         <p>
-          <ContentEditable propName="status"
-                           type="select"
-                           canEdit={isEditable}
-                           defaultValue={status}
-                           onChange={handleChange}
-                           options={statusOptions}
-                           onSubmit={handleSubmit}>
-            <span className="title">Status</span> {status}
-          </ContentEditable>
+          <div className="child-column">
+            <span className="title">Status</span>
+            <ContentEditable propName="status"
+                             type="select"
+                             canEdit={isEditable}
+                             defaultValue={status}
+                             onChange={handleChange}
+                             options={statusOptions}
+                             onSubmit={handleSubmit}>
+                {status}
+            </ContentEditable>
+          </div>
         </p>
       </div>
       <div className="item comment-count">
