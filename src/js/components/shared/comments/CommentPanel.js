@@ -46,6 +46,7 @@ const StyledComment = styled.div`
     ${
       media.phone`
         margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
         display: flex;
       `
     }
@@ -57,6 +58,13 @@ const StyledComment = styled.div`
     color: #888;
     text-align: center;
     overflow: hidden;
+    max-width: 70px;
+    
+    ${
+      media.phone`
+        max-width: 100%;
+      `
+    }
   }
   
   .full-name {
@@ -102,6 +110,22 @@ const StyledComment = styled.div`
   
   .deleted-comment {
     color: #aaa;
+  }
+  
+  .right-controls {
+    position: absolute;
+    right: 0;
+  
+    button {
+      background: white;
+      color: #ccc;
+      border-color: #ccc;
+      
+      &:hover {
+        background: var(--activeLink);
+        color: white;
+      }
+    }
   }
 `
 

@@ -35,7 +35,9 @@ const handleApiCall = ({
   errorMessage,
   caller,
   route,
+  url,
   requestMethod,
+  headers,
   cb,
   uploadOp = false
 }) => {
@@ -53,7 +55,7 @@ const handleApiCall = ({
     const {isValid, concatenatedErrors} = validator.validateAllInputs();
     dispatch(actions.request(data))
     if (isValid) {
-      return webAPI(route, requestMethod, data, uploadOp)
+      return webAPI({url, headers, path: route, method: requestMethod, data, uploadOp})
         .then(response => {
           if (response.error) {
             console.log(response.error)

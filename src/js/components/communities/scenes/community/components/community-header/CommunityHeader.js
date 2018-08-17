@@ -108,7 +108,7 @@ const StyledHeader = styled.div`
       
       ${
         media.phone`
-          margin: 2rem 0 0;
+          margin: 1rem 0 0;
         `
       }
     }
@@ -142,7 +142,7 @@ const CommunityHeader = ({
     <div className="app-container community-logo">
       <Link to={`/communities/${community.id}`} >
         {community.logo && <img src={community.logo} />}
-        <div>
+        <div className="hidden-xs">
           {!community.logo && <h3>{community.display_name}</h3>}
           {community.description && <small>{community.description.substr(0, 70)}</small>}
           {community.topic_interests &&

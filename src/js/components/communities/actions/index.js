@@ -1,5 +1,5 @@
 import actionTypes from './types'
-import { handleApiCall, baseActions } from '../../../services/actionHelpers'
+import { handleApiCall, baseActions } from 'js/services/actionHelpers'
 import mockApi from 'js/mock-api/community-api'
 
 export const getCommunities = (data) => {
