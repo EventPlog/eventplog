@@ -7,6 +7,7 @@ import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Pagination from 'js/components/shared/pagination'
+import { pluralize } from 'js/utils'
 
 export const generateTitle = (community = {}) => (
   <Link to={`/communities/${community.id}`}>
@@ -17,10 +18,10 @@ export const generateTitle = (community = {}) => (
 export const generateMeta = (community = {}) => (
   <ul>
     <li>
-      {community.no_of_members} members
+      {community.no_of_followers} {pluralize('follower', community.no_of_followers)}
     </li>
     <li>
-      {community.no_of_upcoming_events} upcoming events
+      {community.no_of_upcoming_events} upcoming {pluralize('event', community.no_of_upcoming_events)}
     </li>
     <li>
       <span className="meta-label">Interests</span>: {community.interests && community.interests.map(interest => <span className="hashtag">{interest}</span> )}
@@ -51,14 +52,14 @@ const CommunitySection = ({
       {data && data.map(({description, featured_image, ...community}) => {
           const title = generateTitle(community)
           const meta = generateMeta(community)
+          const titleLink = `/communities/${community.id}`
           return (
-            <Link to={`/communities/${community.id}`}>
-              <ContentPanel.Card
-                key={community.id}
-                {...{title, description, featured_image, meta}}
-                showButton={showCTA && !community.joined}
-                btn={{onClick: followCommunity, text: 'Follow'}} />
-            </Link>
+            <ContentPanel.Card
+              key={community.id}
+              {...{title, description, featured_image, meta}}
+              showButton={showCTA && !community.joined}
+              titleLink={titleLink}
+              btn={{onClick: () => followCommunity(community), text: 'Follow'}} />
           )
         }
       )}

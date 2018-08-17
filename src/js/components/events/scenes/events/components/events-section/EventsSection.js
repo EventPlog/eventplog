@@ -8,6 +8,7 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
+import { pluralize } from 'js/utils'
 
 export const generateTitle = (event = {}) => {
   const community = event.community || {}
@@ -40,7 +41,7 @@ export const generateMeta = (event = {}) => ([
   </ul>,
   <ul key={`interest${event.id}`}>
     <li>
-      {event.interested_persons} people interested
+      {event.interested_persons} {pluralize('person', event.interested_persons)} interested
     </li>
   </ul>
 ])

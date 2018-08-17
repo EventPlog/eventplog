@@ -5,8 +5,7 @@ import styled from 'styled-components'
 // internal
 import Sidebar from 'js/components/shared/sidebar'
 import Loading from 'js/components/shared/loading'
-import Error from 'js/components/shared/loading/Error'
-import Button from 'js/components/shared/button'
+import { pluralize } from 'js/utils'
 
 export const generateTitle = (community) => (
   <Link to={`/communities/${community.id}/`}>
@@ -14,12 +13,12 @@ export const generateTitle = (community) => (
   </Link>
 )
 
-export const generateDescription = (interest) => (
-  `${interest || 'Generic'} community`
+export const generateDescription = (interests = []) => (
+  interests && interests.length > 0 ? `Interested in ${interests.join(', ')}` : ''
 )
 
 export const generateMeta = (community) => (
-  `${community.no_of_followers} followers`
+  `${community.no_of_followers} ${pluralize('follower', community.no_of_followers)}`
 )
 
 const CommunitiesSection = ({
@@ -34,7 +33,7 @@ const CommunitiesSection = ({
       {error && <Loading.Error msg={error} />}
       {data && data.map(({featured_image, ...community}) => {
           const title = generateTitle(community);
-          const description = generateDescription(community.interest)
+          const description = generateDescription(community.topic_interests)
           const meta = generateMeta(community)
           const titleLink = `/communities/${community.id}/`
           const btn = community.following

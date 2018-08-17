@@ -29,7 +29,7 @@ class MainContentContainer extends Component {
   }
 
   getCommunities = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
+    const { per_page } = this.props.communities.meta || {}
     this.props.getCommunities({page: meta.activePage, per_page})
   }
 
