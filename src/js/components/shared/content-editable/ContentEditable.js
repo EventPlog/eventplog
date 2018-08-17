@@ -61,8 +61,11 @@ class ContentEditable extends React.Component {
   }
 
   onClick = (e, value) => {
-    // e.target.contentEditable = true
     this.setState({isEditing: true, value})
+  }
+
+  componentDidMount() {
+    this.setState({value: this.props.defaultValue})
   }
 
   componentDidUpdate() {
@@ -134,7 +137,7 @@ class ContentEditable extends React.Component {
   })
 
   render() {
-    return this.state.isEditing
+    return this.state.isEditing || this.props.isEditing
       ? this.getEditableComponent()
       : this.props.children(this.getProps())
   }

@@ -87,6 +87,11 @@ const StyledTodoItem = styled.div`
 
       }
     }
+    
+    .child-column {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `
 const TodoItem = ({
@@ -139,7 +144,7 @@ const TodoItem = ({
                          defaultValue={title}
                          onChange={handleChange}
                          onSubmit={handleSubmit}>
-          <h3>{ title }</h3>
+          <h5>{ title }</h5>
         </ContentEditable>
       </div>
       <div className="content">
@@ -153,13 +158,13 @@ const TodoItem = ({
         </ContentEditable>
 
         <ContentPanel title="Comments">
-          <Comments {...{comments, createComment, updateComment }} />
           <AddComment placeholder="What would you like to suggest?"
                       recipient_id={id}
                       recipient_type="TodoItem"
                       trackable_id={id}
                       trackable_type="TodoItem"
                       createComment={createComment} />
+          <Comments {...{comments, createComment, updateComment }} />
         </ContentPanel>
       </div>
     </StyledTodoItem>

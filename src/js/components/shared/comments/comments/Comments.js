@@ -11,7 +11,7 @@ const StyledComments = styled.div`
   max-width: 820px;
   
   .comment-card + .comment-card {
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
   
   .replies {
@@ -44,6 +44,21 @@ const StyledComments = styled.div`
         `
       }
     }
+    
+    .new-reply {
+      .avatar {
+        width: 30px;
+        height: 30px
+      }
+      
+      textarea {
+        height: 3rem;
+        
+        &:active {
+          height: 4rem;
+        }
+      }
+    }
   }
 `
 
@@ -68,7 +83,8 @@ const Comments = function({
                   <Comment {...{ comment: response, textField, canReply,
                             createComment, updateComment}} />
                 )}
-                {canReply &&<AddComment placeholder="Reply"
+                {canReply &&<AddComment className="new-reply"
+                                        placeholder="Reply"
                                         recipient_id={comment.id}
                                         recipient_type="Comment"
                                         trackable_id={comment.trackable_id}
