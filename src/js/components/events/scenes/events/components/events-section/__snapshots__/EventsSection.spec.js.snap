@@ -36,7 +36,9 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         <ul>
           <li>
               211
-               people interested
+               
+              people
+               interested
           </li>
       </ul>,
       ]
@@ -84,7 +86,9 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         <ul>
           <li>
               211
-               people interested
+               
+              people
+               interested
           </li>
       </ul>,
       ]
@@ -132,7 +136,9 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         <ul>
           <li>
               108
-               people interested
+               
+              people
+               interested
           </li>
       </ul>,
       ]

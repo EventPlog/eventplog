@@ -12,8 +12,10 @@ export const validDate = (input) => {
 
 export const pluralize = (word, number) => {
   const knownWords = {
-    person: 'people'
+    person: 'people',
+    follower: 'followers',
+    event: 'events'
   }
-  return number = 1 ? word : knownWords[word]
+  return number == 1 ? word : knownWords[word]
 }
 
