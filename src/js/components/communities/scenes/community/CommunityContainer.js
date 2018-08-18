@@ -58,6 +58,9 @@ class CommunityContainer extends Component {
     const {community_id, id} = this.getParams()
     const sureCommunityId = community_id || id
 
+    // don't bother fetching if within an event
+    if (community_id && id) return
+
     if(!this.props.community || this.props.community.id != sureCommunityId) {
       this.props.getCommunity(community_id || id)
     }

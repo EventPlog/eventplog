@@ -37,7 +37,7 @@ const Main = ({activeLink, ...props}) => {
   }
   return (
     <StyledMain activeLink={activeLink}>
-      <CommunityHeader {...props} />
+      {props.community && props.community.id && <CommunityHeader {...props} />}
       <Switch>
         <PrivateRoute exact path="/communities/:id" render={(routerProps) => <CommunityMainContent {...props} />}/>
         <PrivateRoute path="/communities/:id/edit" render={() => <UpdateCommunity {...props} />} />
