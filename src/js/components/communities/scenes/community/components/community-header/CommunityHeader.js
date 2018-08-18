@@ -167,7 +167,8 @@ const CommunityHeader = ({
                 <Icon color='green' name='checkmark' size='large' />
                 Following
               </Button>
-            : <Button
+            : community.id &&
+              <Button
                 onClick={() => followCommunity(community)}>
                 Follow
               </Button>

@@ -158,7 +158,7 @@ const TodoItem = ({
         </ContentEditable>
 
         <ContentPanel title="Comments">
-          <AddComment placeholder="What would you like to suggest?"
+          <AddComment placeholder="Share an update with your team"
                       recipient_id={id}
                       recipient_type="TodoItem"
                       trackable_id={id}
