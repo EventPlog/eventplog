@@ -29,6 +29,7 @@ const TodoItem = ({
 }) => {
   const {id, title, description, status, recipient, deadline, comments = {}} = todo_item
   const { community_id, event_id } = match.params || {}
+  const { meta = {} } = comments || {}
   return (
     <StyledTodoItem className="task">
       <Accordion.Title className="task-title"
@@ -38,7 +39,7 @@ const TodoItem = ({
         <Icon name='dropdown' />
         { title }
         <TaskMeta {...{status, recipient, deadline, isEditable: false,
-                        commentsCount: comments.data.length
+                        commentsCount: meta.total_count
         }} />
       </Accordion.Title>
       <Accordion.Content active={activeIndex === index}>

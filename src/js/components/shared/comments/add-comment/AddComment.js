@@ -133,7 +133,7 @@ const AddComment = ({
                      type="file"
                      name="image"
                      accept="image/*" />
-              <Button className="btn-delete"
+              <Button className="btn-right"
                       onClick={showImageSelectOptions}>
                 <Icon className="image" />
               </Button>

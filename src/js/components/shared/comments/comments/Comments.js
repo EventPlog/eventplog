@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Comment from '../comment'
 import { media } from 'js/styles/mixins'
 import AddComment from 'js/components/shared/comments/add-comment'
+import Pagination from 'js/components/shared/pagination'
 
 const StyledComments = styled.div`
   margin-top: 2rem;
@@ -60,6 +61,10 @@ const StyledComments = styled.div`
       }
     }
   }
+  
+  .show-more-btn {
+    margin: 2rem 0;
+  }
 `
 
 const Comments = function({
@@ -69,6 +74,8 @@ const Comments = function({
   updateComment,
   textField = 'body',
   canReply = true,
+  getComments,
+  showMoreBtnTitle = 'Show more comments',
   ...otherProps
 }) {
   const { loading, error, data = [], meta = {} } = comments
@@ -94,6 +101,15 @@ const Comments = function({
               </div>
             </Comment>
       )}
+      {
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
+          ? <Pagination.ShowMoreButton totalPages={meta.total_pages}
+                                       activePage={meta.current_page}
+                                       caption={showMoreBtnTitle}
+                                       className="show-more-btn"
+                                       onPageChange={getComments} />
+          : ''
+      }
     </StyledComments>
   )
 }

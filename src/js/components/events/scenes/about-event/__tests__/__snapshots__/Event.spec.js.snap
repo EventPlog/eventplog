@@ -56,7 +56,7 @@ exports[`Event should render correctly 1`] = `
         <ContentPanel
           title="Ask the organizers"
         >
-          <Comments />
+          <Component />
           <Component
             placeholder="What would you like to ask/suggest?"
             recipient_type="Event"

@@ -103,6 +103,7 @@ const TodoItem = ({
   link_back,
   createComment,
   updateComment,
+  getComments,
   handleChange,
   handleDelete,
   handleSubmit
@@ -120,7 +121,7 @@ const TodoItem = ({
   if (loading) return <Loading />
   if (error) return <Loading.Error msg={error} />
 
-  const { data = []} = comments
+  const { data = [], meta = {} } = comments
   return (
     <StyledTodoItem className="task">
       <Button.Link className="btn-back" to={link_back}>
@@ -136,7 +137,7 @@ const TodoItem = ({
       </div>
       <TaskMeta {...{status, recipient, deadline, event,
                               handleChange, handleSubmit, isEditable: true,
-                              commentsCount: data.length}} />
+                              commentsCount: meta.total_count }} />
       <div className="title">
         <ContentEditable propName="title"
                          type="input"
@@ -164,7 +165,9 @@ const TodoItem = ({
                       trackable_id={id}
                       trackable_type="TodoItem"
                       createComment={createComment} />
-          <Comments {...{comments, createComment, updateComment }} />
+          <Comments recipient_id={id}
+                    recipient_type="TodoItem"
+                    {...{comments, createComment, updateComment, getComments }} />
         </ContentPanel>
       </div>
     </StyledTodoItem>

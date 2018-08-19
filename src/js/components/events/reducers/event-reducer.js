@@ -6,7 +6,7 @@ import { updateItemInCollection } from 'js/reducers/helpers'
 import { updateEventOrganizers } from './helpers'
 
 const eventReducer = (state=initialState.event, action) => {
-  let organizers_invitations;
+  let organizers_invitations, data;
   switch(action.type) {
     case actionTypes.EVENT_CREATE_START:
     case actionTypes.EVENT_SHOW_START:
@@ -49,8 +49,9 @@ const eventReducer = (state=initialState.event, action) => {
     case feedbackActionTypes.EVENT_FEEDBACK_CREATE_COMPLETE:
       return {...state, given_feedback: true, show_feedback_url: true}
 
-    // case organizerActionTypes.EVENT_ORGANIZER_UPDATE_COMPLETE:
-    //   return updateEventOrganizers(state, action)
+    case actionTypes.EVENT_COMMENT_INDEX_COMPLETE:
+      data = [...state.comments.data, ...action.payload.data]
+      return {...state, comments: {data, meta: action.payload.meta}}
 
     default:
       return state;
