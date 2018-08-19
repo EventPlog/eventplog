@@ -35,6 +35,10 @@ const AddCommentStyles = styled.div`
     }
   }
   
+  .commenter {
+    width: auto;
+  }
+  
   .comment {
     display: block;
       

@@ -62,7 +62,7 @@ const Comment = ({
         <ReactMarkdown source={comment[textField]} />
       </div>
   return (
-    <CommentPanel className={className} user={comment.deleted || comment.anonymous ? {} : comment.user}>
+    <CommentPanel className={className} comment={comment}>
       {currentUserIsOwner &&
         <span className="right-controls">
           <input ref={imageInputRef}
