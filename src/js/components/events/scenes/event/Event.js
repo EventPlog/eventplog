@@ -75,8 +75,8 @@ const Event = ({
   updateAnnouncement,
 }) => {
 
-  if (loading) return <Loading />
-  if (error || event.error) return <Loading.Error msg={error || event.error} />
+  if (event.loading) return <Loading />
+  if (event.error) return <Loading.Error msg={event.error} />
 
   const isStakeHolder = event.is_stakeholder
 

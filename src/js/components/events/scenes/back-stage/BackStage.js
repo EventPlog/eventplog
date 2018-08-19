@@ -35,8 +35,11 @@ type Props = {
 };
 
 const BackStage = (props) => {
-  if (props.loading) return <Loading />
   if (props.error) return <Loading.Error msg={props.error} />
+
+  if (!props.event.id || props.community.loading || props.event.loading) {
+    return <Loading/>
+  }
 
   // Only community admins, event owner and event organizers have access
   if (!props.currentUser.id || !(props.event.is_stakeholder || props.event.organizer_role)) {

@@ -35,11 +35,12 @@ const StyledComment = styled.div`
   
   .commenter {
     margin-right: 1rem;
-    max-width: 100px;
+    width: 100px;
     
     ${
       media.phone`
         max-width: 100%;
+        width: 100%;
       `
     }
     
@@ -53,17 +54,25 @@ const StyledComment = styled.div`
   }
   
   .meta {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: capitalize;
     color: #888;
     text-align: center;
     overflow: hidden;
-    max-width: 70px;
+    max-width: 100%;
+    line-height: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
     ${
       media.phone`
         max-width: 100%;
+        text-align: left;
       `
+    }
+    .role {
+      text-transform: none;
     }
   }
   
@@ -132,9 +141,10 @@ const StyledComment = styled.div`
 const CommentPanel = ({
   className = '',
   children,
-  user = {},
+  comment = {},
   ...otherProps
 }) => {
+  const { user = {} } = comment.deleted || comment.anonymous ? {} : comment
   const {display_name, avatar_url, community_role} = user
   return (
     <StyledComment className={`comment-card ${className}`}>
@@ -147,9 +157,9 @@ const CommentPanel = ({
           <div className="full-name">
             {`${display_name}`}
           </div>
-          {community_role && <div className="role">
-                               {community_role}
-                             </div>}
+          <div className="role">
+            {comment.publish_time} ago
+          </div>
         </div>}
       </div>
       <div className="comment">

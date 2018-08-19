@@ -32,6 +32,10 @@ const StyledComments = styled.div`
       margin: 1rem 0;
     }
     
+    commenter {
+      width: auto;
+    }
+    
     .meta {
       ${
         media.desktop`
