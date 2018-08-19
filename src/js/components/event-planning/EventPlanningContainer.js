@@ -38,9 +38,10 @@ class EventUpdateContainer extends Component {
 
   getData() {
     const {event} = this.props
-    this.props.getEventChecklist({event_id: event.id}).then(event_checklist => {
-      this.setState({ event_checklist })
-    })
+    this.setState({loading: true})
+    this.props.getEventChecklist({event_id: event.id})
+      .then(event_checklist => { this.setState({ event_checklist, loading: false }) })
+      .catch(error => this.setState({ loading: false, error }))
   }
 
   getProps = () => ({

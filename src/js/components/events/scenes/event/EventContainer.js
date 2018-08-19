@@ -53,11 +53,11 @@ class EventContainer extends Component {
   }
 
   getData() {
-    this.setState({loading: true})
     const {community_id, id} = this.props.match.params
     if (!this.props.event || this.props.event.id != id) {
+      this.setState({loading: true})
       this.props.getEvent(id)
-        .then(event => this.setState({loading: false, event}))
+        .then(event => this.setState({loading: false}))
         .catch(error => this.setState({loading: false, error}))
     }
 

@@ -36,6 +36,7 @@
     "keymirror": "^0.1.1",
     "newrelic": "4.5.1",
     "node-sass": "^4.8.3",
+    "nprogress": "0.2.0",
     "object-assign": "4.1.1",
     "polished": "1.9.2",
     "postcss-flexbugs-fixes": "3.2.0",
