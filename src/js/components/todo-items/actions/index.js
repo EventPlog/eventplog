@@ -69,6 +69,23 @@ export const getTodoItems = (params) => {
   })
 }
 
+export const getComments = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.TODO_ITEM_COMMENT_INDEX_START,
+    receiveType: actionTypes.TODO_ITEM_COMMENT_INDEX_COMPLETE,
+    failType: actionTypes.TODO_ITEM_COMMENT_INDEX_FAIL
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from retrieving comments.',
+    caller: 'POST index Comments',
+    route: `/api/v1/web/comments/index_by_params`,
+    requestMethod: 'POST'
+  })
+}
+
 export const createComment = (comment, parentComment) => {
   let actions = baseActions({
     requestType: actionTypes.TODO_ITEM_COMMENT_CREATE_START,

@@ -33,13 +33,13 @@ const commonStyles = css`
 
 const inverted = css`
   background: var(--activeLink);
-  color: ${ colors.white} !important;
+  color: ${ colors.white};
   border-color: ${ colors.white };
   
   &:hover {
     background: ${ colors.white };
     border-color: var(--activeLink);
-    color: var(--activeLink) !important;
+    color: var(--activeLink);
   }
 `
 

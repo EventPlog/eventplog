@@ -59,6 +59,8 @@ const StyledEvent = styled.div`
 
 const Event = ({
   event = {},
+  loading,
+  error,
   organizers,
   community,
   activeLink,
@@ -66,15 +68,15 @@ const Event = ({
   handleChange,
   handleSubmit,
   attendEvent,
+  getComments,
   createComment,
   updateComment,
   createAnnouncement,
   updateAnnouncement,
 }) => {
 
-  if (event.loading) {
-    return <Loading />
-  }
+  if (loading) return <Loading />
+  if (error || event.error) return <Loading.Error msg={error || event.error} />
 
   const isStakeHolder = event.is_stakeholder
 
@@ -143,7 +145,10 @@ const Event = ({
                           trackable_type="Event"
                           createComment={createComment} />
 
-              <Comments {...{comments, createComment, updateComment }} />
+              <Comments recipient_id={event.id}
+                        recipient_type="Event"
+                        {...{comments, createComment, updateComment, getComments }} />
+
             </ContentPanel>
           </ContentSection.Body>
         </ContentSection.FullRow>

@@ -34,10 +34,10 @@ type Props = {
   defaultTheme: object,
 };
 
-const Main = (props) => {
-  if (!props.event.id || props.community.loading || props.event.loading) {
-    return <Loading />
-  }
+const BackStage = (props) => {
+  if (props.loading) return <Loading />
+  if (props.error) return <Loading.Error msg={props.error} />
+
   // Only community admins, event owner and event organizers have access
   if (!props.currentUser.id || !(props.event.is_stakeholder || props.event.organizer_role)) {
     return <Redirect to={`/communities/${props.event.community_id}/events/${props.event.id}`} />
@@ -50,4 +50,4 @@ const Main = (props) => {
   )
 }
 
-export default Main;
+export default BackStage;

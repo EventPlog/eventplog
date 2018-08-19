@@ -10,6 +10,7 @@ import {
   updateEvent,
   createComment,
   updateComment,
+  getComments,
   createAnnouncement,
   updateAnnouncement,
   getPastEvents,
@@ -52,10 +53,14 @@ class EventContainer extends Component {
   }
 
   getData() {
+    this.setState({loading: true})
     const {community_id, id} = this.props.match.params
     if (!this.props.event || this.props.event.id != id) {
-      this.props.getEvent(id).then(event => this.setState({event}))
+      this.props.getEvent(id)
+        .then(event => this.setState({loading: false, event}))
+        .catch(error => this.setState({loading: false, error}))
     }
+
     this.props.getPastEvents({id, community_id, page: 1, per_page: 3})
   }
 
@@ -96,6 +101,7 @@ const mapDispatchToProps = (dispatch) => {
     attendEvent,
     createComment,
     updateComment,
+    getComments,
     createAnnouncement,
     updateAnnouncement,
   }, dispatch)

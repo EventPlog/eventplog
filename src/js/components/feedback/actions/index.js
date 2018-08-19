@@ -46,3 +46,20 @@ export const submitFeedback = (feedback) => {
     requestMethod: 'POST'
   })
 }
+
+export const getFeedbackResponses = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_FEEDBACK_RESPONSE_INDEX_START,
+    receiveType: actionTypes.EVENT_FEEDBACK_RESPONSE_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_FEEDBACK_RESPONSE_INDEX_FAIL
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from retrieving feedback responses.',
+    caller: 'GET index feedback responses',
+    route: `/api/v1/web/events/${params.event_id}/feedback_responses`,
+    requestMethod: 'GET'
+  })
+}

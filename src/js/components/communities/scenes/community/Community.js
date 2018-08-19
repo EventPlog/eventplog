@@ -35,6 +35,9 @@ const Main = ({activeLink, ...props}) => {
   if (props.community && props.community.loading) {
     return <Loading />
   }
+  if (props.community && props.community.error) {
+    return <Loading.Error msg={props.community.error} />
+  }
   return (
     <StyledMain activeLink={activeLink}>
       <CommunityHeader {...props} />
