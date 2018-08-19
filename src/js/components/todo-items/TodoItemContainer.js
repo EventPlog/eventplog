@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import {
+  getComments,
   createTodoItem,
   updateTodoItem,
   deleteTodoItem,
@@ -101,6 +102,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    getComments,
     createTodoItem,
     updateTodoItem,
     deleteTodoItem,

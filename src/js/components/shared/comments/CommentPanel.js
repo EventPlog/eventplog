@@ -97,7 +97,7 @@ const StyledComment = styled.div`
     }
   }
   
-  .btn-delete {
+  .btn-right {
     float: right;
     padding: 5px;
     margin-top: -10px;
@@ -121,7 +121,7 @@ const StyledComment = styled.div`
       color: #ccc;
       border-color: #ccc;
       
-      &:hover {
+      &:hover, &.inverted, &.inverted:hover {
         background: var(--activeLink);
         color: white;
       }

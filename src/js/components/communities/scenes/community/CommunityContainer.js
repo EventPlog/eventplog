@@ -63,6 +63,8 @@ class CommunityContainer extends Component {
 
     if(!this.props.community || this.props.community.id != sureCommunityId) {
       this.props.getCommunity(community_id || id)
+        .then(community => this.setState({loading: false}))
+        .catch(error => this.setState({loading: false, error}))
     }
     // this.props.getCommunitiesSuggestions({page: 1, per_page: 3})
   }

@@ -27,6 +27,7 @@ const StyleFeedbackReport = styled.div`
 
 const FeedbackReport = ({
   feedback_report = {},
+  getFeedbackResponses,
 }) => {
   const {loading, error} = feedback_report
 
@@ -34,6 +35,8 @@ const FeedbackReport = ({
   if (error) return <Loading.Error msg={error} />
 
   const {
+    trackable_id,
+    trackable_type,
     report = [],
     highest_obtainable_pts = 10,
     feedback_responses = {}
@@ -47,6 +50,7 @@ const FeedbackReport = ({
   const satisfaction = report.find(item => item.key == 'satisfaction') || {}
   const nps = report.find(item => item.key == 'nps') || {}
 
+  const { meta = {} } = feedback_responses
   return (
     <StyleFeedbackReport>
       <ContentPanel title="The numbers">
@@ -106,8 +110,14 @@ const FeedbackReport = ({
         </p>
       </ContentPanel>
 
-      <ContentPanel title="What your guests said">
-        <Comments comments={feedback_responses} textField="feedback_note" canReply={false} />
+      <ContentPanel title={`What guests said (${meta.total_count} responses)`}>
+        <Comments comments={feedback_responses}
+                  textField="feedback_note"
+                  trackable_id={trackable_id}
+                  trackable_type={trackable_type}
+                  getComments={getFeedbackResponses}
+                  showMoreBtnTitle="Show more responses"
+                  canReply={false} />
       </ContentPanel>
 
     </StyleFeedbackReport>

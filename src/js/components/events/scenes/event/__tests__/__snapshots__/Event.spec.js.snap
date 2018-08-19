@@ -61,7 +61,9 @@ exports[`Event should render correctly 1`] = `
             recipient_type="Event"
             trackable_type="Event"
           />
-          <Comments />
+          <Component
+            recipient_type="Event"
+          />
         </ContentPanel>
       </ContentBody>
     </FullRow>

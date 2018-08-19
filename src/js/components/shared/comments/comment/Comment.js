@@ -72,13 +72,14 @@ const Comment = ({
                  type="file"
                  name="image"
                  accept="image/*" />
-          <Button className="btn-delete" onClick={deleteComment}>
+          <Button className="btn-right" onClick={deleteComment}>
             <Icon className="delete" />
           </Button>
           <Button inverted={editing}
-                  className="btn-delete"
+                  className={`btn-right ${editing && 'inverted'}`}
                   onClick={editComment}>
             <Icon className={`${editing? 'save' : 'pencil'}`} />
+            {editing && ' Save'}
           </Button>
         </span>
       }

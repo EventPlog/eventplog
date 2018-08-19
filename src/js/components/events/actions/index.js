@@ -12,7 +12,7 @@ export const getEvent = (eventId) => {
   return handleApiCall({
     actions,
     eventId,
-    errorMessage: 'Something prevented us from retrieving an event',
+    errorMessage: 'Something prevented us from retrieving this event. Please try again later.',
     caller: 'leads',
     route: `/api/v1/web/events/${eventId}`,
     requestMethod: 'GET'
@@ -182,6 +182,22 @@ export const updateComment = (comment, parentComment) => {
   })
 }
 
+export const getComments = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_COMMENT_INDEX_START,
+    receiveType: actionTypes.EVENT_COMMENT_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_COMMENT_INDEX_FAIL
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from retrieving comments.',
+    caller: 'POST index Comments',
+    route: `/api/v1/web/comments/index_by_params`,
+    requestMethod: 'POST'
+  })
+}
 
 export const createAnnouncement = (announcement) => {
   let actions = baseActions({

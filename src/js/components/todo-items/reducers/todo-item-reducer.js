@@ -3,7 +3,7 @@ import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
 const invitationReducer = (state=initialState.todo_item, action) => {
-  let comments
+  let comments, data
   switch(action.type) {
     case actionTypes.TODO_ITEM_CREATE_START:
     case actionTypes.TODO_ITEM_SHOW_START:

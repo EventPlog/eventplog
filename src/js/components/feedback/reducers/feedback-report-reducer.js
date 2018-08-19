@@ -3,7 +3,7 @@ import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
 const eventChecklistReducer = (state=initialState.feedback_report, action) => {
-  let pending, in_progress, completed
+  let data
   switch(action.type) {
     case actionTypes.FEEDBACK_REPORT_SHOW_START:
       return {...state, loading: true }
@@ -13,6 +13,10 @@ const eventChecklistReducer = (state=initialState.feedback_report, action) => {
 
     case actionTypes.FEEDBACK_REPORT_SHOW_FAIL:
       return {...state, error: action.payload, loading: false }
+
+    case actionTypes.EVENT_FEEDBACK_RESPONSE_INDEX_COMPLETE:
+      data = [...state.feedback_responses.data, ...action.payload.data]
+      return {...state, feedback_responses: {data, meta: action.payload.meta}, loading: false}
 
     default:
       return state;

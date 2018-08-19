@@ -4,17 +4,27 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import {
-  getFeedbackReport
+  getFeedbackReport,
+  getFeedbackResponses,
 } from '../../actions'
 
-class MessengerCheckInContainer extends Component {
+class FeedbackReportContainer extends Component {
   componentWillMount() {
     this.props.getFeedbackReport(this.props.event.id)
       .catch(err => this.setState({error: err}))
   }
 
+  getFeedbackResponses = (meta) => {
+    return this.props.getFeedbackResponses({...meta, event_id: this.props.event.id})
+  }
+
+  getProps = () => ({
+    ...this.props,
+    getFeedbackResponses: this.getFeedbackResponses
+  })
+
   render () {
-    return this.props.children({ ...this.props })
+    return this.props.children(this.getProps())
   }
 }
 
@@ -27,8 +37,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getFeedbackReport
+    getFeedbackReport,
+    getFeedbackResponses,
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessengerCheckInContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FeedbackReportContainer))
