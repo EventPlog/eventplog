@@ -29,8 +29,11 @@ class CommentContainer extends Component {
     this.handleImageChange = this.handleImageChange.bind(this)
   }
 
-  componentDidMount() {
-    this.setState({comment: this.props.comment || {}})
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.comment && nextProps.comment.id != prevState.comment.id) {
+      return { ...prevState, comment: nextProps.comment }
+    }
+    return prevState
   }
 
   handleChange = (key, value) => {
@@ -48,7 +51,7 @@ class CommentContainer extends Component {
     }
     return this.props.createComment(comment, this.props.parentComment).then(res => {
       this.setState({ comment: {body: ''}, image: null, loading: false })
-    })
+    }).catch(error => this.setState({loading: false, error}))
   }
 
   getCommentWithImage = async ({comment, image}) => {
@@ -76,7 +79,7 @@ class CommentContainer extends Component {
     this.setState({editing: false, loading: true})
     return this.props.updateComment(comment, this.props.parentComment).then(res => {
       this.setState({loading: false})
-    })
+    }).catch(error => this.setState({loading: false, error}))
   }
 
   deleteComment = () => {
@@ -118,8 +121,8 @@ class CommentContainer extends Component {
   }
 
   getProps = () => ({
-    ...this.state,
     ...this.props,
+    ...this.state,
     handleChange: this.handleChange,
     createComment: this.createComment,
     editComment: this.editComment,

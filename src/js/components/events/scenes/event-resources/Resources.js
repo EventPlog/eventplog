@@ -19,29 +19,25 @@ export const generateTitle = (event = {}) => {
   )
 }
 
-export const generateDescription = (community = {}) => (
+export const generateDescription = (description) => (
   <span>
-    By <Link to={`/communities/${community.id}`}>
-      {community.name}
-    </Link>
+    {description}
   </span>
 )
 
-export const generateMeta = (event = {}) => ([
-  <ul key={`date${event.id}`}>
+export const generateMeta = (resource) => ([
+  <ul key={`date${resource.id}`}>
     <li>
-      {event.date}
+      By {resource.owner.display_name}
     </li>
     <li>
-      {event.time}
-    </li>
-    <li>
-      {event.venue}
+      {resource.publish_time}
     </li>
   </ul>,
-  <ul key={`interest${event.id}`}>
+  <ul key={`interest${resource.id}`}>
     <li>
-      {event.interested_persons} {pluralize('person', event.interested_persons)} interested
+      {resource.no_of_views} {pluralize('person', resource.no_of_views)} viewed this,&nbsp;
+      {resource.no_of_reviews} {pluralize('person', resource.no_of_reviews)} rated it {resource.rating} / 10
     </li>
   </ul>
 ])
@@ -52,30 +48,30 @@ export const generateCTA = (handleClick) => (
   </Button>
 )
 
-const EventsSection = ({
+const EventResource = ({
   title,
-  events = {},
+  resources,
   attendEvent,
-  getEvents,
+  getResources,
 }) => {
-  const {loading, error, data = [], meta = {}} = events;
+  const {loading, error, data = [], meta = {}} = resources;
   const shouldDisplayData = (!loading && !error && data);
   return (
     <ContentPanel title={title}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
-      {shouldDisplayData && data.map(({featured_image, ...event}) => {
-          const title = generateTitle(event)
-          const description = generateDescription(event.community)
-          const meta = generateMeta(event)
-          const btn = {onClick: () => attendEvent(event), text: 'interested'}
-          const titleLink = `/communities/${event.community_id}/events/${event.id}`
+      {shouldDisplayData && data.map(({featured_image, ...resource}) => {
+          const title = generateTitle(resource)
+          const description = generateDescription(resource.description)
+          const meta = generateMeta(resource)
+          const btn = {onClick: () => attendEvent(resource), text: "I've read this"}
+          const titleLink = resource.link;
 
           return (
             <ContentPanel.Card
-              key={event.id}
+              key={resource.id}
               {...{title, description, featured_image, meta, btn, titleLink}}
-              showButton={!event.is_attending} />
+              showButton={true} />
           )
         }
       )}
@@ -84,12 +80,11 @@ const EventsSection = ({
         meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
           ? <Pagination totalPages={meta.total_pages}
                         activePage={meta.current_page}
-                        per_page={meta.per_page}
-                        onPageChange={getEvents} />
+                        onPageChange={getResources} />
           : ''
       }
     </ContentPanel>
   )
 }
 
-export default EventsSection
+export default EventResource

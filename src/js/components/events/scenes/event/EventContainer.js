@@ -11,6 +11,7 @@ import {
   createComment,
   updateComment,
   getComments,
+  getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
   getPastEvents,
@@ -47,9 +48,12 @@ class EventContainer extends Component {
     return this.props.updateEvent(others).then(event => this.setState({event}))
   }
 
-  attendEvent = () => {
-    const {commuity, ...others} = this.state.event
-    return this.props.attendEvent(others).then(event => this.setState({event}))
+  toggleVisibilityStatus = ({id, visibility_status: status}) => {
+    const visibility_status = status == 'private_event' ? 'public_event' : 'private_event'
+    this.setState({loading: true})
+    this.props.updateEvent({id, visibility_status}).then(res => {
+      this.setState({loading: false})
+    })
   }
 
   getData() {
@@ -69,7 +73,7 @@ class EventContainer extends Component {
     ...this.props,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
-    attendEvent: this.attendEvent,
+    toggleVisibilityStatus: this.toggleVisibilityStatus,
   })
 
   render () {
@@ -102,6 +106,7 @@ const mapDispatchToProps = (dispatch) => {
     createComment,
     updateComment,
     getComments,
+    getAnnouncements,
     createAnnouncement,
     updateAnnouncement,
   }, dispatch)

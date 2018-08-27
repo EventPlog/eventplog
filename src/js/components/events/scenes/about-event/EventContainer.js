@@ -10,6 +10,7 @@ import {
   updateEvent,
   createComment,
   updateComment,
+  getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
   getPastEvents,
@@ -21,7 +22,6 @@ class EventContainer extends Component {
   state = {event: {}}
 
   componentWillMount() {
-    this.getData()
   }
 
   shouldComponentUpdate(nextProps) {
@@ -94,6 +94,7 @@ const mapDispatchToProps = (dispatch) => {
     getPastEvents,
     updateEvent,
     attendEvent,
+    getAnnouncements,
     createComment,
     updateComment,
     createAnnouncement,

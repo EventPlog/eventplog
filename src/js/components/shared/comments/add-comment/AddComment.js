@@ -12,7 +12,7 @@ import Loading from 'js/components/shared/loading'
 
 const AddCommentStyles = styled.div`
   max-width: 820px;
-  margin-top: 2rem;
+  margin-bottom: 1rem;
   
   .new-comment-card {
     ${
@@ -34,6 +34,7 @@ const AddCommentStyles = styled.div`
       `
     }
   }
+  
   
   .commenter {
     width: auto;
@@ -113,15 +114,11 @@ const AddComment = ({
   if (error) {
     return <Loading.Error msg={error} />
   }
-  const submitComment = () => {
-    const { recipient_id, recipient_type, trackable_id, trackable_type } = otherProps
-    const updatedComment = {...comment, recipient_id, recipient_type, trackable_id, trackable_type}
-    createComment(updatedComment, parentComment)
-  }
+  const newComment = { user: current_user }
 
   return (
     <AddCommentStyles className={`${className} add-comment`}>
-      <CommentPanel className="new-comment-card" user={current_user}>
+      <CommentPanel className="new-comment-card" comment={newComment}>
         <div className="comment-card textarea-holder">
           <TextArea placeholder={placeholder}
                     name="body"

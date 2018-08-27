@@ -31,21 +31,27 @@ class CommunityContainer extends Component {
     return (matchPath(this.props.location.pathname, '/communities/:community_id/events/:id') || this.props.match).params
   }
 
-  getData() {
+  getCommunityId = () => {
     const {community_id, id} = this.getParams()
-    const sureCommunityId = community_id || id
-    this.props.getEvents({ community_id: sureCommunityId , page: 1, per_page: 10})
-    this.props.getPastEvents({ community_id: sureCommunityId , page: 1, per_page: 10})
+    return community_id || id
+  }
+
+  getData() {
+    const community_id = this.getCommunityId()
+    this.props.getEvents({ community_id , page: 1, per_page: 10})
+    this.props.getPastEvents({ community_id , page: 1, per_page: 10})
   }
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    this.props.getEvents({page: meta.activePage, per_page})
+    this.props.getEvents({page: meta.activePage, per_page,
+      community_id: this.getCommunityId()})
   }
 
   getPastEvents = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
-    this.props.getPastEvents({page: meta.activePage, per_page})
+    const { per_page, activePage: page } = meta
+    this.props.getPastEvents({page, per_page,
+      community_id: this.getCommunityId()})
   }
 
   getProps = () => ({
