@@ -19,13 +19,13 @@ class CommentContainer extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { comment: {body: ''} }
+    this.state = { comment: {body: '', pictures: []} }
     this.imageInputRef = React.createRef()
     this.imagePlaceholderRef = React.createRef()
     this.commentBodyRef = React.createRef()
-    this.updateComment = this.updateComment.bind(this)
     this.uploadImage = this.uploadImage.bind(this)
     this.updateComment = this.updateComment.bind(this)
+    this.setImage = this.setImage.bind(this)
     this.handleImageChange = this.handleImageChange.bind(this)
   }
 
@@ -52,6 +52,10 @@ class CommentContainer extends Component {
     return this.props.createComment(comment, this.props.parentComment).then(res => {
       this.setState({ comment: {body: ''}, image: null, loading: false })
     }).catch(error => this.setState({loading: false, error}))
+  }
+
+  setImage = (image) => {
+    this.setState({image})
   }
 
   getCommentWithImage = async ({comment, image}) => {
@@ -133,6 +137,7 @@ class CommentContainer extends Component {
     commentBodyRef: this.commentBodyRef,
     imagePlaceholderRef: this.imagePlaceholderRef,
     handleImageChange: this.handleImageChange,
+    setImage: this.setImage,
     current_user: Auth.currentUser(),
   })
 

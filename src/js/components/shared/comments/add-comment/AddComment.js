@@ -9,6 +9,7 @@ import TextArea from 'js/components/shared/text-area'
 import Auth from 'js/auth'
 import { media } from 'js/styles/mixins'
 import Loading from 'js/components/shared/loading'
+import PictureUploader from 'js/components/shared/picture-uploader'
 
 const AddCommentStyles = styled.div`
   max-width: 820px;
@@ -108,6 +109,7 @@ const AddComment = ({
   imageInputRef,
   imagePlaceholderRef,
   handleImageChange,
+  setImage,
   submitBtnVisible = true,
   ...otherProps,
 }) => {
@@ -125,22 +127,18 @@ const AddComment = ({
                     onChange={({target}) => handleChange(target.name, target.value)}
                     value={comment.body} />
 
+          {image && <div className="uploaded-image-holder" ref={imagePlaceholderRef} >
+                      <img src={image} />
+                    </div> }
           {
             <span className="right-controls">
-              <input ref={imageInputRef}
-                     onChange={handleImageChange}
-                     className="hidden"
-                     id="upload-img"
-                     type="file"
-                     name="image"
-                     accept="image/*" />
-              <Button className="btn-right"
-                      onClick={showImageSelectOptions}>
-                <Icon className="image" />
-              </Button>
+              <PictureUploader imageInputRef={imageInputRef}
+                               setImage={setImage}
+                               handleImageChange={handleImageChange}
+                               imagePlaceholderRef={imagePlaceholderRef}
+                               showImageSelectOptions={showImageSelectOptions} />
             </span>
           }
-          {image && <div className="uploaded-image-holder" ref={imagePlaceholderRef} />}
         </div>
 
         {loading && <Loading />}

@@ -28,12 +28,6 @@ class EventContainer extends Component {
     return !checkEqual(this.props, nextProps);
   }
 
-  componentDidUpdate(props, prevProps) {
-    if (!checkEqual(props.match.params, this.props.match.params)) {
-      this.getData()
-    }
-  }
-
   handleChange = (key, value) => {
     const event = this.state.event && this.state.event.id
                     ? this.state.event
@@ -44,19 +38,6 @@ class EventContainer extends Component {
   handleSubmit = () => {
     const {commuity, ...others} = this.state.event
     return this.props.updateEvent(others).then(event => this.setState({event}))
-  }
-
-  attendEvent = () => {
-    const {commuity, ...others} = this.state.event
-    return this.props.attendEvent(others).then(event => this.setState({event}))
-  }
-
-  getData() {
-    const {community_id, id} = this.props.match.params
-    if (!this.props.event || this.props.event.id != id) {
-      this.props.getEvent(id).then(event => this.setState({event}))
-    }
-    this.props.getPastEvents({id, community_id, page: 1, per_page: 3})
   }
 
   getProps = () => ({
