@@ -37,7 +37,7 @@ const StyledAnnouncements = styled.div`
 
 const Announcements = function({
   className,
-  announcements,
+  announcements = {},
   createAnnouncement,
   updateAnnouncement,
   recipient,
@@ -45,10 +45,11 @@ const Announcements = function({
   canCreateAnnouncement,
   ...otherProps
 }) {
+  const { data = [], meta = {}} = announcements
   return (
     <StyledAnnouncements className={`announcements-section ${className}`} {...otherProps}>
       <ul>
-        {announcements && announcements.map(announcement =>
+        {data && data.map(announcement =>
           <li>
             <Announcement {...{ announcement, canCreateAnnouncement,
                                 createAnnouncement, updateAnnouncement}} />
