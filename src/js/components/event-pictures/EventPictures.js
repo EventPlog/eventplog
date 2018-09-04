@@ -35,10 +35,6 @@ const styles = css`
     max-width: 100%;
   }
   
-  .pictures-array {
-    position: relative;
-  }
-  
 `
 
 const EventPictures = ({
@@ -47,8 +43,7 @@ const EventPictures = ({
 }) => {
   const {data = [], meta = {}} = event_pictures
   return (
-    <ContentPanel className={`${className}`} title="Pictures in discussions">
-      <div className="pictures-array">
+      <div className={`${className} pictures-array`}>
         {data && data.map(pic => (
           pic.url ?
           <div className="pic-frame">
@@ -61,7 +56,6 @@ const EventPictures = ({
         ))}
       </div>
 
-    </ContentPanel>
   )
 }
 
