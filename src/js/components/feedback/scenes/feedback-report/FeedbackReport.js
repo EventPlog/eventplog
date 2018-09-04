@@ -133,20 +133,20 @@ const FeedbackReport = ({
         <ContentPanel title="Describing the report">
 
           <p>
-            {interest.total} {pluralize('people', interest.total)} were interested in this event.&nbsp;
+            {interest.total} {pluralize('person', interest.total)} were interested in this event.&nbsp;
             {toPercentage(interest.male, interest.total)}% were male,&nbsp;
             {toPercentage(interest.female, interest.total)}% were female.
           </p>
 
           <p>
-            {checked_in.total} of the {interest.total} {pluralize('people', checked_in.total)}&nbsp;
+            {checked_in.total} of the {interest.total} {pluralize('person', checked_in.total)}&nbsp;
             ({toPercentage(checked_in.total, interest.total)}%) who indicated interested checked in.&nbsp;
             {toPercentage(checked_in.male, checked_in.total)}% were males,&nbsp;
             {toPercentage(checked_in.female, checked_in.total)}% were females.&nbsp;
           </p>
 
           <p>
-            {feedback.total} {pluralize('people', feedback.total)} have given feedback so far&nbsp;
+            {feedback.total} {pluralize('person', feedback.total)} have given feedback so far&nbsp;
             ({toPercentage(feedback.male, feedback.total)}% male,&nbsp;
             {toPercentage(feedback.female, feedback.total)}% female).
           </p>
