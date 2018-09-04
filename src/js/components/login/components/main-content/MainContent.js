@@ -163,8 +163,8 @@ const MainContent = ({flashMsg = null, ...otherProps }) => (
 
     <div className="app-container">
       <div className="caption">
-        <h1>Organize<br /><span>accountable, well documented</span> events.</h1>
-        <small>Look back <span>months later</span> and measure <span>the impact</span> your events made.</small>
+        <h1>Be part of<br /><span>documented, </span>learning-based events.</h1>
+        <small>Find only the best events that keep <span>resources</span> and <span>reviews</span>.</small>
       </div>
 
       {loadLoginComponentByPath(otherProps)}
