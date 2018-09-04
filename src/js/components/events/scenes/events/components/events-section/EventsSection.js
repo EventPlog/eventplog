@@ -84,6 +84,7 @@ const EventsSection = ({
         meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
           ? <Pagination totalPages={meta.total_pages}
                         activePage={meta.current_page}
+                        per_page={meta.per_page}
                         onPageChange={getEvents} />
           : ''
       }

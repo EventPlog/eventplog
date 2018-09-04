@@ -25,8 +25,25 @@ export const getFeedbackReport = (eventId) => {
     data: {},
     errorMessage: 'Something prevented retrieving a feedback report',
     caller: 'new event',
-    route: `/api/v1/web/events/${eventId}/feedback_responses/feedback_report`,
+    route: `/api/v1/web/events/${eventId}/feedback_reports/0`,
     requestMethod: 'GET'
+  })
+}
+
+export const updateFeedbackReport = (feedback_report) => {
+  let actions = baseActions({
+    requestType: actionTypes.FEEDBACK_REPORT_UPDATE_START,
+    receiveType: actionTypes.FEEDBACK_REPORT_UPDATE_COMPLETE,
+    failType: actionTypes.FEEDBACK_REPORT_UPDATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: feedback_report,
+    errorMessage: 'Something prevented updating a feedback report',
+    caller: 'update feedback report',
+    route: `/api/v1/web/feedback_reports/${feedback_report.id}`,
+    requestMethod: 'PATCH'
   })
 }
 

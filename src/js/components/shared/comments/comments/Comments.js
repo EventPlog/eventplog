@@ -32,7 +32,7 @@ const StyledComments = styled.div`
       margin: 1rem 0;
     }
     
-    commenter {
+    .commenter {
       width: auto;
     }
     
@@ -51,9 +51,21 @@ const StyledComments = styled.div`
     }
     
     .new-reply {
+    
+      ${
+        media.phone`
+          margin: 0;
+        `
+      }
       .avatar {
         width: 30px;
         height: 30px
+        
+        ${
+          media.phone`
+            display: none;
+          `
+        }
       }
       
       textarea {
@@ -79,6 +91,7 @@ const Comments = function({
   textField = 'body',
   canReply = true,
   getComments,
+  current_user,
   showMoreBtnTitle = 'Show more comments',
   ...otherProps
 }) {
@@ -101,6 +114,7 @@ const Comments = function({
                                         trackable_id={comment.trackable_id}
                                         trackable_type={comment.trackable_type}
                                         parentComment={comment}
+                                        current_user={current_user}
                                         createComment={createComment} />}
               </div>
             </Comment>

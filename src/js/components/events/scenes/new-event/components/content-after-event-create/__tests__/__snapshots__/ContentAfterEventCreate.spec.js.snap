@@ -56,7 +56,6 @@ exports[`ContentAfterEventCreate it renders correctly 1`] = `
   </ul>
   <Component
     className="medium lowercase"
-    inverted={true}
     to="/communities/undefined/events/undefined"
   >
     Take me to my event

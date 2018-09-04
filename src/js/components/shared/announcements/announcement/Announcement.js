@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import { Icon } from 'semantic-ui-react'
 
@@ -16,12 +15,10 @@ const Announcement = ({
   handleChange,
   updateAnnouncement,
   children,
-  canCreateAnnouncement,
   current_user,
   deleteAnnouncement,
-  ...otherProps
 }) => {
-  const currentUserIsOwner = (!announcement.deleted && announcement.user.id == current_user.id)
+  const currentUserIsOwner = (!announcement.deleted && announcement.user && announcement.user.id == current_user.id)
 
   return (
     <AnnouncementPanel announcement={announcement}

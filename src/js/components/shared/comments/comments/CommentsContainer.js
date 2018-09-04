@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
+import Auth from 'js/auth'
 
 class CommentsContainer extends Component {
   getComments = (e, meta) => {
@@ -15,6 +16,7 @@ class CommentsContainer extends Component {
   getProps = () => ({
     ...this.props,
     getComments: this.getComments,
+    current_user: Auth.currentUser(),
   })
 
   render () {

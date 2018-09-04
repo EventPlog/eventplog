@@ -157,7 +157,7 @@ export const createComment = (comment, parentComment) => {
 
   return handleApiCall({
     actions,
-    data: comment,
+    data: {comment},
     errorMessage: 'Something prevented us from creating a comment.',
     caller: 'POST createComment',
     route: `/api/v1/web/comments`,
@@ -174,7 +174,7 @@ export const updateComment = (comment, parentComment) => {
 
   return handleApiCall({
     actions,
-    data: comment,
+    data: {comment},
     errorMessage: 'Something prevented us from creating a comment.',
     caller: 'PATCH updateComment',
     route: `/api/v1/web/comments/${comment.id}`,
@@ -199,6 +199,23 @@ export const getComments = (params) => {
   })
 }
 
+export const getAnnouncements = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_ANNOUNCEMENT_INDEX_START,
+    receiveType: actionTypes.EVENT_ANNOUNCEMENT_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_ANNOUNCEMENT_INDEX_FAIL
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from retrieving announcemnts.',
+    caller: 'POST index announcements',
+    route: `/api/v1/web/announcements`,
+    requestMethod: 'GET'
+  })
+}
+
 export const createAnnouncement = (announcement) => {
   let actions = baseActions({
     requestType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_START,
@@ -216,7 +233,7 @@ export const createAnnouncement = (announcement) => {
   })
 }
 
-export const updateAnnouncement = (comment) => {
+export const updateAnnouncement = (announcement) => {
   let actions = baseActions({
     requestType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_START,
     receiveType: actionTypes.EVENT_ANNOUNCEMENT_UPDATE_COMPLETE,
@@ -225,10 +242,10 @@ export const updateAnnouncement = (comment) => {
 
   return handleApiCall({
     actions,
-    data: comment,
+    data: announcement,
     errorMessage: 'Something prevented us from creating a comment.',
     caller: 'PATCH updateAnnouncement',
-    route: `/api/v1/web/announcements/${comment.id}`,
+    route: `/api/v1/web/announcements/${announcement.id}`,
     requestMethod: 'PATCH'
   })
 }

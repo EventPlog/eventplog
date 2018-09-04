@@ -15,22 +15,45 @@ const getOptimizedImageUrl = (url) => {
           url.substring(endIndex)
 }
 
+const img = {
+  bytes : 31485,
+  coordinates : {faces: []},
+  created_at : "2018-08-31T08:52:22Z",
+  etag : "ea42bd8fbe2fc8e997626d6037a01185",
+  faces : [],
+  format : "png",
+  height : 512,
+  pages : 1,
+  placeholder : false,
+  public_id : "comments/dnfu9rdvqnxrl8v2gudc",
+  resource_type : "image",
+  secure_url : "https://res.cloudinary.com/eventplog/image/upload/v1535705542/comments/dnfu9rdvqnxrl8v2gudc.png",
+  signature : "e62479d5cd7f3bcfeb37a6c2ad4c76accc5692b0",
+  tags : ["browser_upload"],
+  type : "upload",
+  url : "http://res.cloudinary.com/eventplog/image/upload/v1535705542/comments/dnfu9rdvqnxrl8v2gudc.png",
+  version : 1535705542,
+  width : 512,
+}
 class CommentContainer extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { comment: {body: ''} }
+    this.state = { comment: {body: '', pictures: []} }
     this.imageInputRef = React.createRef()
     this.imagePlaceholderRef = React.createRef()
     this.commentBodyRef = React.createRef()
-    this.updateComment = this.updateComment.bind(this)
     this.uploadImage = this.uploadImage.bind(this)
     this.updateComment = this.updateComment.bind(this)
+    this.setImage = this.setImage.bind(this)
     this.handleImageChange = this.handleImageChange.bind(this)
   }
 
-  componentDidMount() {
-    this.setState({comment: this.props.comment || {}})
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.comment && nextProps.comment.id != prevState.comment.id) {
+      return { ...prevState, comment: nextProps.comment }
+    }
+    return prevState
   }
 
   handleChange = (key, value) => {
@@ -48,7 +71,11 @@ class CommentContainer extends Component {
     }
     return this.props.createComment(comment, this.props.parentComment).then(res => {
       this.setState({ comment: {body: ''}, image: null, loading: false })
-    })
+    }).catch(error => this.setState({loading: false, error}))
+  }
+
+  setImage = (image) => {
+    this.setState({image})
   }
 
   getCommentWithImage = async ({comment, image}) => {
@@ -57,8 +84,16 @@ class CommentContainer extends Component {
     const textfield = this.props.textField || 'body'
     let text = comment[textfield]
     const imageObj = await this.uploadImage(image)
+    const pictures = [{
+      file_name: imageObj.original_filename,
+      width: imageObj.width,
+      height: imageObj.height,
+      extension: imageObj.format,
+      url: getOptimizedImageUrl(imageObj.secure_url)
+    }]
     text = `${text || ''} ![${imageObj.original_filename}](${getOptimizedImageUrl(imageObj.secure_url)})`
-    return {...comment, [textfield]: text}
+    // return {...comment, [textfield]: text}
+    return {...comment, pictures}
   }
 
   editComment = (e) => {
@@ -72,11 +107,12 @@ class CommentContainer extends Component {
   }
 
   updateComment = async () => {
-    const comment = await this.getCommentWithImage(this.state)
+    // const comment = await this.getCommentWithImage(this.state)
+    const {pictures, responses, ...comment} = this.state.comment
     this.setState({editing: false, loading: true})
     return this.props.updateComment(comment, this.props.parentComment).then(res => {
       this.setState({loading: false})
-    })
+    }).catch(error => this.setState({loading: false, error}))
   }
 
   deleteComment = () => {
@@ -118,18 +154,19 @@ class CommentContainer extends Component {
   }
 
   getProps = () => ({
-    ...this.state,
     ...this.props,
+    ...this.state,
     handleChange: this.handleChange,
     createComment: this.createComment,
     editComment: this.editComment,
     updateComment: this.updateComment,
     deleteComment: this.deleteComment,
-    showImageSelectOptions: this.showImageSelectOptions,
-    imageInputRef: this.imageInputRef,
+    // showImageSelectOptions: this.showImageSelectOptions,
+    // imageInputRef: this.imageInputRef,
     commentBodyRef: this.commentBodyRef,
-    imagePlaceholderRef: this.imagePlaceholderRef,
-    handleImageChange: this.handleImageChange,
+    // imagePlaceholderRef: this.imagePlaceholderRef,
+    // handleImageChange: this.handleImageChange,
+    setImage: this.setImage,
     current_user: Auth.currentUser(),
   })
 

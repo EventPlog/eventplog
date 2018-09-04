@@ -129,7 +129,9 @@ const EventBanner = ({
   is_attending,
   is_stakeholder,
   is_owner,
+  visibility_status,
   className,
+  toggleVisibilityStatus,
 }) => {
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
@@ -182,13 +184,17 @@ const EventBanner = ({
           <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
             Go Backstage
           </Button.Link>}
-        {is_attending && !!link &&
+        {is_attending && !is_owner && !!link &&
           <Button.Link isAnchorTag className="cta" href={link} >
             RSVP
           </Button.Link>}
         {!is_attending &&
-          <Button className="cta" onClick={() => attendEvent(event)}>
+          <Button className="cta" onClick={() => attendEvent({id})}>
             Interested
+          </Button>}
+        {is_owner &&
+          <Button className={`cta ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
+            Make event {visibility_status == 'private_event' ? 'public' : 'private'}
           </Button>}
         </div>
     </ContentSection.FullRow>

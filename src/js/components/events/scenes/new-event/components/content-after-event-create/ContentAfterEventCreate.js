@@ -73,7 +73,7 @@ const ContentAfterEventSubmit = ({ event = {}, handleChange, loading, error }) =
         </Link>
       </li>
     </ul>
-    <Button.Link to={`/communities/${event.community_id}/events/${event.id}`} inverted className="medium lowercase">
+    <Button.Link to={`/communities/${event.community_id}/events/${event.id}`} className="medium lowercase">
       Take me to my event
     </Button.Link>
   </StyledContent>
