@@ -30,7 +30,7 @@ const StyledEvent = styled.div`
   }
   
   p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weigth: 300;
   } 
   
