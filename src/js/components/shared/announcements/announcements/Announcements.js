@@ -1,4 +1,5 @@
 import React from 'react'
+import { Message } from 'semantic-ui-react'
 import styled, { css } from 'styled-components'
 
 // internal
@@ -50,8 +51,14 @@ const Announcements = function({
 }) {
   const { data = [], meta = {}} = announcements
   return (
-    <ContentPanel title={`Announcements (${meta.total_count})`}
+    <ContentPanel title={`Announcements (${meta.total_count || 0})`}
                   className={`announcements-section ${className}`} {...otherProps}>
+
+      {canCreateAnnouncement &&
+        <Message info>
+          <Message.Header>Make announcements you want your guests to see</Message.Header>
+            <p>Your guests get a notification with your message, so you can kep them updated.</p>
+        </Message>}
       <ul>
         <li>
           {canCreateAnnouncement &&

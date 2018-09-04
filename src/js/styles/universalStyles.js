@@ -121,5 +121,9 @@ const styles = css`
     background: ${defaults.gray};
     border-radius: 5px;
   }
+  
+  .ui.message p {
+    font-size: 1rem;
+  }
 `
 export default styles;
