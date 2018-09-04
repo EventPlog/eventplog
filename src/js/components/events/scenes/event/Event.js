@@ -66,13 +66,17 @@ const StyledEvent = styled.div`
   
   .ui.pointing.menu {
     flex-wrap: wrap;
-    background: ${props => props.theme.gray};
+    // background: ${props => props.theme.gray};
     margin-right: 1rem;
     
     ${
       media.phone`
         margin: 0;
       `
+    }
+    
+    .item {
+      color: var(--activeLink);
     }
   }
   
@@ -88,6 +92,18 @@ const StyledEvent = styled.div`
     }
   }
 `
+
+const Discussions = () => {
+
+  const getPanes = () => {
+    return [
+      {name: `Conversations/Q and A`, content: EventDiscussion },
+      {name: `Pictures only`, content: EventPictures },
+    ]
+  }
+
+  return <Tab panes={getPanes()} />
+}
 
 const Event = ({
   event = {},
@@ -113,10 +129,9 @@ const Event = ({
   const getPanes = () => {
     return [
       {name: `About`, content: AboutEvent },
-      {name: `Discussion (${event_discussion.comments_count})`, content: EventDiscussion },
-      {name: `Pictures`, content: EventPictures },
-      {name: `Resources`, content: EventResources },
-      {name: `Report`, content: Report },
+      {name: `Discussion (${event_discussion.comments_count})`, content: Discussions },
+      {name: `Speakers' slides`, content: EventResources },
+      {name: `Report/Feedback`, content: Report },
     ]
   }
 

@@ -26,9 +26,9 @@ const Discussion = ({
   const { comments = {}, loading, error } = event_discussion
 
   const canContribute = event.is_checked_in || event.is_stakeholder
+
   return (
     <EventDiscussionStyes>
-      <ContentPanel title="Talk Chambers (for checked-in guests)">
         {!canContribute &&
         <Message info>
           <Message.Header>Welcome to Talk Chambers</Message.Header>
@@ -56,10 +56,9 @@ const Discussion = ({
         {!loading && !error &&
           <Comments recipient_id={event_discussion.id}
                   recipient_type="EventDiscussion"
-                  canReply={event.is_checked_in}
+                  canReply={canContribute}
           {...{comments, createComment, updateComment, getComments }} />}
 
-      </ContentPanel>
     </EventDiscussionStyes>
   )
 }
