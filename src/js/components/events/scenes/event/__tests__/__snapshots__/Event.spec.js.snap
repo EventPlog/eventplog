@@ -22,15 +22,11 @@ exports[`Event should render correctly 1`] = `
             },
             Object {
               "content": [Function],
-              "name": "Pictures",
+              "name": "Speakers' slides",
             },
             Object {
               "content": [Function],
-              "name": "Resources",
-            },
-            Object {
-              "content": [Function],
-              "name": "Report",
+              "name": "Report/Feedback",
             },
           ]
         }
