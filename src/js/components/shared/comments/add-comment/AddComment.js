@@ -9,10 +9,11 @@ import TextArea from 'js/components/shared/text-area'
 import Auth from 'js/auth'
 import { media } from 'js/styles/mixins'
 import Loading from 'js/components/shared/loading'
+import PictureUploader from 'js/components/shared/picture-uploader'
 
 const AddCommentStyles = styled.div`
   max-width: 820px;
-  margin-top: 2rem;
+  margin-bottom: 1rem;
   
   .new-comment-card {
     ${
@@ -34,6 +35,7 @@ const AddCommentStyles = styled.div`
       `
     }
   }
+  
   
   .commenter {
     width: auto;
@@ -81,15 +83,6 @@ const AddCommentStyles = styled.div`
     }
   }
   
-  .uploaded-image-holder {
-    border: 1px solid ${props => props.theme.gray};
-    border-top: none;
-    padding: 1rem;
-    
-    img {
-      max-width: 100%;
-    }
-  }
 `
 
 const AddComment = ({
@@ -107,43 +100,36 @@ const AddComment = ({
   imageInputRef,
   imagePlaceholderRef,
   handleImageChange,
+  setImage,
   submitBtnVisible = true,
   ...otherProps,
 }) => {
   if (error) {
     return <Loading.Error msg={error} />
   }
-  const submitComment = () => {
-    const { recipient_id, recipient_type, trackable_id, trackable_type } = otherProps
-    const updatedComment = {...comment, recipient_id, recipient_type, trackable_id, trackable_type}
-    createComment(updatedComment, parentComment)
-  }
+  const newComment = { user: current_user }
 
   return (
     <AddCommentStyles className={`${className} add-comment`}>
-      <CommentPanel className="new-comment-card" user={current_user}>
+      <CommentPanel className="new-comment-card" comment={newComment}>
         <div className="comment-card textarea-holder">
           <TextArea placeholder={placeholder}
                     name="body"
                     onChange={({target}) => handleChange(target.name, target.value)}
                     value={comment.body} />
 
+          {image && <div className="uploaded-image-holder" ref={imagePlaceholderRef} >
+                      <img src={image} />
+                    </div> }
           {
             <span className="right-controls">
-              <input ref={imageInputRef}
-                     onChange={handleImageChange}
-                     className="hidden"
-                     id="upload-img"
-                     type="file"
-                     name="image"
-                     accept="image/*" />
-              <Button className="btn-right"
-                      onClick={showImageSelectOptions}>
-                <Icon className="image" />
-              </Button>
+              <PictureUploader imageInputRef={imageInputRef}
+                               setImage={setImage}
+                               handleImageChange={handleImageChange}
+                               imagePlaceholderRef={imagePlaceholderRef}
+                               showImageSelectOptions={showImageSelectOptions} />
             </span>
           }
-          {image && <div className="uploaded-image-holder" ref={imagePlaceholderRef} />}
         </div>
 
         {loading && <Loading />}

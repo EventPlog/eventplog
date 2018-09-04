@@ -60,6 +60,11 @@ const Comment = ({
     ? <div className="deleted-comment">This comment has been deleted</div>
     : <div ref={commentBodyRef} >
         <ReactMarkdown source={comment[textField]} />
+
+        {comment.pictures && comment.pictures.map(picture =>
+          <div className="uploaded-image-holder" >
+            <img src={picture.url} />
+          </div>) }
       </div>
   return (
     <CommentPanel className={className} comment={comment}>

@@ -4,14 +4,9 @@ import { darken } from 'polished'
 import ReactMarkdown from 'react-markdown'
 
 // internal components
-import ContentSection from 'js/components/shared/content-section'
 import ContentPanel from 'js/components/shared/content-panel'
-import Comments from 'js/components/shared/comments'
-import EventSidebar from './components/event-sidebar'
-import EventBanner from './components/event-banner'
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
-import AddComment from 'js/components/shared/comments/add-comment'
 import Announcements from 'js/components/shared/announcements'
 import Members from 'js/components/shared/members'
 import ContentEditable from 'js/components/shared/content-editable'
@@ -68,6 +63,7 @@ const Event = ({
   attendEvent,
   createComment,
   updateComment,
+  getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
 }) => {
@@ -87,11 +83,7 @@ const Event = ({
   const eventDue = (new Date(start_time)) <= (new Date())
 
   return (
-    <StyledEvent activeLink={activeLink} className="app-container">
-      <ContentSection>
-        <EventBanner {...{...event, community, handleChange, handleSubmit, attendEvent}} />
-
-        <ContentSection.Body>
+    <StyledEvent activeLink={activeLink}>
           {is_attending && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
           <ContentPanel title="Description">
             <div className="event-description">
@@ -101,18 +93,20 @@ const Event = ({
                                defaultValue={description}
                                onChange={handleChange}
                                onSubmit={handleSubmit}>
-                <ReactMarkdown escapeHtml={false} source={description || 'Click to edit. In markdown, if you wish :)'} />
+
+                <ReactMarkdown escapeHtml={false}
+                               source={description || 'Click to edit. In markdown, if you wish :)'} />
+
               </ContentEditable>
             </div>
           </ContentPanel>
 
-          <ContentPanel title="Announcements">
-            <Announcements {...{announcements, createAnnouncement, updateAnnouncement,
-                            canCreateAnnouncement: isStakeHolder,
-                            recipient: event,
-                            recipient_type: 'Event'}} />
+          <Announcements {...{announcements, getAnnouncements,
+                          createAnnouncement, updateAnnouncement,
+                          canCreateAnnouncement: isStakeHolder,
+                          recipient_id: event.id,
+                          recipient_type: 'Event'}} />
 
-          </ContentPanel>
 
           <ContentPanel title="Meet the organizers">
             <Members>
@@ -125,31 +119,6 @@ const Event = ({
                 Go backstage to add organizers
               </Button.Link>}
           </ContentPanel>
-
-        </ContentSection.Body>
-
-        <EventSidebar  {...{community,
-                            announcements,
-                            past_events,
-                            attendEvent}}/>
-
-        <ContentSection.FullRow>
-          <ContentSection.Body>
-            <ContentPanel title="Ask the organizers">
-              <Comments {...{comments, createComment, updateComment }} />
-
-              <AddComment placeholder="What would you like to ask/suggest?"
-                          recipient_id={event.id}
-                          recipient_type="Event"
-                          trackable_id={event.id}
-                          trackable_type="Event"
-                          createComment={createComment} />
-
-            </ContentPanel>
-          </ContentSection.Body>
-        </ContentSection.FullRow>
-
-      </ContentSection>
 
     </StyledEvent>
   )

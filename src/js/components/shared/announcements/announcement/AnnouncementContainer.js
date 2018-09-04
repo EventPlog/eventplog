@@ -10,8 +10,11 @@ class AnnouncementContainer extends Component {
     this.updateAnnouncement = this.updateAnnouncement.bind(this)
   }
 
-  componentDidMount() {
-    this.setState({announcement: this.props.announcement})
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.announcement && nextProps.announcement.id != prevState.announcement.id) {
+      return { ...prevState, announcement: nextProps.announcement }
+    }
+    return prevState
   }
 
   handleChange = (key, value) => {
@@ -38,8 +41,8 @@ class AnnouncementContainer extends Component {
   }
 
   getProps = () => ({
-    ...this.state,
     ...this.props,
+    ...this.state,
     handleChange: this.handleChange,
     createAnnouncement: this.createAnnouncement,
     updateAnnouncement: this.updateAnnouncement,

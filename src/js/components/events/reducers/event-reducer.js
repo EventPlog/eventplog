@@ -53,6 +53,10 @@ const eventReducer = (state=initialState.event, action) => {
       data = [...state.comments.data, ...action.payload.data]
       return {...state, comments: {data, meta: action.payload.meta}}
 
+    case actionTypes.EVENT_ANNOUNCEMENT_INDEX_COMPLETE:
+      data = [...state.announcements.data, ...action.payload.data]
+      return {...state, announcements: {data, meta: action.payload.meta}}
+
     default:
       return state;
   }

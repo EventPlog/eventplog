@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
 
 // internal
-import { media } from 'js/styles/mixins'
+import { media, maxMedia } from 'js/styles/mixins'
 import ContentPanelCard from './ContentPanelCard'
 
 
@@ -16,6 +16,12 @@ const StyledContentPanel = styled.div`
     letter-spacing: 0.01rem;
     margin: 0 1rem;
     padding-bottom: 5px;
+    
+    ${
+      maxMedia.tablet`
+        margin: 0 0 1rem;
+      `
+    }
   }
   
   > div.content-body {
@@ -23,13 +29,13 @@ const StyledContentPanel = styled.div`
     
     ${
       media.tablet`
-        margin: 0;
+        margin: 0 0 1rem;
       `
     }
         
     ${
       media.phone`
-        margin: 0;
+        margin: 0 0 1rem;
       `
     }
   }
