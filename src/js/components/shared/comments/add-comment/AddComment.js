@@ -83,15 +83,6 @@ const AddCommentStyles = styled.div`
     }
   }
   
-  .uploaded-image-holder {
-    border: 1px solid ${props => props.theme.gray};
-    border-top: none;
-    padding: 1rem;
-    
-    img {
-      max-width: 100%;
-    }
-  }
 `
 
 const AddComment = ({

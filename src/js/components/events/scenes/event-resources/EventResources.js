@@ -70,6 +70,7 @@ const EventPictures = ({
   speaker_resources = resources,
   other_resources = resources,
 }) => {
+  return <div>When available, the speakers' deck/slides and any other resource shared by the organizers will be available here.</div>
   return (
     <div className={`${className}`}>
       <Resources title="Speaker Decks/Slides"

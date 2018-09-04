@@ -157,7 +157,7 @@ export const createComment = (comment, parentComment) => {
 
   return handleApiCall({
     actions,
-    data: comment,
+    data: {comment},
     errorMessage: 'Something prevented us from creating a comment.',
     caller: 'POST createComment',
     route: `/api/v1/web/comments`,
@@ -174,7 +174,7 @@ export const updateComment = (comment, parentComment) => {
 
   return handleApiCall({
     actions,
-    data: comment,
+    data: {comment},
     errorMessage: 'Something prevented us from creating a comment.',
     caller: 'PATCH updateComment',
     route: `/api/v1/web/comments/${comment.id}`,

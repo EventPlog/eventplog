@@ -136,6 +136,18 @@ const StyledComment = styled.div`
       }
     }
   }
+  
+  .uploaded-image-holder {
+    border: 1px solid ${props => props.theme.gray};
+    background: ${props => props.theme.white};
+    border-top: none;
+    margin-top: 1rem;
+    /*padding: 1rem;*/
+    
+    img {
+      max-width: 100%;
+    }
+  }
 `
 
 const CommentPanel = ({

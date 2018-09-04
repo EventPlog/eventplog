@@ -2,6 +2,7 @@ import React from 'react'
 import styled, {css} from 'styled-components'
 
 import ContentPanel from 'js/components/shared/content-panel'
+import { media } from 'js/styles/mixins'
 
 const sample_pictures = [
   { file_name: 'Before the music took us away', url: '/tech_is_in_you.png' },
@@ -14,7 +15,15 @@ const styles = css`
   position: relative;
   
   .pic-frame {
-    margin: 2rem 0;
+    display: inline-block;
+    width: calc(33.3% - 2rem);
+    margin: 0.5rem 1rem;
+    
+    ${
+      media.phone`  
+        width: 100%;
+      `
+    }
   }
   
   .caption {
@@ -22,24 +31,33 @@ const styles = css`
   }
   
   img {
+    width: 100%;
     max-width: 100%;
   }
+  
+  .pictures-array {
+    position: relative;
+  }
+  
 `
 
 const EventPictures = ({
   className,
-  pictures = sample_pictures
+  event_pictures = {}
 }) => {
+  const {data = [], meta = {}} = event_pictures
   return (
-    <ContentPanel className={`${className}`} title="Highlights">
+    <ContentPanel className={`${className}`} title="Pictures in discussions">
       <div className="pictures-array">
-        {pictures.map(pic => (
+        {data && data.map(pic => (
+          pic.url ?
           <div className="pic-frame">
             <div className="caption">
               {pic.file_name}
             </div>
             <img src={pic.url} />
-          </div>
+          </div> :
+            ''
         ))}
       </div>
 

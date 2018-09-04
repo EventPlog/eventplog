@@ -11,6 +11,7 @@ import guests from 'js/components/guests/reducers'
 import feedback from 'js/components/feedback/reducers'
 import organizers from 'js/components/event-settings/reducers'
 import event_discussions from 'js/components/event-discussions/reducers'
+import event_pictures from 'js/components/event-pictures/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -24,7 +25,8 @@ let rootReducer = combineReducers({
   guests,
   feedback,
   organizers,
-  event_discussions
+  event_discussions,
+  event_pictures,
 })
 
 export default rootReducer

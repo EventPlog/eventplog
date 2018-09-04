@@ -13,7 +13,7 @@ import Loading from 'js/components/shared/loading'
 import AddComment from 'js/components/shared/comments/add-comment'
 import AboutEvent from '../about-event'
 import EventDiscussion from 'js/components/event-discussions'
-import EventPictures from '../event-pictures'
+import EventPictures from 'js/components/event-pictures'
 import EventResources from '../event-resources'
 import Tab from 'js/components/shared/tab'
 import Report from 'js/components/feedback/scenes/feedback-report'
@@ -107,16 +107,15 @@ const Event = ({
 
   const isStakeHolder = event.is_stakeholder
 
-  const { announcements, comments } = event
+  const { event_discussion = {}, announcements, comments } = event
 
-  const picLable = () => <div>Pictures</div>
   const getPanes = () => {
     return [
       {name: `About`, content: AboutEvent },
-      {name: `Discussion (${event.discussion_comments_count})`, content: EventDiscussion },
-      {name: `Pictures (0)`, content: EventPictures },
-      {name: `Resources (0)`, content: EventResources },
-      {name: `Report (shown)`, content: Report },
+      {name: `Discussion (${event_discussion.comments_count})`, content: EventDiscussion },
+      {name: `Pictures`, content: EventPictures },
+      {name: `Resources`, content: EventResources },
+      {name: `Report`, content: Report },
     ]
   }
 
