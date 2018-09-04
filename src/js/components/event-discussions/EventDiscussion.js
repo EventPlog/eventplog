@@ -25,24 +25,25 @@ const Discussion = ({
 }) => {
   const { comments = {}, loading, error } = event_discussion
 
+  const canContribute = event.is_checked_in || event.is_stakeholder
   return (
     <EventDiscussionStyes>
       <ContentPanel title="Talk Chambers (for checked-in guests)">
-        {!event.is_checked_in &&
+        {!canContribute &&
         <Message info>
           <Message.Header>Welcome to Talk Chambers</Message.Header>
-          <p>You're free to look around, but only checked-in guests can contribute here.</p>
+          <p>You're free to look around, but only checked-in guests or organizers can contribute here.</p>
           <p>Are you checked in but still can't type anything here? Please double check you're logged in with the same email you checked in with. Or contact one of the organizers.</p>
         </Message>}
 
-        {event.is_checked_in &&
+        {canContribute &&
           <Message info>
             <Message.Header>Welcome to Talk Chambers</Message.Header>
             <p>Did you just get checked in? Introduce yourself!</p>
             <p>Did a speaker say something that made you remember a contribution or question? Type it here before you forget!</p>
             <p>Did you grasp an amazing take-away? Share with others here! Be the team player!</p>
           </Message>}
-        {event.is_checked_in &&
+        {canContribute &&
         <AddComment placeholder="Say hi, ask a question, clarify something said, anything! Be heard :)"
                     recipient_id={event_discussion.id}
                     recipient_type="EventDiscussion"

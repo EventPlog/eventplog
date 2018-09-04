@@ -1,4 +1,5 @@
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { darken } from 'polished'
 import ReactMarkdown from 'react-markdown'
