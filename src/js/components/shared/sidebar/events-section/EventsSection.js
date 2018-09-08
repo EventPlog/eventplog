@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 // internal
 import Sidebar from 'js/components/shared/sidebar'
 import Loading from 'js/components/shared/loading'
+import { pluralize } from 'js/utils'
 
-export const generateTitle = (event, communityId) => (
-  <Link to={`/communities/${communityId}/events/${event.id}`}>
+export const generateTitle = (event = {}) => (
+  <Link to={`/communities/${event.community_id}/events/${event.id}`}>
     {event.title}
   </Link>
 )
@@ -20,7 +21,7 @@ export const generateDescription = (community) => (
 )
 
 export const generateMeta = (event) => (
-  `${event.interested_persons} people interested`
+  `${event.interested_persons} ${pluralize('person', event.interested_persons)} interested`
 )
 
 
@@ -35,15 +36,18 @@ const EventsSection = ({
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
       {(!loading && !error && data) && data.map(({community, description: d, featured_image, ...event}) => {
-          const title = generateTitle(event, community.id);
-          const description = generateDescription(community);
+          const title = generateTitle(event);
+          const description = community ? generateDescription(community) : '';
           const meta = generateMeta(event)
+          const titleLink = `/communities/${event.community_id}/events/${event.id}`
           const btn = event.is_attending
                       ? {}
                       : {onClick: () => attendEvent(event), text: 'Interested'}
-          return <Sidebar.Card key={event.id}
-                               {...{title, description,
-                               featured_image, meta, btn}} />
+          return (
+            <Sidebar.Card key={event.id}
+                           {...{title, description, titleLink,
+                           featured_image, meta, btn}} />
+          )
         }
       )}
     </Sidebar>

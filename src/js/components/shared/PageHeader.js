@@ -13,7 +13,7 @@ const StyledPageHeader = styled.div`
   }
 `
 
-const PageHeader = ({ title, icon }) => (
+const PageHeader = ({ title, icon, handleSearch }) => (
   <StyledPageHeader className="page-header">
     <Header as='h4'>
       <Icon name={icon || 'users'} />
@@ -21,7 +21,7 @@ const PageHeader = ({ title, icon }) => (
         {title}
       </Header.Content>
     </Header>
-    <Input icon='search' placeholder='Search...' />
+    <Input icon='search' placeholder='Search...' onKeyUp={handleSearch} />
   </StyledPageHeader>
 )
 

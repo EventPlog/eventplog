@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
+import 'nprogress/nprogress.css'
 
 // ======= INTERNAL ========
 import {Auth, PrivateRoute} from 'js/auth'
@@ -18,6 +19,7 @@ import Aboutus from 'js/components/about-us'
 import WhyEventplog from 'js/components/why-eventplog'
 import appThemeColors from 'js/styles/theme/variables'
 import BreadCrumb from 'js/components/shared/breadcrumb'
+import { darken } from 'polished'
 
 
 
@@ -30,6 +32,7 @@ const Password = createLoadable(() => import('js/components/password' /* webpack
 
 const StyledApp = styled.div`
   --activeLink: ${props => props.theme.activeLink};
+  --activeLinkBg: ${props => props.theme.activeLinkBg};
   
   ${universalStyles}
 `
@@ -39,10 +42,12 @@ class App extends Component {
 
   render() {
     const { activeLink, showBreadCrumb, store } = this.props;
+    const activeLinkBg = darken(0.1, activeLink)
     return (
       <ThemeProvider theme={{
         ...appThemeColors,
         activeLink,
+        activeLinkBg,
       }}>
       
         <ScrollToTop>

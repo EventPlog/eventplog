@@ -1,16 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { Input as SemanticInput } from 'semantic-ui-react'
 import { lighten} from 'polished'
 
 import colors from '../../../styles/theme/colors'
 
-const StyledInput = styled.input`
-  background: ${lighten(0.42, colors.gray)} !important;
+const styles = css`
+  background: ${lighten(0, colors.gray)} !important;
+  border-radius: 5px;
   border: none !important;
 `
 
-const Input = (props) => (
-  <StyledInput {...props} />
+const Input = ({className, ...props}) => (
+  <SemanticInput className={className} {...props} />
 )
 
-export default Input
+export default styled(Input)`${styles}`

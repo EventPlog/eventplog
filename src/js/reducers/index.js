@@ -5,6 +5,13 @@ import events from 'js/components/events/reducers'
 import users from 'js/components/user/reducers'
 import communities from 'js/components/communities/reducers'
 import invitations from 'js/components/invitations/reducers'
+import event_checklists from 'js/components/event-planning/reducers'
+import todo_items from 'js/components/todo-items/reducers'
+import guests from 'js/components/guests/reducers'
+import feedback from 'js/components/feedback/reducers'
+import organizers from 'js/components/event-settings/reducers'
+import event_discussions from 'js/components/event-discussions/reducers'
+import event_pictures from 'js/components/event-pictures/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -13,6 +20,13 @@ let rootReducer = combineReducers({
   users,
   communities,
   invitations,
+  event_checklists,
+  todo_items,
+  guests,
+  feedback,
+  organizers,
+  event_discussions,
+  event_pictures,
 })
 
 export default rootReducer

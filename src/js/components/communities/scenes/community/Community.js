@@ -35,9 +35,12 @@ const Main = ({activeLink, ...props}) => {
   if (props.community && props.community.loading) {
     return <Loading />
   }
+  if (props.community && props.community.error) {
+    return <Loading.Error msg={props.community.error} />
+  }
   return (
     <StyledMain activeLink={activeLink}>
-      <CommunityHeader community={props.community} />
+      <CommunityHeader {...props} />
       <Switch>
         <PrivateRoute exact path="/communities/:id" render={(routerProps) => <CommunityMainContent {...props} />}/>
         <PrivateRoute path="/communities/:id/edit" render={() => <UpdateCommunity {...props} />} />

@@ -24,6 +24,7 @@ const setUserInCookie = (user) => {
   cookie.set('user_token', user.auth_token)
   return user
 }
+
 export const Auth = {
   isLoggedIn: Boolean(cookie.get('current_user')),
   currentUser: () => {
@@ -37,14 +38,14 @@ export const Auth = {
   user_token: cookie.get('user_token'),
   loginUser(params) {
     return (dispatch) => {
-       return processRequest('/api/v1/web/login/oauth', 'POST', params)
+       return processRequest({path: '/api/v1/web/login/oauth', method: 'POST', data: params})
         .then(user => {
           return setUserInCookie(user)
         })
   }},
   loginByEmail(params) {
     return (dispatch) => {
-      return processRequest('/api/v1/web/login/', 'POST', params)
+      return processRequest({path: '/api/v1/web/login/', method: 'POST', data: params})
         .then(user => {
           return setUserInCookie(user)
         })
@@ -55,7 +56,7 @@ export const Auth = {
     }},
   signupByEmail(params) {
     return (dispatch) =>
-      processRequest('/api/v1/web/users/', 'POST', params)
+      processRequest({path: '/api/v1/web/users/', method: 'POST', data: params})
         .then(user => {
           return setUserInCookie(user)
         })
@@ -68,7 +69,7 @@ export const Auth = {
     return (dispatch) => {
       cookie.remove('current_user')
       cookie.remove('user_token')
-      return processRequest('/api/v1/web/logout', 'POST', params)
+      return processRequest({path: '/api/v1/web/logout', method: 'POST', data: params })
         .then(res => {
           return res
         })
@@ -77,7 +78,16 @@ export const Auth = {
           throw(err)
         })
     }
-  }
+  },
+  getFromCookie(key) {
+    return  cookie.get(key)
+  },
+  setCookie(key, url) {
+    return  cookie.set(key, url)
+  },
+  deleteFromCookie(key) {
+    return  cookie.remove(key)
+  },
 }
 
 export default Auth

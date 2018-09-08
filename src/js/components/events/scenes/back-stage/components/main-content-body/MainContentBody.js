@@ -5,11 +5,13 @@ import styled from 'styled-components'
 // internal components
 import EventPageContent from './EventPageContent';
 import { media, maxMedia } from 'js/styles/mixins'
+import { lighten } from 'polished'
 
 const StyledMainContent = styled.div`
   display: flex;
   flex: 1;
-  overflow-y: scroll;
+  padding-bottom: 4rem;
+  background: ${props => props.theme.gray};
   
   .event-workplace {
     position: relative;
@@ -20,6 +22,13 @@ const StyledMainContent = styled.div`
     height: 400px;
     position: absolute;
     width: 100%;
+    background-size: cover;
+    
+    ${
+      media.phone`
+        max-height: 250px;
+      `
+    }
   }
   
   .container {
@@ -27,7 +36,6 @@ const StyledMainContent = styled.div`
     position: relative; 
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
     
     > * {
       width: 100%;

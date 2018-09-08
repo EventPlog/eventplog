@@ -4,14 +4,24 @@ import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
 
 // internal
-import { media } from 'js/styles/mixins'
+import { media, maxMedia } from 'js/styles/mixins'
 import ContentPanelCard from './ContentPanelCard'
 
 
 const StyledContentPanel = styled.div`
   .content-header {
     border-bottom: 1px solid ${props => lighten(0.2, props.theme.blue)};
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    margin: 0 1rem;
     padding-bottom: 5px;
+    
+    ${
+      maxMedia.tablet`
+        margin: 0 0 1rem;
+      `
+    }
   }
   
   > div.content-body {
@@ -19,23 +29,23 @@ const StyledContentPanel = styled.div`
     
     ${
       media.tablet`
-        margin: 0;
+        margin: 0 0 1rem;
       `
     }
         
     ${
       media.phone`
-        margin: 0;
+        margin: 0 0 1rem;
       `
     }
   }
   
 `
 
-const ContentPanel = function({ title, children }) {
+const ContentPanel = function({ className = '', title, children }) {
   return (
-    <StyledContentPanel className="content-panel">
-      <h5 className="content-header">{ title }</h5>
+    <StyledContentPanel className={`${className} content-panel`}>
+      {title && <h5 className="content-header">{ title }</h5>}
       <div className="content-body">
         { children }
       </div>

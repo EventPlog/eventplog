@@ -19,7 +19,7 @@ exports[`main content - New Community component should render correctly 1`] = `
         <label>
           Name
         </label>
-        <Input
+        <Styled(Input)
           name="name"
           placeholder="Awesome event"
         />
@@ -28,7 +28,8 @@ exports[`main content - New Community component should render correctly 1`] = `
         <label>
           One-line Description
         </label>
-        <Input
+        <Styled(Input)
+          maxLength={70}
           name="description"
           placeholder="An community of awesome people"
         />
@@ -37,7 +38,7 @@ exports[`main content - New Community component should render correctly 1`] = `
         <label>
           Link to Group
         </label>
-        <Input
+        <Styled(Input)
           name="link"
           placeholder="http://someplace.com"
         />
@@ -46,7 +47,7 @@ exports[`main content - New Community component should render correctly 1`] = `
         <label>
           Link to logo
         </label>
-        <Input
+        <Styled(Input)
           name="logo"
           placeholder="http://someplace.com"
         />
@@ -55,7 +56,7 @@ exports[`main content - New Community component should render correctly 1`] = `
         <label>
           Featured image url
         </label>
-        <Input
+        <Styled(Input)
           name="featured_image"
           placeholder="http://someplace.com"
         />
@@ -64,7 +65,7 @@ exports[`main content - New Community component should render correctly 1`] = `
         <label>
           Interests (separated by commas)
         </label>
-        <Input
+        <Styled(Input)
           name="topic_interests"
           onChange={[Function]}
           placeholder="technology, food"
@@ -75,9 +76,55 @@ exports[`main content - New Community component should render correctly 1`] = `
         <label>
           Brand Color
         </label>
-        <Input
+        <Styled(Input)
+          defaultValue="#9448BC"
           name="brand_color"
-          placeholder="#aefdae"
+          options={
+            Array [
+              Object {
+                "icon": "point purple",
+                "key": "default",
+                "text": "default",
+                "value": "#9448BC",
+              },
+              Object {
+                "icon": "point blue",
+                "key": "blue",
+                "text": "blue",
+                "value": "#4968B7",
+              },
+              Object {
+                "icon": "point red",
+                "key": "red",
+                "text": "red",
+                "value": "#B33F62",
+              },
+              Object {
+                "icon": "point green",
+                "key": "green",
+                "text": "green",
+                "value": "#2db528",
+              },
+              Object {
+                "icon": "point pink",
+                "key": "pink",
+                "text": "pink",
+                "value": "#F851F6",
+              },
+              Object {
+                "icon": "point orange",
+                "key": "orange",
+                "text": "orange",
+                "value": "#e17034",
+              },
+              Object {
+                "icon": "point yellow",
+                "key": "yellow",
+                "text": "yellow",
+                "value": "#fdee0c",
+              },
+            ]
+          }
         />
       </FormField>
       <FormField>
@@ -98,7 +145,7 @@ exports[`main content - New Community component should render correctly 1`] = `
           className="cancel"
           to="/communities/undefined"
         >
-          Cancel
+          Back to Community Page
         </Component>
       </FormGroup>
     </Form>

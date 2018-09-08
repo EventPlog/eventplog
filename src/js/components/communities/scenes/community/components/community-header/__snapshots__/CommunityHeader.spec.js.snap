@@ -9,9 +9,10 @@ exports[`CommunityHeader should render correctly 1`] = `
       replace={false}
       to="/communities/undefined"
     >
-      <div>
+      <div
+        className="hidden-xs"
+      >
         <h3 />
-        <small />
       </div>
     </Link>
     <div
@@ -34,14 +35,6 @@ exports[`CommunityHeader should render correctly 1`] = `
             to="/communities/undefined/events"
           >
             Events
-          </Link>
-        </Component>
-        <Component>
-          <Link
-            replace={false}
-            to="/communities/undefined"
-          >
-            Team
           </Link>
         </Component>
       </Nav>

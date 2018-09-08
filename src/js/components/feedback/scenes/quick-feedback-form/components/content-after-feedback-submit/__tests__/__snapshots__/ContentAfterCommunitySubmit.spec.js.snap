@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
+<styled.div>
+  <Message
+    positive={true}
+  >
+    <MessageHeader>
+      Thank you for sharing your thoughts!
+    </MessageHeader>
+  </Message>
+</styled.div>
+`;

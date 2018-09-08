@@ -9,58 +9,46 @@ exports[`Event should render correctly 1`] = `
       community={Object {}}
     />
     <ContentBody>
-      <ContentPanel
-        title="Description"
-      >
-        <div
-          className="event-description"
-        >
-          <ContentEditableWrapper
-            propName="description"
-            type="textarea"
-          >
-            <ReactMarkdown
-              astPlugins={Array []}
-              escapeHtml={false}
-              plugins={Array []}
-              rawSourcePos={false}
-              renderers={Object {}}
-              skipHtml={false}
-              source="Click to edit. In markdown, if you wish :)"
-              sourcePos={false}
-              transformLinkUri={[Function]}
-            />
-          </ContentEditableWrapper>
-        </div>
-      </ContentPanel>
-      <ContentPanel
-        title="Announcements"
-      >
-        <Announcements
-          recipient={Object {}}
-          recipient_type="Event"
-        />
-      </ContentPanel>
-      <ContentPanel
-        title="Meet the organizers"
-      >
-        <Members />
-      </ContentPanel>
+      <TmnTab
+        panes={
+          Array [
+            Object {
+              "content": [Function],
+              "name": "About",
+            },
+            Object {
+              "content": [Function],
+              "name": "Discussion (undefined)",
+            },
+            Object {
+              "content": [Function],
+              "name": "Speakers' slides",
+            },
+            Object {
+              "content": [Function],
+              "name": "Report/Feedback",
+            },
+          ]
+        }
+      />
     </ContentBody>
     <EventSidebar
       community={Object {}}
-      events_suggestions={Array []}
+      past_events={Object {}}
     />
     <FullRow>
       <ContentBody>
         <ContentPanel
+          className="comments-section"
           title="Ask the organizers"
         >
-          <Comments />
           <Component
             placeholder="What would you like to ask/suggest?"
             recipient_type="Event"
             trackable_type="Event"
+          />
+          <Component
+            recipient_type="Event"
           />
         </ContentPanel>
       </ContentBody>

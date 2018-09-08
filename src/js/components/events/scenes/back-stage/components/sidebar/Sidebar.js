@@ -11,8 +11,8 @@ import colors from 'js/styles/theme/variables'
 const Aside = styled.aside`
   width: 200px;
   border-right: 1px solid ${colors.gray}; 
-  height: 100vh;
-  background: ${props => lighten(-0.6, props.theme.activeLink)};
+  background: ${props => props.theme.black};
+  min-height: 50vh;
 
   ${
     media.tablet`
@@ -23,6 +23,7 @@ const Aside = styled.aside`
   ${
     media.phone`
       height: 50px;
+      min-height: 0;
     `
   }
   
@@ -31,8 +32,12 @@ const Aside = styled.aside`
     text-align: right;
     line-height: 60px;
     list-style: none;
+    
+    a {
+      color: ${props => lighten(0.1, props.theme.activeLink)};
+    }
 
-    .active {
+    a.active {
       border-bottom: 1px solid ${defaults.activeLink};
       border-bottom: 1px solid var(--activeLink, ${defaults.activeLink});
       margin-bottom: 15px;
@@ -72,19 +77,21 @@ const Sidebar = ({
   community = {},
   event = {}
 }) => {
+  const isAdmin = community.is_owner || (event.organizer_role && (['admin', 'owner'].find(role => role == event.organizer_role.toLowerCase())))
   const menuItems = [
-    { name: "Tasks", icon: 'settings' },
+    (isAdmin ? { name: "Planning", icon: 'file alternate outline', link: 'tasks' } : {}),
     { name: "Guests", icon: 'users' },
     { name: "Feedback", icon: 'send' },
-    {name: "Settings", icon: 'settings' }
+    (isAdmin ? {name: "Settings", icon: 'settings' } : {})
   ];
   return (
     <Aside className={className}>
       <ul>
         {
-          menuItems.map(({name, icon}, index) =>
+          menuItems.map(({name, icon, link}, index) =>
+            name &&
             <li key={index}>
-              <NavLink to={`/communities/${community.id}/events/${event.id}/backstage/${name.toLowerCase()}`}
+              <NavLink to={`/communities/${community.id}/events/${event.id}/backstage/${link || name.toLowerCase()}`}
                        activeClassName="active">
                 <span className="hidden-xs">
                   <Icon name={icon || 'users'} />

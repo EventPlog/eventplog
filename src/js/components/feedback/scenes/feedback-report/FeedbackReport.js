@@ -1,56 +1,22 @@
 import React from 'react';
+import { Table, Message } from 'semantic-ui-react'
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown'
-import { Table } from 'semantic-ui-react'
+
+// ============ INTERNAL ===============
 import ContentPanel from 'js/components/shared/content-panel'
 import Comments from 'js/components/shared/comments'
-import data from 'js/mock-api/data'
+import ContentEditable from 'js/components/shared/content-editable'
+import Loading from 'js/components/shared/loading'
+import Button from 'js/components/shared/button'
+import { pluralize } from 'js/utils'
 
-const reportDescription = `
-93 people were interested in this event. 72% were male, 28% female.
-    
-73 of the 93 people (84%) who indicated interested checked in. 53% of the interested males, 84% of the interested females. 
-    
-27 people have given feedback so far (76% male, 28% female).
-    
-40% of your audience would love to tell their friends of your event (Net Promoter Score - 0.4).
-    
-0% of your audience reported getting any swags.
 
-`
-
-const reportNumbers = [
-  {
-    name: "Interests",
-    value: 93,
-    male: 72,
-    female: 28
-  },
-  {
-    name: "Given Feedback",
-    value: 76,
-    male: 53,
-    female: 32
-  },
-  {
-    name: "Avg Satisfaction",
-    value: 66.67,
-    male: 72,
-    female: 28
-  },
-  {
-    name: "Net Promoter Score (NPS)",
-    value: 0.4,
-    male: 72,
-    female: 28
-  },
-  {
-    name: "Swags",
-    value: 0,
-    male: 0,
-    female: 0
-  },
-]
+const toPercentage = (num, total) => (
+  total > 0
+    ? Math.round(((num / total) * 100), 2)
+    : 0
+)
 
 const StyleFeedbackReport = styled.div`
   > img {
@@ -60,42 +26,156 @@ const StyleFeedbackReport = styled.div`
   .content-panel + .content-panel {
     margin-top: 4rem; 
   }
+  
+  .cta-btns {
+    padding: 0 2rem 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 `
 
-const FeedbackReport = ({ event = {} }) =>
-  <StyleFeedbackReport>
-    <ContentPanel title="The numbers">
-      <Table celled unstackable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>  </Table.HeaderCell>
-            <Table.HeaderCell>Total</Table.HeaderCell>
-            <Table.HeaderCell>Male (%)</Table.HeaderCell>
-            <Table.HeaderCell>Female (%)</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+const FeedbackReport = ({
+  feedback_report = {},
+  event = {},
+  getFeedbackResponses,
+  handleChange,
+  handleSubmit,
+  toggleShowReport
+}) => {
+  const {loading, error} = feedback_report
 
-        <Table.Body>
-          {(reportNumbers.map(attr =>
-            <Table.Row>
-              <Table.Cell>{ attr.name }</Table.Cell>
-              <Table.Cell>{ attr.value }</Table.Cell>
-              <Table.Cell>{ attr.male }</Table.Cell>
-              <Table.Cell>{ attr.female }</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </ContentPanel>
+  if (loading) return <Loading />
+  if (error) return <Loading.Error msg={error} />
 
-    <ContentPanel title="Describing the report">
-      <ReactMarkdown source={reportDescription} />
-    </ContentPanel>
+  const {
+    trackable_id,
+    trackable_type,
+    report = [],
+    highest_obtainable_pts = 10,
+    feedback_responses = {},
+    description,
+    shown_to_guests,
+  } = feedback_report || {}
 
-    <ContentPanel title="What your guests said">
-      <Comments comments={data.feedback} textField="comment" />
-    </ContentPanel>
+  if (report && report.length < 1) return <Loading />
 
-  </StyleFeedbackReport>
+  const interest = report.find(item => item.key == 'interest') || {}
+  const checked_in = report.find(item => item.key == 'checked_in') || {}
+  const feedback = report.find(item => item.key == 'feedback') || {}
+  const satisfaction = report.find(item => item.key == 'satisfaction') || {}
+  const nps = report.find(item => item.key == 'nps') || {}
 
+  const { meta = {} } = feedback_responses
+
+  return (
+    <StyleFeedbackReport>
+
+      {event.is_stakeholder && !shown_to_guests &&
+        <Message info>
+          <Message.Header>The bulk of your report is currently private</Message.Header>
+            <p>When private, only the highlights is shown to guests. The numbers, report description and feedback from attendees is hidden</p>
+            <p>We've found that guests ar 62.6% more likely to attend events after reading reviews from other guests</p>
+        </Message>
+      }
+
+      {event.is_stakeholder &&
+        <div className="cta-btns">
+          <Button onClick={() => toggleShowReport(!shown_to_guests)}>
+            {shown_to_guests ? 'Make Report Private' : 'Make Report Public'}
+          </Button>
+        </div>
+      }
+
+      <ContentPanel title="Highlights">
+
+        <div className="event-description">
+          <ContentEditable propName="description"
+                           type="textarea"
+                           canEdit={event.is_stakeholder}
+                           defaultValue={description}
+                           onChange={handleChange}
+                           onSubmit={handleSubmit}>
+
+            <ReactMarkdown escapeHtml={false}
+                           source={description || 'Click here to pen down the reasons you feel this event was special.'} />
+
+          </ContentEditable>
+        </div>
+
+      </ContentPanel>
+
+      {(shown_to_guests || event.is_stakeholder) && <span>
+        <ContentPanel title="The numbers">
+          <Table celled unstackable>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell> </Table.HeaderCell>
+                <Table.HeaderCell>Total</Table.HeaderCell>
+                <Table.HeaderCell>Male</Table.HeaderCell>
+                <Table.HeaderCell>Female</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+              {(report.map(attr =>
+                <Table.Row>
+                  <Table.Cell>{ attr.label }</Table.Cell>
+                  <Table.Cell>{ attr.total }</Table.Cell>
+                  <Table.Cell>{ attr.male }</Table.Cell>
+                  <Table.Cell>{ attr.female }</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </ContentPanel>
+
+        <ContentPanel title="Describing the report">
+
+          <p>
+            {interest.total} {pluralize('person', interest.total)} were interested in this event.&nbsp;
+            {toPercentage(interest.male, interest.total)}% were male,&nbsp;
+            {toPercentage(interest.female, interest.total)}% were female.
+          </p>
+
+          <p>
+            {checked_in.total} of the {interest.total} {pluralize('person', checked_in.total)}&nbsp;
+            ({toPercentage(checked_in.total, interest.total)}%) who indicated interested checked in.&nbsp;
+            {toPercentage(checked_in.male, checked_in.total)}% were males,&nbsp;
+            {toPercentage(checked_in.female, checked_in.total)}% were females.&nbsp;
+          </p>
+
+          <p>
+            {feedback.total} {pluralize('person', feedback.total)} have given feedback so far&nbsp;
+            ({toPercentage(feedback.male, feedback.total)}% male,&nbsp;
+            {toPercentage(feedback.female, feedback.total)}% female).
+          </p>
+
+          <p>
+            Average guests satisfaction was {satisfaction.total * highest_obtainable_pts}%&nbsp;
+            (Guys were {satisfaction.male * highest_obtainable_pts}% satisfied,&nbsp;
+            ladies were {satisfaction.female * highest_obtainable_pts}% satisfied).
+          </p>
+
+          <p>
+            The audience are on average {nps.total * 100}% likely to invite their friends of your next event.&nbsp;
+            (Guys were {nps.male * 100}% likely, ladies were {nps.female * 100}% likely).
+          </p>
+        </ContentPanel>
+
+        <ContentPanel title={`What guests said (${meta.total_count} responses)`}>
+          <Comments comments={feedback_responses}
+                    textField="feedback_note"
+                    trackable_id={trackable_id}
+                    trackable_type={trackable_type}
+                    getComments={getFeedbackResponses}
+                    showMoreBtnTitle="Show more responses"
+                    canReply={false} />
+        </ContentPanel>
+
+      </span>}
+
+    </StyleFeedbackReport>
+  )
+}
 export default FeedbackReport;

@@ -7,7 +7,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
   <MainContentCard
     btn={
       Object {
-        "onClick": undefined,
+        "onClick": [Function],
         "text": "Follow",
       }
     }
@@ -17,12 +17,13 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
     meta={
       <ul>
         <li>
-          200
-           members
+           
+          followers
         </li>
         <li>
           2
-           upcoming event
+           upcoming 
+          events
         </li>
         <li>
           <span
@@ -53,11 +54,12 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
         Facebook Developer Circle Lagos
       </Link>
     }
+    titleLink="/communities/1"
   />
   <MainContentCard
     btn={
       Object {
-        "onClick": undefined,
+        "onClick": [Function],
         "text": "Follow",
       }
     }
@@ -67,12 +69,13 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
     meta={
       <ul>
         <li>
-          200
-           members
+           
+          followers
         </li>
         <li>
           2
-           upcoming event
+           upcoming 
+          events
         </li>
         <li>
           <span
@@ -98,11 +101,12 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
         Google Developer Group
       </Link>
     }
+    titleLink="/communities/2"
   />
   <MainContentCard
     btn={
       Object {
-        "onClick": undefined,
+        "onClick": [Function],
         "text": "Follow",
       }
     }
@@ -112,12 +116,13 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
     meta={
       <ul>
         <li>
-          200
-           members
+           
+          followers
         </li>
         <li>
           2
-           upcoming event
+           upcoming 
+          events
         </li>
         <li>
           <span
@@ -143,6 +148,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
         ForLoop Lagos
       </Link>
     }
+    titleLink="/communities/3"
   />
 </ContentPanel>
 `;

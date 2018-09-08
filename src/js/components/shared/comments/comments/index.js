@@ -1,5 +1,5 @@
-export { default } from './Comments'
-// import CommentContainer from '../CommentContainer'
-// import renderComponentWithContainer from 'js/components/shared/render-props-to-component'
-//
-// export default renderComponentWithContainer(CommentContainer, Comments)
+import Comments from './Comments'
+import CommentsContainer from './CommentsContainer'
+import renderComponentWithContainer from 'js/components/shared/render-props-to-component'
+
+export default renderComponentWithContainer(CommentsContainer, Comments)

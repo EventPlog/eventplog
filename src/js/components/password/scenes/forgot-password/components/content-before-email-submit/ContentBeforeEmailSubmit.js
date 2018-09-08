@@ -8,6 +8,11 @@ import Button from '../../../../../shared/button'
 import { media } from '../../../../../../styles/mixins'
 
 const StyledContent = styled.div`
+  p {
+    width: 100%;
+    text-align: center;
+  }
+  
   .ui.form {
     margin: 60px;
     
@@ -59,7 +64,7 @@ const ContentBeforeEmailSubmit = ({
         />
 
         <Form.Group inline>
-          <Form.Field className="email-holder">
+          <Form.Field className="wide email-holder">
             <Input name="email"
                    type="email"
                    value={email}

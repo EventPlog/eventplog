@@ -1,5 +1,6 @@
 import webAPI from '../utils/webAPI';
 import Validator from '../utils/validator';
+import NProgress from 'nprogress'
 // import { receiveError } from './errorActions';
 
 const baseActions = ({
@@ -35,8 +36,11 @@ const handleApiCall = ({
   errorMessage,
   caller,
   route,
+  url,
   requestMethod,
-  cb
+  headers,
+  cb,
+  uploadOp = false
 }) => {
   return (dispatch) => {
     let validationOptions = {};
@@ -52,7 +56,8 @@ const handleApiCall = ({
     const {isValid, concatenatedErrors} = validator.validateAllInputs();
     dispatch(actions.request(data))
     if (isValid) {
-      return webAPI(route, requestMethod, data)
+      NProgress.start()
+      return webAPI({url, headers, path: route, method: requestMethod, data, uploadOp})
         .then(response => {
           if (response.error) {
             console.log(response.error)
@@ -70,10 +75,11 @@ const handleApiCall = ({
         .catch((error = {}) => {
           // dispatch(actions.fail(error))
           console.log(error)
-          dispatch(actions.fail(errorMessage))
-          throw(errorMessage)
+          dispatch(actions.fail(`${errorMessage}`))
+          throw(error.error || errorMessage)
           // errorMessage && dispatch(receiveError(errorMessage, caller))
-        });
+        })
+        .finally(() => NProgress.done());
     } else {
       console.log(concatenatedErrors)
       dispatch(actions.fail(concatenatedErrors))

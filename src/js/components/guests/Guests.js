@@ -9,7 +9,13 @@ import CsvImport from './scenes/csv-import'
 import MessengerCheckIn from './scenes/messenger-check-in/';
 
 const StyledGuests = styled.div`
+  padding: 20px 0;
+  
+  .content-header {
+    font-size: 120%;
+  }
 `
+
 const Guests = (props) => {
   const panes = [
     {name: 'All Guests', content: GuestsList},

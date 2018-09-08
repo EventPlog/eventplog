@@ -38,7 +38,7 @@ export class ConfirmEmailContainer extends Component {
       setTimeout(() => {
         return this.props.history.push({
           pathname: '/login',
-          state: {flash_msg: "Your email confirmation was successful. Logging you in in a sec ..."}
+          state: {flash_msg: "Your email confirmation was successful. Login with your brand new credentials! :)"}
         })
       }, 2000)
     }

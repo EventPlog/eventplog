@@ -219,7 +219,7 @@ const TermsAndConditionsPage =()=>{
       </TextContent>
 
       <div className="close-button">
-      <Button >close</Button>
+      <Button.Link to="/" >close</Button.Link>
       </div>
     </div>
     </StyledTermsAndConditionsPage>

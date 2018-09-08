@@ -3,10 +3,11 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+
 class EventUpdateContainer extends Component {
   state = { event: {} }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({event: this.props.event})
   }
 

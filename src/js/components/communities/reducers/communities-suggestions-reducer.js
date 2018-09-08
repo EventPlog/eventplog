@@ -15,7 +15,7 @@ const communityReducer = (state=initialState.communities_suggestions, action) =>
       return {...state, loading: false, error: action.payload}
 
     case actionTypes.COMMUNITY_FOLLOW_CREATE_COMPLETE:
-      data = updateItemInCollection(state.data, action.payload)
+      data = state.data.filter(commuity => commuity.id != action.payload.id)
       return {...state, data}
 
     case actionTypes.EVENT_SUGGESTIONS_INDEX_COMPLETE:

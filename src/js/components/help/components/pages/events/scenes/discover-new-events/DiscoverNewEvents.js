@@ -8,10 +8,14 @@ const DiscoverEvents = () => {
     <div className="help-main-content"> 
       <Topic>Discover Events</Topic>
       <Description>
-        When you search for events in a field, you want to find a list of events all related to one field 
-        say technology, so you can indicate interest in those that appeal to you.
-        Use the search bar to look for events you may be interested in, if our event suggestions do not capture
-        events you would love to be a part of.
+        <p>
+          Use the search bar to look for events you may be interested in, if our event suggestions do not capture
+          events you would love to be a part of.
+        </p>
+        <p>
+          Announcements can be found on all <Link to="">Event</Link>&nbsp;
+          and <Link to="">Community</Link> pages.
+        </p>
       </Description> 
     </div>
   )

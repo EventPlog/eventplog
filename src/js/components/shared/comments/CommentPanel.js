@@ -35,27 +35,45 @@ const StyledComment = styled.div`
   
   .commenter {
     margin-right: 1rem;
-    max-width: 100px;
+    width: 100px;
     
     ${
       media.phone`
         max-width: 100%;
+        width: 100%;
       `
     }
     
     ${
       media.phone`
         margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
         display: flex;
       `
     }
   }
   
   .meta {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: capitalize;
     color: #888;
+    text-align: center;
+    overflow: hidden;
+    max-width: 100%;
+    line-height: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
+    ${
+      media.phone`
+        max-width: 100%;
+        text-align: left;
+      `
+    }
+    .role {
+      text-transform: none;
+    }
   }
   
   .full-name {
@@ -82,13 +100,13 @@ const StyledComment = styled.div`
     
     > div:not(.comment-card) {
       background: #eee;
-      background: ${props => lighten(0.35, props.theme.activeLink)}; 
+      background: ${props => lighten(0, props.theme.gray)}; 
       padding: 1rem;
       border-radius: 10px;
     }
   }
   
-  .btn-delete {
+  .btn-right {
     float: right;
     padding: 5px;
     margin-top: -10px;
@@ -102,28 +120,57 @@ const StyledComment = styled.div`
   .deleted-comment {
     color: #aaa;
   }
+  
+  .right-controls {
+    position: absolute;
+    right: 0;
+  
+    button {
+      background: white;
+      color: #ccc;
+      border-color: #ccc;
+      
+      &:hover, &.inverted, &.inverted:hover {
+        background: var(--activeLink);
+        color: white;
+      }
+    }
+  }
+  
+  .uploaded-image-holder {
+    border: 1px solid ${props => props.theme.gray};
+    background: ${props => props.theme.white};
+    border-top: none;
+    margin-top: 1rem;
+    /*padding: 1rem;*/
+    
+    img {
+      max-width: 100%;
+    }
+  }
 `
 
 const CommentPanel = ({
   className = '',
   children,
-  user = {},
+  comment = {},
   ...otherProps
 }) => {
-  const {first_name, last_name, avatar_url, community_role} = user
+  const { user = {} } = comment.deleted || comment.anonymous ? {} : comment
+  const {display_name, avatar_url, community_role} = user
   return (
     <StyledComment className={`comment-card ${className}`}>
       <div className="commenter">
         <div className="avatar" style={{
                   backgroundImage: `url(${avatar_url || '/sample-avatar.png'}`
                 }} />
-        {first_name &&
+        {display_name &&
         <div className="meta">
           <div className="full-name">
-            {`${first_name} ${last_name}`}
+            {`${display_name}`}
           </div>
           <div className="role">
-            {community_role || 'Member'}
+            {comment.publish_time} ago
           </div>
         </div>}
       </div>

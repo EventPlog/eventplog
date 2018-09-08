@@ -110,9 +110,6 @@ class Login extends Component {
   }
 
   render() {
-    const menu = [
-      {text: 'I want to create my first event >', url: '/leads/1'}
-    ]
     if (Auth.isLoggedIn) return <Redirect to="/" />
     const {state} = this.props.location
     return (

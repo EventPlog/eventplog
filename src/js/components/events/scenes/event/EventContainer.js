@@ -6,17 +6,15 @@ import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
 
 import {
-  getCommunitiesSuggestions,
-} from 'js/components/communities/actions'
-
-import {
   getEvent,
   updateEvent,
   createComment,
   updateComment,
+  getComments,
+  getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
-  getEventsSuggestions,
+  getPastEvents,
   attendEvent,
 } from '../../actions'
 
@@ -28,6 +26,10 @@ class EventContainer extends Component {
     this.getData()
   }
 
+  shouldComponentUpdate(nextProps) {
+    return !checkEqual(this.props, nextProps);
+  }
+
   componentDidUpdate(props, prevProps) {
     if (!checkEqual(props.match.params, this.props.match.params)) {
       this.getData()
@@ -35,7 +37,10 @@ class EventContainer extends Component {
   }
 
   handleChange = (key, value) => {
-    this.setState({event: {...this.state.event, [key]: value }})
+    const event = this.state.event && this.state.event.id
+                    ? this.state.event
+                    : this.props.event
+    this.setState({event: {...event, [key]: value }})
   }
 
   handleSubmit = () => {
@@ -43,18 +48,24 @@ class EventContainer extends Component {
     return this.props.updateEvent(others).then(event => this.setState({event}))
   }
 
-  attendEvent = () => {
-    const {commuity, ...others} = this.state.event
-    return this.props.attendEvent(others).then(event => this.setState({event}))
+  toggleVisibilityStatus = ({id, visibility_status: status}) => {
+    const visibility_status = status == 'private_event' ? 'public_event' : 'private_event'
+    this.setState({loading: true})
+    this.props.updateEvent({id, visibility_status}).then(res => {
+      this.setState({loading: false})
+    })
   }
 
   getData() {
     const {community_id, id} = this.props.match.params
     if (!this.props.event || this.props.event.id != id) {
-      this.props.getEvent(id).then(event => this.setState({event}))
+      this.setState({loading: true})
+      this.props.getEvent(id)
+        .then(event => this.setState({loading: false}))
+        .catch(error => this.setState({loading: false, error}))
     }
-    this.props.getEventsSuggestions({id, community_id, page: 1, per_page: 2})
-    this.props.getCommunitiesSuggestions({id: community_id, page: 1, per_page: 2})
+
+    this.props.getPastEvents({id, community_id, page: 1, per_page: 3})
   }
 
   getProps = () => ({
@@ -62,7 +73,7 @@ class EventContainer extends Component {
     ...this.props,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
-    attendEvent: this.attendEvent,
+    toggleVisibilityStatus: this.toggleVisibilityStatus,
   })
 
   render () {
@@ -71,14 +82,16 @@ class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {event = {}, events_suggestions = []} = state.events
+  const {event = {}, past_events = {}} = state.events
+  const { organizers } = state.organizers
   const {link_color } = event;
   const { community, communities_suggestions } = state.communities
   return {
     activeLink: community.brand_color,
     event,
     community,
-    events_suggestions,
+    organizers,
+    past_events,
     communities_suggestions,
     currentUser: Auth.currentUser(),
   }
@@ -87,12 +100,13 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvent,
-    getEventsSuggestions,
-    getCommunitiesSuggestions,
+    getPastEvents,
     updateEvent,
     attendEvent,
     createComment,
     updateComment,
+    getComments,
+    getAnnouncements,
     createAnnouncement,
     updateAnnouncement,
   }, dispatch)

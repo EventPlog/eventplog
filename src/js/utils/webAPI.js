@@ -26,28 +26,34 @@ const requestBody = (data, method) => {
 /**
 * @return {Object} Headers containing auth details
 */
-export function requestHeaders() {
-  return new Headers({
+export function requestHeaders(presetHeaders, uploadOp) {
+  if (Object.keys(presetHeaders).length > 0) return presetHeaders
+  let headers =  {
     'Authorization': `Bearer ${Auth.user_token}`,
-    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
-  });
+  }
+  if(!uploadOp) headers['Content-Type'] = 'application/json';
+
+  return new Headers(headers)
 }
 
 /**
-* @param {String} path: eg '/questions'
+* @param {String} url: eg 'http://example.com'
+ * @param {String} path: eg '/questions'
+ * @param {Object} headers: eg '{Content-Type: json}'
 * @param {String} method: eg 'POST'
 * @param {Object} data: eg {id: 1}
+* @param {Boolean} uploadOp: true/false
 * @return {Object} fetch: to be used in views that check for success or failure
 */
-export default function processRequest(path, method, data = {}) {
-  let url = Config.host + requestPath(path, method, data);
-  return fetch(url, {
+export default function processRequest({url, path, headers = {}, method, data = {}, uploadOp = false}) {
+  let requestUrl = url || Config.host + requestPath(path, method, data);
+  return fetch(requestUrl, {
     method  : method,
-    headers : requestHeaders(),
+    headers : requestHeaders(headers, uploadOp),
     mode    : 'cors',
     cache   : 'default',
-    body    : requestBody(data, method)
+    body    : uploadOp ? data : requestBody(data, method)
   })
   .then(async(response) => {
     if (response.ok) return response.json()

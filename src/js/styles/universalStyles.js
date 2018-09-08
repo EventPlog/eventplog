@@ -9,7 +9,7 @@ const styles = css`
   --gray: ${defaults.gray};
   height: 100%;
   
-  background: ${lighten(0.45, defaults.blue)};
+  /*background: ${lighten(0.45, defaults.blue)}*/;
   
   a, a:hover {
     color: var(--activeLink);
@@ -18,7 +18,7 @@ const styles = css`
   p {
     font-size: 1em;
     font-weight: 500;
-    
+    word-break: break-word; 
   }
   
   ul {
@@ -120,6 +120,10 @@ const styles = css`
     padding: 0.3rem 0.5rem;
     background: ${defaults.gray};
     border-radius: 5px;
+  }
+  
+  .ui.message p {
+    font-size: 1rem;
   }
 `
 export default styles;

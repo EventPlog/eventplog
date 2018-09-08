@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+
+import ContentEditable from 'js/components/shared/content-editable'
 import { media } from 'js/styles/mixins'
+import roleOptions from 'js/utils/userRoleOptions'
 
 const StyledEventOrganizers = styled.div`
   text-align: center;
@@ -36,17 +39,23 @@ const StyledEventOrganizers = styled.div`
   }
 `
 
-const Members = ({ member }) => (
-  <StyledEventOrganizers>
+const Members = ({
+  className,
+  member,
+  handleChange,
+  handleSubmit,
+  children
+}) => (
+  <StyledEventOrganizers className="member">
     <div className="member-img" style={{
           backgroundImage: `url(${member.avatar_url})`
         }} />
     <div className="meta">
       <div className="title">
-        {`${member.first_name} ${member.last_name}`}
+        {`${member.display_name}`}
       </div>
       <div className="body">
-        {member.role || 'Member'}
+        {children}
       </div>
     </div>
   </StyledEventOrganizers>

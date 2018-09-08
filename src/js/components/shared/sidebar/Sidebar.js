@@ -9,9 +9,9 @@ import SidebarCommunities from './communities-section'
 import colors from 'js/styles/theme/variables'
 
 const StyledSidebar = styled.div`
-  color: ${lighten(0.25, colors.blue)};
+  color: ${props => lighten(0.25, props.theme.activeLink)};
   border-radius: 10px;
-  background: ${lighten(-0.15, colors.blue)};
+  background: ${props => props.theme.activeLinkBg};
   
   p {
     color: ${lighten(0.4, colors.blue)};

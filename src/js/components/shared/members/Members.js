@@ -5,6 +5,7 @@ import Member from './Member'
 
 const StyledMembers = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly; 
   
   ${
@@ -12,13 +13,15 @@ const StyledMembers = styled.div`
       flex-direction: column;
     `
   }
+  
+  .member {
+    margin: 2rem;
+  }
 `
 
-const Members = ({ members}) => (
-  <StyledMembers>
-    {members && members.map(member =>
-      <Member member={member} />
-    )}
+const Members = ({ className, children }) => (
+  <StyledMembers className={className}>
+    {children}
   </StyledMembers>
 )
 

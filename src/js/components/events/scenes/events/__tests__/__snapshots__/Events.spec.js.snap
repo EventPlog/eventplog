@@ -5,7 +5,7 @@ exports[`Events should render correctly 1`] = `
   <section
     className="app-container"
   >
-    <MainContent
+    <Styled(Component)
       events={
         Array [
           1,

@@ -207,15 +207,15 @@ const PrivacyPolicy =()=> {
           <TextContent>
           If there are any questions regarding this privacy policy, you may contact us using the information below.
             <br/> <br/>
-          eventsplog.com <br/>
+          eventplog.com <br/>
           20 Sophie Kuye str., Pedro <br/>
           Gbagada, Lagos 101212 <br/>
           Nigeria <br/>
-          support@eventsplog.com <br/> <br/>
+          hello@eventplog.com <br/> <br/>
           Last Edited on 2018-05-01 <br/> <br/>
           </TextContent>
         <div className="close-button">
-        <Button className="button">close</Button>
+          <Button.Link to="/" >close</Button.Link>
         </div>
       </div>
     </StyledPrivacyPolicy>

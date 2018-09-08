@@ -1,12 +1,10 @@
 import React from 'react'
 
-const isDevelopment = process.env.NODE_ENV != 'production'
-
-const ErrorComponent = ({msg}) => (
-  <div className="app-container" style={{margin: '50px auto'}}>
+const ErrorComponent = ({className, msg}) => (
+  <div className={`${className} app-container`} style={{margin: '2rem auto', padding: '0 2rem'}}>
     <div>
       <h5> Oops ... Something went wrong. </h5>
-      <p>{isDevelopment ? msg.toString() : ''}</p>
+      <p>{msg.toString()}</p>
     </div>
   </div>
 )

@@ -36,7 +36,9 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         <ul>
           <li>
               211
-               people interested
+               
+              people
+               interested
           </li>
       </ul>,
       ]
@@ -45,11 +47,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/communities/1/events/1"
+        to="/communities/undefined/events/1"
       >
         Tech is in you
       </Link>
     }
+    titleLink="/communities/undefined/events/1"
   />
   <MainContentCard
     btn={
@@ -83,7 +86,9 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         <ul>
           <li>
               211
-               people interested
+               
+              people
+               interested
           </li>
       </ul>,
       ]
@@ -92,11 +97,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/communities/2/events/2"
+        to="/communities/undefined/events/2"
       >
         Writers corner workshop with writing and use of English
       </Link>
     }
+    titleLink="/communities/undefined/events/2"
   />
   <MainContentCard
     btn={
@@ -130,7 +136,9 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         <ul>
           <li>
               108
-               people interested
+               
+              people
+               interested
           </li>
       </ul>,
       ]
@@ -139,11 +147,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/communities/3/events/3"
+        to="/communities/undefined/events/3"
       >
         Figma Design Series
       </Link>
     }
+    titleLink="/communities/undefined/events/3"
   />
 </ContentPanel>
 `;

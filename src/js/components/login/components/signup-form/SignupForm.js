@@ -19,6 +19,10 @@ const StyledLoginForm = styled.div`
     margin: 0 0 20px;
     font-size: 1rem;
     text-transform: uppercase;
+    
+    a {
+      text-transform: capitalize;
+    }
   }
   
   > .social-media-buttons {
@@ -72,7 +76,7 @@ const LoginForm = ({
 }) => (
   <StyledLoginForm className="form-holder col-s-12 col-xs-12 col-m-4 col-l-4">
     <div className="header">
-      Sign up
+      Sign up (<Link to="/login">Login instead</Link>)
     </div>
     <div className="social-media-buttons">
 

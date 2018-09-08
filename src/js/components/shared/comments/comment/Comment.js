@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import { Icon } from 'semantic-ui-react'
 
@@ -9,111 +9,90 @@ import { media } from 'js/styles/mixins'
 import CommentPanel from '../CommentPanel'
 import ContentEditable from 'js/components/shared/content-editable'
 import Button from 'js/components/shared/button'
+import Loading from 'js/components/shared/loading'
 
-const StyledComment = styled.div`
-  display: flex;
+const styles = css`
+  position: relative;
   
-  ${
-    media.phone`
-      flex-direction: column;
-    `
-  }
-    
-  .avatar {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto 0.7rem auto;
-    background-size: cover;
-    border-radius: 50%;
-    
-    ${
-      media.phone`
-        width: 40px;
-        height: 40px;
-        margin: 0 0.7rem 0.7rem 0;
-      `
-    }
-  }
-  
-  .commenter {
-    margin-right: 1rem;
-    max-width: 100px;
-    
-    ${
-      media.phone`
-        max-width: 100%;
-      `
-    }
-    
-    ${
-      media.phone`
-        margin-right: 0.5rem;
-        display: flex;
-      `
-    }
-  }
-  
-  .meta {
-    font-size: 0.9rem;
-    text-transform: capitalize;
-    color: #888;
-    
-  }
-  
-  .full-name {
-    white-space: nowrap;
-  }
   
   .comment {
-    flex: 1;
-    p {
-      font-size: 1.1rem;
-      font-weight: 400;
-      
-      code {
-        background: #ffff0066;
-        padding: 5px;
-        color: #000;
-        font-weight: 600;
-      }
-    }
+    position: relative;
+    /*flex-direction: column;*/
     
-    > div + div {
-      margin-top: 1rem;
-    }
-    
-    > div:not(.comment-card) {
-      background: #eee;
-      padding: 1rem;
-      border-radius: 10px;
+    img {
+      display: block;
+      margin: 1rem 0 0;
+      max-width: 100%;
     }
   }
   
+  i.save {
+    background: ${props => props.theme.activeLink}
+  }
 `
 
 const Comment = ({
   className = '',
   comment = {},
+  loading,
+  error,
   handleChange,
   updateComment,
   children,
   current_user,
   deleteComment,
+  showImageSelectOptions,
+  imageInputRef,
+  imagePlaceholderRef,
+  handleImageChange,
+  textField = 'body',
+  canReply = true,
+  editing = false,
+  commentBodyRef,
+  editComment,
   ...otherProps
 }) => {
+  if (error) {
+    return <Loading.Error msg={error} />
+  }
   const currentUserIsOwner = (!comment.deleted && comment.user.id == current_user.id)
   const renderCommentText = comment.deleted
     ? <div className="deleted-comment">This comment has been deleted</div>
-    : <ReactMarkdown source={comment.body} />
+    : <div ref={commentBodyRef} >
+        <ReactMarkdown source={comment[textField]} />
+
+        {comment.pictures && comment.pictures.map(picture =>
+          <div className="uploaded-image-holder" >
+            <img src={picture.url} />
+          </div>) }
+      </div>
   return (
-    <CommentPanel user={comment.deleted ? {} : comment.user}>
-      {currentUserIsOwner && <Button inverted className="btn-delete" onClick={deleteComment}>
-                               <Icon className="delete" />
-                             </Button>}
-      <ContentEditable propName="body"
+    <CommentPanel className={className} comment={comment}>
+      {currentUserIsOwner &&
+        <span className="right-controls">
+          <input ref={imageInputRef}
+                 onChange={handleImageChange}
+                 className="hidden"
+                 id="upload-img"
+                 type="file"
+                 name="image"
+                 accept="image/*" />
+          <Button className="btn-right" onClick={deleteComment}>
+            <Icon className="delete" />
+          </Button>
+          <Button inverted={editing}
+                  className={`btn-right ${editing && 'inverted'}`}
+                  onClick={editComment}>
+            <Icon className={`${editing? 'save' : 'pencil'}`} />
+            {editing && ' Save'}
+          </Button>
+        </span>
+      }
+      <ContentEditable propName={textField}
                        type="textarea"
-                       canEdit={currentUserIsOwner}
-                       defaultValue={comment.body}
+                       canEdit={currentUserIsOwner && editing}
+                       isEditing={editing}
+                       defaultValue={comment[textField]}
                        onChange={handleChange}
                        onSubmit={updateComment}>
         {renderCommentText}
@@ -123,4 +102,4 @@ const Comment = ({
   )
 }
 
-export default Comment
+export default styled(Comment)`${styles}`

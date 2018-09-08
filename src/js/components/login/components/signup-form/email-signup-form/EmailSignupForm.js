@@ -14,6 +14,12 @@ const StyledSignupForm = styled.div`
         color: ${lighten(0.6, colors.black)};
         font-weight: 500;
       }
+      
+      .ui.input {
+        input {
+          width: inherit;
+        }
+      }
     }
     
     > .field {
@@ -39,6 +45,7 @@ const StyledSignupForm = styled.div`
         margin: auto 10px;
       }
     }
+    
   }
 `
 
@@ -47,13 +54,18 @@ const SignupForm = ({
   handleChange,
   handleSubmit,
   loading,
+  error,
   agreeToTerms,
   handleAgreeToTerms
 }) => {
   return (
     <StyledSignupForm>
-      <Form loading={loading}>
-
+      <Form loading={loading} error={error}>
+        <Message
+          error
+          header="Uh oh"
+          content={error}
+        />
         <Form.Group widths='equal' >
           <Form.Field className="col-xs-12 col-s-6 col-m-6 col-l-6">
             <label>First Name</label>

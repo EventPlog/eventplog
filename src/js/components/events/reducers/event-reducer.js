@@ -1,9 +1,12 @@
 import initialState from './intialState';
 import actionTypes from '../actions/types'
+import feedbackActionTypes from 'js/components/feedback/actions/types'
+import organizerActionTypes from 'js/components/event-settings/actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
+import { updateEventOrganizers } from './helpers'
 
 const eventReducer = (state=initialState.event, action) => {
-  let organizers_invitations;
+  let organizers_invitations, data;
   switch(action.type) {
     case actionTypes.EVENT_CREATE_START:
     case actionTypes.EVENT_SHOW_START:
@@ -13,7 +16,7 @@ const eventReducer = (state=initialState.event, action) => {
     case actionTypes.EVENT_CREATE_COMPLETE:
     case actionTypes.EVENT_SHOW_COMPLETE:
     case actionTypes.EVENT_UPDATE_COMPLETE:
-      return {...action.payload}
+      return updateEventOrganizers(action.payload)
 
     case actionTypes.EVENT_CREATE_FAIL:
     case actionTypes.EVENT_SHOW_FAIL:
@@ -21,7 +24,7 @@ const eventReducer = (state=initialState.event, action) => {
       return {...state, loading: false, error: true}
 
     case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:
-      return {...state, ...action.payload}
+      return {...state, is_attending: true}
 
     case actionTypes.EVENT_COMMENT_UPDATE_COMPLETE:
       return {...state, comments: action.payload}
@@ -42,6 +45,17 @@ const eventReducer = (state=initialState.event, action) => {
       organizers_invitations = state.organizers_invitations
                                       .filter(invite => invite.id != action.payload.id)
       return {...state, organizers_invitations }
+
+    case feedbackActionTypes.EVENT_FEEDBACK_CREATE_COMPLETE:
+      return {...state, given_feedback: true, show_feedback_url: true}
+
+    case actionTypes.EVENT_COMMENT_INDEX_COMPLETE:
+      data = [...state.comments.data, ...action.payload.data]
+      return {...state, comments: {data, meta: action.payload.meta}}
+
+    case actionTypes.EVENT_ANNOUNCEMENT_INDEX_COMPLETE:
+      data = [...state.announcements.data, ...action.payload.data]
+      return {...state, announcements: {data, meta: action.payload.meta}}
 
     default:
       return state;

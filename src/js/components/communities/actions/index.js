@@ -1,5 +1,5 @@
 import actionTypes from './types'
-import { handleApiCall, baseActions } from '../../../services/actionHelpers'
+import { handleApiCall, baseActions } from 'js/services/actionHelpers'
 import mockApi from 'js/mock-api/community-api'
 
 export const getCommunities = (data) => {
@@ -118,6 +118,23 @@ export const followCommunity = (community) => {
     caller: 'post follow community',
     route: `/api/v1/web/communities/${community.id}/user_communities`,
     requestMethod: 'POST'
+  })
+}
+
+export const unFollowCommunity = (community) => {
+  let actions = baseActions({
+    requestType: actionTypes.COMMUNITY_FOLLOW_DELETE_START,
+    receiveType: actionTypes.COMMUNITY_FOLLOW_DELETE_COMPLETE,
+    failType: actionTypes.COMMUNITY_FOLLOW_DELETE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: community,
+    errorMessage: 'Something prevented us getting event suggestions.',
+    caller: 'post follow community',
+    route: `/api/v1/web/communities/${community.id}/user_communities/${community.id}`,
+    requestMethod: 'DELETE'
   })
 }
 
