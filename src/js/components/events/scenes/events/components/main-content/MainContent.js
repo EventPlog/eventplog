@@ -44,8 +44,8 @@ export const MainContent = ({
 
   const getPanes = () => {
     return [
-      {name: `My events`, content: UserEvents },
       {name: `Suggestions`, content: EventsSuggestions },
+      {name: `My events`, content: UserEvents },
     ]
   }
 
