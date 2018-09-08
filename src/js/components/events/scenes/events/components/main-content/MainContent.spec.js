@@ -7,8 +7,8 @@ import { shallow, mount } from 'enzyme';
 
 describe('MainContent', () => {
   const events = [{id: 1}, {id: 2}]
-  const events_suggestions = [{id: 3}, {id: 4}]
-  const communities_suggestions = [{id: 5}, {id: 6}]
+  const communities_suggestions = [{id: 3}, {id: 4}]
+  const events_suggestions = [{id: 5}, {id: 6}]
 
   it('should render correctly', () => {
     const wrapper = shallow( <MainContent /> );
