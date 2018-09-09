@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
+import { paramsToObj } from 'js/utils'
 
 import {
   getEvent,
@@ -24,10 +25,6 @@ class EventContainer extends Component {
 
   componentWillMount() {
     this.getData()
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return !checkEqual(this.props, nextProps);
   }
 
   componentDidUpdate(props, prevProps) {
@@ -64,13 +61,16 @@ class EventContainer extends Component {
         .then(event => this.setState({loading: false}))
         .catch(error => this.setState({loading: false, error}))
     }
+  }
 
-    this.props.getPastEvents({id, community_id, page: 1, per_page: 3})
+  getParams = () => {
+    return {...paramsToObj(this.props.location.search.substr(1))}
   }
 
   getProps = () => ({
     ...this.state,
     ...this.props,
+    ...this.getParams(),
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
     toggleVisibilityStatus: this.toggleVisibilityStatus,
@@ -100,7 +100,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvent,
-    getPastEvents,
+    // getPastEvents,
     updateEvent,
     attendEvent,
     createComment,

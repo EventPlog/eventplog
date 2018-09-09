@@ -26,7 +26,7 @@ const Guests = (props) => {
 
   return (
     <StyledGuests>
-      <Tab panes={panes}/>
+      <Tab panes={panes} {...props} />
     </StyledGuests>
   )
 }

@@ -45,7 +45,7 @@ const FeedbackReport = ({
 }) => {
   const {loading, error} = feedback_report
 
-  if (loading) return <Loading />
+  if (loading || !event.id) return <Loading />
   if (error) return <Loading.Error msg={error} />
 
   const {

@@ -73,8 +73,8 @@ const ContentAfterEventSubmit = ({ event = {}, handleChange, loading, error }) =
         </Link>
       </li>
     </ul>
-    <Button.Link to={`/communities/${event.community_id}/events/${event.id}`} className="medium lowercase">
-      Take me to my event
+    <Button.Link to={`/communities/${event.community_id}/events/${event.id}/backstage/settings?activeIndex=1`} className="medium lowercase">
+      Continue setting up this event
     </Button.Link>
   </StyledContent>
 )

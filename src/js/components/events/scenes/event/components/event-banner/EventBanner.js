@@ -7,7 +7,7 @@ import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
 import { validDate, pluralize } from 'js/utils'
-
+import moment from 'moment'
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -104,6 +104,14 @@ const eventBannerStyles = css`
     background: #fff;
   }
   
+  .editor-active {
+    flex: 1;
+  }
+  
+  .react-calendar {
+    font-size: 0.8rem;
+  }
+  
 `
 
 
@@ -156,20 +164,20 @@ const EventBanner = ({
                 <ContentEditable propName="start_time"
                            canEdit={is_stakeholder}
                            type="datetime"
-                           defaultValue={validDate(`${start_date} ${display_start_time}`)}
+                           defaultValue={validDate(start_time)}
                            onChange={handleChange}
                            onSubmit={handleSubmit}>
-                  {(start_date && display_start_time) ? `Starts on ${start_date} at ${display_start_time}` : 'Click to add start date/time'}
+                  {(start_time ) ? `Starts ${moment(start_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
                 </ContentEditable>
               </li>
               <li>
                 <ContentEditable propName="end_time"
                            canEdit={is_stakeholder}
                            type="datetime"
-                           defaultValue={validDate(`${end_date} ${display_start_time}`)}
+                           defaultValue={validDate(end_time)}
                            onChange={handleChange}
                            onSubmit={handleSubmit}>
-                  {(end_date && display_end_time) ? `Ends on ${end_date} at ${display_end_time}` : 'Click to add end date/time'}
+                  {(end_time ) ? `Starts ${moment(end_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
                 </ContentEditable>
               </li>
             </ul>
@@ -181,7 +189,7 @@ const EventBanner = ({
       </div>
       <div className="cta-btns">
         {(is_stakeholder || organizer_role) &&
-          <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage`}>
+          <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage/settings?activeIndex=1`}>
             Go Backstage
           </Button.Link>}
         {is_attending && !is_owner && !!link &&

@@ -1,6 +1,7 @@
 import Config from '../config';
 import fetch from 'isomorphic-fetch';
 import Auth from '../auth/actions'
+import { serialize } from 'js/utils'
 
 const requestPath = (path, method, data = {}) => {
   if (method === 'GET' && Object.keys(data).length > 0) {
@@ -8,15 +9,6 @@ const requestPath = (path, method, data = {}) => {
   }
   return path;
 };
-
-const serialize = function(obj) {
-  let str = [];
-  for (let p in obj)
-    if (obj.hasOwnProperty(p)) {
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-    }
-  return str.join("&");
-}
 
 const requestBody = (data, method) => {
   return method === 'GET' ?
