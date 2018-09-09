@@ -40,6 +40,7 @@ export const MainContent = ({
   communities_suggestions = {},
   followCommunity,
   className,
+  activeIndex,
 }) => {
 
   const getPanes = () => {
@@ -53,7 +54,7 @@ export const MainContent = ({
     <ContentSection className={className}>
 
       <ContentSection.Body>
-        <Tab panes={getPanes()} />
+        <Tab panes={getPanes()} {...{activeIndex}} />
       </ContentSection.Body>
 
       <ContentSection.Sidebar>

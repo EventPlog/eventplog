@@ -79,7 +79,7 @@
   "scripts": {
     "start": " node scripts/start.js",
     "build": "NODE_PATH=src && node scripts/build.js",
-    "test": "NODE_PATH=src && node scripts/test.js --env=jsdom",
+    "test": "node scripts/test.js --env=jsdom",
     "postinstall": "npm run build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
