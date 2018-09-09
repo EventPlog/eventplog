@@ -100,7 +100,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvent,
-    // getPastEvents,
     updateEvent,
     attendEvent,
     createComment,
