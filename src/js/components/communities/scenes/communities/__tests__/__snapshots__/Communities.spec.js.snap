@@ -6,7 +6,7 @@ exports[`Communities should render correctly 1`] = `
   <section
     className="app-container"
   >
-    <MainContent
+    <Styled(MainContent)
       communities={
         Array [
           1,
