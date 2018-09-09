@@ -38,9 +38,9 @@ const generatePanes = (panes, props) =>
     })
   )
 
-const TmnTab = ({ panes, ...otherProps }) => (
+const TmnTab = ({ panes, activeIndex = 0, ...otherProps }) => (
   <TabHolder>
-    <Tab menu={{ secondary: true, pointing: true }}
+    <Tab defaultActiveIndex={activeIndex} menu={{ secondary: true, pointing: true }}
          panes={generatePanes(panes, otherProps)}
     />
   </TabHolder>

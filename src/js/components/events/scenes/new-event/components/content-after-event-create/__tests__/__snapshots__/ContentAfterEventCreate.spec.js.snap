@@ -56,9 +56,9 @@ exports[`ContentAfterEventCreate it renders correctly 1`] = `
   </ul>
   <Component
     className="medium lowercase"
-    to="/communities/undefined/events/undefined"
+    to="/communities/undefined/events/undefined/backstage/settings?activeIndex=1"
   >
-    Take me to my event
+    Continue setting up this event
   </Component>
 </styled.div>
 `;

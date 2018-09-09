@@ -44,6 +44,7 @@ class MainContentContainer extends Component {
 
   getProps = () => ({
     ...this.props,
+    ...this.props.location,
     getEvents: this.getEvents,
     getPastEvents: this.getPastEvents,
   })

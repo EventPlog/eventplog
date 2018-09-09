@@ -18,6 +18,7 @@ import {
 } from 'js/components/communities/actions'
 
 import checkEqual from 'js/utils/checkEqual'
+import { paramsToObj } from 'js/utils'
 
 // -------- Components -----------
 
@@ -36,8 +37,13 @@ class MainContentContainer extends Component {
     this.props.getCommunitiesSuggestions({page: 1, per_page: 5});
   }
 
+  getParams = () => {
+    return {...paramsToObj(this.props.location.search.substr(1))}
+  }
+
   getProps = () => ({
     ...this.props,
+    ...this.getParams(),
   })
 
   render () {

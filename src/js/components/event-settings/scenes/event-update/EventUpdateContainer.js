@@ -11,16 +11,16 @@ class EventUpdateContainer extends Component {
     this.setState({event: this.props.event})
   }
 
-  handleChange = (e) => {
-    this.setState({event: {
-      ...this.state.event,
-      [e.target.name]: e.target.value
-    }})
+  handleChange = (key, value) => {
+    const event = this.state.event && this.state.event.id
+      ? this.state.event
+      : this.props.event
+    this.setState({event: {...event, [key]: value }})
   }
 
   handleSubmit = () => {
-    return this.props.updateEvent(this.state.event)
-                     .then(event => this.setState({event}))
+    const {commuity, ...others} = this.state.event
+    return this.props.updateEvent(others).then(event => this.setState({event}))
   }
 
   getProps = () => ({

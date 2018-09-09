@@ -11,7 +11,7 @@ const eventChecklistReducer = (state=initialState.feedback_report, action) => {
 
     case actionTypes.FEEDBACK_REPORT_SHOW_COMPLETE:
     case actionTypes.FEEDBACK_REPORT_UPDATE_COMPLETE:
-      return {...state, ...action.payload, loading: false}
+      return {...state, ...action.payload, loading: false, error: false}
 
     case actionTypes.FEEDBACK_REPORT_SHOW_FAIL:
     case actionTypes.FEEDBACK_REPORT_UPDATE_FAIL:

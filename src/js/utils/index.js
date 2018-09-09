@@ -19,3 +19,20 @@ export const pluralize = (word, number) => {
   return number == 1 ? word : knownWords[word]
 }
 
+export const serialize = function(obj) {
+  let str = [];
+  for (let p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+
+export const paramsToObj = (params) => {
+  const obj = {}
+  params.split('&').forEach(param => {
+    const [key, val] = param.split('=')
+    obj[key] = val
+  })
+  return obj
+}

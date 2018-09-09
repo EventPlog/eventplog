@@ -46,7 +46,8 @@ const styles = css`
   
   .editor-active {
     background-color: white;
-    min-width: 250px;
+    min-width: 300px;
+    display: flex;
   }
 `
 
@@ -117,7 +118,7 @@ class ContentEditable extends React.Component {
         return <TextArea className="editor-active" {...this.getTextBoxProps()} />
 
       case 'datetime':
-        return <div style={{minWidth: '250px'}}>
+        return <div style={{ minWidth: '300px', display: 'flex'}}>
                   <DateTimePicker  className="editor-active" {...this.getTextBoxProps()} />
                  <button onClick={this.onBlur}>Save</button>
                </div>

@@ -16,6 +16,7 @@ import {
 } from 'js/components/events/actions'
 
 import checkEqual from 'js/utils/checkEqual'
+import { paramsToObj } from 'js/utils'
 
 class MainContentContainer extends Component {
   componentDidMount(props) {
@@ -44,8 +45,13 @@ class MainContentContainer extends Component {
     this.props.getEventsSuggestions({page: 1, per_page: 3})
   }
 
+  getParams = () => {
+    return {...paramsToObj(this.props.location.search.substr(1))}
+  }
+
   getProps = () => ({
     ...this.props,
+    ...this.getParams(),
     getCommunities: this.getCommunities,
     getCommunitiesSuggestions: this.getCommunitiesSuggestions,
   })
