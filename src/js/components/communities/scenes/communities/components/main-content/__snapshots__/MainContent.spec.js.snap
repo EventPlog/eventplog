@@ -1,24 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Communities::Communities::MainContent should render correctly 1`] = `
-<ContentSection
-  className="user-communities"
->
-  <ContentBody>
-    <CommunitySection
-      communities={Array []}
-      showCTA={false}
-      title="My communities"
-    />
-    <CommunitySection
-      communities={Array []}
-      title="Related communities"
-    />
-  </ContentBody>
-  <ContentSidebar>
-    <EventsSection
-      events={Array []}
-    />
-  </ContentSidebar>
-</ContentSection>
+<MainContent
+  className="sc-gZMcBi jXoQfM"
+/>
 `;

@@ -117,6 +117,7 @@ const Event = ({
   createComment,
   updateComment,
   toggleVisibilityStatus,
+  activeIndex,
 }) => {
 
   if (event.loading) return <Loading />
@@ -142,7 +143,7 @@ const Event = ({
                             handleSubmit, attendEvent, toggleVisibilityStatus}} />
 
         <ContentSection.Body>
-          <Tab panes={getPanes()} />
+          <Tab panes={getPanes()} {...{activeIndex}} />
         </ContentSection.Body>
 
         <EventSidebar  {...{community,

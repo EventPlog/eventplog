@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // internal components
-import Tab from '../shared/tab';
+import Tab from 'js/components/shared/tab';
 import EventUpdate from './scenes/event-update/';
 import EventOrganizers from './scenes/event-organizers'
 
@@ -19,8 +19,8 @@ const activeIndex = {
 }
 const EventSettings = (props) => {
   const panes = [
-    {name: 'Organizers', content: EventOrganizers},
-    {name: 'Event', content: EventUpdate},
+    {name: 'Add Organizers', content: EventOrganizers},
+    {name: 'Update Event', content: EventUpdate},
   ];
 
   return (
