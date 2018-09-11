@@ -17,6 +17,7 @@ import {
   updateAnnouncement,
   getPastEvents,
   attendEvent,
+  checkForValidSlug,
 } from '../../actions'
 
 
@@ -55,9 +56,9 @@ class EventContainer extends Component {
 
   getData() {
     const {community_id, id} = this.props.match.params
-    if (!this.props.event || this.props.event.id != id) {
+    if (!this.props.event || !this.props.event.id || this.props.event.id != id) {
       this.setState({loading: true})
-      this.props.getEvent(id)
+      this.props.getEvent(id, this.props.match.params.event_slug)
         .then(event => this.setState({loading: false}))
         .catch(error => this.setState({loading: false, error}))
     }
@@ -108,6 +109,7 @@ const mapDispatchToProps = (dispatch) => {
     getAnnouncements,
     createAnnouncement,
     updateAnnouncement,
+    checkForValidSlug,
   }, dispatch)
 }
 

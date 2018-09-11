@@ -38,20 +38,27 @@ class CommunityContainer extends Component {
 
   getData() {
     const community_id = this.getCommunityId()
-    this.props.getEvents({ community_id , page: 1, per_page: 10})
-    this.props.getPastEvents({ community_id , page: 1, per_page: 10})
+    const community_slug = this.props.slug
+    this.props.getEvents({ community_id, community_slug, page: 1, per_page: 10})
+    this.props.getPastEvents({ community_id, community_slug, page: 1, per_page: 10})
   }
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    this.props.getEvents({page: meta.activePage, per_page,
-      community_id: this.getCommunityId()})
+    this.props.getEvents({
+      page: meta.activePage, per_page,
+      community_id: this.getCommunityId(),
+      community_slug: this.props.slug,
+    })
   }
 
   getPastEvents = (e, meta) => {
     const { per_page, activePage: page } = meta
-    this.props.getPastEvents({page, per_page,
-      community_id: this.getCommunityId()})
+    this.props.getPastEvents({
+      page, per_page,
+      community_id: this.getCommunityId(),
+      slug: this.props.slug,
+    })
   }
 
   getProps = () => ({

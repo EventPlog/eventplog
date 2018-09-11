@@ -35,7 +35,9 @@ type CommunityType = {
   loading: boolean,
   emailSubmitted?: boolean,
   handleChange: () => {},
-  submitEmail: () => {}
+  submitEmail: () => {},
+  slug_check: {valid: boolean, loading: boolean, error: boolean},
+  checkForValidSlug: () => {},
 }
 
 const UpdateCommunity = (props: communityType) => (

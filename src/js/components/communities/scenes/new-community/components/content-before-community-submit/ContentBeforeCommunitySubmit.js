@@ -53,6 +53,14 @@ const StyledContent = styled.div`
     }
   }
   
+ .same-line {
+   display: flex;
+   align-items: center;
+ } 
+ 
+ input[name='slug'] {
+   text-align: right;
+ }
 `
 
 const ContentBeforeCommunitySubmit = ({
@@ -65,8 +73,9 @@ const ContentBeforeCommunitySubmit = ({
   <StyledContent>
     <h3>Create a community</h3>
     <p>
-      What's the name of your awesome community?
+      First choose a community name and url slug.
     </p>
+
     <div className="submit-form">
       <Form loading={loading} error={!!error}>
 
@@ -76,15 +85,27 @@ const ContentBeforeCommunitySubmit = ({
           content={error && error.toString()}
         />
 
-        <Form.Group inline>
           <Form.Field className="wide email-holder">
+            <label>What's the name of your community?</label>
             <Input name="name"
                    type="text"
                    value={community.name}
                    placeholder='Community name' onChange={handleChange} />
           </Form.Field>
+
+
+          <Form.Field>
+            <label>How'd you like people to visit your community page?</label>
+
+            <Form.Field widths="equal" className="same-line">
+              <Input name="slug"
+                     value={community.slug}
+                     placeholder='something' onChange={handleChange}/>
+              .eventplog.com
+            </Form.Field>
+          </Form.Field>
+
           <Button onClick={submitCommunity}>Create</Button>
-        </Form.Group>
       </Form>
     </div>
   </StyledContent>

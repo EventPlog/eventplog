@@ -32,6 +32,16 @@ const StyleEventUpdate = styled.div`
   .cancel {
     margin-left: 1rem;
   }
+  
+  .same-line {
+    display: flex;
+    align-items: center;
+  }
+  
+  input[name='slug'] {
+    text-align: right;
+  }
+  
 `
 
 const colorOptions = [
@@ -49,7 +59,9 @@ const EventUpdate = ({
   loading,
   success,
   handleChange,
-  handleSubmit
+  handleSubmit,
+  slug_check = {},
+  checkForValidSlug,
 }) => {
   const {
     id,
@@ -58,8 +70,7 @@ const EventUpdate = ({
     featured_image,
     logo,
     link,
-    no_of_members,
-    no_of_upcoming_events,
+    slug,
     topic_interests = [],
     brand_color,
   } = community
@@ -87,6 +98,25 @@ const EventUpdate = ({
                    value={description}
                    maxLength={70}
                    placeholder='An community of awesome people' onChange={handleChange}/>
+          </Form.Field>
+
+          <Form.Field>
+            <label>Slug</label>
+            {slug_check.valid &&
+              <div className="success green">Slug is available!</div>}
+            {slug_check.error &&
+              <div className="error red">{slug_check.error}</div>}
+            {slug_check.loading &&
+              <div className="">Checking for availability  <Icon loading name='asterisk' /></div>}
+
+            <Form.Field widths="equal" className="same-line">
+              <Input name="slug"
+                     value={slug}
+                     onBlur={checkForValidSlug}
+                     disabled={slug_check.loading}
+                     placeholder='something' onChange={handleChange}/>
+              .eventplog.com
+            </Form.Field>
           </Form.Field>
 
           <Form.Field>
@@ -139,7 +169,7 @@ const EventUpdate = ({
           </Form.Field>
 
           <Form.Group>
-            <Button inverted type='submit' onClick={handleSubmit}>
+            <Button inverted type='submit' onClick={handleSubmit} disabled={slug_check.error}>
               Save
             </Button>
 

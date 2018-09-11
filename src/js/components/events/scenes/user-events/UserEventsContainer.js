@@ -13,6 +13,7 @@ import {
 } from '../../actions'
 
 import checkEqual from 'js/utils/checkEqual'
+import Auth from 'js/auth'
 
 // -------- Components -----------
 
@@ -47,6 +48,7 @@ class MainContentContainer extends Component {
     ...this.props.location,
     getEvents: this.getEvents,
     getPastEvents: this.getPastEvents,
+    currentUser: Auth.currentUser(),
   })
 
   render () {

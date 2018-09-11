@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Form, label, Message, Checkbox, Icon } from 'semantic-ui-react'
 
 import ContentPanel from 'js/components/shared/content-panel'
-import { Form, label, Message, Checkbox } from 'semantic-ui-react'
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle'
@@ -40,6 +40,16 @@ const StyleEventUpdate = styled.div`
       }
     }
   }
+  
+  .same-line {
+    display: flex;
+    align-items: center;
+    white-space: pre;
+  }
+  
+  input[name='slug'] {
+    text-align: right;
+  }
 `
 
 const EventUpdate = ({
@@ -47,10 +57,12 @@ const EventUpdate = ({
   loading,
   success,
   handleChange,
-  handleSubmit
+  handleSubmit,
+  slug_check = {},
+  checkForValidSlug,
 }) => {
-  const { title, description, link, featured_image, start_time=(new Date()),
-                end_date, end_time=(new Date()) } = event
+  const { title, description, link, featured_image, slug,
+          start_time=(new Date()), end_time=(new Date()), community = {} } = event
   return (
     <StyleEventUpdate>
       <ContentPanel title="Edit this event">
@@ -77,6 +89,25 @@ const EventUpdate = ({
                    onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 
+          <Form.Field>
+
+            <label>Slug</label>
+            {slug_check.valid &&
+            <div className="success green">Slug is available!</div>}
+            {slug_check.error &&
+            <div className="error red">{slug_check.error}</div>}
+            {slug_check.loading &&
+            <div className="warning">Checking for availability  <Icon loading name='asterisk' /></div>}
+
+            <Form.Field widths="equal" className="same-line">
+              {community.slug || 'your-community-slug'}.eventplog.com/e/
+              <Input name="slug"
+                     value={slug}
+                     placeholder='all-hands-summit'
+                     onBlur={checkForValidSlug}
+                     onChange={(e) => handleChange(e.target.name, e.target.value)}/>
+            </Form.Field>
+          </Form.Field>
 
           <Form.Group widths="equal">
             <Form.Field>

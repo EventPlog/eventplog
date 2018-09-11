@@ -24,7 +24,8 @@ export const generateMeta = (community) => (
 const CommunitiesSection = ({
   title,
   communities = {data: [], meta: {}},
-  followCommunity
+  followCommunity,
+  slug
 }) => {
   const { loading, error, data = []} = communities
   return (

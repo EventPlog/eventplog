@@ -12,11 +12,17 @@ const UserEvents = ({
   getEvents,
   getPastEvents,
   attendEvent,
+  currentUser,
+  slug,
+  community,
   search = ''
 }) => {
 
   // redirect when no user event unless already redirected
   if (
+    currentUser &&
+    !slug &&
+    (!community || !community.id) &&
     !events.loading &&
     !events.error &&
     events.data &&

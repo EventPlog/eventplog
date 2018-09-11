@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 
 
 class EventUpdateContainer extends Component {
-  state = { event: {} }
+  state = { event: {}, slug_check: {} }
 
   componentDidMount() {
     this.setState({event: this.props.event})
@@ -23,11 +23,21 @@ class EventUpdateContainer extends Component {
     return this.props.updateEvent(others).then(event => this.setState({event}))
   }
 
+  checkForValidSlug = () => {
+    if (this.props.event.slug == this.state.event.slug) { return }
+    this.setState({slug_check: {loading: true}})
+
+    this.props.checkForValidSlug(this.state.event.slug).then(res => {
+      this.setState({slug_check: !res.slug ? {valid: true} : {error: 'Slug not available'}})
+    }).catch(error => this.setState({slug: {error}}))
+  }
+
   getProps = () => ({
     ...this.props,
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    checkForValidSlug: this.checkForValidSlug,
   })
 
   render () {

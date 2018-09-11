@@ -48,7 +48,7 @@ const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
     <p>
       You community is not yet live since you might want to change the banner image, theme color, etc.
     </p>
-    <p>
+    {/*<p>
       To get the best out of eventplog as an community leader, consider going through the following resources:
     </p>
     <ul>
@@ -72,7 +72,7 @@ const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
           Use feedback to improve your team at every opportunity.
         </Link>
       </li>
-    </ul>
+    </ul>*/}
     <Button.Link to={`/communities/${community.id}/edit`} className="medium lowercase">
       Take me to my community update page
     </Button.Link>
