@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 // internal components
 import Header from '../../header/MainHeader';
@@ -40,6 +40,7 @@ const EventPlog = ({user = {}}) => (
     <StyledEventPlog>
       <Switch>
         <PrivateRoute exact path="/" component={UserEvents} />
+        <Route exact path="/e/:event_slug" component={Event} />
         <PrivateRoute exact path="/events" component={UserEvents} />
         <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
         <PrivateRoute exact path="/communities/:community_id/events/:id" component={Event} />

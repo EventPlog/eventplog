@@ -3,7 +3,7 @@
 // External
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 // Internal
 import { PrivateRoute } from 'js/auth'
@@ -42,6 +42,13 @@ const Main = ({activeLink, ...props}) => {
     <StyledMain activeLink={activeLink}>
       <CommunityHeader {...props} />
       <Switch>
+        <Route exact path="/" render={(routerProps) => <CommunityMainContent {...props} />}/>
+        <PrivateRoute exact path="/edit" render={() => <UpdateCommunity {...props} />} />
+        <PrivateRoute exact path="/events" render={() => <CommunityMainContent {...props} />}/>
+        <Route exact path="/e" render={(routerProps) => <CommunityMainContent {...props} />}/>
+        <PrivateRoute path="/events/*" render={() => <Events {...props} />}/>
+        <Route path="/e/*" render={() => <Events {...props} />}/>
+
         <PrivateRoute exact path="/communities/:id" render={(routerProps) => <CommunityMainContent {...props} />}/>
         <PrivateRoute path="/communities/:id/edit" render={() => <UpdateCommunity {...props} />} />
         <PrivateRoute exact path="/communities/:community_id/events" render={() => <CommunityMainContent {...props} />}/>

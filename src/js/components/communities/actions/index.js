@@ -36,7 +36,7 @@ export const getCommunitiesSuggestions = (data) => {
   })
 }
 
-export const getCommunity = (eventId) => {
+export const getCommunity = (communityId, slug) => {
   let actions = baseActions({
     requestType: actionTypes.COMMUNITY_SHOW_START,
     receiveType: actionTypes.COMMUNITY_SHOW_COMPLETE,
@@ -45,10 +45,10 @@ export const getCommunity = (eventId) => {
 
   return handleApiCall({
     actions,
-    eventId,
+    data: {communityId, slug},
     errorMessage: 'Something prevented us from retrieving this community',
     caller: 'getCommunity',
-    route: `/api/v1/web/communities/${eventId}`,
+    route: `/api/v1/web/communities/${communityId}`,
     requestMethod: 'GET'
   })
 }
@@ -137,6 +137,24 @@ export const unFollowCommunity = (community) => {
     requestMethod: 'DELETE'
   })
 }
+
+export const checkForValidSlug = (slug) => {
+  let actions = baseActions({
+    requestType: actionTypes.COMMUNITY_SLUG_VERIFY_START,
+    receiveType: actionTypes.COMMUNITY_SLUG_VERIFY_COMPLETE,
+    failType: actionTypes.COMMUNITY_SLUG_VERIFY_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: {slug},
+    errorMessage: 'Something prevented us from verifying this slug.',
+    caller: 'verify slug',
+    route: `/api/v1/web/communities/verify_slug/${slug}`,
+    requestMethod: 'GET'
+  })
+}
+
 
 // =========== MOCKS ===============
 

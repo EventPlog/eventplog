@@ -125,5 +125,17 @@ const styles = css`
   .ui.message p {
     font-size: 1rem;
   }
+  
+  .success {
+    color: ${defaults.green};
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .warning {
+    color: orange;
+  }
 `
 export default styles;

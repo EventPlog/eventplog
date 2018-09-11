@@ -5,24 +5,27 @@ import styled, { css } from 'styled-components'
 import EventsSection from 'js/components/events/scenes/events/components/events-section'
 import { media } from 'js/styles/mixins'
 
-const UserEvents = ({
+const CommunityEvents = ({
   events = {},
+  community = {},
   past_events = {},
   getEvents,
   getPastEvents,
   attendEvent,
+  slug,
 }) => {
   return (
     <div>
       <EventsSection key="user-upcoming-events-section"
-                     title="Upcoming" {...{events, getEvents, attendEvent }} />,
+                     title="Upcoming" {...{events, getEvents, attendEvent, community }} />,
       <EventsSection key="user-past-events-section"
                      title="Past"
                      events={past_events}
+                     community={community}
                      getEvents={getPastEvents}
                      attendEvent={attendEvent} />
     </div>
   )
 }
 
-export default UserEvents
+export default CommunityEvents

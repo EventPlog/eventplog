@@ -36,3 +36,11 @@ export const paramsToObj = (params) => {
   })
   return obj
 }
+
+export const getSlugFromHostName = (hostname, knownSubs) => {
+  const sub = hostname.substr(0, hostname.indexOf('.'))
+  if (!sub) return false
+  if(knownSubs.split(',').find(s => s == sub)) return false
+  return sub
+}
+

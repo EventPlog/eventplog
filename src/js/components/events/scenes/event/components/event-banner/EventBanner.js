@@ -177,7 +177,7 @@ const EventBanner = ({
                            defaultValue={validDate(end_time)}
                            onChange={handleChange}
                            onSubmit={handleSubmit}>
-                  {(end_time ) ? `Starts ${moment(end_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
+                  {(end_time ) ? `Ends ${moment(end_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
                 </ContentEditable>
               </li>
             </ul>
