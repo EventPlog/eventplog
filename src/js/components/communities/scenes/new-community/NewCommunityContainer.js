@@ -15,7 +15,7 @@ export class CommunityContainer extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({community: {[e.target.name]: e.target.value} })
+    this.setState({community: {...this.state.community, [e.target.name]: e.target.value} })
   }
 
   submitCommunity = () => {

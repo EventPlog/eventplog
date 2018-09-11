@@ -36,6 +36,21 @@ exports[`main content - New Community component should render correctly 1`] = `
       </FormField>
       <FormField>
         <label>
+          Slug
+        </label>
+        <FormField
+          className="same-line"
+          widths="equal"
+        >
+          <Styled(Input)
+            name="slug"
+            placeholder="something"
+          />
+          .eventplog.com
+        </FormField>
+      </FormField>
+      <FormField>
+        <label>
           Link to Group
         </label>
         <Styled(Input)

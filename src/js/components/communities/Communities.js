@@ -42,11 +42,11 @@ type CommunityPtlogType = {
 const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
     <StyledCommunityPlog>
       <Switch>
-        <PrivateRoute exact path="/" component={Communities} />
         <PrivateRoute exact path="/communities" component={Communities} />
         <PrivateRoute exact path="/communities/join-a-community" component={JoinACommunity} />
         <PrivateRoute exact path="/communities/new" component={NewCommunity} />
         <PrivateRoute path="/communities/:id" component={Community} />
+        <PrivateRoute path="/" component={Communities} />
       </Switch>
     </StyledCommunityPlog>
 )

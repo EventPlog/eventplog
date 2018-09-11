@@ -6,7 +6,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
     Create a community
   </h3>
   <p>
-    What's the name of your awesome community?
+    First choose a community name and url slug.
   </p>
   <div
     className="submit-form"
@@ -19,22 +19,36 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         error={true}
         header="Error"
       />
-      <FormGroup
-        inline={true}
+      <FormField
+        className="wide email-holder"
       >
+        <label>
+          What's the name of your community?
+        </label>
+        <Styled(Input)
+          name="name"
+          placeholder="Community name"
+          type="text"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          How'd you like people to visit your community page?
+        </label>
         <FormField
-          className="wide email-holder"
+          className="same-line"
+          widths="equal"
         >
           <Styled(Input)
-            name="name"
-            placeholder="Community name"
-            type="text"
+            name="slug"
+            placeholder="something"
           />
+          .eventplog.com
         </FormField>
-        <Button>
-          Create
-        </Button>
-      </FormGroup>
+      </FormField>
+      <Button>
+        Create
+      </Button>
     </Form>
   </div>
 </styled.div>

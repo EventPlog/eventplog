@@ -9,13 +9,16 @@ import {
   followCommunity,
   unFollowCommunity,
   getCommunitiesSuggestions,
+  checkForValidSlug,
 } from '../../actions'
 
 import checkEqual  from 'js/utils/checkEqual'
 
+import { getSlugFromHostName } from 'js/utils'
+
 
 class CommunityContainer extends Component {
-  state = {community: {}}
+  state = {community: {}, slug_check: {}}
 
   componentDidMount(props) {
     this.getData()
@@ -61,12 +64,20 @@ class CommunityContainer extends Component {
     // don't bother fetching if within an event
     if (community_id && id) return
 
-    if(!this.props.community || this.props.community.id != sureCommunityId) {
-      this.props.getCommunity(community_id || id)
+    if(!this.props.community || !this.props.community.id || (!this.props.slug && this.props.community.id != sureCommunityId)) {
+      this.props.getCommunity(community_id || id, this.props.slug)
         .then(community => this.setState({loading: false}))
         .catch(error => this.setState({loading: false, error}))
     }
-    // this.props.getCommunitiesSuggestions({page: 1, per_page: 3})
+  }
+
+  checkForValidSlug = () => {
+    if (this.props.community.slug == this.state.community.slug) { return }
+    this.setState({slug_check: {loading: true}})
+
+    this.props.checkForValidSlug(this.state.community.slug).then(res => {
+      this.setState({slug_check: !res.slug ? {valid: true} : {error: 'Slug not available'}})
+    }).catch(error => this.setState({slug: {error}}))
   }
 
   getProps = () => ({
@@ -74,6 +85,7 @@ class CommunityContainer extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    checkForValidSlug: this.checkForValidSlug,
   })
 
   render () {
@@ -97,6 +109,7 @@ const mapDispatchToProps = (dispatch) => {
     followCommunity,
     unFollowCommunity,
     getCommunitiesSuggestions,
+    checkForValidSlug,
   }, dispatch)
 }
 

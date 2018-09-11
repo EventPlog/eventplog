@@ -2,7 +2,7 @@ import actionTypes from './types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
 import mockEventApi from 'js/mock-api/event-api'
 
-export const getEvent = (eventId) => {
+export const getEvent = (eventId, slug) => {
   let actions = baseActions({
     requestType: actionTypes.EVENT_SHOW_START,
     receiveType: actionTypes.EVENT_SHOW_COMPLETE,
@@ -11,7 +11,7 @@ export const getEvent = (eventId) => {
 
   return handleApiCall({
     actions,
-    eventId,
+    data: {eventId, slug},
     errorMessage: 'Something prevented us from retrieving this event. Please try again later.',
     caller: 'leads',
     route: `/api/v1/web/events/${eventId}`,
@@ -34,6 +34,23 @@ export const getPastEvents = (params) => {
     route: `/api/v1/web/communities/${params.community_id}/events/past`,
     requestMethod: 'GET'
   });
+}
+
+export const checkForValidSlug = (slug) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_SLUG_VERIFY_START,
+    receiveType: actionTypes.EVENT_SLUG_VERIFY_COMPLETE,
+    failType: actionTypes.EVENT_SLUG_VERIFY_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: {slug},
+    errorMessage: 'Something prevented us from verifying this slug.',
+    caller: 'verify slug',
+    route: `/api/v1/web/events/verify_slug/${slug}`,
+    requestMethod: 'GET'
+  })
 }
 
 export const mockGetEvent = (eventId) => {
@@ -106,7 +123,7 @@ export const getEvents = (eventParams = {}) => {
     data: eventParams,
     errorMessage: 'Something prevented getting an event.',
     caller: 'get events',
-    route: `/api/v1/web${communityDetails}/events`,
+    route: `/api/v1/web/events`,
     requestMethod: 'GET'
   })
 }

@@ -28,6 +28,7 @@ const Login = createLoadable(() => import('js/components/login'  /* webpackChunk
 const Events = createLoadable(() => import('js/components/events'  /* webpackChunkName: "EventPlog" */))
 const User = createLoadable(() => import('js/components/user'  /* webpackChunkName: "EventPlog" */))
 const Communities = createLoadable(() => import('js/components/communities' /* webpackChunkName: "JoinACommunity" */))
+const Community = createLoadable(() => import('js/components/communities/scenes/community' /* webpackChunkName: "JoinACommunity" */))
 const Password = createLoadable(() => import('js/components/password' /* webpackChunkName: "Password" */))
 
 const StyledApp = styled.div`
@@ -36,6 +37,12 @@ const StyledApp = styled.div`
   
   ${universalStyles}
 `
+
+const loadAppropriateComponent = (props) => {
+  return props.slug
+    ? <Community {...props}/>
+    : <Events {...props} />
+}
 
 class App extends Component {
   state = { activeItem: 'home' };
@@ -56,11 +63,6 @@ class App extends Component {
             {showBreadCrumb && <BreadCrumb {...this.props.location} />}
             <NewInvitationBar />
             <Switch>
-              <Route exact path="/" render={(props) =>
-                   Auth.isLoggedIn
-                     ? <Events {...props} />
-                     : <Login/>
-                } />
               <Route exact path="/login" component={Login} />
               <Route path="/legal" component={Legal} />
               <Route exact path="/logout" render={() => handleLogout(store)} />
@@ -70,9 +72,12 @@ class App extends Component {
               <Route path="/password" component={Password} />
               <Route path="/help" component={HelpPage} />  
               <Route path="/about-us" component={Aboutus} />  
-              <Route path="/why-eventplog" component={WhyEventplog} />            
+              <Route path="/why-eventplog" component={WhyEventplog} />
               <PrivateRoute path="/events" component={Events} />
               <PrivateRoute path="/communities" component={Communities} />
+              <Route path="/" render={(props) =>
+                   loadAppropriateComponent(this.props)
+                } />
             </Switch>
             <Footer />
           </StyledApp>

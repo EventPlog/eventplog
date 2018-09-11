@@ -3,12 +3,14 @@
 exports[`MainContent should render correctly 1`] = `
 <div>
   <EventsSection
+    community={Object {}}
     events={Object {}}
     key="user-upcoming-events-section"
     title="Upcoming"
   />
   ,
   <EventsSection
+    community={Object {}}
     events={Object {}}
     key="user-past-events-section"
     title="Past"

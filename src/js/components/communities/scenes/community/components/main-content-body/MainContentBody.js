@@ -59,6 +59,8 @@ const StyledMainContent = styled.div`
 
 const MainContent = ({
   loading,
+  community,
+  slug,
 }) => {
   if (loading) {
     return <Loading />
@@ -68,7 +70,7 @@ const MainContent = ({
       <ContentSection className="community-event">
 
         <ContentSection.Body>
-          <CommunityEvents />
+          <CommunityEvents {...{slug, community}} />
         </ContentSection.Body>
 
         <ContentSection.Sidebar>
