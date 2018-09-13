@@ -4,6 +4,7 @@ import { Link} from 'react-router-dom'
 import Topic from 'js/components/help/components/topic'
 import Description from 'js/components/help/components/help-description'
 import HelpImage from 'js/components/help/components/image'
+import Video from 'js/components/help/components/videos'
 
 const GettingStarted = () => {
   return(
@@ -21,6 +22,7 @@ const GettingStarted = () => {
           These guides will take you on fun, quick and easy steps to using Eventplog.<br/>
         </p>
         <HelpImage src={image} alt="Getting Started image" />
+        <Video src="https://www.youtube.com/embed/nZbB5SfYGcQ"/>
         <p>
           To get started on Eventplog, you need to Signup or Login if you already have an account!
         </p>
