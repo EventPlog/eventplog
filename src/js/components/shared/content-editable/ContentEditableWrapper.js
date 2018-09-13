@@ -1,8 +1,8 @@
 import React from 'react'
 import ContentEditable from './ContentEditable'
 
-const ContentEditableWrapper = ({children, canEdit = true, ...ownProps}) => (
-  canEdit
+const ContentEditableWrapper = ({children, editable = true, ...ownProps}) => (
+  editable
     ? <ContentEditable {...ownProps}>
       {
         ({onClick, ...props}) =>

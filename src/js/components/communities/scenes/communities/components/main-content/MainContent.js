@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-
+import Auth from 'js/auth'
 
 //======== Internal Components =========
 import Tab from 'js/components/shared/tab'
@@ -27,11 +27,11 @@ const styles = css`
     font-weight: 600;
     font-size: 1.2rem;
     
-      ${
-  media.phone`
-          margin: 0 0 2rem 0;
-        `
-  } 
+    ${
+      media.phone`
+        margin: 0 0 2rem 0;
+      `
+    } 
   }
 `
 
@@ -48,8 +48,8 @@ const MainContent = ({
 }) => {
 
   const UserCommunities = () =>
-    <CommunitiesSection showCTA={false}
-      {...{communities, getCommunities}} />
+    <CommunitiesSection showCTA={!Auth.isLoggedIn}
+      {...{communities, getCommunities, followCommunity}} />
 
   const CommunitiesSuggestions = () =>
     <CommunitiesSection getCommunities={getCommunitiesSuggestions}
@@ -58,7 +58,7 @@ const MainContent = ({
 
   const getPanes = () => {
     return [
-      {name: `My Communities`, content: UserCommunities },
+      {name: `Communities ${Auth.isLoggedIn ? ' I follow' : ' to follow'}`, content: UserCommunities },
       {name: `Suggestions`, content: CommunitiesSuggestions },
     ]
   }

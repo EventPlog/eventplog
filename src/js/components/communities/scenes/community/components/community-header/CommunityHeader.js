@@ -9,9 +9,7 @@ import Nav from 'js/components/shared/nav'
 import colors from 'js/styles/theme/colors'
 import { media } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
-
-// images
-import defaultLogo from 'img/react-logo.png'
+import { genCommunityLink } from 'js/utils'
 
 const StyledHeader = styled.div`
 
@@ -140,7 +138,7 @@ const CommunityHeader = ({
 }) => (
   <StyledHeader>
     <div className="app-container community-logo">
-      <Link to={`/communities/${community.id}`} >
+      <Link to={genCommunityLink(community)} >
         {community.logo && <img src={community.logo} />}
         <div className="hidden-xs">
           {!community.logo && <h3>{community.display_name}</h3>}

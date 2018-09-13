@@ -100,7 +100,7 @@ const EventUpdate = ({
             <div className="warning">Checking for availability  <Icon loading name='asterisk' /></div>}
 
             <Form.Field widths="equal" className="same-line">
-              {community.slug || 'your-community-slug'}.eventplog.com/e/
+              eventplog.com/c/{community.slug || community.id}/e
               <Input name="slug"
                      value={slug}
                      placeholder='all-hands-summit'

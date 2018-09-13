@@ -7,10 +7,10 @@ import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Pagination from 'js/components/shared/pagination'
-import { pluralize } from 'js/utils'
+import { pluralize, genCommunityLink } from 'js/utils'
 
 export const generateTitle = (community = {}) => (
-  <Link to={`/communities/${community.id}`}>
+  <Link to={genCommunityLink(community)}>
     {community.name}
   </Link>
 )
@@ -52,7 +52,7 @@ const CommunitySection = ({
       {data && data.map(({description, featured_image, ...community}) => {
           const title = generateTitle(community)
           const meta = generateMeta(community)
-          const titleLink = `/communities/${community.id}`
+          const titleLink = genCommunityLink(community)
           return (
             <ContentPanel.Card
               key={community.id}

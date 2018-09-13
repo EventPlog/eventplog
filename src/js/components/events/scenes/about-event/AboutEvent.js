@@ -11,6 +11,7 @@ import Announcements from 'js/components/shared/announcements'
 import Members from 'js/components/shared/members'
 import ContentEditable from 'js/components/shared/content-editable'
 import QuickFeedbackForm from 'js/components/feedback/scenes/quick-feedback-form'
+import { genEventLink } from 'js/utils'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -76,7 +77,7 @@ const Event = ({
 
   const {title, description, featured_image, start_date,
           start_time, given_feedback, show_feedback_url,
-          is_attending, interested_persons,
+          is_attending, interested_persons, is_stakeholder,
           announcements, comments} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
@@ -103,7 +104,7 @@ const Event = ({
 
           <Announcements {...{announcements, getAnnouncements,
                           createAnnouncement, updateAnnouncement,
-                          canCreateAnnouncement: isStakeHolder,
+                          canCreateAnnouncement: is_stakeholder,
                           recipient_id: event.id,
                           recipient_type: 'Event'}} />
 
@@ -114,8 +115,8 @@ const Event = ({
                 <Members.Member member={member} />
               )}
             </Members>
-            {noOrganizersYet && isStakeHolder &&
-              <Button.Link className="btn-inline" to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>
+            {noOrganizersYet && is_stakeholder &&
+              <Button.Link className="btn-inline" to={`${genEventLink(event, event.community)}/backstage/settings`}>
                 Go backstage to add organizers
               </Button.Link>}
           </ContentPanel>

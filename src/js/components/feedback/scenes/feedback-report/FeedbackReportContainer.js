@@ -9,6 +9,8 @@ import {
   updateFeedbackReport,
 } from '../../actions'
 
+import Auth from 'js/auth'
+
 class FeedbackReportContainer extends Component {
   state = {feedback_report: {}}
 
@@ -59,6 +61,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     feedback_report: state.feedback.feedback_report,
     event: state.events.event,
+    isLoggedIn: Auth.isLoggedIn,
   }
 }
 

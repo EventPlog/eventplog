@@ -42,11 +42,11 @@ const verifyAccess = (Component, props = {}) => {
 const EventComponent = (props) =>
   <StyledEventComponent>
     <Switch>
-      <Route exact path='/communities/:community_id/events/:event_id/backstage' render={verifyAccess(Tasks, props)} />
-      <Route path='/communities/:community_id/events/:event_id/backstage/tasks' render={verifyAccess(Tasks, props)} />
-      <Route path="/communities/:community_id/events/:event_id/backstage/guests" render={withProps(Guests, props)} />
-      <Route path="/communities/:community_id/events/:event_id/backstage/feedback" render={withProps(Feedback, props)} />
-      <Route path="/communities/:community_id/events/:event_id/backstage/settings" component={verifyAccess(Settings, props)} />
+      <Route exact path='/c/:community_id/e/:event_id/backstage' render={verifyAccess(Tasks, props)} />
+      <Route path='/c/:community_id/e/:event_id/backstage/tasks' render={verifyAccess(Tasks, props)} />
+      <Route path="/c/:community_id/e/:event_id/backstage/guests" render={withProps(Guests, props)} />
+      <Route path="/c/:community_id/e/:event_id/backstage/feedback" render={withProps(Feedback, props)} />
+      <Route path="/c/:community_id/e/:event_id/backstage/settings" component={verifyAccess(Settings, props)} />
     </Switch>
   </StyledEventComponent>
 

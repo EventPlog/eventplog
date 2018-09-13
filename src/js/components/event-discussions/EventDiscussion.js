@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Message } from 'semantic-ui-react'
 import styles from 'styled-components'
 
@@ -7,6 +8,7 @@ import ContentPanel from 'js/components/shared/content-panel'
 import Comments from 'js/components/shared/comments'
 import AddComment from 'js/components/shared/comments/add-comment'
 import Loading from 'js/components/shared/loading'
+import LoginPrompt from 'js/components/shared/login-prompt'
 
 const EventDiscussionStyes = styles.div`
   .ui.message {
@@ -21,9 +23,12 @@ const Discussion = ({
   createComment,
   updateComment,
   getComments,
-  event_discussion = {}
+  event_discussion = {},
+  isLoggedIn,
+  loading,
+  error,
 }) => {
-  const { comments = {}, loading, error } = event_discussion
+  const { comments = {} } = event_discussion
 
   const canContribute = event.is_checked_in || event.is_stakeholder
 
@@ -43,7 +48,10 @@ const Discussion = ({
             <p>Did a speaker say something that made you remember a contribution or question? Type it here before you forget!</p>
             <p>Did you grasp an amazing take-away? Share with others here! Be the team player!</p>
           </Message>}
-        {canContribute &&
+
+        {<LoginPrompt msg="to contribute." />}
+
+        {canContribute && event_discussion.id &&
         <AddComment placeholder="Say hi, ask a question, clarify something said, anything! Be heard :)"
                     recipient_id={event_discussion.id}
                     recipient_type="EventDiscussion"
@@ -52,8 +60,8 @@ const Discussion = ({
                     createComment={createComment} />}
 
         {loading && <Loading />}
-        {error && <Loading.error msg={error} />}
-        {!loading && !error &&
+        {error && isLoggedIn && <Loading.Error msg={error} />}
+        {!loading && !error && event_discussion.id &&
           <Comments recipient_id={event_discussion.id}
                   recipient_type="EventDiscussion"
                   canReply={canContribute}

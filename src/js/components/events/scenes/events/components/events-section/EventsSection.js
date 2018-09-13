@@ -8,12 +8,11 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
-import { pluralize } from 'js/utils'
+import { pluralize, genCommunityLink, genEventLink } from 'js/utils'
 
-export const generateTitle = (event = {}) => {
-  const community = event.community || {}
+export const generateTitle = (event = {}, community = {}) => {
   return (
-    <Link to={`/communities/${event.community_id}/events/${event.id}`}>
+    <Link to={genEventLink(event, community)}>
       {event.title}
     </Link>
   )
@@ -21,7 +20,7 @@ export const generateTitle = (event = {}) => {
 
 export const generateDescription = (community = {}) => (
   <span>
-    By <Link to={`/communities/${community.id}`}>
+    By <Link to={genCommunityLink(community)}>
       {community.name}
     </Link>
   </span>
@@ -65,11 +64,12 @@ const EventsSection = ({
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
       {shouldDisplayData && data.map(({featured_image, ...event}) => {
-          const title = generateTitle(event)
-          const description = generateDescription(event.community)
+          const community = event.community || {}
+          const title = generateTitle(event, community)
+          const description = generateDescription(community)
           const meta = generateMeta(event)
           const btn = {onClick: () => attendEvent(event), text: 'interested'}
-          const titleLink = `/communities/${event.community_id}/events/${event.id}`
+          const titleLink = genEventLink(event, community)
 
           return (
             <ContentPanel.Card

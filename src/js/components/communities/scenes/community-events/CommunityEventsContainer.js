@@ -10,6 +10,7 @@ import {
 } from 'js/components/events/actions'
 
 import checkEqual  from 'js/utils/checkEqual'
+import { secureAction } from 'js/auth/actions'
 
 
 class CommunityContainer extends Component {
@@ -87,7 +88,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvents,
     getPastEvents,
-    attendEvent,
+    attendEvent: secureAction(attendEvent),
   }, dispatch)
 }
 

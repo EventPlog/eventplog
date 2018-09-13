@@ -110,12 +110,12 @@ const EventUpdate = ({
               <div className="">Checking for availability  <Icon loading name='asterisk' /></div>}
 
             <Form.Field widths="equal" className="same-line">
+              eventplog.com/c/
               <Input name="slug"
                      value={slug}
                      onBlur={checkForValidSlug}
                      disabled={slug_check.loading}
                      placeholder='something' onChange={handleChange}/>
-              .eventplog.com
             </Form.Field>
           </Form.Field>
 

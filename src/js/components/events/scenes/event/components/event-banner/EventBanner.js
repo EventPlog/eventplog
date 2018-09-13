@@ -1,13 +1,13 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import moment from 'moment'
 
 // internal
 import { media } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
-import { validDate, pluralize } from 'js/utils'
-import moment from 'moment'
+import { validDate, pluralize, genEventLink } from 'js/utils'
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -117,6 +117,7 @@ const eventBannerStyles = css`
 
 const EventBanner = ({
   id,
+  slug,
   title,
   featured_image,
   interested_persons,
@@ -189,7 +190,7 @@ const EventBanner = ({
       </div>
       <div className="cta-btns">
         {(is_stakeholder || organizer_role) &&
-          <Button.Link className="cta" to={`/communities/${community.id}/events/${id}/backstage/settings?activeIndex=1`}>
+          <Button.Link className="cta" to={`${genEventLink({id, slug}, community)}/backstage/settings?activeIndex=1`}>
             Go Backstage
           </Button.Link>}
         {is_attending && !is_owner && !!link &&

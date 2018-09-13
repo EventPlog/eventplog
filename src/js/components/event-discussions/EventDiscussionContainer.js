@@ -8,6 +8,8 @@ import {
   updateComment,
 } from './actions'
 
+import Auth from 'js/auth'
+
 class DiscussionContainer extends Component {
   state = {loading: false, error: false}
 
@@ -22,7 +24,7 @@ class DiscussionContainer extends Component {
     this.props.getEventDiscussion(this.props.event.id).then(res => {
       this.setState({loading: false})
     })
-      .catch(error => this.setState({loading: false}))
+      .catch(error => this.setState({loading: false, error: 'Could not load discussions.'}))
   }
 
   getProps = () => ({
@@ -44,6 +46,7 @@ const mapStateToProps = (state, ownProps) => {
     loading,
     error,
     event,
+    isLoggedIn: Auth.isLoggedIn,
   }
 }
 

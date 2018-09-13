@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 
 // internal
 import Sidebar from 'js/components/shared/sidebar'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
-import Button from 'js/components/shared/button'
+import { pluralize, genCommunityLink, genEventLink } from 'js/utils'
 
 export const generateTitle = (community = {}) => (
-  <Link to={`/communities/${community.id}/`}>
+  <Link to={`/c/${genCommunityLink(community)}/`}>
     {community.name}
   </Link>
 )
@@ -35,7 +34,7 @@ const CommunitiesSection = ({
           const title = generateTitle(community);
           const description = generateDescription(community.interest)
           const meta = generateMeta(community)
-          const titleLink = `/communities/${community.id}/`
+          const titleLink = genCommunityLink(community)
           const btn = community.following
                         ? {}
                         : {onClick: () => followCommunity(community), text: 'Follow'}

@@ -17,6 +17,7 @@ import {
   attendEvent,
 } from '../../actions'
 
+import { secureAction } from 'js/auth/actions'
 
 class EventContainer extends Component {
   state = {event: {}}
@@ -73,13 +74,13 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvent,
     getPastEvents,
-    updateEvent,
-    attendEvent,
+    updateEvent: secureAction(updateEvent),
+    attendEvent: secureAction(attendEvent),
     getAnnouncements,
-    createComment,
-    updateComment,
-    createAnnouncement,
-    updateAnnouncement,
+    createComment: secureAction(createComment),
+    updateComment: secureAction(updateComment),
+    createAnnouncement: secureAction(createAnnouncement),
+    updateAnnouncement: secureAction(updateAnnouncement),
   }, dispatch)
 }
 
