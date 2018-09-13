@@ -32,7 +32,7 @@ exports[`CommunityHeader should render correctly 1`] = `
         <Component>
           <Link
             replace={false}
-            to="/communities/undefined/events"
+            to="//c/undefined/e"
           >
             Events
           </Link>
