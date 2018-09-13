@@ -5,7 +5,7 @@ import styled  from 'styled-components';
 
 // internal components
 
-const TabHolder = styled.div`
+const TabStyles = styled.div`
   > div {
   
     .ui.secondary.pointing.menu {
@@ -39,11 +39,12 @@ const generatePanes = (panes, props) =>
   )
 
 const TmnTab = ({ panes, activeIndex = 0, ...otherProps }) => (
-  <TabHolder>
-    <Tab defaultActiveIndex={activeIndex} menu={{ secondary: true, pointing: true }}
+  <TabStyles>
+    <Tab defaultActiveIndex={activeIndex > 0 ? activeIndex : 0}
+         menu={{ secondary: true, pointing: true }}
          panes={generatePanes(panes, otherProps)}
     />
-  </TabHolder>
+  </TabStyles>
 )
 
 export default TmnTab;

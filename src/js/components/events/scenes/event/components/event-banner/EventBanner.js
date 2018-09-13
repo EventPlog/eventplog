@@ -190,7 +190,7 @@ const EventBanner = ({
       </div>
       <div className="cta-btns">
         {(is_stakeholder || organizer_role) &&
-          <Button.Link className="cta" to={`${genEventLink({id, slug}, community)}/backstage/settings?activeIndex=1`}>
+          <Button.Link className="cta" to={`${genEventLink({id, slug}, community)}/backstage`}>
             Go Backstage
           </Button.Link>}
         {is_attending && !is_owner && !!link &&

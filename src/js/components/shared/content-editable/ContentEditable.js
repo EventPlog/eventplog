@@ -50,6 +50,11 @@ const styles = css`
     background-color: white;
     min-width: 300px;
     display: flex;
+    
+    &::after {
+      content: 'Save';
+      color: blue;
+    }
   }
 `
 
@@ -140,7 +145,7 @@ class ContentEditable extends React.Component {
   })
 
   render() {
-    return this.props.canEdit && (this.state.isEditing || this.props.isEditing)
+    return this.state.isEditing || this.props.isEditing
       ? this.getEditableComponent()
       : this.props.children(this.getProps())
   }

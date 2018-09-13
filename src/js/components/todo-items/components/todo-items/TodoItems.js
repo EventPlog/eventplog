@@ -78,6 +78,7 @@ const EventChecklist = ({
   completed = [],
   activeIndex,
   match,
+  event,
   changeAccordion
 }) => {
   const { description, data = [], loading, error } = todo_items
@@ -102,7 +103,7 @@ const EventChecklist = ({
           <Accordion>
             {(props) => (
               completed.map((todo_item, index) => [
-                <TodoItem key={index} {...{todo_item, match, index, ...props}} />
+                <TodoItem key={index} {...{todo_item, match, event, index, ...props}} />
               ])
             )}
           </Accordion>

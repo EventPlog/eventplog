@@ -1,8 +1,8 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { darken } from 'polished'
-import ReactMarkdown from 'react-markdown'
+import { Link } from 'react-router-dom'
 
 // internal components
 import ContentSection from 'js/components/shared/content-section'
@@ -19,6 +19,7 @@ import EventResources from '../event-resources'
 import Tab from 'js/components/shared/tab'
 import Report from 'js/components/feedback/scenes/feedback-report'
 import { media } from 'js/styles/mixins'
+import { genEventLink } from 'js/utils'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -136,9 +137,23 @@ const Event = ({
     ]
   }
 
+  const eventLink = genEventLink(event, community)
   return (
     <StyledEvent activeLink={activeLink} className="app-container">
+
       <ContentSection>
+        {event.is_stakeholder &&
+          <Menu fluid widths={3}>
+            <Menu.Item name='Edit Event'>
+              <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
+            </Menu.Item>
+            <Menu.Item name='Upload Guests CSV'>
+              <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
+            </Menu.Item>
+            <Menu.Item name='Check In Guests'>
+              <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
+            </Menu.Item>
+          </Menu>}
         <EventBanner {...{...event, community, handleChange,
                             handleSubmit, attendEvent, toggleVisibilityStatus}} />
 
