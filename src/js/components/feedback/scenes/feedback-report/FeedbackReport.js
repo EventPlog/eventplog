@@ -10,7 +10,7 @@ import Comments from 'js/components/shared/comments'
 import ContentEditable from 'js/components/shared/content-editable'
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
-import { pluralize, getEventLink } from 'js/utils'
+import { pluralize, genEventLink } from 'js/utils'
 import LoginPrompt from 'js/components/shared/login-prompt'
 import QuickFeedbackForm from 'js/components/feedback/scenes/quick-feedback-form'
 
@@ -129,7 +129,7 @@ const FeedbackReport = ({
           {<LoginPrompt msg="to add your own feedback" />}
           {isLoggedIn &&
           <p>Asked to be checked in from&nbsp;
-            <Link to={`${getEventLink(event, event.community)}?activeIndex=1`}>
+            <Link to={`${genEventLink(event, event.community)}?activeIndex=1`}>
               the discussions panel
             </Link>
           </p>
