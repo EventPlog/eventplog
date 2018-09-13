@@ -21,7 +21,7 @@ class AppContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
-  const isCommunityPath = matchPath(ownProps.location.pathname, '/communities/:id')
+  const isCommunityPath = matchPath(ownProps.location.pathname, '/c/:id')
   const isHomePath = matchPath(ownProps.location.pathname, {path: '/', exact: true})
   const isLoginPath = matchPath(ownProps.location.pathname, {path: '/login', exact: true})
   const isSignuPath = matchPath(ownProps.location.pathname, {path: '/signup', exact: true})
