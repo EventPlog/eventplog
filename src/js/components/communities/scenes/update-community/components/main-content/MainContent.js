@@ -38,9 +38,6 @@ const StyleEventUpdate = styled.div`
     align-items: center;
   }
   
-  input[name='slug'] {
-    text-align: right;
-  }
   
 `
 
