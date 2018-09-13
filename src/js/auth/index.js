@@ -1,9 +1,11 @@
 import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
 import { Auth } from './actions'
 
 export {
   Auth,
-  PrivateRoute
+  PrivateRoute,
+  PublicRoute
 }
 
 export default Auth

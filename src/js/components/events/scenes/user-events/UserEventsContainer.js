@@ -14,6 +14,7 @@ import {
 
 import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
+import { secureAction } from 'js/auth/actions'
 
 // -------- Components -----------
 
@@ -68,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvents,
     getPastEvents,
-    attendEvent,
+    attendEvent: secureAction(attendEvent),
   }, dispatch)
 }
 

@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import 'nprogress/nprogress.css'
 
 // ======= INTERNAL ========
-import {Auth, PrivateRoute} from 'js/auth'
+import {Auth, PrivateRoute, PublicRoute} from 'js/auth'
 import Lead from 'js/components/leads/leads-creation'
 import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
@@ -38,12 +38,6 @@ const StyledApp = styled.div`
   ${universalStyles}
 `
 
-const loadAppropriateComponent = (props) => {
-  return props.slug
-    ? <Community {...props}/>
-    : <Events {...props} />
-}
-
 class App extends Component {
   state = { activeItem: 'home' };
 
@@ -63,6 +57,7 @@ class App extends Component {
             {showBreadCrumb && <BreadCrumb {...this.props.location} />}
             <NewInvitationBar />
             <Switch>
+              <Route exact path="/" component={Events} />
               <Route exact path="/login" component={Login} />
               <Route path="/legal" component={Legal} />
               <Route exact path="/logout" render={() => handleLogout(store)} />
@@ -70,14 +65,13 @@ class App extends Component {
               <Route path="/leads/:id" component={Lead} />
               <Route path="/user" component={User} />
               <Route path="/password" component={Password} />
-              <Route path="/help" component={HelpPage} />  
-              <Route path="/about-us" component={Aboutus} />  
+              <Route path="/help" component={HelpPage} />
+              <Route path="/about-us" component={Aboutus} />
               <Route path="/why-eventplog" component={WhyEventplog} />
-              <PrivateRoute path="/events" component={Events} />
-              <PrivateRoute path="/communities" component={Communities} />
-              <Route path="/" render={(props) =>
-                   loadAppropriateComponent(this.props)
-                } />
+              <Route path="/events" component={Events} />
+              <Route path="/c" component={Communities} />
+              <Route path="/communities" component={Communities} />
+              <Route path="/e/*" component={Events} />
             </Switch>
             <Footer />
           </StyledApp>

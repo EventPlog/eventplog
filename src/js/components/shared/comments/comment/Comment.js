@@ -90,7 +90,7 @@ const Comment = ({
       }
       <ContentEditable propName={textField}
                        type="textarea"
-                       canEdit={currentUserIsOwner && editing}
+                       editable={currentUserIsOwner && editing}
                        isEditing={editing}
                        defaultValue={comment[textField]}
                        onChange={handleChange}

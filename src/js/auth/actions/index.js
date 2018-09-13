@@ -1,22 +1,10 @@
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 import cookie from 'js-cookie'
+
 import processRequest from '../../utils/webAPI'
 
-export const fakeAuth = {
-  isLoggedIn: true,
-  currentUser: {},
-  authenticate(cb) {
-    this.isLoggedIn = true;
-    this.currentUser = {
-      name: 'Kent Beck'
-    }
-    setTimeout(cb, 100)
-  },
-  signout(cb) {
-    this.isLoggedIn = false
-    this.currentUser = {}
-    setTimeout(cb, 100)
-  }
-}
+const LAST_VISITED_URL = 'lastVisitedUrl'
 
 const setUserInCookie = (user) => {
   if (!(user && user.id)) return
@@ -88,6 +76,37 @@ export const Auth = {
   deleteFromCookie(key) {
     return  cookie.remove(key)
   },
+}
+
+export const redirectToSignup = () => {
+  Auth.setCookie(LAST_VISITED_URL, window.location.pathname)
+  return window.location.href = '/signup'
+}
+
+export const renderComponent = (render, Component, props) => {
+  const lastVisitedUrl = Auth.getFromCookie(LAST_VISITED_URL)
+
+  if (lastVisitedUrl) {
+    Auth.deleteFromCookie(LAST_VISITED_URL)
+    return <Redirect to={lastVisitedUrl} />
+  }
+
+  return (
+    render
+      ? render(props)
+      : <Component {...props} />
+  )
+}
+
+export const secureAction = (action) => (
+  Auth.isLoggedIn
+    ? action
+    : redirectToSignup
+)
+
+export const renderRedirectToLogin = () => {
+  Auth.setCookie(LAST_VISITED_URL, window.location.pathname)
+  return <Redirect to='/login' />
 }
 
 export default Auth

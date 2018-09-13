@@ -5,10 +5,10 @@ import styled from 'styled-components'
 // internal
 import Sidebar from 'js/components/shared/sidebar'
 import Loading from 'js/components/shared/loading'
-import { pluralize } from 'js/utils'
+import { pluralize, genCommunityLink, genEventLink } from 'js/utils'
 
 export const generateTitle = (community) => (
-  <Link to={`/communities/${community.id}/`}>
+  <Link to={genCommunityLink(community)}>
     {community.name}
   </Link>
 )
@@ -36,7 +36,7 @@ const CommunitiesSection = ({
           const title = generateTitle(community);
           const description = generateDescription(community.topic_interests)
           const meta = generateMeta(community)
-          const titleLink = `/communities/${community.id}/`
+          const titleLink = genCommunityLink(community)
           const btn = community.following
                         ? {}
                         : {onClick: () => {followCommunity(community)}, text: 'Follow'}

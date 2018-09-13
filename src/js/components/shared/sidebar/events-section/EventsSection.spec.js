@@ -30,7 +30,7 @@ describe('Sidebar > EventsSection', () => {
     const sidebarCardInstances = wrapper.find(Sidebar.Card)
 
     const event = events.data[0]
-    expect(sidebarCardInstances.at(0).props().title).toEqual(generateTitle(event, event.community.id))
+    expect(sidebarCardInstances.at(0).props().title).toEqual(generateTitle(event, event.community))
     expect(sidebarCardInstances.at(0).props().description).toEqual(generateDescription(event.community))
     expect(sidebarCardInstances.at(0).props().featured_image).toEqual(event.featured_image)
     expect(sidebarCardInstances.at(0).props().meta).toEqual(generateMeta(event))

@@ -7,7 +7,7 @@ exports[`CommunityHeader should render correctly 1`] = `
   >
     <Link
       replace={false}
-      to="/communities/undefined"
+      to="/c/undefined"
     >
       <div
         className="hidden-xs"

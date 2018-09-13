@@ -5,7 +5,7 @@ import styled from 'styled-components'
 // internal components
 import EventPageContent from './EventPageContent';
 import { media, maxMedia } from 'js/styles/mixins'
-import { lighten } from 'polished'
+import { genEventLink } from 'js/utils'
 
 const StyledMainContent = styled.div`
   display: flex;
@@ -90,8 +90,8 @@ const MainContentBody = ({ event = {}, ...otherProps }) => {
           <div className="backstage-header">
             <h3>
               { event.title
-                ? <Link to={`/communities/${community.id}/events/${event.id}`}>{event.title}</Link>
-                : <Link to={`/communities/${community.id}/events/${event.id}/backstage/settings`}>Change Title</Link> }
+                ? <Link to={genEventLink(event, community)}>{event.title}</Link>
+                : <Link to={`${genEventLink(event)}/backstage/settings`}>Change Title</Link> }
             </h3>
           </div>
           <div className="workplace full-height">

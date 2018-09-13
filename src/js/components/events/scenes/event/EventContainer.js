@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
 import { paramsToObj } from 'js/utils'
+import { secureAction } from 'js/auth/actions'
 
 import {
   getEvent,
@@ -22,7 +23,11 @@ import {
 
 
 class EventContainer extends Component {
-  state = {event: {}}
+  constructor(props) {
+    super(props)
+    this.state = {event: {}}
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
   componentWillMount() {
     this.getData()
@@ -59,7 +64,7 @@ class EventContainer extends Component {
     if (!this.props.event || !this.props.event.id || this.props.event.id != id) {
       this.setState({loading: true})
       this.props.getEvent(id, this.props.match.params.event_slug)
-        .then(event => this.setState({loading: false}))
+        .then(event => this.setState({loading: false, event}))
         .catch(error => this.setState({loading: false, error}))
     }
   }
@@ -101,15 +106,15 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvent,
-    updateEvent,
-    attendEvent,
-    createComment,
-    updateComment,
     getComments,
     getAnnouncements,
     createAnnouncement,
     updateAnnouncement,
     checkForValidSlug,
+    attendEvent: secureAction(attendEvent),
+    updateEvent: secureAction(updateEvent),
+    createComment: secureAction(createComment),
+    updateComment: secureAction(updateComment),
   }, dispatch)
 }
 

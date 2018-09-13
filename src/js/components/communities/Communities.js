@@ -2,14 +2,14 @@
 
 import React, { Component } from 'react';
 
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 // internal components
 import Header from '../../header/MainHeader';
 import createLoader from '../shared/loading/createLoadable'
 import styled, { ThemeProvider } from 'styled-components';
 import defaults from '../../styles/theme/variables';
-import {fakeAuth, PrivateRoute} from '../../auth'
+import {fakeAuth, PrivateRoute, PublicRoute} from '../../auth'
 
 
 const Communities = createLoader(() =>
@@ -42,11 +42,15 @@ type CommunityPtlogType = {
 const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
     <StyledCommunityPlog>
       <Switch>
-        <PrivateRoute exact path="/communities" component={Communities} />
+        <PublicRoute exact path="/communities" component={Communities} />
         <PrivateRoute exact path="/communities/join-a-community" component={JoinACommunity} />
         <PrivateRoute exact path="/communities/new" component={NewCommunity} />
-        <PrivateRoute path="/communities/:id" component={Community} />
-        <PrivateRoute path="/" component={Communities} />
+        <PublicRoute path="/communities/:id" component={Community} />
+        <PublicRoute exact path="/c" component={Communities} />
+        <PublicRoute path="/c/:id" component={Community} />
+        <PrivateRoute exact path="/c/new" component={NewCommunity} />
+
+        <PublicRoute path="/" component={Communities} />
       </Switch>
     </StyledCommunityPlog>
 )

@@ -16,16 +16,18 @@ const styles = css`
       flex-direction: column;
       
       &::before {
-        content: '\\1F58A';
-        opacity: 0.2;
+        content: '\\1F58A edit';
+        opacity: 0.3;
+        font-size: 14px;
         align-self: flex-end;
       }
     `
   }
   
   &::after {
-    content: '\\1F58A';
-    opacity: 0.2;
+    content: '\\1F58A edit';
+    opacity: 0.3;
+    font-size: 14px;
     
     ${
       maxMedia.tablet`
@@ -138,7 +140,7 @@ class ContentEditable extends React.Component {
   })
 
   render() {
-    return this.state.isEditing || this.props.isEditing
+    return this.props.canEdit && (this.state.isEditing || this.props.isEditing)
       ? this.getEditableComponent()
       : this.props.children(this.getProps())
   }
