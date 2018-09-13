@@ -53,7 +53,7 @@ class CommunityContainer extends Component {
   }
 
   getParams = () => {
-    return (matchPath(this.props.location.pathname, '/communities/:community_id/events/:id') || this.props.match).params
+    return (matchPath(this.props.location.pathname, '/c/:community_id/e/:id') || this.props.match).params
   }
 
   getData() {
