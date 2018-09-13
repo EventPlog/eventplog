@@ -59,6 +59,7 @@ class EventUpdateContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { event_checklist } = state.event_checklists
+  const { event } = state.events
   const { loading, error } = event_checklist
   const { todo_items = [] } = state.todo_items
   return {
@@ -66,6 +67,7 @@ const mapStateToProps = (state, ownProps) => {
     loading,
     error,
     todo_items,
+    event,
     user: Auth.currentUser(),
     ...ownProps
   }
