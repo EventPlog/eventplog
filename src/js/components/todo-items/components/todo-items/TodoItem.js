@@ -9,6 +9,7 @@ import ContentPanel from 'js/components/shared/content-panel'
 import { media } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import Accordion from 'js/components/shared/accordion'
+import { genEventLink } from 'js/utils'
 
 const StyledTodoItem = styled.div`
   .description {
@@ -26,6 +27,7 @@ const TodoItem = ({
   changeAccordion,
   match = {},
   todo_item = {},
+  event = {}
 }) => {
   const {id, title, description, status, recipient, deadline, comments = {}} = todo_item
   const { community_id, event_id } = match.params || {}
@@ -47,7 +49,7 @@ const TodoItem = ({
         <ReactMarkdown className="description" source={description} />
 
         <div className="footer">
-          <Button.Link to={`/communities/${community_id}/events/${event_id}/backstage/tasks/${id}`}>
+          <Button.Link to={`${genEventLink(event, event.community)}/backstage/tasks/${id}`}>
             Edit or comment
           </Button.Link>
 

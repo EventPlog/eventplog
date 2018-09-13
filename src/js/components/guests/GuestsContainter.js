@@ -10,6 +10,7 @@ class GuestsContainter extends Component {
 
   componentDidMount() {
     this.getData();
+    this.state = {activeIndex: 1}
   }
 
   getData() {

@@ -12,6 +12,8 @@ import {
   updateComment,
 } from './actions'
 
+import { genEventLink } from 'js/utils'
+
 class TodoItemContainer extends Component {
   constructor(props) {
     super(props)
@@ -22,10 +24,10 @@ class TodoItemContainer extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { community_id, event_id } = nextProps.match.params
+    const { event } = nextProps
     return {
       todo_item: nextProps.todo_item,
-      link_back: `/communities/${community_id}/events/${event_id}/backstage/tasks`
+      link_back: `${genEventLink(event, event.community)}/backstage/tasks`
     }
   }
 
@@ -88,6 +90,7 @@ class TodoItemContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   const { event_checklist } = state.event_checklists
   const {todo_items = {data: []} } = state.todo_items
+  const { event } = state.events
   const {loading, error} = todo_items
   const todo_item = state.todo_items.todo_items.data.find(item => item.id == ownProps.match.params.id)
 
@@ -96,6 +99,7 @@ const mapStateToProps = (state, ownProps) => {
     event_checklist,
     loading,
     error,
+    event,
     ...ownProps
   }
 }
