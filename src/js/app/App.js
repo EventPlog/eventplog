@@ -38,12 +38,6 @@ const StyledApp = styled.div`
   ${universalStyles}
 `
 
-const loadAppropriateComponent = (props) => {
-  return props.slug
-    ? <Community {...props}/>
-    : <Events {...props} />
-}
-
 class App extends Component {
   state = { activeItem: 'home' };
 
