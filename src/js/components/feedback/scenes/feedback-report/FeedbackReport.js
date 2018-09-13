@@ -10,7 +10,7 @@ import Comments from 'js/components/shared/comments'
 import ContentEditable from 'js/components/shared/content-editable'
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
-import { pluralize } from 'js/utils'
+import { pluralize, getEventLink } from 'js/utils'
 import LoginPrompt from 'js/components/shared/login-prompt'
 import QuickFeedbackForm from 'js/components/feedback/scenes/quick-feedback-form'
 
