@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { Table, Message } from 'semantic-ui-react'
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown'
@@ -10,7 +11,7 @@ import ContentEditable from 'js/components/shared/content-editable'
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
 import { pluralize } from 'js/utils'
-
+import LoginPrompt from 'js/components/shared/login-prompt'
 
 const toPercentage = (num, total) => (
   total > 0
@@ -41,13 +42,29 @@ const FeedbackReport = ({
   getFeedbackResponses,
   handleChange,
   handleSubmit,
-  toggleShowReport
+  toggleShowReport,
+  isLoggedIn,
 }) => {
   const {loading, error} = feedback_report
 
   if (loading || !event.id) return <Loading />
   if (error) return <Loading.Error msg={error} />
 
+  const {
+    is_attending,
+    is_stakeholder,
+    given_feedback,
+    show_feedback_url,
+    start_time,
+  } = event
+
+  const eventDue = (new Date(start_time)) <= (new Date())
+
+  if (!eventDue) {
+    return <p>The event report will be available on or after the event day.</p>
+  }
+
+  // only show report if it's the due date
   const {
     trackable_id,
     trackable_type,
@@ -71,7 +88,7 @@ const FeedbackReport = ({
   return (
     <StyleFeedbackReport>
 
-      {event.is_stakeholder && !shown_to_guests &&
+      {is_stakeholder && !shown_to_guests &&
         <Message info>
           <Message.Header>The bulk of your report is currently private</Message.Header>
             <p>When private, only the highlights is shown to guests. The numbers, report description and feedback from attendees is hidden</p>
@@ -79,7 +96,7 @@ const FeedbackReport = ({
         </Message>
       }
 
-      {event.is_stakeholder &&
+      {is_stakeholder &&
         <div className="cta-btns">
           <Button onClick={() => toggleShowReport(!shown_to_guests)}>
             {shown_to_guests ? 'Make Report Private' : 'Make Report Public'}
@@ -104,6 +121,20 @@ const FeedbackReport = ({
         </div>
 
       </ContentPanel>
+
+      {is_attending && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
+      { eventDue && !given_feedback &&
+        <ContentPanel title="Did you attend this event">
+          {<LoginPrompt msg="to add your own feedback" />}
+          {isLoggedIn &&
+          <p>Asked to be checked in from&nbsp;
+            <Link to={`${getEventLink(event, event.community)}?activeIndex=1`}>
+              the discussions panel
+            </Link>
+          </p>
+          }
+        </ContentPanel>
+      }
 
       {(shown_to_guests || event.is_stakeholder) && <span>
         <ContentPanel title="The numbers">
@@ -158,7 +189,7 @@ const FeedbackReport = ({
           </p>
 
           <p>
-            The audience are on average {nps.total * 100}% likely to invite their friends of your next event.&nbsp;
+            The attendees are on average {nps.total * 100}% likely to invite others to the next event.&nbsp;
             (Guys were {nps.male * 100}% likely, ladies were {nps.female * 100}% likely).
           </p>
         </ContentPanel>

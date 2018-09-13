@@ -12,8 +12,7 @@ import {
   checkForValidSlug,
 } from '../../actions'
 
-import checkEqual  from 'js/utils/checkEqual'
-
+import { secureAction } from 'js/auth/actions'
 import { getSlugFromHostName } from 'js/utils'
 
 
@@ -105,11 +104,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getCommunity,
-    updateCommunity,
-    followCommunity,
-    unFollowCommunity,
     getCommunitiesSuggestions,
     checkForValidSlug,
+    updateCommunity: secureAction(updateCommunity),
+    followCommunity: secureAction(followCommunity),
+    unFollowCommunity: secureAction(unFollowCommunity),
   }, dispatch)
 }
 

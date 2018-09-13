@@ -44,15 +44,20 @@ const Main = ({activeLink, ...props}) => {
       <Switch>
         <Route exact path="/" render={(routerProps) => <CommunityMainContent {...props} />}/>
         <PrivateRoute exact path="/edit" render={() => <UpdateCommunity {...props} />} />
-        <PrivateRoute exact path="/events" render={() => <CommunityMainContent {...props} />}/>
+        <Route exact path="/events" render={() => <CommunityMainContent {...props} />}/>
         <Route exact path="/e" render={(routerProps) => <CommunityMainContent {...props} />}/>
-        <PrivateRoute path="/events/*" render={() => <Events {...props} />}/>
+        <Route path="/events/*" render={() => <Events {...props} />}/>
         <Route path="/e/*" render={() => <Events {...props} />}/>
 
-        <PrivateRoute exact path="/communities/:id" render={(routerProps) => <CommunityMainContent {...props} />}/>
+        <Route exact path="/communities/:id" render={(routerProps) => <CommunityMainContent {...props} />}/>
         <PrivateRoute path="/communities/:id/edit" render={() => <UpdateCommunity {...props} />} />
-        <PrivateRoute exact path="/communities/:community_id/events" render={() => <CommunityMainContent {...props} />}/>
-        <PrivateRoute path="/communities/:community_id/events/*" render={() => <Events {...props} />}/>
+        <Route exact path="/communities/:community_id/events" render={() => <CommunityMainContent {...props} />}/>
+        <Route path="/communities/:community_id/events/*" render={() => <Events {...props} />}/>
+
+        <Route exact path="/c/:id" render={(routerProps) => <CommunityMainContent {...props} />}/>
+        <PrivateRoute path="/c/:id/edit" render={() => <UpdateCommunity {...props} />} />
+        <Route exact path="/c/:community_id/e" render={() => <CommunityMainContent {...props} />}/>
+        <Route path="/c/:community_id/e/*" render={() => <Events {...props} />}/>
       </Switch>
     </StyledMain>
   )

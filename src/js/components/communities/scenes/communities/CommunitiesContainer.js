@@ -17,6 +17,7 @@ import {
 
 import checkEqual from 'js/utils/checkEqual'
 import { paramsToObj } from 'js/utils'
+import { secureAction } from 'js/auth/actions'
 
 class MainContentContainer extends Component {
   componentDidMount(props) {
@@ -74,11 +75,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    attendEvent,
     getCommunities,
-    followCommunity,
     getEventsSuggestions,
     getCommunitiesSuggestions,
+    attendEvent: secureAction(attendEvent),
+    followCommunity: secureAction(followCommunity),
   }, dispatch)
 }
 

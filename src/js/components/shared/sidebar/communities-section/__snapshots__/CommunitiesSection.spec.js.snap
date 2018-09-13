@@ -18,12 +18,12 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/communities/1/"
+        to="/c/1"
       >
         Facebook Developer Circle Lagos
       </Link>
     }
-    titleLink="/communities/1/"
+    titleLink="/c/1"
   />
   <SidebarCard
     btn={
@@ -39,12 +39,12 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/communities/2/"
+        to="/c/2"
       >
         Google Developer Group
       </Link>
     }
-    titleLink="/communities/2/"
+    titleLink="/c/2"
   />
   <SidebarCard
     btn={
@@ -60,12 +60,12 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/communities/3/"
+        to="/c/3"
       >
         ForLoop Lagos
       </Link>
     }
-    titleLink="/communities/3/"
+    titleLink="/c/3"
   />
 </Sidebar>
 `;

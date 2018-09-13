@@ -9,6 +9,7 @@ import {
   attendEvent,
 } from 'js/components/events/actions'
 
+import { secureAction } from 'js/auth/actions'
 
 class EventContainer extends Component {
   state = {event: {}}
@@ -58,7 +59,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getPastEvents,
-    attendEvent
+    attendEvent: secureAction(attendEvent)
   }, dispatch)
 }
 

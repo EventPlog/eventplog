@@ -7,7 +7,7 @@ import Header from '../../header/MainHeader';
 import createLoader from '../shared/loading/createLoadable'
 import styled  from 'styled-components';
 import defaults from '../../styles/theme/variables';
-import {fakeAuth, PrivateRoute} from '../../auth'
+import {fakeAuth, PrivateRoute, PublicRoute} from '../../auth'
 import UserNav from 'js/components/shared/user-secondary-menu'
 
 const Events = createLoader(() =>
@@ -39,12 +39,16 @@ const UserEvents = () => (
 const EventPlog = ({user = {}}) => (
     <StyledEventPlog>
       <Switch>
-        <PrivateRoute exact path="/" component={UserEvents} />
-        <Route exact path="/e/:event_slug" component={Event} />
-        <PrivateRoute exact path="/events" component={UserEvents} />
+        <PublicRoute exact path="/" component={UserEvents} />
+        <PublicRoute exact path="/e/:id" component={Event} />
+        <PublicRoute exact path="/events" component={UserEvents} />
         <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
-        <PrivateRoute exact path="/communities/:community_id/events/:id" component={Event} />
+        <PublicRoute exact path="/communities/:community_id/events/:id" component={Event} />
         <PrivateRoute path="/communities/:community_id/events/:id/backstage" component={BackStage} />
+
+        <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />
+        <PublicRoute exact path="/c/:community_id/e/:id" component={Event} />
+        <PrivateRoute path="/c/:community_id/e/:id/backstage" component={BackStage} />
       </Switch>
     </StyledEventPlog>
 )
