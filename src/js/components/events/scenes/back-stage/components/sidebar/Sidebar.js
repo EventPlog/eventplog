@@ -7,6 +7,7 @@ import { lighten } from 'polished'
 import defaults from 'js/styles/theme/variables';
 import { media, maxMedia } from 'js/styles/mixins'
 import colors from 'js/styles/theme/variables'
+import { genEventLink } from 'js/utils'
 
 const Aside = styled.aside`
   width: 200px;
@@ -91,7 +92,7 @@ const Sidebar = ({
           menuItems.map(({name, icon, link}, index) =>
             name &&
             <li key={index}>
-              <NavLink to={`/communities/${community.id}/events/${event.id}/backstage/${link || name.toLowerCase()}`}
+              <NavLink to={`${genEventLink(event, community)}/backstage/${link || name.toLowerCase()}`}
                        activeClassName="active">
                 <span className="hidden-xs">
                   <Icon name={icon || 'users'} />
