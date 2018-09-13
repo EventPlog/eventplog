@@ -2,6 +2,11 @@
 
 exports[`Guests should render correctly 1`] = `
 <styled.div>
+  <p
+    className="check-in-form"
+  >
+    Click on 'New Guest' to check in a guest not on the list.
+  </p>
   <PageHeader
     title="Guests"
   />
