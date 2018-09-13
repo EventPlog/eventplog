@@ -178,7 +178,7 @@ const CommunityHeader = ({
       <div className="app-container">
         <Nav hideOnMobile={hideMenu} StackUlOnMobile={false}>
           <Nav.Item>
-            <Link to={`/communities/${community.id}/events`}>Events</Link>
+            <Link to={`/${genCommunityLink(community)}/e`}>Events</Link>
           </Nav.Item>
 
           {/*<Nav.Item>*/}
@@ -187,7 +187,7 @@ const CommunityHeader = ({
 
           {(community.is_owner || community.is_admin) &&
             <Nav.Item>
-              <Button.Link to={`/communities/${community.id}/events/new`} activeClassName="hidden">
+              <Button.Link to={`${genCommunityLink(community)}/e/new`} activeClassName="hidden">
                 <span className="hidden-lg">
                   <Icon name="plus" />
                   <Icon name="handshake outline" />
