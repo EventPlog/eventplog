@@ -63,9 +63,9 @@ class CommunityContainer extends Component {
     // don't bother fetching if within an event
     if (community_id && id) return
 
-    if(!this.props.community || !this.props.community.id || (!this.props.slug && this.props.community.id != sureCommunityId)) {
+    if(!this.props.community || !this.props.community.id || !(this.props.community.id == sureCommunityId || this.props.community.slug == sureCommunityId)) {
       this.props.getCommunity(community_id || id, this.props.slug)
-        .then(community => this.setState({loading: false}))
+        .then(community => this.setState({loading: false, community}))
         .catch(error => this.setState({loading: false, error}))
     }
   }

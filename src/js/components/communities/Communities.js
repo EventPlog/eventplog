@@ -47,8 +47,8 @@ const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
         <PrivateRoute exact path="/communities/new" component={NewCommunity} />
         <PublicRoute path="/communities/:id" component={Community} />
         <PublicRoute exact path="/c" component={Communities} />
+        <PublicRoute exact path="/c/new" component={NewCommunity} />
         <PublicRoute path="/c/:id" component={Community} />
-        <PrivateRoute exact path="/c/new" component={NewCommunity} />
 
         <PublicRoute path="/" component={Communities} />
       </Switch>

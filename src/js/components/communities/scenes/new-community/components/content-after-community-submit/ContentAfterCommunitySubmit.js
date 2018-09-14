@@ -1,12 +1,11 @@
 import React from 'react'
-import { Form, Label } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // local
-import peopleDancing from '../../../../../../../img/giphys/black-guy-celebrating2.gif'
-import { media } from '../../../../../../styles/mixins'
-import Button from '../../../../../shared/button'
+import peopleDancing from 'img/giphys/black-guy-celebrating2.gif'
+import { media } from 'js/styles/mixins'
+import Button from 'js/components/shared/button'
+import { genCommunityLink } from 'js/utils'
 
 const StyledContent = styled.div`
   display: flex;
@@ -73,7 +72,7 @@ const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
         </Link>
       </li>
     </ul>*/}
-    <Button.Link to={`/communities/${community.id}/edit`} className="medium lowercase">
+    <Button.Link to={`${genCommunityLink(community)}/edit`} className="medium lowercase">
       Take me to my community update page
     </Button.Link>
   </StyledContent>

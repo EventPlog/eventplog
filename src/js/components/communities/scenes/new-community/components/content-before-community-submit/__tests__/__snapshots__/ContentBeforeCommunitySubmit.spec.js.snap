@@ -39,11 +39,11 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           className="same-line"
           widths="equal"
         >
+          eventplog.com/c/
           <Styled(Input)
             name="slug"
             placeholder="something"
           />
-          .eventplog.com
         </FormField>
       </FormField>
       <Button>
