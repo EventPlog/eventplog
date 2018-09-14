@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
+import { getCommunityLink } from 'js/utils'
 
 const StyledContent = styled.div`
   align-items: center;
@@ -58,9 +59,6 @@ const StyledContent = styled.div`
    align-items: center;
  } 
  
- input[name='slug'] {
-   text-align: right;
- }
 `
 
 const ContentBeforeCommunitySubmit = ({
@@ -98,10 +96,10 @@ const ContentBeforeCommunitySubmit = ({
             <label>How'd you like people to visit your community page?</label>
 
             <Form.Field widths="equal" className="same-line">
+              eventplog.com/c/
               <Input name="slug"
                      value={community.slug}
                      placeholder='something' onChange={handleChange}/>
-              .eventplog.com
             </Form.Field>
           </Form.Field>
 

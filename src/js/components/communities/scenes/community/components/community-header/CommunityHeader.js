@@ -135,59 +135,61 @@ const CommunityHeader = ({
   community = {},
   followCommunity,
   unFollowCommunity,
-}) => (
-  <StyledHeader>
-    <div className="app-container community-logo">
-      <Link to={genCommunityLink(community)} >
-        {community.logo && <img src={community.logo} />}
-        <div className="hidden-xs">
-          {!community.logo && <h3>{community.display_name}</h3>}
-          {community.description && <small>{community.description.substr(0, 70)}</small>}
-          {community.topic_interests &&
+}) => {
+  const communityLink = genCommunityLink(community)
+  return (
+    <StyledHeader>
+      <div className="app-container community-logo">
+        <Link to={communityLink} >
+          {community.logo && <img src={community.logo} />}
+          <div className="hidden-xs">
+            {!community.logo && <h3>{community.display_name}</h3>}
+            {community.description && <small>{community.description.substr(0, 70)}</small>}
+            {community.topic_interests &&
             <div className="hashtags-holder">
               {community.topic_interests.map(topic =>
                 <div className="hashtags">{topic}
                 </div>)}
             </div>}
-        </div>
-      </Link>
-      <div className="right-pull">
-        {community.is_owner
-          ? <Button.Link
+          </div>
+        </Link>
+        <div className="right-pull">
+          {community.is_owner
+            ? <Button.Link
               className="edit-community"
               activeClassName="hidden"
-              to={`/communities/${community.id}/edit`}>
+              to={`${communityLink}/edit`}>
               Edit
             </Button.Link>
-          : community.following
-            ? <Button
+            : community.following
+              ? <Button
                 onClick={() => unFollowCommunity(community)}>
                 <Icon color='green' name='checkmark' size='large' />
                 Following
               </Button>
-            : community.id &&
+              : community.id &&
               <Button
                 onClick={() => followCommunity(community)}>
                 Follow
               </Button>
-        }
+          }
+        </div>
       </div>
-    </div>
 
-    <div className="nav-holder">
-      <div className="app-container">
-        <Nav hideOnMobile={hideMenu} StackUlOnMobile={false}>
-          <Nav.Item>
-            <Link to={`/${genCommunityLink(community)}/e`}>Events</Link>
-          </Nav.Item>
-
-          {/*<Nav.Item>*/}
-            {/*<Link to={`/communities/${community.id}/team`}>Team</Link>*/}
-          {/*</Nav.Item>*/}
-
-          {(community.is_owner || community.is_admin) &&
+      <div className="nav-holder">
+        <div className="app-container">
+          <Nav hideOnMobile={hideMenu} StackUlOnMobile={false}>
             <Nav.Item>
-              <Button.Link to={`${genCommunityLink(community)}/e/new`} activeClassName="hidden">
+              <Link to={`${communityLink}/e`}>Events</Link>
+            </Nav.Item>
+
+            {/*<Nav.Item>*/}
+            {/*<Link to={`/communities/${community.id}/team`}>Team</Link>*/}
+            {/*</Nav.Item>*/}
+
+            {(community.is_owner || community.is_admin) &&
+            <Nav.Item>
+              <Button.Link to={`${communityLink}/e/new`} activeClassName="hidden">
                 <span className="hidden-lg">
                   <Icon name="plus" />
                   <Icon name="handshake outline" />
@@ -195,11 +197,12 @@ const CommunityHeader = ({
                 <span className="hidden-md hidden-xs">Create an event</span>
               </Button.Link>
             </Nav.Item>
-          }
-        </Nav>
+            }
+          </Nav>
+        </div>
       </div>
-    </div>
-  </StyledHeader>
-)
+    </StyledHeader>
+  )
+}
 
 export default CommunityHeader

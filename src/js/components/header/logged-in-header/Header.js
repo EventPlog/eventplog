@@ -20,7 +20,7 @@ const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
     <Nav hideOnMobile={hideMenu}>
       <Nav.Item>
         {!inCommunity &&
-          <Button.Link to="/communities/new"
+          <Button.Link to="/c/new"
                      activeClassName="hidden">
               <span className="hidden-lg hidden-xs">
                 <Icon name="plus" />
@@ -30,7 +30,7 @@ const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
           </Button.Link>}
 
         {inCommunity &&
-          <Link to="/communities/new"
+          <Link to="/c/new"
                      activeClassName="hidden">
               <span className="hidden-lg hidden-xs">
                 <Icon name="plus" />
