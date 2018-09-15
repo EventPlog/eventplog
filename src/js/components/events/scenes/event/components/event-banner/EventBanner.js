@@ -24,6 +24,11 @@ const eventBannerStyles = css`
     `
   } 
   
+  ${
+    media.desktop`
+      min-height: 600px;
+    `
+  }
   
   .overlay {
     opacity: 0.3;

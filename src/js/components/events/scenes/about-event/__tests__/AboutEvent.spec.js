@@ -17,6 +17,6 @@ describe('Event', () => {
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(Announcements).length).toEqual(1);
-    expect(wrapper.find(ContentPanel).length).toEqual(2);
+    expect(wrapper.find(ContentPanel).length).toEqual(3);
   })
 });
