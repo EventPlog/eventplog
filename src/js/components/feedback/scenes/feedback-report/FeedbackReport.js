@@ -59,9 +59,7 @@ const FeedbackReport = ({
     start_time,
   } = event
 
-  const eventDue = (new Date(start_time)) <= (new Date())
-
-  if (!eventDue) {
+  if (feedback_report.report == 'not due') {
     return <p>The event report will be available on or after the event day.</p>
   }
 
@@ -123,8 +121,8 @@ const FeedbackReport = ({
 
       </ContentPanel>
 
-      {is_attending && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
-      { eventDue && !given_feedback &&
+      {is_attending && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
+      {!given_feedback &&
         <ContentPanel title="Did you attend this event">
           {<LoginPrompt msg="to add your own feedback" />}
           {isLoggedIn &&
