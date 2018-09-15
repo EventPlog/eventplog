@@ -41,14 +41,17 @@ const EventPlog = ({user = {}}) => (
       <Switch>
         <PublicRoute exact path="/" component={UserEvents} />
         <PublicRoute exact path="/e/:id" component={Event} />
+
+        <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />
+        <PublicRoute exact path="/c/:community_id/e/:id" component={Event} />
+        <PrivateRoute path="/c/:community_id/e/:id/backstage" component={BackStage} />
+
+        {/* maintain support for legacy routes*/}
         <PublicRoute exact path="/events" component={UserEvents} />
         <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
         <PublicRoute exact path="/communities/:community_id/events/:id" component={Event} />
         <PrivateRoute path="/communities/:community_id/events/:id/backstage" component={BackStage} />
 
-        <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />
-        <PublicRoute exact path="/c/:community_id/e/:id" component={Event} />
-        <PrivateRoute path="/c/:community_id/e/:id/backstage" component={BackStage} />
       </Switch>
     </StyledEventPlog>
 )

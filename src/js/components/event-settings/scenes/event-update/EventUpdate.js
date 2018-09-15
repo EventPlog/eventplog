@@ -154,10 +154,10 @@ const EventUpdate = ({
           </Form.Field>
 
           <Form.Field>
-            <label>Official Hashtag(s) (comma separated)</label>
+            <label>Official Hashtag(s)</label>
             <Input name="hashtags"
                    value={hashtags}
-                   placeholder='#moonwalkers, #daydragons'
+                   placeholder='#moonwalkers #daydragons'
                    onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 

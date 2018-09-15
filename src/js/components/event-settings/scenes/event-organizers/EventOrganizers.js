@@ -37,6 +37,13 @@ const EventOrganizers = ({
 }) =>
   <StyleEventOrganizers>
     <ContentPanel title="Add organizers">
+      {event.visibility_status == "private_event" &&
+        <Message
+          info
+          header="Heads up!"
+          content={"This event is still private. Volunteers won't be able to see it until it's public."}
+        />
+      }
       <Form loading={loading} success={success} error={!!error}>
 
       <Message

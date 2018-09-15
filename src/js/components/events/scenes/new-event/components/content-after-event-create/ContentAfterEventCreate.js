@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // local
-import peopleDancing from '../../../../../../../img/giphys/black-guy-celebrating2.gif'
-import { media } from '../../../../../../styles/mixins'
-import Button from '../../../../../shared/button'
+import peopleDancing from 'img/giphys/black-guy-celebrating2.gif'
+import { media } from 'js/styles/mixins'
+import Button from 'js/components/shared/button'
+import { genEventLink } from 'js/utils'
 
 const StyledContent = styled.div`
   display: flex;
@@ -38,7 +39,13 @@ const StyledContent = styled.div`
   }
 `
 
-const ContentAfterEventSubmit = ({ event = {}, handleChange, loading, error }) => (
+const ContentAfterEventSubmit = ({
+  event = {},
+  community = {},
+  handleChange,
+  loading,
+  error
+}) => (
   <StyledContent className="text-center">
     <h3>You just created an event!!!</h3>
     <img src={peopleDancing} alt="people dancing" />
@@ -73,7 +80,7 @@ const ContentAfterEventSubmit = ({ event = {}, handleChange, loading, error }) =
         </Link>
       </li>
     </ul>
-    <Button.Link to={`/communities/${event.community_id}/events/${event.id}/backstage/settings?activeIndex=1`} className="medium lowercase">
+    <Button.Link to={`${genEventLink(event, community)}/backstage/settings?activeIndex=1`} className="medium lowercase">
       Continue setting up this event
     </Button.Link>
   </StyledContent>
