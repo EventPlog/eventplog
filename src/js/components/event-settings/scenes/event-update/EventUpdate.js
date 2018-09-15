@@ -8,6 +8,7 @@ import Button from 'js/components/shared/button'
 import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle'
 import DateTimePickerStyles from 'js/styles/thirdparty/date-time-picker-styles'
 import { validDate } from 'js/utils'
+import TextArea from 'js/components/shared/text-area'
 
 const StyleEventUpdate = styled.div`
   ${ DateTimePickerStyles }
@@ -58,7 +59,7 @@ const EventUpdate = ({
   slug_check = {},
   checkForValidSlug,
 }) => {
-  const { title, description, link, featured_image, slug,
+  const { title, description, link, featured_image, slug, agenda, hashtags,
           start_time=(new Date()), end_time=(new Date()), community = {} } = event
   return (
     <StyleEventUpdate>
@@ -80,10 +81,10 @@ const EventUpdate = ({
 
           <Form.Field>
             <label>Description</label>
-            <Input name="description"
-                   value={description}
-                   placeholder='An event about awesomeness'
-                   onChange={(e) => handleChange(e.target.name, e.target.value)}/>
+            <TextArea name="description"
+                      value={description}
+                      placeholder='An event about awesomeness'
+                      onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 
           <Form.Field>
@@ -104,6 +105,14 @@ const EventUpdate = ({
                      onBlur={checkForValidSlug}
                      onChange={(e) => handleChange(e.target.name, e.target.value)}/>
             </Form.Field>
+          </Form.Field>
+
+          <Form.Field>
+            <label>Agenda</label>
+            <TextArea name="agenda"
+                      value={agenda}
+                      placeholder='* Keynote - 11am - Mike Ross'
+                      onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 
           <Form.Group widths="equal">
@@ -145,8 +154,16 @@ const EventUpdate = ({
           </Form.Field>
 
           <Form.Field>
-            <Checkbox checked label='Make this event public' />
+            <label>Official Hashtag(s) (comma separated)</label>
+            <Input name="hashtags"
+                   value={hashtags}
+                   placeholder='#moonwalkers, #daydragons'
+                   onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
+
+          {/*<Form.Field>*/}
+            {/*<Checkbox checked label='Make this event public' />*/}
+          {/*</Form.Field>*/}
 
           <Button inverted type='submit' onClick={handleSubmit}>
             Save

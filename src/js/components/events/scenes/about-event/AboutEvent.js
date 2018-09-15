@@ -78,7 +78,7 @@ const Event = ({
   const {title, description, featured_image, start_date,
           start_time, given_feedback, show_feedback_url,
           is_attending, interested_persons, is_stakeholder,
-          announcements, comments} = event
+          announcements, comments, agenda} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
   const eventDue = (new Date(start_time)) <= (new Date())
@@ -96,7 +96,23 @@ const Event = ({
                                onSubmit={handleSubmit}>
 
                 <ReactMarkdown escapeHtml={false}
-                               source={description || 'Click to edit. In markdown, if you wish :)'} />
+                               source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
+
+              </ContentEditable>
+            </div>
+          </ContentPanel>
+
+          <ContentPanel title="Agenda">
+            <div className="event-agenda">
+              <ContentEditable propName="agenda"
+                               type="textarea"
+                               canEdit={isStakeHolder}
+                               defaultValue={agenda}
+                               onChange={handleChange}
+                               onSubmit={handleSubmit}>
+
+                <ReactMarkdown escapeHtml={false}
+                               source={agenda || (is_stakeholder ? 'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
 
               </ContentEditable>
             </div>
