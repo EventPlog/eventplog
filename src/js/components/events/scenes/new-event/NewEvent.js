@@ -32,6 +32,7 @@ type EventType = {
   event: {name: string},
   error: any,
   loading: boolean,
+  community_id: integer,
   emailCreated?: boolean,
   handleChange: () => {},
   submitEvent: () => {}

@@ -19,22 +19,37 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         error={true}
         header="Error"
       />
-      <FormGroup
-        inline={true}
+      <FormField
+        className="wide email-holder"
       >
+        <label>
+          What's the name of your event?
+        </label>
+        <Styled(Input)
+          name="title"
+          placeholder="Event title"
+          type="text"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          How'd you like people to visit your event page?
+        </label>
         <FormField
-          className="wide email-holder"
+          className="same-line"
         >
+          eventplog.com
+          /c/undefined
+          /
           <Styled(Input)
-            name="title"
-            placeholder="Event name"
-            type="text"
+            name="slug"
+            placeholder="amazing-event"
           />
         </FormField>
-        <Button>
-          Create
-        </Button>
-      </FormGroup>
+      </FormField>
+      <Button>
+        Create
+      </Button>
     </Form>
   </div>
 </styled.div>
