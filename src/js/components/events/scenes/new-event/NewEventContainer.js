@@ -13,7 +13,7 @@ export class EventContainer extends Component {
       title: '',
       start_time: new Date(),
       end_time: new Date(),
-      community_id: this.props.community_id
+      community_id: this.props.community.id
     },
     error: false,
     eventCreated: false
@@ -32,8 +32,8 @@ export class EventContainer extends Component {
   }
 
   getProps = () => ({
+    ...this.props,
     ...this.state,
-    token: this.props.token,
     handleChange: this.handleChange,
     submitEvent: this.submitEvent,
   })
@@ -44,8 +44,8 @@ export class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {community_id} = ownProps.match.params
-  return { community_id }
+  const { community = {} } = state.communities
+  return { community }
 }
 
 const mapDispatchToProps = (dispatch) => (

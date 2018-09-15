@@ -8,6 +8,7 @@ import MainContent from './components/main-content-body'
 import Sticky from 'js/components/shared/sticky'
 import Loading from 'js/components/shared/loading'
 import { media } from 'js/styles/mixins'
+import { genEventLink } from 'js/utils'
 
 const StyledMain = styled.div`
   flex: 1;
@@ -35,16 +36,18 @@ type Props = {
 };
 
 const BackStage = (props) => {
-  if (props.error) return <Loading.Error msg={props.error} />
+  const { error, event, community } = props
+  if (error) return <Loading.Error msg={error} />
 
-  if (!props.event.id || props.community.loading || props.event.loading) {
+  if (!event.id || community.loading || event.loading) {
     return <Loading/>
   }
 
   // Only community admins, event owner and event organizers have access
-  if (!props.currentUser.id || !(props.event.is_stakeholder || props.event.organizer_role)) {
-    return <Redirect to={`/communities/${props.event.community_id}/events/${props.event.id}`} />
+  if (!props.currentUser.id || !(event.is_stakeholder || event.organizer_role)) {
+    return <Redirect to={`${genEventLink(event, community)}`} />
   }
+
   return (
     <StyledMain className="app-container">
       <Sidebar {...props} />

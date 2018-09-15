@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import createLoadable from 'js/components/shared/loading/createLoadable'
 import { media } from 'js/styles/mixins'
 import withProps from 'js/lib/render-with-props'
+import { genEventLink } from 'js/utils'
 
 
 const Tasks = createLoadable(() => import('js/components/event-planning'  /* webpackChunkName: "Tasks" */))
@@ -33,10 +34,9 @@ const StyledEventComponent = styled.div`
 `
 
 const verifyAccess = (Component, props = {}) => {
-  const { community_id, id } = props.match.params
   return props.event.is_stakeholder
             ? withProps(Component, props)
-            : () => <Redirect to={`/communities/${community_id}/events/${id}/backstage/guests`} />
+            : () => <Redirect to={`${genEventLink(props.event, props.community)}/backstage/guests`} />
 }
 
 const EventComponent = (props) =>

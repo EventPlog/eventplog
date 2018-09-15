@@ -76,7 +76,7 @@ const handleApiCall = ({
           // dispatch(actions.fail(error))
           console.log(error)
           dispatch(actions.fail(`${errorMessage}`))
-          throw(error.error || errorMessage)
+          throw(errorMessage)
           // errorMessage && dispatch(receiveError(errorMessage, caller))
         })
         .finally(() => NProgress.done());

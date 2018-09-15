@@ -57,6 +57,7 @@ const StyledContent = styled.div`
  .same-line {
    display: flex;
    align-items: center;
+   white-space: nowrap;
  } 
  
 `
