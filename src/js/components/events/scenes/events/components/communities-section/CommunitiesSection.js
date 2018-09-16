@@ -8,7 +8,7 @@ import Error from 'js/components/shared/loading/Error'
 import { pluralize, genCommunityLink, genEventLink } from 'js/utils'
 
 export const generateTitle = (community = {}) => (
-  <Link to={`/c/${genCommunityLink(community)}/`}>
+  <Link to={`${genCommunityLink(community)}`}>
     {community.name}
   </Link>
 )
