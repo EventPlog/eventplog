@@ -29,7 +29,7 @@ const EventSidebar = ({
           </p>
         </div>
       </Sidebar>}
-      <Sidebar.Events title={`Past events from ${community.name}`}
+      <Sidebar.Events title={`Recent past events from ${community.name}`}
         {...{events: past_events, attendEvent}} />
     </ContentSection.Sidebar>
   )
