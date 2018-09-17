@@ -131,9 +131,9 @@ const Event = ({
   const getPanes = () => {
     return [
       {name: `About`, content: AboutEvent },
+      {name: `Report/Reviews`, content: Report },
       {name: `Discussion (${event_discussion.comments_count})`, content: Discussions },
       {name: `Speakers' slides`, content: EventResources },
-      {name: `Report/Feedback`, content: Report },
     ]
   }
 
