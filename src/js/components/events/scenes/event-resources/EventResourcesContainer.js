@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 
-class DiscussionContainer extends Component {
+class EventResourcesContainer extends Component {
   state = {loading: false, error: false}
 
 
@@ -14,4 +14,4 @@ class DiscussionContainer extends Component {
   }
 }
 
-export default DiscussionContainer
+export default EventResourcesContainer

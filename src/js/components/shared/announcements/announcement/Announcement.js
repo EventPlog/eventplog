@@ -28,7 +28,7 @@ const Announcement = ({
                              </Button>}
       {currentUserIsOwner
         ? <ContentEditable propName="body"
-                     editable={currentUserIsOwner}
+                     canEdit={currentUserIsOwner}
                      type="textarea"
                      defaultValue={announcement.body}
                      onChange={handleChange}
