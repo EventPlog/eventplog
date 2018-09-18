@@ -73,22 +73,22 @@ const TopicsSection = () => {
             </Link>
           </li>
           <li>
-            <Link to="/help/organizers/create-announcements">
+            <Link to="/help/organizers/add-co-organizers">
               Add Co-Organizers
             </Link>
           </li>
           <li>
-            <Link to="/help/organizers/create-announcements">
+            <Link to="/help/organizers/upload-CSV">
               Upload CSV
             </Link>
           </li>
           <li>
-            <Link to="/help/organizers/create-announcements">
+            <Link to="/help/organizers/assign-task">
               Assign Tasks to Co-organizers 
             </Link>
           </li>
           <li>
-            <Link to="/help/organizers/create-announcements">
+            <Link to="/help/organizers/check-in-guest">
               Check in Guest
             </Link>
           </li>
