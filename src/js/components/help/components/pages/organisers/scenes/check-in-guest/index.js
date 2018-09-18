@@ -1,1 +1,1 @@
-export {default} from './CheckInGuests'
+export {default} from './CheckInGuest'
