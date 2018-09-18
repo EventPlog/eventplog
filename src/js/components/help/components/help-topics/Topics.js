@@ -42,6 +42,59 @@ const TopicsSection = () => {
   return(
     <StyledHelpPage className="topics-section">
       <Sidebar title={title}>
+
+        <Link className="top-level-topic" to="/help/organizers">
+          Organizers
+        </Link>
+        <ul>
+          <li>
+            <Link to="/help/organizers/create-a-community">
+              Create a community
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/organizers/create-an-event">
+              Create an Event
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/backstage/">
+              Plan your event
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/organizers/my-communities">
+              My communities and Events
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/organizers/create-announcements">
+              Create Announcements
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/organizers/add-co-organizers">
+              Add Co-Organizers
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/organizers/upload-CSV">
+              Upload CSV
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/organizers/assign-task">
+              Assign Tasks to Co-organizers 
+            </Link>
+          </li>
+          <li>
+            <Link to="/help/organizers/check-in-guest">
+              Check in Guest
+            </Link>
+          </li>
+          
+        </ul>
+        <hr/>
         <Link className="top-level-topic" to="/help/communities">
           Communities
         </Link>
@@ -100,39 +153,6 @@ const TopicsSection = () => {
               About an event
             </Link>
           </li>
-        </ul>
-        <hr/>
-
-        <Link className="top-level-topic" to="/help/organizers">
-          Organizers
-        </Link>
-        <ul>
-          <li>
-            <Link to="/help/organizers/create-a-community">
-              Create a community
-            </Link>
-          </li>
-          <li>
-            <Link to="/help/organizers/create-an-event">
-              Create an Event
-            </Link>
-          </li>
-          <li>
-            <Link to="/help/backstage/">
-              Plan your event
-            </Link>
-          </li>
-          <li>
-            <Link to="/help/organizers/my-communities">
-              My communities and Events
-            </Link>
-          </li>
-          <li>
-            <Link to="/help/organizers/create-announcements">
-              Create Announcements
-            </Link>
-          </li>
-          
         </ul>
         <hr/>
 
