@@ -3,16 +3,20 @@
 exports[`CommunityHeader should render correctly 1`] = `
 <styled.div>
   <div
-    className="app-container community-logo"
+    className="app-container logo"
   >
     <Link
       replace={false}
       to="/c/undefined"
     >
       <div
-        className="hidden-xs"
+        className=""
       >
         <h3 />
+        <small>
+           followers. 
+           views.
+        </small>
       </div>
     </Link>
     <div

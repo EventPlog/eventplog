@@ -137,5 +137,9 @@ const styles = css`
   .warning {
     color: orange;
   }
+  
+  .ui.label {
+    background: transparent;
+  }
 `
 export default styles;

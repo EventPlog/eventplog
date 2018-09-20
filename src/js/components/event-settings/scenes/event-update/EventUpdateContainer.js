@@ -20,7 +20,10 @@ class EventUpdateContainer extends Component {
 
   handleSubmit = () => {
     const {commuity, ...others} = this.state.event
-    return this.props.updateEvent(others).then(event => this.setState({event}))
+    return this.props.updateEvent(others).then(event => {
+      this.setState({event})
+      mixpanel.track('EVENT_UPDATE')
+    })
   }
 
   checkForValidSlug = () => {
@@ -30,6 +33,8 @@ class EventUpdateContainer extends Component {
     this.props.checkForValidSlug(this.state.event.slug).then(res => {
       this.setState({slug_check: !res.slug ? {valid: true} : {error: 'Slug not available'}})
     }).catch(error => this.setState({slug: {error}}))
+
+    mixpanel.track('EVENT_SLUG_CHANGE')
   }
 
   getProps = () => ({

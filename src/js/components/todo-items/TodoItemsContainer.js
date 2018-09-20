@@ -10,7 +10,8 @@ import {
 class EventUpdateContainer extends Component {
   state = { activeIndex: -1, event_checklist: {} }
 
-  componentWillMount() {
+  componentDidMount() {
+    mixpanel.track('EVENT_CHECKLIST_PAGE_VIEW')
   }
 
   changeAccordion = (e, titleProps) => {
@@ -29,6 +30,7 @@ class EventUpdateContainer extends Component {
   }
 
   handleSubmit = () => {
+    mixpanel.track('EVENT_CHECKLIST_UPDATE')
     return this.props.updateEventChecklist(this.state.event_checklist)
                      .then(event_checklist => this.setState({event_checklist}))
   }

@@ -26,9 +26,9 @@ const StyledSidebar = styled.div`
   .header {
     border-bottom: 1px solid #ccc;
     margin: 1rem 0;
-    font-size: 1.3rem;
-    color: ${lighten(0.35, colors.blue)};
-    font-weight: 800;
+    font-size: 1.2rem;
+    color: ${props => lighten(0.4, props.theme.activeLink)};
+    font-weight: 500;
   }
 `
 

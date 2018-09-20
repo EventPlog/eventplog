@@ -155,6 +155,22 @@ export const checkForValidSlug = (slug) => {
   })
 }
 
+export const updateViewCount = (params = {}) => {
+  let actions = baseActions({
+    requestType: actionTypes.COMMUNITY_VIEWS_UPDATE_START,
+    receiveType: actionTypes.COMMUNITY_VIEWS_UPDATE_COMPLETE,
+    failType: actionTypes.COMMUNITY_VIEWS_UPDATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from updating a view count. Please try again later or contact support.',
+    caller: 'update view count',
+    route: `/api/v1/web/views`,
+    requestMethod: 'POST'
+  })
+}
 
 // =========== MOCKS ===============
 

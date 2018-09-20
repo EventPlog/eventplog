@@ -6,7 +6,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
     Create a community
   </h3>
   <p>
-    First choose a community name and url slug.
+    First choose a community name, brand color and url slug.
   </p>
   <div
     className="submit-form"
@@ -27,8 +27,65 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         </label>
         <Styled(Input)
           name="name"
-          placeholder="Community name"
+          onChange={[Function]}
+          placeholder="Super awesome community"
           type="text"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          What's your brand color?
+        </label>
+        <Styled(Input)
+          defaultValue="#9448BC"
+          name="brand_color"
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "icon": "point purple",
+                "key": "default",
+                "text": "default",
+                "value": "#9448BC",
+              },
+              Object {
+                "icon": "point blue",
+                "key": "blue",
+                "text": "blue",
+                "value": "#4968B7",
+              },
+              Object {
+                "icon": "point red",
+                "key": "red",
+                "text": "red",
+                "value": "#B33F62",
+              },
+              Object {
+                "icon": "point green",
+                "key": "green",
+                "text": "green",
+                "value": "#2db528",
+              },
+              Object {
+                "icon": "point pink",
+                "key": "pink",
+                "text": "pink",
+                "value": "#F851F6",
+              },
+              Object {
+                "icon": "point orange",
+                "key": "orange",
+                "text": "orange",
+                "value": "#e17034",
+              },
+              Object {
+                "icon": "point yellow",
+                "key": "yellow",
+                "text": "yellow",
+                "value": "#fdee0c",
+              },
+            ]
+          }
         />
       </FormField>
       <FormField>
@@ -42,6 +99,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           eventplog.com/c/
           <Styled(Input)
             name="slug"
+            onChange={[Function]}
             placeholder="something"
           />
         </FormField>

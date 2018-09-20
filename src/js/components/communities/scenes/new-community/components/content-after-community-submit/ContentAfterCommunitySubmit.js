@@ -72,7 +72,7 @@ const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
         </Link>
       </li>
     </ul>*/}
-    <Button.Link to={`${genCommunityLink(community)}/edit`} className="medium lowercase">
+    <Button.Link to={`${genCommunityLink(community)}`} className="medium lowercase">
       Take me to my community update page
     </Button.Link>
   </StyledContent>

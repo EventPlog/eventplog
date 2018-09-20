@@ -21,6 +21,7 @@ class CommunityContainer extends Component {
   componentDidUpdate(props, prevProps) {
     if (props.match.url !== this.props.match.url) {
       this.getData()
+      mixpanel.track('COMMUNITY_EVENTS_INDEX_PAGE_VIEW')
     }
   }
 
@@ -51,6 +52,7 @@ class CommunityContainer extends Component {
       community_id: this.getCommunityId(),
       community_slug: this.props.slug,
     })
+    mixpanel.track('COMMUNITY_CURRENT_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }
 
   getPastEvents = (e, meta) => {
@@ -60,6 +62,7 @@ class CommunityContainer extends Component {
       community_id: this.getCommunityId(),
       slug: this.props.slug,
     })
+    mixpanel.track('COMMUNITY_PAST_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }
 
   getProps = () => ({

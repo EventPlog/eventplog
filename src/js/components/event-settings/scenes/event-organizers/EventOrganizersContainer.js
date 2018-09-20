@@ -13,6 +13,10 @@ class EventOrganizersContainer extends Component {
     description: ''
   }
 
+  componentDidMount() {
+    mixpanel.track('EVENT_ORGANIZER_INDEX_PAGE_VIEW')
+  }
+
   handleChange = (key, value) => {
     this.setState({[key]: value})
   }
@@ -33,6 +37,7 @@ class EventOrganizersContainer extends Component {
     }
 
     this.setState({loading: true, success: true, error: false})
+
     this.props.inviteOrganizers(invite).then(res => {
       this.setState({
         loading: false,
@@ -40,6 +45,8 @@ class EventOrganizersContainer extends Component {
         recipient_emails: ''
       })
     }).catch(error => this.setState({error, loading: false}))
+
+    mixpanel.track('EVENT_ORGANIZER_INVITATION_SENT')
   }
 
   handleDelete = (id) => {
@@ -47,9 +54,13 @@ class EventOrganizersContainer extends Component {
     if (!confirmed) { return }
     this.setState(() => ({loading: true}))
     const invitation = {id, deleted: true}
+
+    mixpanel.track('EVENT_ORGANIZER_PENDING_INVITATION_DELETED')
+
     return this.props.deleteInvitation(invitation).then(res => {
       this.setState(() => ({loading: false, success: 'The invitation has been successfully deleted.'}))
     })
+
   }
 
   getProps = () => ({
