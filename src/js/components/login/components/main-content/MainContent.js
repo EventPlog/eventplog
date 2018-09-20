@@ -14,6 +14,10 @@ const StyledMainContent = styled.div`
   background-size: cover;
   position: relative;
   
+  ::selection {
+    color: white;
+  }
+  
   ${
     media.phone`
       background-image: url(${snapImg});
@@ -71,7 +75,8 @@ const StyledMainContent = styled.div`
       }
             
       span {
-        /*color: ${colors.yellow};*/
+        background: ${colors.yellow};
+        padding-top: 1rem;
       } 
     }
     
@@ -79,7 +84,7 @@ const StyledMainContent = styled.div`
       font-size: 1.7rem;
       font-weight: 600;
       margin-top: 10px;
-      line-height: 2rem;
+      line-height: 1.5;
       
       ${
         media.tablet`
@@ -163,8 +168,8 @@ const MainContent = ({flashMsg = null, ...otherProps }) => (
 
     <div className="app-container">
       <div className="caption">
-        <h1>Be part of<br /><span>documented, </span>learning-based events.</h1>
-        <small>Find only the best events that keep <span>resources</span> and <span>reviews</span>.</small>
+        <h1><span>Be part</span> of<br />documented, learning-based events.</h1>
+        <small>Leverage <span>reviews</span> and <span>other data</span> to organize, attend and sponsor the right events.</small>
       </div>
 
       {loadLoginComponentByPath(otherProps)}
