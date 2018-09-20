@@ -103,7 +103,7 @@ class ResourceContainer extends Component {
 
   handleUpdate = (elementType) => {
     this.setState({loading: true})
-    return this.props.updateResource(this.state.resource)
+    this.props.updateResource(this.state.resource)
       .then(resource => this.setState({resource, editing: false, loading: false}))
 
       .catch(error => this.setState(() => ({error, loading: false})))

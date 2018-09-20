@@ -38,23 +38,27 @@ const NewResource = ({
   handleDelete,
 }) => {
 
-  const categoryOptions = [
-    { key: 'speaker_slides', value: 'speaker_slides', icon: <Icon name="send" />, text: 'Speaker Slides' },
+  let categoryOptions = [
     { key: 'resource', value: 'resource', icon: <Icon name="send" />, text: 'Additional Resource' },
   ]
 
-  const resourceTypeOptions = [
-    { key: 'slides', value: 'slides', icon: <Icon name="send" />, text: 'Slides' },
-    { key: 'ebook', value: 'ebook', icon: <Icon name="send" />, text: 'Ebook' },
-    { key: 'video', value: 'video', icon: <Icon name="send" />, text: 'Video' },
-    { key: 'article', value: 'article', icon: <Icon name="send" />, text: 'article' },
-    { key: 'other', value: 'other', icon: <Icon name="send" />, text: 'Other' },
+  let resourceTypeOptions = [
+    { key: 'ebook', value: 'ebook', icon: <Icon name="folder open outline" />, text: 'Ebook' },
+    { key: 'video', value: 'video', icon: <Icon name="play circle" />, text: 'Video' },
+    { key: 'article', value: 'article', icon: <Icon name="file alternate outline" />, text: 'article' },
+    { key: 'other', value: 'other', icon: <Icon name="compass outline" />, text: 'Other' },
   ]
 
   // only stakeholders or speakers can add slides
-  if (!event.is_stakeholder) {
-    delete categoryOptions[0]
-    delete resourceTypeOptions[0]
+  if (event.is_stakeholder) {
+    categoryOptions = [
+      { key: 'speaker_slides', value: 'speaker_slides', icon: <Icon name="copy" />, text: 'Speaker Slides' },
+      ...categoryOptions
+    ]
+    resourceTypeOptions = [
+      { key: 'slides', value: 'slides', icon: <Icon name="copy" />, text: 'Slides' },
+      ...resourceTypeOptions
+    ]
   }
 
   const {
