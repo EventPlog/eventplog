@@ -10,7 +10,7 @@ exports[`CommunityHeader should render correctly 1`] = `
       to="/c/undefined"
     >
       <div
-        className=""
+        className="details"
       >
         <h3 />
         <small>
