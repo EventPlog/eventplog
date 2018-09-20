@@ -16,6 +16,7 @@ class GuestsContainter extends Component {
   getData() {
     const { getGuests, event} = this.props
     getGuests({event_id: event.id, per_page: 25, page: 1})
+    mixpanel.track('GUEST_INDEX_PAGE_VIEW')
   }
 
   getGuests = (e, meta) => {
@@ -26,6 +27,7 @@ class GuestsContainter extends Component {
       event_id: this.props.event.id,
     }
     this.props.getGuests(params)
+    mixpanel.track('GUEST_INDEX_PAGINATION_CLICK', {meta})
   }
 
   handleSearch = (e) => {
@@ -37,6 +39,7 @@ class GuestsContainter extends Component {
       page: 1,
     }
     this.props.searchGuests(payload)
+    mixpanel.track('GUEST_INDEX_SEARCH_CLICK')
   }
 
   handleConfirm = (id, status) => {

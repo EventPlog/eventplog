@@ -56,6 +56,8 @@ class TodoItemContainer extends Component {
     this.props.createTodoItem(payload).then(todo_item => {
       this.setState(() => ({todo_item, loading: false, success: 'Your todo item has been successfully created'}))
     }).catch(error => this.setState(() => ({error})))
+
+    mixpanel.track('EVENT_TODO_ITEM_CREATE')
   }
 
   handleDelete = () => {
@@ -64,6 +66,8 @@ class TodoItemContainer extends Component {
     this.props.deleteTodoItem({id: this.state.todo_item.id, deleted: true})
       .then(todo_item => this.props.history.push(this.state.link_back))
       .catch(error => this.setState(() => ({error})))
+
+    mixpanel.track('EVENT_TODO_ITEM_DELETE')
   }
 
   handleSubmit = (elementType) => {
@@ -71,6 +75,8 @@ class TodoItemContainer extends Component {
     return this.props.updateTodoItem(this.state.todo_item)
                      .then(todo_item => this.setState({todo_item}))
                      .catch(error => this.setState(() => ({error})))
+
+    mixpanel.track('EVENT_TODO_ITEM_UPDATE')
   }
 
   getProps = () => ({

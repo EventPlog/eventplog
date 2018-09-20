@@ -10,10 +10,17 @@ import {
   unFollowCommunity,
   getCommunitiesSuggestions,
   checkForValidSlug,
+  updateViewCount,
 } from '../../actions'
+
+import {
+  getBrowserName,
+  getDeviceType,
+} from 'js/utils/browserCheck'
 
 import { secureAction } from 'js/auth/actions'
 import { getSlugFromHostName } from 'js/utils'
+import Auth from 'js/auth'
 
 
 class CommunityContainer extends Component {
@@ -65,7 +72,11 @@ class CommunityContainer extends Component {
 
     if(!this.props.community || !this.props.community.id || !(this.props.community.id == sureCommunityId || this.props.community.slug == sureCommunityId)) {
       this.props.getCommunity(community_id || id, this.props.slug)
-        .then(community => this.setState({loading: false, community}))
+        .then(community => {
+          this.setState({loading: false, community})
+          this.updateViewCount()
+          mixpanel.track('COMMUNITY_PAGE_VIEW')
+        })
         .catch(error => this.setState({loading: false, error}))
     }
   }
@@ -77,6 +88,19 @@ class CommunityContainer extends Component {
     this.props.checkForValidSlug(this.state.community.slug).then(res => {
       this.setState({slug_check: !res.slug ? {valid: true} : {error: 'Slug not available'}})
     }).catch(error => this.setState({slug: {error}}))
+
+    mixpanel.track('COMMUNITY_SLUG_CHANGE')
+  }
+
+  updateViewCount = () => {
+    const { currentUser = {} } = this.props
+    this.props.updateViewCount({
+      user_id: currentUser.id,
+      user_agent: getBrowserName(),
+      device_type: getDeviceType(),
+      recipient_id: this.state.community.id,
+      recipient_type: 'Community'
+    })
   }
 
   getProps = () => ({
@@ -98,6 +122,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     activeLink: community.link_color,
     community,
+    currentUser: Auth.currentUser(),
   }
 }
 
@@ -106,6 +131,7 @@ const mapDispatchToProps = (dispatch) => {
     getCommunity,
     getCommunitiesSuggestions,
     checkForValidSlug,
+    updateViewCount,
     updateCommunity: secureAction(updateCommunity),
     followCommunity: secureAction(followCommunity),
     unFollowCommunity: secureAction(unFollowCommunity),

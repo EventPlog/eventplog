@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth'
 
-import { updatePendingInvitation, getInvitations, getPendingInvitations } from './actions'
+import {
+  updatePendingInvitation,
+  getInvitations,
+  getPendingInvitations
+} from './actions'
 
 class InvitationsContainter extends Component {
 
@@ -28,6 +32,7 @@ class InvitationsContainter extends Component {
     const invite = {id, status, recipient_id, recipient_type: 'User'}
 
     this.props.updatePendingInvitation(invite)
+    mixpanel.track('EVENT_ORGANIZER_CONFIRM_PENDING_INVITATION')
   }
 
   getProps = () => ({

@@ -26,6 +26,7 @@ class MainContentContainer extends Component {
   componentDidUpdate(props, prevProps) {
     if (!checkEqual(props.match.params, this.props.match.params)) {
       this.getData()
+      mixpanel.track('USER_EVENTS_INDEX_PAGE_VIEW')
     }
   }
 
@@ -37,6 +38,7 @@ class MainContentContainer extends Component {
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
     this.props.getEvents({page: meta.activePage, per_page})
+    mixpanel.track('USER_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }
 
   getPastEvents = (e, meta) => {

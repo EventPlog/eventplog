@@ -1,58 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Event should render correctly 1`] = `
-<styled.div
-  className="app-container"
->
-  <ContentSection>
-    <Styled(EventBanner)
-      community={Object {}}
-    />
-    <ContentBody>
-      <TmnTab
-        panes={
-          Array [
-            Object {
-              "content": [Function],
-              "name": "About",
-            },
-            Object {
-              "content": [Function],
-              "name": "Report/Reviews",
-            },
-            Object {
-              "content": [Function],
-              "name": "Discussion (undefined)",
-            },
-            Object {
-              "content": [Function],
-              "name": "Speakers' slides",
-            },
-          ]
-        }
-      />
-    </ContentBody>
-    <Component
-      community={Object {}}
-      past_events={Object {}}
-    />
-    <FullRow>
+<styled.div>
+  <Styled(EventBanner)
+    community={Object {}}
+  />
+  <div
+    className="app-container"
+  >
+    <ContentSection>
       <ContentBody>
-        <ContentPanel
-          className="comments-section"
-          title="Ask the organizers"
-        >
-          <Component
-            placeholder="What would you like to ask/suggest?"
-            recipient_type="Event"
-            trackable_type="Event"
-          />
-          <Component
-            recipient_type="Event"
-          />
-        </ContentPanel>
+        <TmnTab
+          panes={
+            Array [
+              Object {
+                "content": [Function],
+                "name": "About",
+              },
+              Object {
+                "content": [Function],
+                "name": "Report/Reviews",
+              },
+              Object {
+                "content": [Function],
+                "name": "Discussion (undefined)",
+              },
+              Object {
+                "content": [Function],
+                "name": "Slides & Resources",
+              },
+            ]
+          }
+        />
       </ContentBody>
-    </FullRow>
-  </ContentSection>
+      <Component
+        community={Object {}}
+        past_events={Object {}}
+      />
+      <FullRow>
+        <ContentBody>
+          <ContentPanel
+            className="comments-section"
+            title="Ask the organizers"
+          >
+            <Component
+              placeholder="What would you like to ask/suggest?"
+              recipient_type="Event"
+              trackable_type="Event"
+            />
+            <Component
+              recipient_type="Event"
+            />
+          </ContentPanel>
+        </ContentBody>
+      </FullRow>
+    </ContentSection>
+  </div>
 </styled.div>
 `;

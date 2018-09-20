@@ -51,3 +51,7 @@ export const genEventLink = (event = {}, community = {}) => (
 export const genCommunityLink = (community = {}) => (
   `/c/${community.slug || community.id}`
 )
+
+export const removeSpecialChars = (str) => (
+  str.replace(/[^a-zA-Z\d\-]/g, '').toLowerCase()
+)
