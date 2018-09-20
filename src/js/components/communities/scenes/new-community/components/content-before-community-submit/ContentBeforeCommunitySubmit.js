@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
-import { getCommunityLink } from 'js/utils'
+import { getCommunityLink, removeSpecialChars } from 'js/utils'
 
 const StyledContent = styled.div`
   align-items: center;
@@ -89,7 +89,8 @@ const ContentBeforeCommunitySubmit = ({
             <Input name="name"
                    type="text"
                    value={community.name}
-                   placeholder='Community name' onChange={handleChange} />
+                   placeholder='Community name'
+                   onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Form.Field>
 
 
@@ -100,7 +101,8 @@ const ContentBeforeCommunitySubmit = ({
               eventplog.com/c/
               <Input name="slug"
                      value={community.slug}
-                     placeholder='something' onChange={handleChange}/>
+                     placeholder='something'
+                     onChange={(e) => handleChange(e.target.name, removeSpecialChars(e.target.value))}/>
             </Form.Field>
           </Form.Field>
 

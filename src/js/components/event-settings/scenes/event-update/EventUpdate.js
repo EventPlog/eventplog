@@ -7,7 +7,7 @@ import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle'
 import DateTimePickerStyles from 'js/styles/thirdparty/date-time-picker-styles'
-import { validDate } from 'js/utils'
+import { validDate, removeSpecialChars } from 'js/utils'
 import TextArea from 'js/components/shared/text-area'
 
 const StyleEventUpdate = styled.div`
@@ -103,7 +103,7 @@ const EventUpdate = ({
                      value={slug}
                      placeholder='all-hands-summit'
                      onBlur={checkForValidSlug}
-                     onChange={(e) => handleChange(e.target.name, e.target.value)}/>
+                     onChange={(e) => handleChange(e.target.name, removeSpecialChars(e.target.value))}/>
             </Form.Field>
           </Form.Field>
 

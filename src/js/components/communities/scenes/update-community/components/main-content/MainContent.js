@@ -7,6 +7,7 @@ import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
 import color from 'js/styles/theme/variables'
+import { removeSpecialChars } from 'js/utils'
 
 const StyleEventUpdate = styled.div`
   
@@ -112,7 +113,11 @@ const EventUpdate = ({
                      value={slug}
                      onBlur={checkForValidSlug}
                      disabled={slug_check.loading}
-                     placeholder='something' onChange={handleChange}/>
+                     placeholder='something'
+                     onChange={(e) => handleChange(e, {
+                     name: e.target.name,
+                     value: removeSpecialChars(e.target.value)
+                   })}/>
             </Form.Field>
           </Form.Field>
 

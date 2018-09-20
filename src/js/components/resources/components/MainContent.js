@@ -1,10 +1,12 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
 
+import Resources from './resources'
+import NewResource from './new-resource'
 import ContentPanel from 'js/components/shared/content-panel'
-import Resources from './Resources'
+import Loading from 'js/components/shared/loading'
 
-const resources = {
+const resources2 = {
   data: [
     {
       id: 2,
@@ -63,23 +65,35 @@ const styles = css`
   img {
     max-width: 100%;
   }
+  
+  .pagination-wrapper {
+    display: flex;
+  }
 `
 
-const EventPictures = ({
+const MainContent = ({
   className,
-  speaker_resources = resources,
-  other_resources = resources,
+  resources,
+  loading,
+  error,
+  currentUser
 }) => {
-  return <div>When available, the speakers' deck/slides and any other resource shared by the organizers will be available here.</div>
+
+  if (loading) return <Loading />
+  if (error) return <Loading.Error msg={error} />
+
   return (
     <div className={`${className}`}>
-      <Resources title="Speaker Decks/Slides"
-                      resources={speaker_resources} />
-
-      <Resources title="Additional Resources"
-                      resources={other_resources} />
+      <Resources title="All resources"
+                 currentUser={currentUser}
+                 resources={resources} />
+      {currentUser && currentUser.id &&
+        <ContentPanel title="Add a resource">
+          <NewResource />
+        </ContentPanel>
+      }
     </div>
   )
 }
 
-export default styled(EventPictures)`${styles}`
+export default styled(MainContent)`${styles}`

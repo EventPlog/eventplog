@@ -15,26 +15,6 @@ const getOptimizedImageUrl = (url) => {
           url.substring(endIndex)
 }
 
-const img = {
-  bytes : 31485,
-  coordinates : {faces: []},
-  created_at : "2018-08-31T08:52:22Z",
-  etag : "ea42bd8fbe2fc8e997626d6037a01185",
-  faces : [],
-  format : "png",
-  height : 512,
-  pages : 1,
-  placeholder : false,
-  public_id : "comments/dnfu9rdvqnxrl8v2gudc",
-  resource_type : "image",
-  secure_url : "https://res.cloudinary.com/eventplog/image/upload/v1535705542/comments/dnfu9rdvqnxrl8v2gudc.png",
-  signature : "e62479d5cd7f3bcfeb37a6c2ad4c76accc5692b0",
-  tags : ["browser_upload"],
-  type : "upload",
-  url : "http://res.cloudinary.com/eventplog/image/upload/v1535705542/comments/dnfu9rdvqnxrl8v2gudc.png",
-  version : 1535705542,
-  width : 512,
-}
 class CommentContainer extends Component {
   constructor(props) {
     super(props)

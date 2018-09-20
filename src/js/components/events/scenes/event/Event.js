@@ -15,7 +15,7 @@ import AddComment from 'js/components/shared/comments/add-comment'
 import AboutEvent from '../about-event'
 import EventDiscussion from 'js/components/event-discussions'
 import EventPictures from 'js/components/event-pictures'
-import EventResources from '../event-resources'
+import Resources from 'js/components/resources'
 import Tab from 'js/components/shared/tab'
 import Report from 'js/components/feedback/scenes/feedback-report'
 import { media } from 'js/styles/mixins'
@@ -92,6 +92,28 @@ const StyledEvent = styled.div`
       `
     }
   }
+  
+  .quick-menu-holder {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+  }
+  
+  .ui.fluid.item.menu {
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0;
+    opacity: 0.9;
+    
+    a {
+      color: ${props => props.theme.gray};
+      
+      &:hover {
+        color: var(--activeLink);
+      }
+    }
+  }
 `
 
 const Discussions = () => {
@@ -105,6 +127,11 @@ const Discussions = () => {
 
   return <Tab panes={getPanes()} />
 }
+
+const EventResources = ({event = {}}) => (
+  <Resources recipient_id={event.id}
+             recipient_type="Event" />
+)
 
 const Event = ({
   event = {},
@@ -133,59 +160,66 @@ const Event = ({
       {name: `About`, content: AboutEvent },
       {name: `Report/Reviews`, content: Report },
       {name: `Discussion (${event_discussion.comments_count})`, content: Discussions },
-      {name: `Speakers' slides`, content: EventResources },
+      {name: `Slides & Resources`, content: Resources },
     ]
   }
 
   const eventLink = genEventLink(event, community)
+
   return (
-    <StyledEvent activeLink={activeLink} className="app-container">
+    <StyledEvent activeLink={activeLink}>
 
-      <ContentSection>
         {event.is_stakeholder &&
-          <Menu fluid widths={3}>
-            <Menu.Item name='Edit Event'>
-              <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
-            </Menu.Item>
-            <Menu.Item name='Upload Guests CSV'>
-              <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
-            </Menu.Item>
-            <Menu.Item name='Check In Guests'>
-              <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
-            </Menu.Item>
-          </Menu>}
+          <div className="quick-menu-holder">
+            <div className="app-container">
+              <Menu fluid widths={3}>
+                <Menu.Item name='Edit Event'>
+                  <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
+                </Menu.Item>
+                <Menu.Item name='Upload Guests CSV'>
+                  <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
+                </Menu.Item>
+                <Menu.Item name='Check In Guests'>
+                  <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
+                </Menu.Item>
+              </Menu>
+            </div>
+          </div>}
         <EventBanner {...{...event, community, handleChange,
-                            handleSubmit, attendEvent, toggleVisibilityStatus}} />
+          handleSubmit, attendEvent, toggleVisibilityStatus}} />
 
-        <ContentSection.Body>
-          <Tab panes={getPanes()} {...{activeIndex}} />
-        </ContentSection.Body>
-
-        <EventSidebar  {...{community,
-                            announcements,
-                            past_events,
-                            attendEvent}}/>
-
-        <ContentSection.FullRow>
+      <div className="app-container">
+        <ContentSection>
           <ContentSection.Body>
-            <ContentPanel className="comments-section" title="Ask the organizers">
-              <AddComment placeholder="What would you like to ask/suggest?"
-                          recipient_id={event.id}
-                          recipient_type="Event"
-                          trackable_id={event.id}
-                          trackable_type="Event"
-                          createComment={createComment} />
-
-              <Comments recipient_id={event.id}
-                        recipient_type="Event"
-                        {...{comments, createComment, updateComment, getComments }} />
-
-            </ContentPanel>
+            <Tab panes={getPanes()} {...{activeIndex}} />
           </ContentSection.Body>
-        </ContentSection.FullRow>
 
-      </ContentSection>
+          <EventSidebar  {...{community,
+                              announcements,
+                              past_events,
+                              attendEvent}}/>
 
+          <ContentSection.FullRow>
+            <ContentSection.Body>
+              <ContentPanel className="comments-section" title="Ask the organizers">
+                <AddComment placeholder="What would you like to ask/suggest?"
+                            recipient_id={event.id}
+                            recipient_type="Event"
+                            trackable_id={event.id}
+                            trackable_type="Event"
+                            createComment={createComment} />
+
+                <Comments recipient_id={event.id}
+                          recipient_type="Event"
+                          {...{comments, createComment, updateComment, getComments }} />
+
+              </ContentPanel>
+            </ContentSection.Body>
+          </ContentSection.FullRow>
+
+        </ContentSection>
+
+      </div>
     </StyledEvent>
   )
 }

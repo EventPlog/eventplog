@@ -1,6 +1,5 @@
 import actionTypes from './types'
 import { handleApiCall, baseActions } from '../../../services/actionHelpers'
-import mockEventApi from 'js/mock-api/event-api'
 
 export const getEvent = (eventId, slug) => {
   let actions = baseActions({
@@ -53,17 +52,6 @@ export const checkForValidSlug = (slug) => {
   })
 }
 
-export const mockGetEvent = (eventId) => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.EVENT_SHOW_START })
-
-    return mockEventApi.show(eventId).then(res => {
-      dispatch({type: actionTypes.EVENT_SHOW_COMPLETE, payload: res})
-      return res
-    })
-  }
-}
-
 export const createEvent = (eventParams) => {
   let actions = baseActions({
     requestType: actionTypes.EVENT_CREATE_START,
@@ -96,17 +84,6 @@ export const updateEvent = (eventParams) => {
     route: `/api/v1/web/events/${eventParams.id}`,
     requestMethod: 'PATCH'
   })
-}
-
-export const mockCreateEvent = (event) => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.EVENT_CREATE_START })
-
-    return mockEventApi.create(event).then(res => {
-      dispatch({type: actionTypes.EVENT_CREATE_COMPLETE, payload: res})
-      return res
-    })
-  }
 }
 
 export const getEvents = (eventParams = {}) => {
@@ -264,5 +241,22 @@ export const updateAnnouncement = (announcement) => {
     caller: 'PATCH updateAnnouncement',
     route: `/api/v1/web/announcements/${announcement.id}`,
     requestMethod: 'PATCH'
+  })
+}
+
+export const updateViewCount = (params = {}) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_VIEWS_UPDATE_START,
+    receiveType: actionTypes.EVENT_VIEWS_UPDATE_COMPLETE,
+    failType: actionTypes.EVENT_VIEWS_UPDATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from updating a view count. Please try again later or contact support.',
+    caller: 'update view count',
+    route: `/api/v1/web/views`,
+    requestMethod: 'POST'
   })
 }

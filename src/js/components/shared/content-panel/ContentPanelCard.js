@@ -157,8 +157,9 @@ const MainContentCard = ({
   btn = {},
   meta,
   titleLink,
+  className,
 }) => (
-  <StyledMainContentCard className="community-card">
+  <StyledMainContentCard className={`community-card ${className}`}>
     <div className="img-holder" style={{
               backgroundImage: `url(${featured_image || sampleCommunityImg})`
             }}>
@@ -172,8 +173,8 @@ const MainContentCard = ({
     <div className="card-body">
       <div className="card-title">
         {title}
-        {showButton && <Button {...btn} className="hidden-xs">
-          {btn.text}
+        {showButton && btn && <Button {...btn} className="hidden-xs">
+          {btn.icon}  {btn.text}
         </Button>}
       </div>
       <div className="card-description">

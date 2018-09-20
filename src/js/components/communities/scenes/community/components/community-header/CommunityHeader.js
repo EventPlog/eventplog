@@ -7,13 +7,13 @@ import { lighten } from 'polished'
 // intenal
 import Nav from 'js/components/shared/nav'
 import colors from 'js/styles/theme/colors'
-import { media } from 'js/styles/mixins'
+import { media, maxMedia } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import { genCommunityLink } from 'js/utils'
 
 const StyledHeader = styled.div`
 
-  > .community-logo {
+  > .logo {
     padding: 2rem;
     justify-content: space-between;
     
@@ -60,10 +60,11 @@ const StyledHeader = styled.div`
     
     small {
       color: ${lighten(-0.5, colors.gray)};
+      display: block;
       
       ${
         media.tablet`
-          display: none;
+          /*display: none;*/
         `
         }
       }
@@ -75,9 +76,9 @@ const StyledHeader = styled.div`
     
     ${
       media.phone`
-          flex-direction: row;
-          margin-top: 0;
-        `
+        flex-direction: row;
+        margin-top: 0;
+      `
     }
   }
   
@@ -100,6 +101,14 @@ const StyledHeader = styled.div`
   
   .right-pull {
     align-self: center;
+    
+    ${
+      maxMedia.tablet`
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+      `
+    } 
     
     a {
       display: inline-block;
@@ -136,38 +145,55 @@ const CommunityHeader = ({
   followCommunity,
   unFollowCommunity,
 }) => {
+
+  const {
+    id,
+    logo,
+    description,
+    display_name,
+    topic_interests,
+    no_of_views,
+    is_owner,
+    is_admin,
+    following,
+    no_of_followers,
+  } = community
+
   const communityLink = genCommunityLink(community)
   return (
     <StyledHeader>
-      <div className="app-container community-logo">
+      <div className="app-container logo">
+
         <Link to={communityLink} >
-          {community.logo && <img src={community.logo} />}
-          <div className="hidden-xs">
-            {!community.logo && <h3>{community.display_name}</h3>}
-            {community.description && <small>{community.description.substr(0, 70)}</small>}
-            {community.topic_interests &&
+          {logo && <img src={logo} />}
+
+          <div className="">
+            {!logo && <h3>{display_name}</h3>}
+            {description && <small>{description.substr(0, 70)}</small>}
+
+            <small>{no_of_followers} followers. {no_of_views} views.</small>
+            {topic_interests &&
             <div className="hashtags-holder">
-              {community.topic_interests.map(topic =>
+              {topic_interests.map(topic =>
                 <div className="hashtags">{topic}
                 </div>)}
             </div>}
           </div>
+
         </Link>
         <div className="right-pull">
-          {community.is_owner
-            ? <Button.Link
-              className="edit-community"
-              activeClassName="hidden"
-              to={`${communityLink}/edit`}>
-              Edit
-            </Button.Link>
-            : community.following
-              ? <Button
-                onClick={() => unFollowCommunity(community)}>
-                <Icon color='green' name='checkmark' size='large' />
-                Following
-              </Button>
-              : community.id &&
+          {is_owner
+            ? <Button.Link className="edit-community"
+                           activeClassName="hidden"
+                           to={`${communityLink}/edit`}>
+                Edit
+              </Button.Link>
+            : following
+              ? <Button onClick={() => unFollowCommunity(community)}>
+                  <Icon color='green' name='checkmark' size='large' />
+                  Following
+                </Button>
+              : id &&
               <Button
                 onClick={() => followCommunity(community)}>
                 Follow
@@ -184,10 +210,10 @@ const CommunityHeader = ({
             </Nav.Item>
 
             {/*<Nav.Item>*/}
-            {/*<Link to={`/communities/${community.id}/team`}>Team</Link>*/}
+            {/*<Link to={`/communities/${id}/team`}>Team</Link>*/}
             {/*</Nav.Item>*/}
 
-            {(community.is_owner || community.is_admin) &&
+            {(is_owner || is_admin) &&
             <Nav.Item>
               <Button.Link to={`${communityLink}/e/new`} activeClassName="hidden">
                 <span className="hidden-lg">

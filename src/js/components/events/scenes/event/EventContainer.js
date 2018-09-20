@@ -19,8 +19,13 @@ import {
   getPastEvents,
   attendEvent,
   checkForValidSlug,
+  updateViewCount,
 } from '../../actions'
 
+import {
+  getBrowserName,
+  getDeviceType,
+} from 'js/utils/browserCheck'
 
 class EventContainer extends Component {
   constructor(props) {
@@ -48,7 +53,12 @@ class EventContainer extends Component {
 
   handleSubmit = () => {
     const {commuity, ...others} = this.state.event
-    return this.props.updateEvent(others).then(event => this.setState({event}))
+    return this.props.updateEvent(others).then(event => {
+      this.state.event.id
+        ? mixpanel.track('EVENT_CREATE')
+        : mixpanel.track('EVENT_UPDATE')
+      this.setState({event})
+    })
   }
 
   toggleVisibilityStatus = ({id, visibility_status: status}) => {
@@ -56,6 +66,7 @@ class EventContainer extends Component {
     this.setState({loading: true})
     this.props.updateEvent({id, visibility_status}).then(res => {
       this.setState({loading: false})
+      mixpanel.track('EVENT_UPDATE', {visibility_status})
     })
   }
 
@@ -64,9 +75,24 @@ class EventContainer extends Component {
     if (!this.props.event || !this.props.event.id || this.props.event.id != id) {
       this.setState({loading: true})
       this.props.getEvent(id, this.props.match.params.event_slug)
-        .then(event => this.setState({loading: false, event}))
+        .then(event => {
+          this.setState({loading: false, event})
+          this.updateViewCount()
+          mixpanel.track('EVENT_PAGE_VIEW')
+        })
         .catch(error => this.setState({loading: false, error}))
     }
+  }
+
+  updateViewCount = () => {
+    const { currentUser = {} } = this.props
+    this.props.updateViewCount({
+      user_id: currentUser.id,
+      user_agent: getBrowserName(),
+      device_type: getDeviceType(),
+      recipient_id: this.state.event.id,
+      recipient_type: 'Event'
+    })
   }
 
   getParams = () => {
@@ -111,6 +137,7 @@ const mapDispatchToProps = (dispatch) => {
     createAnnouncement,
     updateAnnouncement,
     checkForValidSlug,
+    updateViewCount,
     attendEvent: secureAction(attendEvent),
     updateEvent: secureAction(updateEvent),
     createComment: secureAction(createComment),

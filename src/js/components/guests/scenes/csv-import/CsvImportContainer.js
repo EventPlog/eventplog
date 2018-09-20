@@ -11,6 +11,11 @@ class MessengerCheckInContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    mixpanel.track('GUEST_CSV_IMPORT_PAGE_VIEWED', {
+      event_id: this.props.event.id
+    })
+  }
   handleChange = (e) => {
     this.setState({files: e.target.files})
   }
@@ -32,8 +37,13 @@ class MessengerCheckInContainer extends Component {
 
     this.props.uploadGuestCSV(this.props.event.id, formData).then(res => {
       this.setState({loading: false, success: true, error: false})
+      mixpanel.track('GUEST_CSV_IMPORT_SUCCESS')
     })
-      .catch(err => this.setState({loading: false, success: false, error: true}))
+      .catch(err => {
+        this.setState({loading: false, success: false, error: true})
+        mixpanel.track('GUEST_CSV_IMPORT_ERROR')
+      })
+
   }
 
   getProps = () => ({

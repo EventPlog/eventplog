@@ -45,6 +45,7 @@ exports[`main content - New Community component should render correctly 1`] = `
           eventplog.com/c/
           <Styled(Input)
             name="slug"
+            onChange={[Function]}
             placeholder="something"
           />
         </FormField>

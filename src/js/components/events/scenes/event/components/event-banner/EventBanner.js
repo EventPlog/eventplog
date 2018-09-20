@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import moment from 'moment'
+import { lighten } from 'polished'
 
 // internal
 import { media } from 'js/styles/mixins'
@@ -11,11 +12,12 @@ import { validDate, pluralize, genEventLink } from 'js/utils'
 
 const eventBannerStyles = css`
   min-height: 400px;
+  height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   padding: 2rem;
-  margin-bottom: 3rem;
+  margin: 0;
   background-size: cover;
 
   ${
@@ -59,12 +61,27 @@ const eventBannerStyles = css`
       font-weight: 300;
       margin-top: 4rem;
       line-height: initial;
+      
+      ${
+        media.desktop`
+          font-size: 7rem;
+        `
+      }
     }
     
     .meta {
       letter-spacing: 0.6px;
       font-weight: 600;
       font-size: 1.2rem;
+      
+      ${
+        media.desktop`
+          letter-spacing: 0.6px;
+          font-weight: 300;
+          font-size: 2.5rem;
+          line-height: 3rem;
+        `
+      }
     }
     
     ul {
@@ -95,6 +112,18 @@ const eventBannerStyles = css`
     
     &:hover {
       background: var(--activeLink);
+    }
+    
+    &.large {
+      font-size: 2rem;
+      background: ${props => props.theme.green};
+      color: white;
+      padding: 2rem;
+      
+      &:hover {
+        background: ${props => lighten(0.3, props.theme.green)};
+        color: var(--activeLink);
+      }
     }
     
     ${
@@ -144,6 +173,7 @@ const EventBanner = ({
   is_stakeholder,
   is_owner,
   visibility_status,
+  no_of_views,
   className,
   toggleVisibilityStatus,
 }) => {
@@ -186,28 +216,28 @@ const EventBanner = ({
                   {(end_time ) ? `Ends ${moment(end_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
                 </ContentEditable>
               </li>
+              <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>
             </ul>
             <ul>
-              <li>{interested_persons} {pluralize('person', interested_persons)} interested.</li>
             </ul>
           </div>
         </div>
       </div>
       <div className="cta-btns">
         {(is_stakeholder || organizer_role) &&
-          <Button.Link className="cta" to={`${genEventLink({id, slug}, community)}/backstage`}>
+          <Button.Link className="cta large" to={`${genEventLink({id, slug}, community)}/backstage`}>
             Go Backstage
           </Button.Link>}
         {is_attending && !is_owner && !!link &&
-          <Button.Link isAnchorTag className="cta" href={link} >
+          <Button.Link isAnchorTag className="cta large" href={link} >
             RSVP
           </Button.Link>}
         {!is_attending &&
-          <Button className="cta" onClick={() => attendEvent({id})}>
+          <Button className="cta large" onClick={() => attendEvent({id})}>
             Interested
           </Button>}
         {is_owner &&
-          <Button className={`cta ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
+          <Button className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
             Make event {visibility_status == 'private_event' ? 'public' : 'private'}
           </Button>}
         </div>

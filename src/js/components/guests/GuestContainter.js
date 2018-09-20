@@ -63,6 +63,7 @@ class GuestContainter extends Component {
       })
       this.props.showChildrenSuccess(successMsg)
     })
+    mixpanel.track('GUEST_CHECK_IN_BUTTON_CLICKED')
   }
 
   handleSubmit = async (e) => {
@@ -86,6 +87,10 @@ class GuestContainter extends Component {
         guest: res
       })
     }
+    mixpanel.track('GUEST_REGISTER_BY_FORM')
+    if (this.state.check_in_user) {
+      mixpanel.track('GUEST_CHECK_IN_BY_FORM')
+    }
   }
 
   handleDelete = () => {
@@ -95,6 +100,7 @@ class GuestContainter extends Component {
     this.props.deleteGuest(guest.id).then(res => {
       this.props.showChildrenSuccess(`${guest.user ? guest.user.display_name : 'User'} has been deleted successfully.`)
     })
+    mixpanel.track('GUEST_DELETE_BUTTON_CLICKED')
   }
 
   componentWillMount(props) {

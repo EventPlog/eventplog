@@ -39,6 +39,7 @@ class MainContentContainer extends Component {
   }
 
   getParams = () => {
+    // retrieve any '?activeIndex=1' query in url
     return {...paramsToObj(this.props.location.search.substr(1))}
   }
 
