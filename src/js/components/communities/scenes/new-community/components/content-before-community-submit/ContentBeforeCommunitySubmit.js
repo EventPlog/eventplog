@@ -111,8 +111,7 @@ const ContentBeforeCommunitySubmit = ({
                     name="brand_color"
                     value={community.brand_color}
                     defaultValue={color.activeLink}
-                    onChange={handleChange}/>
-
+                    onChange={(e, attr) => handleChange(attr.name, attr.value)}/>
           </Form.Field>
 
           <Form.Field>

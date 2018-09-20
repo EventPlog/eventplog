@@ -54,7 +54,7 @@ const StyledHeader = styled.div`
       margin: 0;
       margin-top: 0.2em;
       color: inherit;
-      font-weight: 800;
+      font-weight: 500;
       color: ${lighten(-0.3, colors.gray)};
     }
     

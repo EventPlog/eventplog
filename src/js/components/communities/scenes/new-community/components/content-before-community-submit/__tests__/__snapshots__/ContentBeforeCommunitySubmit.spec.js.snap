@@ -6,7 +6,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
     Create a community
   </h3>
   <p>
-    First choose a community name and url slug.
+    First choose a community name, brand color and url slug.
   </p>
   <div
     className="submit-form"
@@ -39,6 +39,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         <Styled(Input)
           defaultValue="#9448BC"
           name="brand_color"
+          onChange={[Function]}
           options={
             Array [
               Object {
