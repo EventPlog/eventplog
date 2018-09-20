@@ -17,6 +17,18 @@ const StyledHeader = styled.div`
     padding: 2rem;
     justify-content: space-between;
     
+    .details {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      
+      ${
+        media.phone`
+          align-items: center;
+        `
+      }
+    }
+    
     > a {
       display: flex;
       align-content: center;
@@ -167,7 +179,7 @@ const CommunityHeader = ({
         <Link to={communityLink} >
           {logo && <img src={logo} />}
 
-          <div className="">
+          <div className="details">
             {!logo && <h3>{display_name}</h3>}
             {description && <small>{description.substr(0, 70)}</small>}
 
