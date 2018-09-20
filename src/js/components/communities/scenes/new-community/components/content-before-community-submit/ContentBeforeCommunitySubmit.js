@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
+import color from 'js/styles/theme/variables'
+import Select from 'js/components/shared/select'
 import { getCommunityLink, removeSpecialChars } from 'js/utils'
 
 const StyledContent = styled.div`
@@ -62,6 +64,16 @@ const StyledContent = styled.div`
  
 `
 
+const colorOptions = [
+  { key: 'default', value: color.primary, icon: 'point purple', text: 'default' },
+  { key: 'blue', value: color.blue, icon: 'point blue', text: 'blue' },
+  { key: 'red', value: color.red, icon: 'point red', text: 'red' },
+  { key: 'green', value: color.green, icon: 'point green', text: 'green' },
+  { key: 'pink', value: color.pink, icon: 'point pink', text: 'pink' },
+  { key: 'orange', value: color.orange, icon: 'point orange', text: 'orange' },
+  { key: 'yellow', value: color.yellow, icon: 'point yellow', text: 'yellow' },
+]
+
 const ContentBeforeCommunitySubmit = ({
   community = {},
   handleChange,
@@ -72,7 +84,7 @@ const ContentBeforeCommunitySubmit = ({
   <StyledContent>
     <h3>Create a community</h3>
     <p>
-      First choose a community name and url slug.
+      First choose a community name, brand color and url slug.
     </p>
 
     <div className="submit-form">
@@ -89,10 +101,19 @@ const ContentBeforeCommunitySubmit = ({
             <Input name="name"
                    type="text"
                    value={community.name}
-                   placeholder='Community name'
+                   placeholder='Super awesome community'
                    onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Form.Field>
 
+          <Form.Field>
+            <label>What's your brand color?</label>
+            <Select options={colorOptions}
+                    name="brand_color"
+                    value={community.brand_color}
+                    defaultValue={color.activeLink}
+                    onChange={handleChange}/>
+
+          </Form.Field>
 
           <Form.Field>
             <label>How'd you like people to visit your community page?</label>
