@@ -103,23 +103,23 @@ const FeedbackReport = ({
         </div>
       }
 
-      <ContentPanel title="Highlights">
+      {(description || is_stakeholder) &&
+        <ContentPanel title="Highlights">
+          <div className="event-description">
+            <ContentEditable propName="description"
+                             type="textarea"
+                             canEdit={event.is_stakeholder}
+                             defaultValue={description}
+                             onChange={handleChange}
+                             onSubmit={handleSubmit}>
 
-        <div className="event-description">
-          <ContentEditable propName="description"
-                           type="textarea"
-                           canEdit={event.is_stakeholder}
-                           defaultValue={description}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
+              <ReactMarkdown escapeHtml={false}
+                             source={description || 'Click here to pen down the reasons you feel this event was special.'}/>
 
-            <ReactMarkdown escapeHtml={false}
-                           source={description || 'Click here to pen down the reasons you feel this event was special.'} />
-
-          </ContentEditable>
-        </div>
-
-      </ContentPanel>
+            </ContentEditable>
+          </div>
+        </ContentPanel>
+      }
 
       {is_attending && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
       {!is_attending && !given_feedback &&
@@ -135,9 +135,9 @@ const FeedbackReport = ({
         </ContentPanel>
       }
 
-      {(shown_to_guests || event.is_stakeholder) &&
+      {(shown_to_guests || is_stakeholder) &&
         <span>
-          {event.is_stakeholder &&
+          {is_stakeholder &&
             <span>
               <ContentPanel title="The numbers">
                 <Table celled unstackable>
