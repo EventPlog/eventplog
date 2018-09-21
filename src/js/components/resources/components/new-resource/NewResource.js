@@ -45,7 +45,8 @@ const NewResource = ({
   let resourceTypeOptions = [
     { key: 'ebook', value: 'ebook', icon: <Icon name="folder open outline" />, text: 'Ebook' },
     { key: 'video', value: 'video', icon: <Icon name="play circle" />, text: 'Video' },
-    { key: 'article', value: 'article', icon: <Icon name="file alternate outline" />, text: 'article' },
+    { key: 'article', value: 'article', icon: <Icon name="file alternate outline" />, text: 'Article' },
+    { key: 'repository', value: 'repository', icon: <Icon name="github" />, text: 'Repository' },
     { key: 'other', value: 'other', icon: <Icon name="compass outline" />, text: 'Other' },
   ]
 

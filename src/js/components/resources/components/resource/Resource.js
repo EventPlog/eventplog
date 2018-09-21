@@ -52,6 +52,10 @@ const styles = css`
     min-width: 70px;
     margin-left: 0.5rem;
   }
+  
+  .card-title a {
+    color: var(--activeLink);
+  }
 `
 
 const Resource = ({
