@@ -103,26 +103,26 @@ const FeedbackReport = ({
         </div>
       }
 
-      <ContentPanel title="Highlights">
+      {(description || is_stakeholder) &&
+        <ContentPanel title="Highlights">
+          <div className="event-description">
+            <ContentEditable propName="description"
+                             type="textarea"
+                             canEdit={event.is_stakeholder}
+                             defaultValue={description}
+                             onChange={handleChange}
+                             onSubmit={handleSubmit}>
 
-        <div className="event-description">
-          <ContentEditable propName="description"
-                           type="textarea"
-                           canEdit={event.is_stakeholder}
-                           defaultValue={description}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
+              <ReactMarkdown escapeHtml={false}
+                             source={description || 'Click here to pen down the reasons you feel this event was special.'}/>
 
-            <ReactMarkdown escapeHtml={false}
-                           source={description || 'Click here to pen down the reasons you feel this event was special.'} />
-
-          </ContentEditable>
-        </div>
-
-      </ContentPanel>
+            </ContentEditable>
+          </div>
+        </ContentPanel>
+      }
 
       {is_attending && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
-      {!given_feedback &&
+      {!is_attending && !given_feedback &&
         <ContentPanel title="Did you attend this event">
           {<LoginPrompt msg="to add your own feedback" />}
           {isLoggedIn &&
@@ -135,75 +135,81 @@ const FeedbackReport = ({
         </ContentPanel>
       }
 
-      {(shown_to_guests || event.is_stakeholder) && <span>
-        <ContentPanel title="The numbers">
-          <Table celled unstackable>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell> </Table.HeaderCell>
-                <Table.HeaderCell>Total</Table.HeaderCell>
-                <Table.HeaderCell>Male</Table.HeaderCell>
-                <Table.HeaderCell>Female</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
+      {(shown_to_guests || is_stakeholder) &&
+        <span>
+          {is_stakeholder &&
+            <span>
+              <ContentPanel title="The numbers">
+                <Table celled unstackable>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell> </Table.HeaderCell>
+                      <Table.HeaderCell>Total</Table.HeaderCell>
+                      <Table.HeaderCell>Male</Table.HeaderCell>
+                      <Table.HeaderCell>Female</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
 
-            <Table.Body>
-              {(report.map(attr =>
-                <Table.Row>
-                  <Table.Cell>{ attr.label }</Table.Cell>
-                  <Table.Cell>{ attr.total }</Table.Cell>
-                  <Table.Cell>{ attr.male }</Table.Cell>
-                  <Table.Cell>{ attr.female }</Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        </ContentPanel>
+                  <Table.Body>
+                    {(report.map(attr =>
+                      <Table.Row>
+                        <Table.Cell>{ attr.label }</Table.Cell>
+                        <Table.Cell>{ attr.total }</Table.Cell>
+                        <Table.Cell>{ attr.male }</Table.Cell>
+                        <Table.Cell>{ attr.female }</Table.Cell>
+                      </Table.Row>
+                    ))}
+                  </Table.Body>
+                </Table>
+              </ContentPanel>
 
-        <ContentPanel title="Describing the report">
+              <ContentPanel title="Describing the report">
 
-          <p>
-            {interest.total} {pluralize('person', interest.total)} were interested in this event.&nbsp;
-            {toPercentage(interest.male, interest.total)}% were male,&nbsp;
-            {toPercentage(interest.female, interest.total)}% were female.
-          </p>
+                <p>
+                  {interest.total} {pluralize('person', interest.total)} were interested in this event.&nbsp;
+                  {toPercentage(interest.male, interest.total)}% were male,&nbsp;
+                  {toPercentage(interest.female, interest.total)}% were female.
+                </p>
 
-          <p>
-            {checked_in.total} of the {interest.total} {pluralize('person', checked_in.total)}&nbsp;
-            ({toPercentage(checked_in.total, interest.total)}%) who indicated interested checked in.&nbsp;
-            {toPercentage(checked_in.male, checked_in.total)}% were males,&nbsp;
-            {toPercentage(checked_in.female, checked_in.total)}% were females.&nbsp;
-          </p>
+                <p>
+                  {checked_in.total} of the {interest.total} {pluralize('person', checked_in.total)}&nbsp;
+                  ({toPercentage(checked_in.total, interest.total)}%) who indicated interested checked in.&nbsp;
+                  {toPercentage(checked_in.male, checked_in.total)}% were males,&nbsp;
+                  {toPercentage(checked_in.female, checked_in.total)}% were females.&nbsp;
+                </p>
 
-          <p>
-            {feedback.total} {pluralize('person', feedback.total)} have given feedback so far&nbsp;
-            ({toPercentage(feedback.male, feedback.total)}% male,&nbsp;
-            {toPercentage(feedback.female, feedback.total)}% female).
-          </p>
+                <p>
+                  {feedback.total} {pluralize('person', feedback.total)} have given feedback so far&nbsp;
+                  ({toPercentage(feedback.male, feedback.total)}% male,&nbsp;
+                  {toPercentage(feedback.female, feedback.total)}% female).
+                </p>
 
-          <p>
-            Average guests satisfaction was {satisfaction.total * highest_obtainable_pts}%&nbsp;
-            (Guys were {satisfaction.male * highest_obtainable_pts}% satisfied,&nbsp;
-            ladies were {satisfaction.female * highest_obtainable_pts}% satisfied).
-          </p>
+                <p>
+                  Average guests satisfaction was {satisfaction.total * highest_obtainable_pts}%&nbsp;
+                  (Guys were {satisfaction.male * highest_obtainable_pts}% satisfied,&nbsp;
+                  ladies were {satisfaction.female * highest_obtainable_pts}% satisfied).
+                </p>
 
-          <p>
-            The attendees are on average {nps.total * 100}% likely to invite others to the next event.&nbsp;
-            (Guys were {nps.male * 100}% likely, ladies were {nps.female * 100}% likely).
-          </p>
-        </ContentPanel>
+                <p>
+                  The attendees are on average {nps.total * 100}% likely to invite others to the next event.&nbsp;
+                  (Guys were {nps.male * 100}% likely, ladies were {nps.female * 100}% likely).
+                </p>
+              </ContentPanel>
+            </span>
+          }
 
-        <ContentPanel title={`What guests said (${meta.total_count} responses)`}>
-          <Comments comments={feedback_responses}
-                    textField="feedback_note"
-                    trackable_id={trackable_id}
-                    trackable_type={trackable_type}
-                    getComments={getFeedbackResponses}
-                    showMoreBtnTitle="Show more responses"
-                    canReply={false} />
-        </ContentPanel>
+          <ContentPanel title={`What guests said (${meta.total_count} responses, Avg. rating was ${satisfaction.total}/10)`}>
+            <Comments comments={feedback_responses}
+                      textField="feedback_note"
+                      trackable_id={trackable_id}
+                      trackable_type={trackable_type}
+                      getComments={getFeedbackResponses}
+                      showMoreBtnTitle="Show more responses"
+                      canReply={false} />
+          </ContentPanel>
 
-      </span>}
+        </span>
+      }
 
     </StyleFeedbackReport>
   )
