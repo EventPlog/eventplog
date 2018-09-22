@@ -28,11 +28,12 @@ const ContentBeforeFeedbackSubmit = ({
     anonymous
   } = feedback
 
+  const requiredFieldsEmpty = !(satisfaction_level && net_promoter_score && feedback_note)
   return (
     <Form loading={loading} error={error}>
 
       <Form.Field>
-        <label>How satisfied are you with this event?</label>
+        <label>How satisfied are you with this event?*</label>
         <Rating value={satisfaction_level}
                 name="satisfaction_level"
                 max={10}
@@ -40,17 +41,17 @@ const ContentBeforeFeedbackSubmit = ({
       </Form.Field>
 
       <Form.Field>
-        <label>How likely are you to invite someone to a similar event hosted by this community?</label>
+        <label>How likely are you to invite someone to a similar event hosted by this community?*</label>
         <Rating value={net_promoter_score}
                 max={10}
                 onRate={(e, attr) => {handleChange('net_promoter_score', attr.rating)} } />
       </Form.Field>
 
       <Form.Field>
-        <label>What did you love about the event? How would you improve it?</label>
+        <label>What did you love about the event? How would you improve it?*</label>
         <TextArea name="feedback_note"
                   value={feedback_note}
-                  placeholder='Share your thoughts!'
+                  placeholder='I love the way the facilitator broke down the details. I would have preferred we spend more time in the Q and A section though.'
                   onChange={({target}) => handleChange(target.name, target.value)} />
       </Form.Field>
 
@@ -65,7 +66,9 @@ const ContentBeforeFeedbackSubmit = ({
 
       <Form.Group>
         <Form.Field>
-          <Button inverted type='submit' onClick={handleSubmit}>
+          <Button inverted type='submit'
+                  disabled={requiredFieldsEmpty}
+                  onClick={handleSubmit}>
             Submit
           </Button>
         </Form.Field>

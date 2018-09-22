@@ -24,7 +24,7 @@ class DiscussionContainer extends Component {
     this.props.getEventDiscussion(this.props.event.id).then(res => {
       this.setState({loading: false})
     })
-      .catch(error => this.setState({loading: false, error: 'Could not load discussions.'}))
+      .catch(error => this.setState({loading: false, error}))
   }
 
   getProps = () => ({
