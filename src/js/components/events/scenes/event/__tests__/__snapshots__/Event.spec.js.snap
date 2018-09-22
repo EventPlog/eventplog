@@ -2,6 +2,19 @@
 
 exports[`Event should render correctly 1`] = `
 <styled.div>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <html
+      lang="en"
+    />
+    <title />
+    <link
+      href="/c/undefined/e/undefined"
+      rel="canonical"
+    />
+  </HelmetWrapper>
   <Styled(EventBanner)
     community={Object {}}
   />

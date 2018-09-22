@@ -2,6 +2,19 @@
 
 exports[`CommunityHeader should render correctly 1`] = `
 <styled.div>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <html
+      lang="en"
+    />
+    <title />
+    <link
+      href="/c/undefined"
+      rel="canonical"
+    />
+  </HelmetWrapper>
   <div
     className="app-container logo"
   >
