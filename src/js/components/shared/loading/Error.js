@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const StyledError = styled.div`
   margin: 2rem auto;
-  padding: 0 2rem;
+  padding: 2rem;
   
   a {
     padding: 1rem;

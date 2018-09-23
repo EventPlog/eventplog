@@ -80,8 +80,8 @@ const ContentAfterEventSubmit = ({
         </Link>
       </li>
     </ul>
-    <Button.Link to={`${genEventLink(event, community)}/backstage/settings?activeIndex=1`} className="medium lowercase">
-      Continue setting up this event
+    <Button.Link to={`${genEventLink(event, community)}`} className="medium lowercase">
+      Show me my event
     </Button.Link>
   </StyledContent>
 )
