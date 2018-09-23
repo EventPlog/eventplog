@@ -40,6 +40,7 @@ const Main = ({activeLink, ...props}) => {
   }
   return (
     <StyledMain activeLink={activeLink}>
+
       <CommunityHeader {...props} />
       <Switch>
         <Route exact path="/" render={(routerProps) => <CommunityMainContent {...props} />}/>

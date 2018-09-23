@@ -3,6 +3,7 @@ import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { lighten } from 'polished'
+import Helmet from 'react-helmet';
 
 // intenal
 import Nav from 'js/components/shared/nav'
@@ -163,6 +164,7 @@ const CommunityHeader = ({
     logo,
     description,
     display_name,
+    featured_image,
     topic_interests,
     no_of_views,
     is_owner,
@@ -174,6 +176,15 @@ const CommunityHeader = ({
   const communityLink = genCommunityLink(community)
   return (
     <StyledHeader>
+      <Helmet>
+        <html lang={'en'} />
+        <title>{display_name}</title>
+        {display_name && <meta property="og:title" content={display_name} />}
+        {display_name && <meta property="twitter:title" content={display_name} />}
+        {featured_image && <meta property="og:image" content={featured_image} />}
+        {featured_image && <meta property="twitter:image" content={featured_image} />}
+        <link rel="canonical" href={communityLink} />
+      </Helmet>
       <div className="app-container logo">
 
         <Link to={communityLink} >

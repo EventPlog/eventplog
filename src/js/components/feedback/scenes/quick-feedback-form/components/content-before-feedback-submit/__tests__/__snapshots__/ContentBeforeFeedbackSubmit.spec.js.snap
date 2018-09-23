@@ -6,7 +6,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
 >
   <FormField>
     <label>
-      How satisfied are you with this event?
+      How satisfied are you with this event?*
     </label>
     <RatingExampleHeart
       max={10}
@@ -16,7 +16,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
   </FormField>
   <FormField>
     <label>
-      How likely are you to invite someone to a similar event hosted by this community?
+      How likely are you to invite someone to a similar event hosted by this community?*
     </label>
     <RatingExampleHeart
       max={10}
@@ -25,12 +25,12 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
   </FormField>
   <FormField>
     <label>
-      What did you love about the event? How would you improve it?
+      What did you love about the event? How would you improve it?*
     </label>
     <Styled(Component)
       name="feedback_note"
       onChange={[Function]}
-      placeholder="Share your thoughts!"
+      placeholder="I love the way the facilitator broke down the details. I would have preferred we spend more time in the Q and A section though."
     />
   </FormField>
   <FormField>
@@ -45,6 +45,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
   <FormGroup>
     <FormField>
       <Button
+        disabled={true}
         inverted={true}
         type="submit"
       >

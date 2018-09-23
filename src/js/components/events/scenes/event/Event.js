@@ -3,6 +3,7 @@ import { Menu } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { darken } from 'polished'
 import { Link } from 'react-router-dom'
+import Helmet from 'react-helmet';
 
 // internal components
 import ContentSection from 'js/components/shared/content-section'
@@ -166,27 +167,37 @@ const Event = ({
 
   const eventLink = genEventLink(event, community)
 
+  const { title, featured_image} = event
   return (
     <StyledEvent activeLink={activeLink}>
+      <Helmet>
+        <html lang={'en'} />
+        <title>{title}</title>
+        {title && <meta property="og:title" content={title} />}
+        {title && <meta property="twitter:title" content={title} />}
+        {featured_image && <meta property="og:image" content={featured_image} />}
+        {featured_image && <meta property="twitter:image" content={featured_image} />}
+        <link rel="canonical" href={eventLink} />
+      </Helmet>
 
-        {event.is_stakeholder &&
-          <div className="quick-menu-holder">
-            <div className="app-container">
-              <Menu fluid widths={3}>
-                <Menu.Item name='Edit Event'>
-                  <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
-                </Menu.Item>
-                <Menu.Item name='Upload Guests CSV'>
-                  <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
-                </Menu.Item>
-                <Menu.Item name='Check In Guests'>
-                  <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
-                </Menu.Item>
-              </Menu>
-            </div>
-          </div>}
-        <EventBanner {...{...event, community, handleChange,
-          handleSubmit, attendEvent, toggleVisibilityStatus}} />
+      {event.is_stakeholder &&
+        <div className="quick-menu-holder">
+          <div className="app-container">
+            <Menu fluid widths={3}>
+              <Menu.Item name='Edit Event'>
+                <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
+              </Menu.Item>
+              <Menu.Item name='Upload Guests CSV'>
+                <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
+              </Menu.Item>
+              <Menu.Item name='Check In Guests'>
+                <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
+              </Menu.Item>
+            </Menu>
+          </div>
+        </div>}
+      <EventBanner {...{...event, community, handleChange,
+        handleSubmit, attendEvent, toggleVisibilityStatus}} />
 
       <div className="app-container">
         <ContentSection>

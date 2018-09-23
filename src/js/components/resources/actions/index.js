@@ -11,7 +11,7 @@ export const getResources = (params) => {
   return handleApiCall({
     actions,
     data: params,
-    errorMessage: 'Something prevented us from retrieving resources. Please try again later or contact support.',
+    errorMessage: 'Something prevented us from retrieving resources.',
     caller: 'get resources',
     route: `/api/v1/web/resources/index_by_params`,
     requestMethod: 'POST'
@@ -28,7 +28,7 @@ export const getResource = (params) => {
   return handleApiCall({
     actions,
     data: params,
-    errorMessage: 'Something prevented us from retrieving this resource. Please try again later or contact support.',
+    errorMessage: 'Something prevented us from retrieving this resource.',
     caller: 'get resources',
     route: `/api/v1/web/resources/index_by_params`,
     requestMethod: 'POST'
