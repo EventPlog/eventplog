@@ -64,7 +64,7 @@ const eventBannerStyles = css`
       
       ${
         media.desktop`
-          font-size: 7rem;
+          font-size: 6rem;
         `
       }
     }

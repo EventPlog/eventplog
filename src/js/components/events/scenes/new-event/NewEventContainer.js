@@ -13,7 +13,8 @@ export class EventContainer extends Component {
       title: '',
       start_time: new Date(),
       end_time: new Date(),
-      community_id: this.props.community.id
+      community_id: this.props.community.id,
+      visibility_status: 'public_event',
     },
     error: false,
     eventCreated: false
