@@ -36,14 +36,13 @@ export default (req, res, next) => {
 
     const markup = renderToString(
       <Loadable.Capture report={m => modules.push(m)}>
-        <MemoryRouter location={req.url}>
+        <StaticRouter location={req.url}>
           <Provider store={store}>
             <App />
           </Provider>
-        </MemoryRouter>
+        </StaticRouter>
       </Loadable.Capture>
     )
-    console.log('the modules', modules);
     // render the app as a string
     // const html = ReactDOMServer.renderToString(<App />);
 
