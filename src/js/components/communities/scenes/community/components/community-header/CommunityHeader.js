@@ -178,11 +178,12 @@ const CommunityHeader = ({
     <StyledHeader>
       <Helmet>
         <html lang={'en'} />
-        <title>{display_name}</title>
-        {display_name && <meta property="og:title" content={display_name} />}
-        {display_name && <meta property="twitter:title" content={display_name} />}
-        {featured_image && <meta property="og:image" content={featured_image} />}
-        {featured_image && <meta property="twitter:image" content={featured_image} />}
+        {display_name && <title>{`${display_name} - EventPlog`}</title>}
+        {display_name && <meta property="og:title" content={`${display_name} - EventPlog`} />}
+        {display_name && <meta property="twitter:title" content={`${display_name} - EventPlog`} />}
+        {featured_image && <meta property="og:image" content={`${featured_image} - EventPlog`} />}
+        {featured_image && <meta property="twitter:image" content={`${featured_image} - EventPlog`} />}
+        <meta name="description" content="Helmet application" />
         <link rel="canonical" href={communityLink} />
       </Helmet>
       <div className="app-container logo">

@@ -1,26 +1,25 @@
-import React from 'react'
-import { Menu } from 'semantic-ui-react'
-import styled from 'styled-components'
-import { darken } from 'polished'
-import { Link } from 'react-router-dom'
-import Helmet from 'react-helmet';
-
+import React from "react";
+import {Menu} from "semantic-ui-react";
+import styled from "styled-components";
+import {darken} from "polished";
+import {Link} from "react-router-dom";
+import Helmet from "react-helmet";
 // internal components
-import ContentSection from 'js/components/shared/content-section'
-import ContentPanel from 'js/components/shared/content-panel'
-import Comments from 'js/components/shared/comments'
-import EventSidebar from './components/event-sidebar'
-import EventBanner from './components/event-banner'
-import Loading from 'js/components/shared/loading'
-import AddComment from 'js/components/shared/comments/add-comment'
-import AboutEvent from '../about-event'
-import EventDiscussion from 'js/components/event-discussions'
-import EventPictures from 'js/components/event-pictures'
-import Resources from 'js/components/resources'
-import Tab from 'js/components/shared/tab'
-import Report from 'js/components/feedback/scenes/feedback-report'
-import { media } from 'js/styles/mixins'
-import { genEventLink } from 'js/utils'
+import ContentSection from "js/components/shared/content-section";
+import ContentPanel from "js/components/shared/content-panel";
+import Comments from "js/components/shared/comments";
+import EventSidebar from "./components/event-sidebar";
+import EventBanner from "./components/event-banner";
+import Loading from "js/components/shared/loading";
+import AddComment from "js/components/shared/comments/add-comment";
+import AboutEvent from "../about-event";
+import EventDiscussion from "js/components/event-discussions";
+import EventPictures from "js/components/event-pictures";
+import Resources from "js/components/resources";
+import Tab from "js/components/shared/tab";
+import Report from "js/components/feedback/scenes/feedback-report";
+import {media} from "js/styles/mixins";
+import {genEventLink} from "js/utils";
 
 const StyledEvent = styled.div`
   .event-description {
@@ -172,11 +171,11 @@ const Event = ({
     <StyledEvent activeLink={activeLink}>
       <Helmet>
         <html lang={'en'} />
-        <title>{title}</title>
-        {title && <meta property="og:title" content={title} />}
-        {title && <meta property="twitter:title" content={title} />}
-        {featured_image && <meta property="og:image" content={featured_image} />}
-        {featured_image && <meta property="twitter:image" content={featured_image} />}
+        {title && <title>{`${title} - EventPlog`}</title>}
+        {title && <meta property="og:title" content={`${title} - EventPlog`} />}
+        {title && <meta property="twitter:title" content={`${title} - EventPlog`} />}
+        {featured_image && <meta property="og:image" content={`${featured_image} - EventPlog`} />}
+        {featured_image && <meta property="twitter:image" content={`${featured_image} - EventPlog`} />}
         <link rel="canonical" href={eventLink} />
       </Helmet>
 

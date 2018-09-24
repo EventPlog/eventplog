@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // internal
-import sampleCommunityImg from 'img/homepage-bg.JPG'
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
 
@@ -161,7 +160,7 @@ const MainContentCard = ({
 }) => (
   <StyledMainContentCard className={`community-card ${className}`}>
     <div className="img-holder" style={{
-              backgroundImage: `url(${featured_image || sampleCommunityImg})`
+              backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
             }}>
       <Link className="title-link" to={titleLink || "#"} />
       {showButton &&
