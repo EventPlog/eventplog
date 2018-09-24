@@ -1,1 +1,1 @@
-web: node scripts/server.js
+web: NODE_PATH=src node server/bootstrap.js

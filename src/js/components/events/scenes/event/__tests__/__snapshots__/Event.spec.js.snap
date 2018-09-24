@@ -9,7 +9,6 @@ exports[`Event should render correctly 1`] = `
     <html
       lang="en"
     />
-    <title />
     <link
       href="/c/undefined/e/undefined"
       rel="canonical"

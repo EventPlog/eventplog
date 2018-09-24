@@ -42,12 +42,13 @@ injectGlobal`
 
 const store = configureStore();
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <Provider store={store}>
     <BrowserRouter>
       <App store={store} />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 
 registerServiceWorker();

@@ -135,7 +135,7 @@ export const attendEvent = (event) => {
   return handleApiCall({
     actions,
     data: event,
-    errorMessage: 'Something prevented us getting event suggestions.',
+    errorMessage: 'Something prevented us from registering your interest for this event.',
     caller: 'get event interest',
     route: `/api/v1/web/events/${event.id}/user_events`,
     requestMethod: 'POST'

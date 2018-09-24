@@ -56,7 +56,7 @@ const handleApiCall = ({
     const {isValid, concatenatedErrors} = validator.validateAllInputs();
     dispatch(actions.request(data))
     if (isValid) {
-      NProgress.start()
+      if (typeof(window) != 'undefined') NProgress.start()
       return webAPI({url, headers, path: route, method: requestMethod, data, uploadOp})
         .then(response => {
           if (response.error) {
@@ -79,7 +79,9 @@ const handleApiCall = ({
           throw(errorMessage)
           // errorMessage && dispatch(receiveError(errorMessage, caller))
         })
-        .finally(() => NProgress.done());
+        .finally(() => {
+          if (typeof(window) != 'undefined') NProgress.done()
+        });
     } else {
       console.log(concatenatedErrors)
       dispatch(actions.fail(concatenatedErrors))

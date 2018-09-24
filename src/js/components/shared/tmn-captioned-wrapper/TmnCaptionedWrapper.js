@@ -1,13 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-//import backgroundImg from '../../../../img/homepage-bg.JPG';
-import featuredImage from '../../../../img/TmnTracker-EventsPage.png';
-//import PlanningPage from '../../../../img/TmnTracker-PlanningPage.png';
 
 const StyledTmnCaptionedWrapper = styled.div`
   --local-bg: var(--bg, #2196f3ed);
   --local-fg: var(--fg, #fff);
-  /*background-image: url(${featuredImage});*/
   height: 100vh;
   background-size: cover;
   position: relative;

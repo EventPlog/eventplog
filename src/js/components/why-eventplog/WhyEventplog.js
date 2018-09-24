@@ -6,8 +6,11 @@ import {Link} from 'react-router-dom'
 
 const StyledWhyEventplog = styled.div`
   display: flex;
-  justify-content:center;
-
+  
+  .why-eventplog-content {
+    margin: auto;
+  }
+  
   li {
     margin-left:2em;
   }
@@ -33,7 +36,7 @@ const WhyEventplog = () => {
         </Topic>
 
         <Description>
-          We use Splashthat and Eventbrite for RSVPs, twitter, emails and Facebook to reach out to guests 
+          We used generic event RSVP platforms to handle RSVPs, twitter, emails and Facebook to reach out to guests
           through social media. It doesn't take long to find a few issues:<br/>  
           <li>
             We couldn't get guests to be as involved in the process as we would like.<br/> 
@@ -66,7 +69,7 @@ const WhyEventplog = () => {
         </Description> 
         
         <Topic>
-          The big picture
+          The Big Picture
         </Topic>
         <Description>
           Education systems around the world are getting more democratic. Communities are 

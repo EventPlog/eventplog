@@ -9,7 +9,10 @@ exports[`CommunityHeader should render correctly 1`] = `
     <html
       lang="en"
     />
-    <title />
+    <meta
+      content="Helmet application"
+      name="description"
+    />
     <link
       href="/c/undefined"
       rel="canonical"
