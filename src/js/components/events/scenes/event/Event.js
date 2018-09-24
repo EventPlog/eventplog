@@ -166,16 +166,18 @@ const Event = ({
 
   const eventLink = genEventLink(event, community)
 
-  const { title, featured_image} = event
+  const { title, description, featured_image} = event
   return (
     <StyledEvent activeLink={activeLink}>
       <Helmet>
         <html lang={'en'} />
         {title && <title>{`${title} - EventPlog`}</title>}
         {title && <meta property="og:title" content={`${title} - EventPlog`} />}
-        {title && <meta property="twitter:title" content={`${title} - EventPlog`} />}
+        {description && <meta property="og:description" content={description} />}
         {featured_image && <meta property="og:image" content={`${featured_image} - EventPlog`} />}
-        {featured_image && <meta property="twitter:image" content={`${featured_image} - EventPlog`} />}
+        {title && <meta name="twitter:title" content={`${title} - EventPlog`} />}
+        {description && <meta name="twitter:description" content={description} />}
+        {featured_image && <meta name="twitter:image" content={`${featured_image} - EventPlog`} />}
         <link rel="canonical" href={eventLink} />
       </Helmet>
 

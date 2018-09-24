@@ -6,7 +6,8 @@ import {Link} from 'react-router-dom'
 const StyledDescription =styled.div`
   font-size: 1.1em;
   line-height: 30px;
-  margin: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
 `
 
 const Description = (props)=>{

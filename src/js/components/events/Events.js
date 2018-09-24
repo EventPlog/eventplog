@@ -11,16 +11,16 @@ import {fakeAuth, PrivateRoute, PublicRoute} from '../../auth'
 import UserNav from 'js/components/shared/user-secondary-menu'
 
 const Events = createLoader(() =>
-  import('./scenes/events/index'  /* webpackChunkName: "Events" */))
+  import('./scenes/events/index'  /* webpackChunkName: "Events" */), 'Events')
 
 const Event = createLoader(() =>
-  import('./scenes/event' /* webpackChunkName: "EventWithContainer" */))
+  import('./scenes/event' /* webpackChunkName: "EventWithContainer" */), 'EventWithContainer')
 
 const NewEvent = createLoader(() =>
-  import('./scenes/new-event' /* webpackChunkName: "NewEvent" */))
+  import('./scenes/new-event' /* webpackChunkName: "NewEvent" */), 'NewEvent')
 
 const BackStage = createLoader(() =>
-  import('./scenes/back-stage' /* webpackChunkName: "NewEvent" */))
+  import('./scenes/back-stage' /* webpackChunkName: "BackStage" */), 'BackStage')
 
 const StyledEventPlog = styled.div`
   height: 100%;
