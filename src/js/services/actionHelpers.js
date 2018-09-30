@@ -58,17 +58,6 @@ const handleApiCall = ({
     if (isValid) {
       if (typeof(window) != 'undefined') NProgress.start()
       return webAPI({url, headers, path: route, method: requestMethod, data, uploadOp})
-        .then(res => {
-          dispatch(actions.receive(res))
-          if (typeof(window) != 'undefined') NProgress.done()
-
-        })
-        .catch(err => {
-          throw(err)
-          if (typeof(window) != 'undefined') NProgress.done()
-
-        })
-      return webAPI({url, headers, path: route, method: requestMethod, data, uploadOp})
         .then(response => {
           if (response.error) {
             console.log(response.error)
