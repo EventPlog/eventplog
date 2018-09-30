@@ -16,6 +16,7 @@ exports[`Event should render correctly 1`] = `
   </HelmetWrapper>
   <Styled(EventBanner)
     community={Object {}}
+    eventLink="/c/undefined/e/undefined"
   />
   <div
     className="app-container"
