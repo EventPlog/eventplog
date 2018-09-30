@@ -58,6 +58,17 @@ const handleApiCall = ({
     if (isValid) {
       if (typeof(window) != 'undefined') NProgress.start()
       return webAPI({url, headers, path: route, method: requestMethod, data, uploadOp})
+        .then(res => {
+          dispatch(actions.receive(res))
+          if (typeof(window) != 'undefined') NProgress.done()
+
+        })
+        .catch(err => {
+          throw(err)
+          if (typeof(window) != 'undefined') NProgress.done()
+
+        })
+      return webAPI({url, headers, path: route, method: requestMethod, data, uploadOp})
         .then(response => {
           if (response.error) {
             console.log(response.error)
@@ -71,6 +82,7 @@ const handleApiCall = ({
             }
             return response;
           }
+          if (typeof(window) != 'undefined') NProgress.done()
         })
         .catch((error = {}) => {
           // dispatch(actions.fail(error))
@@ -78,10 +90,8 @@ const handleApiCall = ({
           dispatch(actions.fail(`${errorMessage}`))
           throw(errorMessage)
           // errorMessage && dispatch(receiveError(errorMessage, caller))
-        })
-        .finally(() => {
           if (typeof(window) != 'undefined') NProgress.done()
-        });
+        })
     } else {
       console.log(concatenatedErrors)
       dispatch(actions.fail(concatenatedErrors))
