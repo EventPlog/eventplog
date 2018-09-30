@@ -77,9 +77,9 @@ const handleApiCall = ({
           // dispatch(actions.fail(error))
           console.log(error)
           dispatch(actions.fail(`${errorMessage}`))
+          if (typeof(window) != 'undefined') NProgress.done()
           throw(errorMessage)
           // errorMessage && dispatch(receiveError(errorMessage, caller))
-          if (typeof(window) != 'undefined') NProgress.done()
         })
     } else {
       console.log(concatenatedErrors)
