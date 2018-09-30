@@ -1,9 +1,8 @@
 import React from "react";
-import {Menu} from "semantic-ui-react";
 import styled from "styled-components";
 import {darken} from "polished";
-import {Link} from "react-router-dom";
 import Helmet from "react-helmet";
+
 // internal components
 import ContentSection from "js/components/shared/content-section";
 import ContentPanel from "js/components/shared/content-panel";
@@ -93,27 +92,6 @@ const StyledEvent = styled.div`
     }
   }
   
-  .quick-menu-holder {
-    background: rgba(0,0,0,0.5);
-    width: 100%;
-    position: absolute;
-    z-index: 100;
-  }
-  
-  .ui.fluid.item.menu {
-    margin: 0;
-    background-color: transparent;
-    border-radius: 0;
-    opacity: 0.9;
-    
-    a {
-      color: ${props => props.theme.gray};
-      
-      &:hover {
-        color: var(--activeLink);
-      }
-    }
-  }
 `
 
 const Discussions = () => {
@@ -151,8 +129,6 @@ const Event = ({
   if (event.loading) return <Loading />
   if (event.error) return <Loading.Error msg={event.error} />
 
-  const isStakeHolder = event.is_stakeholder
-
   const { event_discussion = {}, announcements, comments } = event
 
   const getPanes = () => {
@@ -181,24 +157,8 @@ const Event = ({
         <link rel="canonical" href={eventLink} />
       </Helmet>
 
-      {event.is_stakeholder &&
-        <div className="quick-menu-holder">
-          <div className="app-container">
-            <Menu fluid widths={3}>
-              <Menu.Item name='Edit Event'>
-                <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
-              </Menu.Item>
-              <Menu.Item name='Upload Guests CSV'>
-                <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
-              </Menu.Item>
-              <Menu.Item name='Check In Guests'>
-                <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
-              </Menu.Item>
-            </Menu>
-          </div>
-        </div>}
       <EventBanner {...{...event, community, handleChange,
-        handleSubmit, attendEvent, toggleVisibilityStatus}} />
+        handleSubmit, attendEvent, eventLink, toggleVisibilityStatus}} />
 
       <div className="app-container">
         <ContentSection>
