@@ -114,15 +114,15 @@ const FeedbackReport = ({
                              onSubmit={handleSubmit}>
 
               <ReactMarkdown escapeHtml={false}
-                             source={description || 'Click here to pen down the reasons you feel this event was special.'}/>
+                             source={description || 'The day was amazing! The facilitators were awesome. Guests were especially excited about the content.'}/>
 
             </ContentEditable>
           </div>
         </ContentPanel>
       }
 
-      {is_attending && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
-      {!is_attending && !given_feedback &&
+      {is_attending && !is_stakeholder && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
+      {!is_attending && !is_stakeholder && !given_feedback &&
         <ContentPanel title="Did you attend this event">
           {<LoginPrompt msg="to add your own feedback" />}
           {isLoggedIn &&
@@ -197,20 +197,18 @@ const FeedbackReport = ({
               </ContentPanel>
             </span>
           }
-
-          <ContentPanel title={`What guests said (${meta.total_count} responses, Avg. rating was ${satisfaction.total}/10)`}>
-            <Comments comments={feedback_responses}
-                      textField="feedback_note"
-                      trackable_id={trackable_id}
-                      trackable_type={trackable_type}
-                      getComments={getFeedbackResponses}
-                      showMoreBtnTitle="Show more responses"
-                      canReply={false} />
-          </ContentPanel>
-
         </span>
       }
 
+      <ContentPanel title={`What guests said (${meta.total_count} responses, Avg. rating was ${satisfaction.total}/10)`}>
+        <Comments comments={feedback_responses}
+                  textField="feedback_note"
+                  trackable_id={trackable_id}
+                  trackable_type={trackable_type}
+                  getComments={getFeedbackResponses}
+                  showMoreBtnTitle="Show more responses"
+                  canReply={false} />
+      </ContentPanel>
     </StyleFeedbackReport>
   )
 }
