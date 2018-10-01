@@ -58,8 +58,8 @@ export default (req, res, next) => {
       */
 
       htmlData = htmlData.replace(
-        /<\/head>/,
-        `${data}</head>`
+        /<head>/,
+        `<head>${data}`
       )
 
       return res.send(

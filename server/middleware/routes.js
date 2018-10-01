@@ -21,6 +21,7 @@ const routes =  [
             <meta property="twitter:title" content="${community.display_name} - EventPlog" />
             <meta property="twitter:description" content="${community.description}" />
             <meta property="twitter:image" content="${community.featured_image}" />
+            <link rel="canonical" href="https://eventplog.com${path}">
             <script>window.__INITIAL_DATA__=${serialize({community})}</script>
           `
         ))
@@ -42,6 +43,7 @@ const routes =  [
             <meta property="twitter:title" content="${event.title} - EventPlog" />
             <meta property="twitter:description" content="${event.description}" />
             <meta property="twitter:image" content="${event.featured_image}" />
+            <link rel="canonical" href="https://eventplog.com${path}">
             <script>window.__INITIAL_DATA__=${serialize({event})}</script>
           `
         ))
