@@ -34,7 +34,7 @@ const routes =  [
         .then(event => (
           `
             <title>${event.title} - EventPlog</title>
-            <meta property="og:title" content='${event.name} - EventPlog' />
+            <meta property="og:title" content='${event.title} - EventPlog' />
             <meta property="og:description" content='${event.description}' />
             <meta property="og:image" content='${event.featured_image}' />
             <meta property="twitter:title" content='${event.name} - EventPlog' />
