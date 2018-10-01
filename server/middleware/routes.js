@@ -15,10 +15,10 @@ const routes =  [
           `
             <meta property="og:title" content='${community.display_name} - EventPlog' />
             <meta property="og:description" content='${community.description}' />
-            <meta property="og:image" content='${community.description}' />
+            <meta property="og:image" content='${community.featured_image}' />
             <meta property="twitter:title" content='${community.display_name} - EventPlog' />
             <meta property="twitter:description" content='${community.description}' />
-            <meta property="twitter:image" content='${community.description}' />
+            <meta property="twitter:image" content='${community.featured_image}' />
             <script>window.__INITIAL_DATA__=${serialize({community})}</script>
           `
         ))
@@ -34,10 +34,10 @@ const routes =  [
           `
             <meta property="og:title" content='${event.name} - EventPlog' />
             <meta property="og:description" content='${event.description}' />
-            <meta property="og:image" content='${event.description}' />
+            <meta property="og:image" content='${event.featured_image}' />
             <meta property="twitter:title" content='${event.name} - EventPlog' />
             <meta property="twitter:description" content='${event.description}' />
-            <meta property="twitter:image" content='${event.description}' />
+            <meta property="twitter:image" content='${event.featured_image}' />
             <script>window.__INITIAL_DATA__=${serialize({event})}</script>
           `
         ))
