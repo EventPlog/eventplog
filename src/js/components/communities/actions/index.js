@@ -172,6 +172,13 @@ export const updateViewCount = (params = {}) => {
   })
 }
 
+export const addCommunityToStore = (community) => {
+  return (dispatch) => dispatch({
+    type: actionTypes.COMMUNITY_SHOW_COMPLETE,
+    payload: community
+  })
+}
+
 // =========== MOCKS ===============
 
 export const mockGetCommunities = () => {

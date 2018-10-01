@@ -11,6 +11,7 @@ import {
   getCommunitiesSuggestions,
   checkForValidSlug,
   updateViewCount,
+  addCommunityToStore,
 } from '../../actions'
 
 import {
@@ -63,6 +64,13 @@ class CommunityContainer extends Component {
     return (matchPath(this.props.location.pathname, '/c/:community_id/e/:id') || this.props.match).params
   }
 
+  communityFetchedFromServer = () => (
+    (!this.props.community ||
+    !this.props.community.id) &&
+    window.__INITIAL_DATA__ &&
+    window.__INITIAL_DATA__.community
+  )
+
   getData() {
     const {community_id, id} = this.getParams()
     const sureCommunityId = community_id || id
@@ -70,12 +78,17 @@ class CommunityContainer extends Component {
     // don't bother fetching if within an event
     if (community_id && id) return
 
+    if(this.communityFetchedFromServer()) {
+      this.props.addCommunityToStore(window.__INITIAL_DATA__.community)
+      this.updateViewCount()
+      return
+    }
+
     if(!this.props.community || !this.props.community.id || !(this.props.community.id == sureCommunityId || this.props.community.slug == sureCommunityId)) {
       this.props.getCommunity(community_id || id, this.props.slug)
         .then(community => {
           this.setState({loading: false, community})
           this.updateViewCount()
-          mixpanel.track('COMMUNITY_PAGE_VIEW')
         })
         .catch(error => this.setState({loading: false, error}))
     }
@@ -101,6 +114,7 @@ class CommunityContainer extends Component {
       recipient_id: this.state.community.id,
       recipient_type: 'Community'
     })
+    mixpanel.track('COMMUNITY_PAGE_VIEW')
   }
 
   getProps = () => ({
@@ -132,6 +146,7 @@ const mapDispatchToProps = (dispatch) => {
     getCommunitiesSuggestions,
     checkForValidSlug,
     updateViewCount,
+    addCommunityToStore,
     updateCommunity: secureAction(updateCommunity),
     followCommunity: secureAction(followCommunity),
     unFollowCommunity: secureAction(unFollowCommunity),

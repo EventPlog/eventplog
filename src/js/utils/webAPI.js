@@ -31,14 +31,14 @@ export function requestHeaders(presetHeaders, uploadOp) {
 
 /**
 * @param {String} url: eg 'http://example.com'
- * @param {String} path: eg '/questions'
- * @param {Object} headers: eg '{Content-Type: json}'
+* @param {String} path: eg '/questions'
+* @param {Object} headers: eg '{Content-Type: json}'
 * @param {String} method: eg 'POST'
 * @param {Object} data: eg {id: 1}
 * @param {Boolean} uploadOp: true/false
 * @return {Object} fetch: to be used in views that check for success or failure
 */
-export default function processRequest({url, path, headers = {}, method, data = {}, uploadOp = false}) {
+export default function processRequest({url, path, headers = {}, method = 'GET', data = {}, uploadOp = false}) {
   let requestUrl = url || Config.host + requestPath(path, method, data);
   return fetch(requestUrl, {
     method  : method,

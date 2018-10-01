@@ -260,3 +260,10 @@ export const updateViewCount = (params = {}) => {
     requestMethod: 'POST'
   })
 }
+
+export const addEventToStore = (event) => {
+  return (dispatch) => dispatch({
+    type: actionTypes.EVENT_SHOW_COMPLETE,
+    payload: event
+  })
+}

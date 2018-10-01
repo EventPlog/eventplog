@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import {darken} from "polished";
-import Helmet from "react-helmet";
 
 // internal components
 import ContentSection from "js/components/shared/content-section";
@@ -145,18 +144,6 @@ const Event = ({
   const { title, description, featured_image} = event
   return (
     <StyledEvent activeLink={activeLink}>
-      <Helmet>
-        <html lang={'en'} />
-        {title && <title>{`${title} - EventPlog`}</title>}
-        {title && <meta property="og:title" content={`${title} - EventPlog`} />}
-        {description && <meta property="og:description" content={description} />}
-        {featured_image && <meta property="og:image" content={`${featured_image} - EventPlog`} />}
-        {title && <meta name="twitter:title" content={`${title} - EventPlog`} />}
-        {description && <meta name="twitter:description" content={description} />}
-        {featured_image && <meta name="twitter:image" content={`${featured_image} - EventPlog`} />}
-        <link rel="canonical" href={eventLink} />
-      </Helmet>
-
       <EventBanner {...{...event, community, handleChange,
         handleSubmit, attendEvent, eventLink, toggleVisibilityStatus}} />
 

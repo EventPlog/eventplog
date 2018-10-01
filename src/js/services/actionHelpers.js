@@ -69,9 +69,9 @@ const handleApiCall = ({
             } else {
               dispatch(actions.receive(response))
             }
-            return response;
           }
           if (typeof(window) != 'undefined') NProgress.done()
+          return response;
         })
         .catch((error = {}) => {
           // dispatch(actions.fail(error))
@@ -84,6 +84,7 @@ const handleApiCall = ({
     } else {
       console.log(concatenatedErrors)
       dispatch(actions.fail(concatenatedErrors))
+      if (typeof(window) != 'undefined') NProgress.done()
       return Promise.reject(concatenatedErrors)
       // errorMessage && dispatch(receiveError(concatenatedErrors, caller))
     }
