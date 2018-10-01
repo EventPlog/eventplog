@@ -3,7 +3,6 @@ import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { lighten } from 'polished'
-import Helmet from 'react-helmet';
 
 // intenal
 import Nav from 'js/components/shared/nav'
