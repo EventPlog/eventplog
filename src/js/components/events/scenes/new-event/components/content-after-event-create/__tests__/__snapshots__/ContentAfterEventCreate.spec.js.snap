@@ -56,7 +56,7 @@ exports[`ContentAfterEventCreate it renders correctly 1`] = `
   </ul>
   <Component
     className="medium lowercase"
-    to="/c/undefined/e/undefined"
+    to="/e/undefined"
   >
     Show me my event
   </Component>

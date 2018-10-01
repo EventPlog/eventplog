@@ -57,13 +57,18 @@ export default (req, res, next) => {
       )
       */
 
-      htmlData = htmlData.replace(
-        /<head>/,
+      let htmData = htmlData.replace(
+        '<head>',
         `<head>${data}`
       )
 
+      htmData = htmData.replace(
+        /<\/head>/,
+        `${data}</head>`
+      )
+
       return res.send(
-        htmlData
+        htmData
       );
 
     }).catch(e => {

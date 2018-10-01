@@ -44,9 +44,12 @@ export const getSlugFromHostName = (hostname, knownSubs) => {
   return sub
 }
 
-export const genEventLink = (event = {}, community = {}) => (
-  `/c/${community.slug || community.id}/e/${event.slug || event.id}`
-)
+export const genEventLink = (event = {}, community = {}) => {
+  if (community && community.id) {
+    return `/c/${community.slug || community.id}/e/${event.slug || event.id}`
+  }
+  return `/e/${event.slug || event.id}`
+}
 
 export const genCommunityLink = (community = {}) => (
   `/c/${community.slug || community.id}`
