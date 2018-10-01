@@ -46,6 +46,29 @@ const routes =  [
             <meta property="twitter:image" content="${event.featured_image}" />
             <link rel="canonical" href="https://eventplog.com${path}">
             <script>window.__INITIAL_DATA__=${serialize({event})}</script>
+            <script type="application/ld+json">
+              {
+                "@context": "http://schema.org",
+                "@type": "Event",
+                "name": "${event.title}",
+                "startDate": "${event.start_time}",
+                "location": {
+                  "@type": "Place",
+                  "name": "${event.venue}"
+                },
+                "image": [
+                  "${event.featured_image}"
+                 ],
+                "description": "${event.description}",
+                "endDate": "${event.end_time}",
+                "offers": {
+                  "@type": "Offer",
+                  "url": "https://eventplog.com${path}",
+                  "price": "0",
+                  "priceCurrency": "NGN",
+                }
+              }
+              </script>
           `
         ))
         .catch(err => {console.log(err); return ''})
