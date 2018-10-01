@@ -62,10 +62,10 @@
                       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="root">
-      <!--<div id="loading-text"></div>-->
-      <!--<div style="width:100%;display:flex;justify-content: center;margin:2rem 1rem">-->
-        <!--<img src="/bubbles.gif" >-->
-      <!--</div>-->
+      <div id="loading-text"></div>
+      <div style="width:100%;display:flex;justify-content: center;margin:2rem 1rem">
+        <img src="/bubbles.gif" >
+      </div>
     </div>
     <!--
       This HTML file is a template.
@@ -85,7 +85,7 @@
       'Treat everyone around you as you would family. And watch them become family.'
     ]
     const randIndex = Math.round(Math.random() * wiseWords.length - 1)
-//    document.getElementById('loading-text').innerText = wiseWords[randIndex]
+    window.setTimeout(() => document.getElementById('loading-text').innerText = wiseWords[randIndex], 3000)
   </script>
   </body>
 </html>

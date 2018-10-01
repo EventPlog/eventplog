@@ -57,6 +57,7 @@ export default (req, res, next) => {
       )
       */
 
+      console.log('the data: ', data)
       htmlData = htmlData.replace(
         /<head>/,
         `<head>${data}`
