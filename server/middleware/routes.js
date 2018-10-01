@@ -13,6 +13,7 @@ const routes =  [
       return webAPI({path: `/api/v1/web/communities/${path.split('/').pop()}`})
         .then(community => (
           `
+            <title>${community.title} - EventPlog</title>
             <meta property="og:title" content='${community.display_name} - EventPlog' />
             <meta property="og:description" content='${community.description}' />
             <meta property="og:image" content='${community.featured_image}' />
@@ -32,6 +33,7 @@ const routes =  [
       webAPI({path: `/api/v1/web/events/${path.split('/').pop()}`})
         .then(event => (
           `
+            <title>${event.title} - EventPlog</title>
             <meta property="og:title" content='${event.name} - EventPlog' />
             <meta property="og:description" content='${event.description}' />
             <meta property="og:image" content='${event.featured_image}' />

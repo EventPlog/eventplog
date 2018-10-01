@@ -176,18 +176,6 @@ const CommunityHeader = ({
   const communityLink = genCommunityLink(community)
   return (
     <StyledHeader>
-      <Helmet>
-        <html lang={'en'} />
-        {display_name && <title>{`${display_name} - EventPlog`}</title>}
-        {display_name && <meta property="og:title" content={`${display_name} - EventPlog`} />}
-        {description && <meta property="og:description" content={description} />}
-        {featured_image && <meta property="og:image" content={`${featured_image} - EventPlog`} />}
-        {display_name && <meta name="twitter:title" content={`${display_name} - EventPlog`} />}
-        {description && <meta name="twitter:description" content={description} />}
-        {featured_image && <meta name="twitter:image" content={`${featured_image} - EventPlog`} />}
-        <meta name="description" content="Helmet application" />
-        <link rel="canonical" href={communityLink} />
-      </Helmet>
       <div className="app-container logo">
 
         <Link to={communityLink} >

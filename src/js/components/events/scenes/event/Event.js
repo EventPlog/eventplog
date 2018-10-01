@@ -147,7 +147,6 @@ const Event = ({
     <StyledEvent activeLink={activeLink}>
       <Helmet>
         <html lang={'en'} />
-        {title && <title>{`${title} - EventPlog`}</title>}
         {title && <meta property="og:title" content={`${title} - EventPlog`} />}
         {description && <meta property="og:description" content={description} />}
         {featured_image && <meta property="og:image" content={`${featured_image} - EventPlog`} />}
