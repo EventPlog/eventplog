@@ -13,7 +13,7 @@ const app = express();
 const router = express.Router();
 
 // root (/) should always serve our server rendered page
-router.use('^/$', serverRenderer);
+// router.use('^/$', serverRenderer);
 
 // other static resources should just be served as they are
 router.use(express.static(
@@ -22,12 +22,11 @@ router.use(express.static(
 ));
 
 // tell the app to use the above rules
-router.use('*', serverRenderer);
+router.get('*', serverRenderer);
 app.use(router);
 
-
 Loadable.preloadAll().then(() => {
-// start the app
+  // start the app
   app.listen(PORT, (error) => {
     if (error) {
       return console.log('something bad happened', error);
