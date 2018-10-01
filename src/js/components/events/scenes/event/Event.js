@@ -1,26 +1,23 @@
-import React from 'react'
-import { Menu } from 'semantic-ui-react'
-import styled from 'styled-components'
-import { darken } from 'polished'
-import { Link } from 'react-router-dom'
-import Helmet from 'react-helmet';
+import React from "react";
+import styled from "styled-components";
+import {darken} from "polished";
 
 // internal components
-import ContentSection from 'js/components/shared/content-section'
-import ContentPanel from 'js/components/shared/content-panel'
-import Comments from 'js/components/shared/comments'
-import EventSidebar from './components/event-sidebar'
-import EventBanner from './components/event-banner'
-import Loading from 'js/components/shared/loading'
-import AddComment from 'js/components/shared/comments/add-comment'
-import AboutEvent from '../about-event'
-import EventDiscussion from 'js/components/event-discussions'
-import EventPictures from 'js/components/event-pictures'
-import Resources from 'js/components/resources'
-import Tab from 'js/components/shared/tab'
-import Report from 'js/components/feedback/scenes/feedback-report'
-import { media } from 'js/styles/mixins'
-import { genEventLink } from 'js/utils'
+import ContentSection from "js/components/shared/content-section";
+import ContentPanel from "js/components/shared/content-panel";
+import Comments from "js/components/shared/comments";
+import EventSidebar from "./components/event-sidebar";
+import EventBanner from "./components/event-banner";
+import Loading from "js/components/shared/loading";
+import AddComment from "js/components/shared/comments/add-comment";
+import AboutEvent from "../about-event";
+import EventDiscussion from "js/components/event-discussions";
+import EventPictures from "js/components/event-pictures";
+import Resources from "js/components/resources";
+import Tab from "js/components/shared/tab";
+import Report from "js/components/feedback/scenes/feedback-report";
+import {media} from "js/styles/mixins";
+import {genEventLink} from "js/utils";
 
 const StyledEvent = styled.div`
   .event-description {
@@ -94,27 +91,6 @@ const StyledEvent = styled.div`
     }
   }
   
-  .quick-menu-holder {
-    background: rgba(0,0,0,0.5);
-    width: 100%;
-    position: absolute;
-    z-index: 100;
-  }
-  
-  .ui.fluid.item.menu {
-    margin: 0;
-    background-color: transparent;
-    border-radius: 0;
-    opacity: 0.9;
-    
-    a {
-      color: ${props => props.theme.gray};
-      
-      &:hover {
-        color: var(--activeLink);
-      }
-    }
-  }
 `
 
 const Discussions = () => {
@@ -152,8 +128,6 @@ const Event = ({
   if (event.loading) return <Loading />
   if (event.error) return <Loading.Error msg={event.error} />
 
-  const isStakeHolder = event.is_stakeholder
-
   const { event_discussion = {}, announcements, comments } = event
 
   const getPanes = () => {
@@ -167,37 +141,11 @@ const Event = ({
 
   const eventLink = genEventLink(event, community)
 
-  const { title, featured_image} = event
+  const { title, description, featured_image} = event
   return (
     <StyledEvent activeLink={activeLink}>
-      <Helmet>
-        <html lang={'en'} />
-        <title>{title}</title>
-        {title && <meta property="og:title" content={title} />}
-        {title && <meta property="twitter:title" content={title} />}
-        {featured_image && <meta property="og:image" content={featured_image} />}
-        {featured_image && <meta property="twitter:image" content={featured_image} />}
-        <link rel="canonical" href={eventLink} />
-      </Helmet>
-
-      {event.is_stakeholder &&
-        <div className="quick-menu-holder">
-          <div className="app-container">
-            <Menu fluid widths={3}>
-              <Menu.Item name='Edit Event'>
-                <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
-              </Menu.Item>
-              <Menu.Item name='Upload Guests CSV'>
-                <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
-              </Menu.Item>
-              <Menu.Item name='Check In Guests'>
-                <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
-              </Menu.Item>
-            </Menu>
-          </div>
-        </div>}
       <EventBanner {...{...event, community, handleChange,
-        handleSubmit, attendEvent, toggleVisibilityStatus}} />
+        handleSubmit, attendEvent, eventLink, toggleVisibilityStatus}} />
 
       <div className="app-container">
         <ContentSection>

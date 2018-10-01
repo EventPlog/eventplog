@@ -3,8 +3,6 @@ import Topic from 'js/components/help/components/topic'
 import Description from 'js/components/help/components/help-description'
 import {Link} from 'react-router-dom'
 import HelpImage from 'js/components/help/components/image'
-import backstage from 'img/blog/backstage.png'
-import uploadCSV from 'img/blog/importCSV.PNG'
 import Image from 'js/components/help/components/videos'
 
 const UploadCSV = () =>{
@@ -17,7 +15,7 @@ const UploadCSV = () =>{
         <p>
           To upload CSV, from your event page, go to backstage.
         </p> 
-        <HelpImage src={backstage} alt="backstage"/>
+        <HelpImage src="https://farm2.staticflickr.com/1905/31023010438_6988596232_o.png" alt="backstage"/>
         <p>
           Click on the guest section and then select importCSV. Before you upload a CSV file,
         </p>
@@ -26,7 +24,7 @@ const UploadCSV = () =>{
         <p>2. Delete all columns you do not need.</p>
         <p>3. Go to backstage, click on guest, go to upload CSV section and select the CSV file you want to use</p>
         and click on upload.
-        <HelpImage src={uploadCSV} alt="upload CSV"/>
+        <HelpImage src="https://farm2.staticflickr.com/1975/43084419940_397a908df2_o.png" alt="upload CSV"/>
       </Description>
     </div>
   );

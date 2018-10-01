@@ -2,9 +2,11 @@ import React from 'react'
 import { Table, Icon, Menu } from 'semantic-ui-react'
 import styled, { css } from 'styled-components';
 
+//========== INTERNAL ============
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
+import {genEventLink} from "js/utils";
 
 const styles = css`
   td {
@@ -56,7 +58,7 @@ const GuestRow = ({
       <Table.Cell textAlign='center'>
         {guest.given_feedback
           ? <Icon color='green' name='checkmark' size='large' />
-          : <Button.Link className="btn-link" to={`/communities/${event.community_id}/events/${event.id}/backstage/feedback/?guest_id=${guest.id}&guest_name=${guest.user.less_formal_name}`}>
+          : <Button.Link className="btn-link" to={`${genEventLink(event, event.community)}/backstage/feedback/?guest_id=${guest.id}&guest_name=${guest.user.less_formal_name}`}>
               Show form
             </Button.Link>
         }

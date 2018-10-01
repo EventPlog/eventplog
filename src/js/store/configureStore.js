@@ -19,7 +19,7 @@ const getMiddleware = () => {
     middleware = [applyMiddleware(thunk, logger)]
   }
 
-  if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+  if (typeof(window) != 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__) {
     middleware = [...middleware, window.__REDUX_DEVTOOLS_EXTENSION__()]
   }
 

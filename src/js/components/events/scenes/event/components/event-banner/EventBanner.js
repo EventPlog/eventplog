@@ -1,4 +1,6 @@
 import React from 'react'
+import { Icon, Menu } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
 import styled, { css } from 'styled-components'
 import moment from 'moment'
 import { lighten } from 'polished'
@@ -17,6 +19,7 @@ const eventBannerStyles = css`
   justify-content: space-between;
   align-items: flex-end;
   padding: 2rem;
+  padding-bottom: 4rem; 
   margin: 0;
   background-size: cover;
 
@@ -58,13 +61,14 @@ const eventBannerStyles = css`
     
     .title {
       font-size: 3rem;
-      font-weight: 300;
+      font-weight: 500;
       margin-top: 4rem;
       line-height: initial;
-      
+      color: #eee; 
+    
       ${
         media.desktop`
-          font-size: 6rem;
+          font-size: 5rem;
         `
       }
     }
@@ -78,8 +82,9 @@ const eventBannerStyles = css`
         media.desktop`
           letter-spacing: 0.6px;
           font-weight: 300;
-          font-size: 2.5rem;
-          line-height: 3rem;
+          font-size: 2rem;
+          line-height: 2rem;
+          color: #bbb;
         `
       }
     }
@@ -107,8 +112,9 @@ const eventBannerStyles = css`
   .cta {
     background: #fff;
     border: #fff;
-    box-shadow: 1px 2px 4px #000;
+    /*box-shadow: 1px 2px 4px #000;*/
     margin: 0.5rem 0; 
+    letter-spacing: 0.15rem;
     
     &:hover {
       background: var(--activeLink);
@@ -124,6 +130,11 @@ const eventBannerStyles = css`
         background: ${props => lighten(0.3, props.theme.green)};
         color: var(--activeLink);
       }
+    }
+    
+    &.inverted {
+      background: white;
+      color: ${props => props.theme.green};
     }
     
     ${
@@ -146,6 +157,35 @@ const eventBannerStyles = css`
     font-size: 0.8rem;
   }
   
+  .quick-menu-holder {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    left: 0
+    
+    ${
+      media.phone`
+        margin: 0;
+      `
+    }
+  }
+  
+  .ui.fluid.item.menu {
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0;
+    opacity: 0.9;
+    
+    a {
+      color: ${props => props.theme.gray};
+      
+      &:hover {
+        color: var(--activeLink);
+      }
+    }
+  }
 `
 
 
@@ -176,12 +216,32 @@ const EventBanner = ({
   no_of_views,
   className,
   toggleVisibilityStatus,
+  eventLink,
 }) => {
+  const isPrivate = visibility_status == 'private_event'
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
           backgroundImage: `url(${featured_image || '/login-bg.jpg'})`
         }}>
       <div className="overlay" />
+
+      {is_stakeholder &&
+      <div className="quick-menu-holder">
+        <div className="app-container">
+          <Menu fluid widths={3}>
+            <Menu.Item name='Edit Event'>
+              <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
+            </Menu.Item>
+            <Menu.Item name='Upload Guests CSV'>
+              <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
+            </Menu.Item>
+            <Menu.Item name='Check In Guests'>
+              <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
+            </Menu.Item>
+          </Menu>
+        </div>
+      </div>}
+
       <div className="content">
         <div className="caption">
           <div className="title">
@@ -225,8 +285,8 @@ const EventBanner = ({
       </div>
       <div className="cta-btns">
         {(is_stakeholder || organizer_role) &&
-          <Button.Link className="cta large" to={`${genEventLink({id, slug}, community)}/backstage`}>
-            Go Backstage
+          <Button.Link className={`cta large ${isPrivate ? 'inverted' : ''}`} to={`${genEventLink({id, slug}, community)}/backstage/settings?activeIndex=1`}>
+            <Icon name="settings" /> Settings
           </Button.Link>}
         {is_attending && !is_owner && !!link &&
           <Button.Link isAnchorTag className="cta large" href={link} >
@@ -236,9 +296,9 @@ const EventBanner = ({
           <Button className="cta large" onClick={() => attendEvent({id})}>
             Interested
           </Button>}
-        {is_owner &&
-          <Button className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
-            Make event {visibility_status == 'private_event' ? 'public' : 'private'}
+        {is_owner && isPrivate &&
+          <Button inverted className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
+            Make event {isPrivate ? 'public' : 'private'}
           </Button>}
         </div>
     </ContentSection.FullRow>

@@ -16,6 +16,7 @@ const eventsReducer = (state=initialState.events, action) => {
       return {...state, error: action.payload, loading: false }
 
     case actionTypes.EVENT_ATTEND_CREATE_COMPLETE:
+      if (!state.data) return state
       data = state.data.filter(event => event.id != action.payload.event_id)
       return {...state, data, loading: false}
 

@@ -9,6 +9,7 @@ const StyledError = styled.div`
   a {
     padding: 1rem;
     margin: 0.5rem; 
+    display: inline-block;
   }
 `
 

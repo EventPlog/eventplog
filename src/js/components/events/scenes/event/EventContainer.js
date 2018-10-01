@@ -20,6 +20,7 @@ import {
   attendEvent,
   checkForValidSlug,
   updateViewCount,
+  addEventToStore,
 } from '../../actions'
 
 import {
@@ -70,15 +71,28 @@ class EventContainer extends Component {
     })
   }
 
+  eventFetchedFromServer = () => (
+    (!this.props.event ||
+        !this.props.event.id) &&
+        window.__INITIAL_DATA__ &&
+        window.__INITIAL_DATA__.event
+  )
+
   getData() {
     const {community_id, id} = this.props.match.params
+
+    if(this.eventFetchedFromServer()) {
+      this.props.addEventToStore(window.__INITIAL_DATA__.event)
+      this.updateViewCount()
+      return
+    }
+
     if (!this.props.event || !this.props.event.id || this.props.event.id != id) {
       this.setState({loading: true})
       this.props.getEvent(id, this.props.match.params.event_slug)
         .then(event => {
           this.setState({loading: false, event})
           this.updateViewCount()
-          mixpanel.track('EVENT_PAGE_VIEW')
         })
         .catch(error => this.setState({loading: false, error}))
     }
@@ -93,6 +107,7 @@ class EventContainer extends Component {
       recipient_id: this.state.event.id,
       recipient_type: 'Event'
     })
+    mixpanel.track('EVENT_PAGE_VIEW')
   }
 
   getParams = () => {
@@ -138,6 +153,7 @@ const mapDispatchToProps = (dispatch) => {
     updateAnnouncement,
     checkForValidSlug,
     updateViewCount,
+    addEventToStore,
     attendEvent: secureAction(attendEvent),
     updateEvent: secureAction(updateEvent),
     createComment: secureAction(createComment),

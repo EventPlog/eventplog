@@ -2,10 +2,6 @@ import React from 'react'
 import Topic from 'js/components/help/components/topic'
 import Description from 'js/components/help/components/help-description';
 import {Link} from 'react-router-dom'
-import allguest from 'img/help-pages/allguest.png'
-import importcsv from 'img/help-pages/importcsv.png'
-import newguest from 'img/help-pages/newguest.png'
-import botcode from 'img/help-pages/botcode.png'
 import HelpImage from 'js/components/help/components/image'
 
 const EventGuests = () => {
@@ -22,7 +18,7 @@ const EventGuests = () => {
           information on the guest section of backstage. You can directly check them in from here.
         </p>
 
-        <HelpImage src={allguest} alt="all guest information"/>
+        <HelpImage src="https://farm2.staticflickr.com/1971/43084424420_95ce72340b_o.png" alt="all guest information"/>
 
         <Topic>Import Guest information</Topic>
 
@@ -32,7 +28,7 @@ const EventGuests = () => {
           check them in.
         </p>
 
-        <HelpImage src={importcsv} alt="import csv"/><br/>
+        <HelpImage src="https://farm2.staticflickr.com/1975/43084419940_397a908df2_o.png" alt="import csv"/><br/>
 
         <Topic>Unregistered guest</Topic>
 
@@ -41,7 +37,7 @@ const EventGuests = () => {
           check them in by clicking on resister new guest.
         </p>
 
-        <HelpImage src={newguest} alt="New guest"/><br/>
+        <HelpImage src="https://farm2.staticflickr.com/1978/44896305971_a47eb888b2_o.png" alt="New guest"/><br/>
 
         <Topic>Messenger code for checkin</Topic>
 
@@ -50,7 +46,7 @@ const EventGuests = () => {
           code to check into the event using messenger code scanner.
         </p>
 
-        <HelpImage src={botcode} alt=" Messenger Bot Code"/>
+        <HelpImage src="https://farm2.staticflickr.com/1946/31023685208_4cb023d927_o.png" alt=" Messenger Bot Code"/>
       </Description> 
     </div>
   )

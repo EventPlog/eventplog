@@ -13,17 +13,17 @@ import {fakeAuth, PrivateRoute, PublicRoute} from '../../auth'
 
 
 const Communities = createLoader(() =>
-  import('./scenes/communities/index'  /* webpackChunkName: "Communities" */))
+  import('./scenes/communities/index'  /* webpackChunkName: "Communities" */), 'Communities')
 
 const Community = createLoader(() =>
-  import('./scenes/community' /* webpackChunkName: "CommunityWithContainer" */))
+  import('./scenes/community' /* webpackChunkName: "CommunityWithContainer" */), 'CommunityWithContainer')
 
 const NewCommunity = createLoader(() =>
-  import('./scenes/new-community' /* webpackChunkName: "NewCommunity" */))
+  import('./scenes/new-community' /* webpackChunkName: "NewCommunity" */), 'NewCommunity')
 
 
 const JoinACommunity = createLoader(() =>
-  import('./scenes/join-a-community' /* webpackChunkName: "JoinACommunity" */))
+  import('./scenes/join-a-community' /* webpackChunkName: "JoinACommunity" */), 'JoinACommunity')
 
 const StyledCommunityPlog = styled.div`
   height: 100%;

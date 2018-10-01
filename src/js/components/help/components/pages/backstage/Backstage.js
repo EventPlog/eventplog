@@ -16,7 +16,7 @@ const BackStage =()=>{
   return(
     <StyledBackstage>
       <Switch>
-        <Route exact path="/" component={EventPlanning}/>
+        <Route exact path="/" component={EventSettings}/>
         <Route exact path="/help/backstage" component={EventPlanning}/>
         <Route exact path="/help/backstage/event-feedback" component={EventFeedback}/>
         <Route exact path="/help/backstage/event-guests" component={EventGuests}/>

@@ -3,6 +3,7 @@ import Topic from 'js/components/help/components/topic'
 import Description from 'js/components/help/components/help-description';
 import {Link} from 'react-router-dom'
 
+// feedback image => https://www.flickr.com/photos/137068579@N06/43084420690/in/dateposted-public/
 const EventPlanning = () => {
   return(
     <div> 

@@ -40,7 +40,7 @@ const styles = css`
 
 const Announcements = function({
   className,
-  announcements,
+  announcements = {},
   getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
