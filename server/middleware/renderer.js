@@ -26,7 +26,6 @@ export default (req, res, next) => {
 
     const activeRoute = routes.find((route) => matchPath(req.url, route)) || {}
 
-    console.log('active route: ', activeRoute)
     const promise = activeRoute.fetchInitialData
       ? activeRoute.fetchInitialData(req.path)
       : Promise.resolve()
@@ -57,7 +56,6 @@ export default (req, res, next) => {
       )
       */
 
-      console.log('the data: ', data)
       let htmData = htmlData.replace(
         '<head>',
         `<head>${data}`
@@ -68,7 +66,6 @@ export default (req, res, next) => {
         `${data}</head>`
       )
 
-      console.log('the html ', htmData)
       return res.send(
         htmData
       );
