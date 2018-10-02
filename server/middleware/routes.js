@@ -69,7 +69,7 @@ const routes =  [
                   "@type": "Offer",
                   "url": "https://eventplog.com${path}",
                   "price": "0",
-                  "priceCurrency": "NGN",
+                  "priceCurrency": "NGN"
                 }
               }
               </script>
