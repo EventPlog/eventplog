@@ -25,7 +25,7 @@ class InvitationContainer extends Component {
   }
 
   getData() {
-    getPendingInvitation()
+    this.getPendingInvitation()
   }
 
   getProps = () => ({
