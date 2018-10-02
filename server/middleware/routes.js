@@ -50,9 +50,11 @@ const routes =  [
             <script>window.__INITIAL_DATA__=${serialize({event})}</script>
             <script type="application/ld+json">
               {
-                "@context": "http://schema.org",
+                "@context": "http:\/\/schema.org",
                 "@type": "Event",
+                "@id":"#event",
                 "name": "${event.title}",
+                "url": "https://eventplog.com${path}",
                 "startDate": "${event.start_time}",
                 "location": {
                   "@type": "Place",
