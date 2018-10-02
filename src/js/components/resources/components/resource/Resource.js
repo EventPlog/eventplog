@@ -76,7 +76,7 @@ const Resource = ({
   const title = generateTitle(resource, handleViewCount)
   const description = generateDescription(resource)
   const meta = generateMeta(resource)
-  const btn = currentUser && currentUser.id == resource.owner_id
+  const btn = event.is_stakeholder || (currentUser && currentUser.id == resource.owner_id)
     ? {
         onClick: () => handleEdit(),
         className: 'edit-btn',
