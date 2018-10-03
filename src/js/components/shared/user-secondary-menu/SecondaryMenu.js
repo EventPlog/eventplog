@@ -7,8 +7,6 @@ import Nav from 'js/components/shared/nav'
 import colors from 'js/styles/theme/colors'
 import { media } from 'js/styles/mixins'
 import { lighten } from 'polished'
-import Button from 'js/components/shared/button'
-import { Menu, Input, Icon } from 'semantic-ui-react'
 
 
 
@@ -55,13 +53,6 @@ const CommunityHeader = ({
 
         <Nav.Item>
           <Link to="/communities">Communities</Link>
-        </Nav.Item>
-
-         <Nav.Item>
-          <Button >
-            <Icon name="plus"/>
-              Create Event
-          </Button>
         </Nav.Item>
       </Nav>
     </div>
