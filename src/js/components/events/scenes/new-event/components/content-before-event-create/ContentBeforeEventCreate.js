@@ -102,6 +102,19 @@ const ContentBeforeEventCreate = ({
             </Form.Field>
         </Form.Field>
 
+         <Form.Field className="search-holder">
+          <Form.Select
+                search
+                name="title"
+                type="text"
+                value={event.title}
+                placeholder='Community Name' onChange={handleChange} 
+                />
+          <Button onClick={submitEvent}>
+            <Icon name="plus"/>
+          </Button>
+        </Form.Field>
+
         <Button onClick={submitEvent}>Create</Button>
       </Form>
     </div>
