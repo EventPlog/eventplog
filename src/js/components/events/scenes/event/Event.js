@@ -105,11 +105,6 @@ const Discussions = () => {
   return <Tab panes={getPanes()} />
 }
 
-const EventResources = ({event = {}}) => (
-  <Resources recipient_id={event.id}
-             recipient_type="Event" />
-)
-
 const Event = ({
   event = {},
   loading,
