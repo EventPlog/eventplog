@@ -16,15 +16,19 @@ const getOptimizedImageUrl = (url) => {
           url.substring(endIndex)
 }
 
-class PictureUploaderContainer extends Component {
+class ImageUploaderContainer extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { comment: {body: ''} }
     this.imageInputRef = React.createRef()
     this.imagePlaceholderRef = React.createRef()
     this.uploadImage = this.uploadImage.bind(this)
     this.handleImageChange = this.handleImageChange.bind(this)
+
+    this.state = {
+      image: null,
+      currentImage: this.props.currentImage
+    }
   }
 
   handleChange = (key, value) => {
@@ -35,7 +39,19 @@ class PictureUploaderContainer extends Component {
     if (!image) return false
 
     const imageObj = await this.uploadImage(image)
-    return  {pictures: [{url: getOptimizedImageUrl(imageObj.secure_url)}]}
+    return getOptimizedImageUrl(imageObj.secure_url)
+  }
+
+  saveImage = async () => {
+    const imageUrl = await this.getImageUrl(this.state.image)
+    this.props.setImage(imageUrl)
+    this.props.persistImage();
+    this.setState({image: null})
+  }
+
+  cancelChange = () => {
+    this.props.setImage(this.state.currentImage)
+    this.setState({image: null})
   }
 
   uploadImage = (imageFile) => {
@@ -56,12 +72,8 @@ class PictureUploaderContainer extends Component {
     const imageHold = this.props.imagePlaceholderRef
     const that = this
     reader.onload = function (e) {
-      // get loaded data and render thumbnail.
+      // get loaded data uri and render thumbnail.
       that.props.setImage(e.target.result)
-      // const img = new Image()
-      // img.src = e.target.result;
-      // imageHold.current.innerHTML = ''
-      // imageHold.current.append(img)
     };
 
     // read the image file as a data URL.
@@ -81,6 +93,8 @@ class PictureUploaderContainer extends Component {
     handleImageChange: this.handleImageChange,
     getImageUrl: this.getImageUrl,
     current_user: Auth.currentUser(),
+    saveImage: this.saveImage,
+    cancelChange: this.cancelChange,
   })
 
   render () {
@@ -98,4 +112,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PictureUploaderContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ImageUploaderContainer)

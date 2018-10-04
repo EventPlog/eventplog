@@ -42,7 +42,7 @@ injectGlobal`
 
 const store = configureStore();
 
-ReactDOM.hydrate(
+ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App store={store} />

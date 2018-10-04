@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageUploader should render correctly 1`] = `
+<styled.div>
+  <input
+    accept="image/*"
+    className="hidden"
+    id="upload-img"
+    name="image"
+    type="file"
+  />
+  <Button
+    className="btn-right"
+  >
+    <Icon
+      as="i"
+      className="image"
+    />
+  </Button>
+</styled.div>
+`;

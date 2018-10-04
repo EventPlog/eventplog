@@ -32,6 +32,7 @@ class EventContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {event: {}}
+    this.imagePlaceholderRef = React.createRef()
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -115,11 +116,12 @@ class EventContainer extends Component {
   }
 
   getProps = () => ({
-    ...this.state,
     ...this.props,
+    ...this.state,
     ...this.getParams(),
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    imagePlaceholderRef: this.imagePlaceholderRef,
     toggleVisibilityStatus: this.toggleVisibilityStatus,
   })
 
