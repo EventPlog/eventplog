@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Message } from 'semantic-ui-react'
+import { Form, Message, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
