@@ -11,6 +11,7 @@ import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
 import { validDate, pluralize, genEventLink } from 'js/utils'
+import ImageUploader from 'js/components/shared/image-uploader'
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -112,7 +113,7 @@ const eventBannerStyles = css`
   .cta {
     background: #fff;
     border: #fff;
-    /*box-shadow: 1px 2px 4px #000;*/
+    box-shadow: 1px 2px 4px #444;
     margin: 0.5rem 0; 
     letter-spacing: 0.15rem;
     
@@ -186,6 +187,26 @@ const eventBannerStyles = css`
       }
     }
   }
+  
+  .upload-btn-controls {
+    position: absolute;
+    top: 2rem;
+    
+    input, button {
+      margin-right: 1rem;
+      color: white;
+      border: 1px solid white;
+    }
+    
+    i {
+      color: white;
+      font-size: rem;
+    }
+    
+    .save-btn:not(:hover) {
+      background: ${props => props.theme.green};
+    }
+  }
 `
 
 
@@ -217,6 +238,8 @@ const EventBanner = ({
   className,
   toggleVisibilityStatus,
   eventLink,
+  imagePlaceholderRef,
+  setImage,
 }) => {
   const isPrivate = visibility_status == 'private_event'
   return (
@@ -224,6 +247,15 @@ const EventBanner = ({
           backgroundImage: `url(${featured_image || '/login-bg.jpg'})`
         }}>
       <div className="overlay" />
+
+      {is_stakeholder &&
+        <span className="upload-btn-controls">
+                <ImageUploader setImage={(image) => handleChange('featured_image', image)}
+                               currentImage={featured_image}
+                               persistImage={handleSubmit}
+                               imagePlaceholderRef={imagePlaceholderRef} />
+        </span>
+      }
 
       {is_stakeholder &&
       <div className="quick-menu-holder">
@@ -296,7 +328,7 @@ const EventBanner = ({
           <Button className="cta large" onClick={() => attendEvent({id})}>
             Interested
           </Button>}
-        {is_owner && isPrivate &&
+        {is_stakeholder && isPrivate &&
           <Button inverted className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
             Make event {isPrivate ? 'public' : 'private'}
           </Button>}
