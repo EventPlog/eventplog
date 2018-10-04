@@ -9,7 +9,7 @@ import TextArea from 'js/components/shared/text-area'
 import Auth from 'js/auth'
 import { media } from 'js/styles/mixins'
 import Loading from 'js/components/shared/loading'
-import PictureUploader from 'js/components/shared/picture-uploader'
+import ImageUploader from 'js/components/shared/image-uploader'
 
 const AddCommentStyles = styled.div`
   max-width: 820px;
@@ -123,7 +123,7 @@ const AddComment = ({
                     </div> }
           {
             <span className="right-controls">
-              <PictureUploader imageInputRef={imageInputRef}
+              <ImageUploader imageInputRef={imageInputRef}
                                setImage={setImage}
                                handleImageChange={handleImageChange}
                                imagePlaceholderRef={imagePlaceholderRef}

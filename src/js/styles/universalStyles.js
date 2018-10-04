@@ -9,7 +9,7 @@ const styles = css`
   --gray: ${defaults.gray};
   height: 100%;
   
-  /*background: ${lighten(0.45, defaults.blue)}*/;
+  /*background: ${lighten(0.45, defaults.blue)};*/
   
   a, a:hover {
     color: var(--activeLink);
@@ -46,7 +46,7 @@ const styles = css`
     bottom: 0;
     background: #000;
     opacity: 0.6;
-    z-index: 0
+    z-index: 0;
   } 
   
   .app-container {
@@ -142,4 +142,5 @@ const styles = css`
     background: transparent;
   }
 `
+
 export default styles;
