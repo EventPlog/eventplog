@@ -11,6 +11,7 @@ const eventsReducer = (state=initialState.organizers, action) => {
   switch(action.type) {
     case eventActionTypes.EVENT_SHOW_COMPLETE:
     case eventActionTypes.EVENT_UPDATE_COMPLETE:
+      if (!action.payload.organizing_team) return state
       return sortData(action.payload.organizing_team
                       .filter(user => user && user.role == 'Volunteer'))
 
