@@ -85,7 +85,7 @@ const Event = ({
 
   return (
     <StyledEvent activeLink={activeLink}>
-          {is_attending && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
+          {is_attending && !is_stakeholder && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
           <ContentPanel title="Description">
             <div className="event-description">
               <ContentEditable propName="description"
