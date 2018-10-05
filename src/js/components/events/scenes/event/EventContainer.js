@@ -85,9 +85,9 @@ class EventContainer extends Component {
 
     if(this.eventFetchedFromServer()) {
       const event = window.__INITIAL_DATA__.event
+      this.setState({loading: false, event})
       this.props.addEventToStore(event)
       this.updateViewCount()
-      this.setState({loading: false, event})
       return
     }
 
