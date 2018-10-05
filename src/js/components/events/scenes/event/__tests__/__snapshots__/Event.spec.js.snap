@@ -20,11 +20,11 @@ exports[`Event should render correctly 1`] = `
               },
               Object {
                 "content": [Function],
-                "name": "Report/Reviews",
+                "name": "Feedback",
               },
               Object {
                 "content": [Function],
-                "name": "Discussion (undefined)",
+                "name": "Discussion (0)",
               },
               Object {
                 "content": [Function],
