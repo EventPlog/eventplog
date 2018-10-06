@@ -4,8 +4,26 @@ import styled from 'styled-components';
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import ContentPanel from 'js/components/shared/content-panel'
+import Loading from "js/components/shared/loading";
+import { media } from 'js/styles/mixins'
 
 const StyledCheckInForm = styled.div`
+  margin: 2rem;
+  
+  .content-panel {
+    width: 100%;
+  }
+  
+  .content-header {
+    margin: 2rem;
+    
+    ${
+      media.phone`
+        margin: 0;
+        margin-bottom: 2rem;
+      `
+    }
+  }
   
   .ui.form {
     max-width: 400px;
@@ -18,6 +36,10 @@ const StyledCheckInForm = styled.div`
   
   button + button {
     margin-left: 1rem;
+  }
+  
+  .space-top {
+    margin-top: 2rem;
   }
 `
 
@@ -35,6 +57,7 @@ const emptyUser = {
 }
 const CheckInForm = ({
   user = emptyUser,
+  event = {},
   check_in_user,
   handleChange,
   handleStateChange,
@@ -43,73 +66,79 @@ const CheckInForm = ({
   error,
   loading,
 }) => {
+  if (loading) return <Loading />
   return (
-    <StyledCheckInForm>
-      <ContentPanel title="Register">
-        <Form loading={loading} success={success} error={error}>
-          <Message
-            success
-            header='Success!'
-            content={success}
-          />
+    <StyledCheckInForm className="">
+      <div className="app-container">
+        <ContentPanel title={`Register for ${event.title}`}>
+          <Form loading={loading} success={success} error={error}>
+            <Message
+              success
+              header='Success!'
+              content={success}
+            />
 
-          <Message
-            error
-            header='Error!'
-            content={error}
-          />
+            <Message
+              error
+              header='Error!'
+              content={error}
+            />
 
-          <Form.Field>
-            <label>First Name</label>
-            <Input name="first_name"
-                   value={user.first_name}
-                   placeholder='Ciroma'
-                   onChange={({target}) => handleChange(target.name, target.value)}/>
-          </Form.Field>
+            <Form.Field>
+              <label>First Name</label>
+              <Input name="first_name"
+                     value={user.first_name}
+                     placeholder='Ciroma'
+                     onChange={({target}) => handleChange(target.name, target.value)}/>
+            </Form.Field>
 
-          <Form.Field>
-            <label>Last Name</label>
-            <Input name="last_name"
-                   value={user.last_name}
-                   placeholder='Chukwuma'
-                   onChange={({target}) => handleChange(target.name, target.value)}/>
-          </Form.Field>
+            <Form.Field>
+              <label>Last Name</label>
+              <Input name="last_name"
+                     value={user.last_name}
+                     placeholder='Chukwuma'
+                     onChange={({target}) => handleChange(target.name, target.value)}/>
+            </Form.Field>
 
-          <Form.Field>
-            <label>Gender</label>
-            <Select onChange={(e, attr) => handleChange('gender', attr.value)}
-                    value={user.gender}
-                    defaultValue={'male'}
-                    placeholder='Gender' options={genderOptions} />
-          </Form.Field>
+            <Form.Field>
+              <label>Gender</label>
+              <Select onChange={(e, attr) => handleChange('gender', attr.value)}
+                      value={user.gender}
+                      defaultValue={'male'}
+                      placeholder='Gender' options={genderOptions} />
+            </Form.Field>
 
-          <Form.Field>
-            <label>Email</label>
-            <Input name="email"
-                   value={user.email}
-                   placeholder='ciroma@chukwuma.com'
-                   onChange={({target}) => handleChange(target.name, target.value)}/>
-          </Form.Field>
+            <Form.Field>
+              <label>Email</label>
+              <Input name="email"
+                     value={user.email}
+                     placeholder='ciroma@chukwuma.com'
+                     onChange={({target}) => handleChange(target.name, target.value)}/>
+            </Form.Field>
 
 
-          <Form.Field className="check-user">
-            <Checkbox name="check_in_user"
-                      checked={check_in_user}
-                      label='Check in this guest'
-                      onChange={(el, attr) => handleStateChange(attr.name, attr.checked)}/>
-          </Form.Field>
+            {event.is_stakeholder &&
+              <Form.Field className="check-user">
+                <Checkbox name="check_in_user"
+                          checked={check_in_user}
+                          label='Check in this guest'
+                          onChange={(el, attr) => handleStateChange(attr.name, attr.checked)}/>
+              </Form.Field>
+            }
 
-          <Button inverted
-                  type='submit'
-                  disabled={!user.email}
-                  onClick={handleSubmit}>
-            Submit
-          </Button>
-          <Button onClick={() => handleStateChange('user', emptyUser)}>
-            Clear
-          </Button>
-        </Form>
-      </ContentPanel>
+            <Button inverted
+                    type='submit'
+                    disabled={!user.email}
+                    className="space-top"
+                    onClick={handleSubmit}>
+              Submit
+            </Button>
+            <Button onClick={() => handleStateChange('user', emptyUser)}>
+              Clear
+            </Button>
+          </Form>
+        </ContentPanel>
+      </div>
     </StyledCheckInForm>
   )
 }

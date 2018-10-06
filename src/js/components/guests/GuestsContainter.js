@@ -14,8 +14,9 @@ class GuestsContainter extends Component {
   }
 
   getData() {
+    const {community_id, id} = this.props.match.params
     const { getGuests, event} = this.props
-    getGuests({event_id: event.id, per_page: 25, page: 1})
+    getGuests({event_id: event.id || id, per_page: 25, page: 1})
     mixpanel.track('GUEST_INDEX_PAGE_VIEW')
   }
 
