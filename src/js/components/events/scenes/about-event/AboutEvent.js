@@ -154,7 +154,7 @@ const Event = ({
               {`
               <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                   src="${window.location.host}/ext/e/xlt/register"
-                  style="border: 0;width:100px;min-height: 600px;height:100%"></iframe>
+                  style="border:0;width:100px;min-height:600px;height:100%"></iframe>
             `}
             </code>
           </p>
