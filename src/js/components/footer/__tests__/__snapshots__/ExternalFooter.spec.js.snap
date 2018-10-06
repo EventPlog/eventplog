@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExternalFooter should render correctly 1`] = `
+<styled.div
+  className="app-container"
+>
+  <div>
+    Powered by 
+    <img
+      alt="eventplog"
+      src="logo-gray-full.png"
+    />
+  </div>
+</styled.div>
+`;

@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render correctly 1`] = `
+<styled.div
+  className="footer"
+>
+  <div
+    className="footer-content app-container"
+  >
+    <div
+      className="footer-image"
+    >
+      <Link
+        replace={false}
+        to="/"
+      >
+        <img
+          alt="eventplog-logo"
+          src="eventplog-logo-name-inverted-small-v2.png"
+        />
+      </Link>
+    </div>
+    <div
+      className="footer-menu"
+    >
+      <div
+        className="footer-menu-list"
+      >
+        <ul>
+          <li>
+            <div
+              className="header"
+            >
+              Company
+            </div>
+            <Link
+              replace={false}
+              to="/about-us"
+            >
+              About us
+            </Link>
+          </li>
+          <li>
+            <div
+              className="header"
+            >
+              Products
+            </div>
+            <Link
+              replace={false}
+              to="/why-eventplog"
+            >
+              Why Eventplog?
+            </Link>
+          </li>
+          <li>
+            <div
+              className="header"
+            >
+              Resources
+            </div>
+            <Link
+              replace={false}
+              to="/events"
+            >
+              Events
+            </Link>
+          </li>
+          <li>
+            <div
+              className="header"
+            >
+              Extras
+            </div>
+            <Link
+              replace={false}
+              to="/help"
+            >
+              Help
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    className="footer-legal-section"
+  >
+    <div
+      className="app-container"
+    >
+      <div
+        className="right-links"
+      >
+        <ul>
+          <li>
+            <Link
+              replace={false}
+              to="/"
+            >
+              Copyright (c) 
+              2018
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="left-links"
+      >
+        <ul>
+          <li>
+            <Link
+              replace={false}
+              to="/legal/privacy-policy"
+            >
+              Privacy Policy
+            </Link>
+          </li>
+          <li>
+            <Link
+              replace={false}
+              to="/"
+            >
+              <Icon
+                as="i"
+                name="facebook"
+              />
+            </Link>
+          </li>
+          <li>
+            <Link
+              replace={false}
+              to="/"
+            >
+              <Icon
+                as="i"
+                className="twitter"
+                name="twitter square"
+              />
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</styled.div>
+`;

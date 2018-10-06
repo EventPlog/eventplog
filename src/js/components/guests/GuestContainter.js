@@ -9,6 +9,10 @@ import {
   checkInByForm,
 } from './actions'
 
+import {
+  getEvent
+} from 'js/components/events/actions'
+
 const emptyUser = {
   first_name: '',
   last_name: '',
@@ -26,6 +30,24 @@ class GuestContainter extends Component {
     feedback_url: ''
   }
 
+  componentDidMount() {
+    this.getData()
+  }
+
+  getData() {
+    const { event = {}, match} = this.props
+    if (event.id || !match.params.id) return
+    this.setState({loading: true})
+
+    this.props.getEvent(match.params.id)
+      .then(event => {
+        this.setState({loading: false})
+      })
+      .catch(error => {
+        this.setState({loading: false, error})
+      })
+  }
+
   handleChange = (key, value) => {
     this.setState({user: {
       ...this.state.user, [key]: value
@@ -40,7 +62,7 @@ class GuestContainter extends Component {
     const { id, user, check_in_user} = this.state
     return {
       id, check_in_user,
-      event_id: this.props.event.id,
+      event_id: this.props.event.id || this.props.match.id,
       check_in: {id, ...user}
     }
   }
@@ -69,24 +91,38 @@ class GuestContainter extends Component {
   handleSubmit = async (e) => {
     const validator = new Validator();
     if (!validator.validateEmail(this.state.user.email.trim())) {
-      return this.setState({error: "Hmmm.. something doesn't seem quite right with the email.."})
-    }
-    this.setState({loading: true})
-    let res = await this.props.checkInByForm(this.getPayload())
-    if (res) {
-      const { user, check_in_user } = this.state
-      const successMsg = this.state.check_in_user
-        ? `You've successfully checked in ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can check in another person.`
-        : `You've successfully registered ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can register another person.`
-
-      this.setState({
-        success: successMsg,
-        error: false,
-        loading: false,
-        user: emptyUser,
-        guest: res
+      return this.setState({
+        success: false,
+        error: "Hmmm.. something doesn't seem quite right with the email.."
       })
     }
+    this.setState({loading: true, error: false})
+    this.props.checkInByForm(this.getPayload())
+      .then(res => {
+        const { user, check_in_user } = this.state
+        let successMsg = this.state.check_in_user
+          ? `You've successfully checked in ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can check in another person.`
+          : `You've successfully registered ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can register another person.`
+
+        successMsg = this.props.event.is_stakeholder
+          ? successMsg
+          : `You've successfully registered for ${this.props.event.title}`
+
+        this.setState({
+          success: successMsg,
+          error: false,
+          loading: false,
+          user: emptyUser,
+          guest: res
+        })
+      })
+      .catch(error => {
+        this.setState({
+          loading: false,
+          error: 'An error occured. Please try again later.'
+        })
+      })
+
     mixpanel.track('GUEST_REGISTER_BY_FORM')
     if (this.state.check_in_user) {
       mixpanel.track('GUEST_CHECK_IN_BY_FORM')
@@ -128,6 +164,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    getEvent,
     checkInByForm,
     updateGuest,
     deleteGuest,

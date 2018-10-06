@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
-import { paramsToObj } from 'js/utils'
+import { paramsToObj, genEventLink } from 'js/utils'
 import { secureAction } from 'js/auth/actions'
 
 import {
@@ -79,6 +79,11 @@ class EventContainer extends Component {
         window.__INITIAL_DATA__.event
   )
 
+  attendEvent = (id) => {
+    this.props.currentUser && this.props.currentUser.id
+      ? this.props.attendEvent(id)
+      : this.props.history.push(`${genEventLink(this.props.event)}/register`)
+  }
   getData() {
     this.setState({loading: true})
     const {community_id, id} = this.props.match.params
@@ -125,6 +130,7 @@ class EventContainer extends Component {
     handleSubmit: this.handleSubmit,
     imagePlaceholderRef: this.imagePlaceholderRef,
     toggleVisibilityStatus: this.toggleVisibilityStatus,
+    attendEvent: this.attendEvent,
   })
 
   render () {
