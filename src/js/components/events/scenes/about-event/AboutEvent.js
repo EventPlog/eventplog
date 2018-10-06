@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { darken } from 'polished'
 import { Message } from 'semantic-ui-react'
 import ReactMarkdown from 'react-markdown'
@@ -84,6 +85,7 @@ const Event = ({
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
   const eventDue = (new Date(start_time)) <= (new Date())
 
+  const eventShortLink = `${window.location.host}${genEventLink(event)}/register`
   return (
     <StyledEvent activeLink={activeLink}>
       {is_attending && !is_stakeholder && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
@@ -147,13 +149,20 @@ const Event = ({
             To embed your registration form,&nbsp;
             copy and paste this embed code where you want the form to appear on your site on your site.
           </p>
-          <code>
-            {`
+          <p>
+            <code>
+              {`
               <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                   src="${window.location.host}/ext/e/xlt/register"
-                  style="border: 0;width:100px;min-height: 600px;height:100%"></iframe>
+                  style="border:0;width:100px;min-height:600px;height:100%"></iframe>
             `}
-          </code>
+            </code>
+          </p>
+          <p>
+            Alternatively, you can point your guests to&nbsp;
+            <Link to={`${genEventLink(event)}/register`}>{eventShortLink}</Link>&nbsp;
+            to register faster.
+          </p>
         </ContentPanel>
       }
     </StyledEvent>
