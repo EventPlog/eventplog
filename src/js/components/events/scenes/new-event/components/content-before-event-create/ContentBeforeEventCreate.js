@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Message, Icon } from 'semantic-ui-react'
+import { Form, Message } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
@@ -66,10 +66,7 @@ const ContentBeforeEventCreate = ({
   handleChange,
   submitEvent,
   loading,
-  error,
-  selected,
-  userCommunities,
-  handleSearchChange,
+  error
 }) => (
   <StyledContent>
     <h3>Create a event</h3>
@@ -103,23 +100,6 @@ const ContentBeforeEventCreate = ({
                      value={event.slug}
                      placeholder='amazing-event' onChange={handleChange}/>
             </Form.Field>
-        </Form.Field>
-
-         <Form.Field className="search-holder">
-          <Form.Select
-                search
-                name="title"
-                type="text"
-                placeholder='Community Name' 
-                value={selected}
-                options={userCommunities}
-                onChange={handleChange} 
-                onSearchChange={handleSearchChange}
-                />
-          {/**update button to create community ie onClick={submitEvent} **/}
-          <Button>
-            <Icon name="plus"/>
-          </Button>
         </Form.Field>
 
         <Button onClick={submitEvent}>Create</Button>

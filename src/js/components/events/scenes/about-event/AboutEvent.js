@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { darken } from 'polished'
+import { Message } from 'semantic-ui-react'
 import ReactMarkdown from 'react-markdown'
 
 // internal components
@@ -76,67 +78,93 @@ const Event = ({
   const isStakeHolder = event.is_stakeholder
 
   const {title, description, featured_image, start_date,
-          start_time, given_feedback, show_feedback_url,
-          is_attending, interested_persons, is_stakeholder,
-          announcements, comments, agenda} = event
+    start_time, given_feedback, show_feedback_url,
+    is_attending, interested_persons, is_stakeholder,
+    announcements, comments, agenda} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
   const eventDue = (new Date(start_time)) <= (new Date())
 
+  const eventShortLink = `${window.location.host}${genEventLink(event)}/register`
   return (
     <StyledEvent activeLink={activeLink}>
-          {is_attending && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
-          <ContentPanel title="Description">
-            <div className="event-description">
-              <ContentEditable propName="description"
-                               type="textarea"
-                               canEdit={isStakeHolder}
-                               defaultValue={description}
-                               onChange={handleChange}
-                               onSubmit={handleSubmit}>
+      {is_attending && !is_stakeholder && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
+      <ContentPanel title="Description">
+        <div className="event-description">
+          <ContentEditable propName="description"
+                           type="textarea"
+                           canEdit={isStakeHolder}
+                           defaultValue={description}
+                           onChange={handleChange}
+                           onSubmit={handleSubmit}>
 
-                <ReactMarkdown escapeHtml={false}
-                               source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
+            <ReactMarkdown escapeHtml={false}
+                           source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
 
-              </ContentEditable>
-            </div>
-          </ContentPanel>
+          </ContentEditable>
+        </div>
+      </ContentPanel>
 
-          <ContentPanel title="Agenda">
-            <div className="event-agenda">
-              <ContentEditable propName="agenda"
-                               type="textarea"
-                               canEdit={isStakeHolder}
-                               defaultValue={agenda}
-                               onChange={handleChange}
-                               onSubmit={handleSubmit}>
+      <ContentPanel title="Agenda">
+        <div className="event-agenda">
+          <ContentEditable propName="agenda"
+                           type="textarea"
+                           canEdit={isStakeHolder}
+                           defaultValue={agenda}
+                           onChange={handleChange}
+                           onSubmit={handleSubmit}>
 
-                <ReactMarkdown escapeHtml={false}
-                               source={agenda || (is_stakeholder ? 'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
+            <ReactMarkdown escapeHtml={false}
+                           source={agenda || (is_stakeholder ? 'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
 
-              </ContentEditable>
-            </div>
-          </ContentPanel>
+          </ContentEditable>
+        </div>
+      </ContentPanel>
 
-          <Announcements {...{announcements, getAnnouncements,
-                          createAnnouncement, updateAnnouncement,
-                          canCreateAnnouncement: is_stakeholder,
-                          recipient_id: event.id,
-                          recipient_type: 'Event'}} />
+      <Announcements {...{announcements, getAnnouncements,
+        createAnnouncement, updateAnnouncement,
+        canCreateAnnouncement: is_stakeholder,
+        recipient_id: event.id,
+        recipient_type: 'Event'}} />
 
 
-          <ContentPanel title="Meet the organizers">
-            <Members>
-              {organizers && organizers.map(member =>
-                <Members.Member member={member} />
-              )}
-            </Members>
-            {noOrganizersYet && is_stakeholder &&
-              <Button.Link className="btn-inline" to={`${genEventLink(event, event.community)}/backstage/settings`}>
-                Go backstage to add organizers
-              </Button.Link>}
-          </ContentPanel>
+      <ContentPanel title="Meet the organizers">
+        <Members>
+          {organizers && organizers.map(member =>
+            <Members.Member member={member} />
+          )}
+        </Members>
+        {noOrganizersYet && is_stakeholder &&
+        <Button.Link className="btn-inline" to={`${genEventLink(event, event.community)}/backstage/settings`}>
+          Go backstage to add organizers
+        </Button.Link>}
+      </ContentPanel>
 
+      {is_stakeholder &&
+        <ContentPanel title="Embed your registration form">
+          <Message info>
+            <p>Only you and other organizers can see this code section.</p>
+          </Message>
+          <p>
+            To embed your registration form,&nbsp;
+            copy and paste this embed code where you want the form to appear on your site on your site.
+          </p>
+          <p>
+            <code>
+              {`
+              <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                  src="${window.location.host}/ext/e/xlt/register"
+                  style="border:0;width:100px;min-height:600px;height:100%"></iframe>
+            `}
+            </code>
+          </p>
+          <p>
+            Alternatively, you can point your guests to&nbsp;
+            <Link to={`${genEventLink(event)}/register`}>{eventShortLink}</Link>&nbsp;
+            to register faster.
+          </p>
+        </ContentPanel>
+      }
     </StyledEvent>
   )
 }

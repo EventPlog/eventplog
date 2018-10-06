@@ -9,10 +9,13 @@ import Button from 'js/components/shared/button'
 const StyledLoader = styled.div`
 `
 
-const PictureUploader = ({
+const ImageUploader = ({
+  image,
   imageInputRef,
   handleImageChange,
-  showImageSelectOptions
+  showImageSelectOptions,
+  saveImage,
+  cancelChange,
 }) => {
   return (
     <StyledLoader>
@@ -22,13 +25,25 @@ const PictureUploader = ({
              id="upload-img"
              type="file"
              name="image"
-             accept="image/*" />,
+             accept="image/*" />
       <Button className="btn-right"
               onClick={showImageSelectOptions}>
         <Icon className="image" />
       </Button>
+      {image &&
+        <span>
+          <Button className="btn-right save-btn"
+                  onClick={saveImage}>
+            Save
+          </Button>
+          <Button className="btn-right cancel-btn"
+                  onClick={cancelChange}>
+            Cancel
+          </Button>
+        </span>
+      }
     </StyledLoader>
   )
 }
 
-export default PictureUploader
+export default ImageUploader

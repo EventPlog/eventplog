@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
-import { paramsToObj } from 'js/utils'
+import { paramsToObj, genEventLink } from 'js/utils'
 import { secureAction } from 'js/auth/actions'
 
 import {
@@ -32,6 +32,7 @@ class EventContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {event: {}}
+    this.imagePlaceholderRef = React.createRef()
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -78,17 +79,24 @@ class EventContainer extends Component {
         window.__INITIAL_DATA__.event
   )
 
+  attendEvent = (id) => {
+    this.props.currentUser && this.props.currentUser.id
+      ? this.props.attendEvent(id)
+      : this.props.history.push(`${genEventLink(this.props.event)}/register`)
+  }
   getData() {
+    this.setState({loading: true})
     const {community_id, id} = this.props.match.params
 
     if(this.eventFetchedFromServer()) {
-      this.props.addEventToStore(window.__INITIAL_DATA__.event)
+      const event = window.__INITIAL_DATA__.event
+      this.setState({loading: false, event})
+      this.props.addEventToStore(event)
       this.updateViewCount()
       return
     }
 
     if (!this.props.event || !this.props.event.id || this.props.event.id != id) {
-      this.setState({loading: true})
       this.props.getEvent(id, this.props.match.params.event_slug)
         .then(event => {
           this.setState({loading: false, event})
@@ -115,12 +123,14 @@ class EventContainer extends Component {
   }
 
   getProps = () => ({
-    ...this.state,
     ...this.props,
+    ...this.state,
     ...this.getParams(),
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    imagePlaceholderRef: this.imagePlaceholderRef,
     toggleVisibilityStatus: this.toggleVisibilityStatus,
+    attendEvent: this.attendEvent,
   })
 
   render () {

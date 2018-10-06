@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../../../../../../styles/theme/colors'
-import welcomeImg from '../../../../../../../img/giphys/welcome.gif'
-import peopleDancing from '../../../../../../../img/giphys/people-dancing.gif'
+import welcomeImg from 'img/giphys/welcome.gif'
+import peopleDancing from 'img/giphys/people-dancing.gif'
+import Button from 'js/components/shared/button'
 
 const StyledMainContent = styled.div`
   display: flex;
@@ -23,12 +23,17 @@ const StyledMainContent = styled.div`
     width: 500px;
     margin: 10px 0 100px;
   }
+  
+  .btn-continue {
+    margin-bottom: 2rem;
+  }
 `
 
 const headerMsg = (token, status) => {
   if (!token) {
-    return 'One step left!'
+    return 'Welcome to EventPlog!'
   }
+
   switch (status) {
     case 'procesing':
       return 'Hang on ...'
@@ -56,9 +61,13 @@ const MainContent = ({ status, token, confirmed }) => (
       [
         <p>
           We've sent you an email with a link to confirm your email address. &nbsp;
-          Please click on that link to get started.
+          Please click on that link to confirm your email.
         </p>,
         <img src={peopleDancing} alt="people-dancing" />,
+        <Button.Link className="btn-continue"
+                     to="/">
+          Continue
+        </Button.Link>
       ]
     }
   </StyledMainContent>

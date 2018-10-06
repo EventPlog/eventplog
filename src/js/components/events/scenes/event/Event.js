@@ -105,13 +105,10 @@ const Discussions = () => {
   return <Tab panes={getPanes()} />
 }
 
-const EventResources = ({event = {}}) => (
-  <Resources recipient_id={event.id}
-             recipient_type="Event" />
-)
-
 const Event = ({
   event = {},
+  loading,
+  error,
   community,
   activeLink,
   past_events = {},
@@ -121,20 +118,21 @@ const Event = ({
   getComments,
   createComment,
   updateComment,
+  imagePlaceholderRef,
   toggleVisibilityStatus,
   activeIndex,
 }) => {
 
-  if (event.loading) return <Loading />
-  if (event.error) return <Loading.Error msg={event.error} />
+  if (loading || event.loading) return <Loading />
+  if (error || event.error) return <Loading.Error msg={error || event.error} />
 
   const { event_discussion = {}, announcements, comments } = event
 
   const getPanes = () => {
     return [
       {name: `About`, content: AboutEvent },
-      {name: `Report/Reviews`, content: Report },
-      {name: `Discussion (${event_discussion.comments_count})`, content: Discussions },
+      {name: `Feedback`, content: Report },
+      {name: `Discussion (${event_discussion.comments_count || 0})`, content: Discussions },
       {name: `Slides & Resources`, content: Resources },
     ]
   }
@@ -144,7 +142,7 @@ const Event = ({
   const { title, description, featured_image} = event
   return (
     <StyledEvent activeLink={activeLink}>
-      <EventBanner {...{...event, community, handleChange,
+      <EventBanner {...{...event, community, handleChange, imagePlaceholderRef,
         handleSubmit, attendEvent, eventLink, toggleVisibilityStatus}} />
 
       <div className="app-container">

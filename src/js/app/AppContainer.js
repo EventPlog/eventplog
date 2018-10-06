@@ -21,13 +21,20 @@ class AppContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
+  const { event = {}} = state.events
+  const linkColor = community.id ? community.brand_color : event.brand_color
   const isCommunityPath = matchPath(ownProps.location.pathname, '/c/:id')
+  const isEventPath = matchPath(ownProps.location.pathname, '/e/:id')
+  const isInternalPath = !matchPath(ownProps.location.pathname, '/ext/*')
   const isHomePath = matchPath(ownProps.location.pathname, {path: '/', exact: true})
   const isLoginPath = matchPath(ownProps.location.pathname, {path: '/login', exact: true})
   const isSignuPath = matchPath(ownProps.location.pathname, {path: '/signup', exact: true})
+  const shouldApplyBrandColor = (isCommunityPath || isEventPath || !isInternalPath) && linkColor
+
   return {
     ...ownProps,
-    activeLink: isCommunityPath && Object.keys(community).length > 0 ? (community.brand_color || defaults.activeLink) : defaults.activeLink,
+    isInternalPath,
+    activeLink: shouldApplyBrandColor ? (linkColor || defaults.activeLink) : defaults.activeLink,
     showBreadCrumb: !(isHomePath || isLoginPath || isSignuPath)
   }
 }
