@@ -24,11 +24,11 @@ class SignupFormContainer extends Component {
   }
 
   handleSubmit = async (e) => {
-    this.setState({loading: true})
+    this.setState({loading: true, error: false})
 
     this.props.signupByEmail(this.state.user)
       .then(res => {
-        this.props.history.push('/user/confirm')
+        window.location.href = '/user/confirm'
         this.setState({loading: false})
       })
       .catch((err = {}) => {
