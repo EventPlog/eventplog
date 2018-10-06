@@ -45,7 +45,7 @@ const CheckInForm = ({
 }) => {
   return (
     <StyledCheckInForm>
-      <ContentPanel title="Register a guest">
+      <ContentPanel title="Register">
         <Form loading={loading} success={success} error={error}>
           <Message
             success
