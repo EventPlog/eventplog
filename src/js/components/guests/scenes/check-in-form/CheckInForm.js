@@ -8,7 +8,7 @@ import Loading from "js/components/shared/loading";
 import { media } from 'js/styles/mixins'
 
 const StyledCheckInForm = styled.div`
-  margin: 2rem;
+  margin: 2rem 0;
   
   .content-panel {
     width: 100%;
@@ -126,7 +126,7 @@ const CheckInForm = ({
               <Form.Field className="check-user">
                 <Checkbox name="check_in_user"
                           checked={check_in_user}
-                          label='Check in this guest'
+                          label='Check in'
                           onChange={(el, attr) => handleStateChange(attr.name, attr.checked)}/>
               </Form.Field>
             }
