@@ -28,6 +28,7 @@ const styles = css`
   
   code {
     font-family: Andalemono;
+    font-weight: 600;
   }
   
   .text-center {

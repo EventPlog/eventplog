@@ -57,6 +57,9 @@ const EventPlog = ({user = {}}) => (
         <PrivateRoute path="/communities/:community_id/events/:id/backstage" component={BackStage} />
         <PrivateRoute path="/communities/:community_id/events/:id/register" component={BackStage} />
 
+        <PublicRoute exact path="/ext" component={UserEvents} />
+        <PublicRoute exact path="/ext/e/:id" component={Event} />
+        <PublicRoute exact path="/ext/e/:id/register" component={RegistrationForm} />
       </Switch>
     </StyledEventPlog>
 )

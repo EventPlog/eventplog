@@ -10,6 +10,7 @@ import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
 import Header from 'js/components/header'
 import Footer from 'js/components/footer'
+import ExternalFooter from 'js/components/footer/ExternalFooter'
 import universalStyles from '../styles/universalStyles'
 import NewInvitationBar from 'js/components/invitations/components/new-invitation-bar'
 import HelpPage from '../components/help';
@@ -42,7 +43,13 @@ class App extends Component {
   state = { activeItem: 'home' };
 
   render() {
-    const { activeLink, showBreadCrumb, store } = this.props;
+    const {
+      activeLink,
+      isInternalPath,
+      showBreadCrumb,
+      store
+    } = this.props;
+
     const activeLinkBg = darken(0.1, activeLink)
     return (
       <ThemeProvider theme={{
@@ -53,9 +60,9 @@ class App extends Component {
       
         <ScrollToTop>
           <StyledApp>
-            <Header />
-            {showBreadCrumb && <BreadCrumb {...this.props.location} />}
-            <NewInvitationBar />
+            {isInternalPath && <Header />}
+            {isInternalPath && showBreadCrumb && <BreadCrumb {...this.props.location} />}
+            {<NewInvitationBar />}
             <Switch>
               <Route exact path="/" component={Events} />
               <Route exact path="/login" component={Login} />
@@ -72,8 +79,10 @@ class App extends Component {
               <Route path="/c" component={Communities} />
               <Route path="/communities" component={Communities} />
               <Route path="/e/*" component={Events} />
+              <Route path="/ext/e/*" component={Events} />
             </Switch>
-            <Footer />
+            {isInternalPath && <Footer />}
+            {!isInternalPath && <ExternalFooter />}
           </StyledApp>
         </ScrollToTop>
       </ThemeProvider>

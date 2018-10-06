@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import color from '../../styles/theme/variables'
-import footerLogo from '../../../img/eventplog-logo-name-inverted-small-v2.png'
+import footerLogo from 'img/eventplog-logo-name-inverted-small-v2.png'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'

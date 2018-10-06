@@ -19,10 +19,13 @@ const eventsReducer = (state=initialState.guests, action) => {
       return {...state, error: action.payload, loading: false }
 
     case actionTypes.GUEST_UPDATE_COMPLETE:
+      if (!state.data) return state
       data = sortData(state.data.filter(guest => guest.id != action.payload.id))
       return {...state, data: [...data, action.payload], loading: false }
 
     case actionTypes.GUEST_DELETE_COMPLETE:
+      if (!state.data) return state
+      data = sortData(state.data.filter(guest => guest.id != action.payload.id))
       data = state.data.filter(guest => guest.id != action.payload.id)
       meta = {...state.meta, total_count: state.meta.total_count - 1}
       return {...state, data, meta, loading: false }
