@@ -3,7 +3,7 @@
 exports[`CheckInForm should render correctly 1`] = `
 <styled.div>
   <ContentPanel
-    title="Register a guest"
+    title="Register"
   >
     <Form
       as="form"
