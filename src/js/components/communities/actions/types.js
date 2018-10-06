@@ -36,4 +36,9 @@ export default keyMirror({
   COMMUNITY_VIEWS_UPDATE_START: null,
   COMMUNITY_VIEWS_UPDATE_COMPLETE: null,
   COMMUNITY_VIEWS_UDPATE_FAIL: null,
+
+  //update usercommunities types?
+  USER_COMMUNITIES_INDEX_START: null,
+  USER_COMMUNITIES_INDEX_COMPLETE: null,
+  USER_COMMUNITIES_INDEX_FAIL: null,
 })
