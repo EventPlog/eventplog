@@ -25,6 +25,11 @@ const StyledCheckInForm = styled.div`
     }
   }
   
+  .content-body {
+    margin-left: 0;
+    margin-right: 0;  
+  }
+  
   .ui.form {
     max-width: 400px;
     margin: auto; 
