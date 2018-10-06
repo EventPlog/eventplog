@@ -5,14 +5,20 @@ exports[`ConfirmEmail should render correctly 1`] = `
   className="main-content app-container"
 >
   <h1>
-    One step left!
+    Welcome to EventPlog!
   </h1>
   <p>
-    We've sent you an email with a link to confirm your email address.   Please click on that link to get started.
+    We've sent you an email with a link to confirm your email address.   Please click on that link to confirm your email.
   </p>
   <img
     alt="people-dancing"
     src="people-dancing.gif"
   />
+  <Component
+    className="btn-continue"
+    to="/"
+  >
+    Continue
+  </Component>
 </styled.div>
 `;
