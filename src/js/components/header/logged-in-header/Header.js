@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 // internal
 import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
 import { Icon } from 'semantic-ui-react'
-import Button from 'js/components/shared/button'
 import Nav from 'js/components/shared/nav'
 import grayLogo from 'img/logo-gray-full-v2.png'
 
@@ -18,7 +17,7 @@ const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
     </div>
 
     <Nav hideOnMobile={hideMenu}>
-      <Nav.Item>
+      {/**<Nav.Item>
         {!inCommunity &&
           <Button.Link to="/c/new"
                      activeClassName="hidden">
@@ -39,13 +38,17 @@ const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
             <span className="hidden-md">Create a community</span>
           </Link>}
       </Nav.Item>
+        **/}
 
       {/*<Nav.Item>*/}
         {/*<Link to="/user/profile">My Profile</Link>*/}
       {/*</Nav.Item>*/}
 
       <Nav.Item>
+        <Link to="/events/new">Create Event</Link>
+      </Nav.Item>
 
+      <Nav.Item>
         <Link to="/logout">Log out</Link>
       </Nav.Item>
     </Nav>

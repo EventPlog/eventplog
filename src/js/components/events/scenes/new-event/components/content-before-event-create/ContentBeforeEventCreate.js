@@ -66,7 +66,10 @@ const ContentBeforeEventCreate = ({
   handleChange,
   submitEvent,
   loading,
-  error
+  error,
+  selected,
+  userCommunities,
+  handleSearchChange,
 }) => (
   <StyledContent>
     <h3>Create a event</h3>
@@ -107,10 +110,14 @@ const ContentBeforeEventCreate = ({
                 search
                 name="title"
                 type="text"
-                value={event.title}
-                placeholder='Community Name' onChange={handleChange} 
+                placeholder='Community Name' 
+                value={selected}
+                options={userCommunities}
+                onChange={handleChange} 
+                onSearchChange={handleSearchChange}
                 />
-          <Button onClick={submitEvent}>
+          {/**update button to create community ie onClick={submitEvent} **/}
+          <Button>
             <Icon name="plus"/>
           </Button>
         </Form.Field>
