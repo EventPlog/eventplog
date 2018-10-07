@@ -6,6 +6,7 @@ import Button from 'js/components/shared/button'
 import ContentPanel from 'js/components/shared/content-panel'
 import Loading from "js/components/shared/loading";
 import { media } from 'js/styles/mixins'
+import { genEventLink } from 'js/utils'
 
 const StyledCheckInForm = styled.div`
   margin: 2rem 0;
@@ -72,10 +73,11 @@ const CheckInForm = ({
   loading,
 }) => {
   if (loading) return <Loading />
+  const title = <a href={`${window.location.origin}${genEventLink(event)}?ref=check_in_form`}>{event.title}</a>
   return (
     <StyledCheckInForm className="">
       <div className="app-container">
-        <ContentPanel title={`Register for ${event.title}`}>
+        <ContentPanel title={<p>Register for {title}</p>}>
           <Form loading={loading} success={success} error={error}>
             <Message
               success
