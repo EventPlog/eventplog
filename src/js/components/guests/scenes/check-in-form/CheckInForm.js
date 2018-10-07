@@ -73,7 +73,7 @@ const CheckInForm = ({
   loading,
 }) => {
   if (loading) return <Loading />
-  const title = <a href={`${window.location.origin}${genEventLink(event)}?utm_source=check_in_form`}>{event.title}</a>
+  const title = <a href={event.link || `${window.location.origin}${genEventLink(event)}?utm_source=check_in_form`}>{event.title}</a>
   return (
     <StyledCheckInForm className="">
       <div className="app-container">
