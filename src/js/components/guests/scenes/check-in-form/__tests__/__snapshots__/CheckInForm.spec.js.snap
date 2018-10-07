@@ -8,7 +8,14 @@ exports[`CheckInForm should render correctly 1`] = `
     className="app-container"
   >
     <ContentPanel
-      title="Register for undefined"
+      title={
+        <p>
+          Register for 
+          <a
+            href="http://localhost/e/undefined?utm_source=check_in_form"
+          />
+        </p>
+      }
     >
       <Form
         as="form"
