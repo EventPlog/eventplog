@@ -1,20 +1,24 @@
 export const getBrowserName = () => {
   // Opera 8.0+
-  switch(true) {
-    case !!window.chrome && !!window.chrome.webstore:
-      return 'Chrome'
-    case typeof InstallTrigger !== 'undefined':
-      return 'Firefox'
-    case (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0:
-      return 'Opera'
-    case /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification)):
-      return 'Safari'
-    case /*@cc_on!@*/false || !!document.documentMode:
-      return 'Internet Explorer'
-    case !isIE && !!window.StyleMedia:
-      return 'Edge'
-    default:
-      return 'Other'
+  try {
+    switch(true) {
+      case !!window.chrome && !!window.chrome.webstore:
+        return 'Chrome'
+      case typeof InstallTrigger !== 'undefined':
+        return 'Firefox'
+      case (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0:
+        return 'Opera'
+      case /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification)):
+        return 'Safari'
+      case /*@cc_on!@*/false || !!document.documentMode:
+        return 'Internet Explorer'
+      case !!window.StyleMedia:
+        return 'Edge'
+      default:
+        return 'Other'
+    }
+  } catch (err) {
+    return 'Other'
   }
 }
 
