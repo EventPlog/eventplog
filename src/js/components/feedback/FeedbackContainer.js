@@ -8,16 +8,54 @@ import {
   submitFeedback,
 } from './actions'
 
+import {
+  getEvent,
+  addEventToStore,
+} from 'js/components/events/actions'
+
 import checkEqual from 'js/utils/checkEqual'
 
 
 class FeedbackContainer extends Component {
   state = {feedback: {}}
 
+  componentDidMount() {
+    this.getData()
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.guest_id == nextProps.guest_id) return
     const { guest_id, guest_name } = nextProps
     return { guest_id, guest_name, feedback: {} }
+  }
+
+  eventFetchedFromServer = () => (
+    (!this.props.event ||
+    !this.props.event.id) &&
+    window.__INITIAL_DATA__ &&
+    window.__INITIAL_DATA__.event
+  )
+
+  getData() {
+    const { event = {}, match} = this.props
+    if (event.id || !match.params.id) return
+
+    if(this.eventFetchedFromServer()) {
+      const event = window.__INITIAL_DATA__.event
+      this.setState({loading: false, event})
+      this.props.addEventToStore(event)
+      return
+    }
+
+    this.setState({loading: true})
+
+    this.props.getEvent(match.params.id)
+      .then(event => {
+        this.setState({loading: false})
+      })
+      .catch(error => {
+        this.setState({loading: false, error})
+      })
   }
 
   handleChange = (key, value) => {
@@ -75,6 +113,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     mockGetFeedbackReport,
     submitFeedback,
+    getEvent,
+    addEventToStore,
   }, dispatch)
 }
 

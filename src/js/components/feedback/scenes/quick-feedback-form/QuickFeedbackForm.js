@@ -11,10 +11,12 @@ const StyledQuickFeedbackForm = styled.div`
   height: 100%;
   padding-bottom: 200px;
   
+  &.app-container.feedback {
+    margin: 2rem auto;
+  }
+  
   .main-content {
     width: 100%;
-    max-width: 600px;
-    margin: 60px auto;
    
     ${
       media.phone`
@@ -39,9 +41,9 @@ type FeedbackFormType = {
 }
 
 const QuickFeedbackForm = (props: FeedbackFormType) => (
-  <div className="app-container">
+  <StyledQuickFeedbackForm className="app-container feedback">
     <MainContent {...props } />
-  </div>
+  </StyledQuickFeedbackForm>
 )
 
 export default QuickFeedbackForm

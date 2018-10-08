@@ -2,7 +2,7 @@
 
 exports[`ExternalFooter should render correctly 1`] = `
 <styled.div
-  className="app-container"
+  className="app-container footer"
 >
   <div>
     Powered by 
@@ -10,6 +10,12 @@ exports[`ExternalFooter should render correctly 1`] = `
       alt="eventplog"
       src="logo-gray-full.png"
     />
+    <Link
+      replace={false}
+      to="/e/new"
+    >
+      Create your own event now.
+    </Link>
   </div>
 </styled.div>
 `;
