@@ -220,11 +220,9 @@ const EventBanner = ({
   time,
   date,
   start_time,
-  display_start_time,
   end_time,
-  display_end_time,
-  start_date,
-  end_date,
+  show_feedback_form,
+  given_feedback,
   community = {},
   handleChange,
   handleSubmit,
@@ -242,6 +240,10 @@ const EventBanner = ({
   setImage,
 }) => {
   const isPrivate = visibility_status == 'private_event'
+
+  const eventDue = (new Date(start_time)) <= (new Date())
+  const eventUrl = genEventLink({id, slug}, community)
+  const showFeedbackForm = is_attending && !is_stakeholder && eventDue && (!given_feedback || show_feedback_url)
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
           backgroundImage: `url(${featured_image || '/login-bg.jpg'})`
@@ -317,7 +319,7 @@ const EventBanner = ({
       </div>
       <div className="cta-btns">
         {(is_stakeholder || organizer_role) &&
-          <Button.Link className={`cta large ${isPrivate ? 'inverted' : ''}`} to={`${genEventLink({id, slug}, community)}/backstage/settings?activeIndex=1`}>
+          <Button.Link className={`cta large ${isPrivate ? 'inverted' : ''}`} to={`${eventUrl}/backstage/settings?activeIndex=1`}>
             <Icon name="settings" /> Settings
           </Button.Link>}
         {is_attending && !is_owner && !!link &&
@@ -332,6 +334,10 @@ const EventBanner = ({
           <Button inverted className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
             Make event {isPrivate ? 'public' : 'private'}
           </Button>}
+        {show_feedback_form &&
+          <Button.Link className="cta large" to={`${eventUrl}/feedback`} >
+            Give Feedback
+          </Button.Link>}
         </div>
     </ContentSection.FullRow>
   )

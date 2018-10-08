@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewCommunity should render correctly 1`] = `
-<div
-  className="app-container"
+<styled.div
+  className="app-container feedback"
 >
   <EventUpdate
     community={
@@ -14,5 +14,5 @@ exports[`NewCommunity should render correctly 1`] = `
     handleChange={[Function]}
     submitEmail={[Function]}
   />
-</div>
+</styled.div>
 `;

@@ -84,6 +84,7 @@ class EventContainer extends Component {
       ? this.props.attendEvent(id)
       : this.props.history.push(`${genEventLink(this.props.event)}/register`)
   }
+
   getData() {
     this.setState({loading: true})
     const {community_id, id} = this.props.match.params

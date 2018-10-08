@@ -10,7 +10,8 @@ import {
 } from './actions'
 
 import {
-  getEvent
+  getEvent,
+  addEventToStore,
 } from 'js/components/events/actions'
 
 const emptyUser = {
@@ -34,9 +35,24 @@ class GuestContainter extends Component {
     this.getData()
   }
 
+  eventFetchedFromServer = () => (
+    (!this.props.event ||
+    !this.props.event.id) &&
+    window.__INITIAL_DATA__ &&
+    window.__INITIAL_DATA__.event
+  )
+
   getData() {
     const { event = {}, match} = this.props
     if (event.id || !match.params.id) return
+
+    if(this.eventFetchedFromServer()) {
+      const event = window.__INITIAL_DATA__.event
+      this.setState({loading: false, event})
+      this.props.addEventToStore(event)
+      return
+    }
+
     this.setState({loading: true})
 
     this.props.getEvent(match.params.id)
@@ -168,6 +184,7 @@ const mapDispatchToProps = (dispatch) => {
     checkInByForm,
     updateGuest,
     deleteGuest,
+    addEventToStore
   }, dispatch)
 }
 

@@ -19,11 +19,12 @@ class EventUpdateContainer extends Component {
   }
 
   handleSubmit = () => {
+    this.setState({ loading: true, error: false, success: false })
     const {commuity, ...others} = this.state.event
     return this.props.updateEvent(others).then(event => {
-      this.setState({event})
+      this.setState({event, success: 'Event updated successfully'})
       mixpanel.track('EVENT_UPDATE')
-    })
+    }).catch(error => this.setState({success: false, error: 'An error occured. Please try again.'}))
   }
 
   checkForValidSlug = () => {
@@ -51,8 +52,10 @@ class EventUpdateContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const { event } = state.events
   return {
-    ...ownProps
+    ...ownProps,
+    event
   }
 }
 

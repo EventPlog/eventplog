@@ -6,6 +6,7 @@ import ContentPanel from 'js/components/shared/content-panel'
 import color from 'js/styles/theme/variables'
 import ContentBeforeFeedbackSubmit from '../content-before-feedback-submit'
 import ContentAfterFeedbackSubmit from '../content-after-feedback-submit'
+import { genEventLink } from 'js/utils'
 
 const StyleEventUpdate = styled.div`
   width: 100%;
@@ -56,9 +57,10 @@ const EventUpdate = ({
 }) => {
 
   const personalGreeting = guest_name && guest_name.trim() ? `for ${guest_name}` : '(Yours)'
+  const title = <a href={`${window.location.origin}${genEventLink(event, event.community)}?utm_source=feedback_form`}>{event.title}</a>
   return (
     <StyleEventUpdate className="main-content">
-      <ContentPanel title={`Quick feedback ${personalGreeting}`}>
+      <ContentPanel title={<p>Quick feedback {personalGreeting} - {title}</p>}>
         {feedbackCreated
           ? <ContentAfterFeedbackSubmit {...{event}} />
           : <ContentBeforeFeedbackSubmit {...{feedback, loading, success, handleChange, handleSubmit, event}} />
