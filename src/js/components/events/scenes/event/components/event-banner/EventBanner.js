@@ -334,7 +334,7 @@ const EventBanner = ({
           <Button inverted className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
             Make event {isPrivate ? 'public' : 'private'}
           </Button>}
-        {!show_feedback_form &&
+        {show_feedback_form &&
           <Button.Link className="cta large" to={`${eventUrl}/feedback`} >
             Give Feedback
           </Button.Link>}
