@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom'
 
 /// utilities
 import { createEvent, mockCreateEvent } from '../../actions'
+import {getUserCommunities, mockGetUserCommunities} from '../../../communities/actions'
+
 
 export class EventContainer extends Component {
   state = {
@@ -17,11 +19,15 @@ export class EventContainer extends Component {
       visibility_status: 'public_event',
     },
     error: false,
-    eventCreated: false
+    eventCreated: false,
+  }
+
+  componentWillMount(props) {
+    this.getData()
   }
 
   handleChange = (e) => {
-    this.setState({event: {...this.state.event, [e.target.name]: e.target.value} })
+    this.setState({ event: {...this.state.event, [e.target.name]: e.target.value}})
   }
 
   submitEvent = () => {
@@ -32,11 +38,18 @@ export class EventContainer extends Component {
       .catch(error => this.setState({loading: false, error}))
   }
 
+  getData() {
+    //this.props.getUserCommunities()
+    this.props.mockGetUserCommunities({})  
+  }
+
   getProps = () => ({
     ...this.props,
     ...this.state,
     handleChange: this.handleChange,
     submitEvent: this.submitEvent,
+    userCommunities:this.userCommunities,
+    mockGetUserCommunities: this.mockGetUserCommunities
   })
 
   render() {
@@ -45,13 +58,18 @@ export class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { community = {} } = state.communities
-  return { community }
+  const { community = {}, user_communities = {}} = state.communities
+  return { 
+    community, 
+    user_communities 
+  }
 }
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    createEvent
+    createEvent,
+    getUserCommunities,
+    mockGetUserCommunities
   }, dispatch)
 )
 
