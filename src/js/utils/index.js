@@ -52,7 +52,9 @@ export const genEventLink = (event = {}, community = {}) => {
 }
 
 export const genCommunityLink = (community = {}) => (
-  `/c/${community.slug || community.id}`
+  community && community.id
+  ? `/c/${community.slug || community.id}`
+  : ''
 )
 
 export const removeSpecialChars = (str) => (
