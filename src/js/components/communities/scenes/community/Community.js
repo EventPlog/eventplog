@@ -54,6 +54,7 @@ const Main = ({activeLink, ...props}) => {
         <PrivateRoute exact path="/c/:id/edit" render={() => <UpdateCommunity {...props} />} />
         <Route exact path="/c/:community_id/e" render={() => <CommunityMainContent {...props} />}/>
         <Route path="/c/:community_id/e/*" render={() => <Events {...props} />}/>
+        <Route path="/ext/c/:community_id/e/*" render={() => <Events {...props} />}/>
 
         <Route exact path="/communities/:id" render={(routerProps) => <CommunityMainContent {...props} />}/>
         <PrivateRoute path="/communities/:id/edit" render={() => <UpdateCommunity {...props} />} />

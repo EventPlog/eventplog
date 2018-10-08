@@ -80,6 +80,7 @@ class App extends Component {
               <Route path="/communities" component={Communities} />
               <Route path="/e/*" component={Events} />
               <Route path="/ext/e/*" component={Events} />
+              <Route path="/ext/c/*" component={Communities} />
             </Switch>
             {isInternalPath && <Footer />}
             {!isInternalPath && <ExternalFooter />}
