@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import { withRouter, matchPath } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Validator from 'js/utils/validator'
 
 import {
   mockGetFeedbackReport,
@@ -12,6 +13,8 @@ import {
   getEvent,
   addEventToStore,
 } from 'js/components/events/actions'
+
+import Auth from 'js/auth'
 
 import checkEqual from 'js/utils/checkEqual'
 
@@ -68,9 +71,19 @@ class FeedbackContainer extends Component {
   }
 
   handleSubmit = () => {
-    this.setState({ loading: true })
     const { event = {}, guest_id } = this.props
     let payload = {...this.state.feedback, guest_id, event_id: event.id}
+
+    const validator = new Validator();
+    if (!this.props.isLoggedIn && !validator.validateEmail(this.state.feedback.email.trim())) {
+      return this.setState({
+        success: false,
+        error: "Hmmm.. something doesn't seem quite right with the email.."
+      })
+    }
+
+    this.setState({ loading: true })
+
     this.props.submitFeedback(payload)
       .then(feedback => {
         this.setState({feedback, loading: false, feedbackCreated: true})
@@ -105,7 +118,9 @@ const mapStateToProps = (state, ownProps) => {
   const queryParams = getQueryParams(ownProps.location.search)
   return {
     event,
-    ...queryParams
+    ...queryParams,
+    current_user: Auth.currentUser(),
+    isLoggedIn: Auth.isLoggedIn
   }
 }
 
