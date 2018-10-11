@@ -1,57 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
-<Form
-  as="form"
->
-  <FormField>
-    <label>
-      How satisfied are you with this event?*
-    </label>
-    <RatingExampleHeart
-      max={10}
-      name="satisfaction_level"
-      onRate={[Function]}
-    />
-  </FormField>
-  <FormField>
-    <label>
-      How likely are you to invite someone to a similar event hosted by this community?*
-    </label>
-    <RatingExampleHeart
-      max={10}
-      onRate={[Function]}
-    />
-  </FormField>
-  <FormField>
-    <label>
-      What did you love about the event? How would you improve it?*
-    </label>
-    <Styled(Component)
-      name="feedback_note"
-      onChange={[Function]}
-      placeholder="I love the way the facilitator broke down the details. I would have preferred we spend more time in the Q and A section though."
-    />
-  </FormField>
-  <FormField>
-    <Checkbox
-      label="Keep me anonymous"
-      name="anonymous"
-      onClick={[Function]}
-      type="checkbox"
-      value="anonymous"
-    />
-  </FormField>
-  <FormGroup>
-    <FormField>
-      <Button
-        disabled={true}
-        inverted={true}
-        type="submit"
-      >
-        Submit
-      </Button>
-    </FormField>
-  </FormGroup>
-</Form>
+<p>
+  We can't find the event specified. 
+  <Component
+    to="/"
+  >
+    Home
+  </Component>
+</p>
 `;
