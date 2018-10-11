@@ -61,8 +61,17 @@ const EventUpdate = ({
   checkForValidSlug,
 }) => {
   if (loading) return <Loading/>
-  const { title, description, link, featured_image, slug, agenda, hashtags,
-          start_time=(new Date()), end_time=(new Date()), community = {} } = event
+  const {
+    title,
+    description,
+    link,
+    featured_image,
+    slug,
+    agenda,
+    hashtags,
+    visibility_status,
+    start_time=(new Date()), end_time=(new Date()),
+    community = {} } = event
   return (
     <StyleEventUpdate>
       <ContentPanel title="Edit this event">
@@ -164,7 +173,7 @@ const EventUpdate = ({
           </Form.Field>
 
           <Form.Field>
-            <Checkbox checked
+            <Checkbox checked={visibility_status == 'public_event'}
                       onClick={(e, attr) =>
                         handleChange('visibility_status',
                                       attr.checked ? 'public_event' : 'private_event' ) }

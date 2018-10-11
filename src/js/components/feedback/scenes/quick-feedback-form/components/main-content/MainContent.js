@@ -51,9 +51,11 @@ const EventUpdate = ({
   guest_name,
   loading,
   success,
+  error,
   handleChange,
   handleSubmit,
   feedbackCreated,
+  current_user,
 }) => {
 
   const personalGreeting = guest_name && guest_name.trim() ? `for ${guest_name}` : '(Yours)'
@@ -63,7 +65,9 @@ const EventUpdate = ({
       <ContentPanel title={<p>Quick feedback {personalGreeting} - {title}</p>}>
         {feedbackCreated
           ? <ContentAfterFeedbackSubmit {...{event}} />
-          : <ContentBeforeFeedbackSubmit {...{feedback, loading, success, handleChange, handleSubmit, event}} />
+          : <ContentBeforeFeedbackSubmit {...{feedback, loading, success, error,
+                                              current_user, handleChange,
+                                              handleSubmit, event}} />
         }
       </ContentPanel>
     </StyleEventUpdate>
