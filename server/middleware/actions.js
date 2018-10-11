@@ -70,6 +70,6 @@ const fetchEventMeta = (path = {}) => {
 }
 
 export default {
-  fetchComunityMeta,
+  fetchCommunityMeta,
   fetchEventMeta
 }
