@@ -328,7 +328,7 @@ const EventBanner = ({
           </Button.Link>}
         {!is_attending &&
           <Button className="cta large" onClick={() => attendEvent({id})}>
-            Interested
+            Register
           </Button>}
         {is_stakeholder && isPrivate &&
           <Button inverted className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
