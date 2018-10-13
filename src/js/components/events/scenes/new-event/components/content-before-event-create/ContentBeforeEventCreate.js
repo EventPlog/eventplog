@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Message, Icon } from 'semantic-ui-react'
+import { Form, Message, Icon, Modal } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
@@ -9,6 +9,7 @@ import { media } from 'js/styles/mixins'
 import { genCommunityLink } from 'js/utils'
 import Select from 'js/components/shared/select'
 
+import CreateCommunityForm from 'js/components/communities/scenes/new-community'
 
 const StyledContent = styled.div`
   align-items: center;
@@ -71,16 +72,29 @@ const ContentBeforeEventCreate = ({
   error,
   user_communities,
   onSearchChange,
+  onSelectChange,
+  selected,
+  searchQuery,
+  onCloseModal,
 }) => {
   const userCommunitiesOptions = () => {
      
     const { data = []} = user_communities
     return data.map(user_community => ({
       key: user_community.id,
-      value: user_community.id,
+      value: user_community.name,
       text: user_community.name,
     }))
   }
+
+
+const inlineStyle = {
+  modal : {
+    marginTop: '0px !important',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
+};
   
   return (
     <StyledContent>
@@ -118,25 +132,35 @@ const ContentBeforeEventCreate = ({
           </Form.Field>
 
           <Form.Field className="search-holder">
-          <label>Which of your communities own this event?</label>
-            <span> 
-              <Select
+              <label>Which of your communities own this event? Have no community? Create one</label>
+                <span> 
+                  <Select
                     search
                     name="title"
                     type="text"
                     placeholder='Community Name' 	
-                    onChange={onSearchChange} 
-                    //value={selected}
+                    onChange={onSelectChange} 
+                    value={selected}
                     options={userCommunitiesOptions()}
-                    //onSearchChange={onSearchChange}
-                    />
-              {/** button should create community ie onClick={createCommunity}* */}
-              <Button >
-                <Icon name="plus"/>
-              </Button>            
-            </span>
-
-          </Form.Field>
+                    onSearchChange={onSearchChange}
+                    text={searchQuery}
+                    searchQuery={searchQuery}
+                  />
+                  
+                  <Modal
+                    onClose={onCloseModal}
+                    trigger={ 
+                      <Button>
+                        <Icon name="plus"/>
+                      </Button> }
+                    className="modal"
+                    style={inlineStyle.modal}
+                  >
+                    <CreateCommunityForm/>
+                  </Modal>                      
+                </span>
+              </Form.Field>
+          
 
           <Button onClick={submitEvent}>Create</Button>
         </Form>
