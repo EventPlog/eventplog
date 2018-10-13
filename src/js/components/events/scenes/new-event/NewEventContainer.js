@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 /// utilities
 import { createEvent, mockCreateEvent } from '../../actions'
-import {getUserCommunities, mockGetUserCommunities} from '../../../communities/actions'
+import {getUserCommunities, mockGetUserCommunities,getCommunity} from '../../../communities/actions'
 
 
 export class EventContainer extends Component {
@@ -56,7 +56,7 @@ export class EventContainer extends Component {
 
   getData() {
     //this.props.getUserCommunities()
-    this.props.mockGetUserCommunities({})  
+    this.props.mockGetUserCommunities({})
   }
 
   getProps = () => ({
@@ -66,6 +66,7 @@ export class EventContainer extends Component {
     submitEvent: this.submitEvent,
     userCommunities:this.userCommunities,
     mockGetUserCommunities: this.mockGetUserCommunities,
+    getCommunity:getCommunity,
     onSearchChange: this.onSearchChange,
     onSelectChange:this.onSelectChange,
     onCloseModal: this.onCloseModal
@@ -88,7 +89,8 @@ const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
     createEvent,
     getUserCommunities,
-    mockGetUserCommunities
+    mockGetUserCommunities,
+    getCommunity
   }, dispatch)
 )
 
