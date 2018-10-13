@@ -49,6 +49,7 @@ const CommunityPlog = ({community = {}, communities= [], user = {}}) => (
         <PublicRoute exact path="/c" component={Communities} />
         <PublicRoute exact path="/c/new" component={NewCommunity} />
         <PublicRoute path="/c/:id" component={Community} />
+        <PublicRoute path="/ext/c/:id" component={Community} />
 
         <PublicRoute path="/" component={Communities} />
       </Switch>

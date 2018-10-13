@@ -77,18 +77,14 @@ const Event = ({
 
   const isStakeHolder = event.is_stakeholder
 
-  const {title, description, featured_image, start_date,
-    start_time, given_feedback, show_feedback_url,
-    is_attending, interested_persons, is_stakeholder,
-    announcements, comments, agenda} = event
+  const {title, description, is_stakeholder,
+          announcements, agenda} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
-  const eventDue = (new Date(start_time)) <= (new Date())
 
   const eventShortLink = `${window.location.host}${genEventLink(event)}/register`
   return (
     <StyledEvent activeLink={activeLink}>
-      {is_attending && !is_stakeholder && eventDue && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
       <ContentPanel title="Description">
         <div className="event-description">
           <ContentEditable propName="description"
@@ -153,7 +149,7 @@ const Event = ({
             <code>
               {`
               <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                  src="${window.location.host}/ext/e/xlt/register"
+                  src="${window.location.origin}/ext${genEventLink(event)}/register"
                   style="border:0;width:100px;min-height:600px;height:100%"></iframe>
             `}
             </code>

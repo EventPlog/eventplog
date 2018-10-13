@@ -162,7 +162,7 @@ const CommunityHeader = ({
     id,
     logo,
     description,
-    display_name,
+    name,
     featured_image,
     topic_interests,
     no_of_views,
@@ -181,7 +181,7 @@ const CommunityHeader = ({
           {logo && <img src={logo} />}
 
           <div className="details">
-            {!logo && <h3>{display_name}</h3>}
+            {!logo && <h3>{name}</h3>}
             {description && <small>{description.substr(0, 70)}</small>}
 
             <small>{no_of_followers} followers. {no_of_views} views.</small>

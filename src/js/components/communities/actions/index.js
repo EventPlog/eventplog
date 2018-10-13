@@ -55,9 +55,9 @@ export const getCommunity = (communityId, slug) => {
 
 export const createCommunity = (data) => {
   let actions = baseActions({
-    requestType: actionTypes.COMMUNITY_INDEX_START,
-    receiveType: actionTypes.COMMUNITY_INDEX_COMPLETE,
-    failType: actionTypes.COMMUNITY_INDEX_FAIL,
+    requestType: actionTypes.COMMUNITY_CREATE_START,
+    receiveType: actionTypes.COMMUNITY_CREATE_COMPLETE,
+    failType: actionTypes.COMMUNITY_CREATE_FAIL,
   })
 
   return handleApiCall({

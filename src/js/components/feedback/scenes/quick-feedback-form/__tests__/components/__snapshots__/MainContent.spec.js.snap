@@ -5,7 +5,16 @@ exports[`main content - New Community component should render correctly 1`] = `
   className="main-content"
 >
   <ContentPanel
-    title="Quick feedback (Yours)"
+    title={
+      <p>
+        Quick feedback 
+        (Yours)
+         - 
+        <a
+          href="http://localhost/e/undefined?utm_source=feedback_form"
+        />
+      </p>
+    }
   >
     <ContentBeforeFeedbackSubmit
       event={Object {}}

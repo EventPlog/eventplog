@@ -17,7 +17,8 @@ const ContentBeforeFeedbackSubmit = ({
   handleChange,
   handleSubmit,
   loading,
-  error
+  error,
+  current_user,
 }) => {
 
   const {
@@ -25,12 +26,35 @@ const ContentBeforeFeedbackSubmit = ({
     satisfaction_level,
     net_promoter_score,
     feedback_note,
-    anonymous
+    anonymous,
+    email
   } = feedback
 
-  const requiredFieldsEmpty = !(satisfaction_level && net_promoter_score && feedback_note)
+  const loggedIn = current_user && current_user.id
+  const requiredFieldsEmpty = !(satisfaction_level && net_promoter_score && feedback_note && (loggedIn || email))
+
+  if (!loading && !error && (!event || !event.id)) {
+    return <p>We can't find the event specified. <Button.Link to="/">Home</Button.Link></p>
+  }
   return (
     <Form loading={loading} error={error}>
+      <Message
+        error
+        header='An error occured.'
+        content={error}
+      />
+
+      {!loggedIn &&
+        <Form.Field>
+          <label>What's your email?*</label>
+          <small>The same one you RSVPed to the event with.</small>
+          <Input value={email}
+                 name="email"
+                 type="email"
+                 placeholder="someone@example.com"
+                 onChange={({target}) => handleChange(target.name, target.value)} />
+        </Form.Field>
+      }
 
       <Form.Field>
         <label>How satisfied are you with this event?*</label>

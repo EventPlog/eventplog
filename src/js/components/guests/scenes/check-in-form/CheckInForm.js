@@ -6,9 +6,10 @@ import Button from 'js/components/shared/button'
 import ContentPanel from 'js/components/shared/content-panel'
 import Loading from "js/components/shared/loading";
 import { media } from 'js/styles/mixins'
+import { genEventLink } from 'js/utils'
 
 const StyledCheckInForm = styled.div`
-  margin: 2rem;
+  margin: 2rem 0;
   
   .content-panel {
     width: 100%;
@@ -23,6 +24,11 @@ const StyledCheckInForm = styled.div`
         margin-bottom: 2rem;
       `
     }
+  }
+  
+  .content-body {
+    margin-left: 0;
+    margin-right: 0;  
   }
   
   .ui.form {
@@ -67,10 +73,11 @@ const CheckInForm = ({
   loading,
 }) => {
   if (loading) return <Loading />
+  const title = <a href={`${window.location.origin}${genEventLink(event, event.community)}?utm_source=check_in_form`}>{event.title}</a>
   return (
     <StyledCheckInForm className="">
       <div className="app-container">
-        <ContentPanel title={`Register for ${event.title}`}>
+        <ContentPanel title={<p>Register for {title}</p>}>
           <Form loading={loading} success={success} error={error}>
             <Message
               success
@@ -121,7 +128,7 @@ const CheckInForm = ({
               <Form.Field className="check-user">
                 <Checkbox name="check_in_user"
                           checked={check_in_user}
-                          label='Check in this guest'
+                          label='Check in'
                           onChange={(el, attr) => handleStateChange(attr.name, attr.checked)}/>
               </Form.Field>
             }

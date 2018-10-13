@@ -30,7 +30,12 @@ class EventContainer extends Component {
 
   getData() {
     const {community_id, id} = this.props.match.params
-    this.props.getPastEvents({id, community_id, page: 1, per_page: 3})
+    this.props.getPastEvents({
+      id,
+      community_id: community_id || this.props.event.community_id,
+      page: 1,
+      per_page: 3
+    })
   }
 
   getProps = () => ({

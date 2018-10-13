@@ -9,6 +9,7 @@ import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle'
 import DateTimePickerStyles from 'js/styles/thirdparty/date-time-picker-styles'
 import { validDate, removeSpecialChars } from 'js/utils'
 import TextArea from 'js/components/shared/text-area'
+import Loading from 'js/components/shared/loading'
 
 const StyleEventUpdate = styled.div`
   ${ DateTimePickerStyles }
@@ -59,8 +60,18 @@ const EventUpdate = ({
   slug_check = {},
   checkForValidSlug,
 }) => {
-  const { title, description, link, featured_image, slug, agenda, hashtags,
-          start_time=(new Date()), end_time=(new Date()), community = {} } = event
+  if (loading) return <Loading/>
+  const {
+    title,
+    description,
+    link,
+    featured_image,
+    slug,
+    agenda,
+    hashtags,
+    visibility_status,
+    start_time=(new Date()), end_time=(new Date()),
+    community = {} } = event
   return (
     <StyleEventUpdate>
       <ContentPanel title="Edit this event">
@@ -161,9 +172,13 @@ const EventUpdate = ({
                    onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 
-          {/*<Form.Field>*/}
-            {/*<Checkbox checked label='Make this event public' />*/}
-          {/*</Form.Field>*/}
+          <Form.Field>
+            <Checkbox checked={visibility_status == 'public_event'}
+                      onClick={(e, attr) =>
+                        handleChange('visibility_status',
+                                      attr.checked ? 'public_event' : 'private_event' ) }
+                      label='Make this event public' />
+          </Form.Field>
 
           <Button inverted type='submit' onClick={handleSubmit}>
             Save
