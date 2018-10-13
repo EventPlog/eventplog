@@ -61,6 +61,10 @@ const StyledContent = styled.div`
    align-items: center;
    white-space: nowrap;
  } 
+ .select-search {
+    width:85%;
+    margin-right:1rem;
+ }
 `
 
 const ContentBeforeEventCreate = ({
@@ -133,11 +137,12 @@ const inlineStyle = {
 
           <Form.Field className="search-holder">
               <label>Which of your communities own this event? Have no community? Create one</label>
-                <span> 
+                <div className="same-line"> 
                   <Select
                     search
                     name="title"
                     type="text"
+                    className="select-search"
                     placeholder='Community Name' 	
                     onChange={onSelectChange} 
                     value={selected}
@@ -158,7 +163,7 @@ const inlineStyle = {
                   >
                     <CreateCommunityForm/>
                   </Modal>                      
-                </span>
+                </div>
               </Form.Field>
           
 
