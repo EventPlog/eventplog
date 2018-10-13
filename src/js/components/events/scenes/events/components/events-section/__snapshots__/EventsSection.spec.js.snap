@@ -16,10 +16,8 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         By 
         <Link
           replace={false}
-          to="/c/1"
-        >
-          Facebook Developer Circle Lagos
-        </Link>
+          to=""
+        />
       </span>
     }
     featured_image="/tech_is_in_you.png"
@@ -47,12 +45,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/1/e/1"
+        to="/e/1"
       >
         Tech is in you
       </Link>
     }
-    titleLink="/c/1/e/1"
+    titleLink="/e/1"
   />
   <MainContentCard
     btn={
@@ -66,10 +64,8 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         By 
         <Link
           replace={false}
-          to="/c/2"
-        >
-          Google Developer Group
-        </Link>
+          to=""
+        />
       </span>
     }
     featured_image="/login-bg.jpg"
@@ -97,12 +93,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/2/e/2"
+        to="/e/2"
       >
         Writers corner workshop with writing and use of English
       </Link>
     }
-    titleLink="/c/2/e/2"
+    titleLink="/e/2"
   />
   <MainContentCard
     btn={
@@ -116,10 +112,8 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         By 
         <Link
           replace={false}
-          to="/c/3"
-        >
-          ForLoop Lagos
-        </Link>
+          to=""
+        />
       </span>
     }
     featured_image="/login-bg.jpg"
@@ -147,12 +141,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/3/e/3"
+        to="/e/3"
       >
         Figma Design Series
       </Link>
     }
-    titleLink="/c/3/e/3"
+    titleLink="/e/3"
   />
 </ContentPanel>
 `;

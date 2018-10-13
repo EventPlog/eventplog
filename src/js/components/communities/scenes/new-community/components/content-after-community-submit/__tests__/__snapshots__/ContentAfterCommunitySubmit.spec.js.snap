@@ -19,7 +19,7 @@ exports[`Communities::NewCommunity::ContentAfterCommunitySubmit it renders corre
   </p>
   <Component
     className="medium lowercase"
-    to="/c/undefined"
+    to=""
   >
     Take me to my community update page
   </Component>
