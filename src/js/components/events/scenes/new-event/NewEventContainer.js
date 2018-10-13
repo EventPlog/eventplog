@@ -20,6 +20,9 @@ export class EventContainer extends Component {
     },
     error: false,
     eventCreated: false,
+    searchQuery:'',
+    selected: null,
+    isModalOpen: false,
   }
 
   componentWillMount(props) {
@@ -28,6 +31,19 @@ export class EventContainer extends Component {
 
   handleChange = (e) => {
     this.setState({ event: {...this.state.event, [e.target.name]: e.target.value}})
+  }
+
+  onSelectChange=(e)=>{
+    this.setState({ selected: e.target.value});
+  }
+
+  onSearchChange = (e, data) => {
+    console.log(e.target.searchQuery)
+    this.setState({ searchQuery: e.target.searchQuery });
+  }
+
+  onCloseModal=(e)=>{
+    this.setState({isModalOpen:false})
   }
 
   submitEvent = () => {
@@ -49,7 +65,10 @@ export class EventContainer extends Component {
     handleChange: this.handleChange,
     submitEvent: this.submitEvent,
     userCommunities:this.userCommunities,
-    mockGetUserCommunities: this.mockGetUserCommunities
+    mockGetUserCommunities: this.mockGetUserCommunities,
+    onSearchChange: this.onSearchChange,
+    onSelectChange:this.onSelectChange,
+    onCloseModal: this.onCloseModal
   })
 
   render() {
@@ -61,7 +80,7 @@ const mapStateToProps = (state, ownProps) => {
   const { community = {}, user_communities = {}} = state.communities
   return { 
     community, 
-    user_communities 
+    user_communities
   }
 }
 
