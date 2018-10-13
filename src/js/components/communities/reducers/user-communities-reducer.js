@@ -1,20 +1,27 @@
 import initialState from './intialState'
-import actionsTypes from '../actions/types'
+import actionTypes from '../actions/types'
 import UpdateItemCollection from 'js/reducers/helpers'
 
-const CommunityReducer =(state=initialState.user_communities, action) =>{
+const UserCommunitiesReducer =(state=initialState.user_communities, action) =>{
     let data
     switch(action.type){
-        case actionsTypes.USER_COMMUNITY_INDEX_START:
-            return {...state, loading:true}
-        case actionsTypes.USER_COMMUNITY_INDEX_COMPLETE:
-            return {...state, ...action.payload, loading: false}
-        case actionsTypes.USER_COMMUNITY_INDEX_FAIL:
-            return{...state, loading: false , error: action.payload}
+        case actionTypes.USER_COMMUNITY_INDEX_START:
+          return {...state, loading:true}
+
+        case actionTypes.USER_COMMUNITY_INDEX_COMPLETE:
+          return {...state, ...action.payload, loading: false}
+
+        case actionTypes.USER_COMMUNITY_INDEX_FAIL:
+          return{...state, loading: false , error: action.payload}
+
+        case actionTypes.COMMUNITY_CREATE_COMPLETE:
+          data = [...state.data, action.payload]
+          return { ...state, data, loading: false }
+
         default :
-            return state
+          return state
     };
 
 }
 
-export default CommunityReducer;
+export default UserCommunitiesReducer;
