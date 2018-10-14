@@ -72,3 +72,118 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
   </div>
 </styled.div>
 `;
+
+exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
+<styled.div>
+  <h3>
+    Create a event
+  </h3>
+  <p>
+    What's the title of your event?
+  </p>
+  <div
+    className="submit-form"
+  >
+    <Form
+      as="form"
+      error={false}
+    >
+      <Message
+        error={true}
+        header="Error"
+      />
+      <FormField
+        className="wide email-holder"
+      >
+        <label>
+          What's the name of your event?
+        </label>
+        <Styled(Input)
+          name="title"
+          placeholder="Event title"
+          type="text"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          How'd you like people to visit your event page?
+        </label>
+        <FormField
+          className="same-line"
+        >
+          eventplog.com
+          /e/
+          <Styled(Input)
+            name="slug"
+            placeholder="amazing-event"
+          />
+        </FormField>
+      </FormField>
+      <FormField
+        className="search-holder"
+      >
+        <label>
+          Which of your communities own this event? Have no community? Create one
+        </label>
+        <div
+          className="same-line"
+        >
+          <Styled(Input)
+            className="select-search"
+            name="title"
+            options={
+              Array [
+                Object {
+                  "key": 1,
+                  "text": "Facebook Developer Circle Lagos",
+                  "value": "Facebook Developer Circle Lagos",
+                },
+                Object {
+                  "key": 2,
+                  "text": "Google Developer Group",
+                  "value": "Google Developer Group",
+                },
+                Object {
+                  "key": 3,
+                  "text": "ForLoop Lagos",
+                  "value": "ForLoop Lagos",
+                },
+              ]
+            }
+            placeholder="Community Name"
+            search={true}
+            type="text"
+          />
+          <Modal
+            className="modal"
+            closeOnDimmerClick={true}
+            closeOnDocumentClick={false}
+            dimmer={true}
+            eventPool="Modal"
+            style={
+              Object {
+                "marginLeft": "auto",
+                "marginRight": "auto",
+                "marginTop": "0px !important",
+              }
+            }
+            trigger={
+              <Button>
+                <Icon
+                  as="i"
+                  name="plus"
+                />
+              </Button>
+            }
+          >
+            <Component />
+          </Modal>
+        </div>
+      </FormField>
+      <Button>
+        Create
+      </Button>
+    </Form>
+  </div>
+</styled.div>
+`;

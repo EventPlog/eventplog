@@ -11,19 +11,29 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
         "text": "Interested",
       }
     }
-    description=""
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/c/1"
+        >
+          Facebook Developer Circle Lagos
+        </Link>
+      </span>
+    }
     featured_image="/tech_is_in_you.png"
     key="1"
     meta="211 people interested"
     title={
       <Link
         replace={false}
-        to="/e/1"
+        to="/c/1/e/1"
       >
         Tech is in you
       </Link>
     }
-    titleLink="/e/1"
+    titleLink="/c/1/e/1"
   />
   <SidebarCard
     btn={
@@ -32,19 +42,29 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
         "text": "Interested",
       }
     }
-    description=""
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/c/2"
+        >
+          Google Developer Group
+        </Link>
+      </span>
+    }
     featured_image="/login-bg.jpg"
     key="2"
     meta="211 people interested"
     title={
       <Link
         replace={false}
-        to="/e/2"
+        to="/c/2/e/2"
       >
         Writers corner workshop with writing and use of English
       </Link>
     }
-    titleLink="/e/2"
+    titleLink="/c/2/e/2"
   />
   <SidebarCard
     btn={

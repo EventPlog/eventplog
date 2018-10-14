@@ -16,8 +16,10 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         By 
         <Link
           replace={false}
-          to=""
-        />
+          to="/c/1"
+        >
+          Facebook Developer Circle Lagos
+        </Link>
       </span>
     }
     featured_image="/tech_is_in_you.png"
@@ -45,12 +47,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/e/1"
+        to="/c/1/e/1"
       >
         Tech is in you
       </Link>
     }
-    titleLink="/e/1"
+    titleLink="/c/1/e/1"
   />
   <MainContentCard
     btn={
@@ -64,8 +66,10 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         By 
         <Link
           replace={false}
-          to=""
-        />
+          to="/c/2"
+        >
+          Google Developer Group
+        </Link>
       </span>
     }
     featured_image="/login-bg.jpg"
@@ -93,12 +97,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/e/2"
+        to="/c/2/e/2"
       >
         Writers corner workshop with writing and use of English
       </Link>
     }
-    titleLink="/e/2"
+    titleLink="/c/2/e/2"
   />
   <MainContentCard
     btn={

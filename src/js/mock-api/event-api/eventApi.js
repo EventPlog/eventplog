@@ -21,7 +21,7 @@ class EventApi {
 
   static show = (eventId) =>
     new Promise((resolve, reject) => {
-      setTimeout(resolve, delay, data.events.find(e => e.id == eventId))
+      setTimeout(resolve, delay, data.events.data.find(e => e.id == eventId))
     })
 }
 
