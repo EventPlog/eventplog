@@ -16,7 +16,7 @@ import { secureAction } from 'js/auth/actions'
 
 const labelVerbMapping = {
   'Attended': 'attended',
-  'Spoke/Speaking at': 'user_spoke_or_speaking_at',
+  'Speaking or Spoke at': 'user_spoke_or_speaking_at',
   'Organized': 'organized',
   'Registered': 'registered',
   'Invited to': 'invited',
