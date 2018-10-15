@@ -36,7 +36,7 @@ const Resources = ({
             No one has shared an ebook, video or some other helpful resource yet.&nbsp;
           </p>
           <p>
-            We'll send a notification to people interested in this event when someone does. Remember you could share too :)
+            We send notifications to people interested in an event when someone does. Remember you could share too :)
           </p>
 
         </div>

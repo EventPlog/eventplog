@@ -6,7 +6,7 @@ import processRequest from '../../utils/webAPI'
 
 const LAST_VISITED_URL = 'lastVisitedUrl'
 
-const setUserInCookie = (user) => {
+export const setUserInCookie = (user) => {
   if (!(user && user.id)) return
   cookie.set('current_user', user)
   cookie.set('user_token', user.auth_token)

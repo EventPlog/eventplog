@@ -18,6 +18,23 @@ export const getResources = (params) => {
   })
 }
 
+export const getResourcesByVerb = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.RESOURCE_INDEX_START,
+    receiveType: actionTypes.RESOURCE_INDEX_COMPLETE,
+    failType: actionTypes.RESOURCE_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from retrieving resources.',
+    caller: 'get resources',
+    route: `/api/v1/web/resources/by_verb`,
+    requestMethod: 'POST'
+  })
+}
+
 export const getResource = (params) => {
   let actions = baseActions({
     requestType: actionTypes.RESOURCE_SHOW_START,

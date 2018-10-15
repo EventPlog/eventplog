@@ -70,6 +70,7 @@ class App extends Component {
               <Route exact path="/logout" render={() => handleLogout(store)} />
               <Route exact path="/signup" component={Login} />
               <Route path="/leads/:id" component={Lead} />
+              <Route path="/u" component={User} />
               <Route path="/user" component={User} />
               <Route path="/password" component={Password} />
               <Route path="/help" component={HelpPage} />

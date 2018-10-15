@@ -45,7 +45,7 @@ const ContentAfterCommunitySubmit = ({ community = {}, handleChange }) => (
       Thank you for all you do to strengthen the ecosytem.
     </p>
     <p>
-      You community is not yet live since you might want to change the banner image, theme color, etc.
+      You can go ahead and change your banner image, tag line, etc.
     </p>
     {/*<p>
       To get the best out of eventplog as an community leader, consider going through the following resources:
