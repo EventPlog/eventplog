@@ -8,6 +8,7 @@ import Nav from 'js/components/shared/nav'
 import Button from 'js/components/shared/button'
 import ImageUploader from 'js/components/shared/image-uploader'
 import { media } from 'js/styles/mixins'
+import Loading from 'js/components/shared/loading'
 
 import {
   addHttp,
@@ -147,11 +148,16 @@ const StyledUser = styled.div`
 
 const UserProfile = ({
   user = {},
+  loading,
+  error,
   currentUser = {},
   imagePlaceholderRef,
   handleSubmit,
   handleChange,
 }) => {
+
+  if(loading && !user.id) return <Loading />
+  if(error) return <Loading.Error msg={error} />
 
   const userProfileLink = genUserProfileLink(user)
   const userAvatar = getUserAvatar(user)
