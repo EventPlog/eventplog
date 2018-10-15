@@ -51,7 +51,7 @@ class MainContentContainer extends Component {
   }
 
   getData() {
-    getEventsByVerb()
+    this.getEventsByVerb()
   }
 
   getEventsByVerb = (page = 1, per_page = 10) => {

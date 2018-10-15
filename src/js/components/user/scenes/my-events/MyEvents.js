@@ -42,7 +42,7 @@ const MyEvents = ({
         <Grid.Column stretched width={12}>
           <Segment>
             <EventsSection key="user-upcoming-events-section"
-                           title={activeItem} {...{events, getEvents, attendEvent }} />,
+                           title={activeItem} {...{events, getEvents, attendEvent }} />
           </Segment>
         </Grid.Column>
       </Grid>

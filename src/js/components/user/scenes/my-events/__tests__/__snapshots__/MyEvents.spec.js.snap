@@ -22,7 +22,6 @@ exports[`MyEvents should render correctly 1`] = `
         <EventsSection
           key="user-upcoming-events-section"
         />
-        ,
       </Segment>
     </GridColumn>
   </Grid>
