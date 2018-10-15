@@ -55,7 +55,7 @@ class MainContentContainer extends Component {
   }
 
   getResources = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
+    const { per_page } = this.props.resources.meta || {}
     const { activeItem } = this.state
     this.getResourcesByVerb(activeItem, meta.activePage, per_page)
     mixpanel.track('USER_COMMUNITIES_INDEX_PAGINATION_CLICK', {meta, activeItem})

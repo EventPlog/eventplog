@@ -17,6 +17,7 @@ const MyResources = ({
   user,
   currentUser,
   resources,
+  getResources,
   labelVerbMapping = [],
   activeItem,
   handleItemClick,
@@ -43,6 +44,7 @@ const MyResources = ({
           <Segment>
             <Resources title="All resources"
                        currentUser={currentUser}
+                       getResources={getResources}
                        resources={resources} />
           </Segment>
         </Grid.Column>
