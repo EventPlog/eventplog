@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import Loading from 'js/components/shared/loading'
 
 // =========== INTERNAL ============
 import MainComponent from './components/MainComponent'
@@ -18,10 +19,12 @@ const MySettings = createLoadable(() =>
   import('../my-settings'  /* webpackChunkName: "mySettings" */))
 
 const User = ({
-  user,
+  user = {},
   currentUser,
   ...otherProps,
 }) => {
+  if (!user || !user.id) return <Loading />
+
   return (
     <div>
       <MainComponent {...{user, currentUser, ...otherProps}} />
