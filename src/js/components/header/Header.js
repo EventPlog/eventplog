@@ -74,7 +74,15 @@ const StyledHeader = styled.div`
       }
     }
     
+    div.item {
+      color: ${props => props.theme.gray};
+    }
     
+    .dropdown {
+      a {
+        color: var(--activeLink);
+      }
+    }
   }
   
 `

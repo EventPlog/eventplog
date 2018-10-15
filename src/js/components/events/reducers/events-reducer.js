@@ -10,7 +10,7 @@ const eventsReducer = (state=initialState.events, action) => {
       return {...state, loading: true }
 
     case actionTypes.EVENT_INDEX_COMPLETE:
-      return {...state, ...action.payload, loading: false}
+      return {...state, ...action.payload, loading: false, error: false}
 
     case actionTypes.EVENT_INDEX_FAIL:
       return {...state, error: action.payload, loading: false }

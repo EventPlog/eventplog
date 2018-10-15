@@ -29,7 +29,7 @@ const UserEvents = ({
     events.data.length == 0 &&
     search.indexOf('activeIndex') == -1
   ) {
-    return <Redirect to="/events?activeIndex=1" />
+    {/*return <Redirect to="/events?activeIndex=1" />*/}
   }
 
   return (

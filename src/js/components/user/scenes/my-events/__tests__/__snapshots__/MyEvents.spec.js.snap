@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyEvents should render correctly 1`] = `
+<styled.div>
+  <Grid
+    className="app-container"
+  >
+    <GridColumn
+      width={4}
+    >
+      <Menu
+        fluid={true}
+        tabular={true}
+        vertical={true}
+      />
+    </GridColumn>
+    <GridColumn
+      stretched={true}
+      width={12}
+    >
+      <Segment>
+        <EventsSection
+          key="user-upcoming-events-section"
+        />
+        ,
+      </Segment>
+    </GridColumn>
+  </Grid>
+</styled.div>
+`;

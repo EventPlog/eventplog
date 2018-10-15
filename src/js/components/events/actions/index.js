@@ -105,6 +105,25 @@ export const getEvents = (eventParams = {}) => {
   })
 }
 
+export const getEventsByVerb = (eventParams = {}) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_INDEX_START,
+    receiveType: actionTypes.EVENT_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_INDEX_FAIL,
+  })
+
+  const { community_id } = eventParams
+  const communityDetails = community_id ? `/communities/${community_id}` : ''
+  return handleApiCall({
+    actions,
+    data: eventParams,
+    errorMessage: 'Something prevented us from getting events.',
+    caller: 'get events',
+    route: `/api/v1/web/events/by_verb`,
+    requestMethod: 'POST'
+  })
+}
+
 
 export const getEventsSuggestions = (eventParams = {}, limit = 2) => {
   let actions = baseActions({
