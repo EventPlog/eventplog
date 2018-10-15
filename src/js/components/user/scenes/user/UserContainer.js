@@ -14,6 +14,10 @@ import {
 } from '../../actions'
 
 import {
+  updateViewCount
+} from 'js/components/events/actions'
+
+import {
   getBrowserName,
   getDeviceType,
 } from 'js/utils/browserCheck'
@@ -145,7 +149,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateUser,
     getUser,
-    confirmEmail
+    confirmEmail,
+    updateViewCount,
   }, dispatch)
 }
 

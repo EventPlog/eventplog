@@ -59,15 +59,10 @@ class MainContentContainer extends Component {
   }
 
   getCommunities = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
+    const { per_page } = this.props.communities.meta || {}
     const { activeItem } = this.state
     this.getCommunitiesByVerb(activeItem, meta.activePage, per_page)
     mixpanel.track('USER_COMMUNITIES_INDEX_PAGINATION_CLICK', {meta, activeItem})
-  }
-
-  getPastEvents = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
-    this.props.getPastEvents({page: meta.activePage, per_page})
   }
 
   getProps = () => ({

@@ -16,7 +16,7 @@ import { secureAction } from 'js/auth/actions'
 
 const labelVerbMapping = {
   'Attended': 'attended',
-  'Spoke at': 'user_spoke_at',
+  'Spoke/Speaking at': 'user_spoke_or_speaking_at',
   'Organized': 'organized',
   'Registered': 'registered',
   'Invited to': 'invited',
@@ -51,31 +51,23 @@ class MainContentContainer extends Component {
   }
 
   getData() {
+    getEventsByVerb()
+  }
+
+  getEventsByVerb = (page = 1, per_page = 10) => {
     const { labelVerbMapping, activeItem } = this.state
 
     this.props.getEventsByVerb({
       verb: labelVerbMapping[activeItem],
-      page: 1,
-      per_page: 10,
-      user_id: this.props.user.id
-    });
+      page, per_page,
+      user_id: this.props.user.id,
+    })
   }
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    this.props.getEvents({page: meta.activePage, per_page})
+    getEventsByVerb(meta.activePage, per_page)
     mixpanel.track('USER_EVENTS_INDEX_PAGINATION_CLICK', {meta})
-  }
-
-  getEventsAttended = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
-    this.props.getEventsByVerb({verb: 'attended', page: meta.activePage, per_page})
-    mixpanel.track('USER_EVENTS_ATTENDED_INDEX_PAGINATION_CLICK', {meta})
-  }
-
-  getPastEvents = (e, meta) => {
-    const { per_page } = this.props.events.meta || {}
-    this.props.getPastEvents({page: meta.activePage, per_page})
   }
 
   getProps = () => ({
@@ -83,7 +75,6 @@ class MainContentContainer extends Component {
     ...this.props.location,
     ...this.state,
     getEvents: this.getEvents,
-    getPastEvents: this.getPastEvents,
     currentUser: Auth.currentUser(),
     handleItemClick: this.handleItemClick,
   })
