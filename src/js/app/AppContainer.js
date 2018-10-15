@@ -11,7 +11,6 @@ class AppContainer extends Component {
     ...this.state,
     ...this.props,
     onHideMenu: this.onHideMenu,
-    user: Auth.currentUser(),
   })
 
   render () {
@@ -22,6 +21,7 @@ class AppContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   const {community = {}} = state.communities
   const { event = {}} = state.events
+  const user = Auth.currentUser();
   const linkColor = community.id ? community.brand_color : event.brand_color
   const isCommunityPath = matchPath(ownProps.location.pathname, '/c/:id')
   const isEventPath = matchPath(ownProps.location.pathname, '/e/:id')
@@ -34,7 +34,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...ownProps,
     isInternalPath,
-    activeLink: shouldApplyBrandColor ? (linkColor || defaults.activeLink) : defaults.activeLink,
+    user,
+    activeLink: shouldApplyBrandColor ? (linkColor || defaults.activeLink) : (user.brand_color || defaults.activeLink),
     showBreadCrumb: !(isHomePath || isLoginPath || isSignuPath)
   }
 }

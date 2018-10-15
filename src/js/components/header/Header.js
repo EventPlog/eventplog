@@ -74,7 +74,18 @@ const StyledHeader = styled.div`
       }
     }
     
+    div.item {
+      color: ${props => props.theme.gray};
+    }
     
+    .dropdown {
+      display: flex;
+      align-items: center;
+      
+      a {
+        color: var(--activeLink);
+      }
+    }
   }
   
 `

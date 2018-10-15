@@ -1,14 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import {
+  Dropdown,
+  Icon,
+  Menu,
+} from 'semantic-ui-react'
 
 // internal
 import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
-import { Icon } from 'semantic-ui-react'
 import Button from 'js/components/shared/button'
 import Nav from 'js/components/shared/nav'
-import grayLogo from 'img/logo-gray-full-v2.png'
+import { genUserProfileLink } from 'js/utils'
+import UserAvatar from './UserAvatar'
 
-const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
+const Header = ({
+  inCommunity,
+  hideMenu,
+  onHideMenu,
+  user = {},
+}) => (
   <div className="main-header app-container">
     <div className="logo">
       <Link to="/">
@@ -40,14 +50,36 @@ const Header = ({ inCommunity, hideMenu, onHideMenu}) => (
           </Link>}
       </Nav.Item>
 
-      {/*<Nav.Item>*/}
-        {/*<Link to="/user/profile">My Profile</Link>*/}
-      {/*</Nav.Item>*/}
-
       <Nav.Item>
+        <Menu.Menu position='right'>
+          <Dropdown text={<UserAvatar user={user} />}
+                    pointing
+                    className='link item'>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <Link to={genUserProfileLink(user)}>
+                  <Icon name="user circle" /> My Profile
+                </Link>
+              </Dropdown.Item>
 
-        <Link to="/logout">Log out</Link>
+              <Dropdown.Item>
+                <Link to={`${genUserProfileLink(user)}/settings`}>
+                  <Icon name="settings" /> Settings
+                </Link>
+              </Dropdown.Item>
+
+              <Dropdown.Divider />
+              <Dropdown.Item>
+                <Link to="/logout">
+                  <Icon name="lock open" /> Log out
+                </Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Menu>
       </Nav.Item>
+
+
     </Nav>
   </div>
 )

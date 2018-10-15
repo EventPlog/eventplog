@@ -26,10 +26,11 @@ const ImageUploader = ({
              type="file"
              name="image"
              accept="image/*" />
-      <Button className="btn-right"
-              onClick={showImageSelectOptions}>
-        <Icon className="image" />
-      </Button>
+      {!image &&
+        <Button className="btn-right"
+                onClick={showImageSelectOptions}>
+          <Icon className="image" />
+        </Button>}
       {image &&
         <span>
           <Button className="btn-right save-btn"

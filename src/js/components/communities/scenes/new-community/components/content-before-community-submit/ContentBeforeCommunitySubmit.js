@@ -8,7 +8,12 @@ import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
 import color from 'js/styles/theme/variables'
 import Select from 'js/components/shared/select'
-import { getCommunityLink, removeSpecialChars } from 'js/utils'
+import colorOptions from 'js/utils/colorOptions'
+
+import {
+  getCommunityLink,
+  removeSpecialChars
+} from 'js/utils'
 
 const StyledContent = styled.div`
   align-items: center;
@@ -63,16 +68,6 @@ const StyledContent = styled.div`
  } 
  
 `
-
-const colorOptions = [
-  { key: 'default', value: color.primary, icon: 'point purple', text: 'default' },
-  { key: 'blue', value: color.blue, icon: 'point blue', text: 'blue' },
-  { key: 'red', value: color.red, icon: 'point red', text: 'red' },
-  { key: 'green', value: color.green, icon: 'point green', text: 'green' },
-  { key: 'pink', value: color.pink, icon: 'point pink', text: 'pink' },
-  { key: 'orange', value: color.orange, icon: 'point orange', text: 'orange' },
-  { key: 'yellow', value: color.yellow, icon: 'point yellow', text: 'yellow' },
-]
 
 const ContentBeforeCommunitySubmit = ({
   community = {},
