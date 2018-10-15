@@ -117,6 +117,7 @@ const EditUserForm = ({
             <Form.Field>
               <label>Email</label>
               <Input name="email"
+                     disabled
                      value={user.email}
                      placeholder='ciroma@chukwuma.com'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
