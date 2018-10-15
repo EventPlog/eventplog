@@ -6,9 +6,14 @@ import styled from 'styled-components'
 import { getUserAvatar } from 'js/utils'
 
 const StyledUserAvatar = styled.div`
-  .ui.avatar.image {
+  display: flex;
+  align-items: center;
+  
+  .avatar {
     width: 2.2rem;
     height: 2.2rem;
+    border-radius: 50%;
+    background-size: cover;
   }
   
   span {
@@ -20,7 +25,9 @@ const UserAvatar = ({
   user
 }) => (
   <StyledUserAvatar>
-    <Image src={getUserAvatar(user)} avatar />
+    <div className="avatar"
+         style={{backgroundImage: `url(${getUserAvatar(user)})`}}>
+    </div>
     <span>{user.less_formal_name}</span>
   </StyledUserAvatar>
 )

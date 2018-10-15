@@ -79,6 +79,9 @@ const StyledHeader = styled.div`
     }
     
     .dropdown {
+      display: flex;
+      align-items: center;
+      
       a {
         color: var(--activeLink);
       }

@@ -7,7 +7,9 @@ import Button from 'js/components/shared/button'
 import ContentPanel from 'js/components/shared/content-panel'
 import Loading from "js/components/shared/loading";
 import { media } from 'js/styles/mixins'
+import color from 'js/styles/theme/variables'
 import { genEventLink } from 'js/utils'
+import colorOptions from 'js/utils/colorOptions'
 
 const StyledEditUserForm = styled.div`
   .content-panel {
@@ -127,6 +129,15 @@ const EditUserForm = ({
                         placeholder='A bit about yourself'
                         maxLength={70}
                         onChange={({target}) => handleChange(target.name, target.value)}/>
+            </Form.Field>
+
+            <Form.Field>
+              <label>Preferred link color</label>
+                <Select options={colorOptions}
+                        name="brand_color"
+                        value={user.brand_color}
+                        defaultValue={color.activeLink}
+                        onChange={(e, attr) => handleChange(attr.name, attr.value)}/>
             </Form.Field>
 
             <Form.Field>

@@ -191,11 +191,19 @@ const UserProfile = ({
                 {/*</li>*/}
                 <li className="social-links">
                   {['twitter','facebook', 'linkedin', 'github'].map(socialAcc => (
+                    user[`${socialAcc}_profile`] &&
                     <a target="_blank" href={addHttp(user[`${socialAcc}_profile`])}>
-                      <Icon name={socialAcc} />
+                        <Icon name={socialAcc} />
+                      </a>
+                    ))}
+
+                  {user.site_link &&
+                    <a target="_blank" href={addHttp(user.site_link)}>
+                      <Icon name="linkify"/>
                     </a>
-                  ))}
+                  }
                 </li>
+
               </ul>
             </div>
             {/*<div>*/}

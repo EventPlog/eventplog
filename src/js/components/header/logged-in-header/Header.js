@@ -70,7 +70,9 @@ const Header = ({
 
               <Dropdown.Divider />
               <Dropdown.Item>
-                <Link to="/logout">Log out</Link>
+                <Link to="/logout">
+                  <Icon name="lock open" /> Log out
+                </Link>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
