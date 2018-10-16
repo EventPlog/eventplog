@@ -242,7 +242,7 @@ const EventBanner = ({
 
   const eventDue = (new Date(start_time)) <= (new Date())
   const eventUrl = genEventLink({id, slug}, community)
-  const showFeedbackForm = is_attending && !is_stakeholder && eventDue && (!given_feedback || show_feedback_url)
+
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
           backgroundImage: `url(${featured_image || '/login-bg.jpg'})`
