@@ -41,6 +41,16 @@ const StyledUser = styled.div`
       padding: 1rem;
     }
     
+    .upload-btn {
+      display: none;
+    }
+    
+    &:hover {
+      .upload-btn {
+        display: block;
+      }
+    }
+    
     .save-btn {
       background: ${props => props.theme.green};
     }
