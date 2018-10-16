@@ -64,11 +64,12 @@ const Styles = styled.div`
 
 const Nav = function({
   hideOnMobile,
+  className = '',
   children
 }) {
   return (
     <Styles>
-      <div className={`menu ${hideOnMobile ? 'hidden-xs' : '' }`}>
+      <div className={`${className} menu ${hideOnMobile ? 'hidden-xs' : '' }`}>
         <ul>
           {children}
         </ul>

@@ -1,12 +1,19 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import createLoadable from '../../components/shared/loading/createLoadable'
+import createLoadable from 'js/components/shared/loading/createLoadable'
 
-const ConfirmEmail = createLoadable(() => import('./scenes/confirm-email'  /* webpackChunkName: "confirmEmail" */))
+const UserProfile = createLoadable(() =>
+  import('./scenes/user'  /* webpackChunkName: "user" */))
+
+const ConfirmEmail = createLoadable(() =>
+  import('./scenes/confirm-email'  /* webpackChunkName: "confirmEmail" */))
 
 const User = () => (
   <Switch>
-    <Route exact path="/" render={() => <div>Coming Soon...</div>}/>
+    <Route exact path="/u" component={UserProfile} />
+    <Route exact path="/u/:id" component={UserProfile} />
+    <Route exact path="/u/:id/*" component={UserProfile} />
+    <Route exact path="/user/confirm" component={ConfirmEmail} />
     <Route exact path="/user/confirm" component={ConfirmEmail} />
     <Route exact path="/user/confirm/:token" component={ConfirmEmail} />
   </Switch>

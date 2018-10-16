@@ -57,6 +57,14 @@ export const genCommunityLink = (community = {}) => (
   : ''
 )
 
+export const genUserProfileLink = (user = {}) => (
+  `/u/${removeSpecialChars(user.less_formal_name)}-${user.id}`
+)
+
+export const getUserAvatar = (user = {}) => (
+  user.avatar_url || '/sample-avatar.png'
+)
+
 export const removeSpecialChars = (str) => (
   str.replace(/[^a-zA-Z\d\-]/g, '').toLowerCase()
 )

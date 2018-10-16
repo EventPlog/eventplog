@@ -237,7 +237,6 @@ const EventBanner = ({
   toggleVisibilityStatus,
   eventLink,
   imagePlaceholderRef,
-  setImage,
 }) => {
   const isPrivate = visibility_status == 'private_event'
 

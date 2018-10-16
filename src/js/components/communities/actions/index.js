@@ -19,6 +19,23 @@ export const getCommunities = (data) => {
   })
 }
 
+export const getCommunitiesByVerb = (data) => {
+  let actions = baseActions({
+    requestType: actionTypes.COMMUNITY_INDEX_START,
+    receiveType: actionTypes.COMMUNITY_INDEX_COMPLETE,
+    failType: actionTypes.COMMUNITY_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data,
+    errorMessage: 'Something prevented us from retrieving communities',
+    caller: 'getCommunities',
+    route: `/api/v1/web/communities/by_verb`,
+    requestMethod: 'POST'
+  })
+}
+
 export const getCommunitiesSuggestions = (data) => {
   let actions = baseActions({
     requestType: actionTypes.COMMUNITY_SUGGESTIONS_INDEX_START,
