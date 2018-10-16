@@ -10,7 +10,7 @@ exports[`ImageUploader should render correctly 1`] = `
     type="file"
   />
   <Button
-    className="btn-right"
+    className="btn-right upload-btn"
   >
     <Icon
       as="i"

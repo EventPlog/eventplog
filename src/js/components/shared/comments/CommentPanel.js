@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import ReactMarkdown from 'react-markdown'
+import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
 
 // ========= INTERNALS =========
 
 import { media } from 'js/styles/mixins'
 import colors from 'js/styles/theme/variables'
+import { genUserProfileLink } from 'js/utils'
 
 const StyledComment = styled.div`
   display: flex;
@@ -167,7 +168,9 @@ const CommentPanel = ({
         {display_name &&
         <div className="meta">
           <div className="full-name">
-            {`${display_name}`}
+            <Link to={genUserProfileLink(user)}>
+              {`${display_name}`}
+            </Link>
           </div>
           <div className="role">
             {comment.publish_time} ago
