@@ -28,7 +28,6 @@ const UserAvatar = ({
     <div className="avatar"
          style={{backgroundImage: `url(${getUserAvatar(user)})`}}>
     </div>
-    <span>{user.less_formal_name}</span>
   </StyledUserAvatar>
 )
 
