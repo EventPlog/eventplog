@@ -208,7 +208,7 @@ export const getUserCommunities = (data) => {
     data,
     errorMessage: 'Something prevented us from retrieving your communities',
     caller: 'get user_communities',
-    route: `/api/v1/web/usercommunities`,
+    route: `/api/v1/web/communities/by_verb`,
     requestMethod: 'GET'
   })
 }
