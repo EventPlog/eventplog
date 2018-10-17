@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom'
 
 /// utilities
 import { createEvent, mockCreateEvent } from '../../actions'
-import {getUserCommunities, mockGetUserCommunities,getCommunity} from '../../../communities/actions'
+import {getUserCommunities, getCommunities, mockGetUserCommunities,getCommunity, getCommunitiesByVerb} from '../../../communities/actions'
+import Auth from 'js/auth'
 
 
 export class EventContainer extends Component {
@@ -56,7 +57,23 @@ export class EventContainer extends Component {
 
   getData() {
     //this.props.getUserCommunities()
-    this.props.mockGetUserCommunities({})
+    //this.props.mockGetUserCommunities({})
+    this.getCommunitiesByVerb()
+  }
+
+  getCommunitiesByVerb(page = 1, per_page = 10) {
+    this.props.getCommunitiesByVerb({
+        verb: 'owned',
+        page,
+        per_page,
+        user_id: this.props.currentUser.id
+    });
+  }
+
+  getCommunities = (e, meta) => {
+    const { per_page } = this.props.communities.meta || {}
+    const { activeItem } = this.state
+    this.getCommunitiesByVerb(meta.activePage, per_page)
   }
 
   getProps = () => ({
@@ -69,7 +86,9 @@ export class EventContainer extends Component {
     getCommunity:getCommunity,
     onSearchChange: this.onSearchChange,
     onSelectChange:this.onSelectChange,
-    onCloseModal: this.onCloseModal
+    onCloseModal: this.onCloseModal,
+    getUserCommunitiesByVerb:this.getCommunitiesByVerb,
+    getCommunities:this.getCommunities,
   })
 
   render() {
@@ -78,10 +97,11 @@ export class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { community = {}, user_communities = {}} = state.communities
+  const { community = {}, communities} = state.communities
   return { 
     community, 
-    user_communities
+      communities,
+    currentUser: Auth.currentUser(),
   }
 }
 
@@ -89,8 +109,9 @@ const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
     createEvent,
     getUserCommunities,
-    mockGetUserCommunities,
-    getCommunity
+    getCommunitiesByVerb,
+    getCommunity,
+    getCommunities
   }, dispatch)
 )
 
