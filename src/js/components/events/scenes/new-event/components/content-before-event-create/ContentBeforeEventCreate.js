@@ -74,7 +74,7 @@ const ContentBeforeEventCreate = ({
   submitEvent,
   loading,
   error,
-  user_communities,
+  communities = {},
   onSearchChange,
   onSelectChange,
   selected,
@@ -83,7 +83,7 @@ const ContentBeforeEventCreate = ({
 }) => {
   const userCommunitiesOptions = () => {
      
-    const { data = []} = user_communities
+    const { data = []} = communities
     return data.map(user_community => ({
       key: user_community.id,
       value: user_community.name,
