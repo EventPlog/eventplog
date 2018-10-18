@@ -158,7 +158,6 @@ const inlineStyle = {
                       <Button>
                         <Icon name="plus"/>
                       </Button> }
-                    className="modal"
                     style={inlineStyle.modal}
                   >
                     <CreateCommunityForm/>
