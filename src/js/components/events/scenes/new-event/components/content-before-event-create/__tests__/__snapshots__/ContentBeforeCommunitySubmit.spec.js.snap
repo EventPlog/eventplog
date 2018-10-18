@@ -58,25 +58,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           <Styled(Input)
             className="select-search"
             name="title"
-            options={
-              Array [
-                Object {
-                  "key": 1,
-                  "text": "Facebook Developer Circle Lagos",
-                  "value": "Facebook Developer Circle Lagos",
-                },
-                Object {
-                  "key": 2,
-                  "text": "Google Developer Group",
-                  "value": "Google Developer Group",
-                },
-                Object {
-                  "key": 3,
-                  "text": "ForLoop Lagos",
-                  "value": "ForLoop Lagos",
-                },
-              ]
-            }
+            options={Array []}
             placeholder="Community Name"
             search={true}
             type="text"
@@ -107,7 +89,9 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           </Modal>
         </div>
       </FormField>
-      <Button>
+      <Button
+        className="create-event"
+      >
         Create
       </Button>
     </Form>
