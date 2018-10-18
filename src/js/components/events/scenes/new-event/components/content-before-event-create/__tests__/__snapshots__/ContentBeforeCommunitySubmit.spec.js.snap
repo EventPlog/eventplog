@@ -64,7 +64,6 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
             type="text"
           />
           <Modal
-            className="modal"
             closeOnDimmerClick={true}
             closeOnDocumentClick={false}
             dimmer={true}
@@ -89,9 +88,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           </Modal>
         </div>
       </FormField>
-      <Button
-        className="create-event"
-      >
+      <Button>
         Create
       </Button>
     </Form>
