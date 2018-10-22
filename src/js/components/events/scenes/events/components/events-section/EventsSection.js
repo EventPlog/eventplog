@@ -42,7 +42,12 @@ export const generateMeta = (event = {}) => ([
     <li>
       {event.interested_persons} {pluralize('person', event.interested_persons)} interested
     </li>
-  </ul>
+  </ul>,
+  <ul key={`rating${event.id}`}>
+  <li>
+    {event.no_of_reviews} {pluralize('person',event.no_of_reviews)} rated {event.average_ratings} on average
+  </li>
+</ul>
 ])
 
 export const generateCTA = (handleClick) => (
