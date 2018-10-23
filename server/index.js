@@ -15,6 +15,9 @@ const router = express.Router();
 // root (/) should always serve our server rendered page
 // router.use('^/$', serverRenderer);
 
+// enable ssl redirect
+app.use(sslRedirect());
+
 // other static resources should just be served as they are
 router.use(express.static(
   path.resolve(__dirname, '..', 'build'),
