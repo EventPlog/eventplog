@@ -10,7 +10,7 @@ import TextArea from 'js/components/shared/text-area'
 import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
 
-const StyledResource = styled.div`
+const StyledSpeaker = styled.div`
   .form-info {
     font-size: 0.9rem;
     padding: 0.5rem;
@@ -26,9 +26,9 @@ const StyledResource = styled.div`
     color: white;
   }
 `
-const NewResource = ({
-  resource = {},
-  event = {},
+const NewSpeaker = ({
+  speaker = {},
+  email,
   loading,
   error,
   success,
@@ -39,40 +39,26 @@ const NewResource = ({
 }) => {
 
   let categoryOptions = [
-    { key: 'resource', value: 'resource', icon: <Icon name="send" />, text: 'Additional Resource' },
+    { key: 'speaker', value: 'speaker', icon: <Icon name="send" />, text: 'Additional Speaker' },
   ]
 
-  let resourceTypeOptions = [
-    { key: 'ebook', value: 'ebook', icon: <Icon name="folder open outline" />, text: 'Ebook' },
-    { key: 'video', value: 'video', icon: <Icon name="play circle" />, text: 'Video' },
-    { key: 'article', value: 'article', icon: <Icon name="file alternate outline" />, text: 'Article' },
-    { key: 'repository', value: 'repository', icon: <Icon name="github" />, text: 'Repository' },
+  let presentationTypeOptions = [
+    { key: 'talk', value: 'talk', icon: <Icon name="folder open outline" />, text: 'Talk' },
+    { key: 'workshop', value: 'workshop', icon: <Icon name="play circle" />, text: 'Workshop' },
     { key: 'other', value: 'other', icon: <Icon name="compass outline" />, text: 'Other' },
   ]
-
-  // only stakeholders or speakers can add slides
-  if (event.is_stakeholder) {
-    categoryOptions = [
-      { key: 'speaker_slides', value: 'speaker_slides', icon: <Icon name="copy" />, text: 'Speaker Slides' },
-      ...categoryOptions
-    ]
-    resourceTypeOptions = [
-      { key: 'slides', value: 'slides', icon: <Icon name="copy" />, text: 'Slides' },
-      ...resourceTypeOptions
-    ]
-  }
 
   const {
     id,
     title = '',
-    description = '',
-    resource_type,
-    category,
-    url = ''
-  } = resource
+    summary = '',
+    details = '',
+    presentation_type = '',
+    user = {}
+  } = speaker
 
   return (
-    <StyledResource>
+    <StyledSpeaker>
         <Form loading={loading} success={success} error={error}>
           <Message
             success
@@ -87,7 +73,16 @@ const NewResource = ({
           />
 
           <Form.Field>
-            <Label>Title</Label>
+            <Label>What's the speaker's email?</Label>
+            <small>You can add more details later.</small>
+            <Input name="email"
+                   value={user.email}
+                   placeholder='someone@example.com'
+                   onChange={({target}) => handleChange(target.name, target.value)}/>
+          </Form.Field>
+
+          <Form.Field>
+            <Label>What's the title of this presentation?</Label>
               <Input name="title"
                      value={title}
                      placeholder='The revolution of education'
@@ -95,43 +90,30 @@ const NewResource = ({
           </Form.Field>
 
           <Form.Field>
-            <Label>What's the resource about?</Label>
-              <TextArea name="description"
-                        value={description}
-                        placeholder='What value does this material add?'
-                        onChange={({target}) => handleChange(target.name, target.value)}/>
-          </Form.Field>
-
-          <Form.Field>
-            <Label>A speaker's slides or an additional resource?</Label>
-            <Select name="category"
-                    value={category || 'resource'}
-                    placeholder='speaker slides?'
-                    defaultValue={category || 'resource'}
-                    options={categoryOptions}
+            <Label>What's the nature of this presentation?</Label>
+            <Select name="presentation_type"
+                    value={presentation_type}
+                    placeholder='talk'
+                    defaultValue={presentation_type || 'talk'}
+                    options={presentationTypeOptions}
                     onChange={(e, attr) => handleChange(attr.name, attr.value) }/>
           </Form.Field>
 
           <Form.Field>
-            <Label>How is it packaged?</Label>
-            <Select name="resource_type"
-                    value={resource_type}
-                    placeholder='ebook?'
-                    defaultValue={resource_type || 'ebook'}
-                    options={resourceTypeOptions}
-                    onChange={(e, attr) => handleChange(attr.name, attr.value) }/>
+            <Label>Give a summary of the presentation</Label>
+            <TextArea name="summary"
+                      value={summary}
+                      placeholder="At a glance, what's the presentation about?"
+                      onChange={({target}) => handleChange(target.name, target.value)}/>
           </Form.Field>
 
           <Form.Field>
-            <Label>Where can people access it online?</Label>
-            <Input name="url"
-                   value={url}
-                   placeholder='http://somewhere.com/view/pdf'
-                   onChange={({target}) => handleChange(target.name, target.value)}/>
-            <p className="form-info">
-              Please confirm you have legal rights to redistribute a material before sharing.
-              If any material is proven to violate intellectual property laws, we would have to take it down..
-            </p>
+            <Label>Detailed description</Label>
+            <TextArea name="details"
+                      rows="10"
+                      value={details}
+                      placeholder='For the nerds, give a lot more details of what to expect'
+                      onChange={({target}) => handleChange(target.name, target.value)}/>
           </Form.Field>
 
           <Button onClick={id ? handleUpdate : handleCreate}>
@@ -143,8 +125,8 @@ const NewResource = ({
                    Delete
                  </Button>}
         </Form>
-    </StyledResource>
+    </StyledSpeaker>
   )
 }
 
-export default NewResource
+export default NewSpeaker
