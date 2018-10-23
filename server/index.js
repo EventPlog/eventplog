@@ -3,6 +3,7 @@ import express from 'express';
 // we'll talk about this in a minute:
 import serverRenderer from './middleware/renderer';
 import Loadable from 'react-loadable'
+const sslRedirect = require('heroku-ssl-redirect');
 
 const PORT = process.env.PORT || 9000
 const path = require('path');
