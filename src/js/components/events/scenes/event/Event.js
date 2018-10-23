@@ -14,7 +14,6 @@ import AboutEvent from "../about-event";
 import EventDiscussion from "js/components/event-discussions";
 import EventPictures from "js/components/event-pictures";
 import Resources from "js/components/resources";
-import Speakers from "js/components/speakers";
 import Tab from "js/components/shared/tab";
 import Report from "js/components/feedback/scenes/feedback-report";
 import {media} from "js/styles/mixins";
@@ -132,7 +131,6 @@ const Event = ({
   const getPanes = () => {
     return [
       {name: `About`, content: AboutEvent },
-      {name: `Speakers`, content: Speakers },
       {name: `Feedback`, content: Report },
       {name: `Discussion (${event_discussion.comments_count || 0})`, content: Discussions },
       {name: `Slides & Resources`, content: Resources },
