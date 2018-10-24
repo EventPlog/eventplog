@@ -23,7 +23,7 @@ export class EventContainer extends Component {
     eventCreated: false,
     searchQuery:'',
     selected: null,
-    isModalOpen: false,
+    isModalOpen: true,
   }
 
   componentWillMount(props) {
@@ -56,8 +56,6 @@ export class EventContainer extends Component {
   }
 
   getData() {
-    //this.props.getUserCommunities()
-    //this.props.mockGetUserCommunities({})
     this.getCommunitiesByVerb()
   }
 
