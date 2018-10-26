@@ -150,9 +150,5 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
     }
     titleLink="/c/3"
   />
-  <PaginationComponent
-    activePage={1}
-    totalPages={1}
-  />
 </ContentPanel>
 `;

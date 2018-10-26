@@ -11,7 +11,10 @@ import Sidebar from 'js/components/shared/sidebar'
 import data from 'js/mock-api/data'
 
 describe('Communities::Communities::EventsSection', () => {
-  const { events } = data
+  const events = {
+    data: data.events,
+    meta: {}
+  }
 
   it('should render correctly', () => {
     const wrapper = shallow( <EventsSection events={events} /> );

@@ -73,19 +73,29 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
         "text": "Interested",
       }
     }
-    description=""
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/c/3"
+        >
+          ForLoop Lagos
+        </Link>
+      </span>
+    }
     featured_image="/login-bg.jpg"
     key="3"
     meta="108 people interested"
     title={
       <Link
         replace={false}
-        to="/e/3"
+        to="/c/3/e/3"
       >
         Figma Design Series
       </Link>
     }
-    titleLink="/e/3"
+    titleLink="/c/3/e/3"
   />
 </Sidebar>
 `;

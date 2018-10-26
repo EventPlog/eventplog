@@ -7,7 +7,7 @@ exports[`CommunityHeader should render correctly 1`] = `
   >
     <Link
       replace={false}
-      to=""
+      to="/c/undefined"
     >
       <div
         className="details"
@@ -36,7 +36,7 @@ exports[`CommunityHeader should render correctly 1`] = `
         <Component>
           <Link
             replace={false}
-            to="/e"
+            to="/c/undefined/e"
           >
             Events
           </Link>

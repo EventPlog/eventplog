@@ -12,7 +12,7 @@ export const generateTitle = (event = {}, community = {}) => (
   </Link>
 )
 
-export const generateDescription = (community = {}) => (
+export const generateDescription = (community) => (
   <span>
     By <Link to={genCommunityLink(community)}>
       {community.name}
@@ -23,6 +23,7 @@ export const generateDescription = (community = {}) => (
 export const generateMeta = (event) => (
   `${event.interested_persons} people interested`
 )
+
 
 const EventsSection = ({ events }) => {
   const {loading, error, data } = events

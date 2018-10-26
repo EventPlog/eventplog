@@ -1,11 +1,11 @@
 import delay from '../delay'
-import data from './data'
+import data from '../data'
 
 class CommunityApi {
   static index = () =>
     new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(data)
+        resolve(data.communities)
       }, delay)
     })
 

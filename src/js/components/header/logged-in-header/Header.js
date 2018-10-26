@@ -29,8 +29,27 @@ const Header = ({
 
     <Nav hideOnMobile={hideMenu}>
       <Nav.Item>
-        <Link to="/events/new">Create Event</Link>
+        {!inCommunity &&
+          <Button.Link to="/c/new"
+                     activeClassName="hidden">
+              <span className="hidden-lg hidden-xs">
+                <Icon name="plus" />
+                <Icon name="users" />
+              </span>
+            <span className="hidden-md">Create a community</span>
+          </Button.Link>}
+
+        {inCommunity &&
+          <Link to="/c/new"
+                     activeClassName="hidden">
+              <span className="hidden-lg hidden-xs">
+                <Icon name="plus" />
+                <Icon name="users" />
+              </span>
+            <span className="hidden-md">Create a community</span>
+          </Link>}
       </Nav.Item>
+
       <Nav.Item>
         <Menu.Menu position='right'>
           <Dropdown text={<UserAvatar user={user} />}

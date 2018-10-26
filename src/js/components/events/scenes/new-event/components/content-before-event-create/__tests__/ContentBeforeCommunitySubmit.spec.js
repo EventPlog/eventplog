@@ -1,12 +1,10 @@
 import React from'react'
-import ContentBeforeCommunitySubmit from '../ContentBeforeEventCreate'
+import ContentAfterCommunitySubmit from '../ContentBeforeEventCreate'
 import {shallow, mount} from 'enzyme'
-import data from 'js/mock-api/data'
 
-describe('ContentBeforeCommunitySubmit', () => {
-  const { communities } = data
+describe('ContentAfterCommunitySubmit', () => {
   test('it renders correctly', () => {
-    const wrapper = shallow(<ContentBeforeCommunitySubmit user_communities={communities} />)
+    const wrapper = shallow(<ContentAfterCommunitySubmit/>)
     expect(wrapper).toMatchSnapshot()
   })
 })

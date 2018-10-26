@@ -6,9 +6,6 @@ import { withRouter } from 'react-router-dom'
 
 /// utilities
 import { createEvent, mockCreateEvent } from '../../actions'
-import {getUserCommunities, getCommunities, mockGetUserCommunities,getCommunity, getCommunitiesByVerb} from '../../../communities/actions'
-import Auth from 'js/auth'
-
 
 export class EventContainer extends Component {
   state = {
@@ -20,31 +17,11 @@ export class EventContainer extends Component {
       visibility_status: 'public_event',
     },
     error: false,
-    eventCreated: false,
-    searchQuery:'',
-    selected: null,
-    isModalOpen: true,
-  }
-
-  componentWillMount(props) {
-    this.getData()
+    eventCreated: false
   }
 
   handleChange = (e) => {
-    this.setState({ event: {...this.state.event, [e.target.name]: e.target.value}})
-  }
-
-  onSelectChange=(e)=>{
-    this.setState({ selected: e.target.value});
-  }
-
-  onSearchChange = (e, data) => {
-    console.log(e.target.searchQuery)
-    this.setState({ searchQuery: e.target.searchQuery });
-  }
-
-  onCloseModal=(e)=>{
-    this.setState({isModalOpen:false})
+    this.setState({event: {...this.state.event, [e.target.name]: e.target.value} })
   }
 
   submitEvent = () => {
@@ -55,38 +32,11 @@ export class EventContainer extends Component {
       .catch(error => this.setState({loading: false, error}))
   }
 
-  getData() {
-    this.getCommunitiesByVerb()
-  }
-
-  getCommunitiesByVerb(page = 1, per_page = 10) {
-    this.props.getCommunitiesByVerb({
-        verb: 'owned',
-        page,
-        per_page,
-        user_id: this.props.currentUser.id
-    });
-  }
-
-  getCommunities = (e, meta) => {
-    const { per_page } = this.props.communities.meta || {}
-    const { activeItem } = this.state
-    this.getCommunitiesByVerb(meta.activePage, per_page)
-  }
-
   getProps = () => ({
     ...this.props,
     ...this.state,
     handleChange: this.handleChange,
     submitEvent: this.submitEvent,
-    userCommunities:this.userCommunities,
-    mockGetUserCommunities: this.mockGetUserCommunities,
-    getCommunity:getCommunity,
-    onSearchChange: this.onSearchChange,
-    onSelectChange:this.onSelectChange,
-    onCloseModal: this.onCloseModal,
-    getUserCommunitiesByVerb:this.getCommunitiesByVerb,
-    getCommunities:this.getCommunities,
   })
 
   render() {
@@ -95,21 +45,13 @@ export class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { community = {}, communities} = state.communities
-  return { 
-    community, 
-      communities,
-    currentUser: Auth.currentUser(),
-  }
+  const { community = {} } = state.communities
+  return { community }
 }
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    createEvent,
-    getUserCommunities,
-    getCommunitiesByVerb,
-    getCommunity,
-    getCommunities
+    createEvent
   }, dispatch)
 )
 

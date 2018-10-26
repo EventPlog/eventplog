@@ -16,9 +16,6 @@ import { secureAction } from 'js/auth/actions'
 
 const labelVerbMapping = {
   'Attended': 'attended',
-  'Speaking or Spoke at': 'user_spoke_or_speaking_at',
-  'Organized': 'organized',
-  'Registered': 'registered',
   'Registered': 'registered',
   'Speaking or Spoke at': 'user_speaking_or_spoke_at',
   'Organized': 'organized',
@@ -66,12 +63,10 @@ class MainContentContainer extends Component {
       user_id: this.props.user.id,
     })
       .then(() => window.scrollTo(0, 0), 3000)
-
   }
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    getEventsByVerb(meta.activePage, per_page)
     this.getEventsByVerb(meta.activePage, per_page)
     mixpanel.track('USER_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }

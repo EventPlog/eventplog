@@ -52,17 +52,7 @@ export const genEventLink = (event = {}, community = {}) => {
 }
 
 export const genCommunityLink = (community = {}) => (
-  community && community.id
-  ? `/c/${community.slug || community.id}`
-  : ''
-)
-
-export const genUserProfileLink = (user = {}) => (
-  `/u/${removeSpecialChars(user.less_formal_name)}-${user.id}`
-)
-
-export const getUserAvatar = (user = {}) => (
-  user.avatar_url || '/sample-avatar.png'
+  `/c/${community.slug || community.id}`
 )
 
 export const genUserProfileLink = (user = {}) => (

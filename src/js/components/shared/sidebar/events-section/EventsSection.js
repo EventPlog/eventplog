@@ -12,7 +12,7 @@ export const generateTitle = (event = {}, community = {}) => (
   </Link>
 )
 
-export const generateDescription = (community = {}) => (
+export const generateDescription = (community) => (
   <span>
     By <Link to={genCommunityLink(community)}>
       {community.name}
@@ -30,7 +30,7 @@ const EventsSection = ({
   events = {data: [], meta: {}},
   attendEvent
 }) => {
-  const {loading, error, data = [] } = events
+  const {loading, error, data = {} } = events
   return (
     <Sidebar title={title || "Events you may like"}>
       {loading && <Loading />}

@@ -23,10 +23,11 @@ const Header = ({
 
       <Nav hideOnMobile={hideMenu}>
         <Nav.Item>
-          <Link to="/about-us">About Us</Link>
+          <Link to="/why-eventplog">Why EventPlog?</Link>
         </Nav.Item>
+
         <Nav.Item>
-          <Link to="/login">Create Event</Link>
+          <Link to="/about-us">About Us</Link>
         </Nav.Item>
 
         {!matchLogin &&

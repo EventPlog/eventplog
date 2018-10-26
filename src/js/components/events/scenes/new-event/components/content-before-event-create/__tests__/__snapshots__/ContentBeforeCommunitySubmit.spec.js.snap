@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
+exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
 <styled.div>
   <h3>
     Create a event
@@ -39,54 +39,13 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           className="same-line"
         >
           eventplog.com
-          /e/
+          /c/undefined
+          /
           <Styled(Input)
             name="slug"
             placeholder="amazing-event"
           />
         </FormField>
-      </FormField>
-      <FormField
-        className="search-holder"
-      >
-        <label>
-          Which of your communities own this event? Have no community? Create one
-        </label>
-        <div
-          className="same-line"
-        >
-          <Styled(Input)
-            className="select-search"
-            name="title"
-            options={Array []}
-            placeholder="Community Name"
-            search={true}
-            type="text"
-          />
-          <Modal
-            closeOnDimmerClick={true}
-            closeOnDocumentClick={false}
-            dimmer={true}
-            eventPool="Modal"
-            style={
-              Object {
-                "marginLeft": "auto",
-                "marginRight": "auto",
-                "marginTop": "0px !important",
-              }
-            }
-            trigger={
-              <Button>
-                <Icon
-                  as="i"
-                  name="plus"
-                />
-              </Button>
-            }
-          >
-            <Component />
-          </Modal>
-        </div>
       </FormField>
       <Button>
         Create
