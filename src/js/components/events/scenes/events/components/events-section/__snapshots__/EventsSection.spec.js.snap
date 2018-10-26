@@ -116,10 +116,8 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         By 
         <Link
           replace={false}
-          to="/c/3"
-        >
-          ForLoop Lagos
-        </Link>
+          to=""
+        />
       </span>
     }
     featured_image="/login-bg.jpg"
@@ -147,12 +145,12 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/3/e/3"
+        to="/e/3"
       >
         Figma Design Series
       </Link>
     }
-    titleLink="/c/3/e/3"
+    titleLink="/e/3"
   />
 </ContentPanel>
 `;

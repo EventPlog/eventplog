@@ -50,7 +50,7 @@ const StyledUser = styled.div`
         display: block;
       }
     }
-    
+  
     .save-btn {
       background: ${props => props.theme.green};
     }

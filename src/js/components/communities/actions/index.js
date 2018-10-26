@@ -196,6 +196,23 @@ export const addCommunityToStore = (community) => {
   })
 }
 
+export const getUserCommunities = (data) => {
+  let actions = baseActions({
+    requestType: actionTypes.USER_COMMUNITY_INDEX_START,
+    receiveType: actionTypes.USER_COMMUNITY_INDEX_COMPLETE,
+    failType: actionTypes.USER_COMMUNITY_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data,
+    errorMessage: 'Something prevented us from retrieving your communities',
+    caller: 'get user_communities',
+    route: `/api/v1/web/communities/by_verb`,
+    requestMethod: 'GET'
+  })
+}
+
 // =========== MOCKS ===============
 
 export const mockGetCommunities = () => {
@@ -204,6 +221,17 @@ export const mockGetCommunities = () => {
 
     return mockApi.index().then(res => {
       dispatch({type: actionTypes.COMMUNITY_INDEX_COMPLETE, payload: res})
+      return res
+    })
+  }
+}
+
+export const mockGetUserCommunities = () => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.USER_COMMUNITY_INDEX_START })
+
+    return mockApi.index().then(res => {
+      dispatch({type: actionTypes.USER_COMMUNITY_INDEX_COMPLETE, payload: res})
       return res
     })
   }
