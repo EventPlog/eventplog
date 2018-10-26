@@ -163,7 +163,7 @@ const MainContentCard = ({
               backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
             }}>
       <Link className="title-link" to={titleLink || "#"} />
-      {showButton &&
+      {showButton && btn.onClick &&
         <Button {...btn} className="img-btn hidden-md hidden-lg">
           {btn.text}
         </Button>

@@ -8,6 +8,7 @@ import {
 
 // internal
 import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
+import Button from 'js/components/shared/button'
 import Nav from 'js/components/shared/nav'
 import { genUserProfileLink } from 'js/utils'
 import UserAvatar from './UserAvatar'
@@ -58,6 +59,8 @@ const Header = ({
           </Dropdown>
         </Menu.Menu>
       </Nav.Item>
+
+
     </Nav>
   </div>
 )

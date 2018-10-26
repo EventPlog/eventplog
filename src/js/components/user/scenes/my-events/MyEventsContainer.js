@@ -19,6 +19,9 @@ const labelVerbMapping = {
   'Speaking or Spoke at': 'user_spoke_or_speaking_at',
   'Organized': 'organized',
   'Registered': 'registered',
+  'Registered': 'registered',
+  'Speaking or Spoke at': 'user_speaking_or_spoke_at',
+  'Organized': 'organized',
   'Invited to': 'invited',
 }
 
@@ -62,11 +65,14 @@ class MainContentContainer extends Component {
       page, per_page,
       user_id: this.props.user.id,
     })
+      .then(() => window.scrollTo(0, 0), 3000)
+
   }
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
     getEventsByVerb(meta.activePage, per_page)
+    this.getEventsByVerb(meta.activePage, per_page)
     mixpanel.track('USER_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }
 

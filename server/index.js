@@ -3,6 +3,7 @@ import express from 'express';
 // we'll talk about this in a minute:
 import serverRenderer from './middleware/renderer';
 import Loadable from 'react-loadable'
+const sslRedirect = require('heroku-ssl-redirect');
 
 const PORT = process.env.PORT || 9000
 const path = require('path');
@@ -14,6 +15,9 @@ const router = express.Router();
 
 // root (/) should always serve our server rendered page
 // router.use('^/$', serverRenderer);
+
+// enable ssl redirect
+app.use(sslRedirect());
 
 // other static resources should just be served as they are
 router.use(express.static(

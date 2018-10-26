@@ -27,7 +27,9 @@ const ImageUploader = ({
              name="image"
              accept="image/*" />
       {!image &&
+        feature/#314/show-search-select-of-user-communities
         <Button className="btn-right"
+        <Button className="btn-right upload-btn"
                 onClick={showImageSelectOptions}>
           <Icon className="image" />
         </Button>}

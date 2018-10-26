@@ -105,6 +105,9 @@ class EventContainer extends Component {
         })
         .catch(error => this.setState({loading: false, error}))
     }
+    else {
+      this.setState({event: this.props.event, loading: false})
+    }
   }
 
   updateViewCount = () => {
