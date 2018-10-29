@@ -11,20 +11,25 @@ import Auth from 'js/auth'
 
 
 export class EventContainer extends Component {
-  state = {
-    event: {
-      title: '',
-      start_time: new Date(),
-      end_time: new Date(),
-      community_id: this.props.community.id,
-      visibility_status: 'public_event',
-    },
-    error: false,
-    eventCreated: false,
-    searchQuery:'',
-    selected: null,
-    isModalOpen: true,
+  constructor(props) {
+    super(props)
+    this.state = {
+      event: {
+        title: '',
+        start_time: new Date(),
+        end_time: new Date(),
+        //community_id: this.props.community.id,
+        visibility_status: 'public_event',
+      },
+      error: false,
+      eventCreated: false,
+      searchQuery:'',
+      selected: null,
+      isModalOpen: true,
+    }
+    this.onSelectChange = this.onSelectChange.bind(this);
   }
+
 
   componentWillMount(props) {
     this.getData()
@@ -34,12 +39,13 @@ export class EventContainer extends Component {
     this.setState({ event: {...this.state.event, [e.target.name]: e.target.value}})
   }
 
-  onSelectChange=(e)=>{
-    this.setState({ selected: e.target.value});
+  onSelectChange=(e, attr)=>{
+    debugger
+    this.setState({event: {...this.state.event, [attr.name]: attr.value}});
   }
 
   onSearchChange = (e, data) => {
-    console.log(e.target.searchQuery)
+    debugger;
     this.setState({ searchQuery: e.target.searchQuery });
   }
 
@@ -83,7 +89,7 @@ export class EventContainer extends Component {
     mockGetUserCommunities: this.mockGetUserCommunities,
     getCommunity:getCommunity,
     onSearchChange: this.onSearchChange,
-    onSelectChange:this.onSelectChange,
+    onSelectChange: this.onSelectChange,
     onCloseModal: this.onCloseModal,
     getUserCommunitiesByVerb:this.getCommunitiesByVerb,
     getCommunities:this.getCommunities,
@@ -95,9 +101,8 @@ export class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { community = {}, communities} = state.communities
-  return { 
-    community, 
+  const {communities} = state.communities
+  return {  
       communities,
     currentUser: Auth.currentUser(),
   }

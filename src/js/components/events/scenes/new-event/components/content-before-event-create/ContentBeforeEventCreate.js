@@ -140,7 +140,7 @@ const inlineStyle = {
                 <div className="same-line"> 
                   <Select
                     search
-                    name="title"
+                    name="community_id"
                     type="text"
                     className="select-search"
                     placeholder='Community Name' 	
