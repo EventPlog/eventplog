@@ -32,12 +32,13 @@ const MainContent = ({
   eventCreated,
   handleChange,
   submitEvent,
+  onSelectChange,
   communities,
 }) => (
     <StyledMainContent className="main-content app-container">
       { !eventCreated
             ? <ContentBeforeEventCreate {...{loading, error, event, community,
-                    handleChange, submitEvent, communities}} />
+                    handleChange, submitEvent, onSelectChange, communities}} />
 
             : <ContentAfterEventCreate {...{event, community, handleChange}} />
       }
