@@ -11,46 +11,47 @@ import Auth from 'js/auth'
 
 
 export class EventContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      event: {
-        title: '',
-        start_time: new Date(),
-        end_time: new Date(),
-        //community_id: this.props.community.id,
-        visibility_status: 'public_event',
-      },
-      error: false,
-      eventCreated: false,
-      searchQuery:'',
-      selected: null,
-      isModalOpen: true,
-    }
-    this.onSelectChange = this.onSelectChange.bind(this);
+  state = {
+    event: {
+      title: '',
+      start_time: new Date(),
+      end_time: new Date(),
+      community_id: this.props.community.id,
+      visibility_status: 'public_event',
+    },
+    error: false,
+    eventCreated: false,
+    searchQuery:'',
+    selected: null,
+    isModalOpen: true,
   }
 
-
-  componentWillMount(props) {
+  componentDidMount(props) {
     this.getData()
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { community = {} } = nextProps
+    if (community.id) { 
+      return { event: {...prevState.event, community_id: community.id} }
+    }
+    return null
   }
 
   handleChange = (e) => {
     this.setState({ event: {...this.state.event, [e.target.name]: e.target.value}})
   }
 
-  onSelectChange=(e, attr)=>{
-    debugger
+  onSelectChange = (e, attr) => {
     this.setState({event: {...this.state.event, [attr.name]: attr.value}});
   }
 
   onSearchChange = (e, data) => {
-    debugger;
     this.setState({ searchQuery: e.target.searchQuery });
   }
 
-  onCloseModal=(e)=>{
-    this.setState({isModalOpen:false})
+  onCloseModal = (e) => {
+    this.setState({isModalOpen: false})
   }
 
   submitEvent = () => {
@@ -87,12 +88,12 @@ export class EventContainer extends Component {
     submitEvent: this.submitEvent,
     userCommunities:this.userCommunities,
     mockGetUserCommunities: this.mockGetUserCommunities,
-    getCommunity:getCommunity,
+    getCommunity: this.getCommunity,
     onSearchChange: this.onSearchChange,
     onSelectChange: this.onSelectChange,
     onCloseModal: this.onCloseModal,
     getUserCommunitiesByVerb:this.getCommunitiesByVerb,
-    getCommunities:this.getCommunities,
+    getCommunities: this.getCommunities,
   })
 
   render() {
@@ -101,9 +102,14 @@ export class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {communities} = state.communities
-  return {  
-      communities,
+  const {communities = {}, community = {}} = state.communities
+
+  const userOwnsActiveCommunity = 
+    communities.data.find(c => c.id == community.id)
+
+  return {
+    community: userOwnsActiveCommunity ? community : {},
+    communities,
     currentUser: Auth.currentUser(),
   }
 }
