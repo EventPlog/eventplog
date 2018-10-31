@@ -28,6 +28,7 @@ export class CommunityContainer extends Component {
   }
 
   getProps = () => ({
+    ...this.props,
     ...this.state,
     token: this.props.token,
     handleChange: this.handleChange,
