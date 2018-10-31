@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import defaults from 'js/styles/theme/variables'
@@ -37,10 +38,10 @@ type CommunityType = {
   submitEmail: () => {}
 }
 
-const ForgotPassword = (props: communityType) => (
+const NewCommunity = (props: communityType) => (
   <StyledNewCommunity>
     <MainContent {...props } />
   </StyledNewCommunity>
 )
 
-export default ForgotPassword
+export default NewCommunity
