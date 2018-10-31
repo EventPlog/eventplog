@@ -29,7 +29,7 @@ const Header = ({
 
     <Nav hideOnMobile={hideMenu}>
       <Nav.Item>
-        <Link to="/events/new">Create Event</Link>
+        <Button.Link to="/events/new">Create Event</Button.Link>
       </Nav.Item>
       <Nav.Item>
         <Menu.Menu position='right'>
