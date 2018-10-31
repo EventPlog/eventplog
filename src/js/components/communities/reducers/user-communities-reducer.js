@@ -2,7 +2,7 @@ import initialState from './intialState'
 import actionTypes from '../actions/types'
 import UpdateItemCollection from 'js/reducers/helpers'
 
-const UserCommunitiesReducer =(state=initialState.user_communities, action) =>{
+const UserCommunitiesReducer = (state=initialState.user_communities, action) => {
     let data
     switch(action.type){
         case actionTypes.USER_COMMUNITY_INDEX_START:
