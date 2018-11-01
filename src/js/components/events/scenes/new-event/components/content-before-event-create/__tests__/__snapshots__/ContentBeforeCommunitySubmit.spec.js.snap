@@ -57,7 +57,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         >
           <Styled(Input)
             className="select-search"
-            name="title"
+            name="community_id"
             options={Array []}
             placeholder="Community Name"
             search={true}
@@ -84,11 +84,15 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
               </Button>
             }
           >
-            <Component />
+            <Component
+              isModal={true}
+            />
           </Modal>
         </div>
       </FormField>
-      <Button>
+      <Button
+        className="btn-create"
+      >
         Create
       </Button>
     </Form>

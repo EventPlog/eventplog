@@ -104,7 +104,9 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           />
         </FormField>
       </FormField>
-      <Button>
+      <Button
+        className="btn-create"
+      >
         Create
       </Button>
     </Form>
