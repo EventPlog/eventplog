@@ -23,7 +23,6 @@ const StyledContent = styled.div`
     `
   }
     
-    
   .submit-form {
     width: 100%;
     max-width: 600px;
@@ -43,6 +42,10 @@ const StyledContent = styled.div`
       `
     }
     
+    .field {
+      margin-bottom: 2rem;
+    }
+
     .field.email-holder {
       flex: 1;
       
@@ -65,6 +68,10 @@ const StyledContent = styled.div`
     width:85%;
     margin-right:1rem;
  }
+
+ .btn-create {
+   margin-top: 2rem;
+ }
 `
 
 const ContentBeforeEventCreate = ({
@@ -81,24 +88,25 @@ const ContentBeforeEventCreate = ({
   searchQuery,
   onCloseModal,
 }) => {
-  const userCommunitiesOptions = () => {
-     
-    const { data = []} = communities
-    return data.map(user_community => ({
-      key: user_community.id,
-      value: user_community.name,
-      text: user_community.name,
-    }))
-  }
+  const { data = []} = communities
+  const userCommunitiesOptions = 
+    data.map(user_community => ({
+        key: user_community.id,
+        value: user_community.id,
+        text: user_community.name,
+      }))
 
+  const selectedOption = userCommunitiesOptions.find(c => c.value == event.community_id)
 
-const inlineStyle = {
-  modal : {
-    marginTop: '0px !important',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  }
-};
+  console.log('the selected option:', selectedOption)
+
+  const inlineStyle = {
+    modal : {
+      marginTop: '0px !important',
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    }
+  };
   
   return (
     <StyledContent>
@@ -140,13 +148,13 @@ const inlineStyle = {
                 <div className="same-line"> 
                   <Select
                     search
-                    name="title"
+                    name="community_id"
                     type="text"
                     className="select-search"
                     placeholder='Community Name' 	
                     onChange={onSelectChange} 
-                    value={selected}
-                    options={userCommunitiesOptions()}
+                    value={event.community_id}
+                    options={userCommunitiesOptions}
                     onSearchChange={onSearchChange}
                     text={searchQuery}
                     searchQuery={searchQuery}
@@ -160,13 +168,16 @@ const inlineStyle = {
                       </Button> }
                     style={inlineStyle.modal}
                   >
-                    <CreateCommunityForm/>
+                    <CreateCommunityForm isModal/>
                   </Modal>                      
                 </div>
               </Form.Field>
           
 
-          <Button onClick={submitEvent}>Create</Button>
+          <Button className="btn-create" 
+                  onClick={submitEvent}>
+            Create
+          </Button>
         </Form>
       </div>
     </StyledContent>

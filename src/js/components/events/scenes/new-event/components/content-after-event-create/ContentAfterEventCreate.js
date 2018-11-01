@@ -41,7 +41,6 @@ const StyledContent = styled.div`
 
 const ContentAfterEventSubmit = ({
   event = {},
-  community = {},
   handleChange,
   loading,
   error
@@ -80,7 +79,7 @@ const ContentAfterEventSubmit = ({
         </Link>
       </li>
     </ul>
-    <Button.Link to={`${genEventLink(event, community)}`} className="medium lowercase">
+    <Button.Link to={`${genEventLink(event, event.community)}`} className="medium lowercase">
       Show me my event
     </Button.Link>
   </StyledContent>
