@@ -89,7 +89,7 @@ exports[`EditUserForm should render correctly 1`] = `
             Bio
           </label>
           <Styled(Component)
-            maxLength={70}
+            maxLength={1000}
             name="bio"
             onChange={[Function]}
             placeholder="A bit about yourself"

@@ -11,12 +11,12 @@ const routes =  [
     fetchInitialData: fetchCommunityMeta,
   },
   {
-    path: '/c/:communtyId/e/:id',
+    path: '/c/:communityId/e/:id',
     component: Event,
     fetchInitialData: fetchEventMeta
   },
   {
-    path: '/c/:communtyId/e/:id/*',
+    path: '/c/:communityId/e/:id/*',
     component: Event,
     fetchInitialData: fetchEventMeta
   },

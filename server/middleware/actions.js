@@ -1,7 +1,7 @@
 import webAPI from '../../src/js/utils/webAPI'
 import serialize from 'serialize-javascript'
 
-const fetchCommunityMeta = (path = {}) => {
+export const fetchCommunityMeta = (path = {}) => {
   return webAPI({path: `/api/v1/web/communities/${path.split('/').pop()}`})
     .then(community => (
       `
@@ -21,7 +21,7 @@ const fetchCommunityMeta = (path = {}) => {
     .catch(err => {console.log(err); return ''})
 }
 
-const fetchEventMeta = (path = {}) => {
+export const fetchEventMeta = (path = {}) => {
   return webAPI({path: `/api/v1/web/events/${path.split('/').pop()}`})
     .then(event => (
       `
@@ -69,7 +69,3 @@ const fetchEventMeta = (path = {}) => {
     })
 }
 
-export default {
-  fetchCommunityMeta,
-  fetchEventMeta
-}

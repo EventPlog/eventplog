@@ -233,7 +233,7 @@ const CommunityHeader = ({
                   <Icon name="plus" />
                   <Icon name="handshake outline" />
                 </span>
-                <span className="hidden-md hidden-xs">Create an event</span>
+                <span className="hidden-md hidden-xs">Create event</span>
               </Button.Link>
             </Nav.Item>
             }

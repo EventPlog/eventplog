@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditUserForm it should render correctly 1`] = `
+<styled.div
+  className=""
+>
+  <div
+    className="app-container"
+  >
+    <ContentPanel
+      title={
+        <p>
+          Edit Speaker Information
+        </p>
+      }
+    >
+      <Form
+        as="form"
+      >
+        <Message
+          header="Success!"
+          success={true}
+        />
+        <Message
+          error={true}
+          header="Error!"
+        />
+        <FormField>
+          <label>
+            First Name
+          </label>
+          <Styled(Input)
+            disabled={false}
+            name="first_name"
+            onChange={[Function]}
+            placeholder="Ciroma"
+            value="John"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Last Name
+          </label>
+          <Styled(Input)
+            disabled={false}
+            name="last_name"
+            onChange={[Function]}
+            placeholder="Chukwuma"
+            value="Doe"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Gender
+          </label>
+          <Styled(Input)
+            defaultValue="male"
+            name="gender"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "key": "m",
+                  "text": "Male",
+                  "value": "male",
+                },
+                Object {
+                  "key": "f",
+                  "text": "Female",
+                  "value": "female",
+                },
+              ]
+            }
+            placeholder="Gender"
+            value="male"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Email
+          </label>
+          <Styled(Input)
+            disabled={true}
+            name="email"
+            onChange={[Function]}
+            placeholder="ciroma@chukwuma.com"
+            value="someone@example.com"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Bio
+          </label>
+          <Styled(Component)
+            maxLength={1000}
+            name="bio"
+            onChange={[Function]}
+            placeholder="A bit about yourself"
+            value="An amazing person"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Occupation
+          </label>
+          <Styled(Input)
+            name="occupation"
+            onChange={[Function]}
+            placeholder="Content Creator"
+            value="Engineer"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Facebook
+          </label>
+          <Styled(Input)
+            name="facebook_profile"
+            onChange={[Function]}
+            placeholder="ciroma@chukwuma.com"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Twitter
+          </label>
+          <Styled(Input)
+            name="twitter_profile"
+            onChange={[Function]}
+            placeholder="ciroma@chukwuma.com"
+            value="twitter.com/john"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            LinkedIn
+          </label>
+          <Styled(Input)
+            name="linkedin_profile"
+            onChange={[Function]}
+            placeholder="linkedin.com/something"
+            value="linkedin.com/john"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Github
+          </label>
+          <Styled(Input)
+            name="github_profile"
+            onChange={[Function]}
+            placeholder="github.com/you"
+            value="github.com/john"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Personal website/blog
+          </label>
+          <Styled(Input)
+            name="site_link"
+            onChange={[Function]}
+            placeholder="ciroma@chukwuma.com"
+            value="john.com"
+          />
+        </FormField>
+        <FormField>
+          <label>
+            Speaker Image
+          </label>
+          <Styled(EditUserAvatar)
+            currentUser={
+              Object {
+                "avatar_url": "http://sample-avatar.com/a.jpg",
+                "bio": "An amazing person",
+                "email": "someone@example.com",
+                "first_name": "john",
+                "gender": "male",
+                "github_profile": "github.com/john",
+                "id": 1,
+                "last_name": "doe",
+                "linkedin_profile": "linkedin.com/john",
+                "occupation": "Engineer",
+                "site_link": "john.com",
+                "twitter_profile": "twitter.com/john",
+              }
+            }
+            user={
+              Object {
+                "avatar_url": "http://sample-avatar.com/a.jpg",
+                "bio": "An amazing person",
+                "email": "someone@example.com",
+                "first_name": "john",
+                "gender": "male",
+                "github_profile": "github.com/john",
+                "id": 1,
+                "last_name": "doe",
+                "linkedin_profile": "linkedin.com/john",
+                "occupation": "Engineer",
+                "site_link": "john.com",
+                "twitter_profile": "twitter.com/john",
+              }
+            }
+          />
+        </FormField>
+        <Button
+          className="space-top"
+          disabled={false}
+          inverted={true}
+          type="submit"
+        >
+          Save
+        </Button>
+        <Component
+          to="/e/undefined/speakers/undefined"
+        >
+          Back/Cancel
+        </Component>
+      </Form>
+    </ContentPanel>
+  </div>
+</styled.div>
+`;

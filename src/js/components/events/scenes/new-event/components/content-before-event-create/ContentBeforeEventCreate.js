@@ -8,6 +8,7 @@ import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
 import { genCommunityLink } from 'js/utils'
 import Select from 'js/components/shared/select'
+import { removeSpecialChars } from 'js/utils'
 
 import CreateCommunityForm from 'js/components/communities/scenes/new-community'
 
@@ -87,6 +88,8 @@ const ContentBeforeEventCreate = ({
   selected,
   searchQuery,
   onCloseModal,
+  slug_check = {},
+  checkForValidSlug,
 }) => {
   const { data = []} = communities
   const userCommunitiesOptions = 
@@ -95,10 +98,6 @@ const ContentBeforeEventCreate = ({
         value: user_community.id,
         text: user_community.name,
       }))
-
-  const selectedOption = userCommunitiesOptions.find(c => c.value == event.community_id)
-
-  console.log('the selected option:', selectedOption)
 
   const inlineStyle = {
     modal : {
@@ -126,20 +125,31 @@ const ContentBeforeEventCreate = ({
           <Form.Field className="wide email-holder">
             <label>What's the name of your event?</label>
               <Input name="title"
-                    type="text"
-                    value={event.title}
-                    placeholder='Event title' onChange={handleChange} />
+                     type="text"
+                     value={event.title}
+                     placeholder='Event title'
+                     onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Form.Field>
 
 
           <Form.Field>
             <label>How'd you like people to visit your event page?</label>
 
+              {slug_check.valid &&
+              <div className="success green">Slug is available!</div>}
+              {slug_check.error &&
+              <div className="error red">{slug_check.error}</div>}
+              {slug_check.loading &&
+              <div className="">Checking for availability  <Icon loading name='asterisk' /></div>}
+
               <Form.Field className="same-line">
                 eventplog.com{genCommunityLink(community)}/e/
                 <Input name="slug"
-                      value={event.slug}
-                      placeholder='amazing-event' onChange={handleChange}/>
+                       value={event.slug}
+                       placeholder='amazing-event'
+                       onBlur={checkForValidSlug}
+                       disabled={slug_check.loading}
+                       onChange={(e) => handleChange(e.target.name, removeSpecialChars(e.target.value))}/>
               </Form.Field>
           </Form.Field>
 
@@ -152,12 +162,12 @@ const ContentBeforeEventCreate = ({
                     type="text"
                     className="select-search"
                     placeholder='Community Name' 	
-                    onChange={onSelectChange} 
                     value={event.community_id}
                     options={userCommunitiesOptions}
                     onSearchChange={onSearchChange}
                     text={searchQuery}
                     searchQuery={searchQuery}
+                    onChange={(e, attr) => handleChange(attr.name, attr.value)}
                   />
                   
                   <Modal
@@ -174,7 +184,8 @@ const ContentBeforeEventCreate = ({
               </Form.Field>
           
 
-          <Button className="btn-create" 
+          <Button className="btn-create"
+                  disabled={slug_check.error}
                   onClick={submitEvent}>
             Create
           </Button>

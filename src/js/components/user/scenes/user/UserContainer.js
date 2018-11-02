@@ -25,7 +25,7 @@ import {
 class EventContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = {user: {}}
+    this.state = {user: {}, persistedUser: {}}
     this.imagePlaceholderRef = React.createRef()
     this.handleSubmit = this.handleSubmit.bind(this)
     this.imagePlaceholderRef = React.createRef()
@@ -56,8 +56,10 @@ class EventContainer extends Component {
         ? mixpanel.track('USER_CREATE')
         : mixpanel.track('USER_UPDATE')
       this.setState({user, loading: false})
-      setUserInCookie({...Auth.currentUser(), ...user})
       // until we find a better way to refresh the user info from cookie
+      if (user.id == Auth.currentUser().id) {
+        setUserInCookie({...Auth.currentUser(), ...user})
+      }
       window.location.reload()
     })
       .catch(error => this.setState({error, loading: false}))
@@ -89,7 +91,7 @@ class EventContainer extends Component {
 
     if(this.userFetchedFromServer()) {
       const user = window.__INITIAL_DATA__.user
-      this.setState({loading: false, user})
+      this.setState({loading: false, user, persistedUser: user})
       this.props.addEventToStore(user)
       this.updateViewCount()
       return
@@ -98,7 +100,7 @@ class EventContainer extends Component {
     if (!this.props.user || !this.props.user.id || this.props.user.id != id) {
       this.props.getUser({user_id: userId})
         .then(user => {
-          this.setState({loading: false, error: false, user})
+          this.setState({loading: false, error: false, user, persistedUser: user})
           this.updateViewCount()
         })
         .catch(error => this.setState({loading: false, error}))

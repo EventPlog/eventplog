@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 // =========== INTERNAL ============
+import AboutUser from './AboutUser'
 import Nav from 'js/components/shared/nav'
 import Button from 'js/components/shared/button'
 import ImageUploader from 'js/components/shared/image-uploader'
@@ -26,82 +27,6 @@ const StyledUser = styled.div`
     }
   }
   
-  .avatar-medium {
-    width: 13rem;
-    height: 13rem;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    
-    button {
-      border-color: #fff;
-      color: #fff;
-      padding: 1rem;
-    }
-    
-    .upload-btn {
-      display: none;
-    }
-    
-    &:hover {
-      .upload-btn {
-        display: block;
-      }
-    }
-  
-    .save-btn {
-      background: ${props => props.theme.green};
-    }
-    
-    .cancel-btn {
-      margin-left: 1rem;
-      background: ${props => props.theme.red};
-    }
-  }
-  
-  .user-info {
-    align-items: center;
-    display: flex;
-    width: 100%;
-    
-    ${
-      media.phone`
-        flex-direction: column;
-      `
-
-    }
-  }
-  
-  .user-info-text {
-    flex: 1
-    margin: 0 2rem;
-    
-    ${
-      media.phone`
-        margin: 0;
-        text-align: center;
-      `
-    }
-    
-    ul {
-      line-height: 1.7rem;
-      
-      li.user-name {
-        margin-bottom: 0.6rem;
-        
-        
-        h3 {
-          margin-bottom: 0;
-        }
-        
-        span {
-          color: ${props => props.theme.grayMedium};
-        }
-      }
-    }
-  }
   
   .menu-hold {
     margin: 2rem 0;
@@ -171,64 +96,11 @@ const UserProfile = ({
 
   const userProfileLink = genUserProfileLink(user)
   const userAvatar = getUserAvatar(user)
-  const isLoggedInUser = user.id == currentUser.id
 
   return (
     <StyledUser>
       <div className="app-container">
-        <div className="user-banner">
-          <div className="user-info">
-            <div className="avatar-medium" style={{backgroundImage: `url(${userAvatar})`}}>
-              {isLoggedInUser &&
-                <span className="upload-btn-controls">
-                  <ImageUploader setImage={(image) => handleChange('avatar_url', image)}
-                                 currentImage={userAvatar}
-                                 persistImage={handleSubmit}
-                                 imagePlaceholderRef={imagePlaceholderRef} />
-                </span>
-              }
-            </div>
-
-            <div className="user-info-text">
-              <ul>
-                <li className="user-name">
-                  <h3>{user.display_name}</h3>
-                  <span>{user.bio}</span>
-                </li>
-                {user.occupation &&
-                  <li>
-                    {user.occupation}
-                  </li>}
-                {/*<li>*/}
-                  {/*Admin: Facebook Developer Circles Lagos*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                  {/*Skills: Ruby on Rails, ReactJS*/}
-                {/*</li>*/}
-                <li className="social-links">
-                  {['twitter','facebook', 'linkedin', 'github'].map(socialAcc => (
-                    user[`${socialAcc}_profile`] &&
-                    <a target="_blank" href={addHttp(user[`${socialAcc}_profile`])}>
-                        <Icon name={socialAcc} />
-                      </a>
-                    ))}
-
-                  {user.site_link &&
-                    <a target="_blank" href={addHttp(user.site_link)}>
-                      <Icon name="linkify"/>
-                    </a>
-                  }
-                </li>
-
-              </ul>
-            </div>
-            {/*<div>*/}
-              {/*<Button.Link to={`${userProfileLink}/message`}>Message</Button.Link>*/}
-            {/*</div>*/}
-
-          </div>
-
-        </div>
+        <AboutUser {...{user, currentUser}}/>
       </div>
       <div className="menu-hold">
         <Nav StackUlOnMobile={true}

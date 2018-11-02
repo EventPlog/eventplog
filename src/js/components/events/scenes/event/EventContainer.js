@@ -2,6 +2,9 @@ import React, { Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
+
+// ========== INTERNAL ============s
 import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
 import { paramsToObj, genEventLink } from 'js/utils'
@@ -147,9 +150,13 @@ const mapStateToProps = (state, ownProps) => {
   const { organizers } = state.organizers
   const {link_color } = event;
   const { community, communities_suggestions } = state.communities
+  const { event_discussion = {}, announcements, comments } = event
   return {
     activeLink: community.brand_color,
     event,
+    comments,
+    announcements,
+    event_discussion,
     community,
     organizers,
     past_events,

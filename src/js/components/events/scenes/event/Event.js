@@ -14,6 +14,7 @@ import AboutEvent from "../about-event";
 import EventDiscussion from "js/components/event-discussions";
 import EventPictures from "js/components/event-pictures";
 import Resources from "js/components/resources";
+import Speakers from "js/components/speakers/scenes/speakers";
 import Tab from "js/components/shared/tab";
 import Report from "js/components/feedback/scenes/feedback-report";
 import {media} from "js/styles/mixins";
@@ -91,6 +92,9 @@ const StyledEvent = styled.div`
     }
   }
   
+  .speakers.app-container {
+    padding: 0;
+  }
 `
 
 const Discussions = () => {
@@ -107,11 +111,14 @@ const Discussions = () => {
 
 const Event = ({
   event = {},
+  comments = {},
+  past_events = {},
+  announcements = {},
+  event_discussion = {},
   loading,
   error,
   community,
   activeLink,
-  past_events = {},
   handleChange,
   handleSubmit,
   attendEvent,
@@ -126,11 +133,10 @@ const Event = ({
   if (loading || event.loading) return <Loading />
   if (error || event.error) return <Loading.Error msg={error || event.error} />
 
-  const { event_discussion = {}, announcements, comments } = event
-
   const getPanes = () => {
     return [
       {name: `About`, content: AboutEvent },
+      {name: `Speakers`, content: Speakers },
       {name: `Feedback`, content: Report },
       {name: `Discussion (${event_discussion.comments_count || 0})`, content: Discussions },
       {name: `Slides & Resources`, content: Resources },
@@ -141,7 +147,7 @@ const Event = ({
 
   const { title, description, featured_image} = event
   return (
-    <StyledEvent activeLink={activeLink}>
+    <StyledEvent className="event" activeLink={activeLink}>
       <EventBanner {...{...event, community, handleChange, imagePlaceholderRef,
         handleSubmit, attendEvent, eventLink, toggleVisibilityStatus}} />
 
