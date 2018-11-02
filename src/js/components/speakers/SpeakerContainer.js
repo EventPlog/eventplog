@@ -96,8 +96,11 @@ class SpeakerContainer extends Component {
   }
 
   getSpeaker = (event = {}, meta = {}) => {
-    this.setState({ loading: true })
 
+    // likely in an event page. No need to retrieve speaker
+    if (!this.props.match.params.event_id) return
+
+    this.setState({ loading: true })
     this.props.getSpeaker(this.props.match.params.id)
       .then(speaker => this.setState({ speaker, loading: false }))
       .catch(error => this.setState({ error, loading: false }))
