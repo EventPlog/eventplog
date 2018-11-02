@@ -184,7 +184,8 @@ const ContentBeforeEventCreate = ({
               </Form.Field>
           
 
-          <Button className="btn-create" 
+          <Button className="btn-create"
+                  disabled={slug_check.error}
                   onClick={submitEvent}>
             Create
           </Button>
