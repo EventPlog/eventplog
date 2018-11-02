@@ -9,36 +9,16 @@ import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
 import { pluralize, genEventLink } from 'js/utils'
-import Speaker from '../speaker'
+import Speaker from '../speaker-card'
 
-
-const nSpeakers = {
-  data: [
-    {
-      id: 1,
-      title: 'A great talk',
-      summary: 'This is a very short summary about the talk by the greatest',
-      details: 'This is a very long details about the talk by the greatest',
-      start_time: '12:04pm',
-      end_time: '12:30pm',
-      user: {
-        id: 1,
-        display_name: 'Maranatha Spolvich',
-      }
-    }
-  ],
-  meta: {
-
-  }
-}
-const Speakers = ({
+const SpeakersList = ({
   title,
   speakers,
   attendEvent,
   getSpeakers,
   currentUser
 }) => {
-  const {loading, error, data = [], meta = {}} = nSpeakers;
+  const {loading, error, data = [], meta = {}} = speakers;
   const shouldDisplayData = (!loading && !error && data);
 
   return (
@@ -70,4 +50,4 @@ const Speakers = ({
   )
 }
 
-export default Speakers
+export default SpeakersList

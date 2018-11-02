@@ -4,7 +4,12 @@ import { bindActionCreators } from 'redux'
 
 // ======= internal ========
 import { Auth } from 'js/auth'
-import { uploadImage } from './actions'
+import {
+  uploadImage,
+  getComments,
+  createComment,
+  updateComment,
+} from './actions'
 const unsignedUploadPreset = 'eventplog_comments';
 
 const getOptimizedImageUrl = (url) => {
@@ -141,11 +146,7 @@ class CommentContainer extends Component {
     editComment: this.editComment,
     updateComment: this.updateComment,
     deleteComment: this.deleteComment,
-    // showImageSelectOptions: this.showImageSelectOptions,
-    // imageInputRef: this.imageInputRef,
     commentBodyRef: this.commentBodyRef,
-    // imagePlaceholderRef: this.imagePlaceholderRef,
-    // handleImageChange: this.handleImageChange,
     setImage: this.setImage,
     current_user: Auth.currentUser(),
   })
@@ -161,7 +162,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    uploadImage
+    uploadImage,
+    getComments,
+    createComment,
+    updateComment,
   }, dispatch)
 }
 

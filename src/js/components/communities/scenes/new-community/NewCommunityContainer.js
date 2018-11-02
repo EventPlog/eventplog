@@ -5,7 +5,10 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
 /// utilities
-import { createCommunity, mockCreateCommunity } from '../../actions'
+import {
+  createCommunity,
+  checkForValidSlug,
+} from '../../actions'
 
 export class CommunityContainer extends Component {
   state = {
@@ -27,11 +30,23 @@ export class CommunityContainer extends Component {
       .catch(error => this.setState({loading: false, error}))
   }
 
+  checkForValidSlug = () => {
+    if (this.props.community.slug == this.state.community.slug) { return }
+    this.setState({slug_check: {loading: true}})
+
+    this.props.checkForValidSlug(this.state.community.slug).then(res => {
+      this.setState({slug_check: !res.slug ? {valid: true} : {error: 'Slug not available'}})
+    }).catch(error => this.setState({slug: {error}}))
+
+    mixpanel.track('COMMUNITY_SLUG_CHANGE')
+  }
+
   getProps = () => ({
     ...this.state,
     token: this.props.token,
     handleChange: this.handleChange,
     submitCommunity: this.submitCommunity,
+    checkForValidSlug: this.checkForValidSlug,
   })
 
   render() {

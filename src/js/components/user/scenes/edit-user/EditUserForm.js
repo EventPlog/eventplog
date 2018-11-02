@@ -8,7 +8,7 @@ import ContentPanel from 'js/components/shared/content-panel'
 import Loading from "js/components/shared/loading";
 import { media } from 'js/styles/mixins'
 import color from 'js/styles/theme/variables'
-import { genEventLink } from 'js/utils'
+import { genEventLink, titleize } from 'js/utils'
 import colorOptions from 'js/utils/colorOptions'
 
 const StyledEditUserForm = styled.div`
@@ -93,7 +93,7 @@ const EditUserForm = ({
             <Form.Field>
               <label>First Name</label>
               <Input name="first_name"
-                     value={user.first_name}
+                     value={titleize(user.first_name)}
                      placeholder='Ciroma'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
@@ -101,7 +101,7 @@ const EditUserForm = ({
             <Form.Field>
               <label>Last Name</label>
               <Input name="last_name"
-                     value={user.last_name}
+                     value={titleize(user.last_name)}
                      placeholder='Chukwuma'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
@@ -128,7 +128,7 @@ const EditUserForm = ({
               <TextArea name="bio"
                         value={user.bio}
                         placeholder='A bit about yourself'
-                        maxLength={70}
+                        maxLength={1000}
                         onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
 

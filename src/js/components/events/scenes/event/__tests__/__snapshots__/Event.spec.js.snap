@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Event should render correctly 1`] = `
-<styled.div>
+<styled.div
+  className="event"
+>
   <Styled(EventBanner)
     community={Object {}}
     eventLink="/e/undefined"
@@ -39,6 +41,7 @@ exports[`Event should render correctly 1`] = `
         />
       </ContentBody>
       <Component
+        announcements={Object {}}
         community={Object {}}
         past_events={Object {}}
       />
@@ -54,6 +57,7 @@ exports[`Event should render correctly 1`] = `
               trackable_type="Event"
             />
             <Component
+              comments={Object {}}
               recipient_type="Event"
             />
           </ContentPanel>

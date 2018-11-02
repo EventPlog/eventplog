@@ -10,6 +10,7 @@ import Auth from 'js/auth'
 import { media } from 'js/styles/mixins'
 import Loading from 'js/components/shared/loading'
 import ImageUploader from 'js/components/shared/image-uploader'
+import { redirectToSignup } from 'js/auth/actions'
 
 const AddCommentStyles = styled.div`
   max-width: 820px;
@@ -133,11 +134,18 @@ const AddComment = ({
         </div>
 
         {loading && <Loading />}
-        {(comment.body || image) && !loading &&
+        {(comment.body || image) && !loading && current_user.id &&
           <Button className="submit"
                   onClick={createComment}>
             <Icon className="paper plane" /> Submit
-          </Button>}
+          </Button>
+        }
+        {(comment.body || image) && !loading && !current_user.id &&
+          <Button className="submit"
+                  onClick={redirectToSignup}>
+            <Icon className="lock" /> Login to comment
+          </Button>
+        }
       </CommentPanel>
     </AddCommentStyles>
   )

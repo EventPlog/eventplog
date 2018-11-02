@@ -5,39 +5,45 @@ import { Icon } from 'semantic-ui-react'
 
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
-import ContentEditable from 'js/components/shared/content-editable'
 import Button from 'js/components/shared/button'
 import NewSpeaker from '../new-speaker/NewSpeaker'
-import { pluralize, genEventLink } from 'js/utils'
+import {
+  pluralize,
+  genEventLink,
+  genUserProfileLink,
+  getUserAvatar,
+  titleize,
+} from 'js/utils'
 
-export const generateTitle = (speaker = {}, handleViewCount) => {
+export const generateTitle = (speaker = {}, event = {}, handleViewCount) => {
   return (
-  <Link to={speaker.url || '#'} target='_blank' onClick={handleViewCount}>
-    {speaker.title}
-  </Link>
+    <Link to={`${genEventLink(event, event.community)}/speakers/${speaker.id}`}
+          onClick={handleViewCount}>
+      {speaker.presentation_type && `[${titleize(speaker.presentation_type)}]`} {speaker.title}
+    </Link>
   )
 }
 
 export const generateDescription = (speaker = {}) => (
   <span>
-    {speaker.description}
+    {speaker.summary}
   </span>
 )
 
 export const generateMeta = (speaker) => ([
   <ul key={`date${speaker.id}`}>
     <li>
-      By {speaker.user.display_name}
+      By <Link to={genUserProfileLink(speaker.user)}>
+            {`${speaker.user.display_name}`}
+         </Link>
     </li>
     <li>
-      At {speaker.start_time} - {speaker.end_time}.
+      {speaker.no_of_views || 0} {pluralize('view', speaker.no_of_views)}
+    </li>
+    <li>
+      {speaker.comments.data.length || 0} {pluralize('comment', speaker.comments.data.length)}
     </li>
   </ul>,
-  <ul key={`interest${speaker.id}`}>
-    <li>
-      {speaker.no_of_views || 0} views
-    </li>
-  </ul>
 ])
 
 export const generateCTA = (handleClick) => (
@@ -58,7 +64,7 @@ const styles = css`
   }
 `
 
-const Speaker = ({
+export const SpeakerCard = ({
   speaker,
   event,
   loading,
@@ -73,7 +79,7 @@ const Speaker = ({
   currentUser,
   className,
 }) => {
-  const title = generateTitle(speaker, handleViewCount)
+  const title = generateTitle(speaker, event, handleViewCount)
   const description = generateDescription(speaker)
   const meta = generateMeta(speaker)
   const btn = event.is_stakeholder || (currentUser && currentUser.id == speaker.owner_id)
@@ -90,10 +96,10 @@ const Speaker = ({
     return (
       <ContentPanel title={`Edit or delete "${speaker.title}"`}>
         <NewSpeaker {...{
-                            speaker, event, loading,
-                            error, success, handleChange,
-                            handleUpdate, handleDelete
-                          }} />
+                      speaker, event, loading,
+                      error, success, handleChange,
+                      handleUpdate, handleDelete
+                    }} />
       </ContentPanel>
     )
   }
@@ -102,10 +108,10 @@ const Speaker = ({
     <ContentPanel.Card
       className={className}
       key={speaker.id}
-      featured_image={`/${speaker.speaker_type}-sample-thumbnail.png`}
+      featured_image={getUserAvatar(speaker.user)}
       {...{title, description, meta, btn, titleLink}}
       showButton={true} />
   )
 }
 
-export default styled(Speaker)`${styles}`
+export default styled(SpeakerCard)`${styles}`

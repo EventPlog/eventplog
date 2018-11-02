@@ -91,7 +91,7 @@ const FeedbackReport = ({
         <Message info>
           <Message.Header>The bulk of your report is currently private</Message.Header>
             <p>When private, only the highlights is shown to guests. The numbers, report description and feedback from attendees is hidden</p>
-            <p>We've found that guests ar 62.6% more likely to attend events after reading reviews from other guests</p>
+            <p>We've found that guests are 62.6% more likely to attend events after reading reviews from other guests</p>
         </Message>
       }
 

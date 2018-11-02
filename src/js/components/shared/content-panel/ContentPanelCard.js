@@ -22,6 +22,7 @@ const StyledMainContentCard = styled.div`
   
   .img-holder {
     width: 100px;
+    height: 100px;
     margin-right: 2rem;
     background-size: cover;
     background-repeat: no-repeat;

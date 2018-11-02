@@ -20,8 +20,8 @@ export class EventContainer extends Component {
     eventCreated: false
   }
 
-  handleChange = (e) => {
-    this.setState({event: {...this.state.event, [e.target.name]: e.target.value} })
+  handleChange = (key, value) => {
+    this.setState({event: {...this.state.event, [key]: value} })
   }
 
   submitEvent = () => {

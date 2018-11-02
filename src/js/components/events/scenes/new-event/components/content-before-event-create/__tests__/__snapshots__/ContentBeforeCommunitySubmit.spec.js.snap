@@ -27,6 +27,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         </label>
         <Styled(Input)
           name="title"
+          onChange={[Function]}
           placeholder="Event title"
           type="text"
         />
@@ -43,6 +44,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           /
           <Styled(Input)
             name="slug"
+            onChange={[Function]}
             placeholder="amazing-event"
           />
         </FormField>

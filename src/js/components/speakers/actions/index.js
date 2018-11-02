@@ -35,7 +35,7 @@ export const getSpeakersByVerb = (params) => {
   })
 }
 
-export const getSpeaker = (params) => {
+export const getSpeaker = (speakerId) => {
   let actions = baseActions({
     requestType: actionTypes.SPEAKER_SHOW_START,
     receiveType: actionTypes.SPEAKER_SHOW_COMPLETE,
@@ -44,11 +44,11 @@ export const getSpeaker = (params) => {
 
   return handleApiCall({
     actions,
-    data: params,
+    data: speakerId,
     errorMessage: 'Something prevented us from retrieving this speaker.',
     caller: 'get speakers',
-    route: `/api/v1/web/speakers/index_by_params`,
-    requestMethod: 'POST'
+    route: `/api/v1/web/speakers/${speakerId}`,
+    requestMethod: 'GET'
   })
 }
 
@@ -81,7 +81,7 @@ export const updateSpeaker = (params = {}) => {
     data: params,
     errorMessage: 'Something prevented us from updating this speaker. Please try again later or contact support.',
     caller: 'updatew speaker',
-    route: `/api/v1/web/speakers/${params.id}`,
+    route: `/api/v1/web/speakers/${params.speaker.id}`,
     requestMethod: 'PATCH'
   })
 }

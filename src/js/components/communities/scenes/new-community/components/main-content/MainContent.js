@@ -30,11 +30,14 @@ const MainContent = ({
   loading,
   communityCreated,
   handleChange,
-  submitCommunity
+  submitCommunity,
+  slug_check = {},
+  checkForValidSlug,
 }) => (
     <StyledMainContent className="main-content app-container">
       { !communityCreated &&
-        <ContentBeforeCommunitySubmit {...{loading, error, community, handleChange, submitCommunity}} />}
+        <ContentBeforeCommunitySubmit {...{loading, error, community, handleChange,
+                                            submitCommunity, slug_check, checkForValidSlug}} />}
 
       { communityCreated && <ContentAfterCommunitySubmit {...{community, handleChange}} /> }
     </StyledMainContent>

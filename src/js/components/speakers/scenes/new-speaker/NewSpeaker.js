@@ -26,9 +26,15 @@ const StyledSpeaker = styled.div`
     color: white;
   }
 `
+
+export const presentationTypeOptions = [
+  { key: 'talk', value: 'talk', icon: <Icon name="folder open outline" />, text: 'Talk' },
+  { key: 'workshop', value: 'workshop', icon: <Icon name="play circle" />, text: 'Workshop' },
+  { key: 'other', value: 'other', icon: <Icon name="compass outline" />, text: 'Other' },
+]
+
 const NewSpeaker = ({
   speaker = {},
-  email,
   loading,
   error,
   success,
@@ -38,22 +44,13 @@ const NewSpeaker = ({
   handleDelete,
 }) => {
 
-  let categoryOptions = [
-    { key: 'speaker', value: 'speaker', icon: <Icon name="send" />, text: 'Additional Speaker' },
-  ]
-
-  let presentationTypeOptions = [
-    { key: 'talk', value: 'talk', icon: <Icon name="folder open outline" />, text: 'Talk' },
-    { key: 'workshop', value: 'workshop', icon: <Icon name="play circle" />, text: 'Workshop' },
-    { key: 'other', value: 'other', icon: <Icon name="compass outline" />, text: 'Other' },
-  ]
-
   const {
     id,
     title = '',
     summary = '',
     details = '',
     presentation_type = '',
+    email,
     user = {}
   } = speaker
 
@@ -76,9 +73,9 @@ const NewSpeaker = ({
             <Label>What's the speaker's email?</Label>
             <small>You can add more details later.</small>
             <Input name="email"
-                   value={user.email}
+                   value={user.email || email}
                    placeholder='someone@example.com'
-                   onChange={({target}) => handleChange(target.name, target.value)}/>
+                   onChange={({target}) => handleChange('user', {email: target.value})}/>
           </Form.Field>
 
           <Form.Field>

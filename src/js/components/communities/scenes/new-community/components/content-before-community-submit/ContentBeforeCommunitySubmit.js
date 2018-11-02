@@ -74,6 +74,8 @@ const ContentBeforeCommunitySubmit = ({
   handleChange,
   submitCommunity,
   loading,
+  slug_check = {},
+  checkForValidSlug,
   error
 }) => (
   <StyledContent>
@@ -111,11 +113,19 @@ const ContentBeforeCommunitySubmit = ({
 
           <Form.Field>
             <label>How'd you like people to visit your community page?</label>
+            {slug_check.valid &&
+            <div className="success green">Slug is available!</div>}
+            {slug_check.error &&
+            <div className="error red">{slug_check.error}</div>}
+            {slug_check.loading &&
+            <div className="">Checking for availability  <Icon loading name='asterisk' /></div>}
 
             <Form.Field widths="equal" className="same-line">
               eventplog.com/c/
               <Input name="slug"
                      value={community.slug}
+                     onBlur={checkForValidSlug}
+                     disabled={slug_check.loading}
                      placeholder='something'
                      onChange={(e) => handleChange(e.target.name, removeSpecialChars(e.target.value))}/>
             </Form.Field>

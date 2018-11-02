@@ -1,3 +1,4 @@
 export default {
-  speakers: {},
+  speaker: {comments: {data: []}},
+  speakers: {data: [], meta: {}},
 }

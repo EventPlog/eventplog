@@ -17,11 +17,11 @@ const eventReducer = (state=initialState.event_discussion, action) => {
     case actionTypes.EVENT_DISCUSSION_UPDATE_FAIL:
       return {...state, loading: false, error: true}
 
-    case actionTypes.EVENT_DISCUSSION_COMMENT_CREATE_COMPLETE:
-    case actionTypes.EVENT_DISCUSSION_COMMENT_UPDATE_COMPLETE:
+    case actionTypes.EVENTDISCUSSION_COMMENT_CREATE_COMPLETE:
+    case actionTypes.EVENTDISCUSSION_COMMENT_UPDATE_COMPLETE:
       return {...state, comments: action.payload}
 
-    case actionTypes.EVENT_DISCUSSION_COMMENT_INDEX_COMPLETE:
+    case actionTypes.EVENTDISCUSSION_COMMENT_INDEX_COMPLETE:
       data = [...state.comments.data, ...action.payload.data]
       return {...state, comments: {data, meta: action.payload.meta}}
 
