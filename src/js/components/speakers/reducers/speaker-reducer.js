@@ -2,7 +2,7 @@ import initialState from './intialState';
 import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
-const speakersReducer = (state=initialState.speaker, action) => {
+const speakerReducer = (state=initialState.speaker, action) => {
   let data;
   switch(action.type) {
     case actionTypes.SPEAKER_SHOW_START:
@@ -29,4 +29,4 @@ const speakersReducer = (state=initialState.speaker, action) => {
   }
 };
 
-export default speakersReducer
+export default speakerReducer

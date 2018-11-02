@@ -27,7 +27,6 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         </label>
         <Styled(Input)
           name="title"
-          onChange={[Function]}
           placeholder="Event title"
           type="text"
         />
@@ -43,7 +42,6 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           /e/
           <Styled(Input)
             name="slug"
-            onChange={[Function]}
             placeholder="amazing-event"
           />
         </FormField>

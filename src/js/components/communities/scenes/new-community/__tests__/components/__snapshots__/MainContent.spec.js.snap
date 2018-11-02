@@ -4,8 +4,6 @@ exports[`main content - New Community component should render correctly 1`] = `
 <styled.div
   className="main-content app-container"
 >
-  <ContentBeforeCommunitySubmit
-    slug_check={Object {}}
-  />
+  <ContentBeforeCommunitySubmit />
 </styled.div>
 `;
