@@ -27,19 +27,13 @@ const StyledMainContent = styled.div`
 const MainContent = ({
   event,
   community,
-  error,
-  loading,
-  eventCreated,
   handleChange,
-  submitEvent,
-  onSelectChange,
-  communities,
+  eventCreated,
+  ...otherProps
 }) => (
     <StyledMainContent className="main-content app-container">
       { !eventCreated
-            ? <ContentBeforeEventCreate {...{loading, error, event, community,
-                    handleChange, submitEvent, onSelectChange, communities}} />
-
+            ? <ContentBeforeEventCreate {...{event, community, handleChange, ...otherProps}} />
             : <ContentAfterEventCreate {...{event, community, handleChange}} />
       }
     </StyledMainContent>

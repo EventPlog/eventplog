@@ -31,7 +31,6 @@ export class CommunityContainer extends Component {
   }
 
   checkForValidSlug = () => {
-    if (this.props.community.slug == this.state.community.slug) { return }
     this.setState({slug_check: {loading: true}})
 
     this.props.checkForValidSlug(this.state.community.slug).then(res => {
@@ -62,7 +61,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    createCommunity
+    createCommunity,
+    checkForValidSlug
   }, dispatch)
 )
 

@@ -26,16 +26,14 @@ const StyledMainContent = styled.div`
 
 const MainContent = ({
   community,
-  error,
-  loading,
+  isModal,
   communityCreated,
   handleChange,
-  submitCommunity,
-  isModal,
+  ...otherProps
 }) => (
     <StyledMainContent className="main-content app-container">
       { !communityCreated &&
-        <ContentBeforeCommunitySubmit {...{loading, error, community, handleChange, submitCommunity}} />}
+        <ContentBeforeCommunitySubmit {...{community, handleChange, ...otherProps}} />}
 
       { communityCreated && <ContentAfterCommunitySubmit {...{community, isModal, handleChange}} /> }
     </StyledMainContent>

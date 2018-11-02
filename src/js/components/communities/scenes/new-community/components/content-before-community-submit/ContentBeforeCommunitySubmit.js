@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Message } from 'semantic-ui-react'
+import { Form, Message, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
@@ -75,6 +75,19 @@ const StyledContent = styled.div`
  .btn-create {
    margin-top: 2rem;
  }
+ 
+  .success {
+    color: ${props => props.theme.green};
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .warning {
+    color: orange;
+  }
+  
 `
 
 const ContentBeforeCommunitySubmit = ({
@@ -139,7 +152,8 @@ const ContentBeforeCommunitySubmit = ({
             </Form.Field>
           </Form.Field>
 
-          <Button className="btn-create" 
+          <Button className="btn-create"
+                  disabled={slug_check.error}
                   onClick={submitCommunity}>
             Create
           </Button>

@@ -27,6 +27,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         </label>
         <Styled(Input)
           name="title"
+          onChange={[Function]}
           placeholder="Event title"
           type="text"
         />
@@ -42,6 +43,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           /e/
           <Styled(Input)
             name="slug"
+            onChange={[Function]}
             placeholder="amazing-event"
           />
         </FormField>
@@ -58,6 +60,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           <Styled(Input)
             className="select-search"
             name="community_id"
+            onChange={[Function]}
             options={Array []}
             placeholder="Community Name"
             search={true}

@@ -5,8 +5,19 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
 /// utilities
-import { createEvent, mockCreateEvent } from '../../actions'
-import {getUserCommunities, getCommunities, mockGetUserCommunities,getCommunity, getCommunitiesByVerb} from '../../../communities/actions'
+import {
+  createEvent,
+  mockCreateEvent,
+  checkForValidSlug,
+} from '../../actions'
+
+import {
+  getUserCommunities,
+  getCommunities,
+  getCommunity,
+  getCommunitiesByVerb
+} from 'js/components/communities/actions'
+
 import Auth from 'js/auth'
 
 
@@ -24,6 +35,7 @@ export class EventContainer extends Component {
     searchQuery:'',
     selected: null,
     isModalOpen: true,
+    slug_check: {}
   }
 
   componentDidMount(props) {
@@ -38,8 +50,8 @@ export class EventContainer extends Component {
     return null
   }
 
-  handleChange = (e) => {
-    this.setState({ event: {...this.state.event, [e.target.name]: e.target.value}})
+  handleChange = (key, value) => {
+    this.setState({ event: {...this.state.event, [key]: value}})
   }
 
   onSelectChange = (e, attr) => {
@@ -81,6 +93,16 @@ export class EventContainer extends Component {
     this.getCommunitiesByVerb(meta.activePage, per_page)
   }
 
+  checkForValidSlug = () => {
+    this.setState({slug_check: {loading: true}})
+
+    this.props.checkForValidSlug(this.state.event.slug).then(res => {
+      this.setState({slug_check: !res.slug ? {valid: true} : {error: 'Slug not available'}})
+    }).catch(error => this.setState({slug: {error}}))
+
+    mixpanel.track('EVENT_SLUG_CHANGE')
+  }
+
   getProps = () => ({
     ...this.props,
     ...this.state,
@@ -94,6 +116,7 @@ export class EventContainer extends Component {
     onCloseModal: this.onCloseModal,
     getUserCommunitiesByVerb:this.getCommunitiesByVerb,
     getCommunities: this.getCommunities,
+    checkForValidSlug: this.checkForValidSlug,
   })
 
   render() {
@@ -120,7 +143,8 @@ const mapDispatchToProps = (dispatch) => (
     getUserCommunities,
     getCommunitiesByVerb,
     getCommunity,
-    getCommunities
+    getCommunities,
+    checkForValidSlug,
   }, dispatch)
 )
 
