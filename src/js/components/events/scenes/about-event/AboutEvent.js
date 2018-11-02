@@ -148,10 +148,10 @@ const Event = ({
           <p>
             <code>
               {`
-              <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                  src="${window.location.origin}/ext${genEventLink(event)}/register"
-                  style="border:0;width:100px;min-height:600px;height:100%"></iframe>
-            `}
+                <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                    src="${window.location.origin}/ext${genEventLink(event)}/register"
+                    style="border:0;width:100px;min-height:600px;height:100%"></iframe>
+              `}
             </code>
           </p>
           <p>

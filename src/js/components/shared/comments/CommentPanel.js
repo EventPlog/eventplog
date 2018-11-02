@@ -168,13 +168,16 @@ const CommentPanel = ({
         {display_name &&
         <div className="meta">
           <div className="full-name">
-            <Link to={genUserProfileLink(user)}>
+            <Link to={genUserProfileLink(user)}
+                  target='_blank'>
               {`${display_name}`}
             </Link>
           </div>
-          <div className="role">
-            {comment.publish_time} ago
-          </div>
+          {comment.publish_time &&
+            <div className="role">
+              {comment.publish_time} ago
+            </div>
+          }
         </div>}
       </div>
       <div className="comment">

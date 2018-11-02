@@ -24,10 +24,13 @@ const BackStage = createLoader(() =>
   import('./scenes/back-stage' /* webpackChunkName: "BackStage" */), 'BackStage')
 
 const RegistrationForm = createLoader(() =>
-  import('js/components/guests/scenes/check-in-form' /* webpackChunkName: "BackStage" */), 'BackStage')
+  import('js/components/guests/scenes/check-in-form' /* webpackChunkName: "BackStage" */), 'RegistrationForm')
 
 const FeedbackForm = createLoader(() =>
-  import('js/components/feedback/scenes/quick-feedback-form' /* webpackChunkName: "BackStage" */), 'BackStage')
+  import('js/components/feedback/scenes/quick-feedback-form' /* webpackChunkName: "Speakers" */), 'FeedbackForm')
+
+const Speakers = createLoader(() =>
+  import('js/components/speakers' /* webpackChunkName: "Speakers" */), 'Speakers')
 
 const StyledEventPlog = styled.div`
   height: 100%;
@@ -50,18 +53,22 @@ const EventPlog = ({user = {}}) => (
         <PublicRoute exact path="/" component={UserEvents} />
         <PublicRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id" component={Event} />
+        <PublicRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id/register" component={RegistrationForm} />
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
+        <PublicRoute path="/e/:id/speakers" component={Speakers} />
 
         <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />
         <PublicRoute exact path="/c/:community_id/e/:id" component={Event} />
         <PrivateRoute path="/c/:community_id/e/:id/backstage" component={BackStage} />
+        <PublicRoute path="/c/:community_id/e/:id/speakers" component={Speakers} />
         <PublicRoute exact path="/c/:community_id/e/:id/register" component={RegistrationForm} />
         <PublicRoute exact path="/c/:community_id/e/:id/feedback" component={FeedbackForm} />
 
 
         {/* maintain support for legacy routes*/}
         <PublicRoute exact path="/events" component={UserEvents} />
+        <PublicRoute exact path="/events/new" component={NewEvent} />
         <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
         <PublicRoute exact path="/communities/:community_id/events/:id" component={Event} />
         <PrivateRoute path="/communities/:community_id/events/:id/backstage" component={BackStage} />

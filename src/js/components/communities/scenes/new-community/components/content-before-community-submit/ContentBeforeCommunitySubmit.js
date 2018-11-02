@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Message } from 'semantic-ui-react'
+import { Form, Message, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 // local
@@ -22,7 +22,7 @@ const StyledContent = styled.div`
   width: 100%;
   
   ${
-  media.phone`
+    media.phone`
       align-items: baseline;
     `
   }
@@ -36,7 +36,7 @@ const StyledContent = styled.div`
     margin: 60px 0;
     
     ${
-  media.phone`
+      media.phone`
         margin: 50px 0;
         
         .inline.fields {
@@ -44,16 +44,21 @@ const StyledContent = styled.div`
           align-items: baseline; 
         }
       `
+    }
+
+  .field {
+    margin-bottom: 2rem;
   }
+
     .field.email-holder {
       flex: 1;
       
       ${
-  media.phone`
+        media.phone`
           width: 100%;
           margin-bottom: 1.5rem;
         `
-  }   
+      }   
       
       input {
         width: 100%;
@@ -65,8 +70,24 @@ const StyledContent = styled.div`
    display: flex;
    align-items: center;
    white-space: nowrap;
- } 
+ }
+
+ .btn-create {
+   margin-top: 2rem;
+ }
  
+  .success {
+    color: ${props => props.theme.green};
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .warning {
+    color: orange;
+  }
+  
 `
 
 const ContentBeforeCommunitySubmit = ({
@@ -74,6 +95,8 @@ const ContentBeforeCommunitySubmit = ({
   handleChange,
   submitCommunity,
   loading,
+  slug_check = {},
+  checkForValidSlug,
   error
 }) => (
   <StyledContent>
@@ -111,17 +134,29 @@ const ContentBeforeCommunitySubmit = ({
 
           <Form.Field>
             <label>How'd you like people to visit your community page?</label>
+            {slug_check.valid &&
+            <div className="success green">Slug is available!</div>}
+            {slug_check.error &&
+            <div className="error red">{slug_check.error}</div>}
+            {slug_check.loading &&
+            <div className="">Checking for availability  <Icon loading name='asterisk' /></div>}
 
             <Form.Field widths="equal" className="same-line">
               eventplog.com/c/
               <Input name="slug"
                      value={community.slug}
+                     onBlur={checkForValidSlug}
+                     disabled={slug_check.loading}
                      placeholder='something'
                      onChange={(e) => handleChange(e.target.name, removeSpecialChars(e.target.value))}/>
             </Form.Field>
           </Form.Field>
 
-          <Button onClick={submitCommunity}>Create</Button>
+          <Button className="btn-create"
+                  disabled={slug_check.error}
+                  onClick={submitCommunity}>
+            Create
+          </Button>
       </Form>
     </div>
   </StyledContent>

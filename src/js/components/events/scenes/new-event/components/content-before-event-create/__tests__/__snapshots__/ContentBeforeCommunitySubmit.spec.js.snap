@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
+exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
 <styled.div>
   <h3>
     Create a event
@@ -27,6 +27,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         </label>
         <Styled(Input)
           name="title"
+          onChange={[Function]}
           placeholder="Event title"
           type="text"
         />
@@ -39,15 +40,62 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           className="same-line"
         >
           eventplog.com
-          /c/undefined
-          /
+          /e/
           <Styled(Input)
             name="slug"
+            onChange={[Function]}
             placeholder="amazing-event"
           />
         </FormField>
       </FormField>
-      <Button>
+      <FormField
+        className="search-holder"
+      >
+        <label>
+          Which of your communities own this event? Have no community? Create one
+        </label>
+        <div
+          className="same-line"
+        >
+          <Styled(Input)
+            className="select-search"
+            name="community_id"
+            onChange={[Function]}
+            options={Array []}
+            placeholder="Community Name"
+            search={true}
+            type="text"
+          />
+          <Modal
+            closeOnDimmerClick={true}
+            closeOnDocumentClick={false}
+            dimmer={true}
+            eventPool="Modal"
+            style={
+              Object {
+                "marginLeft": "auto",
+                "marginRight": "auto",
+                "marginTop": "0px !important",
+              }
+            }
+            trigger={
+              <Button>
+                <Icon
+                  as="i"
+                  name="plus"
+                />
+              </Button>
+            }
+          >
+            <Component
+              isModal={true}
+            />
+          </Modal>
+        </div>
+      </FormField>
+      <Button
+        className="btn-create"
+      >
         Create
       </Button>
     </Form>

@@ -4,7 +4,12 @@ import { bindActionCreators } from 'redux'
 
 // ======= internal ========
 import { Auth } from 'js/auth'
-import { uploadImage } from './actions'
+import {
+  uploadImage,
+  getComments,
+  createComment,
+  updateComment,
+} from './actions'
 const unsignedUploadPreset = 'eventplog_comments';
 
 const getOptimizedImageUrl = (url) => {
@@ -13,6 +18,14 @@ const getOptimizedImageUrl = (url) => {
   return url.substring(0, startIndex) +
           'upload/c_scale,w_auto,dpr_auto' +
           url.substring(endIndex)
+}
+
+const getCommentWithImage = ({comment, image}, textField = 'body') => {
+  if (!image) return comment
+  return  {
+    ...comment,
+    [textField]: `${comment[textField]} ![](${image})`
+  }
 }
 
 class CommentContainer extends Component {
@@ -43,9 +56,8 @@ class CommentContainer extends Component {
   createComment = async () => {
     this.setState({editing: false, loading: true})
     const { recipient_id, recipient_type, trackable_id, trackable_type } = this.props
-    const getComment = await this.getCommentWithImage(this.state)
     const comment = {
-      ...getComment,
+      ...getCommentWithImage(this.state, this.props.textField),
       recipient_id, recipient_type,
       trackable_id, trackable_type
     }
@@ -56,24 +68,6 @@ class CommentContainer extends Component {
 
   setImage = (image) => {
     this.setState({image})
-  }
-
-  getCommentWithImage = async ({comment, image}) => {
-    if (!image) return comment
-
-    const textfield = this.props.textField || 'body'
-    let text = comment[textfield]
-    const imageObj = await this.uploadImage(image)
-    const pictures = [{
-      file_name: imageObj.original_filename,
-      width: imageObj.width,
-      height: imageObj.height,
-      extension: imageObj.format,
-      url: getOptimizedImageUrl(imageObj.secure_url)
-    }]
-    text = `${text || ''} ![${imageObj.original_filename}](${getOptimizedImageUrl(imageObj.secure_url)})`
-    // return {...comment, [textfield]: text}
-    return {...comment, pictures}
   }
 
   editComment = (e) => {
@@ -141,13 +135,10 @@ class CommentContainer extends Component {
     editComment: this.editComment,
     updateComment: this.updateComment,
     deleteComment: this.deleteComment,
-    // showImageSelectOptions: this.showImageSelectOptions,
-    // imageInputRef: this.imageInputRef,
     commentBodyRef: this.commentBodyRef,
-    // imagePlaceholderRef: this.imagePlaceholderRef,
-    // handleImageChange: this.handleImageChange,
-    setImage: this.setImage,
     current_user: Auth.currentUser(),
+    showImageSelectOptions: this.showImageSelectOptions,
+    setImage: this.setImage,
   })
 
   render () {
@@ -161,7 +152,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    uploadImage
+    uploadImage,
+    getComments,
+    createComment,
+    updateComment,
   }, dispatch)
 }
 

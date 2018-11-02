@@ -1,8 +1,8 @@
 export const addHttp = (url) => {
-  if (!url.match("~^(?:f|ht)tps?://~i", url)) {
-    url = "http://" + url;
+  if (url.match(/^htt(p|ps):\/\//)) {
+    return url;
   }
-  return url;
+  return "http://" + url;
 }
 
 export const validDate = (input) => {
@@ -10,14 +10,20 @@ export const validDate = (input) => {
   return _date.getDate().toString() !== 'NaN' ? _date : new Date()
 }
 
-export const pluralize = (word, number) => {
+export const pluralize = (word, number = 1) => {
   const knownWords = {
     person: 'people',
     follower: 'followers',
-    event: 'events'
+    event: 'events',
+    comment: 'comments',
+    view: 'views',
   }
-  return number == 1 ? word : knownWords[word]
+  return number == 1 ? word : (knownWords[word] || word)
 }
+
+export const titleize = (word = '') => (
+  !!word ? word[0].toUpperCase() + word.substr(1).toLowerCase() : ''
+)
 
 export const serialize = function(obj) {
   let str = [];
@@ -52,7 +58,9 @@ export const genEventLink = (event = {}, community = {}) => {
 }
 
 export const genCommunityLink = (community = {}) => (
-  `/c/${community.slug || community.id}`
+  community && community.id
+  ? `/c/${community.slug || community.id}`
+  : ''
 )
 
 export const genUserProfileLink = (user = {}) => (
@@ -60,7 +68,6 @@ export const genUserProfileLink = (user = {}) => (
     ? `/u/${removeSpecialChars(user.less_formal_name)}-${user.id}`
     : '#'
 )
-
 export const getUserAvatar = (user = {}) => (
   user.avatar_url || '/sample-avatar.png'
 )

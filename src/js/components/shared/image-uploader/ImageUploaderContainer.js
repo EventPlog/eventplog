@@ -31,10 +31,6 @@ class ImageUploaderContainer extends Component {
     }
   }
 
-  handleChange = (key, value) => {
-    this.setState({ comment: {...this.state.comment, [key]: value} })
-  }
-
   getImageUrl = async (image) => {
     if (!image) return false
 
@@ -45,7 +41,7 @@ class ImageUploaderContainer extends Component {
   saveImage = async () => {
     const imageUrl = await this.getImageUrl(this.state.image)
     this.props.setImage(imageUrl)
-    this.props.persistImage();
+    this.props.persistImage && this.props.persistImage();
     this.setState({image: null})
   }
 
