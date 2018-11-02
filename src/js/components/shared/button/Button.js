@@ -8,6 +8,7 @@ const btnSizes = {
   medium: {fontSize: '1.2em'},
 }
 const commonStyles = css`
+  --activeLink: ${props => props.theme.activeLink};
   border: 1px solid var(--activeLink);
   color: var(--activeLink);
   background: transparent;

@@ -53,24 +53,14 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     }
   />
   <SidebarCard
-    description={
-      <span>
-        By 
-        <Link
-          replace={false}
-          to="/c/3"
-        >
-          ForLoop Lagos
-        </Link>
-      </span>
-    }
+    description=""
     featured_image="/login-bg.jpg"
     key="3"
     meta="108 people interested"
     title={
       <Link
         replace={false}
-        to="/c/3/e/3"
+        to="/e/3"
       >
         Figma Design Series
       </Link>

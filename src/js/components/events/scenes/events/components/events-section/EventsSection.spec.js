@@ -11,10 +11,7 @@ import data from 'js/mock-api/data'
 
 describe('Communities::Communities::EventsSection', () => {
   const title = 'Events Section'
-  const events = {
-    data: data.events,
-    meta: {}
-  }
+  const { events } = data
 
   it('should render correctly', () => {
     const wrapper = shallow( <EventsSection title={title} events={events} /> );

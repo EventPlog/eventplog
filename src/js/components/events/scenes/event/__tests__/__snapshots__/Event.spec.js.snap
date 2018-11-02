@@ -22,10 +22,6 @@ exports[`Event should render correctly 1`] = `
               },
               Object {
                 "content": [Function],
-                "name": "Speakers",
-              },
-              Object {
-                "content": [Function],
                 "name": "Feedback",
               },
               Object {

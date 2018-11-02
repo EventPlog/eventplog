@@ -22,7 +22,7 @@ const StyledContent = styled.div`
   width: 100%;
   
   ${
-  media.phone`
+    media.phone`
       align-items: baseline;
     `
   }
@@ -36,7 +36,7 @@ const StyledContent = styled.div`
     margin: 60px 0;
     
     ${
-  media.phone`
+      media.phone`
         margin: 50px 0;
         
         .inline.fields {
@@ -44,16 +44,21 @@ const StyledContent = styled.div`
           align-items: baseline; 
         }
       `
+    }
+
+  .field {
+    margin-bottom: 2rem;
   }
+
     .field.email-holder {
       flex: 1;
       
       ${
-  media.phone`
+        media.phone`
           width: 100%;
           margin-bottom: 1.5rem;
         `
-  }   
+      }   
       
       input {
         width: 100%;
@@ -65,8 +70,11 @@ const StyledContent = styled.div`
    display: flex;
    align-items: center;
    white-space: nowrap;
- } 
- 
+ }
+
+ .btn-create {
+   margin-top: 2rem;
+ }
 `
 
 const ContentBeforeCommunitySubmit = ({
@@ -131,7 +139,10 @@ const ContentBeforeCommunitySubmit = ({
             </Form.Field>
           </Form.Field>
 
-          <Button onClick={submitCommunity}>Create</Button>
+          <Button className="btn-create" 
+                  onClick={submitCommunity}>
+            Create
+          </Button>
       </Form>
     </div>
   </StyledContent>

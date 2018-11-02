@@ -1,11 +1,11 @@
 import delay from '../delay'
 import data from '../data'
 
-class EventApi {
+class UserCommunitiesApi{
   static index = () =>
     new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(data.events)
+        resolve(data.communities)
       }, delay)
     })
 
@@ -16,13 +16,13 @@ class EventApi {
 
   static update = (leadData) =>
     new Promise((resolve, reject) => {
-      setTimeout(resolve, delay, {id: 1, ...leadData})
+      setTimeout(resolve, delay, {id: 3, ...leadData})
     })
 
-  static show = (eventId) =>
+  static show = (communityId) =>
     new Promise((resolve, reject) => {
-      setTimeout(resolve, delay, data.events.data.find(e => e.id == eventId))
+      setTimeout(resolve, delay, data.events.find(u => u.id == communityId))
     })
 }
 
-export default EventApi
+export default UserCommunitiesApi

@@ -82,7 +82,12 @@ const Resource = ({
         className: 'edit-btn',
         icon: <span><Icon name="pencil"/> | <Icon name="trash"/></span>
       }
-    : ''
+    : {
+      onClick: () => {window.open(resource.url || '#', '_newtab'); handleViewCount()},
+      className: 'edit-btn',
+      icon: <Icon name="send"/>,
+      text: 'Open'
+    }
 
   const titleLink = resource.url;
 
