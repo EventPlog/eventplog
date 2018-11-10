@@ -14,9 +14,9 @@ const StyledMainContentCard = styled.div`
   
   ${
     media.phone`
-      flex-direction: column;
+      /*flex-direction: column;
       border: 1px solid #ddd;
-      padding: 0 0 10px 0;
+      padding: 0 0 10px 0;*/
     `
   }
   
@@ -30,11 +30,11 @@ const StyledMainContentCard = styled.div`
     
     ${
       media.phone`
-        margin-bottom: 1rem;
+        /*margin-bottom: 1rem;
         width: 100%;
-        height: 100px;
+        height: 200px;
         background-size: cover;
-        background: ${props => props.theme.gray}
+        background: ${props => props.theme.gray}*/
       `
     }
   }
@@ -47,7 +47,7 @@ const StyledMainContentCard = styled.div`
     
     ${
       media.phone`
-        padding: 0 1rem;
+        /*padding: 0 1rem;*/
       `
     }
   }
@@ -70,6 +70,7 @@ const StyledMainContentCard = styled.div`
   .card-description {
     margin-bottom: 0.1rem;
     color: #aaa;
+    font-size: 90%;
     
     ${
       media.phone`
@@ -89,10 +90,11 @@ const StyledMainContentCard = styled.div`
       display: inline-flex;
       color: #aaa; 
       margin: 0.1rem;
+      font-size: 90%;
       
       
       li:not(:last-child) {
-        margin-right: 2rem;
+        margin-right: 1rem;
       }
     }
     
@@ -110,10 +112,6 @@ const StyledMainContentCard = styled.div`
     
   button.img-btn {
     font-size: 0.7rem;
-    background: #fff;
-    border: none;
-    box-shadow: 1px 2px 4px #444;
-    position: absolute;
     bottom: 10px;
     
     ${
@@ -136,7 +134,8 @@ const StyledMainContentCard = styled.div`
     
     ${
       media.phone`
-        right: 10px
+        margin: 0;
+        margin-top: 0.5rem;
       `
     } 
   }
@@ -164,11 +163,6 @@ const MainContentCard = ({
               backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
             }}>
       <Link className="title-link" to={titleLink || "#"} />
-      {showButton && btn.onClick &&
-        <Button {...btn} className="img-btn hidden-md hidden-lg">
-          {btn.text}
-        </Button>
-      }
     </div>
     <div className="card-body">
       <div className="card-title">
@@ -182,6 +176,13 @@ const MainContentCard = ({
       </div>
       <div className="card-meta">
         {meta}
+      </div>
+      <div>
+        {showButton && btn.onClick &&
+        <Button {...btn} className="img-btn hidden-md hidden-lg">
+          {btn.icon}  {btn.text}
+        </Button>
+        }
       </div>
     </div>
   </StyledMainContentCard>

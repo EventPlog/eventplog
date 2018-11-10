@@ -45,7 +45,7 @@ const Discussion = ({
           <Message info>
             <Message.Header>Welcome to Talk Chambers</Message.Header>
             <p>Did you just get checked in? Introduce yourself!</p>
-            <p>Did a speaker say something that made you remember a contribution or question? Type it here before you forget!</p>
+            <p>Did a presentation say something that made you remember a contribution or question? Type it here before you forget!</p>
             <p>Did you grasp an amazing take-away? Share with others here! Be the team player!</p>
           </Message>}
 

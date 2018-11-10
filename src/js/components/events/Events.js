@@ -27,10 +27,10 @@ const RegistrationForm = createLoader(() =>
   import('js/components/guests/scenes/check-in-form' /* webpackChunkName: "BackStage" */), 'RegistrationForm')
 
 const FeedbackForm = createLoader(() =>
-  import('js/components/feedback/scenes/quick-feedback-form' /* webpackChunkName: "Speakers" */), 'FeedbackForm')
+  import('js/components/feedback/scenes/quick-feedback-form' /* webpackChunkName: "Presentations" */), 'FeedbackForm')
 
-const Speakers = createLoader(() =>
-  import('js/components/speakers' /* webpackChunkName: "Speakers" */), 'Speakers')
+const Presentations = createLoader(() =>
+  import('js/components/presentations' /* webpackChunkName: "Presentations" */), 'Presentations')
 
 const StyledEventPlog = styled.div`
   height: 100%;
@@ -56,12 +56,12 @@ const EventPlog = ({user = {}}) => (
         <PublicRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id/register" component={RegistrationForm} />
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
-        <PublicRoute path="/e/:id/speakers" component={Speakers} />
+        <PublicRoute path="/e/:id/presentations" component={Presentations} />
 
         <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />
         <PublicRoute exact path="/c/:community_id/e/:id" component={Event} />
         <PrivateRoute path="/c/:community_id/e/:id/backstage" component={BackStage} />
-        <PublicRoute path="/c/:community_id/e/:id/speakers" component={Speakers} />
+        <PublicRoute path="/c/:community_id/e/:id/presentations" component={Presentations} />
         <PublicRoute exact path="/c/:community_id/e/:id/register" component={RegistrationForm} />
         <PublicRoute exact path="/c/:community_id/e/:id/feedback" component={FeedbackForm} />
 
