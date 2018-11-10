@@ -5,10 +5,10 @@ import { Icon } from 'semantic-ui-react'
 
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
-import ContentEditable from 'js/components/shared/content-editable'
 import Button from 'js/components/shared/button'
-import NewResource from '../new-resource/NewResource'
-import { pluralize, genEventLink } from 'js/utils'
+import NewResource from 'js/components/resources/components/new-resource/NewResource'
+import UserLink from 'js/components/shared/user-link'
+import { pluralize, titleize, genEventLink } from 'js/utils'
 
 export const generateTitle = (resource = {}, handleViewCount) => {
   return (
@@ -27,15 +27,12 @@ export const generateDescription = (resource = {}) => (
 export const generateMeta = (resource) => ([
   <ul key={`date${resource.id}`}>
     <li>
-      By {resource.owner.display_name}
-    </li>
-    <li>
-      {resource.publish_time} ago.
+      Added {(resource.publish_time)} ago by <UserLink user={resource.owner} />
     </li>
   </ul>,
   <ul key={`interest${resource.id}`}>
     <li>
-      {resource.no_of_views || 0} views
+      {resource.no_of_views || 0} {pluralize('view', resource.no_of_views)}
     </li>
   </ul>
 ])
@@ -58,12 +55,17 @@ const styles = css`
   }
 `
 
-const Resource = ({
+export const featuredImageGen = (resource_type = '') => (
+  `/${resource_type}-sample-thumbnail.png`
+)
+
+export const Resource = ({
   resource,
   event,
   loading,
   error,
   success,
+  presentationsOptions,
   handleChange,
   handleUpdate,
   handleDelete,
@@ -71,6 +73,7 @@ const Resource = ({
   handleViewCount,
   editing = false,
   currentUser,
+  requester,
   className,
 }) => {
   const title = generateTitle(resource, handleViewCount)
@@ -94,11 +97,11 @@ const Resource = ({
   if (editing) {
     return (
       <ContentPanel title={`Edit or delete "${resource.title}"`}>
-        <NewResource {...{
-                            resource, event, loading,
-                            error, success, handleChange,
-                            handleUpdate, handleDelete
-                          }} />
+        <NewResource editResource {...{
+                                    resource, event, loading, presentationsOptions,
+                                    error, success, handleChange,
+                                    handleUpdate, handleDelete, requester
+                                  }} />
       </ContentPanel>
     )
   }
@@ -107,7 +110,7 @@ const Resource = ({
     <ContentPanel.Card
       className={className}
       key={resource.id}
-      featured_image={`/${resource.resource_type}-sample-thumbnail.png`}
+      featured_image={featuredImageGen(resource.resource_type)}
       {...{title, description, meta, btn, titleLink}}
       showButton={true} />
   )

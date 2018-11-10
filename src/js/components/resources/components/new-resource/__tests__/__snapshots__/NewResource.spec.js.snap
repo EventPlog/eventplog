@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewResource renders correctly 1`] = `
+<styled.div>
+  <Form
+    as="form"
+  >
+    <Message
+      header="Success!"
+      success={true}
+    />
+    <Message
+      error={true}
+      header="Error!"
+    />
+    <FormField>
+      <Label>
+        Title
+      </Label>
+      <Styled(Input)
+        name="title"
+        onChange={[Function]}
+        placeholder="The revolution of education"
+        value="A new resource"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        What's the resource about?
+      </Label>
+      <Styled(Component)
+        name="description"
+        onChange={[Function]}
+        placeholder="What value does this material add?"
+        value="The description"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        A speaker's slides or an additional resource?
+      </Label>
+      <Styled(Input)
+        defaultValue="slides"
+        name="category"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "icon": <Icon
+                as="i"
+                name="send"
+          />,
+              "key": "resource",
+              "text": "Additional Resource",
+              "value": "resource",
+            },
+          ]
+        }
+        placeholder="presentation slides?"
+        value="slides"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        Relevant presentation
+      </Label>
+      <Styled(Input)
+        defaultValue={1}
+        name="recipient_id"
+        onChange={[Function]}
+        options={Array []}
+        placeholder="Select Presentation"
+        value={1}
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        How is it packaged?
+      </Label>
+      <Styled(Input)
+        defaultValue="ebook"
+        name="resource_type"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "icon": <Icon
+                as="i"
+                name="folder open outline"
+          />,
+              "key": "ebook",
+              "text": "Ebook",
+              "value": "ebook",
+            },
+            Object {
+              "icon": <Icon
+                as="i"
+                name="play circle"
+          />,
+              "key": "video",
+              "text": "Video",
+              "value": "video",
+            },
+            Object {
+              "icon": <Icon
+                as="i"
+                name="file alternate outline"
+          />,
+              "key": "article",
+              "text": "Article",
+              "value": "article",
+            },
+            Object {
+              "icon": <Icon
+                as="i"
+                name="github"
+          />,
+              "key": "repository",
+              "text": "Repository",
+              "value": "repository",
+            },
+            Object {
+              "icon": <Icon
+                as="i"
+                name="compass outline"
+          />,
+              "key": "other",
+              "text": "Other",
+              "value": "other",
+            },
+          ]
+        }
+        placeholder="ebook?"
+        value="ebook"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        Where can people access it online?
+      </Label>
+      <Styled(Input)
+        name="url"
+        onChange={[Function]}
+        placeholder="http://somewhere.com/view/pdf"
+        value="https://example.com"
+      />
+    </FormField>
+    <Button
+      onClick={[Function]}
+    >
+      Save
+    </Button>
+  </Form>
+</styled.div>
+`;

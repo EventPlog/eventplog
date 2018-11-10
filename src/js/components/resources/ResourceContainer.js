@@ -11,6 +11,7 @@ import {
   updateViewCount,
 } from './actions'
 
+import { getPresentations } from 'js/components/presentations/actions'
 import { genEventLink } from 'js/utils'
 import Auth from 'js/auth'
 
@@ -43,6 +44,12 @@ class ResourceContainer extends Component {
     }
   }
 
+  componentDidMount() {
+    if(this.props.editResource && this.props.presentations.data.length < 1) {
+      this.fetchPresentations()
+    }
+  }
+
   handleChange = (key, value, elementType) => {
     this.setState((state, props) => {
       let newState = {
@@ -63,11 +70,9 @@ class ResourceContainer extends Component {
 
   handleCreate = () => {
     this.setState({loading: true})
-    const { recipient_id, recipient_type } = this.props
     const payload = {
       ...this.state.resource,
-      recipient_id,
-      recipient_type
+      ...this.props.requester,
     }
     this.props.createResource(payload).then(resource => {
       this.setState(() => ({
@@ -124,6 +129,26 @@ class ResourceContainer extends Component {
     })
   }
 
+  fetchPresentations = () => {
+    this.setState({loading: true})
+    const { event } = this.props
+    this.props.getPresentations({
+      per_page: 50,
+      page: 1,
+      presentation: {
+        event_id: event.id
+      }
+    }).then(presentations => this.setState({
+      loading: false,
+      presentationsOptions:
+        presentations.data.map(presentation => ({
+          key: presentation.id,
+          value: presentation.id,
+          text: presentation.title,
+        }))
+    })).catch(error => this.setState({ loading: false, error }))
+  }
+
   getProps = () => ({
     ...this.props,
     ...this.state,
@@ -142,11 +167,13 @@ class ResourceContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { event = {} } = state.events
+  const { presentations = {}} = state.presentations
 
   return {
     event,
     recipient_id: event.id,
     recipient_type: 'Event',
+    presentations,
     currentUser: Auth.currentUser(),
     ...ownProps
   }
@@ -159,6 +186,7 @@ const mapDispatchToProps = (dispatch) => {
     updateResource,
     deleteResource,
     updateViewCount,
+    getPresentations,
   }, dispatch)
 }
 

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { lighten } from 'polished'
 
 import { media } from 'js/styles/mixins'
-import Loading from 'js/components/shared/loading'
 import Input from 'js/components/shared/input'
 import TextArea from 'js/components/shared/text-area'
 import Button from 'js/components/shared/button'
@@ -26,9 +25,24 @@ const StyledResource = styled.div`
     color: white;
   }
 `
+
+export let categoryOptions = [
+  { key: 'resource', value: 'resource', icon: <Icon name="send" />, text: 'Additional Resource' },
+]
+
+export let resourceTypeOptions = [
+  { key: 'ebook', value: 'ebook', icon: <Icon name="folder open outline" />, text: 'Ebook' },
+  { key: 'video', value: 'video', icon: <Icon name="play circle" />, text: 'Video' },
+  { key: 'article', value: 'article', icon: <Icon name="file alternate outline" />, text: 'Article' },
+  { key: 'repository', value: 'repository', icon: <Icon name="github" />, text: 'Repository' },
+  { key: 'other', value: 'other', icon: <Icon name="compass outline" />, text: 'Other' },
+]
+
 const NewResource = ({
   resource = {},
   event = {},
+  presentationsOptions = [],
+  requester,
   loading,
   error,
   success,
@@ -38,22 +52,10 @@ const NewResource = ({
   handleDelete,
 }) => {
 
-  let categoryOptions = [
-    { key: 'resource', value: 'resource', icon: <Icon name="send" />, text: 'Additional Resource' },
-  ]
-
-  let resourceTypeOptions = [
-    { key: 'ebook', value: 'ebook', icon: <Icon name="folder open outline" />, text: 'Ebook' },
-    { key: 'video', value: 'video', icon: <Icon name="play circle" />, text: 'Video' },
-    { key: 'article', value: 'article', icon: <Icon name="file alternate outline" />, text: 'Article' },
-    { key: 'repository', value: 'repository', icon: <Icon name="github" />, text: 'Repository' },
-    { key: 'other', value: 'other', icon: <Icon name="compass outline" />, text: 'Other' },
-  ]
-
-  // only stakeholders or speakers can add slides
+  // only stakeholders or presentations can add slides
   if (event.is_stakeholder) {
     categoryOptions = [
-      { key: 'speaker_slides', value: 'speaker_slides', icon: <Icon name="copy" />, text: 'Speaker Slides' },
+      { key: 'presentation_slides', value: 'presentation_slides', icon: <Icon name="copy" />, text: 'Presentation Slides' },
       ...categoryOptions
     ]
     resourceTypeOptions = [
@@ -66,9 +68,10 @@ const NewResource = ({
     id,
     title = '',
     description = '',
-    resource_type,
+    url = '',
     category,
-    url = ''
+    recipient_id,
+    resource_type,
   } = resource
 
   return (
@@ -106,11 +109,27 @@ const NewResource = ({
             <Label>A speaker's slides or an additional resource?</Label>
             <Select name="category"
                     value={category || 'resource'}
-                    placeholder='speaker slides?'
+                    placeholder='presentation slides?'
                     defaultValue={category || 'resource'}
                     options={categoryOptions}
                     onChange={(e, attr) => handleChange(attr.name, attr.value) }/>
           </Form.Field>
+
+          {/*We don't need to show this option if within a presentation page.*/}
+          {!requester &&
+            <Form.Field>
+              <Label>Relevant presentation</Label>
+              <Select name="recipient_id"
+                      value={recipient_id || 'recipient_id'}
+                      placeholder='Select Presentation'
+                      defaultValue={recipient_id || 'recipient_id'}
+                      options={presentationsOptions}
+                      onChange={(e, attr) => {
+                          handleChange(attr.name, attr.value)
+                          handleChange('recipient_type', 'Presentation')
+                        } }/>
+            </Form.Field>
+          }
 
           <Form.Field>
             <Label>How is it packaged?</Label>
@@ -128,10 +147,10 @@ const NewResource = ({
                    value={url}
                    placeholder='http://somewhere.com/view/pdf'
                    onChange={({target}) => handleChange(target.name, target.value)}/>
-            <p className="form-info">
+            {/*<p className="form-info">
               Please confirm you have legal rights to redistribute a material before sharing.
               If any material is proven to violate intellectual property laws, we would have to take it down..
-            </p>
+            </p>*/}
           </Form.Field>
 
           <Button onClick={id ? handleUpdate : handleCreate}>
