@@ -27,10 +27,13 @@ const defaultResource = {
 class ResourceContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = { resource: {
-      resource_type: 'ebook', category: 'resource',
-      editing: false,
-    } }
+    this.state = {
+      resource: {
+        editing: false,
+        resource_type: 'ebook', category: 'resource',
+      },
+      showPresentationsOptions: !props.requester || (props.requester && !props.requester.recipient_id)
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
@@ -45,7 +48,10 @@ class ResourceContainer extends Component {
   }
 
   componentDidMount() {
-    if(this.props.editResource && this.props.presentations.data.length < 1) {
+    if (
+      this.props.editResource &&
+      this.state.showPresentationsOptions
+    ) {
       this.fetchPresentations()
     }
   }
@@ -140,12 +146,6 @@ class ResourceContainer extends Component {
       }
     }).then(presentations => this.setState({
       loading: false,
-      presentationsOptions:
-        presentations.data.map(presentation => ({
-          key: presentation.id,
-          value: presentation.id,
-          text: presentation.title,
-        }))
     })).catch(error => this.setState({ loading: false, error }))
   }
 

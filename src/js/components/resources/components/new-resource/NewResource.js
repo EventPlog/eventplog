@@ -41,7 +41,8 @@ export let resourceTypeOptions = [
 const NewResource = ({
   resource = {},
   event = {},
-  presentationsOptions = [],
+  presentations = {data: []},
+  showPresentationsOptions,
   requester,
   loading,
   error,
@@ -52,6 +53,12 @@ const NewResource = ({
   handleDelete,
 }) => {
 
+  const presentationsOptions =
+    presentations.data.map(presentation => ({
+      key: presentation.id,
+      value: presentation.id,
+      text: presentation.title,
+    }))
   // only stakeholders or presentations can add slides
   if (event.is_stakeholder) {
     categoryOptions = [
@@ -116,7 +123,7 @@ const NewResource = ({
           </Form.Field>
 
           {/*We don't need to show this option if within a presentation page.*/}
-          {!requester &&
+          {showPresentationsOptions &&
             <Form.Field>
               <Label>Relevant presentation</Label>
               <Select name="recipient_id"
