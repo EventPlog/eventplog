@@ -28,10 +28,14 @@ const styles = css`
 
 const MainContent = ({
   className,
+  title,
   resources,
   loading,
   error,
-  currentUser
+  currentUser,
+  requester,
+  recipient_id,
+  recipient_type,
 }) => {
 
   if (loading) return <Loading />
@@ -39,12 +43,13 @@ const MainContent = ({
 
   return (
     <div className={`${className}`}>
-      <Resources title="All resources"
+      <Resources title={title || "All resources"}
                  currentUser={currentUser}
+                 requester={requester}
                  resources={resources} />
       {currentUser && currentUser.id &&
         <ContentPanel title="Add a resource">
-          <NewResource />
+          <NewResource editResource {...{requester}} />
         </ContentPanel>
       }
     </div>

@@ -14,7 +14,7 @@ import AboutEvent from "../about-event";
 import EventDiscussion from "js/components/event-discussions";
 import EventPictures from "js/components/event-pictures";
 import Resources from "js/components/resources";
-import Speakers from "js/components/speakers/scenes/speakers";
+import Presentations from "js/components/presentations/scenes/presentations";
 import Tab from "js/components/shared/tab";
 import Report from "js/components/feedback/scenes/feedback-report";
 import {media} from "js/styles/mixins";
@@ -92,7 +92,7 @@ const StyledEvent = styled.div`
     }
   }
   
-  .speakers.app-container {
+  .presentations.app-container {
     padding: 0;
   }
 `
@@ -108,6 +108,14 @@ const Discussions = () => {
 
   return <Tab panes={getPanes()} />
 }
+
+const EventResources = ({eventId}) => (
+  <Resources recipient_id={eventId} recipient_type="Event" />
+)
+
+const EventResources1 = ({eventId}) => (
+  <div>Coming through...{eventId}</div>
+)
 
 const Event = ({
   event = {},
@@ -138,8 +146,8 @@ const Event = ({
       {name: `About`, content: AboutEvent },
       {name: `Feedback`, content: Report },
       {name: `Discussion (${event_discussion.comments_count || 0})`, content: Discussions },
-      {name: `Slides & Resources`, content: Resources },
-      {name: `Speakers`, content: Speakers },
+      {name: `Slides & Resources`, content: Resources},
+      {name: `Presentations`, content: Presentations },
     ]
   }
 

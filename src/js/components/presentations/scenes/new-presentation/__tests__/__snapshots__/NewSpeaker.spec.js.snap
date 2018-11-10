@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewPresentation should render correctly 1`] = `
+<styled.div>
+  <Form
+    as="form"
+  >
+    <Message
+      header="Success!"
+      success={true}
+    />
+    <Message
+      error={true}
+      header="Error!"
+    />
+    <FormField>
+      <Label>
+        What's the presentation's email?
+      </Label>
+      <small>
+        You can add more details later.
+      </small>
+      <Styled(Input)
+        name="email"
+        onChange={[Function]}
+        placeholder="someone@example.com"
+        value="some@one.com"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        What's the title of this presentation?
+      </Label>
+      <Styled(Input)
+        name="title"
+        onChange={[Function]}
+        placeholder="The revolution of education"
+        value="An awesome title"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        What's the nature of this presentation?
+      </Label>
+      <Styled(Input)
+        defaultValue="talk"
+        name="presentation_type"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "icon": <Icon
+                as="i"
+                name="folder open outline"
+          />,
+              "key": "talk",
+              "text": "Talk",
+              "value": "talk",
+            },
+            Object {
+              "icon": <Icon
+                as="i"
+                name="play circle"
+          />,
+              "key": "workshop",
+              "text": "Workshop",
+              "value": "workshop",
+            },
+            Object {
+              "icon": <Icon
+                as="i"
+                name="compass outline"
+          />,
+              "key": "other",
+              "text": "Other",
+              "value": "other",
+            },
+          ]
+        }
+        placeholder="talk"
+        value="talk"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        Give a summary of the presentation
+      </Label>
+      <Styled(Component)
+        name="summary"
+        onChange={[Function]}
+        placeholder="At a glance, what's the presentation about?"
+        value="A short summary"
+      />
+    </FormField>
+    <FormField>
+      <Label>
+        Detailed description
+      </Label>
+      <Styled(Component)
+        name="details"
+        onChange={[Function]}
+        placeholder="For the nerds, give a lot more details of what to expect"
+        rows="10"
+        value="A lot of details"
+      />
+    </FormField>
+    <Button>
+      Save
+    </Button>
+  </Form>
+</styled.div>
+`;

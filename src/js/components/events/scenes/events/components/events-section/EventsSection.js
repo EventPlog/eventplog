@@ -44,10 +44,12 @@ export const generateMeta = (event = {}) => ([
     </li>
   </ul>,
   <ul key={`rating${event.id}`}>
-  <li>
-    {event.no_of_reviews} {pluralize('person',event.no_of_reviews)} rated {event.average_ratings} on average
-  </li>
-</ul>
+    {(parseInt(event.no_of_reviews) > 0) &&
+      <li>
+        {event.no_of_reviews} {pluralize('person',event.no_of_reviews)} rated {event.average_ratings}/10 on average
+      </li>
+    }
+  </ul>
 ])
 
 export const generateCTA = (handleClick) => (

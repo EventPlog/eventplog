@@ -11,6 +11,7 @@ import {
   updateViewCount,
 } from './actions'
 
+import { getPresentations } from 'js/components/presentations/actions'
 import { genEventLink } from 'js/utils'
 import Auth from 'js/auth'
 
@@ -26,10 +27,13 @@ const defaultResource = {
 class ResourceContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = { resource: {
-      resource_type: 'ebook', category: 'resource',
-      editing: false,
-    } }
+    this.state = {
+      resource: {
+        editing: false,
+        resource_type: 'ebook', category: 'resource',
+      },
+      showPresentationsOptions: !props.requester || (props.requester && !props.requester.recipient_id)
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
@@ -40,6 +44,15 @@ class ResourceContainer extends Component {
     return {
       resource: nextProps.resource || defaultResource,
       link_back: `${genEventLink(event, event.community)}`
+    }
+  }
+
+  componentDidMount() {
+    if (
+      this.props.editResource &&
+      this.state.showPresentationsOptions
+    ) {
+      this.fetchPresentations()
     }
   }
 
@@ -63,11 +76,9 @@ class ResourceContainer extends Component {
 
   handleCreate = () => {
     this.setState({loading: true})
-    const { recipient_id, recipient_type } = this.props
     const payload = {
       ...this.state.resource,
-      recipient_id,
-      recipient_type
+      ...this.props.requester,
     }
     this.props.createResource(payload).then(resource => {
       this.setState(() => ({
@@ -124,6 +135,20 @@ class ResourceContainer extends Component {
     })
   }
 
+  fetchPresentations = () => {
+    this.setState({loading: true})
+    const { event } = this.props
+    this.props.getPresentations({
+      per_page: 50,
+      page: 1,
+      presentation: {
+        event_id: event.id
+      }
+    }).then(presentations => this.setState({
+      loading: false,
+    })).catch(error => this.setState({ loading: false, error }))
+  }
+
   getProps = () => ({
     ...this.props,
     ...this.state,
@@ -142,11 +167,13 @@ class ResourceContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { event = {} } = state.events
+  const { presentations = {}} = state.presentations
 
   return {
     event,
     recipient_id: event.id,
     recipient_type: 'Event',
+    presentations,
     currentUser: Auth.currentUser(),
     ...ownProps
   }
@@ -159,6 +186,7 @@ const mapDispatchToProps = (dispatch) => {
     updateResource,
     deleteResource,
     updateViewCount,
+    getPresentations,
   }, dispatch)
 }
 

@@ -9,6 +9,11 @@ import ContentPanelCard from './ContentPanelCard'
 
 
 const StyledContentPanel = styled.div`
+  ${
+    media.phone`
+      max-width: 100%;
+    `
+  }
   .content-header {
     border-bottom: 1px solid ${props => lighten(0.2, props.theme.blue)};
     font-size: 1.2rem;

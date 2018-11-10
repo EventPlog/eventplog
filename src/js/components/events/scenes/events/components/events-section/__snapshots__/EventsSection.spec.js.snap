@@ -41,14 +41,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
-        <ul>
-          <li>
-               
-              person
-               rated 
-               on average
-          </li>
-      </ul>,
+        <ul />,
       ]
     }
     showButton={true}
@@ -99,14 +92,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
-        <ul>
-          <li>
-               
-              person
-               rated 
-               on average
-          </li>
-      </ul>,
+        <ul />,
       ]
     }
     showButton={true}
@@ -155,14 +141,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
-        <ul>
-          <li>
-               
-              person
-               rated 
-               on average
-          </li>
-      </ul>,
+        <ul />,
       ]
     }
     showButton={true}

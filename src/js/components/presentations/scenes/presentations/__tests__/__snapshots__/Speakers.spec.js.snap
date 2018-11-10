@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Presentations should render correctly 1`] = `
+<div
+  className="undefined presentations app-container"
+>
+  <div>
+    <PresentationsList
+      currentUser={
+        Object {
+          "id": 1,
+        }
+      }
+      title={
+        <p>
+          All presentations - 
+          <a
+            href="http://localhost/e/3?utm_source=feedback_form"
+          />
+        </p>
+      }
+    />
+    <ContentPanel
+      title="Add a presentation"
+    >
+      <Component
+        newPresentation={true}
+      />
+    </ContentPanel>
+  </div>
+</div>
+`;

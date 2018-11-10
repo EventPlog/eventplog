@@ -26,10 +26,7 @@ class EventResourcesContainer extends Component {
     this.props.getResources({
       per_page,
       page: meta.activePage || 1,
-      resource: {
-        recipient_id: this.props.event.id,
-        recipient_type: 'Event'
-      }
+      resource: { ...this.props.requester }
     }).finally(res => this.setState({ loading: false}))
   }
 
@@ -48,9 +45,15 @@ const mapStateToProps = (state, ownProps) => {
   const {resources = {}} = state.resources
   const { event = {}} = state.events
 
+  const requester = ownProps.requester || {
+      trackable_id: event.id,
+      trackable_type: 'Event'
+    }
+
   return {
     resources,
     event,
+    requester,
     currentUser: Auth.currentUser(),
   }
 }

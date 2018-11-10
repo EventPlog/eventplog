@@ -13,7 +13,7 @@ import organizers from 'js/components/event-settings/reducers'
 import event_discussions from 'js/components/event-discussions/reducers'
 import event_pictures from 'js/components/event-pictures/reducers'
 import resources from 'js/components/resources/reducers'
-import speakers from 'js/components/speakers/reducers'
+import presentations from 'js/components/presentations/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -30,7 +30,7 @@ let rootReducer = combineReducers({
   event_discussions,
   event_pictures,
   resources,
-  speakers,
+  presentations,
 })
 
 export default rootReducer

@@ -8,6 +8,7 @@ import { lighten } from 'polished'
 import { media } from 'js/styles/mixins'
 import colors from 'js/styles/theme/variables'
 import { genUserProfileLink } from 'js/utils'
+import UserLink from 'js/components/shared/user-link'
 
 const StyledComment = styled.div`
   display: flex;
@@ -168,10 +169,7 @@ const CommentPanel = ({
         {display_name &&
         <div className="meta">
           <div className="full-name">
-            <Link to={genUserProfileLink(user)}
-                  target='_blank'>
-              {`${display_name}`}
-            </Link>
+            <UserLink user={user}/>
           </div>
           {comment.publish_time &&
             <div className="role">

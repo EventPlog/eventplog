@@ -109,9 +109,9 @@ const ContentBeforeEventCreate = ({
   
   return (
     <StyledContent>
-      <h3>Create a event</h3>
+      <h3>Create an event</h3>
       <p>
-        What's the title of your event?
+        A few details about your event, and you're on your way!
       </p>
       <div className="submit-form">
         <Form loading={loading} error={!!error}>
