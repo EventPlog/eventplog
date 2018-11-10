@@ -49,7 +49,7 @@ const MainContent = ({
                  resources={resources} />
       {currentUser && currentUser.id &&
         <ContentPanel title="Add a resource">
-          <NewResource {...{requester}} />
+          <NewResource editResource {...{requester}} />
         </ContentPanel>
       }
     </div>

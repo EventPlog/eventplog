@@ -20,6 +20,7 @@ const props = {
   },
   event: {id: 1},
   presentationsOptions: [],
+  showPresentationsOptions: true,
   handleCreate: () => {},
   handleUpdate: () => {},
   handleDelete: () => {},

@@ -117,7 +117,7 @@ exports[`Presentation should render correctly 1`] = `
               className="edit-presentation"
               to="/e/3/presentations/1/user/1/edit"
             >
-              Edit Presentation
+              Edit Speaker
             </Component>
           </UserProfile>
         </Sidebar>

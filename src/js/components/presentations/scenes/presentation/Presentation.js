@@ -187,7 +187,7 @@ export const Presentation = ({
                 {canEdit &&
                   <Button.Link className="edit-presentation"
                                to={`${genEventLink(event, event.community)}/presentations/${presentation.id}/user/${user.id}/edit`}>
-                    Edit Presentation
+                    Edit Speaker
                   </Button.Link>
                 }
               </AboutUser>

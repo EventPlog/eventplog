@@ -65,7 +65,9 @@ export const Resource = ({
   loading,
   error,
   success,
+  presentations,
   presentationsOptions,
+  showPresentationsOptions,
   handleChange,
   handleUpdate,
   handleDelete,
@@ -99,8 +101,8 @@ export const Resource = ({
       <ContentPanel title={`Edit or delete "${resource.title}"`}>
         <NewResource editResource {...{
                                     resource, event, loading, presentationsOptions,
-                                    error, success, handleChange,
-                                    handleUpdate, handleDelete, requester
+                                    showPresentationsOptions, error, success, handleChange,
+                                    handleUpdate, handleDelete, requester, presentations,
                                   }} />
       </ContentPanel>
     )
