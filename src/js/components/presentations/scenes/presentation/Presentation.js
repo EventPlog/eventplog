@@ -71,8 +71,12 @@ const styles = css`
       margin: 0;
       text-align: center;
       
-      h3 {
+      h3 a {
         color: ${props => props.theme.gray};
+        
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -84,9 +88,10 @@ const styles = css`
   }
   
   .sidebar {
-      p {
-        color: ${props => props.theme.grayMedium};
-      }
+    p {
+      color: ${props => props.theme.grayMedium};
+    }
+      
   }
 `
 
