@@ -10,6 +10,7 @@ import Button from 'js/components/shared/button'
 import ImageUploader from 'js/components/shared/image-uploader'
 import { media } from 'js/styles/mixins'
 import Loading from 'js/components/shared/loading'
+import UserLink from 'js/components/shared/user-link'
 
 import {
   addHttp,
@@ -79,7 +80,7 @@ const StyledUser = styled.div`
         margin: 0;
         text-align: center;
       `
-  }
+    }
     
     ul {
       line-height: 1.7rem;
@@ -141,7 +142,7 @@ const UserProfile = ({
         <div className="user-info-text">
           <ul>
             <li className="user-name">
-              <h3>{user.display_name}</h3>
+              <h3><UserLink user={user} /></h3>
               <span>
                 <ReactMarkdown source={user.bio} />
               </span>

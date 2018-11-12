@@ -12,15 +12,21 @@ import checkEqual from 'js/utils/checkEqual'
 import Auth from 'js/auth'
 import { secureAction } from 'js/auth/actions'
 
-const labelVerbMapping = {
-  'I shared': 'i_shared',
-  'Shared with me': 'shared_with_me',
+
+export const labelVerbMapper = (user, currentUser = {}) => {
+  const subject = user.id == currentUser.id ? 'you' : user.less_formal_name
+  return {
+    [`${subject} shared`]: 'i_shared',
+    [`Shared with ${subject}`]: 'shared_with_me',
+  }
 }
 
 class MainContentContainer extends Component {
+  labelVerbMapping = labelVerbMapper(this.props.user, this.props.currentUser)
+
   state = {
-    labelVerbMapping,
-    activeItem: Object.keys(labelVerbMapping)[0]
+    labelVerbMapping: this.labelVerbMapping,
+    activeItem: Object.keys(this.labelVerbMapping)[0]
   }
 
   componentWillMount(props) {
@@ -41,13 +47,12 @@ class MainContentContainer extends Component {
   }
 
   getData() {
-    const { labelVerbMapping, activeItem } = this.state
-    this.getResourcesByVerb(activeItem)
+    this.getResourcesByVerb(this.state.activeItem)
   }
 
   getResourcesByVerb(label, page = 1, per_page = 10) {
     this.props.getResourcesByVerb({
-      verb: labelVerbMapping[label],
+      verb: this.state.labelVerbMapping[label],
       page,
       per_page,
       user_id: this.props.user.id
