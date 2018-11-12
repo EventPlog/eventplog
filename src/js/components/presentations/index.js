@@ -13,23 +13,22 @@ const PresentationsList = createLoader(() =>
 const Presentation = createLoader(()=>
   import('./scenes/presentation' /*webpackChunckName: "Presentation"*/))
 
-const EditPresentation = createLoader(()=>
-  import('./scenes/edit-presentation' /*webpackChunckName: "EditPresentation"*/))
+const EditPresentationSpeaker = createLoader(()=>
+  import('./scenes/edit-presentation-speaker' /*webpackChunckName: "EditPresentationSpeaker"*/))
 
 const Presentations = ()=>{
   return(
     <Switch>
       <Route exact path="/" component={PresentationsList}/>
-      <Route exact path="/presentations/:presentation_id/user/:id/edit" component={EditPresentation}/>
+      <Route exact path="/presentations/:presentation_id/user/:id/edit" component={EditPresentationSpeaker}/>
 
       <Route exact path="/e/:event_id/presentations" component={PresentationsList}/>
       <Route exact path="/e/:event_id/presentations/:id" component={Presentation}/>
-      <Route exact path="/e/:event_id/presentations/:presentation_id/user/:id/edit" component={EditPresentation}/>
+      <Route exact path="/e/:event_id/presentations/:presentation_id/user/:id/edit" component={EditPresentationSpeaker}/>
 
       <Route exact path="/c/:community_id/e/:event_id/presentations" component={PresentationsList}/>
       <Route exact path="/c/:community_id/e/:event_id/presentations/:id" component={Presentation}/>
-      <Route exact path="/c/:community_id/e/:event_id/presentations/:id/edit" component={EditPresentation}/>
-      <Route exact path="/c/:community_id/e/:event_id/presentations/:presentation_id/user/:id/edit" component={EditPresentation}/>
+      <Route exact path="/c/:community_id/e/:event_id/presentations/:presentation_id/user/:id/edit" component={EditPresentationSpeaker}/>
     </Switch>
   )
 }
