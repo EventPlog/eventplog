@@ -79,6 +79,8 @@ class ResourceContainer extends Component {
     const payload = {
       ...this.state.resource,
       ...this.props.requester,
+      trackable_id: this.props.event.id,
+      trackable_type: 'Event'
     }
     this.props.createResource(payload).then(resource => {
       this.setState(() => ({
