@@ -81,7 +81,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           </label>
           <Styled(Input)
             disabled={true}
-            name="email"
+            name="unconfirmed_email"
             onChange={[Function]}
             placeholder="ciroma@chukwuma.com"
             value="someone@example.com"
@@ -173,7 +173,6 @@ exports[`EditUserForm it should render correctly 1`] = `
               Object {
                 "avatar_url": "http://sample-avatar.com/a.jpg",
                 "bio": "An amazing person",
-                "email": "someone@example.com",
                 "first_name": "john",
                 "gender": "male",
                 "github_profile": "github.com/john",
@@ -183,13 +182,13 @@ exports[`EditUserForm it should render correctly 1`] = `
                 "occupation": "Engineer",
                 "site_link": "john.com",
                 "twitter_profile": "twitter.com/john",
+                "unconfirmed_email": "someone@example.com",
               }
             }
             user={
               Object {
                 "avatar_url": "http://sample-avatar.com/a.jpg",
                 "bio": "An amazing person",
-                "email": "someone@example.com",
                 "first_name": "john",
                 "gender": "male",
                 "github_profile": "github.com/john",
@@ -199,6 +198,7 @@ exports[`EditUserForm it should render correctly 1`] = `
                 "occupation": "Engineer",
                 "site_link": "john.com",
                 "twitter_profile": "twitter.com/john",
+                "unconfirmed_email": "someone@example.com",
               }
             }
           />

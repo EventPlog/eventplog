@@ -24,6 +24,7 @@ import {
 const StyledEditUserForm = styled.div`
   .app-container {
     margin: 2rem auto;
+    padding: 1rem;
   }
   
   .content-panel {
@@ -146,9 +147,9 @@ export const EditUserForm = ({
 
             <Form.Field>
               <label>Email</label>
-              <Input name="email"
+              <Input name="unconfirmed_email"
                      disabled
-                     value={user.email}
+                     value={user.unconfirmed_email}
                      placeholder='ciroma@chukwuma.com'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
@@ -236,7 +237,7 @@ export const EditUserForm = ({
 
             <Button inverted
                     type='submit'
-                    disabled={!user.email}
+                    disabled={!user.unconfirmed_email}
                     className="space-top"
                     onClick={handleSubmit}>
               Save
