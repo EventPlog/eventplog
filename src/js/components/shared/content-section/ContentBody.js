@@ -4,7 +4,9 @@ import { media, maxMedia } from 'js/styles/mixins'
 
 const StyledMainContentBody = styled.section`
   flex: 1;
-  margin-right: 2rem; 
+  width: 100%;
+  margin: 0;
+  padding: 0 2rem;
   
   ${
     media.tablet`
@@ -14,7 +16,6 @@ const StyledMainContentBody = styled.section`
   
   ${
     media.phone`
-        margin: 0 2rem;
       `
   }
 `
