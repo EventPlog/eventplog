@@ -23,7 +23,7 @@ describe('EditUserForm', () => {
     first_name: 'john',
     last_name: 'doe',
     gender: 'male',
-    email: 'someone@example.com',
+    unconfirmed_email: 'someone@example.com',
     avatar_url: 'http://sample-avatar.com/a.jpg',
     bio: 'An amazing person',
     occupation: 'Engineer',
@@ -75,8 +75,8 @@ describe('EditUserForm', () => {
     })
 
     test('renders the email input correctly', () => {
-      expect(wrapper.find(Input).at(2).props().name).toEqual('email')
-      expect(wrapper.find(Input).at(2).props().value).toEqual(props.user.email)
+      expect(wrapper.find(Input).at(2).props().name).toEqual('unconfirmed_email')
+      expect(wrapper.find(Input).at(2).props().value).toEqual(props.user.unconfirmed_email)
     })
 
     test('renders the presentation type select field correctly', () => {
