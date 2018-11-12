@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 // internal
@@ -29,21 +30,21 @@ export const generateDescription = (community = {}) => (
 export const generateMeta = (event = {}) => ([
   <ul key={`date${event.id}`}>
     <li>
-      {event.date}
+      <Icon name="calendar outline" /> {event.date}
     </li>
     <li>
-      {event.time}
+      <Icon name="clock" /> {event.time}
     </li>
-    <li>
-      {event.venue}
-    </li>
+    {event.venue &&
+      <li>
+        <Icon name="map marker alternate"/> {event.venue}
+      </li>
+    }
   </ul>,
-  <ul key={`interest${event.id}`}>
+  <ul key={`rating${event.id}`}>
     <li>
       {event.interested_persons} {pluralize('person', event.interested_persons)} interested
     </li>
-  </ul>,
-  <ul key={`rating${event.id}`}>
     {(parseInt(event.no_of_reviews) > 0) &&
       <li>
         {event.no_of_reviews} {pluralize('person',event.no_of_reviews)} rated {event.average_ratings}/10 on average
