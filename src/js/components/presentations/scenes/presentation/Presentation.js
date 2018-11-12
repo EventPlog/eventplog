@@ -78,6 +78,10 @@ const styles = css`
           text-decoration: underline;
         }
       }
+      
+      li.user-name span {
+        color: ${props => props.theme.gray};
+      }
     }
   }
   
@@ -187,7 +191,7 @@ export const Presentation = ({
           </ContentSection.Body>
 
           <ContentSection.Sidebar>
-            <Sidebar title="About the presentation">
+            <Sidebar title="About the speaker">
               <AboutUser user={presentation.user}>
                 {canEdit &&
                   <Button.Link className="edit-presentation"

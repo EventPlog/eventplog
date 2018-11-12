@@ -143,14 +143,14 @@ const UserProfile = ({
           <ul>
             <li className="user-name">
               <h3><UserLink user={user} /></h3>
+              {user.occupation &&
               <span>
-                <ReactMarkdown source={user.bio} />
-              </span>
+                {user.occupation}
+              </span>}
             </li>
-            {user.occupation &&
             <li>
-              {user.occupation}
-            </li>}
+              <ReactMarkdown source={user.bio} />
+            </li>
             {/*<li>*/}
             {/*Admin: Facebook Developer Circles Lagos*/}
             {/*</li>*/}
