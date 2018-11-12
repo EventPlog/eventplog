@@ -9,8 +9,9 @@ const StyledMainContent = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 4rem 2rem;
+  margin: 4rem 0;
   flex-wrap: wrap;
+  padding: 0 2rem;
   
   ${
     media.tablet`
