@@ -104,7 +104,7 @@ exports[`Presentation should render correctly 1`] = `
       </ContentBody>
       <ContentSidebar>
         <Sidebar
-          title="About the presentation"
+          title="About the speaker"
         >
           <UserProfile
             user={

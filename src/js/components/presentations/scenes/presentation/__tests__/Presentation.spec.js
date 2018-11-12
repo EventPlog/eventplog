@@ -89,7 +89,7 @@ describe('Presentation', () => {
     const sidebar = wrapper.find(Sidebar)
 
     test('it renders with the right title', () => {
-      expect(sidebar.at(0).props().title).toEqual('About the presentation')
+      expect(sidebar.at(0).props().title).toEqual('About the speaker')
     })
 
     test('it renders the AboutUser component with the right props', () => {
