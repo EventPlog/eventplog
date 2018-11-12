@@ -2,7 +2,7 @@ import initialState from './intialState';
 import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
-const invitationReducer = (state=initialState.guest, action) => {
+const guestReducer = (state=initialState.guest, action) => {
   switch(action.type) {
     case actionTypes.GUEST_CREATE_START:
     case actionTypes.GUEST_SHOW_START:
@@ -12,16 +12,16 @@ const invitationReducer = (state=initialState.guest, action) => {
     case actionTypes.GUEST_CREATE_COMPLETE:
     case actionTypes.GUEST_SHOW_COMPLETE:
     case actionTypes.GUEST_UPDATE_COMPLETE:
-      return {...action.payload}
+      return {...action.payload, loading: false}
 
     case actionTypes.GUEST_CREATE_FAIL:
     case actionTypes.GUEST_SHOW_FAIL:
     case actionTypes.GUEST_UPDATE_FAIL:
-      return {error: true}
+      return {error: action.payload, loading: false}
 
     default:
       return state;
   }
 };
 
-export default invitationReducer
+export default guestReducer

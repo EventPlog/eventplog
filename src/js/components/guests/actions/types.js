@@ -5,6 +5,10 @@ export default keyMirror({
   CHECK_IN_COMPLETE: null,
   CHECK_IN_FAIL: null,
 
+  GUEST_SHOW_START: null,
+  GUEST_SHOW_COMPLETE: null,
+  GUEST_SHOW_FAIL: null,
+
   GUEST_UPDATE_START: null,
   GUEST_UPDATE_COMPLETE: null,
   GUEST_UPDATE_FAIL: null,

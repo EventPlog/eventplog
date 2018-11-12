@@ -102,7 +102,7 @@ export const EditUserForm = ({
               <Message
                 info
                 header='Heads up!'
-                content="Only the presentation can make changes to fields that already contain data."
+                content="Only the speaker can make changes to fields that already contain data."
               />
             }
             <Message
