@@ -27,9 +27,26 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     meta={
       Array [
         <ul>
-          <li />
-          <li />
           <li>
+              <Icon
+                  as="i"
+                  name="calendar outline"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="clock"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="map marker alternate"
+              />
+               
               StartZone, Gbagada
           </li>
       </ul>,
@@ -41,7 +58,6 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
-        <ul />,
       ]
     }
     showButton={true}
@@ -78,9 +94,26 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     meta={
       Array [
         <ul>
-          <li />
-          <li />
           <li>
+              <Icon
+                  as="i"
+                  name="calendar outline"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="clock"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="map marker alternate"
+              />
+               
               StartZone, Gbagada
           </li>
       </ul>,
@@ -92,7 +125,6 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
-        <ul />,
       ]
     }
     showButton={true}
@@ -127,9 +159,26 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     meta={
       Array [
         <ul>
-          <li />
-          <li />
           <li>
+              <Icon
+                  as="i"
+                  name="calendar outline"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="clock"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="map marker alternate"
+              />
+               
               StartZone, Gbagada
           </li>
       </ul>,
@@ -141,7 +190,6 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
-        <ul />,
       ]
     }
     showButton={true}

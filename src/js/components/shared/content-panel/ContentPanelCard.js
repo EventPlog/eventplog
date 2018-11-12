@@ -88,6 +88,7 @@ const StyledMainContentCard = styled.div`
     ul {
       padding: 0;
       display: inline-flex;
+      flex-direction: column;
       color: #aaa; 
       margin: 0.1rem;
       font-size: 90%;
