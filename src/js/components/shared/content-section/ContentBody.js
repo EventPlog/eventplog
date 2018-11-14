@@ -7,17 +7,6 @@ const StyledMainContentBody = styled.section`
   width: 100%;
   margin: 0;
   padding: 0 2rem;
-  
-  ${
-    media.tablet`
-        margin: 0;
-      `
-  }
-  
-  ${
-    media.phone`
-      `
-  }
 `
 
 const ContentBody = ({ children }) => (

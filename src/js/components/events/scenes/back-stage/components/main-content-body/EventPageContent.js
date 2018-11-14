@@ -17,6 +17,7 @@ const TodoItem = createLoadable(() => import('js/components/todo-items/component
 
 const StyledEventComponent = styled.div`
   display: flex;
+  flex: 1;
   background: white;
   border-radius: 10px;
   border: 1px solid darken(white, 10);
@@ -42,6 +43,12 @@ const verifyAccess = (Component, props = {}) => {
 const EventComponent = (props) =>
   <StyledEventComponent>
     <Switch>
+      <Route exact path='/e/:event_id/backstage' render={verifyAccess(Settings, props)} />
+      <Route path='/e/:event_id/backstage/tasks' render={verifyAccess(Tasks, props)} />
+      <Route path="/e/:event_id/backstage/guests" render={withProps(Guests, props)} />
+      <Route path="/e/:event_id/backstage/feedback" render={withProps(Feedback, props)} />
+      <Route path="/e/:event_id/backstage/settings" component={verifyAccess(Settings, props)} />
+
       <Route exact path='/c/:community_id/e/:event_id/backstage' render={verifyAccess(Settings, props)} />
       <Route path='/c/:community_id/e/:event_id/backstage/tasks' render={verifyAccess(Tasks, props)} />
       <Route path="/c/:community_id/e/:event_id/backstage/guests" render={withProps(Guests, props)} />

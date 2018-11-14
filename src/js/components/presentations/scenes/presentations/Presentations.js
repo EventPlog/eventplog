@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled, {css} from 'styled-components'
 
 import PresentationsList from './PresentationsList'
@@ -11,8 +12,12 @@ const styles = css`
   position: relative;
   
   &.app-container {
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding: 1rem;
+    
+    > div {
+      width: 100%;
+    }
   }
   
   .pic-frame {
@@ -33,7 +38,7 @@ const styles = css`
 `
 
 export const generateTitle = (event) => {
-  const title = <a href={`${window.location.origin}${genEventLink(event, event.community)}?utm_source=feedback_form`}>{event.title}</a>
+  const title = <Link to={`${genEventLink(event, event.community)}?utm_source=feedback_form`}>{event.title}</Link>
   return <p>All presentations - {title}</p>
 }
 

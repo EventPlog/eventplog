@@ -28,12 +28,12 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/1/e/1"
+        to="/e/1"
       >
         Tech is in you
       </Link>
     }
-    titleLink="/c/1/e/1"
+    titleLink="/e/1"
   />
   <SidebarCard
     btn={
@@ -59,12 +59,12 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/2/e/2"
+        to="/e/2"
       >
         Writers corner workshop with writing and use of English
       </Link>
     }
-    titleLink="/c/2/e/2"
+    titleLink="/e/2"
   />
   <SidebarCard
     btn={

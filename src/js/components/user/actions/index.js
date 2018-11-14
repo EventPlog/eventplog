@@ -53,3 +53,9 @@ export const updateUser = (user) => {
   })
 }
 
+export const addUserToStore = (user) => {
+  return (dispatch) => dispatch({
+    type: actionTypes.USER_SHOW_COMPLETE,
+    payload: user
+  })
+}

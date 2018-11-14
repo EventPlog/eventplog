@@ -14,10 +14,9 @@ class HeaderContainer extends Component {
 
   getProps = () => ({
     ...this.state,
+    ...this.props,
     onHideMenu: this.onHideMenu,
     user: Auth.currentUser(),
-    location: this.props.location,
-    inCommunity: this.props.inCommunity
   })
 
   render () {

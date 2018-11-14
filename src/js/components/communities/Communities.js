@@ -27,6 +27,8 @@ const JoinACommunity = createLoader(() =>
 
 const StyledCommunityPlog = styled.div`
   height: 100%;
+  min-height: calc(100vh - 350px);
+
   
   a, a:hover {
     color: var(--activeLink);

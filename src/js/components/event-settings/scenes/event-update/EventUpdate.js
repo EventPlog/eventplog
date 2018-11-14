@@ -47,6 +47,10 @@ const StyleEventUpdate = styled.div`
     display: flex;
     align-items: center;
     white-space: pre;
+    
+    .ui.input input[name="slug"] {
+      width: 2rem;
+    }
   }
   
 `

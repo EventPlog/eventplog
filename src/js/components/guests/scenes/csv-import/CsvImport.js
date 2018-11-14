@@ -22,6 +22,12 @@ const HeadsUpInfo = ({url}) => (
   <Message info>
     <Message.Header>A bit of housekeeping.</Message.Header>
     <p>
+      <a href="https://docs.google.com/spreadsheets/d/1kXgr5xtmHUYamAMpifIattZGYblQ133sua-NtXGRDsU/edit?usp=sharing"
+         target="_blank">
+        View sample sheet
+      </a>
+    </p>
+    <p>
       Please check your CSV file to make sure you rename columns properly or as you would like them saved.
     </p>
     <p>

@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Form, label, Message, Checkbox, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 import ContentPanel from 'js/components/shared/content-panel'
 import color from 'js/styles/theme/variables'
 import ContentBeforeFeedbackSubmit from '../content-before-feedback-submit'
 import ContentAfterFeedbackSubmit from '../content-after-feedback-submit'
 import { genEventLink } from 'js/utils'
+import Loading from 'js/components/shared/loading'
+import FeedbackReport from 'js/components/feedback/scenes/feedback-report'
 
 const StyleEventUpdate = styled.div`
   width: 100%;
+  margin-top: 1rem;
   
   > img {
     width: 100%;
@@ -58,8 +61,14 @@ const EventUpdate = ({
   current_user,
 }) => {
 
+  if(!event || !event.id) return <Loading />
+
+  if (event.given_feedback) {
+    return <FeedbackReport />
+  }
+
   const personalGreeting = guest_name && guest_name.trim() ? `for ${guest_name}` : '(Yours)'
-  const title = <a href={`${window.location.origin}${genEventLink(event, event.community)}?utm_source=feedback_form`}>{event.title}</a>
+  const title = <Link to={`${genEventLink(event, event.community)}?utm_source=feedback_form`}>{event.title}</Link>
   return (
     <StyleEventUpdate className="main-content">
       <ContentPanel title={<p>Quick feedback {personalGreeting} - {title}</p>}>

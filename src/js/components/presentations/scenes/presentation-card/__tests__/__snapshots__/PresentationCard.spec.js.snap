@@ -12,7 +12,9 @@ exports[`PresentationCard should render correctly 1`] = `
   key="1"
   meta={
     Array [
-      <ul>
+      <ul
+        className="row"
+    >
         <li>
             By 
             <UserLink
