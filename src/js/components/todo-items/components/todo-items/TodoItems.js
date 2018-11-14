@@ -115,7 +115,7 @@ const EventChecklist = ({
           <Accordion>
             {(props) => (
               in_progress.map((todo_item, index) => [
-                <TodoItem key={index} {...{todo_item, match, index, ...props}} />
+                <TodoItem key={index} {...{todo_item, match, index, event, ...props}} />
               ])
             )}
           </Accordion>{}
@@ -127,7 +127,7 @@ const EventChecklist = ({
           <Accordion>
             {(props) => (
               pending.map((todo_item, index) => [
-                <TodoItem key={index} {...{todo_item, match, index, ...props}} />
+                <TodoItem key={index} {...{todo_item, match, index, event, ...props}} />
               ])
             )}
           </Accordion>

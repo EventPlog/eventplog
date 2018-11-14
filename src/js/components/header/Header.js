@@ -11,6 +11,9 @@ const StyledHeader = styled.div`
   border-bottom: 1px solid ${defaults.gray};
   background: ${props => props.theme.black};
   
+  .app-container {
+    max-width: none;
+  }
   
   .main-header {
     padding: 1rem 2rem;
@@ -19,6 +22,7 @@ const StyledHeader = styled.div`
     
     .logo {
       margin: auto 0;
+      max-width: 100%;
       
       ${
         media.phone`
@@ -61,7 +65,7 @@ const StyledHeader = styled.div`
             
       ${
         media.phone`
-          margin: 2rem 0;
+          /*margin: 2rem 0;*/
           
           li {
             margin: 2rem 0;
@@ -88,6 +92,9 @@ const StyledHeader = styled.div`
     }
   }
   
+  .menu.transition.visible a {
+    color: var(--activeLink);
+  }
 `
 
 const Header = (props) => {

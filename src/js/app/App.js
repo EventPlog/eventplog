@@ -20,6 +20,7 @@ import Aboutus from 'js/components/about-us'
 import WhyEventplog from 'js/components/why-eventplog'
 import appThemeColors from 'js/styles/theme/variables'
 import BreadCrumb from 'js/components/shared/breadcrumb'
+import AppMenu from 'js/components/app-menu'
 import { darken } from 'polished'
 
 
@@ -35,7 +36,7 @@ const Password = createLoadable(() => import('js/components/password' /* webpack
 const StyledApp = styled.div`
   --activeLink: ${props => props.theme.activeLink};
   --activeLinkBg: ${props => props.theme.activeLinkBg};
-  
+ 
   ${universalStyles}
 `
 
@@ -47,7 +48,9 @@ class App extends Component {
       activeLink,
       isInternalPath,
       showBreadCrumb,
-      store
+      store,
+      width,
+      height
     } = this.props;
 
     const activeLinkBg = darken(0.1, activeLink)
@@ -56,35 +59,38 @@ class App extends Component {
         ...appThemeColors,
         activeLink,
         activeLinkBg,
+        width,
+        height
       }}>
       
         <ScrollToTop>
           <StyledApp>
-            {isInternalPath && <Header />}
-            {isInternalPath && showBreadCrumb && <BreadCrumb {...this.props.location} />}
-            {<NewInvitationBar />}
-            <Switch>
-              <Route exact path="/" component={Events} />
-              <Route exact path="/login" component={Login} />
-              <Route path="/legal" component={Legal} />
-              <Route exact path="/logout" render={() => handleLogout(store)} />
-              <Route exact path="/signup" component={Login} />
-              <Route path="/leads/:id" component={Lead} />
-              <Route path="/u" component={User} />
-              <Route path="/user" component={User} />
-              <Route path="/password" component={Password} />
-              <Route path="/help" component={HelpPage} />
-              <Route path="/about-us" component={Aboutus} />
-              <Route path="/why-eventplog" component={WhyEventplog} />
-              <Route path="/events" component={Events} />
-              <Route path="/c" component={Communities} />
-              <Route path="/communities" component={Communities} />
-              <Route path="/e/*" component={Events} />
-              <Route path="/ext/e/*" component={Events} />
-              <Route path="/ext/c/*" component={Communities} />
-            </Switch>
-            {isInternalPath && <Footer />}
-            {!isInternalPath && <ExternalFooter />}
+            <AppMenu isInternalPath={isInternalPath}>
+              {false && isInternalPath && showBreadCrumb && <BreadCrumb {...this.props.location} />}
+              {<NewInvitationBar />}
+              <Switch>
+                <Route exact path="/" component={Events} />
+                <Route exact path="/login" component={Login} />
+                <Route path="/legal" component={Legal} />
+                <Route exact path="/logout" render={() => handleLogout(store)} />
+                <Route exact path="/signup" component={Login} />
+                <Route path="/leads/:id" component={Lead} />
+                <Route path="/u" component={User} />
+                <Route path="/user" component={User} />
+                <Route path="/password" component={Password} />
+                <Route path="/help" component={HelpPage} />
+                <Route path="/about-us" component={Aboutus} />
+                <Route path="/why-eventplog" component={WhyEventplog} />
+                <Route path="/events" component={Events} />
+                <Route path="/c" component={Communities} />
+                <Route path="/communities" component={Communities} />
+                <Route path="/e/*" component={Events} />
+                <Route path="/ext/e/*" component={Events} />
+                <Route path="/ext/c/*" component={Communities} />
+              </Switch>
+              {isInternalPath && <Footer />}
+              {!isInternalPath && <ExternalFooter />}
+            </AppMenu>
           </StyledApp>
         </ScrollToTop>
       </ThemeProvider>

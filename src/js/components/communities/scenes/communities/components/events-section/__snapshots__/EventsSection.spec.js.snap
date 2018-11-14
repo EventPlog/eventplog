@@ -22,7 +22,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/1/e/1"
+        to="/e/1"
       >
         Tech is in you
       </Link>
@@ -46,7 +46,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     title={
       <Link
         replace={false}
-        to="/c/2/e/2"
+        to="/e/2"
       >
         Writers corner workshop with writing and use of English
       </Link>

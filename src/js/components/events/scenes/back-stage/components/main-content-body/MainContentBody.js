@@ -43,7 +43,6 @@ const StyledMainContent = styled.div`
   }
   
   .workplace {
-    max-width: 800px;
     margin: auto;
     background: #fff;
     border-radius: 10px;
@@ -59,7 +58,7 @@ const StyledMainContent = styled.div`
   }
   
   .backstage-header {
-    max-width: 800px;
+    max-width: 1200px;
     margin: auto;
     margin: 4rem auto 2rem;
     text-shadow: 1px 2px 4px #000;
@@ -94,7 +93,7 @@ const MainContentBody = ({ event = {}, ...otherProps }) => {
                 : <Link to={`${genEventLink(event)}/backstage/settings`}>Change Title</Link> }
             </h3>
           </div>
-          <div className="workplace full-height">
+          <div className="app-container workplace full-height">
             <EventPageContent {...{event, ...otherProps}} />
           </div>
         </div>

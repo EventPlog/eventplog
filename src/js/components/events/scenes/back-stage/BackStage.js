@@ -49,8 +49,7 @@ const BackStage = (props) => {
   }
 
   return (
-    <StyledMain className="app-container">
-      <Sidebar {...props} />
+    <StyledMain className="">
       <MainContent {...props} />
     </StyledMain>
   )

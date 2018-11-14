@@ -5,7 +5,7 @@ exports[`Guests should render correctly 1`] = `
   <p
     className="check-in-form"
   >
-    Click on 'New Guest' to check in a guest not on the list.
+    Click on 'New Guest' to register a person not on the list.
   </p>
   <PageHeader
     title="Guests"
@@ -16,6 +16,7 @@ exports[`Guests should render correctly 1`] = `
   <Table
     as="table"
     celled={true}
+    className="mobile-smaller-text"
     unstackable={true}
   >
     <TableHeader

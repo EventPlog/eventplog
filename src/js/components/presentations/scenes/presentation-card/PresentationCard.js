@@ -32,7 +32,7 @@ export const generateDescription = (presentation = {}) => (
 )
 
 export const generateMeta = (presentation) => ([
-  <ul key={`date${presentation.id}`}>
+  <ul key={`date${presentation.id}`} className="row">
     <li>
       By <UserLink user={presentation.user} />
     </li>

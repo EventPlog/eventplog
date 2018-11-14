@@ -26,7 +26,7 @@ const Styles = styled.div`
       ${
         media.phone`
           flex-direction: column;
-          margin-top: 2rem;
+          /*margin-top: 2rem;*/
           width: 100%;
           justify-content: space-between;
         `
@@ -78,9 +78,9 @@ const Nav = function({
   )
 }
 
-Nav.Item = function({children}) {
+Nav.Item = function({className, children}) {
   return (
-    <li>{children}</li>
+    <li className={className}>{children}</li>
   )
 }
 

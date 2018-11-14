@@ -93,6 +93,9 @@ const StyledMainContentCard = styled.div`
       margin: 0.1rem;
       font-size: 90%;
       
+      &.row {
+        flex-direction: row;
+      }
       
       li:not(:last-child) {
         margin-right: 1rem;
