@@ -7,7 +7,7 @@ import {
   getTodoItems
 } from './actions'
 
-class EventUpdateContainer extends Component {
+class TodoItemsContainer extends Component {
   state = { activeIndex: -1, event_checklist: {} }
 
   componentDidMount() {
@@ -83,4 +83,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventUpdateContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TodoItemsContainer))

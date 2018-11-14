@@ -29,11 +29,19 @@ const RegistrationForm = createLoader(() =>
 const FeedbackForm = createLoader(() =>
   import('js/components/feedback/scenes/quick-feedback-form' /* webpackChunkName: "Presentations" */), 'FeedbackForm')
 
+const FeedbackReport = createLoader(() =>
+  import('js/components/feedback/scenes/feedback-report' /* webpackChunkName: "Presentations" */), 'FeedbackForm')
+
 const Presentations = createLoader(() =>
   import('js/components/presentations' /* webpackChunkName: "Presentations" */), 'Presentations')
 
+const Resources = createLoader(() =>
+  import('js/components/resources' /* webpackChunkName: "Resources" */), 'Resources')
+
 const StyledEventPlog = styled.div`
   height: 100%;
+  min-height: calc(100vh - 350px);
+
   
   a, a:hover {
     color: var(--activeLink);
@@ -42,7 +50,6 @@ const StyledEventPlog = styled.div`
 
 const UserEvents = () => (
   [
-    <UserNav key="user-nav" />,
     <Events key="user-events" />
   ]
 )
@@ -57,6 +64,8 @@ const EventPlog = ({user = {}}) => (
         <PublicRoute exact path="/e/:id/register" component={RegistrationForm} />
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
         <PublicRoute path="/e/:id/presentations" component={Presentations} />
+        <PublicRoute path="/e/:id/resources" component={Resources} />
+        <PrivateRoute path="/e/:id/backstage" component={BackStage} />
 
         <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />
         <PublicRoute exact path="/c/:community_id/e/:id" component={Event} />

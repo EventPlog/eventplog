@@ -9,6 +9,15 @@ import Loading from 'js/components/shared/loading'
 const styles = css`
   position: relative;
   
+  &.app-container {
+    margin-top: 3rem;
+    padding: 1rem;
+    
+    > div {
+      width: 100%;
+    }
+  }
+  
   .pic-frame {
     margin: 2rem 0;
   }
@@ -42,16 +51,18 @@ const MainContent = ({
   if (error) return <Loading.Error msg={error} />
 
   return (
-    <div className={`${className}`}>
-      <Resources title={title || "All resources"}
-                 currentUser={currentUser}
-                 requester={requester}
-                 resources={resources} />
-      {currentUser && currentUser.id &&
+    <div className={`${className} app-container`}>
+      <div>
+        <Resources title={title || "All resources"}
+                   currentUser={currentUser}
+                   requester={requester}
+                   resources={resources} />
+        {currentUser && currentUser.id &&
         <ContentPanel title="Add a resource">
           <NewResource editResource {...{requester}} />
         </ContentPanel>
-      }
+        }
+      </div>
     </div>
   )
 }

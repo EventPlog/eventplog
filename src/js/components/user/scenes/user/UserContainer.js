@@ -11,6 +11,7 @@ import {
   getUser,
   updateUser,
   confirmEmail,
+  addUserToStore,
 } from '../../actions'
 
 import {
@@ -73,6 +74,7 @@ class EventContainer extends Component {
   )
 
   setUserToCurrent() {
+    this.props.addUserToStore(this.props.currentUser)
     this.setState({user: this.props.currentUser})
   }
 
@@ -153,6 +155,7 @@ const mapDispatchToProps = (dispatch) => {
     getUser,
     confirmEmail,
     updateViewCount,
+    addUserToStore,
   }, dispatch)
 }
 

@@ -14,8 +14,9 @@ exports[`Presentations should render correctly 1`] = `
       title={
         <p>
           All presentations - 
-          <a
-            href="http://localhost/e/3?utm_source=feedback_form"
+          <Link
+            replace={false}
+            to="/e/3?utm_source=feedback_form"
           />
         </p>
       }

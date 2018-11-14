@@ -43,8 +43,8 @@ const StyledUser = styled.div`
       }
     }
     
-    .center {
-      justify-content: center;
+    .align {
+      padding: 0 2rem;
     }
     
     li {
@@ -104,7 +104,7 @@ const UserProfile = ({
       </div>
       <div className="menu-hold">
         <Nav StackUlOnMobile={true}
-             className="app-container center">
+             className="app-container align">
           <Nav.Item>
             <NavLink activeClassName="active"
                      to={`${userProfileLink}/events`}>

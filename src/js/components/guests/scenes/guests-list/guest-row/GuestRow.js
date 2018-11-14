@@ -28,6 +28,12 @@ const styles = css`
     font-size: 90%;
     color: ${props => props.theme.grayLight};
     text-transform: none;
+    
+    ${
+      media.phone`
+        display: none;
+      `
+    } 
   }
 `
 
@@ -58,10 +64,10 @@ const GuestRow = ({
       <Table.Cell textAlign='center'>
         {guest.given_feedback
           ? <Icon color='green' name='checkmark' size='large' />
-          : <Button.Link className="btn-link" to={`${genEventLink(event, event.community)}/backstage/feedback/?guest_id=${guest.id}&guest_name=${guest.user.less_formal_name}`}>
-              Show form
-            </Button.Link>
-        }
+          : <Icon className='btn-delete'
+                  color='red'
+                  name='close'
+                  size='large' />}
       </Table.Cell>
       <Table.Cell textAlign='center'>
         <Icon className='btn-delete'

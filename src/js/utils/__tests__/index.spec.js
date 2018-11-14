@@ -125,15 +125,15 @@ describe('genEventLink()', () => {
   }
 
   it('returns a link for an event with slug when slug exists', () => {
-    expect(genEventLink(event, community)).toEqual(`/c/${community.slug}/e/${event.slug}`)
+    expect(genEventLink(event, community)).toEqual(`/e/${event.slug}`)
   })
 
   it('returns a link for an event with id when slug exists', () => {
-    expect(genEventLink({id: event.id}, community)).toEqual(`/c/${community.slug}/e/${event.id}`)
+    expect(genEventLink({id: event.id}, community)).toEqual(`/e/${event.id}`)
   })
   
   it('returns a link without the community if community does not exist', () => {
-    expect(genEventLink({id: event.id}, community)).toEqual(`/c/${community.slug}/e/${event.id}`)
+    expect(genEventLink({id: event.id}, community)).toEqual(`/e/${event.id}`)
   })
 })
 

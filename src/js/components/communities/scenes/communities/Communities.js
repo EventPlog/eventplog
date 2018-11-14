@@ -24,7 +24,6 @@ const Communities = (props) => {
   }
   return (
     <StyledCommunities>
-      <CommunitiesNav />
       <section className="app-container">
         <MainContent {...props} />
       </section>

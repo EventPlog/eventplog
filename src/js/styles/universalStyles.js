@@ -8,6 +8,7 @@ const styles = css`
   --bg: ${defaults.bg};
   --gray: ${defaults.gray};
   height: 100%;
+  min-height: 100%;
   
   /*background: ${lighten(0.45, defaults.blue)};*/
   

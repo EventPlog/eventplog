@@ -4,8 +4,13 @@ import styled from 'styled-components';
 import tmnDefaultBarCode from 'img/tmn_bar_code.png';
 
 const StyleMessengerCheckIn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
   > img {
     width: 100%;
+    max-width: 600px;
   }
 `
 

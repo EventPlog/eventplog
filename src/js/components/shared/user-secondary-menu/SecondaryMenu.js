@@ -8,8 +8,6 @@ import colors from 'js/styles/theme/colors'
 import { media } from 'js/styles/mixins'
 import { lighten } from 'polished'
 
-
-
 const StyledHeader = styled.div`
   border-bottom: 1px solid ${lighten(-0.1, colors.gray)};
     background: ${props => props.theme.activeLinkBg};
