@@ -208,6 +208,11 @@ const eventBannerStyles = css`
       background: ${props => props.theme.green};
     }
   }
+  
+  .map-link {
+    color: inherit;
+    text-decoration: underline;
+  }
 `
 
 
@@ -220,7 +225,7 @@ const EventBanner = ({
   link,
   venue,
   start_time,
-  end_time,
+  location,
   show_feedback_form,
   community = {},
   handleChange,
@@ -292,16 +297,15 @@ const EventBanner = ({
                 <Icon name="calendar outline" /> {`${moment(start_time).format('MMMM Do YYYY, h:mm a')}`}
               </li>
               <li>
-                <ContentEditable propName="venue"
-                                 canEdit={is_stakeholder}
-                                 type="input"
-                                 defaultValue={venue}
-                                 onChange={handleChange}
-                                 onSubmit={handleSubmit}>
-                  <span>
-                    <Icon name="map marker alternate"/> {venue}
-                  </span>
-                </ContentEditable>
+                <Icon name="map marker alternate"/>
+                {location.lat
+                  ? <a className="map-link"
+                       target="_blank"
+                       href={`https://www.google.com.ng/maps/dir/${location.lat},${location.lng}`}>
+                      {venue}
+                    </a>
+                  : venue
+                }
               </li>
               <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>
             </ul>
