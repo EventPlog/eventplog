@@ -93,7 +93,7 @@ const eventBannerStyles = css`
     ul {
     }
     
-    li:not(:last-child) {
+    .meta > ul > li:not(:last-child) {
       margin-right: 2rem;
       margin-bottom: 1rem;
     }
@@ -145,9 +145,10 @@ const eventBannerStyles = css`
     }
   }
   
-  .date-time-picker {
+  .editor-active {
     max-width: 400px;
     background: #fff;
+    text-shadow: none;
   }
   
   .editor-active {
@@ -217,12 +218,10 @@ const EventBanner = ({
   featured_image,
   interested_persons,
   link,
-  time,
-  date,
+  venue,
   start_time,
   end_time,
   show_feedback_form,
-  given_feedback,
   community = {},
   handleChange,
   handleSubmit,
@@ -290,23 +289,18 @@ const EventBanner = ({
           <div className="meta">
             <ul>
               <li>
-                <ContentEditable propName="start_time"
-                           canEdit={is_stakeholder}
-                           type="datetime"
-                           defaultValue={validDate(start_time)}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
-                  {(start_time ) ? `Starts ${moment(start_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
-                </ContentEditable>
+                <Icon name="calendar outline" /> {`${moment(start_time).format('MMMM Do YYYY, h:mm a')}`}
               </li>
               <li>
-                <ContentEditable propName="end_time"
-                           canEdit={is_stakeholder}
-                           type="datetime"
-                           defaultValue={validDate(end_time)}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
-                  {(end_time ) ? `Ends ${moment(end_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
+                <ContentEditable propName="venue"
+                                 canEdit={is_stakeholder}
+                                 type="input"
+                                 defaultValue={venue}
+                                 onChange={handleChange}
+                                 onSubmit={handleSubmit}>
+                  <span>
+                    <Icon name="map marker alternate"/> {venue}
+                  </span>
                 </ContentEditable>
               </li>
               <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>

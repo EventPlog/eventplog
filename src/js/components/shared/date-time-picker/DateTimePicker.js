@@ -1,31 +1,35 @@
 import React from 'react'
-import ReactDateTimePicker from 'js/lib/react-datetime-picker/src/entry.nostyle'
-import DateTimePickerStyles from 'js/styles/thirdparty/date-time-picker-styles'
 import styled, { css } from 'styled-components'
+import DatePicker from 'react-datepicker'
+import dtpStyles from './react-dtp.css'
 
 const Styles = styled.div`
-  ${ DateTimePickerStyles }
+  ${ dtpStyles }
   
   position: relative;
   
   .date-time-picker {
     width: 100%;
-    
-    > div {
-      border: thin solid #aaa;
-      width: 100%;
-    }
-    
-    input {
-      padding: 1px !important;
-      border: 0 !important;
-    }
   }
+  
+  .react-datepicker__input-container {
+    width: 100%;
+  }
+  
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+  
 `
 
 const DateTimePicker = React.forwardRef(({className, ...props}, ref) => (
   <Styles className={className}>
-    <ReactDateTimePicker ref={ref} className={`${className} date-time-picker`} {...props} />
+    <DatePicker
+      {...props}
+      ref={ref} className={`${className} date-time-picker`}
+      showTimeSelect
+      todayButton={"Today"}
+      dateFormat="MMMM d, yyyy h:mm aa" />
   </Styles>
 ))
 

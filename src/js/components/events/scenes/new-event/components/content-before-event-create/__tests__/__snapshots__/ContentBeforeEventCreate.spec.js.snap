@@ -32,6 +32,48 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           type="text"
         />
       </FormField>
+      <FormField
+        className="wide email-holder"
+      >
+        <label>
+          When does it start?
+        </label>
+        <[object Object]
+          dateFormat="MMMM d, yyyy h:mm aa"
+          onChange={[Function]}
+          showTimeSelect={true}
+          todayButton="Today"
+        />
+      </FormField>
+      <FormField
+        className="wide email-holder"
+      >
+        <label>
+          Where is the venue?
+        </label>
+        <PlacesAutocomplete
+          debounce={200}
+          highlightFirstSuggestion={false}
+          onChange={[Function]}
+          onError={[Function]}
+          onSelect={[Function]}
+          searchOptions={Object {}}
+          shouldFetchSuggestions={true}
+        />
+      </FormField>
+      <FormField
+        className="wide email-holder"
+      >
+        <label>
+          What's this event about? What does it hope to achieve?
+        </label>
+        <Styled(Component)
+          name="description"
+          onChange={[Function]}
+          placeholder="Event description"
+          type="text"
+        />
+      </FormField>
       <FormField>
         <label>
           How'd you like people to visit your event page?
@@ -52,7 +94,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         className="search-holder"
       >
         <label>
-          Which of your communities own this event? Have no community? Create one
+          Which of the communities you admin own this event? Create one if none applies? :)
         </label>
         <div
           className="same-line"
