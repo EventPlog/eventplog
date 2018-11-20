@@ -56,6 +56,7 @@ const EventUpdate = ({
     link,
     featured_image,
     slug,
+    venue,
     agenda,
     hashtags,
     visibility_status,
@@ -85,6 +86,14 @@ const EventUpdate = ({
                       value={description}
                       placeholder='An event about awesomeness'
                       onChange={(e) => handleChange(e.target.name, e.target.value)}/>
+          </Form.Field>
+
+          <Form.Field>
+            <label>Venue</label>
+            <Input name="venue"
+                   value={venue}
+                   placeholder='Event venue'
+                   onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 
           <Form.Field>

@@ -47,8 +47,8 @@ export default [
       const menuItems = [
         event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
         { name: event.title, link: `${eventLink}` },
-        { name: "Resources", icon: 'file alternate outline', link: `${eventLink}/resources` },
         { name: "Speakers", icon: 'bullhorn', link: `${eventLink}/presentations` },
+        { name: "Resources", icon: 'file alternate outline', link: `${eventLink}/resources` },
         { name: "Feedback", icon: 'asl interpreting', link: `${eventLink}/feedback` },
         (isAdmin ? {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` } : {}),
       ];
