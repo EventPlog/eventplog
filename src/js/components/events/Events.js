@@ -58,9 +58,9 @@ const EventPlog = ({user = {}}) => (
     <StyledEventPlog>
       <Switch>
         <PublicRoute exact path="/" component={UserEvents} />
-        <PublicRoute exact path="/e/new" component={NewEvent} />
+        <PrivateRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id" component={Event} />
-        <PublicRoute exact path="/e/new" component={NewEvent} />
+        <PrivateRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id/register" component={RegistrationForm} />
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
         <PublicRoute path="/e/:id/presentations" component={Presentations} />

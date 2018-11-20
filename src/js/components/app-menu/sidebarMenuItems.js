@@ -28,7 +28,7 @@ export default [
 
       const menuItems = [
         event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
-        { name: event.title, icon: 'home', link: `${eventLink}` },
+        { name: event.title, link: `${eventLink}` },
         (isAdmin ? {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` } : {}),
         { name: "Guests", icon: 'users', link: `${eventLink}/backstage/guests` },
         { name: "Feedback", icon: 'send', link: `${eventLink}/backstage/feedback` },
@@ -46,7 +46,7 @@ export default [
           .find(role => role == event.organizer_role.toLowerCase()))
       const menuItems = [
         event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
-        { name: event.title, icon: 'home', link: `${eventLink}` },
+        { name: event.title, link: `${eventLink}` },
         { name: "Resources", icon: 'file alternate outline', link: `${eventLink}/resources` },
         { name: "Speakers", icon: 'bullhorn', link: `${eventLink}/presentations` },
         { name: "Feedback", icon: 'asl interpreting', link: `${eventLink}/feedback` },
@@ -61,12 +61,12 @@ export default [
     genItems(_, event, user) {
       const userLink = genUserProfileLink(user)
       const isLoggedInUser = user.id == Auth.currentUser().id
-      console.log('logged in? ', isLoggedInUser, user, Auth.currentUser())
+      const pronoun = isLoggedInUser ? 'Your' : `${user.less_formal_name}'s`
       const menuItems = [
-        { name: "Events", icon: 'file outline', link: `${userLink}/events` },
-        { name: "Communities", icon: 'users', link: `${userLink}/resources` },
-        { name: "Resources", icon: 'file outline', link: `${userLink}/resources` },
-        (isLoggedInUser ? {name: "Settings", icon: 'settings', link: `${userLink}/settings` } : {}),
+        { name: `${pronoun} Events`, icon: 'file outline', link: `${userLink}/events` },
+        { name: `${pronoun} Communities`, icon: 'users', link: `${userLink}/resources` },
+        { name: `${pronoun} Resources`, icon: 'file outline', link: `${userLink}/resources` },
+        (isLoggedInUser ? {name: `${pronoun} Settings`, icon: 'settings', link: `${userLink}/settings` } : {}),
       ];
       return {title: 'User Links', items: menuItems}
     }

@@ -14,9 +14,9 @@ import Auth from 'js/auth'
 import { secureAction } from 'js/auth/actions'
 
 const labelVerbMapping = {
-  'I Joined': 'joined',
-  'I own': 'owned',
-  'I admin': 'i_admin',
+  'Joined': 'joined',
+  'Owns': 'owned',
+  'Admins': 'i_admin',
 }
 
 class MainContentContainer extends Component {

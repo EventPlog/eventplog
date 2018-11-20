@@ -164,7 +164,7 @@ const AppMenu = ({
   isInternalPath,
   toggleSidebar,
   handleSidebarHide,
-  user,
+  user = {},
   menu = {},
   isMobile,
   contextRef,
@@ -198,7 +198,6 @@ const AppMenu = ({
 
           <MainMenu {...{toggleSidebar, user}} />
 
-          {menu.title && <h4 className="menu-title">{menu.title}</h4>}
           {menu.items && menu.items.map(item => (
             item.name &&
               <Link className="item" to={item.link || '#'}>
@@ -207,6 +206,12 @@ const AppMenu = ({
               </Link>
           ))}
 
+          {
+            <Link className="item" to="/">
+              <Icon name='home' />
+              Home
+            </Link>
+          }
           <Nav>
             <Nav.Item className="sidebar-btn">
               <Button.Link to="/events/new">Create Event</Button.Link>
