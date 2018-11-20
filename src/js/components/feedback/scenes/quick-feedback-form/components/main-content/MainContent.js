@@ -79,6 +79,8 @@ const EventUpdate = ({
                                               handleSubmit, event}} />
         }
       </ContentPanel>
+
+      <FeedbackReport {...{event}} />
     </StyleEventUpdate>
   )
 }

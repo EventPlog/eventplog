@@ -18,6 +18,7 @@ export const pluralize = (word, number = 1) => {
     comment: 'comments',
     view: 'views',
     resource: 'resources',
+    response: 'responses',
   }
   return number == 1 ? word : (knownWords[word] || word)
 }
