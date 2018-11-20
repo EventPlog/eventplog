@@ -12,7 +12,6 @@ import { media } from 'js/styles/mixins'
 import { genCommunityLink } from 'js/utils'
 import Select from 'js/components/shared/select'
 import { removeSpecialChars } from 'js/utils'
-import dtpStyles from './react-dtp.css'
 
 import CreateCommunityForm from 'js/components/communities/scenes/new-community'
 
