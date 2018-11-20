@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import defaults from 'js/styles/theme/variables'
 import MainContent from './components/main-content'
 import { media, maxMedia } from 'js/styles/mixins'
+import FeedbackReport from 'js/components/feedback/scenes/feedback-report'
 
 const StyledQuickFeedbackForm = styled.div`
   display: flex;

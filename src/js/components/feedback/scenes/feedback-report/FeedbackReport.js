@@ -11,7 +11,6 @@ import ContentEditable from 'js/components/shared/content-editable'
 import Loading from 'js/components/shared/loading'
 import Button from 'js/components/shared/button'
 import { pluralize, genEventLink } from 'js/utils'
-import LoginPrompt from 'js/components/shared/login-prompt'
 import QuickFeedbackForm from 'js/components/feedback/scenes/quick-feedback-form'
 import { media } from 'js/styles/mixins'
 
@@ -23,7 +22,7 @@ const toPercentage = (num, total) => (
 
 const StyleFeedbackReport = styled.div`
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 4rem;
   
   ${
     media.phone`
@@ -96,7 +95,6 @@ const FeedbackReport = ({
 
   return (
     <StyleFeedbackReport>
-
       {is_stakeholder && !shown_to_guests &&
         <Message info>
           <Message.Header>The bulk of your report is currently private</Message.Header>
@@ -131,21 +129,8 @@ const FeedbackReport = ({
         </ContentPanel>
       }
 
-      {is_attending && !is_stakeholder && (!given_feedback || show_feedback_url) && <QuickFeedbackForm />}
-      {!is_attending && !is_stakeholder && !given_feedback &&
-        <ContentPanel title="Did you attend this event">
-          {<LoginPrompt msg="to add your own feedback" />}
-          {isLoggedIn &&
-          <p>Asked to be checked in from&nbsp;
-            <Link to={`${genEventLink(event, event.community)}?activeIndex=1`}>
-              the discussions panel
-            </Link>
-          </p>
-          }
-        </ContentPanel>
-      }
 
-      <ContentPanel title="The numbers">
+      <ContentPanel title="Event Summary">
         <Table celled unstackable>
           <Table.Header>
             <Table.Row>
@@ -204,15 +189,18 @@ const FeedbackReport = ({
         </ContentPanel>
       }
 
-      <ContentPanel title={`What guests said (${meta.total_count} responses, Avg. rating was ${satisfaction.total}/10)`}>
-        <Comments comments={feedback_responses}
-                  textField="feedback_note"
-                  trackable_id={trackable_id}
-                  trackable_type={trackable_type}
-                  getComments={getFeedbackResponses}
-                  showMoreBtnTitle="Show more responses"
-                  canReply={false} />
-      </ContentPanel>
+      {meta.total_count > 0 &&
+        <ContentPanel title={`What guests said (${meta.total_count} ${pluralize('response', meta.total_count)}, Avg. rating was ${satisfaction.total}/10)`}>
+          <Comments comments={feedback_responses}
+                    textField="feedback_note"
+                    trackable_id={trackable_id}
+                    trackable_type={trackable_type}
+                    getComments={getFeedbackResponses}
+                    showMoreBtnTitle="Show more responses"
+                    canReply={false}/>
+        </ContentPanel>
+      }
+
     </StyleFeedbackReport>
   )
 }

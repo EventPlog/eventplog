@@ -5,14 +5,12 @@ import { Form, label, Message, Checkbox, Icon } from 'semantic-ui-react'
 import ContentPanel from 'js/components/shared/content-panel'
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
-import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle'
-import DateTimePickerStyles from 'js/styles/thirdparty/date-time-picker-styles'
+import DateTimePicker from 'js/components/shared/date-time-picker'
 import { validDate, removeSpecialChars } from 'js/utils'
 import TextArea from 'js/components/shared/text-area'
 import Loading from 'js/components/shared/loading'
 
 const StyleEventUpdate = styled.div`
-  ${ DateTimePickerStyles }
    
   > img {
     width: 100%;
@@ -28,19 +26,6 @@ const StyleEventUpdate = styled.div`
       margin-bottom: 2rem;
     }
     
-    .date-time-picker {
-      width: 100%;
-      
-      > div {
-        border: thin solid #aaa;
-        width: 100%;
-      }
-      
-      input {
-        padding: 1px;
-        border: 0;
-      }
-    }
   }
   
   .same-line {
@@ -71,6 +56,7 @@ const EventUpdate = ({
     link,
     featured_image,
     slug,
+    venue,
     agenda,
     hashtags,
     visibility_status,
@@ -100,6 +86,14 @@ const EventUpdate = ({
                       value={description}
                       placeholder='An event about awesomeness'
                       onChange={(e) => handleChange(e.target.name, e.target.value)}/>
+          </Form.Field>
+
+          <Form.Field>
+            <label>Venue</label>
+            <Input name="venue"
+                   value={venue}
+                   placeholder='Event venue'
+                   onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 
           <Form.Field>
@@ -133,22 +127,26 @@ const EventUpdate = ({
           <Form.Group widths="equal">
             <Form.Field>
               <label>Starts at</label>
+
               <DateTimePicker
-                name="start_time"
+                showTimeSelect
+                todayButton={"Today"}
+                dateFormat="MMMM d, yyyy h:mm aa"
                 className="date-time-picker"
-                onChange={(val) => handleChange('start_time', val)}
-                value={validDate(start_time)}
-              />
+                selected={validDate(start_time)}
+                onChange={(selected_date) => handleChange('start_time', selected_date) } />
             </Form.Field>
 
             <Form.Field>
               <label>Ends at</label>
+
               <DateTimePicker
-                name="end_time"
+                showTimeSelect
+                todayButton={"Today"}
+                dateFormat="MMMM d, yyyy h:mm aa"
                 className="date-time-picker"
-                onChange={(val) => handleChange('end_time', val)}
-                value={validDate(end_time)}
-              />
+                selected={validDate(end_time)}
+                onChange={(selected_date) => handleChange('end_time', selected_date) } />
             </Form.Field>
           </Form.Group>
 

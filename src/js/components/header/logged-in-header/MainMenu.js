@@ -33,9 +33,6 @@ const MainMenu = ({
   }
   return (
     <Nav className={className} hideOnMobile={hideMenu}>
-      <Nav.Item className="sidebar-btn">
-        <Button.Link to="/events/new">Create Event</Button.Link>
-      </Nav.Item>
       <Nav.Item className="user-profile">
         <Menu.Menu position='right'>
           <Dropdown text={<UserAvatar user={user} />}

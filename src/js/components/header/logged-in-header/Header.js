@@ -8,11 +8,7 @@ import {
 
 // internal
 import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
-import Button from 'js/components/shared/button'
-import Nav from 'js/components/shared/nav'
 import { genUserProfileLink } from 'js/utils'
-import UserAvatar from './UserAvatar'
-import MainMenu from './MainMenu'
 
 const Header = ({
   toggleSidebar,
@@ -25,7 +21,6 @@ const Header = ({
       </Link>
       <Icon name='content' onClick={toggleSidebar} />
     </div>
-
   </div>
 )
 

@@ -93,7 +93,7 @@ const eventBannerStyles = css`
     ul {
     }
     
-    li:not(:last-child) {
+    .meta > ul > li:not(:last-child) {
       margin-right: 2rem;
       margin-bottom: 1rem;
     }
@@ -145,9 +145,10 @@ const eventBannerStyles = css`
     }
   }
   
-  .date-time-picker {
+  .editor-active {
     max-width: 400px;
     background: #fff;
+    text-shadow: none;
   }
   
   .editor-active {
@@ -207,6 +208,11 @@ const eventBannerStyles = css`
       background: ${props => props.theme.green};
     }
   }
+  
+  .map-link {
+    color: inherit;
+    text-decoration: underline;
+  }
 `
 
 
@@ -217,12 +223,10 @@ const EventBanner = ({
   featured_image,
   interested_persons,
   link,
-  time,
-  date,
+  venue,
   start_time,
-  end_time,
+  location,
   show_feedback_form,
-  given_feedback,
   community = {},
   handleChange,
   handleSubmit,
@@ -290,25 +294,20 @@ const EventBanner = ({
           <div className="meta">
             <ul>
               <li>
-                <ContentEditable propName="start_time"
-                           canEdit={is_stakeholder}
-                           type="datetime"
-                           defaultValue={validDate(start_time)}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
-                  {(start_time ) ? `Starts ${moment(start_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
-                </ContentEditable>
+                <Icon name="calendar outline" /> {`${moment(start_time).format('MMMM Do YYYY, h:mm a')}`}
               </li>
-              <li>
-                <ContentEditable propName="end_time"
-                           canEdit={is_stakeholder}
-                           type="datetime"
-                           defaultValue={validDate(end_time)}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
-                  {(end_time ) ? `Ends ${moment(end_time).format('MMMM Do YYYY, h:mm a')}` : 'Click to add start date/time'}
-                </ContentEditable>
-              </li>
+              {venue &&
+                <li>
+                  <Icon name="map marker alternate"/>
+                  {location.lat
+                    ? <a className="map-link"
+                         target="_blank"
+                         href={`https://www.google.com.ng/maps/dir/${location.lat},${location.lng}`}>
+                        {venue}
+                      </a>
+                    : venue
+                  }
+                </li>}
               <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>
             </ul>
             <ul>
