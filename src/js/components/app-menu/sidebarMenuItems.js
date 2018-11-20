@@ -12,6 +12,7 @@ export default [
     genItems(community) {
       const communityLink = genCommunityLink(community)
       const menuItems = [
+        { name: 'Back Home', icon: 'angle left', link: `/` },
         { name: community.name, icon: 'users', link: communityLink },
       ];
       return {title: 'Community Links', items: menuItems}
@@ -26,12 +27,12 @@ export default [
           .find(role => role == event.organizer_role.toLowerCase()))
 
       const menuItems = [
+        event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
         { name: event.title, icon: 'home', link: `${eventLink}` },
         (isAdmin ? {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` } : {}),
         { name: "Guests", icon: 'users', link: `${eventLink}/backstage/guests` },
         { name: "Feedback", icon: 'send', link: `${eventLink}/backstage/feedback` },
         (isAdmin ? { name: "Planning", icon: 'file alternate outline', link: `${eventLink}/backstage/tasks` } : {}),
-        event.community ? { name: `Back to ${event.community.name} community`, link: `${genCommunityLink(event.community)}` } : {},
       ];
       return {title: 'Event Links', items: menuItems}
     }
@@ -44,12 +45,12 @@ export default [
       const isAdmin = event.organizer_role && (['admin', 'owner']
           .find(role => role == event.organizer_role.toLowerCase()))
       const menuItems = [
+        event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
         { name: event.title, icon: 'home', link: `${eventLink}` },
         { name: "Resources", icon: 'file alternate outline', link: `${eventLink}/resources` },
         { name: "Speakers", icon: 'bullhorn', link: `${eventLink}/presentations` },
         { name: "Feedback", icon: 'asl interpreting', link: `${eventLink}/feedback` },
         (isAdmin ? {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` } : {}),
-        event.community ? { name: `Back to ${event.community.name} community`, link: `${genCommunityLink(event.community)}` } : {},
       ];
       return {title: 'Event Links', items: menuItems}
     }

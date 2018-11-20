@@ -126,7 +126,9 @@ class ContentEditable extends React.Component {
 
       case 'datetime':
         return <div style={{ minWidth: '300px', display: 'flex'}}>
-                  <DateTimePicker  className="editor-active" {...this.getTextBoxProps()} />
+                  <DateTimePicker  className="editor-active"
+                                   selected={this.props.defaultValue}
+                                   {...this.getTextBoxProps()} />
                  <button onClick={this.onBlur}>Save</button>
                </div>
 

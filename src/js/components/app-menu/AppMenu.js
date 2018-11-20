@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styles from 'styled-components'
 import {
-  Button,
   Icon,
   Image,
   Menu,
@@ -12,11 +11,13 @@ import {
   Sticky
 } from 'semantic-ui-react'
 
+import Button from 'js/components/shared/button'
 import Header from 'js/components/header'
 import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
 import { genUserProfileLink } from 'js/utils'
 import MainMenu from 'js/components/header/logged-in-header/MainMenu'
 import { media } from 'js/styles/mixins'
+import Nav from 'js/components/shared/nav'
 
 const StyledAppMenu = styles.div`
   .ui.segment.pushable {
@@ -197,6 +198,21 @@ const AppMenu = ({
 
           <MainMenu {...{toggleSidebar, user}} />
 
+          {menu.title && <h4 className="menu-title">{menu.title}</h4>}
+          {menu.items && menu.items.map(item => (
+            item.name &&
+              <Link className="item" to={item.link || '#'}>
+                {item.icon && <Icon name={item.icon} />}
+                {item.name}
+              </Link>
+          ))}
+
+          <Nav>
+            <Nav.Item className="sidebar-btn">
+              <Button.Link to="/events/new">Create Event</Button.Link>
+            </Nav.Item>
+          </Nav>
+
           <Link className="item" to="/events">
             <Icon name='table tennis' />
             Events
@@ -206,14 +222,6 @@ const AppMenu = ({
             Communities
           </Link>
 
-          {menu.title && <h4 className="menu-title">{menu.title}</h4>}
-          {menu.items && menu.items.map(item => (
-            item.name &&
-              <Link className="item" to={item.link || '#'}>
-                {item.icon && <Icon name={item.icon} />}
-                {item.name}
-              </Link>
-          ))}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={isMobile && visible}

@@ -147,7 +147,7 @@ const Event = ({
       {name: `Feedback`, content: Report },
       {name: `Discussion (${event_discussion.comments_count || 0})`, content: Discussions },
       {name: `Slides & Resources`, content: Resources},
-      {name: `Presentations`, content: Presentations },
+      {name: `Speakers`, content: Presentations },
     ]
   }
 
