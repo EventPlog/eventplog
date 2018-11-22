@@ -15,7 +15,7 @@ exports[`NewPresentation should render correctly 1`] = `
     />
     <FormField>
       <Label>
-        What's the presentation's email?
+        What's the speaker's email?
       </Label>
       <small>
         You can add more details later.
