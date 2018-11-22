@@ -214,7 +214,7 @@ const AppMenu = ({
           }
           <Nav>
             <Nav.Item className="sidebar-btn">
-              <Button.Link to="/events/new">Create Event</Button.Link>
+              <Button.Link to="/eg/new">Create Event</Button.Link>
             </Nav.Item>
           </Nav>
 
