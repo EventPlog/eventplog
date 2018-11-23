@@ -94,7 +94,7 @@ class EventContainer extends Component {
     if(this.userFetchedFromServer()) {
       const user = window.__INITIAL_DATA__.user
       this.setState({loading: false, user, persistedUser: user})
-      this.props.addEventToStore(user)
+      this.props.addUserToStore(user)
       this.updateViewCount()
       return
     }

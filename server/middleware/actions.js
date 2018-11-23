@@ -1,8 +1,28 @@
 import webAPI from '../../src/js/utils/webAPI'
 import serialize from 'serialize-javascript'
 
-export const fetchCommunityMeta = (path = {}) => {
-  return webAPI({path: `/api/v1/web/communities/${path.split('/').pop()}`})
+export const fetchUserMeta = ({ path, params = {} }) => {
+  return webAPI({path: `/api/v1/web/users/${params.id.split('-').pop()}`})
+    .then(user => (
+      `
+        <title>${user.display_name} ${user.occupation ? `- ${user.occupation}` : ''}</title>
+        <meta property="og:title" content="${user.display_name} ${user.occupation ? `- ${user.occupation}` : ''}" />
+        <meta name="description" content="${user.bio || ''} - EventPlog" />
+        <meta property="og:description" content="${user.bio || ''}" />
+        <meta property="og:image" content="${user.avatar_url}" />
+        <meta property="og:url" content="https://eventplog.com${path}">
+        <meta property="twitter:title" content="${user.display_name} - EventPlog" />
+        <meta property="twitter:description" content="${user.bio || ''}" />
+        <meta property="twitter:image" content="${user.avatar_url}" />
+        <link rel="canonical" href="https://eventplog.com${path}">
+        <script>window.__INITIAL_DATA__=${serialize({user})}</script>
+      `
+    ))
+    .catch(err => {console.log(err); return ''})
+}
+
+export const fetchCommunityMeta = ({ path, params = {} }) => {
+  return webAPI({path: `/api/v1/web/communities/${params.id}`})
     .then(community => (
       `
         <title>${community.title} - EventPlog</title>
@@ -21,8 +41,8 @@ export const fetchCommunityMeta = (path = {}) => {
     .catch(err => {console.log(err); return ''})
 }
 
-export const fetchEventMeta = (path = {}) => {
-  return webAPI({path: `/api/v1/web/events/${path.split('/').pop()}`})
+export const fetchEventMeta = ({ path,  params = {} }) => {
+  return webAPI({path: `/api/v1/web/events/${params.id}`})
     .then(event => (
       `
         <title>${event.title} - EventPlog</title>

@@ -27,7 +27,7 @@ export default (req, res, next) => {
     const activeRoute = routes.find((route) => matchPath(req.url, route)) || {}
 
     const promise = activeRoute.fetchInitialData
-      ? activeRoute.fetchInitialData(req.path)
+      ? activeRoute.fetchInitialData(matchPath(req.url, activeRoute.path))
       : Promise.resolve()
 
     // return res.send(htmlData)
