@@ -83,8 +83,8 @@ class EventContainer extends Component {
   )
 
   attendEvent = (id) => {
-    this.props.currentUser && this.props.currentUser.id
-      ? this.props.attendEvent(id)
+    !!this.props.event.link
+      ? window.open(event.link, '_blank')
       : this.props.history.push(`${genEventLink(this.props.event)}/register`)
   }
 
