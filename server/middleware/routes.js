@@ -1,7 +1,11 @@
 import App from 'js/app'
 import Community from 'js/components/communities/scenes/community'
 import Event from 'js/components/events/scenes/event'
-import { fetchCommunityMeta, fetchEventMeta } from './actions'
+import {
+  fetchCommunityMeta,
+  fetchEventMeta,
+  fetchUserMeta,
+} from './actions'
 
 const routes =  [
   {
@@ -16,14 +20,19 @@ const routes =  [
     fetchInitialData: fetchEventMeta
   },
   {
-    path: '/e/:id/register',
+    path: '/e/:id/*',
     component: Event,
     fetchInitialData: fetchEventMeta
   },
   {
-    path: '/e/:id/*',
+    path: '/u/:id',
     component: Event,
-    fetchInitialData: fetchEventMeta
+    fetchInitialData: fetchUserMeta
+  },
+  {
+    path: '/u/:id/*',
+    component: Event,
+    fetchInitialData: fetchUserMeta
   },
   {
     path: '*',
