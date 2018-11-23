@@ -11,6 +11,14 @@ import { genEventLink } from 'js/utils'
 const StyledCheckInForm = styled.div`
   margin: 2rem 0;
   
+  .app-container {
+    ${
+      media.phone`
+        padding: 4rem 1rem;
+      `
+    }
+  }
+  
   .content-panel {
     width: 100%;
   }
