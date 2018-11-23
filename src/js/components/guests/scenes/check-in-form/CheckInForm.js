@@ -11,6 +11,14 @@ import { genEventLink } from 'js/utils'
 const StyledCheckInForm = styled.div`
   margin: 2rem 0;
   
+  .app-container {
+    ${
+      media.phone`
+        padding: 4rem 1rem;
+      `
+    }
+  }
+  
   .content-panel {
     width: 100%;
   }
@@ -71,9 +79,24 @@ const CheckInForm = ({
   success,
   error,
   loading,
+  history
 }) => {
   if (loading) return <Loading />
   const title = <a href={`${window.location.origin}${genEventLink(event, event.community)}?utm_source=check_in_form`}>{event.title}</a>
+  if (success && !event.is_stakeholder) {
+    setTimeout(() => history.push(`${genEventLink(event)}`), 2000)
+    return (
+      <StyledCheckInForm className="">
+        <div className="app-container">
+          <Message
+            success
+            header='Success!'
+            content={success}
+          />
+        </div>
+      </StyledCheckInForm>
+    )
+  }
   return (
     <StyledCheckInForm className="">
       <div className="app-container">
