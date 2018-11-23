@@ -79,9 +79,24 @@ const CheckInForm = ({
   success,
   error,
   loading,
+  history
 }) => {
   if (loading) return <Loading />
   const title = <a href={`${window.location.origin}${genEventLink(event, event.community)}?utm_source=check_in_form`}>{event.title}</a>
+  if (success && !event.is_stakeholder) {
+    setTimeout(() => history.push(`${genEventLink(event)}`), 2000)
+    return (
+      <StyledCheckInForm className="">
+        <div className="app-container">
+          <Message
+            success
+            header='Success!'
+            content={success}
+          />
+        </div>
+      </StyledCheckInForm>
+    )
+  }
   return (
     <StyledCheckInForm className="">
       <div className="app-container">
