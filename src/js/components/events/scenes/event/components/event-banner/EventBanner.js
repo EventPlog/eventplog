@@ -321,7 +321,7 @@ const EventBanner = ({
             <Icon name="settings" /> Settings
           </Button.Link>}
         {is_attending && !is_owner && !!link &&
-          <Button.Link isAnchorTag className="cta large" href={link} >
+          <Button.Link isAnchorTag className="cta large" href={link} target="_blank">
             RSVP
           </Button.Link>}
         {!is_attending &&

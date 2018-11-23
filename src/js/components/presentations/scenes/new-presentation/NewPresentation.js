@@ -70,7 +70,7 @@ const NewPresentation = ({
           />
 
           <Form.Field>
-            <Label>What's the presentation's email?</Label>
+            <Label>What's the speaker's email?</Label>
             <small>You can add more details later.</small>
             <Input name="email"
                    value={user.email || email}

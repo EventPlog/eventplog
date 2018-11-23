@@ -16,6 +16,11 @@ const routes =  [
     fetchInitialData: fetchEventMeta
   },
   {
+    path: '/e/:id/register',
+    component: Event,
+    fetchInitialData: fetchEventMeta
+  },
+  {
     path: '/e/:id/*',
     component: Event,
     fetchInitialData: fetchEventMeta
