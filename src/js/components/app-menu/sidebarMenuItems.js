@@ -44,14 +44,23 @@ export default [
       const eventLink = genEventLink(event)
       const isAdmin = event.organizer_role && (['admin', 'owner']
           .find(role => role == event.organizer_role.toLowerCase()))
-      const menuItems = [
+
+      let menuItems = [
         event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
         { name: event.title, link: `${eventLink}` },
         { name: "Speakers", icon: 'bullhorn', link: `${eventLink}/presentations` },
         { name: "Resources", icon: 'file alternate outline', link: `${eventLink}/resources` },
         { name: "Feedback", icon: 'asl interpreting', link: `${eventLink}/feedback` },
-        (isAdmin ? {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` } : {}),
       ];
+
+      if (isAdmin) {
+        menuItems = menuItems.concat([
+          {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` },
+          {name: "Edit Event", icon: 'edit', link: `${eventLink}/backstage/settings?activeIndex=1` },
+          {name: "Upload Guest CSV", icon: 'send', link: `${eventLink}/backstage/guests?activeIndex=1` },
+          {name: "Check In Guests", icon: 'send', link: `${eventLink}/backstage/guests` },
+        ])
+      }
       return {title: 'Event Links', items: menuItems}
     }
   },
