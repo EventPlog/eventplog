@@ -58,7 +58,7 @@ export default [
           {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` },
           {name: "Edit Event", icon: 'edit', link: `${eventLink}/backstage/settings?activeIndex=1` },
           {name: "Upload Guest CSV", icon: 'send', link: `${eventLink}/backstage/guests?activeIndex=1` },
-          {name: "Check In Guests", icon: 'send', link: `${eventLink}/backstage/guests` },
+          {name: "Check In Guests", icon: 'user', link: `${eventLink}/backstage/guests` },
         ])
       }
       return {title: 'Event Links', items: menuItems}
