@@ -276,7 +276,6 @@ const EventBanner = ({
         </span>
       }
 
-      {is_stakeholder &&
       <div className="quick-menu-holder">
         <Menu fluid widths={3}>
           <Menu.Item name='Share on FB' className="fb-blue">
@@ -300,7 +299,7 @@ const EventBanner = ({
             </a>
           </Menu.Item>
         </Menu>
-      </div>}
+      </div>
 
       <div className="content">
         <div className="caption">
