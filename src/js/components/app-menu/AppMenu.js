@@ -28,6 +28,8 @@ const StyledAppMenu = styles.div`
     
     .pusher {
       padding-right: 150px;
+      height: 100vh;
+      overflow-y: scroll;
       
       ${
         media.phone`
@@ -40,25 +42,30 @@ const StyledAppMenu = styles.div`
       padding: 2rem 1rem;
     }
     
-    .sidebar .item {
-      color: ${props => props.theme.grayMedium};
-      font-size: 90%; 
+    .sidebar {
+      height: 100vh;
+      overflow-y: scroll;
       
-      ${
-        media.desktop`
-          flex-direction: row;
-          display: flex;
-          align-items: center;
-          text-align: left;
-          
-          .icon:not(.dropdown) {
-            margin: 0 0.5rem 0 0 !important;
-          }
-        `
-      }
-      
-      &:hover {
-        color: var(--activeLink);
+      .item {
+        color: ${props => props.theme.grayMedium};
+        font-size: 90%; 
+        
+        ${
+          media.desktop`
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            
+            .icon:not(.dropdown) {
+              margin: 0 0.5rem 0 0 !important;
+            }
+          `
+        }
+        
+        &:hover {
+          color: var(--activeLink);
+        }
       }
     }
     
@@ -157,10 +164,12 @@ const StyledAppMenu = styles.div`
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;
+    display: hidden;
   }
 `
 const AppMenu = ({
   visible,
+  showSidebar,
   isInternalPath,
   toggleSidebar,
   handleSidebarHide,
@@ -184,57 +193,60 @@ const AppMenu = ({
           inverted
           onHide={handleSidebarHide}
           vertical
-          visible={!isMobile || visible}
+          visible={!isMobile || visible || showSidebar}
           width='thin'
           onClick={handleSidebarHide}
         >
 
-          <div className="logo-hold">
-            <Link className="logo item" to="/">
-              <img src={logo} alt='eventplog-logo' />
+          <div className="sidebar-hold">
+            <div className="logo-hold">
+              <Link className="logo item" to="/">
+                <img src={logo} alt='eventplog-logo' />
+              </Link>
+
+            </div>
+
+            <MainMenu {...{toggleSidebar, user}} />
+
+            {menu.items && menu.items.map(item => (
+              item.name &&
+                <Link className="item" to={item.link || '#'}>
+                  {item.icon && <Icon name={item.icon} />}
+                  {item.name}
+                </Link>
+            ))}
+
+            {
+              <Link className="item" to="/">
+                <Icon name='home' />
+                Home
+              </Link>
+            }
+            <Nav>
+              <Nav.Item className="sidebar-btn">
+                <Button.Link to="/e/new">Create Event</Button.Link>
+              </Nav.Item>
+            </Nav>
+
+            <Link className="item" to="/events">
+              <Icon name='table tennis' />
+              Events
             </Link>
+            <Link className="item" to="/communities">
+              <Icon name='users' />
+              Communities
+            </Link>
+
 
           </div>
-
-          <MainMenu {...{toggleSidebar, user}} />
-
-          {menu.items && menu.items.map(item => (
-            item.name &&
-              <Link className="item" to={item.link || '#'}>
-                {item.icon && <Icon name={item.icon} />}
-                {item.name}
-              </Link>
-          ))}
-
-          {
-            <Link className="item" to="/">
-              <Icon name='home' />
-              Home
-            </Link>
-          }
-          <Nav>
-            <Nav.Item className="sidebar-btn">
-              <Button.Link to="/e/new">Create Event</Button.Link>
-            </Nav.Item>
-          </Nav>
-
-          <Link className="item" to="/events">
-            <Icon name='table tennis' />
-            Events
-          </Link>
-          <Link className="item" to="/communities">
-            <Icon name='users' />
-            Communities
-          </Link>
-
         </Sidebar>
 
-        <Sidebar.Pusher dimmed={isMobile && visible}
+        <Sidebar.Pusher dimmed={false && isMobile && visible}
                         onClick={() => (visible && handleSidebarHide())}>
           <Segment basic>
             {isMobile &&
-              <div className="menu-btn">
-                <Icon name='content' onClick={toggleSidebar} />
+              <div className="menu-btn" >
+                <Icon name='content' id="menuBtn" onClick={toggleSidebar} />
               </div>
             }
             {children}

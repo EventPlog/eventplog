@@ -213,6 +213,18 @@ const eventBannerStyles = css`
     color: inherit;
     text-decoration: underline;
   }
+  
+  .fb-blue.item {
+    background-color: ${props => lighten(-0.2, props.theme.blue)};
+  }
+  
+  .twitter-blue.item {
+    background-color: ${props => props.theme.blue};
+  }
+  
+  .whatsapp-green.item {
+    background-color: ${props => props.theme.green};
+  }
 `
 
 
@@ -224,6 +236,7 @@ const EventBanner = ({
   interested_persons,
   link,
   venue,
+  description,
   start_time,
   location,
   show_feedback_form,
@@ -246,6 +259,7 @@ const EventBanner = ({
 
   const eventDue = (new Date(start_time)) <= (new Date())
   const eventUrl = genEventLink({id, slug}, community)
+  const encodedPageLink = encodeURIComponent(window.location.href + eventUrl)
 
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
@@ -262,22 +276,30 @@ const EventBanner = ({
         </span>
       }
 
-      {is_stakeholder &&
       <div className="quick-menu-holder">
-        <div className="app-container">
-          <Menu fluid widths={3}>
-            <Menu.Item name='Edit Event'>
-              <Link to={`${eventLink}/backstage/settings?activeIndex=1`}>Edit Event</Link>
-            </Menu.Item>
-            <Menu.Item name='Upload Guests CSV'>
-              <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>Upload Guests CSV</Link>
-            </Menu.Item>
-            <Menu.Item name='Check In Guests'>
-              <Link to={`${eventLink}/backstage/guests`}>Check In Guests</Link>
-            </Menu.Item>
-          </Menu>
-        </div>
-      </div>}
+        <Menu fluid widths={3}>
+          <Menu.Item name='Share on FB' className="fb-blue">
+            <a href={`https://web.facebook.com/sharer/sharer.php?u=${encodedPageLink}`}
+               target="_blank">
+              Share on <Icon name="facebook" />
+            </a>
+          </Menu.Item>
+          <Menu.Item name='Share on WhatsApp' className="whatsapp-green">
+            <a href={`whatsapp://send`}
+               target="_blank"
+               data-href="http://eventplog.com"
+               data-text={description}>
+              Share on <Icon name="whatsapp" />
+            </a>
+          </Menu.Item>
+          <Menu.Item name='Share on Twitter' className="twitter-blue">
+            <a href={`https://twitter.com/home?status=${encodedPageLink}`}
+               target="_blank">
+              Share on <Icon name="twitter" />
+            </a>
+          </Menu.Item>
+        </Menu>
+      </div>
 
       <div className="content">
         <div className="caption">

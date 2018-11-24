@@ -16,7 +16,10 @@ class AppMenuContainer extends Component {
   state = { visible: false }
 
   toggleSidebar = () => this.setState({ visible: !this.state.visible })
-  handleSidebarHide = () => this.setState({ visible: false })
+  handleSidebarHide = () => {
+    this.setState({ visible: false })
+    this.props.toggleSidebar()
+  }
   handleContextRef = contextRef => this.setState({ contextRef })
 
   getProps = () => ({
@@ -43,10 +46,13 @@ const mapStateToProps = (state, ownProps) => {
   const { user = {} } = state.users
   const currentUser = Auth.currentUser()
   const isMobile = ownProps.theme.width < 650
+  const { showSidebar, toggleSidebar } = ownProps.theme
   const menuMatch = menuItemsGen.find(menuItem => matchPath(ownProps.location.pathname, {path: menuItem.path, isExact: true}))
 
   return {
     isMobile,
+    showSidebar,
+    toggleSidebar,
     user: currentUser,
     menu: menuMatch ? menuMatch.genItems(community, event, user) : {}
   }

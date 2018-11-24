@@ -36,13 +36,25 @@ const Password = createLoadable(() => import('js/components/password' /* webpack
 const StyledApp = styled.div`
   --activeLink: ${props => props.theme.activeLink};
   --activeLinkBg: ${props => props.theme.activeLinkBg};
+  position: relative;
  
   ${universalStyles}
+  
+  > .menu-btn {
+    position: fixed;
+    color: ${props => props.theme.gray};
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    background-color: var(--activeLink);
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 1rem;
+    display: ${props => props.theme.width > 650 ? 'none' : 'inherit' };
+  }
 `
 
 class App extends Component {
-  state = { activeItem: 'home' };
-
   render() {
     const {
       activeLink,
@@ -50,7 +62,9 @@ class App extends Component {
       showBreadCrumb,
       store,
       width,
-      height
+      height,
+      showSidebar,
+      toggleSidebar,
     } = this.props;
 
     const activeLinkBg = darken(0.1, activeLink)
@@ -60,11 +74,19 @@ class App extends Component {
         activeLink,
         activeLinkBg,
         width,
-        height
+        height,
+        showSidebar,
+        toggleSidebar,
       }}>
       
         <ScrollToTop>
           <StyledApp>
+            {!showSidebar &&
+              <div class="menu-btn" onClick={toggleSidebar}>
+                <i aria-hidden="true" class="content icon">
+                </i>
+              </div>
+            }
             <AppMenu isInternalPath={isInternalPath}>
               {false && isInternalPath && showBreadCrumb && <BreadCrumb {...this.props.location} />}
               {<NewInvitationBar />}
