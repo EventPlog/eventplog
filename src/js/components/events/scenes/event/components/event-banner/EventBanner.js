@@ -85,7 +85,7 @@ const eventBannerStyles = css`
           font-weight: 300;
           font-size: 2rem;
           line-height: 2rem;
-          color: #bbb;
+          color: ${props => props.theme.gray};
         `
       }
     }

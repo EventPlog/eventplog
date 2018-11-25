@@ -14,10 +14,6 @@ const path = require("path");
 const fs = require("fs");
 
 export default (req, res, next) => {
-  if (req.headers.host == 'eventplog.com') {
-    return res.redirect('https://www.eventplog.com' + req.url);
-  }
-
   const store = configureStore()
   // point to the html file created by CRA's build tool
   const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
