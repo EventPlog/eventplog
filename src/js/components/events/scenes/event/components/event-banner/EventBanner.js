@@ -239,6 +239,7 @@ const EventBanner = ({
   description,
   start_time,
   location,
+  hashtags,
   show_feedback_form,
   community = {},
   handleChange,
@@ -285,7 +286,7 @@ const EventBanner = ({
             </a>
           </Menu.Item>
           <Menu.Item name='Share on WhatsApp' className="whatsapp-green">
-            <a href={`whatsapp://send`}
+            <a href={`whatsapp://send?href=${encodedPageLink}&text=${description}`}
                target="_blank"
                data-href="http://eventplog.com"
                data-text={description}>
@@ -293,7 +294,13 @@ const EventBanner = ({
             </a>
           </Menu.Item>
           <Menu.Item name='Share on Twitter' className="twitter-blue">
-            <a href={`https://twitter.com/home?status=${encodedPageLink}`}
+            <a href={`https://twitter.com/intent/tweet?text=`}
+               data-size="large"
+               data-text={description}
+               data-url={encodedPageLink}
+               data-image={featured_image}
+               data-hashtags={`${hashtags ? hashtags + ',' : ''}eventplog`}
+               data-related="twitterapi,twitter"
                target="_blank">
               Share on <Icon name="twitter" />
             </a>
