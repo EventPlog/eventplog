@@ -260,7 +260,9 @@ const EventBanner = ({
 
   const eventDue = (new Date(start_time)) <= (new Date())
   const eventUrl = genEventLink({id, slug}, community)
-  const encodedPageLink = encodeURIComponent(window.location.href + eventUrl)
+  const encodedPageLink = encodeURIComponent(window.location.href)
+  const shownHashTags = `${hashtags ? hashtags + ',' : ''}eventplog`
+  const encodedDescription = encodeURIComponent(description.trim(140) + ' @eventplog ' + window.location.href)
 
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
@@ -285,24 +287,24 @@ const EventBanner = ({
               Share on <Icon name="facebook" />
             </a>
           </Menu.Item>
+          <Menu.Item name='Share on Twitter' className="twitter-blue">
+            <a href={`https://twitter.com/intent/tweet?text=${encodedDescription}`}
+               data-size="large"
+               data-text={description}
+               data-url={encodedPageLink}
+               data-image={featured_image}
+               data-hashtags={shownHashTags}
+               data-related="twitterapi,twitter"
+               target="_blank">
+              Share on <Icon name="twitter" />
+            </a>
+          </Menu.Item>
           <Menu.Item name='Share on WhatsApp' className="whatsapp-green">
             <a href={`whatsapp://send?href=${encodedPageLink}&text=${description}`}
                target="_blank"
                data-href="http://eventplog.com"
                data-text={description}>
               Share on <Icon name="whatsapp" />
-            </a>
-          </Menu.Item>
-          <Menu.Item name='Share on Twitter' className="twitter-blue">
-            <a href={`https://twitter.com/intent/tweet?text=`}
-               data-size="large"
-               data-text={description}
-               data-url={encodedPageLink}
-               data-image={featured_image}
-               data-hashtags={`${hashtags ? hashtags + ',' : ''}eventplog`}
-               data-related="twitterapi,twitter"
-               target="_blank">
-              Share on <Icon name="twitter" />
             </a>
           </Menu.Item>
         </Menu>
