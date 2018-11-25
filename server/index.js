@@ -16,7 +16,7 @@ const router = express.Router();
 // root (/) should always serve our server rendered page
 // router.use('^/$', serverRenderer);
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV == 'production' && process.env.TURN_ON_SSL_REDIRECT) {
   // enable ssl redirect
   app.use(sslRedirect());
 }
