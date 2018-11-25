@@ -236,7 +236,7 @@ const EventBanner = ({
   interested_persons,
   link,
   venue,
-  description,
+  description = '',
   start_time,
   location,
   hashtags,
