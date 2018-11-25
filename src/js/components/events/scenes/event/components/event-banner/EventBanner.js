@@ -262,7 +262,7 @@ const EventBanner = ({
   const eventUrl = genEventLink({id, slug}, community)
   const encodedPageLink = encodeURIComponent(window.location.href)
   const shownHashTags = `${hashtags ? hashtags + ',' : ''}eventplog`
-  const encodedDescription = encodeURIComponent(description.substr(140) + ' @eventplog ' + window.location.href)
+  const encodedDescription = encodeURIComponent(description.substr(140) + '... @eventplog ' + window.location.href)
 
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
