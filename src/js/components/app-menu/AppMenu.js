@@ -42,7 +42,7 @@ const StyledAppMenu = styles.div`
       padding: 2rem 1rem;
     }
     
-    .sidebar {
+    .sidebar.menu {
       height: 100vh;
       overflow-y: scroll;
       
