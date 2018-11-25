@@ -262,7 +262,7 @@ const EventBanner = ({
   const eventUrl = genEventLink({id, slug}, community)
   const encodedPageLink = encodeURIComponent(window.location.href)
   const shownHashTags = `${hashtags ? hashtags + ',' : ''}eventplog`
-  const encodedDescription = encodeURIComponent(description.trim(140) + ' @eventplog ' + window.location.href)
+  const encodedDescription = encodeURIComponent(description.substr(140) + ' @eventplog ' + window.location.href)
 
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
@@ -300,7 +300,7 @@ const EventBanner = ({
             </a>
           </Menu.Item>
           <Menu.Item name='Share on WhatsApp' className="whatsapp-green">
-            <a href={`whatsapp://send?href=${encodedPageLink}&text=${description}`}
+            <a href={`whatsapp://send?href=${encodedPageLink}&text=${window.location.href + ' \r\n' + description}`}
                target="_blank"
                data-href="http://eventplog.com"
                data-text={description}>
