@@ -157,21 +157,27 @@ const MainContentCard = ({
   description,
   featured_image,
   showButton,
+  hideImage,
   btn = {},
   meta,
   titleLink,
   className,
 }) => (
   <StyledMainContentCard className={`community-card ${className}`}>
-    <div className="img-holder" style={{
-              backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
-            }}>
-      <Link className="title-link" to={titleLink || "#"} />
-    </div>
+    {!hideImage &&
+      <div className="img-holder" style={{
+                backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
+              }}>
+        {titleLink
+          ? <Link className="title-link" to={titleLink} />
+          : <span className="title-link">{titleLink}</span>
+        }
+      </div>
+    }
     <div className="card-body">
       <div className="card-title">
         {title}
-        {showButton && btn && <Button {...btn} className="hidden-xs">
+        {showButton && btn && <Button {...btn} className={`hidden-xs ${btn.className}`}>
           {btn.icon}  {btn.text}
         </Button>}
       </div>
@@ -183,9 +189,9 @@ const MainContentCard = ({
       </div>
       <div>
         {showButton && btn.onClick &&
-        <Button {...btn} className="img-btn hidden-md hidden-lg">
-          {btn.icon}  {btn.text}
-        </Button>
+          <Button {...btn} className={`img-btn hidden-md hidden-lg ${btn.className}`}>
+            {btn.icon}  {btn.text}
+          </Button>
         }
       </div>
     </div>

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Resources should render correctly 1`] = `
+<ContentPanel
+  title="Resources shared"
+>
+  <Component
+    attendEvent={[Function]}
+    requester={
+      Object {
+        "recipient_id": 1,
+        "recipient_type": "Presentation",
+      }
+    }
+    resource={
+      Object {
+        "id": 1,
+      }
+    }
+  />
+  <div
+    className="pagination-wrapper"
+  >
+    <PaginationComponent
+      activePage={1}
+      onPageChange={[Function]}
+      totalPages={2}
+    />
+  </div>
+</ContentPanel>
+`;

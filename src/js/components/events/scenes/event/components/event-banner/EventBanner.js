@@ -356,7 +356,9 @@ const EventBanner = ({
             RSVP
           </Button.Link>}
         {!is_attending &&
-          <Button className="cta large" onClick={() => attendEvent({id})}>
+          <Button className="cta large" onClick={() => {
+            link ? (window.location.href = link) : attendEvent({id})
+          }}>
             Register
           </Button>}
         {is_stakeholder && isPrivate &&

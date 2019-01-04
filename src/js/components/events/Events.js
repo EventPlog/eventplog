@@ -38,6 +38,9 @@ const Presentations = createLoader(() =>
 const Resources = createLoader(() =>
   import('js/components/resources' /* webpackChunkName: "Resources" */), 'Resources')
 
+const Sponsorships = createLoader(() =>
+  import('js/components/sponsorships' /* webpackChunkName: "Resources" */), 'Sponsors')
+
 const StyledEventPlog = styled.div`
   height: 100%;
   min-height: calc(100vh - 350px);
@@ -65,6 +68,7 @@ const EventPlog = ({user = {}}) => (
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
         <PublicRoute path="/e/:id/presentations" component={Presentations} />
         <PublicRoute path="/e/:id/resources" component={Resources} />
+        <PublicRoute path="/e/:id/sponsors" component={Sponsorships} />
         <PrivateRoute path="/e/:id/backstage" component={BackStage} />
 
         <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />

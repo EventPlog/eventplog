@@ -68,11 +68,12 @@ const Btn = ({color, inverted = false, ...otherProps}) => (
 
 const LoginForm = ({
   googleResponse,
-  fbResponse
+  fbResponse,
+  referred,
 }) => (
   <StyledLoginForm className="form-holder col-s-12 col-xs-12 col-m-4 col-l-4">
     <div className="header">
-      Sign up (<Link to="/login">Login Here</Link>)
+      Sign up (<Link to={referred ? `/login?ref=true` : '/login'}>Or Login Here</Link>)
     </div>
     <div className="social-media-buttons">
 

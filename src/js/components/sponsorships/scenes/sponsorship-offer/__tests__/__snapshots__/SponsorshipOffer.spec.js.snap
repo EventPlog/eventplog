@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sponsors should render correctly 1`] = `
+<div
+  className="undefined sponsors app-container"
+>
+  <div>
+    <ContentPanel
+      title="Quick note from organizers"
+    >
+      <ContentEditableWrapper
+        canEdit={true}
+        propName="pitch"
+        rows="10"
+        style={
+          Object {
+            "minHeight": "10vh",
+          }
+        }
+        type="textarea"
+      >
+        <ReactMarkdown
+          astPlugins={Array []}
+          escapeHtml={true}
+          plugins={Array []}
+          rawSourcePos={false}
+          renderers={Object {}}
+          skipHtml={false}
+          source="Click to add a quick note convincing people why they should sponsor this event."
+          sourcePos={false}
+          transformLinkUri={[Function]}
+        />
+      </ContentEditableWrapper>
+    </ContentPanel>
+    <MediaPartners
+      event={
+        Object {
+          "id": 3,
+          "is_stakeholder": true,
+        }
+      }
+      partners={Object {}}
+      sponsorships={Object {}}
+    />
+    <TargetAudience
+      event={
+        Object {
+          "id": 3,
+          "is_stakeholder": true,
+        }
+      }
+      sponsorship_offer={Object {}}
+    />
+    <SponsorsList
+      allowNext={[Function]}
+      currentUser={
+        Object {
+          "id": 1,
+        }
+      }
+      sponsorship_offer_items={Object {}}
+      title={
+        <div
+          className="sponsorship-package-title"
+        >
+          Sponsorship Packages
+          <div
+            className="right"
+          >
+            <Styled(ModalComponent)
+              style={
+                Object {
+                  "padding": "2rem 0",
+                }
+              }
+              trigger={
+                <Button>
+                  <Icon
+                    as="i"
+                    name="plus"
+                  />
+                  Add a new package
+                </Button>
+              }
+            >
+              <ContentPanel
+                title="Add a package you'd like sponsored"
+              >
+                <Unknown
+                  newSponsor={true}
+                />
+              </ContentPanel>
+            </Styled(ModalComponent)>
+          </div>
+        </div>
+      }
+    />
+  </div>
+</div>
+`;

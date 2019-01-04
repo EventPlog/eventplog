@@ -51,14 +51,8 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         <label>
           Where is the venue?
         </label>
-        <PlacesAutocomplete
-          debounce={200}
-          highlightFirstSuggestion={false}
-          onChange={[Function]}
-          onError={[Function]}
-          onSelect={[Function]}
-          searchOptions={Object {}}
-          shouldFetchSuggestions={true}
+        <Styled(PlaceSelector)
+          locationField="location"
         />
       </FormField>
       <FormField

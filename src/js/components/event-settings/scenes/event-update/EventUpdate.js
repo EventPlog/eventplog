@@ -117,7 +117,7 @@ const EventUpdate = ({
           </Form.Field>
 
           <Form.Field>
-            <label>Agenda</label>
+            <label>Agenda (Hit 'Enter' twice for a new line)</label>
             <TextArea name="agenda"
                       value={agenda}
                       placeholder='* Keynote - 11am - Mike Ross'
