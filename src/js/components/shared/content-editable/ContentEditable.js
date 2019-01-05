@@ -112,7 +112,7 @@ class ContentEditable extends React.Component {
   getTextBoxProps = () => ({
     onChange: this.onChange,
     ref: this.textboxRef,
-    style: {width: '100%'},
+    style: {width: '100%', ...this.props.style},
     onBlur: this.onBlur,
     value: this.state.value,
     options: this.props.options,

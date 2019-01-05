@@ -167,11 +167,17 @@ const MainContent = ({flashMsg = null, ...otherProps }) => (
     <ShowFlashMsg flashMsg={flashMsg} />
 
     <div className="app-container">
-      <div className="caption">
-        <h1><span>Be part</span> of<br />documented, learning-based events.</h1>
-        <small>Leverage <span>reviews</span> and <span>other data</span> to organize, attend and sponsor the right events.</small>
-      </div>
-
+      {otherProps.referred
+        ? <div className="caption">
+            <h1><span>Sign up/Login</span><br />to continue.</h1>
+            <small>Once you <span>sign up/login</span> you will be <span>redirected</span> to where you left off.</small>
+          </div>
+        : <div className="caption">
+            <h1><span>Register,</span> <br />Attend,<br /> Sponsor Events.</h1>
+            <small>Catch up on <span>guests feedback</span> and <span>speaker slides</span> in comprehensive post-event reports.
+            </small>
+          </div>
+      }
       {loadLoginComponentByPath(otherProps)}
     </div>
   </StyledMainContent>

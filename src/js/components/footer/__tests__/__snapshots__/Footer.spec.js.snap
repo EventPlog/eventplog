@@ -99,7 +99,7 @@ exports[`Footer should render correctly 1`] = `
               to="/"
             >
               Copyright (c) 
-              2018
+              2019
             </Link>
           </li>
         </ul>

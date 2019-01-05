@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PresentationCard should render correctly 1`] = `
+<MainContentCard
+  btn=""
+  description={
+    <span>
+      A short summary
+    </span>
+  }
+  featured_image="/sample-avatar.png"
+  key="1"
+  meta={
+    Array [
+      <ul
+        className="row"
+    >
+        <li>
+            By 
+            <UserLink
+                user={
+                    Object {
+                        "id": 1,
+                      }
+                }
+            />
+        </li>
+        <li>
+            0
+             
+            <Icon
+                as="i"
+                name="eye"
+            />
+        </li>
+        <li>
+            0
+             
+            <Icon
+                as="i"
+                name="file alternate"
+            />
+        </li>
+        <li>
+            0
+             
+            <Icon
+                as="i"
+                name="comment outline"
+            />
+        </li>
+    </ul>,
+    ]
+  }
+  showButton={true}
+  title={
+    <Link
+      onClick={[Function]}
+      replace={false}
+      to="/e/3/presentations/1"
+    >
+      [Talk]
+       
+      An awesome title
+    </Link>
+  }
+/>
+`;

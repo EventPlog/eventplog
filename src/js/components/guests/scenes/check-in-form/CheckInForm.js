@@ -1,6 +1,9 @@
 import React from 'react';
 import { Checkbox, Form, Select, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+
+// ============ INTERNAL ============
 import Input from 'js/components/shared/input'
 import Button from 'js/components/shared/button'
 import ContentPanel from 'js/components/shared/content-panel'
@@ -82,9 +85,9 @@ const CheckInForm = ({
   history
 }) => {
   if (loading) return <Loading />
-  const title = <a href={`${window.location.origin}${genEventLink(event, event.community)}?utm_source=check_in_form`}>{event.title}</a>
+  const eventLink = genEventLink(event)
   if (success && !event.is_stakeholder) {
-    setTimeout(() => history.push(`${genEventLink(event)}`), 2000)
+    setTimeout(() => history.push(`${eventLink}`), 2000)
     return (
       <StyledCheckInForm className="">
         <div className="app-container">
@@ -97,10 +100,16 @@ const CheckInForm = ({
       </StyledCheckInForm>
     )
   }
+
+  const extEventLink = <a href={`${window.location.origin}${eventLink}?utm_source=check_in_form`}>{event.title}</a>
+  const title = event.is_stakeholder
+    ? <p>Register a new guest for {extEventLink}</p>
+    : <p>Register for {extEventLink}</p>
+
   return (
     <StyledCheckInForm className="">
       <div className="app-container">
-        <ContentPanel title={<p>Register for {title}</p>}>
+        <ContentPanel title={title}>
           <Form loading={loading} success={success} error={error}>
             <Message
               success
@@ -113,6 +122,17 @@ const CheckInForm = ({
               header='Error!'
               content={error}
             />
+
+            {event.is_stakeholder &&
+              <Message
+                info
+                header='Upload a CSV!'
+                content={<p>Do you have an existing guest list you would like to import?&nbsp;
+                            <Link to={`${eventLink}/backstage/guests?activeIndex=1`}>
+                              Upload a CSV instead!
+                            </Link>
+                         </p>}
+              />}
 
             <Form.Field>
               <label>First Name</label>

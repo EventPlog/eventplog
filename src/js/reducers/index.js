@@ -14,6 +14,9 @@ import event_discussions from 'js/components/event-discussions/reducers'
 import event_pictures from 'js/components/event-pictures/reducers'
 import resources from 'js/components/resources/reducers'
 import presentations from 'js/components/presentations/reducers'
+import sponsorships from 'js/components/sponsorships/reducers'
+import partners from 'js/components/partners/reducers'
+import cart from 'js/components/cart/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -31,6 +34,9 @@ let rootReducer = combineReducers({
   event_pictures,
   resources,
   presentations,
+  sponsorships,
+  partners,
+  cart,
 })
 
 export default rootReducer
