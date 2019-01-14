@@ -35,28 +35,28 @@ exports[`SponsorshipOfferItem should render correctly 1`] = `
   hideImage={true}
   key="1"
   meta={
-    Array [
-      <ul
-        className="meta"
+    <ul
+      className="meta"
     >
-        <li
-            class="highlighted"
-        >
-            Preferred form: 
-            talk
-        </li>
-    </ul>,
-    ]
+      <li
+        className="highlighted"
+      >
+        Preferred form: 
+        talk
+      </li>
+    </ul>
   }
   showButton={true}
   title={
     <h3>
       An awesome title
        (
-      2
+      0
        of 
+      2
       ) - 
       N
+      200
     </h3>
   }
 />

@@ -33,20 +33,20 @@ export const generateDescription = (sponsorship_offer_item = {}) => (
   </span>
 )
 
-export const generateMeta = (sponsorship_offer_item, handleEdit, event) => ([
+export const generateMeta = (sponsorship_offer_item, handleEdit, event) => (
   <ul className="meta">
-    <li class='highlighted'>
+    <li className='highlighted'>
       Preferred form: {sponsorship_offer_item.sponsorship_type || 'Cash or Kind'}
-  </li>
-    {event.is_stakeholder &&
-    <li>
-      <Button onClick={handleEdit} className="edit-btn">
-        <Icon name="edit" /> Edit
-      </Button>
     </li>
+    {event.is_stakeholder &&
+      <li>
+        <Button onClick={handleEdit} className="edit-btn">
+          <Icon name="edit" /> Edit
+        </Button>
+      </li>
     }
   </ul>
-])
+)
 
 export const generateCTA = (handleClick) => (
   <Button onClick={handleClick}>
