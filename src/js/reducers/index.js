@@ -17,6 +17,7 @@ import presentations from 'js/components/presentations/reducers'
 import sponsorships from 'js/components/sponsorships/reducers'
 import partners from 'js/components/partners/reducers'
 import cart from 'js/components/cart/reducers'
+import questions from 'js/components/questions/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -37,6 +38,7 @@ let rootReducer = combineReducers({
   sponsorships,
   partners,
   cart,
+  questions,
 })
 
 export default rootReducer

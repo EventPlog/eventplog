@@ -67,10 +67,15 @@ export class EventContainer extends Component {
     this.setState({isModalOpen: false})
   }
 
+  allowNext = (goToNext) => {
+    this.props.allowNext && this.props.allowNext(this.state.event && this.state.event.id, goToNext)
+  }
+
   submitEvent = () => {
     this.setState({ loading: true })
     this.props.createEvent(this.state.event).then(event => {
       this.setState({event, loading: false, eventCreated: true})
+      this.allowNext(true)
     })
       .catch(error => this.setState({loading: false, error}))
   }

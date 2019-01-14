@@ -55,7 +55,8 @@ exports[`SponsorshipOfferItem should render correctly 1`] = `
        (
       2
        of 
-      ) - $
+      ) - 
+      N
     </h3>
   }
 />

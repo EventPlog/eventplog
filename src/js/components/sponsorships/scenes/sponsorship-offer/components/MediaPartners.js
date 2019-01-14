@@ -11,6 +11,7 @@ const MediaPartners = ({
   partners = {},
   sponsorships = {},
   deleteSponsorship,
+  className = '',
 }) => {
 
   const { data: spData = [] } =  sponsorships
@@ -25,7 +26,7 @@ const MediaPartners = ({
     }))
 
   return (
-    <ContentPanel title="Media Partners">
+    <ContentPanel className={className} title="Media Partners">
       <Table basic='very' celled collapsing>
         <Table.Body>
           {sponsorshipsData && sponsorshipsData.map(({id, partner = {}}) => (
@@ -70,7 +71,7 @@ const MediaPartners = ({
       </Table>
 
       {event.is_stakeholder &&
-      <ContentPanel title="Add a media partner">
+      <ContentPanel className="add-partner" title="Add a media partner">
         <ExistingPartnerSearch sponsorship_type="media" />
 
       </ContentPanel>

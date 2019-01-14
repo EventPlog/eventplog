@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // internal components
 import Header from '../../header/MainHeader';
-import createLoader from '../shared/loading/createLoadable'
+import createLoader from 'js/components/shared/loading/createLoadable'
 import styled  from 'styled-components';
 import defaults from '../../styles/theme/variables';
 import {fakeAuth, PrivateRoute, PublicRoute} from '../../auth'
@@ -18,7 +18,7 @@ const Event = createLoader(() =>
   import('./scenes/event' /* webpackChunkName: "EventWithContainer" */), 'EventWithContainer')
 
 const NewEvent = createLoader(() =>
-  import('./scenes/new-event' /* webpackChunkName: "NewEvent" */), 'NewEvent')
+  import('./scenes/new-event/components/new-event-steps' /* webpackChunkName: "NewEvent" */), 'NewEvent')
 
 const BackStage = createLoader(() =>
   import('./scenes/back-stage' /* webpackChunkName: "BackStage" */), 'BackStage')

@@ -26,12 +26,11 @@ exports[`main content - New Community component should render correctly 1`] = `
       </FormField>
       <FormField>
         <label>
-          One-line Description
+          Description
         </label>
-        <Styled(Input)
-          maxLength={70}
+        <Styled(Component)
           name="description"
-          placeholder="An community of awesome people"
+          placeholder="A community of awesome people"
         />
       </FormField>
       <FormField>

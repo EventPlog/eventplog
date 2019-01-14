@@ -12,6 +12,7 @@ import { media } from 'js/styles/mixins'
 import { genCommunityLink } from 'js/utils'
 import Select from 'js/components/shared/select'
 import { removeSpecialChars } from 'js/utils'
+import config from 'js/config'
 
 import CreateCommunityForm from 'js/components/communities/scenes/new-community'
 
@@ -113,10 +114,18 @@ const ContentBeforeEventCreate = ({
       marginRight: 'auto'
     }
   };
-  
+
+  const categoryOptions =
+    config.event_categories.map(cat => ({
+      key: cat,
+      value: cat,
+      text: cat,
+    }))
+
+  const goalsCharLimit = 280
+
   return (
     <StyledContent>
-      <h3>Create an event</h3>
       <p>
         A few details about your event, and you're on your way!
       </p>
@@ -145,7 +154,11 @@ const ContentBeforeEventCreate = ({
               showTimeSelect
               todayButton={"Today"}
               dateFormat="MMMM d, yyyy h:mm aa"
-              onChange={(selected_date) => handleChange('start_time', selected_date) } />
+              onChange={(selected_date) => {
+                handleChange('start_time', selected_date)
+                const endT = new Date()
+                handleChange('end_time', endT.setHours(selected_date.getHours() + 3))
+              } } />
           </Form.Field>
 
           <Form.Field className="wide email-holder">
@@ -155,14 +168,32 @@ const ContentBeforeEventCreate = ({
                            handleChange={handleChange} />
           </Form.Field>
 
-
           <Form.Field className="wide email-holder">
-            <label>What's this event about? What does it hope to achieve?</label>
-              <TextArea name="description"
-                     type="text"
-                     value={event.description}
-                     placeholder='Event description'
-                     onChange={(e) => handleChange(e.target.name, e.target.value)} />
+            <label>In a tweet (280 characters or less), tell your target audience why they should care about/attend this event.</label>
+            <TextArea name="goals"
+                      type="text"
+                      value={event.goals}
+                      maxLength={goalsCharLimit}
+                      placeholder='Event goals in a sentence or two.'
+                      onChange={(e) => handleChange(e.target.name, e.target.value)} />
+            <small>{goalsCharLimit - (event.goals || '').length} characters left.</small>
+          </Form.Field>
+
+          <Form.Field className="search-holder">
+            <label>Which industry would you classify this event under?</label>
+            <Select
+              search
+              name="category_name"
+              type="text"
+              className="select-search"
+              placeholder="Education"
+              value={event.category_name}
+              options={categoryOptions}
+              onSearchChange={onSearchChange}
+              text={searchQuery}
+              searchQuery={searchQuery}
+              onChange={(e, attr) => handleChange(attr.name, attr.value)}
+            />
           </Form.Field>
 
           <Form.Field>

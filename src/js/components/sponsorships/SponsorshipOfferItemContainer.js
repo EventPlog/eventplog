@@ -253,7 +253,7 @@ const mapStateToProps = (state, ownProps) => {
     addedToCart,
     sponsorship_offer,
     sponsorship_offer_item,
-    comments: sponsorship_offer_item.comments,
+    comments: (sponsorship_offer_item || {}).comments,
     recipient_id: event.id,
     recipient_type: 'Event',
     currentUser: Auth.currentUser(),

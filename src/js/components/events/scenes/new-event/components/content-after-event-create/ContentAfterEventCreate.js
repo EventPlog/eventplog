@@ -49,39 +49,24 @@ const ContentAfterEventSubmit = ({
     <h3>You just created an event!!!</h3>
     <img src={peopleDancing} alt="people dancing" />
     <p>
-      Thank you for all you do to strengthen the ecosytem.
+      Congratulations!
     </p>
     <p>
-      You event is not yet live since you might want to change the banner image, theme color, etc.
+      You event is not yet live since you might want to make changes to the banner image, RSVP form questions and packages for sponsors.
     </p>
     <p>
-      To get the best out of eventplog as an event organizer, consider going through the following resources:
+      Click the continue button to get these progressively done in the next few steps.
     </p>
-    <ul>
-      <li>
-        <Link to="help.eventplog.com/working-with-untrained-volunteers">
-          Setting up your event page.
-        </Link>
-      </li>
-      <li>
-        <Link to="help.eventplog.com/working-with-untrained-volunteers">
-          Working best with untrained volunteers on event projects.
-        </Link>
-      </li>
-      <li>
-        <Link to="help.eventplog.com/working-with-untrained-volunteers">
-          Handling check-ins in ways that sets you up for an engaging meetup.
-        </Link>
-      </li>
-      <li>
-        <Link to="help.eventplog.com/working-with-untrained-volunteers">
-          Use feedback to improve your team at every opportunity.
-        </Link>
-      </li>
-    </ul>
-    <Button.Link to={`${genEventLink(event, event.community)}`} className="medium lowercase">
-      Show me my event
-    </Button.Link>
+     {/*<ul>*/}
+       {/*<li>*/}
+         {/*<Link to="help.eventplog.com/working-with-untrained-volunteers">*/}
+           {/*Use feedback to improve your team at every opportunity.*/}
+        {/*</Link>*/}
+      {/*</li>*/}
+    {/*</ul>*/}
+    {/*<Button.Link to={`${genEventLink(event, event.community)}`} className="medium lowercase">*/}
+      {/*Show me my event*/}
+    {/*</Button.Link>*/}
   </StyledContent>
 )
 

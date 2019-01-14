@@ -21,12 +21,13 @@ const SponsorsList = ({
   currentUser,
   cart,
   allowNext,
+  className = ''
 }) => {
   const {loading, error, data = [], meta = {}} = sponsorship_offer_items;
   const shouldDisplayData = (!loading && !error && data);
 
   return (
-    <ContentPanel title={title}>
+    <ContentPanel className={className} title={title}>
       {loading && <Loading />}
       {false && error && <Loading.Error msg={sponsorship_offer_items.error} />}
       {shouldDisplayData && data.map(sponsorship_offer_item =>
