@@ -64,6 +64,10 @@ const styles = css`
   .card-title a {
     color: var(--activeLink);
   }
+  
+  &.community-card .img-holder {
+    width: 200px;
+  }
 `
 
 export const PresentationCard = ({

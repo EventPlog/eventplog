@@ -54,6 +54,10 @@ export class EventContainer extends Component {
     this.setState({ event: {...this.state.event, [key]: value}})
   }
 
+  handleEventChange = (updates) => {
+    this.setState({ event: {...this.state.event, ...updates}})
+  }
+
 
   onSelectChange = (e, attr) => {
     this.setState({event: {...this.state.event, [attr.name]: attr.value}});
@@ -125,6 +129,7 @@ export class EventContainer extends Component {
     getUserCommunitiesByVerb:this.getCommunitiesByVerb,
     getCommunities: this.getCommunities,
     checkForValidSlug: this.checkForValidSlug,
+    handleEventChange: this.handleEventChange,
   })
 
   render() {

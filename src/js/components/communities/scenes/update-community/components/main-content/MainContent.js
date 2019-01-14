@@ -57,6 +57,7 @@ const EventUpdate = ({
   community = {},
   loading,
   success,
+  error,
   handleChange,
   handleSubmit,
   slug_check = {},
@@ -76,11 +77,17 @@ const EventUpdate = ({
   return (
     <StyleEventUpdate className="main-content">
       <ContentPanel title="Edit Community">
-        <Form loading={loading} success={success}>
+        <Form loading={loading} success={success} error={error}>
           <Message
             success
             header='Yes!'
             content="You've successfully updated this community"
+          />
+
+          <Message
+            error
+            header='An error occured!'
+            content={error}
           />
 
           <Form.Field>

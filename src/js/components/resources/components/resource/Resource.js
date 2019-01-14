@@ -53,6 +53,10 @@ const styles = css`
   .card-title a {
     color: var(--activeLink);
   }
+  
+  &.community-card .img-holder {
+    width: 200px;
+  }
 `
 
 export const featuredImageGen = (resource_type = '') => (
@@ -113,8 +117,7 @@ export const Resource = ({
       className={className}
       key={resource.id}
       featured_image={featuredImageGen(resource.resource_type)}
-      {...{title, description, meta, btn, titleLink}}
-      showButton={true} />
+      {...{title, description, meta, btn, titleLink}} />
   )
 }
 

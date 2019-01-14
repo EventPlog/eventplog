@@ -98,6 +98,7 @@ const ContentBeforeEventCreate = ({
   onCloseModal,
   slug_check = {},
   checkForValidSlug,
+  handleEventChange,
 }) => {
   const { data = []} = communities
   const userCommunitiesOptions = 
@@ -155,9 +156,9 @@ const ContentBeforeEventCreate = ({
               todayButton={"Today"}
               dateFormat="MMMM d, yyyy h:mm aa"
               onChange={(selected_date) => {
-                handleChange('start_time', selected_date)
-                const endT = new Date()
-                handleChange('end_time', endT.setHours(selected_date.getHours() + 3))
+                const endT = new Date(selected_date)
+                endT.setHours(selected_date.getHours() + 3)
+                handleEventChange({start_time: selected_date, end_time: endT})
               } } />
           </Form.Field>
 

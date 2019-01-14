@@ -15,6 +15,10 @@ exports[`main content - New Community component should render correctly 1`] = `
         header="Yes!"
         success={true}
       />
+      <Message
+        error={true}
+        header="An error occured!"
+      />
       <FormField>
         <label>
           Name

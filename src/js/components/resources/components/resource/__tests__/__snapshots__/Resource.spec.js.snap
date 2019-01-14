@@ -41,7 +41,6 @@ exports[`Resource should render correctly 1`] = `
     </ul>,
     ]
   }
-  showButton={true}
   title={
     <Link
       onClick={[Function]}

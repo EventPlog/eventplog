@@ -13,13 +13,16 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     }
     description={
       <span>
-        By 
-        <Link
-          replace={false}
-          to="/c/1"
-        >
-          Facebook Developer Circle Lagos
-        </Link>
+        <div>
+          By 
+          <Link
+            replace={false}
+            to="/c/1"
+          >
+            Facebook Developer Circle Lagos
+          </Link>
+          <p />
+        </div>
       </span>
     }
     featured_image="/tech_is_in_you.png"
@@ -58,6 +61,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
+        <ul />,
       ]
     }
     showButton={true}
@@ -80,13 +84,16 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     }
     description={
       <span>
-        By 
-        <Link
-          replace={false}
-          to="/c/2"
-        >
-          Google Developer Group
-        </Link>
+        <div>
+          By 
+          <Link
+            replace={false}
+            to="/c/2"
+          >
+            Google Developer Group
+          </Link>
+          <p />
+        </div>
       </span>
     }
     featured_image="/login-bg.jpg"
@@ -125,6 +132,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
+        <ul />,
       ]
     }
     showButton={true}
@@ -147,11 +155,14 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
     }
     description={
       <span>
-        By 
-        <Link
-          replace={false}
-          to=""
-        />
+        <div>
+          By 
+          <Link
+            replace={false}
+            to=""
+          />
+          <p />
+        </div>
       </span>
     }
     featured_image="/login-bg.jpg"
@@ -190,6 +201,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
                interested
           </li>
       </ul>,
+        <ul />,
       ]
     }
     showButton={true}

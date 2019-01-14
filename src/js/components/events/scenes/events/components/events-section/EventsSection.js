@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { darken } from 'polished'
 
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
@@ -19,11 +20,14 @@ export const generateTitle = (event = {}, community = {}) => {
   )
 }
 
-export const generateDescription = (community = {}) => (
+export const generateDescription = (community = {}, event) => (
   <span>
-    By <Link to={genCommunityLink(community)}>
-      {community.name}
-    </Link>
+    <div>
+      By <Link to={genCommunityLink(community)}>
+          {community.name}
+        </Link>
+      {event && <p>{event.goals}</p>}
+    </div>
   </span>
 )
 
@@ -50,6 +54,11 @@ export const generateMeta = (event = {}) => ([
         {event.no_of_reviews} {pluralize('person',event.no_of_reviews)} rated {event.average_ratings}/10 on average
       </li>
     }
+  </ul>,
+  <ul>
+    {event.category &&
+      <li className="event-category">Category: {event.category.name}</li>
+    }
   </ul>
 ])
 
@@ -59,22 +68,31 @@ export const generateCTA = (handleClick) => (
   </Button>
 )
 
-const EventsSection = ({
+const styles = css`
+  .event-category {
+    background: ${props => darken(0.2, props.theme.yellow)};
+    padding: 0.2rem 0.4rem;
+    color: ${props => props.theme.white};
+  }
+`
+
+export const EventsSection = ({
   title,
   events = {},
   attendEvent,
   getEvents,
+  className,
 }) => {
   const {loading, error, data = [], meta = {}} = events;
   const shouldDisplayData = (!loading && !error && data);
   return (
-    <ContentPanel title={title}>
+    <ContentPanel className={className} title={title}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
       {shouldDisplayData && data.map(({featured_image, ...event}) => {
           const community = event.community || {}
           const title = generateTitle(event, community)
-          const description = generateDescription(community)
+          const description = generateDescription(community, event)
           const meta = generateMeta(event)
           const btn = {onClick: () => attendEvent(event), text: 'interested'}
           const titleLink = genEventLink(event, community)
@@ -102,4 +120,4 @@ const EventsSection = ({
   )
 }
 
-export default EventsSection
+export default styled(EventsSection)`${ styles }`
