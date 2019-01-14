@@ -19,6 +19,7 @@ describe('SponsorshipOfferItem', () => {
       sponsorship_type: 'talk',
       summary: 'A short summary',
       benefits: 'A lot of details',
+      slots_taken: 1,
       slots_available: 2,
       amount: 200,
       user: {id: 1},
