@@ -5,12 +5,12 @@ import LoginForm from '../login-form'
 import SignupForm from '../signup-form'
 import { Message } from 'semantic-ui-react'
 import { media } from 'js/styles/mixins'
-import { lighten } from 'polished'
+import { lighten, adjustHue } from 'polished'
 
 import snapImg from 'img/login-bg-3.jpg'
 
 const StyledMainContent = styled.div`
-  background-image: url('https://farm1.staticflickr.com/840/43597608731_66edfae482_o.jpg');
+  background-image: url('https://img.rwgenting.com/rwgenting/uploadedImages/Images/Casino/Highlights/Earn_and_Buy_Promotion/AOS-banner.jpg?n=3717');
   background-size: cover;
   position: relative;
   
@@ -20,7 +20,7 @@ const StyledMainContent = styled.div`
   
   ${
     media.phone`
-      background-image: url(${snapImg});
+      background-size: cover;
     `
   }
   
@@ -59,8 +59,8 @@ const StyledMainContent = styled.div`
     h1 {
       font-size: 4rem;
       font-weight: 600;
-      color: white;
-      font-family: "Andale Mono", AndaleMono, monospace;
+      color: ${lighten(0.45, colors.primary)};
+      font-family: "capriola", open-sans;
       
       ${
         media.tablet`
@@ -75,8 +75,11 @@ const StyledMainContent = styled.div`
       }
             
       span {
-        background: ${colors.yellow};
-        padding-top: 1rem;
+        background: ${lighten(0, colors.yellow)};
+        margin-top: 1rem;
+        padding: 0 0.3rem;
+        color: ${props => props.theme.primary};
+        text-shadow: 0 2px 4px #c7bb09;
       } 
     }
     
@@ -100,13 +103,13 @@ const StyledMainContent = styled.div`
       }
       
       span {
-        border-bottom: 2px solid ${colors.yellow};
+        border-bottom: 2px solid ${lighten(-0.1, colors.yellow)};
       } 
     }
   }
   
   .form-holder {
-    background: ${lighten(0.45, colors.blue)};
+    background: ${lighten(0.45, colors.primary)};
     border-radius: 5px;
     box-shadow: 0 2px 4px #000;
     height: auto;
@@ -169,12 +172,12 @@ const MainContent = ({flashMsg = null, ...otherProps }) => (
     <div className="app-container">
       {otherProps.referred
         ? <div className="caption">
-            <h1><span>Sign up/Login</span><br />to continue.</h1>
-            <small>Once you <span>sign up/login</span> you will be <span>redirected</span> to where you left off.</small>
+          <h1><small>Hi! Hello!!</small><br /><span>Who's</span> there?</h1>
+            <small>Not to worry! Once you <span>sign in</span> you will be <span>redirected</span> to where you left off. 🙂</small>
           </div>
         : <div className="caption">
-            <h1><span>Register,</span> <br />Attend,<br /> Sponsor Events.</h1>
-            <small>Catch up on <span>guests feedback</span> and <span>speaker slides</span> in comprehensive post-event reports.
+          <h1>Create, <br />Attend,<br /> <span>Sponsor</span> Events.</h1>
+          <small>Get guests feedback, speaker slides and comprehensive <span>post-event reports</span>.
             </small>
           </div>
       }

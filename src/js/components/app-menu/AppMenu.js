@@ -186,6 +186,7 @@ const AppMenu = ({
   handleContextRef,
   children,
 }) => {
+  const showingSidebar = visible == undefined ? !isMobile : visible
   return (
     <StyledAppMenu>
       {false && isInternalPath &&
@@ -199,9 +200,9 @@ const AppMenu = ({
           inverted
           onHide={handleSidebarHide}
           vertical
-          visible={!isMobile || visible || showSidebar}
+          visible={showingSidebar}
           width='thin'
-          onClick={handleSidebarHide}
+          onClick={() => isMobile && handleSidebarHide()}
         >
 
           <div className="sidebar-hold">
@@ -250,11 +251,12 @@ const AppMenu = ({
         </Sidebar>
 
         <Sidebar.Pusher dimmed={false && isMobile && visible}
-                        onClick={() => (visible && handleSidebarHide())}>
+                        style={{paddingRight: !isMobile && showingSidebar ? '150px': '0'}}
+                        onClick={() => (visible && isMobile && handleSidebarHide())}>
           <Segment basic>
-            {isMobile &&
-              <div className="menu-btn" >
-                <Icon name='content' id="menuBtn" onClick={toggleSidebar} />
+            {(isMobile || true) &&
+              <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>
+                <Icon name='content'  />
               </div>
             }
             {children}

@@ -201,7 +201,7 @@ const MainContentCard = ({
     <div className="card-body">
       <div className="card-title">
         {title}
-        {false && btn && <Button {...btn} className={`hidden ${btn.className}`}>
+        {hideImage && showButton && btn && <Button {...btn} className={`hidden-xs ${btn.className}`}>
           {btn.icon}  {btn.text}
         </Button>}
       </div>
@@ -211,13 +211,13 @@ const MainContentCard = ({
       <div className="card-meta">
         {meta}
       </div>
-      {/*<div>
-        {showButton && btn.onClick &&
-          <Button {...btn} className={`${btn.className}`}>
+      <div>
+        {hideImage && showButton && btn.onClick &&
+          <Button {...btn} className={`hidden-md hidden-lg footer-btn ${btn.className}`}>
             {btn.icon}  {btn.text}
           </Button>
         }
-      </div>*/}
+      </div>
     </div>
   </StyledMainContentCard>
 )

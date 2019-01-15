@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
 import ReactMarkdown from 'react-markdown'
+import { lighten } from 'polished'
 
 const CURRENCY = process.env.REACT_APP_CURRENCY
 
@@ -69,6 +70,10 @@ const styles = css`
       &.remove {
         background-color: ${props => props.theme.gray};
       }
+      
+      &.footer-btn {
+        margin: 1rem 0;
+      }
     }
   }
   
@@ -95,7 +100,7 @@ const styles = css`
   }
   
   .highlighted {
-    background: ${props => props.theme.peach};
+    background: ${props => lighten(0.4, props.theme.primary)};
     padding: 5px;
     color: #000;
     font-weight: 500;
