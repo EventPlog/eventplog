@@ -38,12 +38,14 @@ class MainContentContainer extends Component {
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
     this.props.getEvents({page: meta.activePage, per_page})
+      .then(() => document.querySelector('.pusher').scrollTop = 0)
     mixpanel.track('USER_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }
 
   getPastEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
     this.props.getPastEvents({page: meta.activePage, per_page})
+      .then(() => document.querySelector('.pusher').scrollTop = 0)
   }
 
   getProps = () => ({

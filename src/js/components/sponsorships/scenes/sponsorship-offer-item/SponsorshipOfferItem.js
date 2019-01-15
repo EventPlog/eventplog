@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
 import ReactMarkdown from 'react-markdown'
 
+const CURRENCY = process.env.REACT_APP_CURRENCY
+
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
 import Button from 'js/components/shared/button'
@@ -20,7 +22,7 @@ import {
 export const generateTitle = (sponsorship_offer_item = {}, event = {}, handleViewCount) => {
   return (
     <h3>
-      {sponsorship_offer_item.title} ({sponsorship_offer_item.slots_taken || 0} of {sponsorship_offer_item.slots_available}) - ${sponsorship_offer_item.amount}
+      {sponsorship_offer_item.title} ({sponsorship_offer_item.slots_taken || 0} of {sponsorship_offer_item.slots_available}) - {CURRENCY}{sponsorship_offer_item.amount}
     </h3>
   )
 }
@@ -31,20 +33,20 @@ export const generateDescription = (sponsorship_offer_item = {}) => (
   </span>
 )
 
-export const generateMeta = (sponsorship_offer_item, handleEdit, event) => ([
+export const generateMeta = (sponsorship_offer_item, handleEdit, event) => (
   <ul className="meta">
-    <li class='highlighted'>
+    <li className='highlighted'>
       Preferred form: {sponsorship_offer_item.sponsorship_type || 'Cash or Kind'}
-  </li>
-    {event.is_stakeholder &&
-    <li>
-      <Button onClick={handleEdit} className="edit-btn">
-        <Icon name="edit" /> Edit
-      </Button>
     </li>
+    {event.is_stakeholder &&
+      <li>
+        <Button onClick={handleEdit} className="edit-btn">
+          <Icon name="edit" /> Edit
+        </Button>
+      </li>
     }
   </ul>
-])
+)
 
 export const generateCTA = (handleClick) => (
   <Button onClick={handleClick}>
@@ -61,6 +63,7 @@ const styles = css`
     &.cta-btn {
       color: ${props => props.theme.blueDark};
       background-color: ${props => props.theme.yellow};
+      border-color: ${props => props.theme.yellow};
       font-size: 1.2rem;
       
       &.remove {

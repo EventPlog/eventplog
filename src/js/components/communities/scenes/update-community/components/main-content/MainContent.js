@@ -4,6 +4,7 @@ import { Form, label, Message, Checkbox, Icon } from 'semantic-ui-react'
 
 import ContentPanel from 'js/components/shared/content-panel'
 import Input from 'js/components/shared/input'
+import TextArea from 'js/components/shared/text-area'
 import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
 import color from 'js/styles/theme/variables'
@@ -56,6 +57,7 @@ const EventUpdate = ({
   community = {},
   loading,
   success,
+  error,
   handleChange,
   handleSubmit,
   slug_check = {},
@@ -75,11 +77,17 @@ const EventUpdate = ({
   return (
     <StyleEventUpdate className="main-content">
       <ContentPanel title="Edit Community">
-        <Form loading={loading} success={success}>
+        <Form loading={loading} success={success} error={error}>
           <Message
             success
             header='Yes!'
             content="You've successfully updated this community"
+          />
+
+          <Message
+            error
+            header='An error occured!'
+            content={error}
           />
 
           <Form.Field>
@@ -91,11 +99,10 @@ const EventUpdate = ({
           </Form.Field>
 
           <Form.Field>
-            <label>One-line Description</label>
-            <Input name="description"
+            <label>Description</label>
+            <TextArea name="description"
                    value={description}
-                   maxLength={70}
-                   placeholder='An community of awesome people' onChange={handleChange}/>
+                   placeholder='A community of awesome people' onChange={handleChange}/>
           </Form.Field>
 
           <Form.Field>

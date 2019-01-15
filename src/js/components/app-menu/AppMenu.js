@@ -14,7 +14,7 @@ import {
 
 import Button from 'js/components/shared/button'
 import Header from 'js/components/header'
-import logo from 'img/logo and text v4 inverted.png'
+import logo from 'img/eventplog-inverted-small.png'
 import { genUserProfileLink } from 'js/utils'
 import MainMenu from 'js/components/header/logged-in-header/MainMenu'
 import { media } from 'js/styles/mixins'

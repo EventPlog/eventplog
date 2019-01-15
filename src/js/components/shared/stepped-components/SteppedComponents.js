@@ -25,9 +25,9 @@ const StyledStep = styled.div`
     
     &.green {
       background-color: ${props => props.theme.green};
+        color: white;
       
       &:hover {
-        color: white;
         border-color: white;
       }
     }
@@ -57,18 +57,25 @@ class SteppedComponents extends React.Component {
     return this.incrementIndex
   }
 
-  incrementIndex = () => this.setState({
-    activeIndex: this.props.components.length - 1 > this.state.activeIndex
-                  ? this.state.activeIndex + 1
-                  : this.state.activeIndex
-  })
+  incrementIndex = () => {
+    this.setState({
+      activeIndex: this.props.components.length - 1 > this.state.activeIndex
+        ? this.state.activeIndex + 1
+        : this.state.activeIndex
+    })
+    document.querySelector('.pusher').scrollTop = 0
+  }
 
-  decrementIndex = () => this.setState({
-    activeIndex: this.state.activeIndex > 0 ? this.state.activeIndex - 1 : 0
-  })
+  decrementIndex = () => {
+    this.setState({
+      activeIndex: this.state.activeIndex > 0 ? this.state.activeIndex - 1 : 0
+    })
+    document.querySelector('.pusher').scrollTop = 0
+  }
 
-  setAllowedIndex = (index, allow) => {
+  setAllowedIndex = (index, allow, goToNext) => {
     this.setState({ allowedIndices: {...this.state.allowedIndices, [index]: allow } })
+    if (goToNext) this.incrementIndex()
   }
 
   canNext = (index) => {
@@ -88,7 +95,7 @@ class SteppedComponents extends React.Component {
                     total={components.length}
                     progress="ratio" success/>
 
-          <Component allowNext={(allow) => this.setAllowedIndex(activeIndex, allow)} />
+          <Component allowNext={(allow, goToNext) => this.setAllowedIndex(activeIndex, allow, goToNext)} />
 
           <div className="meta">
             {activeIndex > 0 &&

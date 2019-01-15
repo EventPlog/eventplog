@@ -17,8 +17,9 @@ import MediaPartners from './components/MediaPartners'
 import { removeSpecialChars } from 'js/utils'
 
 
-const styles = css`
+const StyledSponsorshipOffer = styled.div`
   position: relative;
+  background: #634d46;
   
   &.app-container {
     margin-top: 3rem;
@@ -81,8 +82,38 @@ const styles = css`
     color: var(--activeLink);
   }
   
-  .content-panel + .content-panel {
-    margin-top: 6rem;
+  .content-panel {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    
+    &.yellow {
+      background: #f7f78a;
+    }
+    
+    &.blue {
+      background: #b9cbfb;
+    }
+    
+    &.brown {
+      background: #fbbba4;
+    }
+    
+    &.purple {
+      background: #ceb7fd;
+    }
+    
+    .content-header {
+      font-size: 2rem;
+    }
+    
+    &.add-partner {
+      padding-top: 2rem;
+      padding-bottom: 0;
+      
+      .content-header {
+        font-size: 1.2rem;
+      }
+    }
   }
   
   td .small {
@@ -157,10 +188,10 @@ export const SponsorshipOffer = ({
   if (error) return <Loading.Error msg={error} />
 
   return (
-    <div className={`${className} sponsors app-container`}>
+    <StyledSponsorshipOffer className={`${className} sponsors app-container`}>
       <div>
         {(sponsorship_offer.pitch || event.is_stakeholder) &&
-          <ContentPanel title="Quick note from organizers">
+          <ContentPanel className="yellow" title="Quick note from organizers">
             <ContentEditable propName="pitch"
                              type="textarea"
                              rows="10"
@@ -174,20 +205,22 @@ export const SponsorshipOffer = ({
           </ContentPanel>
         }
 
-        <MediaPartners {...{ partners, event, sponsorships, deleteSponsorship }} />
+        <MediaPartners className="blue" {...{ partners, event, sponsorships, deleteSponsorship }} />
 
-        <TargetAudience {...{ sponsorship_offer, handleChange,
+        <TargetAudience className="brown"
+                        {...{ sponsorship_offer, handleChange,
                               handleSubmit, updateEvent, event } }/>
 
         <SponsorshipOfferItems title={generateTitle(event)}
                                currentUser={currentUser}
                                cart={cart}
                                allowNext={allowNext}
+                               className="purple"
                                sponsorship_offer_items={sponsorship_offer_items} />
 
       </div>
-    </div>
+    </StyledSponsorshipOffer>
   )
 }
 
-export default styled(SponsorshipOffer)`${styles}`
+export default SponsorshipOffer

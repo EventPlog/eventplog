@@ -54,6 +54,10 @@ export class EventContainer extends Component {
     this.setState({ event: {...this.state.event, [key]: value}})
   }
 
+  handleEventChange = (updates) => {
+    this.setState({ event: {...this.state.event, ...updates}})
+  }
+
 
   onSelectChange = (e, attr) => {
     this.setState({event: {...this.state.event, [attr.name]: attr.value}});
@@ -67,10 +71,15 @@ export class EventContainer extends Component {
     this.setState({isModalOpen: false})
   }
 
+  allowNext = (goToNext) => {
+    this.props.allowNext && this.props.allowNext(this.state.event && this.state.event.id, goToNext)
+  }
+
   submitEvent = () => {
     this.setState({ loading: true })
     this.props.createEvent(this.state.event).then(event => {
       this.setState({event, loading: false, eventCreated: true})
+      this.allowNext(true)
     })
       .catch(error => this.setState({loading: false, error}))
   }
@@ -120,6 +129,7 @@ export class EventContainer extends Component {
     getUserCommunitiesByVerb:this.getCommunitiesByVerb,
     getCommunities: this.getCommunities,
     checkForValidSlug: this.checkForValidSlug,
+    handleEventChange: this.handleEventChange,
   })
 
   render() {

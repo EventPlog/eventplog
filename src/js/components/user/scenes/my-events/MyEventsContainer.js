@@ -65,13 +65,12 @@ class MainContentContainer extends Component {
       page, per_page,
       user_id: this.props.user.id,
     })
-      .then(() => window.scrollTo(0, 0), 3000)
+      .then(() => document.querySelector('.pusher').scrollTop = 0)
 
   }
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    getEventsByVerb(meta.activePage, per_page)
     this.getEventsByVerb(meta.activePage, per_page)
     mixpanel.track('USER_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }

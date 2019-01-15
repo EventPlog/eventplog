@@ -19,6 +19,7 @@ class TargetAudience extends Component {
       handleSubmit,
       updateEvent,
       event,
+      className = ''
     } = this.props
 
     const { editMode } = this.state
@@ -26,7 +27,7 @@ class TargetAudience extends Component {
     const { topics = [] } = event
 
     return (
-      <ContentPanel title="Target Audience">
+      <ContentPanel className={className} title="Target Audience">
         <Table basic='very' celled collapsing>
           <Table.Body>
             <Table.Row>
@@ -44,7 +45,7 @@ class TargetAudience extends Component {
                                  defaultValue={sponsorship_offer.num_of_expected_guests}
                                  onChange={handleChange}
                                  onSubmit={handleSubmit}>
-                  {sponsorship_offer.num_of_expected_guests || (event.is_stakeholder ? 'Click to type a number' : '0')}
+                  {sponsorship_offer.num_of_expected_guests || '100' }
                 </ContentEditable>
               </Table.Cell>
             </Table.Row>

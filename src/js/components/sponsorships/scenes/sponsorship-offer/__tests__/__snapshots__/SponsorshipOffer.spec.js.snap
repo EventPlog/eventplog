@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sponsors should render correctly 1`] = `
-<div
+<styled.div
   className="undefined sponsors app-container"
 >
   <div>
     <ContentPanel
+      className="yellow"
       title="Quick note from organizers"
     >
       <ContentEditableWrapper
@@ -33,6 +34,7 @@ exports[`Sponsors should render correctly 1`] = `
       </ContentEditableWrapper>
     </ContentPanel>
     <MediaPartners
+      className="blue"
       event={
         Object {
           "id": 3,
@@ -43,6 +45,7 @@ exports[`Sponsors should render correctly 1`] = `
       sponsorships={Object {}}
     />
     <TargetAudience
+      className="brown"
       event={
         Object {
           "id": 3,
@@ -53,6 +56,7 @@ exports[`Sponsors should render correctly 1`] = `
     />
     <SponsorsList
       allowNext={[Function]}
+      className="purple"
       currentUser={
         Object {
           "id": 1,
@@ -96,5 +100,5 @@ exports[`Sponsors should render correctly 1`] = `
       }
     />
   </div>
-</div>
+</styled.div>
 `;

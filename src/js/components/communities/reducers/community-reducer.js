@@ -7,7 +7,7 @@ const communityReducer = (state=initialState.community, action) => {
     case actionTypes.COMMUNITY_SHOW_START:
     case actionTypes.COMMUNITY_CREATE_START:
     case actionTypes.COMMUNITY_UPDATE_START:
-      return {loading: true};
+      return {...state, loading: true};
 
     case actionTypes.COMMUNITY_SHOW_COMPLETE:
     case actionTypes.COMMUNITY_CREATE_COMPLETE:

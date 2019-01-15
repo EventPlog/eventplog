@@ -33,6 +33,7 @@ type CommunityType = {
   community: {name: string},
   error: any,
   loading: boolean,
+  success: string,
   emailSubmitted?: boolean,
   handleChange: () => {},
   submitEmail: () => {},

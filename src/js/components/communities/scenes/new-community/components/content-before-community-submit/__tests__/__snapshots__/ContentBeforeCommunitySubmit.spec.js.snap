@@ -32,6 +32,19 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           type="text"
         />
       </FormField>
+      <FormField
+        className="wide email-holder"
+      >
+        <label>
+          Could you describe this community? Who are you? What do you stand for?
+        </label>
+        <Styled(Input)
+          name="description"
+          onChange={[Function]}
+          placeholder="Description here ..."
+          type="text"
+        />
+      </FormField>
       <FormField>
         <label>
           What's your brand color?

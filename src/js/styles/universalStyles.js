@@ -143,6 +143,16 @@ const styles = css`
   .ui.label {
     background: transparent;
   }
+  
+  .cancel-btn {
+    color: ${props => props.theme.red};
+    border-color: ${props => props.theme.red};
+    
+    &:hover {
+      color: white;
+      background-color: ${props => props.theme.red};
+    }
+  }
 `
 
 export default styles;

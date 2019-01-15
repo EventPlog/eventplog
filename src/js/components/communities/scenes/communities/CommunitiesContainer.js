@@ -33,6 +33,7 @@ class MainContentContainer extends Component {
   getCommunities = (e, meta) => {
     const { per_page } = this.props.communities.meta || {}
     this.props.getCommunities({page: meta.activePage, per_page})
+      .then(() => document.querySelector('.pusher').scrollTop = 0)
   }
 
   getCommunitiesSuggestions = (e, meta) => {

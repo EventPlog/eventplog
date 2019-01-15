@@ -2,14 +2,14 @@
 
 exports[`MainContent should render correctly 1`] = `
 <div>
-  <EventsSection
+  <Styled(EventsSection)
     community={Object {}}
     events={Object {}}
     key="user-upcoming-events-section"
     title="Upcoming"
   />
   ,
-  <EventsSection
+  <Styled(EventsSection)
     community={Object {}}
     events={Object {}}
     key="user-past-events-section"

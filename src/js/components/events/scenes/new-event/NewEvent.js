@@ -9,11 +9,11 @@ const StyledNewEvent = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-bottom: 200px;
+  /*padding-bottom: 200px;*/
   
   .main-content {
     flex: 1;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
     
     ${
       media.phone`

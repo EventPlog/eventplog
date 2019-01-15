@@ -2,9 +2,6 @@
 
 exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
 <styled.div>
-  <h3>
-    Create an event
-  </h3>
   <p>
     A few details about your event, and you're on your way!
   </p>
@@ -59,12 +56,131 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         className="wide email-holder"
       >
         <label>
-          What's this event about? What does it hope to achieve?
+          In a tweet (280 characters or less), tell your target audience why they should care about/attend this event.
         </label>
         <Styled(Component)
-          name="description"
+          maxLength={280}
+          name="goals"
           onChange={[Function]}
-          placeholder="Event description"
+          placeholder="Event goals in a sentence or two."
+          type="text"
+        />
+        <small>
+          280
+           characters left.
+        </small>
+      </FormField>
+      <FormField
+        className="search-holder"
+      >
+        <label>
+          Which industry would you classify this event under?
+        </label>
+        <Styled(Input)
+          className="select-search"
+          name="category_name"
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "key": "Automotive/Transportation",
+                "text": "Automotive/Transportation",
+                "value": "Automotive/Transportation",
+              },
+              Object {
+                "key": "Agriculture/Food and Beverage",
+                "text": "Agriculture/Food and Beverage",
+                "value": "Agriculture/Food and Beverage",
+              },
+              Object {
+                "key": "Construction/Real Estate",
+                "text": "Construction/Real Estate",
+                "value": "Construction/Real Estate",
+              },
+              Object {
+                "key": "Defence/Space",
+                "text": "Defence/Space",
+                "value": "Defence/Space",
+              },
+              Object {
+                "key": "Education",
+                "text": "Education",
+                "value": "Education",
+              },
+              Object {
+                "key": "Entertainment/Media",
+                "text": "Entertainment/Media",
+                "value": "Entertainment/Media",
+              },
+              Object {
+                "key": "Hospitality",
+                "text": "Hospitality",
+                "value": "Hospitality",
+              },
+              Object {
+                "key": "Energy/Oil and Gas",
+                "text": "Energy/Oil and Gas",
+                "value": "Energy/Oil and Gas",
+              },
+              Object {
+                "key": "Finance/Banking",
+                "text": "Finance/Banking",
+                "value": "Finance/Banking",
+              },
+              Object {
+                "key": "Government/Not-for-Profit",
+                "text": "Government/Not-for-Profit",
+                "value": "Government/Not-for-Profit",
+              },
+              Object {
+                "key": "Healthcare/BioTech",
+                "text": "Healthcare/BioTech",
+                "value": "Healthcare/BioTech",
+              },
+              Object {
+                "key": "Logistics",
+                "text": "Logistics",
+                "value": "Logistics",
+              },
+              Object {
+                "key": "Manufacturing",
+                "text": "Manufacturing",
+                "value": "Manufacturing",
+              },
+              Object {
+                "key": "Professional Services(Legal, Insurance, Accounting, HR, Marketing)",
+                "text": "Professional Services(Legal, Insurance, Accounting, HR, Marketing)",
+                "value": "Professional Services(Legal, Insurance, Accounting, HR, Marketing)",
+              },
+              Object {
+                "key": "Retail and E-Commerce",
+                "text": "Retail and E-Commerce",
+                "value": "Retail and E-Commerce",
+              },
+              Object {
+                "key": "Security",
+                "text": "Security",
+                "value": "Security",
+              },
+              Object {
+                "key": "Telecommunications",
+                "text": "Telecommunications",
+                "value": "Telecommunications",
+              },
+              Object {
+                "key": "Technology",
+                "text": "Technology",
+                "value": "Technology",
+              },
+              Object {
+                "key": "Other",
+                "text": "Other",
+                "value": "Other",
+              },
+            ]
+          }
+          placeholder="Education"
+          search={true}
           type="text"
         />
       </FormField>
