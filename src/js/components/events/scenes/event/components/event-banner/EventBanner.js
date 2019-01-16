@@ -65,7 +65,7 @@ const eventBannerStyles = css`
       font-weight: 500;
       margin-top: 4rem;
       line-height: initial;
-      color: #eee; 
+      color: white; 
     
       ${
         media.desktop`
@@ -76,21 +76,23 @@ const eventBannerStyles = css`
     
     .meta {
       letter-spacing: 0.6px;
-      font-weight: 600;
+      font-weight: 300;
       font-size: 1.2rem;
+      display: flex;
+      color: ${props => lighten(0.1, props.theme.black)};
+      text-shadow: none;
       
       ${
         media.desktop`
           letter-spacing: 0.6px;
-          font-weight: 300;
-          font-size: 2rem;
           line-height: 2rem;
-          color: ${props => props.theme.gray};
         `
       }
     }
     
     ul {
+      background: white;
+      padding: 1rem;
     }
     
     .meta > ul > li:not(:last-child) {
@@ -106,6 +108,7 @@ const eventBannerStyles = css`
     ${
       media.phone`
         align-self: flex-start;
+        width: 100%;
       `
     }
   }
@@ -141,6 +144,7 @@ const eventBannerStyles = css`
     ${
       media.phone`
         align-self: flex-start;
+        width: 100%
       `
     }
     
@@ -201,12 +205,14 @@ const eventBannerStyles = css`
   
   .upload-btn-controls {
     position: absolute;
-    top: 2rem;
+    top: 4rem;
     
     input, button {
       margin-right: 1rem;
       color: white;
       border: 1px solid white;
+      padding: 1rem;
+      font-size: 2rem;
     }
     
     i {

@@ -252,11 +252,9 @@ const AppMenu = ({
                         style={{paddingRight: !isMobile && showSidebar ? '150px': '0'}}
                         onClick={() => (showSidebar && isMobile && handleSidebarHide())}>
           <Segment basic>
-            {(isMobile || true) &&
-              <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>
-                <Icon name='content'  />
-              </div>
-            }
+            <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>
+              <Icon name='content'  />
+            </div>
             {children}
           </Segment>
         </Sidebar.Pusher>
