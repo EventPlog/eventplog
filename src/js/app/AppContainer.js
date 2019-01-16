@@ -9,7 +9,7 @@ import { getSlugFromHostName } from 'js/utils'
 class AppContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0, height: 0, showSidebar: false };
+    this.state = { width: 0, height: 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -27,9 +27,11 @@ class AppContainer extends Component {
   }
 
   toggleSidebar = () => {
-    const menuBtn = document.getElementById('menuBtn')
-    menuBtn && menuBtn.click();
-    this.setState({ showSidebar: !this.state.showSidebar })
+    // const menuBtn = document.getElementById('menuBtn')
+    // menuBtn && menuBtn.click();
+    const { showSidebar } = this.state
+    const show = showSidebar == undefined ? window.innerHeight >= 650 : showSidebar
+    this.setState({ showSidebar: !show })
   }
 
   getProps = () => ({

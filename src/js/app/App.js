@@ -45,12 +45,12 @@ const StyledApp = styled.div`
     color: ${props => props.theme.gray};
     z-index: 10000;
     top: 0;
-    left: 0;
+    left: 150px;
     background-color: var(--activeLink);
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;
-    display: ${props => props.theme.width > 650 ? 'none' : 'inherit' };
+    /*display: ${props => props.theme.width > 650 ? 'none' : 'inherit' };*/
   }
 `
 
@@ -68,6 +68,8 @@ class App extends Component {
     } = this.props;
 
     const activeLinkBg = darken(0.1, activeLink)
+    const isMobile = width < 650
+    const sidebarVisible = showSidebar == undefined ? !isMobile : showSidebar
     return (
       <ThemeProvider theme={{
         ...appThemeColors,
@@ -75,14 +77,15 @@ class App extends Component {
         activeLinkBg,
         width,
         height,
-        showSidebar,
+        showSidebar: sidebarVisible,
         toggleSidebar,
       }}>
       
         <ScrollToTop>
           <StyledApp>
-            {!showSidebar &&
-              <div class="menu-btn" onClick={toggleSidebar}>
+            {sidebarVisible && !isMobile &&
+              <div class="menu-btn"
+                   onClick={toggleSidebar}>
                 <i aria-hidden="true" class="content icon">
                 </i>
               </div>
