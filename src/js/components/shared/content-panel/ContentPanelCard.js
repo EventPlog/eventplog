@@ -21,8 +21,8 @@ const StyledMainContentCard = styled.div`
   }
   
   .img-holder {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 200px;
     margin-right: 2rem;
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,6 +44,7 @@ const StyledMainContentCard = styled.div`
     display: flex;
     flex-direction: column; 
     width: 100%;
+    align-self: center;
     
     ${
       media.phone`
@@ -54,16 +55,24 @@ const StyledMainContentCard = styled.div`
   
   .card-title {
     font-weight: 400;
-    font-size: 1.2em;
+    font-size: 1.7rem;
     margin-bottom: 0.1rem;
     display: flex;
     justify-content: space-between; 
     align-items :flex-end;
+    margin-bottom: 0.5rem;
+    line-height: initial;
   
     a {
       color: #444;
       font-weight: 500;
     }
+    
+    ${
+      media.phone`
+        font-size: 1.2rem;
+      `
+    } 
      
   }
   
@@ -76,6 +85,11 @@ const StyledMainContentCard = styled.div`
       media.phone`
         margin: 0.7rem 0;
       `
+    }
+    
+    p {
+      margin: 0.4rem 0;
+      line-height: 1.5;
     }
   }
   
@@ -115,24 +129,27 @@ const StyledMainContentCard = styled.div`
 
     
   button.img-btn {
-    font-size: 0.7rem;
+    font-size: 1rem;
+    
+    padding: 0.8rem;
+    background: #fff;
+    border: none;
+    box-shadow: 1px 2px 4px #444;
+    position: absolute;
+    left: 10px;
     bottom: 10px;
+    
+    &:hover {
+      background: var(--activeLink);
+    }
     
     ${
       media.tablet`
-        width: 100%;
-        height: 30px;
-        padding: 0;
-        bottom: 0;
       `
     }
     
     ${
       media.desktop`
-        width: 100%;
-        height: 30px;
-        padding: 0;
-        bottom: 0;
       `
     }
     
@@ -156,22 +173,35 @@ const MainContentCard = ({
   title,
   description,
   featured_image,
-  showButton,
+  showButton = true,
+  hideImage,
   btn = {},
   meta,
   titleLink,
   className,
 }) => (
   <StyledMainContentCard className={`community-card ${className}`}>
-    <div className="img-holder" style={{
-              backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
-            }}>
-      <Link className="title-link" to={titleLink || "#"} />
-    </div>
+    {!hideImage &&
+      <div className="img-holder" style={{
+                backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
+              }}>
+        {titleLink
+          ? <Link className="title-link" to={titleLink} />
+          : <span className="title-link">{titleLink}</span>
+        }
+        <div>
+          {showButton && btn.onClick &&
+          <Button {...btn} className={`img-btn hidden-md ${btn.className}`}>
+            {btn.icon}  {btn.text}
+          </Button>
+          }
+        </div>
+      </div>
+    }
     <div className="card-body">
       <div className="card-title">
         {title}
-        {showButton && btn && <Button {...btn} className="hidden-xs">
+        {false && btn && <Button {...btn} className={`hidden ${btn.className}`}>
           {btn.icon}  {btn.text}
         </Button>}
       </div>
@@ -181,13 +211,13 @@ const MainContentCard = ({
       <div className="card-meta">
         {meta}
       </div>
-      <div>
+      {/*<div>
         {showButton && btn.onClick &&
-        <Button {...btn} className="img-btn hidden-md hidden-lg">
-          {btn.icon}  {btn.text}
-        </Button>
+          <Button {...btn} className={`${btn.className}`}>
+            {btn.icon}  {btn.text}
+          </Button>
         }
-      </div>
+      </div>*/}
     </div>
   </StyledMainContentCard>
 )

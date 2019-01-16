@@ -7,7 +7,7 @@ import {
 } from 'semantic-ui-react'
 
 // internal
-import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
+import logo from 'img/eventplog-small.png'
 import { genUserProfileLink } from 'js/utils'
 
 const Header = ({

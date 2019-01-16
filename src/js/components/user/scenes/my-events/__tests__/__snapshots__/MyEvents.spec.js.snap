@@ -19,7 +19,7 @@ exports[`MyEvents should render correctly 1`] = `
       width={12}
     >
       <Segment>
-        <EventsSection
+        <Styled(EventsSection)
           key="user-upcoming-events-section"
         />
       </Segment>

@@ -71,10 +71,7 @@ const StyledLogin = styled.div`
 class Login extends Component {
   loginUser = (payload) =>  {
     this.props.loginUser(payload)
-      .then(res => {
-        // this.props.history.push('/')
-        window.location.replace('/')
-      })
+      .then(res => window.location.replace('/'))
   }
 
   fbResponse = (res) => {
@@ -111,10 +108,11 @@ class Login extends Component {
 
   render() {
     if (Auth.isLoggedIn) return <Redirect to="/" />
-    const {state} = this.props.location
+    const {state, search} = this.props.location
     return (
       <StyledLogin>
         <MainContent currentPath={this.props.match.path}
+                     referred={search.indexOf('ref') != -1}
                      flashMsg={state ? state.flash_msg : null}
                      googleResponse={this.googleResponse}
                      fbResponse={this.fbResponse}

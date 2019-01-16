@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // internal components
 import Header from '../../header/MainHeader';
-import createLoader from '../shared/loading/createLoadable'
+import createLoader from 'js/components/shared/loading/createLoadable'
 import styled  from 'styled-components';
 import defaults from '../../styles/theme/variables';
 import {fakeAuth, PrivateRoute, PublicRoute} from '../../auth'
@@ -18,7 +18,7 @@ const Event = createLoader(() =>
   import('./scenes/event' /* webpackChunkName: "EventWithContainer" */), 'EventWithContainer')
 
 const NewEvent = createLoader(() =>
-  import('./scenes/new-event' /* webpackChunkName: "NewEvent" */), 'NewEvent')
+  import('./scenes/new-event/components/new-event-steps' /* webpackChunkName: "NewEvent" */), 'NewEvent')
 
 const BackStage = createLoader(() =>
   import('./scenes/back-stage' /* webpackChunkName: "BackStage" */), 'BackStage')
@@ -37,6 +37,9 @@ const Presentations = createLoader(() =>
 
 const Resources = createLoader(() =>
   import('js/components/resources' /* webpackChunkName: "Resources" */), 'Resources')
+
+const Sponsorships = createLoader(() =>
+  import('js/components/sponsorships' /* webpackChunkName: "Resources" */), 'Sponsors')
 
 const StyledEventPlog = styled.div`
   height: 100%;
@@ -65,6 +68,7 @@ const EventPlog = ({user = {}}) => (
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
         <PublicRoute path="/e/:id/presentations" component={Presentations} />
         <PublicRoute path="/e/:id/resources" component={Resources} />
+        <PublicRoute path="/e/:id/sponsors" component={Sponsorships} />
         <PrivateRoute path="/e/:id/backstage" component={BackStage} />
 
         <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />

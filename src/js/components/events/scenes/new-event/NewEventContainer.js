@@ -4,11 +4,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
-import {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
-
 /// utilities
 import {
   createEvent,
@@ -59,24 +54,10 @@ export class EventContainer extends Component {
     this.setState({ event: {...this.state.event, [key]: value}})
   }
 
-  handleSelect = address => {
-    geocodeByAddress(address)
-      .then(results => {
-        const countryIndex = results[0].address_components
-                        .findIndex(r => r.types.find(c => c == 'country'))
-
-        const country = results[0].address_components[countryIndex].long_name
-        const region = results[0].address_components[countryIndex - 1].long_name
-        const lat = results[0].geometry.location.lat()
-        const lng = results[0].geometry.location.lng()
-        const location = {country, region, lat, lng, address}
-
-        this.setState({event: {...this.state.event,
-          venue: address, location
-        }})
-      })
-      .catch(error => console.error('Error', error));
+  handleEventChange = (updates) => {
+    this.setState({ event: {...this.state.event, ...updates}})
   }
+
 
   onSelectChange = (e, attr) => {
     this.setState({event: {...this.state.event, [attr.name]: attr.value}});
@@ -90,10 +71,15 @@ export class EventContainer extends Component {
     this.setState({isModalOpen: false})
   }
 
+  allowNext = (goToNext) => {
+    this.props.allowNext && this.props.allowNext(this.state.event && this.state.event.id, goToNext)
+  }
+
   submitEvent = () => {
     this.setState({ loading: true })
     this.props.createEvent(this.state.event).then(event => {
       this.setState({event, loading: false, eventCreated: true})
+      this.allowNext(true)
     })
       .catch(error => this.setState({loading: false, error}))
   }
@@ -143,7 +129,7 @@ export class EventContainer extends Component {
     getUserCommunitiesByVerb:this.getCommunitiesByVerb,
     getCommunities: this.getCommunities,
     checkForValidSlug: this.checkForValidSlug,
-    handleSelect: this.handleSelect,
+    handleEventChange: this.handleEventChange,
   })
 
   render() {

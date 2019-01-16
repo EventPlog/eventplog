@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Partner should render correctly 1`] = `
+<div
+  className="undefined"
+>
+  <div
+    className="app-container"
+  >
+    <h3
+      className="page-title"
+    >
+      A 
+      talk
+       for 
+      <Link
+        replace={false}
+        to="/e/3"
+      />
+      <br />
+      <small>
+        View 
+        <Link
+          replace={false}
+          to="/e/3/partners"
+        >
+          all partners
+        </Link>
+      </small>
+    </h3>
+  </div>
+  <div
+    className="app-container"
+  >
+    <ContentSection>
+      <ContentBody>
+        <ContentPanel
+          title="Title of the talk"
+        >
+          <ContentEditableWrapper
+            canEdit={true}
+            propName="title"
+            type="input"
+          >
+            <p />
+          </ContentEditableWrapper>
+        </ContentPanel>
+        <ContentPanel
+          title="Summary"
+        >
+          <ContentEditableWrapper
+            canEdit={true}
+            defaultValue="A short summary"
+            propName="summary"
+            type="textarea"
+          >
+            <ReactMarkdown
+              astPlugins={Array []}
+              escapeHtml={false}
+              plugins={Array []}
+              rawSourcePos={false}
+              renderers={Object {}}
+              skipHtml={false}
+              source="A short summary"
+              sourcePos={false}
+              transformLinkUri={[Function]}
+            />
+          </ContentEditableWrapper>
+        </ContentPanel>
+        <ContentPanel
+          title="Details"
+        >
+          <ContentEditableWrapper
+            canEdit={true}
+            defaultValue="A lot of details"
+            propName="details"
+            type="textarea"
+          >
+            <ReactMarkdown
+              astPlugins={Array []}
+              escapeHtml={false}
+              plugins={Array []}
+              rawSourcePos={false}
+              renderers={Object {}}
+              skipHtml={false}
+              source="A lot of details"
+              sourcePos={false}
+              transformLinkUri={[Function]}
+            />
+          </ContentEditableWrapper>
+        </ContentPanel>
+        <Component
+          requester={
+            Object {
+              "recipient_id": 1,
+              "recipient_type": "Partner",
+            }
+          }
+          title="Resources"
+        />
+      </ContentBody>
+      <ContentSidebar>
+        <Sidebar
+          title="About the speaker"
+        >
+          <UserProfile
+            user={
+              Object {
+                "id": 1,
+              }
+            }
+          >
+            <Component
+              className="edit-partner"
+              to="/e/3/partners/1/user/1/edit"
+            >
+              Edit Speaker
+            </Component>
+          </UserProfile>
+        </Sidebar>
+      </ContentSidebar>
+      <FullRow>
+        <ContentBody>
+          <ContentPanel
+            className="comments-section"
+            title="Questions/Comments"
+          >
+            <Component
+              placeholder="What would you like to ask/suggest?"
+              recipient_id={1}
+              recipient_type="Partner"
+              trackable_id={1}
+              trackable_type="Partner"
+            />
+            <Component
+              recipient_id={1}
+              recipient_type="Partner"
+            />
+          </ContentPanel>
+        </ContentBody>
+      </FullRow>
+    </ContentSection>
+  </div>
+</div>
+`;

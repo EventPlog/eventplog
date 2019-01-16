@@ -123,6 +123,15 @@ const ContentBeforeCommunitySubmit = ({
                    onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Form.Field>
 
+          <Form.Field className="wide email-holder">
+            <label>Could you describe this community? Who are you? What do you stand for?</label>
+              <Input name="description"
+                     type="text"
+                     value={community.description}
+                     placeholder='Description here ...'
+                     onChange={(e) => handleChange(e.target.name, e.target.value)} />
+          </Form.Field>
+
           <Form.Field>
             <label>What's your brand color?</label>
             <Select options={colorOptions}

@@ -55,7 +55,7 @@ class MainContentContainer extends Component {
       page,
       per_page,
       user_id: this.props.user.id
-    });
+    }).then(() => document.querySelector('.pusher').scrollTop = 0)
   }
 
   getCommunities = (e, meta) => {

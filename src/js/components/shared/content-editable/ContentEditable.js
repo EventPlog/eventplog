@@ -16,7 +16,7 @@ const styles = css`
       flex-direction: column;
       
       &::before {
-        content: '\\1F58A edit';
+        content: '\\1F58A';
         opacity: 0.3;
         font-size: 14px;
         align-self: flex-end;
@@ -25,7 +25,7 @@ const styles = css`
   }
   
   &::after {
-    content: '\\1F58A edit';
+    content: '\\1F58A';
     opacity: 0.3;
     font-size: 14px;
     
@@ -106,13 +106,17 @@ class ContentEditable extends React.Component {
   }
 
   onBlur = (e) => {
-    this.props.onSubmit(this.props.type).then(res => this.setState({isEditing: false}))
+    if (!this.props.onSubmit) {
+      return this.setState({isEditing: false})
+    }
+    this.props.onSubmit(this.props.type)
+      .then(res => this.setState({isEditing: false}))
   }
 
   getTextBoxProps = () => ({
     onChange: this.onChange,
     ref: this.textboxRef,
-    style: {width: '100%'},
+    style: {width: '100%', ...this.props.style},
     onBlur: this.onBlur,
     value: this.state.value,
     options: this.props.options,
@@ -126,7 +130,7 @@ class ContentEditable extends React.Component {
 
       case 'datetime':
         return <div style={{ minWidth: '300px', display: 'flex'}}>
-                  <DateTimePicker  className="editor-active"
+                 <DateTimePicker  className="editor-active"
                                    selected={this.props.defaultValue}
                                    {...this.getTextBoxProps()} />
                  <button onClick={this.onBlur}>Save</button>

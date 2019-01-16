@@ -5,19 +5,21 @@ import cookie from 'js-cookie'
 import processRequest from '../../utils/webAPI'
 
 const LAST_VISITED_URL = 'lastVisitedUrl'
+const CURRENT_USER = 'current_user'
+const USER_TOKEN = 'user_token'
 
 export const setUserInCookie = (user) => {
   if (!(user && user.id)) return
-  cookie.set('current_user', user)
-  cookie.set('user_token', user.auth_token)
+  cookie.set(CURRENT_USER, user)
+  cookie.set(USER_TOKEN, user.auth_token)
   return user
 }
 
 export const Auth = {
-  isLoggedIn: Boolean(cookie.get('current_user')),
+  isLoggedIn: Boolean(cookie.get(CURRENT_USER)),
   currentUser: () => {
     try {
-      return JSON.parse(cookie.get('current_user'))
+      return JSON.parse(cookie.get(CURRENT_USER))
     }
     catch(e) {
       return {}
@@ -55,8 +57,8 @@ export const Auth = {
     },
   logout(params, cb) {
     return (dispatch) => {
-      cookie.remove('current_user')
-      cookie.remove('user_token')
+      cookie.remove(CURRENT_USER)
+      cookie.remove(USER_TOKEN)
       return processRequest({path: '/api/v1/web/logout', method: 'POST', data: params })
         .then(res => {
           return res
@@ -67,11 +69,11 @@ export const Auth = {
         })
     }
   },
-  getFromCookie(key) {
+  getCookie(key) {
     return  cookie.get(key)
   },
-  setCookie(key, url) {
-    return  cookie.set(key, url)
+  setCookie(key, value) {
+    return  cookie.set(key, value)
   },
   deleteFromCookie(key) {
     return  cookie.remove(key)
@@ -80,11 +82,11 @@ export const Auth = {
 
 export const redirectToSignup = () => {
   Auth.setCookie(LAST_VISITED_URL, window.location.pathname)
-  return window.location.href = '/signup'
+  return window.location.href = `/signup?ref=${window.location.pathname}`
 }
 
 export const renderComponent = (render, Component, props) => {
-  const lastVisitedUrl = Auth.getFromCookie(LAST_VISITED_URL)
+  const lastVisitedUrl = Auth.getCookie(LAST_VISITED_URL)
 
   if (lastVisitedUrl) {
     Auth.deleteFromCookie(LAST_VISITED_URL)

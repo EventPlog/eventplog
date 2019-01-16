@@ -41,6 +41,7 @@ class EventContainer extends Component {
 
   componentWillMount() {
     this.getData()
+    this.allowNext()
   }
 
   componentDidUpdate(props, prevProps) {
@@ -63,6 +64,7 @@ class EventContainer extends Component {
         ? mixpanel.track('EVENT_CREATE')
         : mixpanel.track('EVENT_UPDATE')
       this.setState({event})
+      this.allowNext()
     })
   }
 
@@ -88,6 +90,11 @@ class EventContainer extends Component {
       : this.props.history.push(`${genEventLink(this.props.event)}/register`)
   }
 
+  allowNext = () => {
+    const { event } = this.props
+    this.props.allowNext && this.props.allowNext(event && event.featured_image)
+  }
+
   getData() {
     this.setState({loading: true})
     const {community_id, id} = this.props.match.params
@@ -100,7 +107,7 @@ class EventContainer extends Component {
       return
     }
 
-    if (!this.props.event || !this.props.event.id || this.props.event.id != id) {
+    if (!this.props.event || !this.props.event.id || (id && this.props.event.id != id)) {
       this.props.getEvent(id, this.props.match.params.event_slug)
         .then(event => {
           this.setState({loading: false, event})
@@ -146,9 +153,9 @@ class EventContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const {event = {}, past_events = {}} = state.events
+  const { event = {}, past_events = {} } = state.events
   const { organizers } = state.organizers
-  const {link_color } = event;
+  const { link_color } = event
   const { community, communities_suggestions } = state.communities
   const { event_discussion = {}, announcements, comments } = event
   return {

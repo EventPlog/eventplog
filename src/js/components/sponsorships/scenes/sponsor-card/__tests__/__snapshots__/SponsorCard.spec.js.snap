@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SponsorCard should render correctly 1`] = `
+<MainContentCard
+  btn={
+    Object {
+      "className": "cta-btn",
+      "icon": <span>
+        <Icon
+            as="i"
+            name="cart"
+        />
+        Sponsor this
+    </span>,
+      "inverted": true,
+      "onClick": [Function],
+    }
+  }
+  description={
+    <span>
+      <ReactMarkdown
+        astPlugins={Array []}
+        escapeHtml={true}
+        plugins={Array []}
+        rawSourcePos={false}
+        renderers={Object {}}
+        skipHtml={false}
+        source={undefined}
+        sourcePos={false}
+        transformLinkUri={[Function]}
+      />
+    </span>
+  }
+  featured_image="/sample-avatar.png"
+  hideImage={true}
+  key="1"
+  meta={
+    Array [
+      <ul
+        className="meta"
+    >
+        <li
+            class="highlighted"
+        >
+            Preferred form: 
+            Cash or Kind
+        </li>
+    </ul>,
+    ]
+  }
+  showButton={true}
+  title={
+    <h3>
+      An awesome title
+       (
+      0
+       of 
+      ) - $
+    </h3>
+  }
+/>
+`;

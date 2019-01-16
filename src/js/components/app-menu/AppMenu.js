@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import styles from 'styled-components'
+import { lighten } from 'polished'
 import {
   Icon,
   Image,
@@ -13,7 +14,7 @@ import {
 
 import Button from 'js/components/shared/button'
 import Header from 'js/components/header'
-import logo from 'img/eventplog-logo-name-inverted-small-v2.png'
+import logo from 'img/eventplog-inverted-small.png'
 import { genUserProfileLink } from 'js/utils'
 import MainMenu from 'js/components/header/logged-in-header/MainMenu'
 import { media } from 'js/styles/mixins'
@@ -49,6 +50,10 @@ const StyledAppMenu = styles.div`
       .item {
         color: ${props => props.theme.grayMedium};
         font-size: 90%; 
+        
+        &.sponsor {
+          color: ${props => lighten(0.2, props.theme.yellow)};
+        }
         
         ${
           media.desktop`
@@ -166,6 +171,7 @@ const StyledAppMenu = styles.div`
     padding: 1rem;
     display: hidden;
   }
+  
 `
 const AppMenu = ({
   visible,
@@ -210,10 +216,12 @@ const AppMenu = ({
 
             {menu.items && menu.items.map(item => (
               item.name &&
-                <Link className="item" to={item.link || '#'}>
+                <NavLink className={`item ${item.className}`}
+                      activeClassName="active"
+                      to={item.link || '#'}>
                   {item.icon && <Icon name={item.icon} />}
                   {item.name}
-                </Link>
+                </NavLink>
             ))}
 
             {
@@ -228,14 +236,14 @@ const AppMenu = ({
               </Nav.Item>
             </Nav>
 
-            <Link className="item" to="/events">
+            <NavLink className="item" to="/events">
               <Icon name='table tennis' />
               Events
-            </Link>
-            <Link className="item" to="/communities">
+            </NavLink>
+            <NavLink className="item" to="/communities">
               <Icon name='users' />
               Communities
-            </Link>
+            </NavLink>
 
 
           </div>

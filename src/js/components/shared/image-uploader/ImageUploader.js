@@ -11,6 +11,7 @@ const StyledLoader = styled.div`
 
 const ImageUploader = ({
   image,
+  loading,
   imageInputRef,
   handleImageChange,
   showImageSelectOptions,

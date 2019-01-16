@@ -51,7 +51,7 @@ class CommunityContainer extends Component {
       page: meta.activePage, per_page,
       community_id: this.getCommunityId(),
       community_slug: this.props.slug,
-    })
+    }).then(() => document.querySelector('.pusher').scrollTop = 0)
     mixpanel.track('COMMUNITY_CURRENT_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }
 

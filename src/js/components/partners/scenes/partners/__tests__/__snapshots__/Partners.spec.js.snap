@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Partners should render correctly 1`] = `
+<div
+  className="undefined partners app-container"
+>
+  <div>
+    <PresentationsList
+      currentUser={
+        Object {
+          "id": 1,
+        }
+      }
+      title={
+        <p>
+          All partners - 
+          <Link
+            replace={false}
+            to="/e/3?utm_source=feedback_form"
+          />
+        </p>
+      }
+    />
+    <ContentPanel
+      title="Add a partner"
+    >
+      <Component
+        newPartner={true}
+      />
+    </ContentPanel>
+  </div>
+</div>
+`;

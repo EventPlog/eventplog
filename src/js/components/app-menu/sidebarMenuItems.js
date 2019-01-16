@@ -27,8 +27,7 @@ export default [
           .find(role => role == event.organizer_role.toLowerCase()))
 
       const menuItems = [
-        event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
-        { name: event.title, link: `${eventLink}` },
+        { name: `Back to ${event.title}`, icon: 'angle left', link: `${eventLink}` },
         (isAdmin ? {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` } : {}),
         { name: "Guests", icon: 'users', link: `${eventLink}/backstage/guests` },
         { name: "Feedback", icon: 'send', link: `${eventLink}/backstage/feedback` },
@@ -40,7 +39,9 @@ export default [
   {
     path: '/e/:id',
     name: 'event',
-    genItems(_, event) {
+    genItems(_, event = {}) {
+      if (!event.id) return {}
+
       const eventLink = genEventLink(event)
       const isAdmin = event.organizer_role && (['admin', 'owner']
           .find(role => role == event.organizer_role.toLowerCase()))
@@ -48,6 +49,9 @@ export default [
       let menuItems = [
         event.community ? { name: `Back to ${event.community.name} community`, icon: 'angle left', link: `${genCommunityLink(event.community)}` } : {},
         { name: event.title, link: `${eventLink}` },
+        process.env.REACT_APP_SPONSORSHIP_ENABLED == 'true' && event.id
+          ? { name: "Become a Sponsor", icon: 'money', link: `${eventLink}/sponsors/new`, className: 'sponsor' }
+          : {},
         { name: "Speakers", icon: 'bullhorn', link: `${eventLink}/presentations` },
         { name: "Resources", icon: 'file alternate outline', link: `${eventLink}/resources` },
         { name: "Feedback", icon: 'asl interpreting', link: `${eventLink}/feedback` },
@@ -57,6 +61,7 @@ export default [
         menuItems = menuItems.concat([
           {name: "Settings", icon: 'settings', link: `${eventLink}/backstage/settings` },
           {name: "Edit Event", icon: 'edit', link: `${eventLink}/backstage/settings?activeIndex=1` },
+          {name: "Register a guest", icon: 'user plus', link: `${eventLink}/register` },
           {name: "Upload Guest CSV", icon: 'send', link: `${eventLink}/backstage/guests?activeIndex=1` },
           {name: "Check In Guests", icon: 'user', link: `${eventLink}/backstage/guests` },
         ])

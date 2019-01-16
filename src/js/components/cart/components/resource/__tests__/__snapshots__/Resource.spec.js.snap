@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Resource should render correctly 1`] = `
+<MainContentCard
+  btn={
+    Object {
+      "className": "edit-btn",
+      "icon": <Icon
+        as="i"
+        name="send"
+    />,
+      "onClick": [Function],
+      "text": "Open",
+    }
+  }
+  className="sth"
+  description={
+    <span>
+      The description
+    </span>
+  }
+  featured_image="/ebook-sample-thumbnail.png"
+  key="1"
+  meta={
+    Array [
+      <ul>
+        <li>
+            Added 
+             ago by 
+            <UserLink
+                user={undefined}
+            />
+        </li>
+    </ul>,
+      <ul>
+        <li>
+            0
+             
+            view
+        </li>
+    </ul>,
+    ]
+  }
+  showButton={true}
+  title={
+    <Link
+      onClick={[Function]}
+      replace={false}
+      target="_blank"
+      to="https://example.com"
+    >
+      A new resource
+    </Link>
+  }
+  titleLink="https://example.com"
+/>
+`;

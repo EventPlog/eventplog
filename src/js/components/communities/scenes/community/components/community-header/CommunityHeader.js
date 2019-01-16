@@ -182,8 +182,6 @@ const CommunityHeader = ({
 
           <div className="details">
             {!logo && <h3>{name}</h3>}
-            {description && <small>{description.substr(0, 70)}</small>}
-
             <small>{no_of_followers} followers. {no_of_views} views.</small>
             {topic_interests &&
             <div className="hashtags-holder">

@@ -8,7 +8,9 @@ import Button from 'js/components/shared/button'
 import DateTimePicker from 'js/components/shared/date-time-picker'
 import { validDate, removeSpecialChars } from 'js/utils'
 import TextArea from 'js/components/shared/text-area'
+import Select from 'js/components/shared/select'
 import Loading from 'js/components/shared/loading'
+import config from 'js/config'
 
 const StyleEventUpdate = styled.div`
    
@@ -40,6 +42,13 @@ const StyleEventUpdate = styled.div`
   
 `
 
+const categoryOptions =
+  config.event_categories.map(cat => ({
+    key: cat,
+    value: cat,
+    text: cat,
+  }))
+
 const EventUpdate = ({
   event = {},
   loading,
@@ -48,6 +57,8 @@ const EventUpdate = ({
   handleSubmit,
   slug_check = {},
   checkForValidSlug,
+  onSearchChange,
+  searchQuery,
 }) => {
   if (loading) return <Loading/>
   const {
@@ -60,6 +71,7 @@ const EventUpdate = ({
     agenda,
     hashtags,
     visibility_status,
+    category = {},
     start_time=(new Date()), end_time=(new Date()),
     community = {} } = event
   return (
@@ -117,7 +129,7 @@ const EventUpdate = ({
           </Form.Field>
 
           <Form.Field>
-            <label>Agenda</label>
+            <label>Agenda (Hit 'Enter' twice for a new line)</label>
             <TextArea name="agenda"
                       value={agenda}
                       placeholder='* Keynote - 11am - Mike Ross'
@@ -149,6 +161,23 @@ const EventUpdate = ({
                 onChange={(selected_date) => handleChange('end_time', selected_date) } />
             </Form.Field>
           </Form.Group>
+
+          <Form.Field className="search-holder">
+            <label>Which industry would you classify this event under?</label>
+            <Select
+              search
+              name="category_name"
+              type="text"
+              className="select-search"
+              placeholder="Education"
+              value={category.name}
+              options={categoryOptions}
+              onSearchChange={onSearchChange}
+              text={searchQuery}
+              searchQuery={searchQuery}
+              onChange={(e, attr) => handleChange(attr.name, attr.value)}
+            />
+          </Form.Field>
 
           <Form.Field>
             <label>Link to featured image</label>

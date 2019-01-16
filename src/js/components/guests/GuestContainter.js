@@ -25,7 +25,7 @@ class GuestContainter extends Component {
   state = {
     id: null,
     user: {},
-    check_in_user: false,
+    check_in_user: true,
     success: false,
     loading: false,
     feedback_url: ''

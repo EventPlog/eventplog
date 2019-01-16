@@ -55,9 +55,13 @@ class CommunityContainer extends Component {
     this.setState({ loading: true })
     this.props.updateCommunity(this.state.community)
       .then(community => {
-        this.setState({community, loading: false, communityCreated: true})
+        const updateVerb = this.state.community.id ? 'updated' : 'created'
+        this.setState({community,
+          loading: false, error: false,
+          communityCreated: true,
+          success: `You've successfully ${updateVerb} this community.`})
       })
-      .catch(error => this.setState({loading: false, error}))
+      .catch(error => this.setState({loading: false, success: false, error}))
   }
 
   getParams = () => {

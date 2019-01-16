@@ -18,6 +18,10 @@ class EventUpdateContainer extends Component {
     this.setState({event: {...event, [key]: value }})
   }
 
+  onSearchChange = (e, data) => {
+    this.setState({ searchQuery: e.target.searchQuery });
+  }
+
   handleSubmit = () => {
     this.setState({ loading: true, error: false, success: false })
     const {commuity, ...others} = this.state.event
@@ -43,6 +47,7 @@ class EventUpdateContainer extends Component {
     ...this.state,
     handleChange: this.handleChange,
     handleSubmit: this.handleSubmit,
+    onSearchChange: this.onSearchChange,
     checkForValidSlug: this.checkForValidSlug,
   })
 
