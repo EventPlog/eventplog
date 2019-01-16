@@ -28,6 +28,16 @@ const StyledSponsorshipOffer = styled.div`
     > div {
       width: 100%;
     }
+    
+    ${
+      media.phone`
+        background: transparent;
+        margin-left: -2rem;
+        width: calc(100% + 4rem);
+        margin-top: 0;
+      `
+    }
+  
   }
   
   .pic-frame {
@@ -85,6 +95,13 @@ const StyledSponsorshipOffer = styled.div`
   .content-panel {
     padding-top: 6rem;
     padding-bottom: 4rem;
+    
+    ${
+      media.phone`
+        padding-right: 1rem;
+        padding-left: 1rem;
+      `
+    }
     
     &.yellow {
       background: #f7f78a;

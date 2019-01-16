@@ -5,6 +5,7 @@ import styled from 'styled-components'
 //=========== INTERNAL =============
 import Button from 'js/components/shared/button'
 import { secureAction } from 'js/auth/actions'
+import { media } from 'js/styles/mixins'
 
 const StyledStep = styled.div`
   margin-left: 1rem;
@@ -17,6 +18,13 @@ const StyledStep = styled.div`
     > div {
       width: 100%;
     }
+    
+    ${
+      media.phone`
+        padding: 2rem 1rem;
+      `
+    }
+  
   }
   
   .nav-btn {
@@ -88,7 +96,7 @@ class SteppedComponents extends React.Component {
     const currentStep = activeIndex + 1
     let Component = components[activeIndex].component
     return (
-      <StyledStep className="app-container">
+      <StyledStep className="app-container stepped-components">
         <div>
           <h2>{currentStep}. {components[activeIndex].title}</h2>
           <Progress value={currentStep}

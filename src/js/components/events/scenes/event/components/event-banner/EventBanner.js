@@ -3,7 +3,7 @@ import { Icon, Menu } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import styled, { css } from 'styled-components'
 import moment from 'moment'
-import { lighten } from 'polished'
+import { lighten, adjustHue } from 'polished'
 
 // internal
 import { media } from 'js/styles/mixins'
@@ -142,6 +142,16 @@ const eventBannerStyles = css`
       media.phone`
         align-self: flex-start;
       `
+    }
+    
+    &.sponsor {
+      background: ${props => lighten(0.04, props.theme.yellow)};
+      color: ${props => lighten(-0.4, props.theme.yellow)};
+      
+      &:hover {
+        background: ${props => lighten(0.3, props.theme.yellow)};
+        color: ${props => lighten(-0.4, props.theme.yellow)} !important;
+      }
     }
   }
   
@@ -361,6 +371,9 @@ const EventBanner = ({
           }}>
             Register
           </Button>}
+        <Button.Link className={`cta large sponsor`} to={`${eventUrl}/sponsors/new`}>
+          Sponsor
+        </Button.Link>
         {is_stakeholder && isPrivate &&
           <Button inverted className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
             Make event {isPrivate ? 'public' : 'private'}

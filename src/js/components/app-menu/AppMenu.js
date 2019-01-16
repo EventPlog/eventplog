@@ -169,12 +169,10 @@ const StyledAppMenu = styles.div`
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;
-    display: hidden;
   }
   
 `
 const AppMenu = ({
-  visible,
   showSidebar,
   isInternalPath,
   toggleSidebar,
@@ -199,9 +197,9 @@ const AppMenu = ({
           inverted
           onHide={handleSidebarHide}
           vertical
-          visible={!isMobile || visible || showSidebar}
+          visible={showSidebar}
           width='thin'
-          onClick={handleSidebarHide}
+          onClick={() => isMobile && handleSidebarHide()}
         >
 
           <div className="sidebar-hold">
@@ -214,6 +212,13 @@ const AppMenu = ({
 
             <MainMenu {...{toggleSidebar, user}} />
 
+            {
+              <Link className="item" to="/">
+                <Icon name='home' />
+                Home
+              </Link>
+            }
+
             {menu.items && menu.items.map(item => (
               item.name &&
                 <NavLink className={`item ${item.className}`}
@@ -224,12 +229,6 @@ const AppMenu = ({
                 </NavLink>
             ))}
 
-            {
-              <Link className="item" to="/">
-                <Icon name='home' />
-                Home
-              </Link>
-            }
             <Nav>
               <Nav.Item className="sidebar-btn">
                 <Button.Link to="/e/new">Create Event</Button.Link>
@@ -249,12 +248,13 @@ const AppMenu = ({
           </div>
         </Sidebar>
 
-        <Sidebar.Pusher dimmed={false && isMobile && visible}
-                        onClick={() => (visible && handleSidebarHide())}>
+        <Sidebar.Pusher dimmed={false && isMobile && showSidebar}
+                        style={{paddingRight: !isMobile && showSidebar ? '150px': '0'}}
+                        onClick={() => (showSidebar && isMobile && handleSidebarHide())}>
           <Segment basic>
-            {isMobile &&
-              <div className="menu-btn" >
-                <Icon name='content' id="menuBtn" onClick={toggleSidebar} />
+            {(isMobile || true) &&
+              <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>
+                <Icon name='content'  />
               </div>
             }
             {children}
