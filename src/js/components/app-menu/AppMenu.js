@@ -169,14 +169,10 @@ const StyledAppMenu = styles.div`
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;
-    /*display: hidden;*/
-    
-    
   }
   
 `
 const AppMenu = ({
-  visible,
   showSidebar,
   isInternalPath,
   toggleSidebar,
@@ -188,7 +184,6 @@ const AppMenu = ({
   handleContextRef,
   children,
 }) => {
-  const showingSidebar = visible == undefined ? !isMobile : visible
   return (
     <StyledAppMenu>
       {false && isInternalPath &&
@@ -253,9 +248,9 @@ const AppMenu = ({
           </div>
         </Sidebar>
 
-        <Sidebar.Pusher dimmed={false && isMobile && visible}
+        <Sidebar.Pusher dimmed={false && isMobile && showSidebar}
                         style={{paddingRight: !isMobile && showSidebar ? '150px': '0'}}
-                        onClick={() => (visible && isMobile && handleSidebarHide())}>
+                        onClick={() => (showSidebar && isMobile && handleSidebarHide())}>
           <Segment basic>
             {(isMobile || true) &&
               <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>

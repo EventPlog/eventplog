@@ -27,11 +27,9 @@ class AppContainer extends Component {
   }
 
   toggleSidebar = () => {
-    // const menuBtn = document.getElementById('menuBtn')
-    // menuBtn && menuBtn.click();
     const { showSidebar } = this.state
-    const show = showSidebar == undefined ? window.innerHeight >= 650 : showSidebar
-    this.setState({ showSidebar: !show })
+    const show = showSidebar == undefined ? window.innerHeight >= 650 : !showSidebar
+    this.setState({ showSidebar: show })
   }
 
   getProps = () => ({

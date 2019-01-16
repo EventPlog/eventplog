@@ -50,7 +50,6 @@ const StyledApp = styled.div`
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;
-    /*display: ${props => props.theme.width > 650 ? 'none' : 'inherit' };*/
   }
 `
 

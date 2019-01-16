@@ -15,15 +15,8 @@ import {
 class AppMenuContainer extends Component {
   state = {}
 
-  toggleSidebar = () => {
-    this.setState({ visible: !this.state.visible })
-    this.props.toggleSidebar()
-  }
-
-  handleSidebarHide = () => {
-    this.setState({ visible: false })
-    this.props.toggleSidebar()
-  }
+  toggleSidebar = () => this.props.toggleSidebar()
+  handleSidebarHide = () => this.props.toggleSidebar()
   handleContextRef = contextRef => this.setState({ contextRef })
 
   getProps = () => ({
