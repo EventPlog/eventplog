@@ -9,7 +9,6 @@ import { media } from 'js/styles/mixins'
 import colors from 'js/styles/theme/colors';
 
 // images
-import sampleEventImg from 'img/tech_is_in_you.png'
 
 const StyledSidebarCard = styled.div`
   margin: 2rem 0;

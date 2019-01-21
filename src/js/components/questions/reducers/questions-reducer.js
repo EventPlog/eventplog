@@ -6,7 +6,7 @@ const eventsReducer = (state=initialState.question, action) => {
   let data;
   switch(action.type) {
     case actionTypes.QUESTION_INDEX_START:
-      return {...state, loading: true }
+      return { loading: true }
 
     case actionTypes.QUESTION_INDEX_COMPLETE:
       return { ...state, ...action.payload, loading: false, error: false }

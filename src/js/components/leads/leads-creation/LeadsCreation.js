@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import backgroundImg from '../../../../img/winning-cup.png';
 import { CreateEvent, CreateUser } from './steps'
 import TmnCaptionedWrapper from '../../shared/tmn-captioned-wrapper'
 import LeadsHeader from '../leads-header'
@@ -23,8 +22,7 @@ class LeadsCreation extends Component {
     return (
       <StyledLeadsCreation>
         <LeadsHeader menu={menu} />
-        <TmnCaptionedWrapper title={lead && Boolean(lead.title) ? lead.title : defaultTitle}
-                             iconImage={backgroundImg}>
+        <TmnCaptionedWrapper title={lead && Boolean(lead.title) ? lead.title : defaultTitle} >
           <CreateEvent/>
         </TmnCaptionedWrapper>
       </StyledLeadsCreation>

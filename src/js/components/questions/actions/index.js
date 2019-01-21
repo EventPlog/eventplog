@@ -86,3 +86,26 @@ export const batchUpdateQuestions = (params) => {
   })
 }
 
+export const batchUpdateResponses = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.QUESTION_INDEX_START,
+    receiveType: actionTypes.QUESTION_INDEX_COMPLETE,
+    failType: actionTypes.QUESTION_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented updating the questions order',
+    caller: 'update options',
+    route: `/api/v1/web/options/update_all`,
+    requestMethod: 'POST'
+  })
+}
+
+export const updateQuestionInStore = (question) => {
+  return (dispatch) => dispatch({
+    type: actionTypes.QUESTION_UPDATE_COMPLETE,
+    payload: question
+  })
+}

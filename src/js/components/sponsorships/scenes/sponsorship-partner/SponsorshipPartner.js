@@ -47,6 +47,7 @@ const SponsorshipPartner = ({
   const {
     partner,
     partner_terms,
+    organizer_terms,
     organizer_terms_accepted_by,
   } = sponsorship
 
@@ -59,7 +60,7 @@ const SponsorshipPartner = ({
              handleReject={() => {
                  updateSponsorship({'organizer_terms_accepted_by': null })
                }}
-             terms={sponsorship_offer.organizer_terms}
+             terms={organizer_terms || sponsorship_offer.organizer_terms}
              canEdit={event.is_stakeholder && !organizer_terms_accepted_by}
              handleChange={handleChange}
              handleSubmit={handleSubmit}>

@@ -82,7 +82,7 @@ export class QuestionsContainer extends Component {
     const payload = this.state.questions.data
                     .map((question, index) =>
                           ({id: question.id, serial_no: index}))
-    this.props.batchUpdateQuestions({ questions: payload})
+    this.props.batchUpdateQuestions({ questions: payload })
       // .then(questions => this.setState({ questions }))
   };
 
@@ -90,7 +90,7 @@ export class QuestionsContainer extends Component {
   getQuestions = () => {
     const { event = {}, recipient_id, recipient_type } = this.props
     const payload = {
-      event_id: event.id || 55,
+      event_id: event.id,
       recipient_id, recipient_type
     }
     this.props.getQuestions(payload)
