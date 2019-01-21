@@ -20,4 +20,12 @@ export default {
     'Technology',
     'Other'
   ],
+
+  defaultRSVPQuestions: [
+    {id: 'first_name', body: 'First Name', question_type: 'short_answer', default: true},
+    {id: 'last_name', body: 'Last Name', question_type: 'short_answer', default: true},
+    {id: 'gender', body: 'Gender', question_type: 'single_choice', default: true, options: [{body: 'Male'}, {body: 'Female'}]},
+    {id: 'email', body: 'Email', question_type: 'short_answer', default: true},
+  ]
+
 }

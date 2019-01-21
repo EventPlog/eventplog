@@ -1,13 +1,7 @@
 import React from 'react'
 
 import SetupQuestions from 'js/components/questions/components/setup-questions'
-
-const defaultQuestions = [
-  {body: 'First Name', question_type: 'short_answer', default: true},
-  {body: 'Last Name', question_type: 'short_answer', default: true},
-  {body: 'Gender', question_type: 'single_choice', default: true, options: [{body: 'Male'}, {body: 'Female'}]},
-  {body: 'Email', question_type: 'short_answer', default: true},
-]
+import config  from 'js/config/common'
 
 const SetupRSVPQuestions = ({
   event = {},
@@ -18,7 +12,7 @@ const SetupRSVPQuestions = ({
                     recipient_type="Event"
                     category="rsvp"
                     allowNext={allowNext}
-                    defaultQuestions={defaultQuestions} />
+                    defaultQuestions={config.defaultRSVPQuestions} />
   )
 }
 

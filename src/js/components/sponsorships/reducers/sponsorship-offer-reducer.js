@@ -6,6 +6,8 @@ const sponsorshipOfferReducer = (state=initialState.sponsorship_offer, action) =
   let data;
   switch(action.type) {
     case actionTypes.SPONSORSHIP_OFFER_SHOW_START:
+      return { loading: true }
+
     case actionTypes.SPONSORSHIP_OFFER_UPDATE_START:
       return {...state, loading: true }
 

@@ -24,7 +24,7 @@ const BackStage = createLoader(() =>
   import('./scenes/back-stage' /* webpackChunkName: "BackStage" */), 'BackStage')
 
 const RegistrationForm = createLoader(() =>
-  import('js/components/guests/scenes/check-in-form' /* webpackChunkName: "BackStage" */), 'RegistrationForm')
+  import('js/components/guests/scenes/show-rsvp-questions' /* webpackChunkName: "RegistrationForm" */), 'RegistrationForm')
 
 const FeedbackForm = createLoader(() =>
   import('js/components/feedback/scenes/quick-feedback-form' /* webpackChunkName: "Presentations" */), 'FeedbackForm')

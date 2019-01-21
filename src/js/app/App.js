@@ -46,7 +46,7 @@ const StyledApp = styled.div`
     z-index: 10000;
     top: 0;
     left: 150px;
-    background-color: var(--activeLink);
+    background: #1b1c1c;
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;
