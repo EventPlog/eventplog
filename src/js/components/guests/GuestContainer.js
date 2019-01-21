@@ -14,6 +14,10 @@ import {
   addEventToStore,
 } from 'js/components/events/actions'
 
+import {
+  getQuestions,
+} from 'js/components/questions/actions'
+
 const emptyUser = {
   first_name: '',
   last_name: '',
@@ -62,6 +66,18 @@ class GuestContainter extends Component {
       .catch(error => {
         this.setState({loading: false, error})
       })
+  }
+
+  getQuestions = () => {
+    this.setState({loading: true})
+
+    const { event = {}, recipient_id, recipient_type } = this.props
+    const payload = {
+      event_id: event.id,
+      recipient_id, recipient_type
+    }
+    this.props.getQuestions(payload)
+      .then(questions => this.setState({ questions, loading: false }))
   }
 
   handleChange = (key, value) => {
@@ -184,7 +200,8 @@ const mapDispatchToProps = (dispatch) => {
     checkInByForm,
     updateGuest,
     deleteGuest,
-    addEventToStore
+    addEventToStore,
+    getQuestions,
   }, dispatch)
 }
 
