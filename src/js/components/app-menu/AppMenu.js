@@ -14,7 +14,7 @@ import {
 
 import Button from 'js/components/shared/button'
 import Header from 'js/components/header'
-import logo from 'img/eventplog-inverted-small.png'
+import logo from 'img/eventplog-logo-v10-alt.png'
 import { genUserProfileLink } from 'js/utils'
 import MainMenu from 'js/components/header/logged-in-header/MainMenu'
 import { media } from 'js/styles/mixins'
@@ -40,7 +40,7 @@ const StyledAppMenu = styles.div`
     }
     
     .logo {
-      padding: 2rem 1rem;
+      padding: 1.4rem 1rem 3rem;
     }
     
     .sidebar.menu {
@@ -165,7 +165,7 @@ const StyledAppMenu = styles.div`
     z-index: 10000;
     top: 0;
     left: 0;
-    background-color: var(--activeLink);
+    background: #1b1c1c;
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;

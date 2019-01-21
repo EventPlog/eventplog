@@ -76,7 +76,7 @@ const eventBannerStyles = css`
     
     .meta {
       letter-spacing: 0.6px;
-      font-weight: 300;
+      font-weight: 500;
       font-size: 1.2rem;
       display: flex;
       color: ${props => lighten(0.1, props.theme.black)};

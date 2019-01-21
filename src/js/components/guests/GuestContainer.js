@@ -1,8 +1,10 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth/actions'
 import Validator from 'js/utils/validator'
+import { titleize } from 'js/utils'
 import {
   updateGuest,
   deleteGuest,
@@ -13,6 +15,11 @@ import {
   getEvent,
   addEventToStore,
 } from 'js/components/events/actions'
+
+import {
+  getQuestions,
+  batchUpdateResponses,
+} from 'js/components/questions/actions'
 
 const emptyUser = {
   first_name: '',
@@ -35,6 +42,13 @@ class GuestContainter extends Component {
     this.getData()
   }
 
+  componentDidUpdate(prevProps) {
+    const { recipient_id, recipient_type, category } = this.props
+    if (recipient_id && recipient_id != prevProps.recipient_id) {
+      this.getQuestions({ recipient_id, recipient_type, category })
+    }
+  }
+
   eventFetchedFromServer = () => (
     (!this.props.event ||
     !this.props.event.id) &&
@@ -44,7 +58,7 @@ class GuestContainter extends Component {
 
   getData() {
     const { event = {}, match} = this.props
-    if (event.id || !match.params.id) return
+    if (event.id || !match.params.id) return this.getQuestions()
 
     if(this.eventFetchedFromServer()) {
       const event = window.__INITIAL_DATA__.event
@@ -64,6 +78,18 @@ class GuestContainter extends Component {
       })
   }
 
+  getQuestions = () => {
+    this.setState({loading: true})
+
+    const { event = {}, recipient_id, recipient_type } = this.props
+    const payload = {
+      event_id: event.id,
+      recipient_id, recipient_type
+    }
+    this.props.getQuestions(payload)
+      .then(questions => this.setState({ questions, loading: false }))
+  }
+
   handleChange = (key, value) => {
     this.setState({user: {
       ...this.state.user, [key]: value
@@ -74,12 +100,12 @@ class GuestContainter extends Component {
     this.setState({[key]: value})
   )
 
-  getPayload = () => {
+  getPayload = (question_responses) => {
     const { id, user, check_in_user} = this.state
     return {
       id, check_in_user,
       event_id: this.props.event.id || this.props.match.id,
-      check_in: {id, ...user}
+      check_in: {id, question_responses}
     }
   }
 
@@ -106,19 +132,32 @@ class GuestContainter extends Component {
 
   handleSubmit = async (e) => {
     const validator = new Validator();
-    if (!validator.validateEmail(this.state.user.email.trim())) {
+    const emailObject = this.props.questions.data
+                      .find(question => question.id == 'email')
+
+    const email = emailObject ? emailObject.response.body : ''
+
+    if (!validator.validateEmail(email.trim())) {
       return this.setState({
         success: false,
         error: "Hmmm.. something doesn't seem quite right with the email.."
       })
     }
+
     this.setState({loading: true, error: false})
-    this.props.checkInByForm(this.getPayload())
+
+    const responses = this.props.questions.data &&
+                     this.props.questions.data.map(question =>
+                        ({...question.response, question_id: question.id}))
+
+    this.props.checkInByForm(this.getPayload(responses))
       .then(res => {
-        const { user, check_in_user } = this.state
+        const { check_in_user } = this.state
+        const { user = {} } = res || {}
+
         let successMsg = this.state.check_in_user
-          ? `You've successfully checked in ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can check in another person.`
-          : `You've successfully registered ${user.first_name || 'an unnamed person. Lol!'}. Here's a clean form so you can register another person.`
+          ? `You've successfully checked in ${titleize(user.less_formal_name || 'an unnamed person. Lol!')}. Here's a clean form so you can check in someone else.`
+          : `You've successfully registered ${titleize(user.less_formal_name || 'an unnamed person. Lol!')}. Here's a clean form so you can register someone else.`
 
         successMsg = this.props.event.is_stakeholder
           ? successMsg
@@ -175,7 +214,13 @@ class GuestContainter extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {event: state.events.event}
+  const { questions } = state.questions
+  const { event } = state.events
+
+  return {
+    questions,
+    event
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -184,8 +229,10 @@ const mapDispatchToProps = (dispatch) => {
     checkInByForm,
     updateGuest,
     deleteGuest,
-    addEventToStore
+    addEventToStore,
+    getQuestions,
+    batchUpdateResponses,
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GuestContainter)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GuestContainter))

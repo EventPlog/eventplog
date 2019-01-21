@@ -6,6 +6,8 @@ import QuestionsForm from 'js/components/questions/components/questions-form'
 import NewQuestion from 'js/components/questions/components/new-question'
 
 
+import QuestionCard from '../question-card'
+
 const SetupQuestionsStyles = styled.div`
   .content-panel + .content-panel {
     margin-top: 6rem;
@@ -16,7 +18,7 @@ const SetupQuestions = (props) => {
   return (
     <SetupQuestionsStyles>
       <ContentPanel title="Current RSVP Form">
-        <QuestionsForm {...props} />
+        <QuestionsForm questionCard={QuestionCard} {...props} />
       </ContentPanel>
 
       <ContentPanel title="Add a Question">

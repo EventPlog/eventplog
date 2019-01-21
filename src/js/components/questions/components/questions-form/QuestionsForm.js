@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 
 import { Input, TextArea, Select, Button } from 'js/components/shared'
-import QuestionCard from '../question-card'
 
 const CurrentQuestionsStyles = styled.div`
 `
@@ -15,6 +14,7 @@ const QuestionsForm = ({
   onDragStart,
   onDragOver,
   onDragEnd,
+  questionCard: QuestionCard
 }) => {
   const { data = [] } = questions
   const askedQuestions = [...defaultQuestions, ...data]
