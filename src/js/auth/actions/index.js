@@ -108,7 +108,7 @@ export const secureAction = (action) => (
 
 export const renderRedirectToLogin = () => {
   Auth.setCookie(LAST_VISITED_URL, window.location.pathname)
-  return <Redirect to='/login' />
+  return <Redirect to={`/login?ref=${window.location.pathname}`} />
 }
 
 export default Auth

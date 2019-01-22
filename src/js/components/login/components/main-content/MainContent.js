@@ -75,11 +75,12 @@ const StyledMainContent = styled.div`
       }
             
       span {
-        background: ${lighten(0, colors.yellow)};
+        background: ${props => props.theme.yellow};
         margin-top: 1rem;
-        padding: 0 0.3rem;
-        color: ${props => props.theme.primary};
-        text-shadow: 0 2px 4px #c7bb09;
+        color: ${props => lighten(-0.2, props.theme.activeLink)};
+        text-shadow: none;
+        font-size: 80%;
+        padding: 0.3rem;
       } 
     }
     
@@ -172,7 +173,7 @@ const MainContent = ({flashMsg = null, ...otherProps }) => (
     <div className="app-container">
       {otherProps.referred
         ? <div className="caption">
-          <h1><small>Hi! Hello!!</small><br /><span>Who's</span> there?</h1>
+          <h1><small>Hi! You might need to</small><br /><span>Login</span> now...</h1>
             <small>Not to worry! Once you <span>sign in</span> you will be <span>redirected</span> to where you left off. 🙂</small>
           </div>
         : <div className="caption">

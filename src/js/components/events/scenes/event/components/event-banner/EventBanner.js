@@ -62,7 +62,7 @@ const eventBannerStyles = css`
     
     .title {
       font-size: 3rem;
-      font-weight: 500;
+      font-weight: 800;
       margin-top: 4rem;
       line-height: initial;
       color: white; 
@@ -76,7 +76,7 @@ const eventBannerStyles = css`
     
     .meta {
       letter-spacing: 0.6px;
-      font-weight: 500;
+      font-weight: 800;
       font-size: 1.2rem;
       display: flex;
       color: ${props => lighten(0.1, props.theme.black)};
