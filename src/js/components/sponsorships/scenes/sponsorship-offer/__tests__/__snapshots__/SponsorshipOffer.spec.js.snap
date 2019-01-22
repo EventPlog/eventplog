@@ -33,6 +33,20 @@ exports[`Sponsors should render correctly 1`] = `
         />
       </ContentEditableWrapper>
     </ContentPanel>
+    <ContentPanel
+      className="gray"
+      title="About the community"
+    >
+      <p>
+        You have not yet given a description of your community. 
+        <Link
+          replace={false}
+          to="/edit"
+        >
+          Add a description now
+        </Link>
+      </p>
+    </ContentPanel>
     <MediaPartners
       className="blue"
       event={

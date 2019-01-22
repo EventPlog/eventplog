@@ -7,13 +7,13 @@ import styled from 'styled-components'
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
 import colors from 'js/styles/theme/colors';
+import { lighten } from 'polished'
 
 // images
 
 const StyledSidebarCard = styled.div`
   margin: 2rem 0;
   background: white;
-  border: 1px solid ${colors.white};
   
   ${
     media.tablet`
@@ -32,8 +32,8 @@ const StyledSidebarCard = styled.div`
   
   .card-body {
     padding: 1rem;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 0;
+    border-bottom: 1px solid #ccc;
     
     ${
       media.tablet`
@@ -72,13 +72,13 @@ const StyledSidebarCard = styled.div`
   }
   
   .card-title {
-    margin: 0.5rem 0;
+    margin: 0 0 0.2rem;
     font-size: 1.2rem;
     font-weight: 100;
     
     a {
       color: #444;
-      font-weight: 500;
+      font-weight: 800;
       
       ${
         media.tablet`
@@ -90,16 +90,16 @@ const StyledSidebarCard = styled.div`
   
   .card-description, .card-meta {
     font-size: 0.9rem;
-    color: #aaa;
+    margin: 0;
+    color: ${props => lighten(0.2, props.theme.darkGray)};
     
     a {
-      color: #999;
+      color: ${props => lighten(0.2, props.theme.darkGray)};
       font-weight: bold;
     }
   }
   
   .card-description {
-    margin: 0.5rem 0;
   }
   
   .card-meta {

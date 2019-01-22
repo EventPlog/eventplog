@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import styled, {css} from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
@@ -8,13 +9,16 @@ import NewSponsor from '../new-sponsorship-offer-item'
 import Button from 'js/components/shared/button'
 import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
-import { genEventLink } from 'js/utils'
 import { media } from 'js/styles/mixins'
 import Modal from 'js/components/shared/modal'
 import ContentEditable from 'js/components/shared/content-editable'
 import TargetAudience from './components/TargetAudience'
 import MediaPartners from './components/MediaPartners'
-import { removeSpecialChars } from 'js/utils'
+import {
+  genEventLink,
+  genCommunityLink,
+  removeSpecialChars
+} from 'js/utils'
 
 
 const StyledSponsorshipOffer = styled.div`
@@ -82,6 +86,12 @@ const StyledSponsorshipOffer = styled.div`
     }
   }
   
+  button {
+    background: #f5f50f;
+    border: none;
+    color: #444;
+  }
+  
   .continue-btn {
     background-color: ${props => props.theme.green};
     font-size: 1.2rem;
@@ -95,6 +105,8 @@ const StyledSponsorshipOffer = styled.div`
   .content-panel {
     padding-top: 6rem;
     padding-bottom: 4rem;
+    background-color: inherit;
+    box-shadow: none;
     
     ${
       media.phone`
@@ -118,6 +130,11 @@ const StyledSponsorshipOffer = styled.div`
     &.purple {
       background: #ceb7fd;
     }
+    
+    &.gray {
+      background: ${props => props.theme.gray};
+    }
+    
     
     .content-header {
       font-size: 2rem;
@@ -188,7 +205,7 @@ export const SponsorshipOffer = ({
   sponsorships = {},
   sponsorship_offer = {},
   sponsorship_offer_items = {},
-  event,
+  event = {},
   cart,
   loading,
   error,
@@ -204,6 +221,7 @@ export const SponsorshipOffer = ({
   if (loading) return <Loading />
   if (error) return <Loading.Error msg={error} />
 
+  const { community } = event
   return (
     <StyledSponsorshipOffer className={`${className} sponsors app-container`}>
       <div>
@@ -219,6 +237,14 @@ export const SponsorshipOffer = ({
                              onSubmit={handleSubmit}>
               <ReactMarkdown source={sponsorship_offer.pitch || (event.is_stakeholder ? 'Click to add a quick note convincing people why they should sponsor this event.': '')}/>
             </ContentEditable>
+          </ContentPanel>
+        }
+        {(community || event.is_stakeholder) &&
+          <ContentPanel className="gray" title="About the community">
+            {community && community.description
+              ? <ReactMarkdown source={community.description} />
+              : (event.is_stakeholder ? <p>You have not yet given a description of your community. <Link to={`${genCommunityLink(community)}/edit`}>Add a description now</Link></p>: '')
+            }
           </ContentPanel>
         }
 

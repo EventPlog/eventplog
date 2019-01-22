@@ -14,9 +14,7 @@ const StyledMainContentCard = styled.div`
   
   ${
     media.phone`
-      /*flex-direction: column;
-      border: 1px solid #ddd;
-      padding: 0 0 10px 0;*/
+      flex-direction: column;
     `
   }
   
@@ -40,7 +38,7 @@ const StyledMainContentCard = styled.div`
   }
   
   .card-body {
-    color: #666;
+    color: #444;
     display: flex;
     flex-direction: column; 
     width: 100%;
@@ -48,13 +46,13 @@ const StyledMainContentCard = styled.div`
     
     ${
       media.phone`
-        /*padding: 0 1rem;*/
+        padding: 1rem 0;
       `
     }
   }
   
   .card-title {
-    font-weight: 400;
+    font-weight: 800;
     font-size: 1.7rem;
     margin-bottom: 0.1rem;
     display: flex;
@@ -64,13 +62,12 @@ const StyledMainContentCard = styled.div`
     line-height: initial;
   
     a {
-      color: #444;
-      font-weight: 500;
+      color: ${props => props.theme.darkGray};
+      font-weight: 800;
     }
     
     ${
       media.phone`
-        font-size: 1.2rem;
       `
     } 
      
@@ -78,12 +75,12 @@ const StyledMainContentCard = styled.div`
   
   .card-description {
     margin-bottom: 0.1rem;
-    color: #aaa;
+    color: #444;
     font-size: 90%;
     
     ${
       media.phone`
-        margin: 0.7rem 0;
+        margin: 0.2rem 0;
       `
     }
     
@@ -103,7 +100,7 @@ const StyledMainContentCard = styled.div`
       padding: 0;
       display: inline-flex;
       flex-direction: column;
-      color: #aaa; 
+      color: #444; 
       margin: 0.1rem;
       font-size: 90%;
       
