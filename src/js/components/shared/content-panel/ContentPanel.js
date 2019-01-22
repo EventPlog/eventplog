@@ -9,15 +9,21 @@ import ContentPanelCard from './ContentPanelCard'
 
 
 const StyledContentPanel = styled.div`
+  background: white;
+  padding: 1rem;
+  box-shadow: 1px 2px 4px ${props => lighten(0.45, props.theme.activeLink)};
+    
   ${
     media.phone`
       max-width: 100%;
+      padding: 0;
+      box-shadow: none;
     `
   }
   .content-header {
     border-bottom: 1px solid ${props => lighten(0.2, props.theme.blue)};
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 900;
     letter-spacing: 0.01rem;
     margin: 0 1rem;
     padding-bottom: 5px;

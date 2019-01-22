@@ -31,10 +31,12 @@ const StyledAppMenu = styles.div`
       padding-right: 150px;
       height: 100vh;
       overflow-y: scroll;
+      background-color: ${props => lighten(0.47, props.theme.activeLink)};
       
       ${
         media.phone`
           padding-right: 0;
+          background-color: ${props => props.theme.white};
         `
       }
     }

@@ -11,7 +11,11 @@ import colors from 'js/styles/theme/variables'
 const StyledSidebar = styled.div`
   color: ${props => lighten(0.25, props.theme.activeLink)};
   border-radius: 10px;
-  background: ${props => props.theme.activeLinkBg};
+  background: white;
+  padding: 1rem;
+  box-shadow: 1px 2px 4px ${props => lighten(0.47, props.theme.activeLink)};
+  color: ${props => props.theme.darkGray};
+  border-radius: 0;
   
   p {
     color: ${lighten(0.4, colors.blue)};
@@ -20,15 +24,16 @@ const StyledSidebar = styled.div`
   ${
     media.phone`
       border-radius: 0;
+      box-shadow: none;
     `
   }
   
   .header {
     border-bottom: 1px solid #ccc;
     margin: 1rem 0;
-    font-size: 1.2rem;
-    color: ${props => lighten(0.4, props.theme.activeLink)};
-    font-weight: 500;
+    color: ${props => props.theme.darkGray};
+    font-weight: 800;
+    font-size: 1.3rem;
   }
 `
 
