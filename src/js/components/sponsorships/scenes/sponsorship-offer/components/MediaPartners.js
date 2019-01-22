@@ -6,6 +6,7 @@ import { Follow } from 'react-twitter-widgets'
 //======= INTERNAL =========
 import ExistingPartnerSearch from 'js/components/partners/scenes/existing-partner-search'
 import ContentPanel from 'js/components/shared/content-panel'
+
 const MediaPartners = ({
   event,
   partners = {},

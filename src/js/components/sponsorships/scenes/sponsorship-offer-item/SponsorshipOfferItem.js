@@ -30,7 +30,7 @@ export const generateTitle = (sponsorship_offer_item = {}, event = {}, handleVie
 
 export const generateDescription = (sponsorship_offer_item = {}) => (
   <span>
-    <ReactMarkdown source={sponsorship_offer_item.benefits} />
+    <ReactMarkdown source={sponsorship_offer_item.benefits} escapeHtml={false} />
   </span>
 )
 

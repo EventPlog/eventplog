@@ -21,11 +21,8 @@ const styles = css`
   }
   
   .content-header {
-    /*font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;*/
     margin: 0 1rem;
     letter-spacing: 0.01rem;
-    font-weight: 600;
-    font-size: 1.2rem;
     
       ${
         media.phone`

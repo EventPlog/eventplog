@@ -25,10 +25,18 @@ const StyledReview = styled.div`
     } 
   }
   
+  .content-header {
+    font-size: 1.3rem;
+  }
+  
   .content-body {
     textarea {
       width: 100%;
     }
+  }
+  
+  .meta-details {
+    margin: 2rem 0; 
   }
 `
 
@@ -81,23 +89,26 @@ const SponsorshipPartner = ({
       </ContentPanel>
 
       {sponsorship.id &&
-        <ContentPanel title="Add any extra requests/conditions you wish">
-          <ContentEditable propName="partner_terms"
-                           type="textarea"
-                           rows="10"
-                           style={{minHeight: '10vh'}}
-                           canEdit={true}
-                           defaultValue={partner_terms}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
-            <ReactMarkdown source={partner_terms || 'Click here to start typing...'}/>
-          </ContentEditable>
-        </ContentPanel>
+        [
+          <ContentPanel title="Add any extra requests/conditions you wish">
+            <ContentEditable propName="partner_terms"
+                             type="textarea"
+                             rows="10"
+                             style={{minHeight: '10vh'}}
+                             canEdit={true}
+                             defaultValue={partner_terms}
+                             onChange={handleChange}
+                             onSubmit={handleSubmit}>
+              <ReactMarkdown source={partner_terms || 'Click here to start typing...'}/>
+            </ContentEditable>,
+
+          </ContentPanel>,
+          <div className="meta-details">
+            {termsAndConditions}
+          </div>
+        ]
       }
 
-      <div className="meta-details">
-        {termsAndConditions}
-      </div>
     </StyledReview>
   )
 }
