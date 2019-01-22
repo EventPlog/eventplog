@@ -95,6 +95,10 @@ const StyledEvent = styled.div`
   .presentations.app-container {
     padding: 0;
   }
+  
+  .text-muted {
+    color: ${props => props.theme.grayMedium};
+  }
 `
 
 const Discussions = () => {

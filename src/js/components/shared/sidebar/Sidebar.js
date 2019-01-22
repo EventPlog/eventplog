@@ -18,7 +18,7 @@ const StyledSidebar = styled.div`
   border-radius: 0;
   
   p {
-    color: ${lighten(0.4, colors.blue)};
+    color: ${props => props.theme.darkGray};
   }
   
   ${
