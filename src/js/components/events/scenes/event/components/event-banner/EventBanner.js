@@ -134,6 +134,13 @@ const eventBannerStyles = css`
         background: ${props => lighten(0.3, props.theme.green)};
         color: var(--activeLink);
       }
+      
+      ${
+        media.phone`
+          padding: 1rem;
+          font-size: 1.2rem;
+        `
+      }
     }
     
     &.inverted {

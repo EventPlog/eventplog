@@ -139,11 +139,13 @@ export class EventContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {communities = {}, community = {}} = state.communities
+  const { event = {} } = state.events
 
   const userOwnsActiveCommunity = 
     communities.data.find(c => c.id == community.id)
 
   return {
+    event,
     community: userOwnsActiveCommunity ? community : {},
     communities,
     currentUser: Auth.currentUser(),
