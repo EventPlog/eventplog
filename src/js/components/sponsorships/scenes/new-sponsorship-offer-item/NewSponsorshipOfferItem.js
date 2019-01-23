@@ -9,11 +9,14 @@ import Input from 'js/components/shared/input'
 import TextArea from 'js/components/shared/text-area'
 import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
+import config from 'js/config'
+
+export const PLATFORM_COST = config.platform_cost
 
 const StyledSponsor = styled.div`
   .form-info {
     font-size: 0.9rem;
-    padding: 0.5rem;
+    padding: 1rem;
     background: #ececac;
     background: ${props => lighten(0.3, props.theme.yellow)};
     line-height: 1.5rem;
@@ -33,6 +36,10 @@ export const sponsorshipTypeOptions = [
   { key: 'any', value: 'other', icon: <Icon name="file alternate" />, text: 'any' },
 ]
 
+export const getOriginalCost = (amt, originalCost) => originalCost
+  ? parseFloat(originalCost)
+  : (parseFloat(amt) / (parseFloat(PLATFORM_COST) + 1)).toFixed(2)
+
 const NewSponsorshipOfferItem = ({
   sponsorship_offer_item = {},
   loading,
@@ -51,7 +58,8 @@ const NewSponsorshipOfferItem = ({
     benefits = '',
     amount,
     slots_available = '',
-    user = {}
+    originalCost = 0,
+    user = {},
   } = sponsorship_offer_item
 
   return (
@@ -70,11 +78,11 @@ const NewSponsorshipOfferItem = ({
           />
 
           <Form.Field>
-            <label>What's the title of this package?</label>
+            <label>What's the title of this package?*</label>
               <Input name="title"
                      value={title}
                      placeholder='Silver Sponorship'
-                     onChange={({target}) => handleChange(target.name, target.value)}/>
+                     onChange={({target}) => handleChange({[target.name]: target.value} )} />
           </Form.Field>
 
           <Form.Field>
@@ -83,7 +91,7 @@ const NewSponsorshipOfferItem = ({
                       rows="10"
                       value={benefits}
                       placeholder='Give details of what benefits a partner get by sponsoring this package'
-                      onChange={({target}) => handleChange(target.name, target.value)}/>
+                      onChange={(e) => handleChange({[e.target.name]: e.target.value} )} />
           </Form.Field>
 
           <Form.Field>
@@ -93,16 +101,25 @@ const NewSponsorshipOfferItem = ({
                     placeholder='talk'
                     defaultValue={sponsorship_type || 'talk'}
                     options={sponsorshipTypeOptions}
-                    onChange={(e, attr) => handleChange(attr.name, attr.value) }/>
+                    onChange={(e, attr) => handleChange({[attr.name]: attr.value}) }/>
           </Form.Field>
 
           <Form.Field>
-            <label>How much does this package cost?</label>
+            <label>How much does this package cost?*</label>
             <Input name="amount"
-                   value={amount}
+                   value={getOriginalCost(amount, originalCost) || 0}
                    type="number"
                    placeholder='1000'
-                   onChange={({target}) => handleChange(target.name, target.value)}/>
+                   onChange={({target}) => {
+                     let value = parseFloat(target.value)
+                     handleChange({
+                       originalCost: target.value,
+                       amount: value + (value * parseFloat(PLATFORM_COST))
+                     })
+                   }}/>
+            <small>
+              Package total cost is {amount}. We add our 15% platform fee to whatever amount you put. That way eventplog stays free for you.
+            </small>
           </Form.Field>
 
           <Form.Field>
@@ -111,10 +128,12 @@ const NewSponsorshipOfferItem = ({
                      value={slots_available}
                      type="number"
                      placeholder='1'
-                     onChange={({target}) => handleChange(target.name, target.value)}/>
+                     onChange={({target}) => handleChange({[target.name]: target.value} )}/>
           </Form.Field>
 
-          <Button onClick={id ? handleUpdate : handleCreate}>
+          <Button inverted
+                  disabled={!(title && amount)}
+                  onClick={id ? handleUpdate : handleCreate}>
             Save
           </Button>
 

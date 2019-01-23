@@ -15,7 +15,7 @@ exports[`NewSponsorshipOfferItem should render correctly 1`] = `
     />
     <FormField>
       <label>
-        What's the title of this package?
+        What's the title of this package?*
       </label>
       <Styled(Input)
         name="title"
@@ -81,15 +81,20 @@ exports[`NewSponsorshipOfferItem should render correctly 1`] = `
     </FormField>
     <FormField>
       <label>
-        How much does this package cost?
+        How much does this package cost?*
       </label>
       <Styled(Input)
         name="amount"
         onChange={[Function]}
         placeholder="1000"
         type="number"
-        value="A lot of details"
+        value="2000.00"
       />
+      <small>
+        Package total cost is 
+        2300
+        . We add our 15% platform fee to whatever amount you put. That way eventplog stays free for you.
+      </small>
     </FormField>
     <FormField>
       <label>
@@ -103,7 +108,10 @@ exports[`NewSponsorshipOfferItem should render correctly 1`] = `
         value={4}
       />
     </FormField>
-    <Button>
+    <Button
+      disabled={false}
+      inverted={true}
+    >
       Save
     </Button>
   </Form>

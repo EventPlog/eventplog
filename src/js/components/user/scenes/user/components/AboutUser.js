@@ -93,6 +93,10 @@ const StyledUser = styled.div`
           margin-bottom: 0;
         }
         
+        a {
+          color: ${props => props.theme.darkGray};
+        }
+        
         span {
           color: ${props => props.theme.grayMedium};
         }

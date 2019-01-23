@@ -26,6 +26,7 @@ export default {
     {id: 'last_name', body: 'Last Name', question_type: 'short_answer', default: true},
     {id: 'gender', body: 'Gender', question_type: 'single_choice', default: true, options: [{body: 'Male'}, {body: 'Female'}]},
     {id: 'email', body: 'Email', question_type: 'short_answer', default: true},
-  ]
+  ],
 
+  platform_cost: process.env.REACT_APP_PLATFORM_COST || 0.10
 }

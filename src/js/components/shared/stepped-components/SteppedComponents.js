@@ -91,19 +91,21 @@ class SteppedComponents extends React.Component {
   }
 
   render() {
-    const { components } = this.props
-    const { activeIndex } = this.state
+    const { components, lastStep } = this.props
+    const { activeIndex, allowedIndices } = this.state
     const currentStep = activeIndex + 1
-    let Component = components[activeIndex].component
+    const currentProps = components[activeIndex]
+    let Component = currentProps.component
     return (
       <StyledStep className="app-container stepped-components">
         <div>
-          <h2>{currentStep}. {components[activeIndex].title}</h2>
+          <h2>{currentStep}. {currentProps.title}</h2>
           <Progress value={currentStep}
                     total={components.length}
                     progress="ratio" success/>
 
-          <Component allowNext={(allow, goToNext) => this.setAllowedIndex(activeIndex, allow, goToNext)} />
+          <Component {...currentProps.props}
+                    allowNext={(allow, goToNext) => this.setAllowedIndex(activeIndex, allow, goToNext)} />
 
           <div className="meta">
             {activeIndex > 0 &&
@@ -112,19 +114,18 @@ class SteppedComponents extends React.Component {
                 <Icon name="angle left"/> Prev
               </Button>
             }
-            {(activeIndex < this.props.components.length - 1) &&
+            {(activeIndex < components.length - 1) &&
               <Button className="nav-btn green" inverted
-                      disabled={!this.state.allowedIndices[activeIndex]}
+                      disabled={!allowedIndices[activeIndex]}
                       onClick={this.selectNextHandler()}>
                 Continue <Icon name="angle right"/>
 
               </Button>
             }
-            {(activeIndex >= this.props.components.length - 1) && this.props.lastStep &&
+            {(activeIndex >= components.length - 1) && lastStep &&
               <Button.Link className="nav-btn green" inverted
-                           to={this.props.lastStep.link}>
-                {this.props.lastStep.title} <Icon name="angle right"/>
-
+                           to={lastStep.link}>
+                {lastStep.title} <Icon name="angle right"/>
               </Button.Link>
             }
             {components.length > currentStep &&
