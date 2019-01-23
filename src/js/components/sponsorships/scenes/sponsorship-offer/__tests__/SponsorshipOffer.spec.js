@@ -51,7 +51,7 @@ describe('Sponsors', () => {
   describe('when the logged in user is a stakeholder of the event', () => {
     it('shows the pitch content panel', () => {
       expect(wrapper.find(ContentPanel).length).toEqual(2);
-      expect(wrapper.find(ContentPanel).at(0).props().title).toEqual('Quick note from organizers');
+      expect(wrapper.find(ContentPanel).at(0).props().title).toEqual('Quick Pitch');
     })
   })
 
