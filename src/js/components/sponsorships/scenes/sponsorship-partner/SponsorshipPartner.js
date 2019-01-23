@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Checkbox, Icon, Form, Table, Header, Message } from 'semantic-ui-react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
@@ -38,6 +39,16 @@ const StyledReview = styled.div`
   .meta-details {
     margin: 2rem 0; 
   }
+  
+  .agreements {
+    display: flex;
+    align-items: baseline;
+    font-size: 1.3rem;
+    
+    input {
+      margin-right: 0.5rem;
+    }
+  }
 `
 
 const SponsorshipPartner = ({
@@ -74,9 +85,14 @@ const SponsorshipPartner = ({
              handleSubmit={handleSubmit}>
 
         <Form>
-          <Form.Field>
-            <Checkbox checked={!!organizer_terms_accepted_by}
-                      label="I have read and accept the organizer's terms and conditions."/>
+          <Form.Field className="agreements">
+            <input type="checkbox"
+                   name="terms"
+                   value="agree"
+                   checked={!!organizer_terms_accepted_by} />
+            <label>I have read and accepted the&nbsp;
+              <Link to="#">terms and conditions.</Link>
+            </label>
           </Form.Field>
         </Form>
       </Terms>

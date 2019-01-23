@@ -7,7 +7,7 @@ exports[`Sponsors should render correctly 1`] = `
   <div>
     <ContentPanel
       className="yellow"
-      title="Quick note from organizers"
+      title="Quick Pitch"
     >
       <ContentEditableWrapper
         canEdit={true}
@@ -37,15 +37,16 @@ exports[`Sponsors should render correctly 1`] = `
       className="gray"
       title="About the community"
     >
-      <p>
-        You have not yet given a description of your community. 
-        <Link
-          replace={false}
+      <div
+        className="edit-cta"
+      >
+        <Component
+          className="btn-inline"
           to="/edit"
         >
-          Add a description now
-        </Link>
-      </p>
+          Update community description
+        </Component>
+      </div>
     </ContentPanel>
     <MediaPartners
       className="blue"

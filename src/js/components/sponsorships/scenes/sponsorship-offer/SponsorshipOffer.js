@@ -14,6 +14,7 @@ import Modal from 'js/components/shared/modal'
 import ContentEditable from 'js/components/shared/content-editable'
 import TargetAudience from './components/TargetAudience'
 import MediaPartners from './components/MediaPartners'
+import Members from 'js/components/shared/members'
 import {
   genEventLink,
   genCommunityLink,
@@ -135,6 +136,9 @@ const StyledSponsorshipOffer = styled.div`
       background: ${props => props.theme.gray};
     }
     
+    &.light-green {
+      background: #c0dee4;
+    }
     
     .content-header {
       font-size: 2rem;
@@ -174,6 +178,10 @@ const StyledSponsorshipOffer = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  
+  .edit-cta {
+    margin-top: 2rem;
+  }
 `
 
 export const generateTitle = (event) => {
@@ -202,6 +210,7 @@ export const generateTitle = (event) => {
 
 export const SponsorshipOffer = ({
   className,
+  organizers,
   sponsorships = {},
   sponsorship_offer = {},
   sponsorship_offer_items = {},
@@ -226,7 +235,7 @@ export const SponsorshipOffer = ({
     <StyledSponsorshipOffer className={`${className} sponsors app-container`}>
       <div>
         {(sponsorship_offer.pitch || event.is_stakeholder) &&
-          <ContentPanel className="yellow" title="Quick note from organizers">
+          <ContentPanel className="yellow" title="Quick Pitch">
             <ContentEditable propName="pitch"
                              type="textarea"
                              rows="10"
@@ -241,9 +250,28 @@ export const SponsorshipOffer = ({
         }
         {(community || event.is_stakeholder) &&
           <ContentPanel className="gray" title="About the community">
-            {community && community.description
-              ? <ReactMarkdown source={community.description} />
-              : (event.is_stakeholder ? <p>You have not yet given a description of your community. <Link to={`${genCommunityLink(community)}/edit`}>Add a description now</Link></p>: '')
+            {community && community.description && <ReactMarkdown source={community.description} />}
+            {event.is_stakeholder &&
+              <div className="edit-cta">
+                <Button.Link className="btn-inline" to={`${genCommunityLink(community)}/edit`}>
+                  Update community description
+                </Button.Link>
+              </div>
+            }
+          </ContentPanel>
+        }
+
+        {organizers &&
+          <ContentPanel className="light-green" title="Meet the organizers">
+            <Members>
+              {organizers.map(member =>
+                <Members.Member member={member} />
+              )}
+            </Members>
+            {event.is_stakeholder &&
+              <Button.Link className="btn-inline" to={`${genEventLink(event, event.community)}/backstage/settings`}>
+                Add more organizers
+              </Button.Link>
             }
           </ContentPanel>
         }
