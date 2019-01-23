@@ -1,9 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import ContentEditable from 'js/components/shared/content-editable'
 import { media } from 'js/styles/mixins'
-import roleOptions from 'js/utils/userRoleOptions'
+import { genUserProfileLink } from 'js/utils'
 
 const StyledEventOrganizers = styled.div`
   text-align: center;
@@ -52,7 +52,10 @@ const Members = ({
         }} />
     <div className="meta">
       <div className="title">
-        {`${member.display_name}`}
+        <Link target="_blank"
+              to={genUserProfileLink(member)}>
+          {member.display_name}
+        </Link>
       </div>
       <div className="body">
         {children}

@@ -8,4 +8,4 @@
 Helping event organizers and guests work together to create meaningful events.
 
 
-Url -> https://eventplog.com
+Url -> https://www.eventplog.com

@@ -112,16 +112,12 @@ class SponsorshipOfferItemContainer extends Component {
       .catch(error => this.setState({ error, loading: false }))
   }
 
-  handleChange = (key, value, elementType) => {
-    this.setState((state, props) => {
-      let newState = {
-        sponsorship_offer_item: {
-          ...state.sponsorship_offer_item, [key]: value,
-        }
-      }
-      return newState
-    })
-  }
+  handleChange = (updates) => this.setState({
+    sponsorship_offer_item: {
+      ...this.state.sponsorship_offer_item,
+      ...updates
+    }
+  })
 
   handleEdit = () => {
     this.setState({editing: true})

@@ -32,7 +32,7 @@ const StyledUser = styled.div`
     margin: 2rem 0;
     border-top: 1px solid ${props => props.theme.gray};
     border-bottom: 1px solid ${props => props.theme.gray};
-    background: ${props => props.theme.activeLink};
+    background: ${props => props.theme.darkGray};
     
     a {
       color: ${props => props.theme.gray};
@@ -100,7 +100,8 @@ const UserProfile = ({
   return (
     <StyledUser>
       <div className="app-container">
-        <AboutUser {...{user, currentUser}}/>
+        <AboutUser {...{user, currentUser, handleChange,
+                        handleSubmit, imagePlaceholderRef}}/>
       </div>
       <div className="menu-hold">
         <Nav StackUlOnMobile={true}

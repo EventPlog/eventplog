@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom'
 /// utilities
 import {
   createEvent,
+  updateEvent,
   mockCreateEvent,
   checkForValidSlug,
 } from '../../actions'
@@ -40,6 +41,8 @@ export class EventContainer extends Component {
 
   componentDidMount(props) {
     this.getData()
+    const { newEvent = {} } = this.props
+    if (newEvent.id) this.setState({ event: newEvent })
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -77,8 +80,17 @@ export class EventContainer extends Component {
 
   submitEvent = () => {
     this.setState({ loading: true })
-    this.props.createEvent(this.state.event).then(event => {
+    const callback = this.state.event.id
+      ? this.props.updateEvent
+      : this.props.createEvent
+    callback(this.state.event).then(event => {
+
+      this.state.event.id
+        ? mixpanel.track('EVENT_UPDATE')
+        : mixpanel.track('EVENT_CREATE')
+
       this.setState({event, loading: false, eventCreated: true})
+      this.props.updateState({newEvent: event})
       this.allowNext(true)
     })
       .catch(error => this.setState({loading: false, error}))
@@ -155,6 +167,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
     createEvent,
+    updateEvent,
     getUserCommunities,
     getCommunitiesByVerb,
     getCommunity,

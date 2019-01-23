@@ -255,7 +255,7 @@ const ContentBeforeEventCreate = ({
           <Button className="btn-create"
                   disabled={slug_check.error}
                   onClick={submitEvent}>
-            Create
+            {event.id ? 'Update' : 'Create'}
           </Button>
         </Form>
       </div>

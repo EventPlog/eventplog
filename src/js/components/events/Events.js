@@ -79,7 +79,7 @@ const EventPlog = ({user = {}}) => (
         <PublicRoute exact path="/c/:community_id/e/:id/feedback" component={FeedbackForm} />
 
 
-        {/* maintain support for legacy routes*/}
+        {/* maintain support for legacy routes */}
         <PublicRoute exact path="/events" component={UserEvents} />
         <PublicRoute exact path="/events/new" component={NewEvent} />
         <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
