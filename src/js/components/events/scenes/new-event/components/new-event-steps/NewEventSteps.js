@@ -3,9 +3,6 @@ import React from 'react'
 //=========== INTERNAL ===========
 import createLoader from 'js/components/shared/loading/createLoadable'
 import SteppedComponents from 'js/components/shared/stepped-components'
-// import ChangeBannerImage from '../change-banner-image'
-// import SetupRSVPQuestions from '../setup-rsvp-questions'
-// import SponsorshipOffer from 'js/components/sponsorships/scenes/sponsorship-offer'
 import { genEventLink } from 'js/utils'
 
 const NewEvent = createLoader(() =>
@@ -21,11 +18,11 @@ const SponsorshipOffer = createLoader(() =>
   import('js/components/sponsorships/scenes/sponsorship-offer' /* webpackChunkName: "Presentations" */), 'FeedbackForm')
 
 
-const NewEventSteps = ({ event = {} }) => (
+const NewEventSteps = ({ event = {}, newEvent, updateState }) => (
   <SteppedComponents loginRequired
                      lastStep={{link: genEventLink(event), title: 'Go to Event'}}
                      components={[
-                       {title: 'Create your event', component: NewEvent},
+                       {title: 'Create your event', component: NewEvent, props: {newEvent, updateState} },
                        {title: 'Choose a display image', component: ChangeBannerImage},
                        {title: 'Setup RSVP questions (optional)', component: SetupRSVPQuestions},
                        {title: 'Add sponsorship details (optional)', component: SponsorshipOffer},

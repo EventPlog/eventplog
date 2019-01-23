@@ -61,8 +61,8 @@ class EventContainer extends Component {
     const {commuity, ...others} = this.state.event
     return this.props.updateEvent(others).then(event => {
       this.state.event.id
-        ? mixpanel.track('EVENT_CREATE')
-        : mixpanel.track('EVENT_UPDATE')
+        ? mixpanel.track('EVENT_UPDATE')
+        : mixpanel.track('EVENT_CREATE')
       this.setState({event})
       this.allowNext()
     })

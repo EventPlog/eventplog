@@ -130,9 +130,9 @@ const Event = ({
             <Members.Member member={member} />
           )}
         </Members>
-        {noOrganizersYet && is_stakeholder &&
+        {is_stakeholder &&
         <Button.Link className="btn-inline" to={`${genEventLink(event, event.community)}/backstage/settings`}>
-          Go backstage to add organizers
+          Add more organizers
         </Button.Link>}
       </ContentPanel>
 
