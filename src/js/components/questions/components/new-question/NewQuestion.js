@@ -210,6 +210,7 @@ const NewQuestionForm = ({
           </Table.Body>
         </Table>
         <Button className="save-btn"
+                disabled={!body}
                 onClick={id ? updateQuestion : createQuestion}>
           Save
         </Button>
