@@ -15,7 +15,7 @@ const getMiddleware = () => {
   let logger = createLogger();
   let middleware = [applyMiddleware(thunk)]
 
-  if (process.ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     middleware = [applyMiddleware(thunk, logger)]
   }
 
