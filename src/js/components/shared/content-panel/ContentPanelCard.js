@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 // internal
 import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
+import { resizeImage } from 'js/utils'
 
 const StyledMainContentCard = styled.div`
   padding: 1rem 0;
@@ -180,7 +181,7 @@ const MainContentCard = ({
   <StyledMainContentCard className={`community-card ${className}`}>
     {!hideImage &&
       <div className="img-holder" style={{
-                backgroundImage: `url(${featured_image || '/public/sample-bg.jpg'})`
+                backgroundImage: `url(${featured_image ? resizeImage(featured_image, 'thumbnail') : '/public/sample-bg.jpg'})`
               }}>
         {titleLink
           ? <Link className="title-link" to={titleLink} />
