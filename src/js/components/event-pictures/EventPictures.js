@@ -4,13 +4,6 @@ import styled, {css} from 'styled-components'
 import ContentPanel from 'js/components/shared/content-panel'
 import { media } from 'js/styles/mixins'
 
-const sample_pictures = [
-  { file_name: 'Before the music took us away', url: '/tech_is_in_you.png' },
-  { file_name: 'After the games', url: '/sample-bg.jpg' },
-  { file_name: 'The queen herself took us out', url: '/sample-avatar.png' },
-  { file_name: 'Then we all gathered for a selfie', url: '/login-bg.jpg' },
-]
-
 const styles = css`
   position: relative;
   

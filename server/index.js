@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression'
 
 // internal
 import serverRenderer from './middleware/renderer';
@@ -12,6 +13,9 @@ const path = require('path');
 // initialize the application
 const app = express();
 const router = express.Router();
+
+// enable compression
+app.use(compression())
 
 // root (/) should always serve our server rendered page
 // router.use('^/$', serverRenderer);
