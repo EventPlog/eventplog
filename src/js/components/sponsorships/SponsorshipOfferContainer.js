@@ -88,7 +88,10 @@ class SponsorshipOfferContainer extends Component {
       per_page,
       page: meta.activePage || 1,
       event_id: event.id,
-    }).finally(res => {
+    }).then(res => {
+      this.setState({ loading: false})
+      if (typeof FB != 'undefined') FB.XFBML.parse()
+    }).catch(res => {
       this.setState({ loading: false})
       if (typeof FB != 'undefined') FB.XFBML.parse()
     })
