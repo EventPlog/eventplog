@@ -77,3 +77,24 @@ export const getUserAvatar = (user = {}) => (
 export const removeSpecialChars = (str = '') => (
   str.replace(/[^a-zA-Z\d\-]/g, '').toLowerCase()
 )
+
+export const resizeImage = (imageUrl, size) => {
+  const marker = 'dpr_auto'
+  const insertIndex = imageUrl.indexOf(marker)
+
+  const newUrl = (width, index) =>
+    imageUrl.slice(0, index) + `/c_scale,w_${width}` + imageUrl.slice(index)
+
+  switch(size) {
+    case 'thumbnail':
+      return insertIndex != -1 ? newUrl(300, insertIndex + marker.length) : imageUrl
+
+    case 'medium':
+      return insertIndex != -1 ? newUrl(600, insertIndex + marker.length) : imageUrl
+
+    default:
+      if (typeof size != 'number') return imageUrl
+      return insertIndex != -1 ? newUrl(size, insertIndex + marker.length) : imageUrl
+  }
+
+}

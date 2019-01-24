@@ -90,7 +90,7 @@ const ExistingPartnerSearch = ({
                  trigger={
                    <Button>
                      <Icon name="plus"/>
-                     Or add a new partner
+                     Or add to the list
                    </Button>
                  }>
             <ContentPanel title="Add a new partner">

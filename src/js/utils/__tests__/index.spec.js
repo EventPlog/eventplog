@@ -11,6 +11,7 @@ import {
   genUserProfileLink,
   getUserAvatar,
   removeSpecialChars,
+  resizeImage,
 } from '../index'
 import Auth from '../../auth/actions'
 
@@ -165,4 +166,33 @@ describe('genUserAvatar()', () => {
 
 describe('removeSpecialChars()', () => {
 
+})
+
+describe('resizeImage()', () => {
+  it('adds the appropriate resize string', () => {
+    const imgUrl = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1547389644/comments/1j_ud8ovp.jpg'
+    const result = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/c_scale,w_300/v1547389644/comments/1j_ud8ovp.jpg'
+
+    expect(resizeImage(imgUrl, 'thumbnail')).toEqual(result)
+  })
+
+  it('returns the url if it is not a cloudinary image', () => {
+    const nonCloudinaryUrl = 'https://image.com'
+
+    expect(resizeImage(nonCloudinaryUrl, 'thumbnail')).toEqual(nonCloudinaryUrl)
+  })
+
+  it('returns a specific size if the size is specified in number', () => {
+    const imgUrl = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1547389644/comments/1j_ud8ovp.jpg'
+    const result = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/c_scale,w_500/v1547389644/comments/1j_ud8ovp.jpg'
+
+    expect(resizeImage(imgUrl, 500)).toEqual(result)
+  })
+
+  it('returns the url if no size is passed', () => {
+    const imgUrl = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1547389644/comments/1j_ud8ovp.jpg'
+
+    expect(resizeImage(imgUrl)).toEqual(imgUrl)
+
+  })
 })
