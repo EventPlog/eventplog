@@ -160,6 +160,7 @@ class SponsorshipOfferContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { event = {}} = state.events
+  const { organizers } = state.organizers
   const {
     sponsorship,
     sponsorships,
@@ -172,6 +173,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     event,
     cart,
+    organizers,
     sponsorship,
     sponsorships,
     sponsorship_offer,

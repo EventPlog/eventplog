@@ -213,6 +213,7 @@ const eventBannerStyles = css`
   .upload-btn-controls {
     position: absolute;
     top: 4rem;
+    right: 1rem;
     
     input, button {
       margin-right: 1rem;
