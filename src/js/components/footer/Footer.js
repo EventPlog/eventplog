@@ -14,6 +14,7 @@ const StyledFooter = styled.div`
    color: var(--fg);
    background: ${props => lighten(-0.1, props.theme.activeLinkBg)}; 
    z-index: 100;
+   margin-top: 2rem;
    
    .app-container {
     padding: 1rem 2rem;
@@ -102,6 +103,8 @@ const StyledFooter = styled.div`
         
         li {
           margin: 0;
+          display: flex;
+          flex-direction: column;
         }
     
         ${
@@ -152,6 +155,10 @@ const StyledFooter = styled.div`
        &:hover {
          color: color.activeLink;
          color: var(--activeLink);
+       }
+       
+       + a {
+        margin-top: 1rem;
        }
      }
    }
@@ -226,6 +233,10 @@ const Footer = () => (
             </li>
             <li>
               <div className="header">Resources</div>
+              <a target="_blank"
+                 href="https://blog.eventplog.com">
+                Blog
+              </a>
               <Link to="/events">
                 Events
               </Link>
