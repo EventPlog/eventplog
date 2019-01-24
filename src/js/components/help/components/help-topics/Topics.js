@@ -15,7 +15,7 @@ const StyledHelpPage =styled.div`
     padding: 2rem;
     
     a {
-      color: ${lighten(0.35, colors.blue)}
+      color: ${props => props.theme.darkGray};
       
       &:hover {
         color: var(--activeLink);
