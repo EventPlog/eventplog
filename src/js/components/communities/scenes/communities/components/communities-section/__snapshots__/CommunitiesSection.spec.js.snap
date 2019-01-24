@@ -64,7 +64,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
       }
     }
     description="Developer community bringing up community interest, powereed by google"
-    featured_image="/tech_is_in_you.png"
+    featured_image="/sampe.png"
     key="2"
     meta={
       <ul>

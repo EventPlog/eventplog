@@ -1,43 +1,43 @@
-import App from 'js/app'
-import Community from 'js/components/communities/scenes/community'
-import Event from 'js/components/events/scenes/event'
-import {
+// import App from 'js/app'
+// import Community from 'js/components/communities/scenes/community'
+// import Event from 'js/components/events/scenes/event'
+const {
   fetchCommunityMeta,
   fetchEventMeta,
   fetchUserMeta,
-} from './actions'
+} = require('./actions')
 
 const routes =  [
   {
     path: '/c/:id',
     exact: true,
-    component: Community,
+    // component: Community,
     fetchInitialData: fetchCommunityMeta,
   },
   {
     path: '/e/:id',
-    component: Event,
+    // component: Event,
     fetchInitialData: fetchEventMeta
   },
   {
     path: '/e/:id/*',
-    component: Event,
+    // component: Event,
     fetchInitialData: fetchEventMeta
   },
   {
     path: '/u/:id',
-    component: Event,
+    // component: Event,
     fetchInitialData: fetchUserMeta
   },
   {
     path: '/u/:id/*',
-    component: Event,
+    // component: Event,
     fetchInitialData: fetchUserMeta
   },
   {
     path: '*',
-    component: App
+    // component: App
   }
 ]
 
-export default routes
+module.exports = routes

@@ -1,20 +1,20 @@
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { StaticRouter, matchPath } from "react-router-dom"
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import configureStore from '../../src/js/store/configureStore'
-import Loadable from 'react-loadable'
-import routes from './routes'
+// import React from 'react'
+// import { renderToString } from 'react-dom/server'
+const { matchPath } = require("react-router-dom")
+// import { createStore } from 'redux'
+// import { Provider } from 'react-redux'
+// import configureStore from '../../src/js/store/configureStore'
+// import Loadable from 'react-loadable'
+const routes = require('./routes')
 
 // import our main App component
-import App from '../../src/js/app';
+// import App from '../../src/js/app';
 
 const path = require("path");
 const fs = require("fs");
 
-export default (req, res, next) => {
-  const store = configureStore()
+module.exports = (req, res, next) => {
+  // const store = configureStore()
   // point to the html file created by CRA's build tool
   const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
 

@@ -16,7 +16,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
         </Link>
       </span>
     }
-    featured_image="/tech_is_in_you.png"
+    featured_image="/samplePic.png"
     key="1"
     meta="211 people interested"
     title={
@@ -54,7 +54,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
   />
   <SidebarCard
     description=""
-    featured_image="/login-bg.jpg"
+    featured_image="/l.jpg"
     key="3"
     meta="108 people interested"
     title={
