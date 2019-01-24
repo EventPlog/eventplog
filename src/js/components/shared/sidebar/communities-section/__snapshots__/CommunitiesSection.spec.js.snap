@@ -33,7 +33,7 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
       }
     }
     description=""
-    featured_image="/tech_is_in_you.png"
+    featured_image="/sampe.png"
     key="2"
     meta="undefined follower"
     title={

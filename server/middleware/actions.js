@@ -1,8 +1,23 @@
-import webAPI from '../../src/js/utils/webAPI'
-import serialize from 'serialize-javascript'
+// const webAPI = require('../../src/js/utils/webAPI')
+const fetch = require('isomorphic-fetch')
+const serialize = require('serialize-javascript')
 
-export const fetchUserMeta = ({ path, params = {} }) => {
-  return webAPI({path: `/api/v1/web/users/${params.id.split('-').pop()}`})
+const API = process.env.REACT_APP_EVENTPLOG_API
+
+const fetchData = (path) => {
+  return fetch(API + path)
+    .then(async(response) => {
+      if (response.ok) return response.json()
+      let message  = await response.json()
+      throw(message || response.status)
+    })
+    .catch(err => {
+      throw (err);
+    });
+}
+
+const fetchUserMeta = ({ path, params = {} }) => {
+  return fetchData(`/api/v1/web/users/${params.id.split('-').pop()}`)
     .then(user => (
       `
         <title>${user.display_name} ${user.occupation ? `- ${user.occupation}` : ''}</title>
@@ -21,8 +36,8 @@ export const fetchUserMeta = ({ path, params = {} }) => {
     .catch(err => {console.log(err); return ''})
 }
 
-export const fetchCommunityMeta = ({ path, params = {} }) => {
-  return webAPI({path: `/api/v1/web/communities/${params.id}`})
+const fetchCommunityMeta = ({ path, params = {} }) => {
+  return fetchData(`/api/v1/web/communities/${params.id}`)
     .then(community => (
       `
         <title>${community.title} - EventPlog</title>
@@ -41,8 +56,8 @@ export const fetchCommunityMeta = ({ path, params = {} }) => {
     .catch(err => {console.log(err); return ''})
 }
 
-export const fetchEventMeta = ({ path,  params = {} }) => {
-  return webAPI({path: `/api/v1/web/events/${params.id}`})
+const fetchEventMeta = ({ path,  params = {} }) => {
+  return fetchData(`/api/v1/web/events/${params.id}`)
     .then(event => (
       `
         <title>${event.title} - EventPlog</title>
@@ -89,3 +104,8 @@ export const fetchEventMeta = ({ path,  params = {} }) => {
     })
 }
 
+module.exports = {
+  fetchUserMeta,
+  fetchCommunityMeta,
+  fetchEventMeta,
+}
