@@ -76,7 +76,7 @@ class SponsorshipOfferContainer extends Component {
   }
 
   sponsorshipsAbsent() {
-    return !(this.props.sponsorships.data && this.props.sponsorships.data.length > 0)
+    return !(this.props.sponsorship_offer && this.props.sponsorship_offer.event_id == this.props.event.id)
   }
 
   getSponsorshipOffer = (event = {}, meta = {}) => {

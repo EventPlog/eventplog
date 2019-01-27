@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Table } from 'semantic-ui-react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
 // ========= INTERNAL ==========
-import { titleize } from 'js/utils'
+import { titleize, genEventLink } from 'js/utils'
 
 const CURRENCY = process.env.REACT_APP_CURRENCY
 
@@ -80,6 +81,7 @@ const SponsorshipReviewTable = ({
         <Table striped>
           <Table.Header>
             <Table.Row>
+              <Table.HeaderCell>Event</Table.HeaderCell>
               <Table.HeaderCell>Package</Table.HeaderCell>
               <Table.HeaderCell>Benefits</Table.HeaderCell>
               <Table.HeaderCell>Type</Table.HeaderCell>
@@ -88,8 +90,13 @@ const SponsorshipReviewTable = ({
           </Table.Header>
 
           <Table.Body>
-            {cart.data && cart.data.map(item =>
+            {cart.data && cart.data.map(({event = {}, ...item}) =>
               <Table.Row>
+                <Table.Cell>
+                  <Link target='_blank' to={genEventLink(event)}>
+                    {event.title}
+                  </Link>
+                </Table.Cell>
                 <Table.Cell>{item.title}</Table.Cell>
                 <Table.Cell>
                   <ReactMarkdown source={item.benefits} />
@@ -100,17 +107,17 @@ const SponsorshipReviewTable = ({
             )}
 
             <Table.Row className="sub-total">
-              <Table.Cell colSpan='3'>Sub-Total</Table.Cell>
+              <Table.Cell colSpan='4'>Sub-Total</Table.Cell>
               <Table.Cell>{CURRENCY}{subTotal.toFixed(2)}</Table.Cell>
             </Table.Row>
 
             <Table.Row className="vat">
-              <Table.Cell colSpan='3'>VAT</Table.Cell>
+              <Table.Cell colSpan='4'>VAT</Table.Cell>
               <Table.Cell>{CURRENCY}{vat.toFixed(2)}</Table.Cell>
             </Table.Row>
 
             <Table.Row className="total">
-              <Table.HeaderCell colSpan='3'>Total</Table.HeaderCell>
+              <Table.HeaderCell colSpan='4'>Total</Table.HeaderCell>
               <Table.HeaderCell>{CURRENCY}{total.toFixed(2)}</Table.HeaderCell>
             </Table.Row>
           </Table.Body>

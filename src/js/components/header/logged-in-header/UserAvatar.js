@@ -9,10 +9,14 @@ import { media } from 'js/styles/mixins'
 const StyledUserAvatar = styled.div`
   display: flex;
   align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   
   ${
     media.phone`
       flex-direction: column;
+      padding-top: 0;
+      padding-bottom: 0;
     `
   }
   .avatar {

@@ -43,6 +43,8 @@ const NewPartner = ({
   loading,
   error,
   success,
+  className,
+  style = {},
   handleChange,
   handleUpdate,
   handleCreate,
@@ -65,7 +67,7 @@ const NewPartner = ({
   const isValid = name && tagline && description && phone_number
 
   return (
-    <StyledPartner>
+    <StyledPartner style={style} className={className}>
         <Form loading={loading} success={success} error={error}>
           <Message
             success
@@ -157,7 +159,8 @@ const NewPartner = ({
             Save
           </Button>
 
-          {id && <Button onClick={handleDelete}
+          {id && <Button inverted
+                         onClick={handleDelete}
                          className="btn-delete">
                    Delete
                  </Button>}

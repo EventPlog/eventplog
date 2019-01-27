@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewPartner should render correctly 1`] = `
-<styled.div>
+<styled.div
+  style={Object {}}
+>
   <Form
     as="form"
   >
