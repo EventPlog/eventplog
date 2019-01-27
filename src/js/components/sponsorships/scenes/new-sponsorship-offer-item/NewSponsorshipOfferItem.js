@@ -12,6 +12,7 @@ import Select from 'js/components/shared/select'
 import config from 'js/config'
 
 export const PLATFORM_COST = config.platform_cost
+export const CURRENCY = config.currency
 
 const StyledSponsor = styled.div`
   .form-info {
@@ -98,8 +99,8 @@ const NewSponsorshipOfferItem = ({
             <label>What form of sponsorship would you prefer?</label>
             <Select name="sponsorship_type"
                     value={sponsorship_type}
-                    placeholder='talk'
-                    defaultValue={sponsorship_type || 'talk'}
+                    placeholder='cash'
+                    defaultValue={sponsorship_type || 'cash'}
                     options={sponsorshipTypeOptions}
                     onChange={(e, attr) => handleChange({[attr.name]: attr.value}) }/>
           </Form.Field>
@@ -118,7 +119,7 @@ const NewSponsorshipOfferItem = ({
                      })
                    }}/>
             <small>
-              Package total cost is {amount}. We add our 15% platform fee to whatever amount you put. That way eventplog stays free for you.
+              Package total cost is {CURRENCY}{amount}. We add our 15% platform fee to whatever amount you put. That way eventplog stays free for you.
             </small>
           </Form.Field>
 

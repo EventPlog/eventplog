@@ -42,7 +42,7 @@ const StyledAppMenu = styles.div`
     }
     
     .logo {
-      padding: 1.4rem 1rem 3rem;
+      padding: 1.2rem 1rem 1.2rem;
     }
     
     .sidebar.menu {
@@ -103,7 +103,7 @@ const StyledAppMenu = styles.div`
         
         
         &.sidebar-btn {
-          margin: 3rem 0;
+          margin: 2rem 0;
           
           &.login {
             display: inline-block;
@@ -221,22 +221,6 @@ const AppMenu = ({
               </Link>
             }
 
-            {menu.items && menu.items.map(item => (
-              item.name &&
-                <NavLink className={`item ${item.className}`}
-                      activeClassName="active"
-                      to={item.link || '#'}>
-                  {item.icon && <Icon name={item.icon} />}
-                  {item.name}
-                </NavLink>
-            ))}
-
-            <Nav>
-              <Nav.Item className="sidebar-btn">
-                <Button.Link to="/e/new">Create Event</Button.Link>
-              </Nav.Item>
-            </Nav>
-
             <NavLink className="item" to="/events">
               <Icon name='table tennis' />
               Events
@@ -245,7 +229,26 @@ const AppMenu = ({
               <Icon name='users' />
               Communities
             </NavLink>
+            <NavLink className="item" target="_blank" to="https://blog.eventplog.com">
+              <Icon name='pencil' />
+              Blog
+            </NavLink>
 
+            <Nav>
+              <Nav.Item className="sidebar-btn">
+                <Button.Link to="/e/new">Create Event</Button.Link>
+              </Nav.Item>
+            </Nav>
+
+            {menu.items && menu.items.map(item => (
+              item.name &&
+              <NavLink className={`item ${item.className}`}
+                       activeClassName="active"
+                       to={item.link || '#'}>
+                {item.icon && <Icon name={item.icon} />}
+                {item.name}
+              </NavLink>
+            ))}
 
           </div>
         </Sidebar>

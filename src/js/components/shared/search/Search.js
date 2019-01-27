@@ -24,7 +24,7 @@ class SearchBox extends Component {
   }
 
   handleSearchChange = (e, { value }) => {
-    if (value.length < 3) return this.setState({ value })
+    if (value.length < 2) return this.setState({ value })
 
     this.setState({ isLoading: true, value })
 

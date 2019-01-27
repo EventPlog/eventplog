@@ -53,11 +53,17 @@ const StyledContentPanel = styled.div`
   
 `
 
-const ContentPanel = function({ className = '', title, children }) {
+const ContentPanel = function({
+  className = '',
+  title,
+  style = {},
+  bodyStyle = {},
+  children
+}) {
   return (
-    <StyledContentPanel className={`${className} content-panel`}>
+    <StyledContentPanel style={style} className={`${className} content-panel`}>
       {title && <h5 className="content-header">{ title }</h5>}
-      <div className="content-body">
+      <div className="content-body" style={bodyStyle}>
         { children }
       </div>
     </StyledContentPanel>
