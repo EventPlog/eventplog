@@ -57,6 +57,12 @@ const StyledAppMenu = styles.div`
           color: ${props => lighten(0.2, props.theme.yellow)};
         }
         
+        &.divider {
+          border-top: 3px solid;
+          margin-top: 1.5rem;
+          padding-top: 2rem;
+        }
+        
         ${
           media.desktop`
             flex-direction: row;
@@ -214,12 +220,26 @@ const AppMenu = ({
 
             <MainMenu {...{toggleSidebar, user}} />
 
-            {
-              <Link className="item" to="/">
-                <Icon name='home' />
-                Home
-              </Link>
-            }
+            {menu.items && menu.items.map(item => (
+              item.name &&
+              <NavLink className={`item ${item.className}`}
+                       activeClassName="active"
+                       to={item.link || '#'}>
+                {item.icon && <Icon name={item.icon} />}
+                {item.name}
+              </NavLink>
+            ))}
+
+            <Nav>
+              <Nav.Item className="sidebar-btn">
+                <Button.Link to="/e/new">Create Event</Button.Link>
+              </Nav.Item>
+            </Nav>
+
+            <Link className="item" to="/">
+              <Icon name='home' />
+              Home
+            </Link>
 
             <NavLink className="item" to="/events">
               <Icon name='table tennis' />
@@ -233,23 +253,6 @@ const AppMenu = ({
               <Icon name='pencil' />
               Blog
             </NavLink>
-
-            <Nav>
-              <Nav.Item className="sidebar-btn">
-                <Button.Link to="/e/new">Create Event</Button.Link>
-              </Nav.Item>
-            </Nav>
-
-            {menu.items && menu.items.map(item => (
-              item.name &&
-              <NavLink className={`item ${item.className}`}
-                       activeClassName="active"
-                       to={item.link || '#'}>
-                {item.icon && <Icon name={item.icon} />}
-                {item.name}
-              </NavLink>
-            ))}
-
           </div>
         </Sidebar>
 
