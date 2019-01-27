@@ -28,5 +28,7 @@ export default {
     {id: 'email', body: 'Email', question_type: 'short_answer', default: true},
   ],
 
-  platform_cost: process.env.REACT_APP_PLATFORM_COST || 0.10
+  platform_cost: process.env.REACT_APP_PLATFORM_COST || 0.10,
+
+  currency: process.env.REACT_APP_CURRENCY
 }

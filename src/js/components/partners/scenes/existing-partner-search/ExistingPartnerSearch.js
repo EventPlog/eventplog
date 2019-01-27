@@ -15,6 +15,33 @@ import Modal from 'js/components/shared/modal'
 import Search from 'js/components/shared/search'
 import PartnerList from './PartnerList'
 import { media } from 'js/styles/mixins'
+import { resizeImage } from 'js/utils'
+
+const corporateImage = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,dpr_auto/v1548380264/corporate_tie.png'
+
+const classyTyleStyles =  {
+  backgroundImage: `url(${resizeImage(corporateImage, 'thumbnail')})`,
+  flex: '1',
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  opacity: '0.2',
+  margin: '1rem auto',
+  maxWidth: '300px',
+}
+
+const newPartnerStyles  = {
+  maxWidth: '400px',
+  flex: '1',
+}
+
+const newPartnerPanelStyles = {
+  backgroundColor: '#f7f4ec'
+}
+
+const contentBodyStyles = {
+  display: 'flex',
+}
+
 
 const styles = css`
   ${
@@ -44,6 +71,8 @@ const styles = css`
       `
     }
   }
+  
+  
 `
 
 const ExistingPartnerSearch = ({
@@ -86,15 +115,19 @@ const ExistingPartnerSearch = ({
                   }}
                   options={partnerOptions} />
 
-          <Modal style={{padding: '2rem 0 1rem'}}
+          <Modal style={{margin: '4rem auto'}}
                  trigger={
                    <Button>
                      <Icon name="plus"/>
                      Or add to the list
                    </Button>
                  }>
-            <ContentPanel title="Add a new partner">
-              <NewPartner/>
+            <ContentPanel className="new-partner-panel"
+                          style={newPartnerPanelStyles}
+                          bodyStyle={contentBodyStyles}
+                          title="Add a new organization">
+              <NewPartner style={newPartnerStyles} />
+              <div className="hidden-xs" style={classyTyleStyles}></div>
             </ContentPanel>
           </Modal>
 

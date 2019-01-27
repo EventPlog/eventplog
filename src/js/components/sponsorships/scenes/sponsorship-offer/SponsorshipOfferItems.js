@@ -1,15 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Form, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
-import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
 import { pluralize, genEventLink } from 'js/utils'
 import Sponsor from '../sponsorship-offer-item'
+import NewSponsorshipOffer from './NewSponsorshipOffer'
+import { TextArea, Input, Button } from 'js/components/shared'
 
 const SponsorsList = ({
   title,
@@ -52,6 +54,9 @@ const SponsorsList = ({
           : ''
       }
       </div>
+
+      {process.env.REACT_APP_CUSTOM_SPONSORSHIP_OFFER_ENABLED && <NewSponsorshipOffer />}
+
     </ContentPanel>
   )
 }

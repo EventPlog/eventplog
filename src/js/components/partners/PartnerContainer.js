@@ -135,7 +135,7 @@ class PartnerContainer extends Component {
         partner: {},
         loading: false,
         error: false,
-        success: 'A partner has been successfully added.'
+        success: "You've successfully added your organization."
       }))
     }).catch(error => this.setState(() => ({error, loading: false})))
 

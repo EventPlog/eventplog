@@ -189,9 +189,9 @@ const MainContentCard = ({
         }
         <div>
           {showButton && btn.onClick &&
-          <Button {...btn} className={`img-btn hidden-md ${btn.className}`}>
-            {btn.icon}  {btn.text}
-          </Button>
+            <Button {...btn} className={`img-btn hidden-md ${btn.className}`}>
+              {btn.icon}  {btn.text}
+            </Button>
           }
         </div>
       </div>
