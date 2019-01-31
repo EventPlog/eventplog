@@ -191,7 +191,7 @@ const CommunityHeader = ({
 
         </Link>
         <div className="right-pull">
-          {is_owner
+          {(is_owner || is_admin)
             ? <Button.Link className="edit-community"
                            activeClassName="hidden"
                            to={`${communityLink}/edit`}>
