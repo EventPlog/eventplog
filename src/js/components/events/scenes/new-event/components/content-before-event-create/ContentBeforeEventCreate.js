@@ -176,7 +176,9 @@ const ContentBeforeEventCreate = ({
                       value={event.goals}
                       maxLength={goalsCharLimit}
                       placeholder='Event goals in a sentence or two.'
-                      onChange={(e) => handleChange(e.target.name, e.target.value)} />
+                      onChange={(e) =>
+                        handleEventChange({goals: e.target.value, description: e.target.value})
+                      } />
             <small>{goalsCharLimit - (event.goals || '').length} characters left.</small>
           </Form.Field>
 
