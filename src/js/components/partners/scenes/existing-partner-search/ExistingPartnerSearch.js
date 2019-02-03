@@ -8,7 +8,7 @@ import {
 
 //============INTERNAL=============
 import ContentPanel from 'js/components/shared/content-panel'
-import NewPartner from 'js/components/partners/scenes/new-partner'
+import NewPartnerForm from 'js/components/partners/scenes/new-partner-form'
 import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
 import Modal from 'js/components/shared/modal'
@@ -126,7 +126,7 @@ const ExistingPartnerSearch = ({
                           style={newPartnerPanelStyles}
                           bodyStyle={contentBodyStyles}
                           title="Add a new organization">
-              <NewPartner style={newPartnerStyles} />
+              <NewPartnerForm style={newPartnerStyles} />
               <div className="hidden-xs" style={classyTyleStyles}></div>
             </ContentPanel>
           </Modal>

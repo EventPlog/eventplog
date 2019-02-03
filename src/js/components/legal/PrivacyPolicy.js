@@ -33,7 +33,7 @@ const PrivacyPolicy =()=> {
   return(
     <StyledPrivacyPolicy>
       <div className="privacy-policy-container">
-        <heading><h5 className="title"> Privacy Policy</h5></heading><br/>
+        <heading><h3 className="title"> Privacy Policy</h3></heading><br/>
         <TextContent>This privacy policy has been compiled to better serve those who are 
           concerned with how their 'Personally Identifiable Information' (PII) is being used online. 
           PII, as described in US privacy law and information security, is information that can be used 
@@ -95,29 +95,16 @@ const PrivacyPolicy =()=> {
           <TextTitle> Third-party links</TextTitle>
           <TextContent>We do not include or offer third-party products or services on our website.
           </TextContent>            
-          <TextTitle>Google </TextTitle>
+          <TextTitle>Demographics and Interests Reporting</TextTitle>
           <TextContent>
-          Google's advertising requirements can be summed up by Google's Advertising Principles. 
-          They are put in place to provide a positive experience for users.<br/>
-          https://support.google.com/adwordspolicy/answer/1316548?hl=en <br/>
-          We use Google AdSense Advertising on our website.<br/><br/>
-          Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of the DART 
-          cookie enables it to serve ads to our users based on previous visits to our site and other sites on 
-          the Internet. Users may opt-out of the use of the DART cookie by visiting the Google Ad and Content 
-          Network privacy policy.</TextContent>
-          <TextTitle>We have implemented the following: </TextTitle>
-          <TextContent>
-          Demographics and Interests Reporting
-          We, along with third-party vendors such as Google use first-party cookies 
+          We, along with third-party vendors such as Google use first-party cookies
           (such as the Google Analytics cookies) and third-party cookies (such as the DoubleClick cookie) or 
           other third-party identifiers together to compile data regarding user interactions with ad 
           impressions and other ad service functions as they relate to our website.
           </TextContent>
-          <TextTitle> Opting out:</TextTitle>
+          <TextTitle> Opting out</TextTitle>
           <TextContent>
-          Users can set preferences for how Google advertises to you using the Google Ad Settings page. 
-          Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by 
-          using the Google Analytics Opt Out Browser add on.
+            Users can delete their entire data on our systems, as stipulated by GDPR.
           </TextContent>
           <TextTitle> California Online Privacy Protection Act</TextTitle>
           <TextContent>
@@ -158,7 +145,6 @@ const PrivacyPolicy =()=> {
           Rule, which spells out what operators of websites and online services must do to protect 
           children's privacy and safety online.<br/><br/>
           We do not specifically market to children under the age of 13 years old.
-          Do we let third-parties, including ad networks or plug-ins collect PII from children under 13?
           </TextContent>
           <TextTitle>Fair Information Practices </TextTitle>
           <TextContent>
@@ -208,14 +194,14 @@ const PrivacyPolicy =()=> {
           If there are any questions regarding this privacy policy, you may contact us using the information below.
             <br/> <br/>
           eventplog.com <br/>
-          20 Sophie Kuye str., Pedro <br/>
-          Gbagada, Lagos 101212 <br/>
+          42, Montgomery Rd., <br/>
+          Yaba, Lagos 101212 <br/>
           Nigeria <br/>
-          hello@eventplog.com <br/> <br/>
-          Last Edited on 2018-05-01 <br/> <br/>
+          hi@eventplog.com <br/> <br/>
+          Last Edited on 2019-02-02 <br/> <br/>
           </TextContent>
         <div className="close-button">
-          <Button.Link to="/" >close</Button.Link>
+          <Button.Link to="/" >Home</Button.Link>
         </div>
       </div>
     </StyledPrivacyPolicy>

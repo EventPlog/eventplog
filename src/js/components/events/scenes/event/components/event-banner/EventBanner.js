@@ -156,11 +156,11 @@ const eventBannerStyles = css`
     }
     
     &.sponsor {
-      background: ${props => lighten(0.04, props.theme.yellow)};
-      color: ${props => lighten(-0.4, props.theme.yellow)};
+      background: ${props => lighten(0.3, props.theme.yellow)};
+      color: ${props => props.theme.activeLink};
       
       &:hover {
-        background: ${props => lighten(0.3, props.theme.yellow)};
+        background: ${props => lighten(0.2, props.theme.yellow)};
         color: ${props => lighten(-0.4, props.theme.yellow)} !important;
       }
     }

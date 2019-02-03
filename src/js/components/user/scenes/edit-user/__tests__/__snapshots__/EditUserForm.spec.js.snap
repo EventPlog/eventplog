@@ -100,7 +100,7 @@ exports[`EditUserForm should render correctly 1`] = `
             Preferred link color
           </label>
           <Select
-            defaultValue="#9448BC"
+            defaultValue="#493294"
             name="brand_color"
             onChange={[Function]}
             options={
@@ -109,19 +109,19 @@ exports[`EditUserForm should render correctly 1`] = `
                   "icon": "point purple",
                   "key": "default",
                   "text": "default",
-                  "value": "#9448BC",
+                  "value": "#493294",
                 },
                 Object {
                   "icon": "point blue",
                   "key": "blue",
                   "text": "blue",
-                  "value": "#4968B7",
+                  "value": "#586BA4",
                 },
                 Object {
                   "icon": "point red",
                   "key": "red",
                   "text": "red",
-                  "value": "#B33F62",
+                  "value": "#F76C5E",
                 },
                 Object {
                   "icon": "point green",
@@ -139,13 +139,13 @@ exports[`EditUserForm should render correctly 1`] = `
                   "icon": "point orange",
                   "key": "orange",
                   "text": "orange",
-                  "value": "#e17034",
+                  "value": "#F68E5F",
                 },
                 Object {
                   "icon": "point yellow",
                   "key": "yellow",
                   "text": "yellow",
-                  "value": "#fdee0c",
+                  "value": "#F5DD90",
                 },
               ]
             }
