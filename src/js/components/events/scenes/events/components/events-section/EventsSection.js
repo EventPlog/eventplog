@@ -72,7 +72,8 @@ const styles = css`
   .event-category {
     background: ${props => darken(0.2, props.theme.yellow)};
     padding: 0.2rem 0.4rem;
-    color: ${props => props.theme.white};
+    color: var(--activeLink);
+    font-weight: 800;
   }
 `
 

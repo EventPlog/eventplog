@@ -7,6 +7,7 @@ const styles = css`
   --fg: ${defaults.fg};
   --bg: ${defaults.bg};
   --gray: ${defaults.gray};
+  --yellow: ${defaults.yellow};
   height: 100%;
   min-height: 100%;
   
