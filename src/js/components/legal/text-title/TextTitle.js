@@ -4,13 +4,11 @@ import {media } from '../../../styles/mixins'
 const StyledTextTitle = styled.div`
 
 .subtitle {
-  margin: 15px auto;
-  font-weight:bold;
+  margin: 2rem auto 1rem;
+  
   ${
     media.phone`
       display: block;
-      font-size: 1rem;
-      margin: 8px auto;
     `
   }
 }
@@ -19,7 +17,7 @@ const StyledTextTitle = styled.div`
 const TextTitle = (props) => {
   return(
     <StyledTextTitle>
-      <div className="subtitle">{props.children}</div>
+      <h4 className="subtitle">{props.children}</h4>
     </StyledTextTitle>
   )
 }

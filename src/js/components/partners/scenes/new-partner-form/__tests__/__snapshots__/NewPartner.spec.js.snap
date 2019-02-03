@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewPartner should render correctly 1`] = `
+<styled.div
+  style={Object {}}
+>
+  <Form
+    as="form"
+  >
+    <Message
+      header="Success!"
+      success={true}
+    />
+    <Message
+      error={true}
+      header="Error!"
+    />
+    <FormField>
+      <label>
+        Name
+      </label>
+      <Styled(Input)
+        name="name"
+        onChange={[Function]}
+        placeholder="XYZ Company"
+        value="An awesome title"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Tagline
+      </label>
+      <Styled(Input)
+        name="tagline"
+        onChange={[Function]}
+        placeholder="A brief catchy phrase the organization goes by"
+        value="talk"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Description
+      </label>
+      <Styled(Component)
+        name="description"
+        onChange={[Function]}
+        placeholder="Describe what this company or brand stands for."
+        value="A short summary"
+      />
+    </FormField>
+    <FormField
+      className="wide email-holder"
+    >
+      <label>
+        Official address
+      </label>
+      <Styled(PlaceSelector)
+        location={
+          Object {
+            "address": "somewhere",
+          }
+        }
+        locationField="location"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Contact Phone Number
+      </label>
+      <Styled(Input)
+        name="phone_number"
+        onChange={[Function]}
+        placeholder="08023456789"
+        value="23457"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        twitter Username
+      </label>
+      <Styled(Input)
+        name="tw_username"
+        onChange={[Function]}
+        placeholder="username without the @"
+        value="somebody"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Facebook Username
+      </label>
+      <Styled(Input)
+        name="fb_username"
+        onChange={[Function]}
+        placeholder="username without the @"
+        value="somebody"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Site Link
+      </label>
+      <Styled(Input)
+        name="site_link"
+        onChange={[Function]}
+        placeholder="@twitter_username"
+      />
+    </FormField>
+    <Button
+      disabled={false}
+    >
+      Save
+    </Button>
+  </Form>
+</styled.div>
+`;
