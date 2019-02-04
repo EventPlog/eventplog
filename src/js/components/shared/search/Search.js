@@ -28,17 +28,6 @@ class SearchBox extends Component {
 
     this.setState({ isLoading: true, value })
 
-    // setTimeout(() => {
-    //   if (this.state.value.length < 1) return this.resetComponent()
-    //
-    //   const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-    //   const isMatch = result => re.test(result.title)
-    //
-    //   this.setState({
-    //     isLoading: false,
-    //     results: _.filter(source, isMatch),
-    //   })
-    // }, 300)
     this.props.handleSearch(value)
         .finally(res => this.setState({ isLoading: false }))
   }

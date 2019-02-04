@@ -31,7 +31,7 @@ const StyledAppMenu = styles.div`
       padding-right: 150px;
       height: 100vh;
       overflow-y: scroll;
-      background-color: ${props => lighten(0.47, props.theme.activeLink)};
+      background-color: ${props => lighten(0.57, props.theme.activeLink)};
       
       ${
         media.phone`
@@ -77,7 +77,7 @@ const StyledAppMenu = styles.div`
         }
         
         &:hover {
-          color: var(--activeLink);
+          color: var(--primaryLight);
         }
       }
     }

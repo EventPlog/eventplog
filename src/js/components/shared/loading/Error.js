@@ -13,15 +13,20 @@ const StyledError = styled.div`
   }
 `
 
-const ErrorComponent = ({className, msg}) => (
-  <StyledError className={`${className} app-container`}>
-    <div>
-      <h5> Oops ... Something went wrong. </h5>
-      <p>{msg.toString()}</p>
-      <p>Please confirm your internet connection,&nbsp;
+const ErrorComponent = ({className, msg}) => {
+  if (msg && msg.toLowerCase && msg.toLowerCase().includes('loading chunk')) {
+    return window.location.reload()
+  }
+  return (
+    <StyledError className={`${className} app-container`}>
+      <div>
+        <h5> Oops ... Something went wrong. </h5>
+        <p>{msg.toString()}</p>
+        <p>Please confirm your internet connection,&nbsp;
       then <Button.Link to="#" onClick={() => window.location.reload()}>refresh</Button.Link> and try again.</p>
-    </div>
-  </StyledError>
-)
+      </div>
+    </StyledError>
+  )
+}
 
 export default ErrorComponent

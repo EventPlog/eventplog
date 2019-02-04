@@ -50,7 +50,7 @@ const StyledLoginForm = styled.div`
       position: absolute;
       top: -28px;
       padding: 20px 50px;
-      background: ${lighten(0.45, colors.blue)};
+      background: var(--primaryLight);
     }
     
     & + div {

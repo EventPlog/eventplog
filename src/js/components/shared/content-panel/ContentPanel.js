@@ -27,6 +27,7 @@ const StyledContentPanel = styled.div`
     letter-spacing: 0.01rem;
     margin: 0 1rem;
     padding-bottom: 5px;
+    margin-top: 2rem;
     
     ${
       maxMedia.tablet`

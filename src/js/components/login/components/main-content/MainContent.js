@@ -57,10 +57,8 @@ const StyledMainContent = styled.div`
     }
   
     h1 {
-      font-size: 4rem;
-      font-weight: 600;
+      font-size: 4.5rem;
       color: ${lighten(0.45, colors.primary)};
-      font-family: "capriola", open-sans;
       
       ${
         media.tablet`
@@ -110,7 +108,7 @@ const StyledMainContent = styled.div`
   }
   
   .form-holder {
-    background: ${lighten(0.45, colors.primary)};
+    background: var(--primaryLight);
     border-radius: 5px;
     box-shadow: 0 2px 4px #000;
     height: auto;

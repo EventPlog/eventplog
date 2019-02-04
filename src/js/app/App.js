@@ -16,7 +16,7 @@ import ScrollToTop from '../components/shared/scroll-to-top'
 import appThemeColors from 'js/styles/theme/variables'
 import BreadCrumb from 'js/components/shared/breadcrumb'
 import AppMenu from 'js/components/app-menu'
-import { darken } from 'polished'
+import { lighten, darken } from 'polished'
 
 
 
@@ -36,6 +36,7 @@ const WhyEventPlog = createLoadable(() => import('js/components/why-eventplog' /
 const StyledApp = styled.div`
   --activeLink: ${props => props.theme.activeLink};
   --activeLinkBg: ${props => props.theme.activeLinkBg};
+  --primaryLight: ${props => lighten(0.55, props.theme.activeLink)}
   position: relative;
  
   ${universalStyles}
