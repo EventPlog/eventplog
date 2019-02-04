@@ -15,6 +15,7 @@ import { removeSpecialChars } from 'js/utils'
 import config from 'js/config'
 
 import CreateCommunityForm from 'js/components/communities/scenes/new-community'
+import Search from 'js/components/shared/search'
 
 const StyledContent = styled.div`
   
@@ -89,6 +90,7 @@ const ContentBeforeEventCreate = ({
   handleSelect = () => {},
   submitEvent,
   loading,
+  searchLoading,
   error,
   communities = {},
   onSearchChange,
@@ -99,13 +101,15 @@ const ContentBeforeEventCreate = ({
   slug_check = {},
   checkForValidSlug,
   handleEventChange,
+  getCommunitiesByName,
 }) => {
   const { data = []} = communities
   const userCommunitiesOptions = 
     data.map(user_community => ({
         key: user_community.id,
         value: user_community.id,
-        text: user_community.name,
+        title: user_community.name,
+        description: user_community.description,
       }))
 
   const inlineStyle = {
@@ -226,28 +230,23 @@ const ContentBeforeEventCreate = ({
           <Form.Field className="search-holder">
             <label>Which of the communities you admin own this event? Create one if none applies? :)</label>
             <div className="same-line">
-              <Select
-                search
-                name="community_id"
-                type="text"
-                className="select-search"
-                placeholder='Community Name'
-                value={event.community_id}
-                options={userCommunitiesOptions}
-                onSearchChange={onSearchChange}
-                text={searchQuery}
-                searchQuery={searchQuery}
-                onChange={(e, attr) => handleChange(attr.name, attr.value)}
-              />
 
-              <Modal
-                onClose={onCloseModal}
-                trigger={
-                      <Button>
-                        <Icon name="plus"/>
-                      </Button> }
-                style={inlineStyle.modal}
-              >
+              <Search handleSearch={getCommunitiesByName}
+                      className="select-search"
+                      loading={searchLoading}
+                      defaultValue={event.community && event.community.name}
+                      value={event.community && event.community.name}
+                      handleSelect={(result) => handleChange('community_id', result.value)}
+                      options={userCommunitiesOptions} />
+
+               <Modal
+                  onClose={onCloseModal}
+                  trigger={
+                        <Button>
+                          <Icon name="plus"/>
+                        </Button> }
+                  style={inlineStyle.modal}
+                >
                 <CreateCommunityForm isModal/>
               </Modal>
             </div>

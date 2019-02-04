@@ -27,7 +27,7 @@ const StyledMainContent = styled.div`
   }
   
   .content-panel {
-    margin-bottom: 6rem;
+    margin-bottom: 1rem;
     padding-right: 2rem;
     
     ${

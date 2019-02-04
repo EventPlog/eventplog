@@ -19,6 +19,23 @@ export const getCommunities = (data) => {
   })
 }
 
+export const getCommunitiesByName = (data) => {
+  let actions = baseActions({
+    requestType: actionTypes.COMMUNITY_INDEX_START,
+    receiveType: actionTypes.COMMUNITY_INDEX_COMPLETE,
+    failType: actionTypes.COMMUNITY_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data,
+    errorMessage: 'Something prevented us from retrieving communities',
+    caller: 'getCommunities',
+    route: `/api/v1/web/communities/search_by_name`,
+    requestMethod: 'POST'
+  })
+}
+
 export const getCommunitiesByVerb = (data) => {
   let actions = baseActions({
     requestType: actionTypes.COMMUNITY_INDEX_START,
@@ -213,43 +230,3 @@ export const getUserCommunities = (data) => {
   })
 }
 
-// =========== MOCKS ===============
-
-export const mockGetCommunities = () => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.COMMUNITY_INDEX_START })
-
-    return mockApi.index().then(res => {
-      dispatch({type: actionTypes.COMMUNITY_INDEX_COMPLETE, payload: res})
-      return res
-    })
-  }
-}
-
-export const mockGetUserCommunities = () => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.USER_COMMUNITY_INDEX_START })
-
-    return mockApi.index().then(res => {
-      dispatch({type: actionTypes.USER_COMMUNITY_INDEX_COMPLETE, payload: res})
-      return res
-    })
-  }
-}
-
-export const mockGetCommunity = (communityId) => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.COMMUNITY_SHOW_START })
-
-    return mockApi.show(communityId).then(res => {
-      dispatch({type: actionTypes.COMMUNITY_SHOW_COMPLETE, payload: res})
-      return res
-    })
-  }
-}
-
-export const mockCreateCommunity = () => dispatch =>
-  mockApi.create().then(res => {
-    dispatch({type: actionTypes.COMMUNITY_CREATE_COMPLETE, payload: res})
-    return res
-  })

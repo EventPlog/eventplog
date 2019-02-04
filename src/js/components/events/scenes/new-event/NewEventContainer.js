@@ -16,7 +16,8 @@ import {
   getUserCommunities,
   getCommunities,
   getCommunity,
-  getCommunitiesByVerb
+  getCommunitiesByVerb,
+  getCommunitiesByName,
 } from 'js/components/communities/actions'
 
 import Auth from 'js/auth'
@@ -115,6 +116,23 @@ export class EventContainer extends Component {
     this.getCommunitiesByVerb(meta.activePage, per_page)
   }
 
+  getCommunitiesByName = (searchQuery, meta = {}) => {
+    this.setState({ searchLoading: true })
+
+    const { per_page = 10 } = this.props.communities.meta || {}
+
+    return this.props.getCommunitiesByName({
+      per_page,
+      page: meta.activePage || 1,
+      community: {
+        name: searchQuery,
+      }
+    }).then(res => {
+      this.setState({ searchLoading: false })
+      return res
+    })
+  }
+
   checkForValidSlug = () => {
     if(!this.state.event.slug) return
 
@@ -142,6 +160,7 @@ export class EventContainer extends Component {
     getCommunities: this.getCommunities,
     checkForValidSlug: this.checkForValidSlug,
     handleEventChange: this.handleEventChange,
+    getCommunitiesByName: this.getCommunitiesByName,
   })
 
   render() {
@@ -169,9 +188,10 @@ const mapDispatchToProps = (dispatch) => (
     createEvent,
     updateEvent,
     getUserCommunities,
-    getCommunitiesByVerb,
     getCommunity,
     getCommunities,
+    getCommunitiesByName,
+    getCommunitiesByVerb,
     checkForValidSlug,
   }, dispatch)
 )

@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
 // utilities
-import { getCommunities, mockGetCommunities } from '../../actions'
 
 
 export class JoinACommunityContainer extends Component {
@@ -28,7 +27,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    getCommunities: mockGetCommunities
   }, dispatch)
 )
 
