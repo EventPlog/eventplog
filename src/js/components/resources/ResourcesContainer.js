@@ -1,10 +1,16 @@
 import React, { Component} from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 // ---------- Internal -----------
-import { getResources } from './actions'
 import Auth from 'js/auth'
+
+import { getResources } from './actions'
+import {
+  getEvent,
+  addEventToStore,
+} from 'js/components/events/actions'
 
 class EventResourcesContainer extends Component {
   state = {loading: false, error: false}
@@ -14,8 +20,38 @@ class EventResourcesContainer extends Component {
     mixpanel.track('EVENT_RESOURCES_INDEX_PAGE_VIEW')
   }
 
+  eventFetchedFromServer = () => (
+    (!this.props.event ||
+    !this.props.event.id) &&
+    window.__INITIAL_DATA__ &&
+    window.__INITIAL_DATA__.event
+  )
+
   getData() {
-    this.getResources()
+    const { event = {}, match} = this.props
+    if (event.id) {
+      this.getResources()
+      return
+    }
+
+    if(this.eventFetchedFromServer()) {
+      const event = window.__INITIAL_DATA__.event
+      this.setState({loading: false, event})
+      this.props.addEventToStore(event)
+      this.getResources()
+      return
+    }
+
+    this.setState({loading: true})
+
+    this.props.getEvent(match.params.event_id)
+      .then(event => {
+        this.setState({loading: false})
+        this.getResources()
+      })
+      .catch(error => {
+        this.setState({loading: false, error})
+      })
   }
 
   getResources = (e, meta = {}) => {
@@ -45,7 +81,9 @@ const mapStateToProps = (state, ownProps) => {
   const {resources = {}} = state.resources
   const { event = {}} = state.events
 
-  const requester = ownProps.requester || {
+  const requester = ownProps.requester && ownProps.requester.trackable_id
+    ? ownProps.requester
+    : {
       trackable_id: event.id,
       trackable_type: 'Event'
     }
@@ -61,7 +99,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getResources,
+    getEvent,
+    addEventToStore,
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventResourcesContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventResourcesContainer))

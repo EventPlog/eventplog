@@ -24,16 +24,10 @@ const StyledMainContent = styled.div`
 `
 
 
-const MainContent = ({
-  event,
-  community,
-  handleChange,
-  eventCreated,
-  ...otherProps
-}) => (
+const MainContent = (props) => (
     <StyledMainContent className="main-content app-container">
-        <ContentBeforeEventCreate {...{event, community, handleChange, ...otherProps}} />
+        <ContentBeforeEventCreate {...props} />
     </StyledMainContent>
-    )
+)
 
     export default MainContent

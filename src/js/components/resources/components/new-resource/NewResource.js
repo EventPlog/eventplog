@@ -10,6 +10,8 @@ import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
 
 const StyledResource = styled.div`
+  max-width: 400px;
+  
   .form-info {
     font-size: 0.9rem;
     padding: 0.5rem;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {darken} from "polished";
+import {lighten, darken} from "polished";
 
 // internal components
 import ContentSection from "js/components/shared/content-section";
@@ -21,8 +21,14 @@ import {media} from "js/styles/mixins";
 import {genEventLink} from "js/utils";
 
 const StyledEvent = styled.div`
+  background: ${props => lighten(0.57, props.theme.activeLink)};
+  
   .event-description {
     margin-bottom: 4rem;
+  }
+  
+  .app-container {
+    background: transparent;
   }
   
   .sidebar .announcement {
@@ -62,6 +68,7 @@ const StyledEvent = styled.div`
   .ui.segment {
     border: none;
     box-shadow: none;
+    background: transparent;
   }
   
   .ui.pointing.menu {
