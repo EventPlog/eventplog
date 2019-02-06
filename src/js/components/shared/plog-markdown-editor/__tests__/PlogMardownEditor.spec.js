@@ -17,6 +17,7 @@ describe('PlogMarkdownEditor', () => {
   it('renders correctly', () => {
     expect(wrapper).toMatchSnapshot()
 
+    expect(wrapper.find(TextArea).length).toEqual(1)
     expect(wrapper.find(Button).length).toEqual(1)
   })
 })
