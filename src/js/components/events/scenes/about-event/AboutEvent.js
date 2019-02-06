@@ -57,6 +57,7 @@ const StyledEvent = styled.div`
 
 const Event = ({
   event = {},
+  editorState,
   organizers,
   community,
   activeLink,
@@ -69,6 +70,7 @@ const Event = ({
   getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
+  onEditorStateChange,
 }) => {
 
   if (event.loading) {
