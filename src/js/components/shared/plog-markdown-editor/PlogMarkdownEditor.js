@@ -152,10 +152,11 @@ class PlogMarkdownEditor extends React.Component {
                   onClick={this.onClick}
                   value={this.state.textValue}
                   onChange={this.onChange} />
-        <Button className="save-btn"
+        {this.props.showSubmit &&
+          <Button className="save-btn"
                 onClick={this.props.onSubmit}>
           <Icon name="save" /> Save
-        </Button>
+        </Button>}
       </TextEditorStyles>
     )
   }

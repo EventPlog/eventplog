@@ -10,6 +10,7 @@ describe('PlogMarkdownEditor', () => {
   const props = {
     value: 'Everyday sun',
     onChange: () => {},
+    showSubmit: true,
     onSubmit: () => {},
   }
   const wrapper = shallow( <PlogMarkdownEditor {...props} /> );

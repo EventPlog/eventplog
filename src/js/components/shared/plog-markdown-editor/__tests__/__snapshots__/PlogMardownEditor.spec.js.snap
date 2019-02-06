@@ -111,6 +111,7 @@ exports[`PlogMarkdownEditor renders correctly 1`] = `
     onClick={[Function]}
     onKeyUp={[Function]}
     onSubmit={[Function]}
+    showSubmit={true}
     value="Everyday sun"
   />
   <Button

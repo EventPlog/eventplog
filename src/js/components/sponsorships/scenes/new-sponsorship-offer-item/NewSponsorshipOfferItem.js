@@ -7,6 +7,7 @@ import { media } from 'js/styles/mixins'
 import Loading from 'js/components/shared/loading'
 import Input from 'js/components/shared/input'
 import TextArea from 'js/components/shared/text-area'
+import PlogMarkdownEditor from 'js/components/shared/plog-markdown-editor'
 import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
 import config from 'js/config'
@@ -88,11 +89,12 @@ const NewSponsorshipOfferItem = ({
 
           <Form.Field>
             <label>What benefits does a sponsor get?</label>
-            <TextArea name="benefits"
+            <PlogMarkdownEditor
+                      name="benefits"
                       rows="10"
                       value={benefits}
                       placeholder='Give details of what benefits a partner get by sponsoring this package'
-                      onChange={(e) => handleChange({[e.target.name]: e.target.value} )} />
+                      onChange={(e) => handleChange({benefits: e.target.value} )} />
           </Form.Field>
 
           <Form.Field>

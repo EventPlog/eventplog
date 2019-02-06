@@ -132,6 +132,7 @@ class ContentEditable extends React.Component {
       case 'textarea':
         return <PlogMarkdownEditor className="editor-active"
                                    {...this.getTextBoxProps()}
+                                   showSubmit={true}
                                    onSubmit={this.onBlur} />
 
       case 'datetime':
