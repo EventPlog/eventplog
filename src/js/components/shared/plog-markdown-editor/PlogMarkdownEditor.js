@@ -125,6 +125,10 @@ class PlogMarkdownEditor extends React.Component {
             onClick={() => this.format(lineBreaks, '')}>
             <Icon name="paragraph" />
           </div>
+          <div className="cell"
+               onClick={() => this.format('> ', lineBreak)}>
+            <Icon name="quote left" />
+          </div>
           <div className="cell list"
                onClick={() => this.format(`${lineBreak}1. `, lineBreak, `${lineBreak}1. `)}>
             <Icon name="list ol" />
@@ -138,8 +142,8 @@ class PlogMarkdownEditor extends React.Component {
             <Icon name="code" />
           </div>
           <div className="cell"
-            onClick={() => this.format('```', '```')}>
-            <Icon name="quote left" />
+            onClick={() => this.format('```' + lineBreak, lineBreak + '```' + lineBreak)}>
+            <Icon name="file code outline" />
           </div>
         </div>
         <TextArea {...this.props}
