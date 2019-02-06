@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlogMarkdownEditor renders correctly 1`] = `
+<styled.div>
+  <div
+    className="toolbox"
+  >
+    <div
+      className="cell"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="heading"
+      />
+    </div>
+    <div
+      className="cell bold"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="bold"
+      />
+    </div>
+    <div
+      className="cell italic"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="italic"
+      />
+    </div>
+    <div
+      className="cell"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="underline"
+      />
+    </div>
+    <div
+      className="cell"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="strikethrough"
+      />
+    </div>
+    <div
+      className="cell paragraph"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="paragraph"
+      />
+    </div>
+    <div
+      className="cell list"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="list ol"
+      />
+    </div>
+    <div
+      className="cell"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="list ul"
+      />
+    </div>
+    <div
+      className="cell code"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="code"
+      />
+    </div>
+    <div
+      className="cell"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="quote left"
+      />
+    </div>
+  </div>
+  <Styled(Component)
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onKeyUp={[Function]}
+    onSubmit={[Function]}
+    value="Everyday sun"
+  />
+  <Button
+    className="save-btn"
+    onClick={[Function]}
+  >
+    <Icon
+      as="i"
+      name="save"
+    />
+     Save
+  </Button>
+</styled.div>
+`;

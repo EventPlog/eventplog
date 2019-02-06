@@ -14,6 +14,7 @@ import Members from 'js/components/shared/members'
 import ContentEditable from 'js/components/shared/content-editable'
 import QuickFeedbackForm from 'js/components/feedback/scenes/quick-feedback-form'
 import { genEventLink } from 'js/utils'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const StyledEvent = styled.div`
   .event-description {
@@ -57,6 +58,7 @@ const StyledEvent = styled.div`
 
 const Event = ({
   event = {},
+  editorState,
   organizers,
   community,
   activeLink,
@@ -69,6 +71,7 @@ const Event = ({
   getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
+  onEditorStateChange,
 }) => {
 
   if (event.loading) {

@@ -19,7 +19,7 @@ const TextAreaComponent = React.forwardRef(({
   children,
   ...otherProps
 }, ref) => (
-  <TextArea innerRef={ref} className={className} placeholder={placeholder} {...otherProps}>
+  <TextArea ref={ref} className={className} placeholder={placeholder} {...otherProps}>
     {children}
   </TextArea>
 ))

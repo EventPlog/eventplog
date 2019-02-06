@@ -19,9 +19,10 @@ import Tab from "js/components/shared/tab";
 import Report from "js/components/feedback/scenes/feedback-report";
 import {media} from "js/styles/mixins";
 import {genEventLink} from "js/utils";
+import colors from 'js/styles/theme/colors'
 
 const StyledEvent = styled.div`
-  background: ${props => lighten(0.57, props.theme.activeLink)};
+  background: ${props => lighten(0.57, colors.primary)};
   
   .event-description {
     margin-bottom: 4rem;

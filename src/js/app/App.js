@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import 'nprogress/nprogress.css'
 
 // ======= INTERNAL ========
