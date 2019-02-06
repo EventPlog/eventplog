@@ -20,6 +20,7 @@ const StyledDefaults = styled.div`
   code {
     background: var(--gray);
     padding: 0.5rem;
+    white-space: pre-wrap;
   }
 `
 const ContentEditableWrapper = ({children, canEdit, ...ownProps}) => (

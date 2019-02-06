@@ -60,6 +60,15 @@ exports[`PlogMarkdownEditor renders correctly 1`] = `
       />
     </div>
     <div
+      className="cell"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="quote left"
+      />
+    </div>
+    <div
       className="cell list"
       onClick={[Function]}
     >
@@ -92,7 +101,7 @@ exports[`PlogMarkdownEditor renders correctly 1`] = `
     >
       <Icon
         as="i"
-        name="quote left"
+        name="file code outline"
       />
     </div>
   </div>
