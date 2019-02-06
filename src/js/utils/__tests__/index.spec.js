@@ -12,6 +12,7 @@ import {
   getUserAvatar,
   removeSpecialChars,
   resizeImage,
+  splice,
 } from '../index'
 import Auth from '../../auth/actions'
 
@@ -194,5 +195,15 @@ describe('resizeImage()', () => {
 
     expect(resizeImage(imgUrl)).toEqual(imgUrl)
 
+  })
+})
+
+describe('splice()', () => {
+  it ('inserts a string into another at a defined index', () => {
+    const str = 'The  is strong'
+    const strToInsert = 'car'
+    const expectedRes = 'The car is strong'
+
+    expect(splice(4, 0, str, strToInsert)).toEqual(expectedRes)
   })
 })

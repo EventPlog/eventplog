@@ -63,7 +63,7 @@ const StyledLink = (isAnchorTag) => {
 
 const InvertedBtn = (Component, props) => (
   props.inverted
-  ? Component.extend`
+  ? styled(Component)`
       ${ inverted }
     `
   : Component

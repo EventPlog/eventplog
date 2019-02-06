@@ -1,12 +1,16 @@
 import React from 'react'
 import DateTimePicker from 'js/components/shared/date-time-picker'
+import { Icon } from 'semantic-ui-react'
 
 // internal components
 import Input from 'js/components/shared/input'
 import Select from 'js/components/shared/select'
 import TextArea from 'js/components/shared/text-area'
+import Button from 'js/components/shared/button'
+import PlogMarkdownEditor from 'js/components/shared/plog-markdown-editor'
 import styled, { css } from 'styled-components'
 import { maxMedia } from 'js/styles/mixins'
+import { splice } from 'js/utils'
 
 const styles = css`
   display: flex;
@@ -115,7 +119,7 @@ class ContentEditable extends React.Component {
 
   getTextBoxProps = () => ({
     onChange: this.onChange,
-    ref: this.textboxRef,
+    innerRef: this.textboxRef,
     style: {width: '100%', ...this.props.style},
     onBlur: this.onBlur,
     value: this.state.value,
@@ -126,7 +130,9 @@ class ContentEditable extends React.Component {
     const {type = ''} = this.props
     switch(type.toLowerCase()) {
       case 'textarea':
-        return <TextArea className="editor-active" {...this.getTextBoxProps()} />
+        return <PlogMarkdownEditor className="editor-active"
+                                   {...this.getTextBoxProps()}
+                                   onSubmit={this.onBlur} />
 
       case 'datetime':
         return <div style={{ minWidth: '300px', display: 'flex'}}>
