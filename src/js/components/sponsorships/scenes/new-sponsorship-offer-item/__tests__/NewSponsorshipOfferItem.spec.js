@@ -6,6 +6,7 @@ import NewSponsorshipOfferItem, {
 } from '../NewSponsorshipOfferItem';
 import Input from 'js/components/shared/input'
 import TextArea from 'js/components/shared/text-area'
+import PlogMarkdownEditor from 'js/components/shared/plog-markdown-editor'
 import Button from 'js/components/shared/button'
 import Select from 'js/components/shared/select'
 import Loading from 'js/components/shared/loading'
@@ -35,7 +36,7 @@ describe('NewSponsorshipOfferItem', () => {
     // expect(wrapper).toMatchSnapshot()
 
     expect(wrapper.find(Input).length).toEqual(3);
-    expect(wrapper.find(TextArea).length).toEqual(1);
+    expect(wrapper.find(PlogMarkdownEditor).length).toEqual(1);
     expect(wrapper.find(Select).length).toEqual(1);
   })
 
@@ -62,8 +63,8 @@ describe('NewSponsorshipOfferItem', () => {
     })
 
     it('renders the title input correctly', () => {
-      expect(wrapper.find(TextArea).at(0).props().name).toEqual('benefits')
-      expect(wrapper.find(TextArea).at(0).props().value).toEqual(props.sponsorship_offer_item.benefits)
+      expect(wrapper.find(PlogMarkdownEditor).at(0).props().name).toEqual('benefits')
+      expect(wrapper.find(PlogMarkdownEditor).at(0).props().value).toEqual(props.sponsorship_offer_item.benefits)
     })
 
     it('renders the sponsorship_offer_item type select field correctly', () => {
