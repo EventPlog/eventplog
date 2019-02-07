@@ -23,7 +23,7 @@ const StyledContentPanel = styled.div`
   .content-header {
     border-bottom: 1px solid ${props => lighten(0.2, props.theme.blue)};
     font-size: 2rem;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 0.01rem;
     margin: 0 1rem;
     padding-bottom: 5px;

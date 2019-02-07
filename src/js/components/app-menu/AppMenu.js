@@ -14,7 +14,7 @@ import {
 
 import Button from 'js/components/shared/button'
 import Header from 'js/components/header'
-import logo from 'img/eventplog-logo-v10-alt.png'
+import logo from 'img/eventplog-logo-v16.png'
 import { genUserProfileLink } from 'js/utils'
 import MainMenu from 'js/components/header/logged-in-header/MainMenu'
 import { media } from 'js/styles/mixins'

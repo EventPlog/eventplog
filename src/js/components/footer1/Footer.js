@@ -6,7 +6,7 @@ import { lighten } from 'polished';
 
 // ============ INTERNAL =============
 import colors from 'js/styles/theme/colors';
-import eventplogLogo from 'img/eventplog-logo-v11-alt.png'
+import eventplogLogo from 'img/eventplog-logo-v13-alt.png'
 import { media, maxMedia } from 'js/styles/mixins';
 import Button from 'js/components/shared/button'
 // import MainMenu from 'src/components/main-banner/MainMenu'

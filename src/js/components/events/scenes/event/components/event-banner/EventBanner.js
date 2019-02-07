@@ -60,7 +60,7 @@ const eventBannerStyles = css`
       `
     }
     
-    .title {
+    h2.title {
       font-size: 3rem;
       font-weight: 800;
       margin-top: 4rem;
@@ -336,7 +336,7 @@ const EventBanner = ({
 
       <div className="content">
         <div className="caption">
-          <div className="title">
+          <h2 className="title">
             <ContentEditable propName="title"
                        canEdit={is_stakeholder}
                        type="input"
@@ -345,7 +345,7 @@ const EventBanner = ({
                        onSubmit={handleSubmit}>
               {title}
             </ContentEditable>
-          </div>
+          </h2>
           <div className="meta">
             <ul>
               <li>
