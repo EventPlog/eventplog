@@ -80,7 +80,7 @@ class CommunityContainer extends Component {
     const sureCommunityId = community_id || id
 
     // don't bother fetching if within an event
-    if (community_id && id) return
+    if (community_id && id && id != 'new') return
 
     if(this.communityFetchedFromServer()) {
       this.props.addCommunityToStore(window.__INITIAL_DATA__.community)
@@ -89,7 +89,7 @@ class CommunityContainer extends Component {
     }
 
     if(!this.props.community || !this.props.community.id || !(this.props.community.id == sureCommunityId || this.props.community.slug == sureCommunityId)) {
-      this.props.getCommunity(community_id || id, this.props.slug)
+      this.props.getCommunity(sureCommunityId, this.props.slug)
         .then(community => {
           this.setState({loading: false, community})
           this.updateViewCount()

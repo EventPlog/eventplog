@@ -85,7 +85,7 @@ const StyledContent = styled.div`
 
 const ContentBeforeEventCreate = ({
   event = {},
-  community,
+  community = {},
   handleChange,
   handleSelect = () => {},
   submitEvent,
@@ -234,8 +234,8 @@ const ContentBeforeEventCreate = ({
               <Search handleSearch={getCommunitiesByName}
                       className="select-search"
                       loading={searchLoading}
-                      defaultValue={event.community && event.community.name}
-                      value={event.community && event.community.name}
+                      defaultValue={community.name || (event.community && event.community.name)}
+                      value={event.community ? event.community.name : community.name}
                       handleSelect={(result) => handleChange('community_id', result.value)}
                       options={userCommunitiesOptions} />
 
