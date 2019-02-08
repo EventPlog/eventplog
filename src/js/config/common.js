@@ -15,6 +15,7 @@ export default {
     'Manufacturing',
     'Professional Services(Legal, Insurance, Accounting, HR, Marketing)',
     'Retail and E-Commerce',
+    'Religion',
     'Security',
     'Telecommunications',
     'Technology',

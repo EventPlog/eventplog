@@ -158,6 +158,11 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
                 "value": "Retail and E-Commerce",
               },
               Object {
+                "key": "Religion",
+                "text": "Religion",
+                "value": "Religion",
+              },
+              Object {
                 "key": "Security",
                 "text": "Security",
                 "value": "Security",
