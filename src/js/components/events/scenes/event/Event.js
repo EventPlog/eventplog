@@ -24,6 +24,11 @@ import colors from 'js/styles/theme/colors'
 const StyledEvent = styled.div`
   background: ${props => lighten(0.57, colors.primary)};
   
+  ${
+    media.phone`
+      background: ${props => props.theme.white};
+    `
+  }
   .event-description {
     margin-bottom: 4rem;
   }
@@ -90,12 +95,18 @@ const StyledEvent = styled.div`
   
   section.main-body {
     margin: 0;
+    
+    ${
+      media.phone`
+        padding: 0;
+      `
+    }
   }
   
   .comments-section {
     ${
       media.phone`
-        margin: 0 1rem;
+        margin: 0;
       `
     }
   }
