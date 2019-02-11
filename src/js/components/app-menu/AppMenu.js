@@ -230,17 +230,22 @@ const AppMenu = ({
               </NavLink>
             ))}
 
-            <Nav>
-              <Nav.Item className="sidebar-btn">
-                <Button.Link to="/e/new">Create Event</Button.Link>
-              </Nav.Item>
-            </Nav>
+            {menu.items && menu.items.length > 0 &&
+              <Nav>
+                <Nav.Item className="sidebar-btn">
+                  <Button.Link to="/e/new">Create Event</Button.Link>
+                </Nav.Item>
+              </Nav>
+            }
 
             <Link className="item" to="/">
               <Icon name='home' />
               Home
             </Link>
-
+            <NavLink className="item" to="/search">
+              <Icon name='search' />
+              Search
+            </NavLink>
             <NavLink className="item" to="/events">
               <Icon name='table tennis' />
               Events
@@ -253,6 +258,13 @@ const AppMenu = ({
               <Icon name='pencil' />
               Blog
             </NavLink>
+            {(!menu.items || menu.items.length == 0) &&
+              <Nav>
+                <Nav.Item className="sidebar-btn">
+                  <Button.Link to="/e/new">Create Event</Button.Link>
+                </Nav.Item>
+              </Nav>
+            }
           </div>
         </Sidebar>
 

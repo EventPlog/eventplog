@@ -32,6 +32,7 @@ const Legal = createLoadable(() => import('js/components/legal' /* webpackChunkN
 const AboutUs = createLoadable(() => import('js/components/about-us' /* webpackChunkName: "AboutUs" */))
 const WhyEventPlog = createLoadable(() => import('js/components/why-eventplog' /* webpackChunkName: "WhyEventPlog" */))
 // const Partners = createLoadable(() => import('js/components/partners' /* webpackChunkName: "Partners" */))
+const Search = createLoadable(() => import('js/components/search' /* webpackChunkName: "SearchPage" */))
 
 const StyledApp = styled.div`
   --activeLink: ${props => props.theme.activeLink};
@@ -108,6 +109,7 @@ class App extends Component {
                 <Route path="/events" component={Events} />
                 <Route path="/c" component={Communities} />
                 <Route path="/communities" component={Communities} />
+                <Route path="/search" component={Search} />
                 {/*<Route path="/partners" component={Partners} />*/}
                 <Route path="/e/*" component={Events} />
                 <Route path="/ext/e/*" component={Events} />

@@ -83,6 +83,16 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
           options={
             Array [
               Object {
+                "key": "Technology",
+                "text": "Technology",
+                "value": "Technology",
+              },
+              Object {
+                "key": "Education",
+                "text": "Education",
+                "value": "Education",
+              },
+              Object {
                 "key": "Automotive/Transportation",
                 "text": "Automotive/Transportation",
                 "value": "Automotive/Transportation",
@@ -101,11 +111,6 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
                 "key": "Defence/Space",
                 "text": "Defence/Space",
                 "value": "Defence/Space",
-              },
-              Object {
-                "key": "Education",
-                "text": "Education",
-                "value": "Education",
               },
               Object {
                 "key": "Entertainment/Media",
@@ -171,11 +176,6 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
                 "key": "Telecommunications",
                 "text": "Telecommunications",
                 "value": "Telecommunications",
-              },
-              Object {
-                "key": "Technology",
-                "text": "Technology",
-                "value": "Technology",
               },
               Object {
                 "key": "Other",

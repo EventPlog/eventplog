@@ -42,7 +42,7 @@ const StyledLoginForm = styled.div`
   }
   
   > .or-divider {
-    border-bottom: 1px solid ${lighten(0.2, colors.grayLight)};
+    border-bottom: 1px solid ${lighten(0.45, colors.primary)};
     display: flex;
     justify-content: center;
     position: relative;
@@ -51,7 +51,7 @@ const StyledLoginForm = styled.div`
       position: absolute;
       top: -28px;
       padding: 20px 50px;
-      background: ${lighten(0.45, colors.blue)};
+      background: var(--primaryLight);
     }
     
     & + div {

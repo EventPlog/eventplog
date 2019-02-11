@@ -44,14 +44,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
               />
                
           </li>
-          <li>
-              <Icon
-                  as="i"
-                  name="map marker alternate"
-              />
-               
-              StartZone, Gbagada
-          </li>
+          StartZone, Gbagada
       </ul>,
         <ul>
           <li>
@@ -115,14 +108,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
               />
                
           </li>
-          <li>
-              <Icon
-                  as="i"
-                  name="map marker alternate"
-              />
-               
-              StartZone, Gbagada
-          </li>
+          StartZone, Gbagada
       </ul>,
         <ul>
           <li>
@@ -184,14 +170,7 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
               />
                
           </li>
-          <li>
-              <Icon
-                  as="i"
-                  name="map marker alternate"
-              />
-               
-              StartZone, Gbagada
-          </li>
+          StartZone, Gbagada
       </ul>,
         <ul>
           <li>
