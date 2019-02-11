@@ -4,7 +4,8 @@ exports[`SearchCommunities should render correctly 1`] = `
 <div>
   <CommunitySection
     communities={Object {}}
-    title="Results"
+    noRecordsMsg="😩 We couldn't find any community matching \\"undefined\\""
+    title="Results (0)"
   />
 </div>
 `;
