@@ -124,6 +124,22 @@ export const getEventsByVerb = (eventParams = {}) => {
   })
 }
 
+export const searchEvents = (eventParams = {}) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_INDEX_START,
+    receiveType: actionTypes.EVENT_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: eventParams,
+    errorMessage: 'Something prevented us from getting events.',
+    caller: 'search events',
+    route: `/api/v1/web/events/index_by_params`,
+    requestMethod: 'POST'
+  })
+}
 
 export const getEventsSuggestions = (eventParams = {}, limit = 2) => {
   let actions = baseActions({

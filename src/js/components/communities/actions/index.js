@@ -131,7 +131,7 @@ export const getCommunityEvents = (communityId) => {
   return handleApiCall({
     actions,
     data: communityId,
-    errorMessage: 'Something prevented getting an event.',
+    errorMessage: 'Something prevented getting events.',
     caller: 'get events',
     route: `/api/v1/web/communities/${communityId}/events`,
     requestMethod: 'GET'

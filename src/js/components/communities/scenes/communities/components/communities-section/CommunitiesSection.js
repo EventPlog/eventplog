@@ -57,7 +57,7 @@ const CommunitySection = ({
             <ContentPanel.Card
               key={community.id}
               {...{title, description, featured_image, meta}}
-              showButton={showCTA && !community.joined}
+              showButton={showCTA && !community.following}
               titleLink={titleLink}
               btn={{onClick: () => followCommunity(community), text: 'Follow'}} />
           )

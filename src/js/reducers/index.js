@@ -18,6 +18,7 @@ import sponsorships from 'js/components/sponsorships/reducers'
 import partners from 'js/components/partners/reducers'
 import cart from 'js/components/cart/reducers'
 import questions from 'js/components/questions/reducers'
+import search from 'js/components/search/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -39,6 +40,7 @@ let rootReducer = combineReducers({
   partners,
   cart,
   questions,
+  search,
 })
 
 export default rootReducer

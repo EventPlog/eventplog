@@ -13,6 +13,8 @@ import {
   removeSpecialChars,
   resizeImage,
   splice,
+  addDays,
+  subtractDays,
 } from '../index'
 import Auth from '../../auth/actions'
 
@@ -205,5 +207,27 @@ describe('splice()', () => {
     const expectedRes = 'The car is strong'
 
     expect(splice(4, 0, str, strToInsert)).toEqual(expectedRes)
+  })
+})
+
+describe('addDays()', () => {
+  it('adds a proportionate number of days', () => {
+    const today = "Sun Feb 10 2019"
+    const tomorrow = "Mon Feb 11 2019"
+    const nextWeek = "Sun Feb 17 2019"
+
+    expect(addDays(1, today).toDateString()).toEqual(tomorrow)
+    expect(addDays(7, today).toDateString()).toEqual(nextWeek)
+  })
+})
+
+describe('subtractDays()', () => {
+  it('subtracts a proportionate number of days', () => {
+    const today = "Sun Feb 10 2019"
+    const yesterday = "Sat Feb 09 2019"
+    const pastWeek = "Sun Feb 03 2019"
+
+    expect(subtractDays(1, today).toDateString()).toEqual(yesterday)
+    expect(subtractDays(7, today).toDateString()).toEqual(pastWeek)
   })
 })
