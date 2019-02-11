@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form, label, Message, Checkbox, Icon } from 'semantic-ui-react'
+import PlaceSelector from 'js/components/shared/place-selector'
 
 import ContentPanel from 'js/components/shared/content-panel'
 import Input from 'js/components/shared/input'
@@ -73,6 +74,7 @@ const EventUpdate = ({
     visibility_status,
     category = {},
     start_time=(new Date()), end_time=(new Date()),
+    location,
     community = {} } = event
   return (
     <StyleEventUpdate>
@@ -102,10 +104,9 @@ const EventUpdate = ({
 
           <Form.Field>
             <label>Venue</label>
-            <Input name="venue"
-                   value={venue}
-                   placeholder='Event venue'
-                   onChange={(e) => handleChange(e.target.name, e.target.value)}/>
+            <PlaceSelector location={location}
+                           locationField="location"
+                           handleChange={handleChange}/>
           </Form.Field>
 
           <Form.Field>
