@@ -262,7 +262,7 @@ const EventBanner = ({
   venue,
   description = '',
   start_time,
-  location,
+  location = {},
   hashtags,
   show_feedback_form,
   community = {},
@@ -351,16 +351,16 @@ const EventBanner = ({
               <li>
                 <Icon name="calendar outline" /> {`${moment(start_time).format('MMMM Do YYYY, h:mm a')}`}
               </li>
-              {venue &&
+              {(location.address || venue) &&
                 <li>
                   <Icon name="map marker alternate"/>
-                  {location.lat
-                    ? <a className="map-link"
-                         target="_blank"
-                         href={`https://www.google.com.ng/maps/dir/${location.lat},${location.lng}`}>
-                        {venue}
-                      </a>
-                    : venue
+                  {location.address || venue}&nbsp;
+                  {location.lat &&
+                    <a className="map-link"
+                       target="_blank"
+                       href={`https://www.google.com.ng/maps/dir/${location.lat},${location.lng}`}>
+                      <sup className="small">(View Map)</sup>
+                    </a>
                   }
                 </li>}
               <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>
