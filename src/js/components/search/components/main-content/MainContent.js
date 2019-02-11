@@ -18,6 +18,7 @@ import {
 } from 'js/components/shared'
 
 const styles = css`
+  margin-top: 0;
   margin-bottom: 8rem;
   
   .ui.tab {

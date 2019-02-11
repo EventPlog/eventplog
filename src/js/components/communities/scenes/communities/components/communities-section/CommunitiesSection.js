@@ -34,6 +34,7 @@ const CommunitySection = ({
   showCTA = true,
   communities = {data: [], meta: {}},
   getCommunities,
+  noRecordsMsg,
   followCommunity,
 }) => {
 
@@ -63,7 +64,7 @@ const CommunitySection = ({
           )
         }
       )}
-      {data && data.length < 1 && <p>This hall for communities seem empty ...</p>}
+      {data && data.length < 1 && <p className="no-records-msg">{noRecordsMsg || "This hall for communities seem empty ..."}</p>}
       {
         meta && meta.total_pages && data.length > 0
           ? <Pagination totalPages={meta.total_pages}
