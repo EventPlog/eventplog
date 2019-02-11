@@ -7,12 +7,14 @@ import { media } from 'js/styles/mixins'
 const UserEvents = ({
   events = {},
   getEvents,
+  query = {},
   attendEvent,
 }) => {
   return (
     <div>
-      <EventsSection key="upcoming-events-section"
-                     title="Results" {...{events, getEvents, attendEvent }} />
+      <EventsSection title={`Results (${events.meta && events.meta.total_count ? events.meta.total_count : 0})`}
+                     noRecordsMsg={`We couldn't find any event matching ${query.title}`}
+                     {...{events, getEvents, attendEvent }} />
 
     </div>
   )

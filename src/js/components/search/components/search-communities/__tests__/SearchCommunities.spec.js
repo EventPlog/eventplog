@@ -21,6 +21,6 @@ describe('SearchCommunities', () => {
     const eventSectionInstances = wrapper.find(CommunitiesSection)
 
     // assert titles
-    expect(eventSectionInstances.at(0).props().title).toEqual("Results")
+    expect(eventSectionInstances.at(0).props().title).toEqual("Results (0)")
   })
 });

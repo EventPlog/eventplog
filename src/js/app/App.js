@@ -85,7 +85,7 @@ class App extends Component {
         <ScrollToTop>
           <StyledApp>
             {sidebarVisible && !isMobile &&
-              <div class="menu-btn"
+              <div className="menu-btn"
                    onClick={toggleSidebar}>
                 <i aria-hidden="true" class="content icon">
                 </i>
