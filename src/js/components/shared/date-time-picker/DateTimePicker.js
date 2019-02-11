@@ -25,9 +25,9 @@ const Styles = styled.div`
 const DateTimePicker = React.forwardRef(({className, ...props}, ref) => (
   <Styles className={className}>
     <DatePicker
+      showTimeSelect
       {...props}
       ref={ref} className={`${className} date-time-picker`}
-      showTimeSelect
       todayButton={"Today"}
       dateFormat="MMMM d, yyyy h:mm aa" />
   </Styles>

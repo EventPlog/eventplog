@@ -63,7 +63,7 @@ const fetchEventMeta = ({ path,  params = {} }) => {
         <title>${event.title} - EventPlog</title>
         <meta property="og:title" content="${event.title} - EventPlog" />
         <meta name="description" content="${event.description || ''} - EventPlog" />
-        <meta property="og:description" content="${event.description || ''}" />
+        <meta property="og:description" content="${event.goals || event.descriptionu || ''}" />
         <meta property="og:image" content="${event.featured_image}" />
         <meta property="og:url" content="https://eventplog.com${path}">
         <meta property="twitter:title" content="${event.title} - EventPlog" />

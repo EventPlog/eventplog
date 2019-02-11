@@ -3,13 +3,9 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // internal components
-import Header from '../../header/MainHeader';
 import createLoader from 'js/components/shared/loading/createLoadable'
 import styled  from 'styled-components';
-import defaults from '../../styles/theme/variables';
 import {fakeAuth, PrivateRoute, PublicRoute} from '../../auth'
-import UserNav from 'js/components/shared/user-secondary-menu'
-// import RegistrationForm from 'js/components/guests/scenes/check-in-form'
 
 const Events = createLoader(() =>
   import('./scenes/events/index'  /* webpackChunkName: "Events" */), 'Events')

@@ -1,10 +1,11 @@
 export default {
   event_categories: [
+    'Technology',
+    'Education',
     'Automotive/Transportation',
     'Agriculture/Food and Beverage',
     'Construction/Real Estate',
     'Defence/Space',
-    'Education',
     'Entertainment/Media',
     'Hospitality',
     'Energy/Oil and Gas',
@@ -18,7 +19,6 @@ export default {
     'Religion',
     'Security',
     'Telecommunications',
-    'Technology',
     'Other'
   ],
 

@@ -40,7 +40,9 @@ class PlaceSelector extends React.Component {
           .findIndex(r => r.types.find(c => c == 'country'))
 
         const country = results[0].address_components[countryIndex].long_name
-        const region = results[0].address_components[countryIndex - 1].long_name
+        const region = results[0].address_components[countryIndex - 1]
+                      ? results[0].address_components[countryIndex - 1].long_name
+                      : null
         const lat = results[0].geometry.location.lat()
         const lng = results[0].geometry.location.lng()
         const location = {country, region, lat, lng, address}

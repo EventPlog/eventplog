@@ -102,3 +102,15 @@ export const resizeImage = (imageUrl, size) => {
 export const splice = (startIndex, charsToReplace, str, strToInsert) => (
   str.slice(0, startIndex) + strToInsert + str.slice(startIndex + Math.abs(charsToReplace))
 )
+
+export const addDays = function(days, date = (new Date())) {
+  var newDate = new Date(new Date(date).valueOf());
+  newDate.setDate(newDate.getDate() + days);
+  return newDate;
+}
+
+export const subtractDays = function(days, date = (new Date())) {
+  var newDate = new Date(new Date(date).valueOf());
+  newDate.setDate(newDate.getDate() - days);
+  return newDate;
+}

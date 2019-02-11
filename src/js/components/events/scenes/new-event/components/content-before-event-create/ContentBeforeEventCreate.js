@@ -10,7 +10,7 @@ import Button from 'js/components/shared/button'
 import PlaceSelector from 'js/components/shared/place-selector'
 import { media } from 'js/styles/mixins'
 import { genCommunityLink } from 'js/utils'
-import Select from 'js/components/shared/select'
+import Select, { formatOptions } from 'js/components/shared/select'
 import { removeSpecialChars } from 'js/utils'
 import config from 'js/config'
 
@@ -120,12 +120,7 @@ const ContentBeforeEventCreate = ({
     }
   };
 
-  const categoryOptions =
-    config.event_categories.map(cat => ({
-      key: cat,
-      value: cat,
-      text: cat,
-    }))
+  const categoryOptions = formatOptions(config.event_categories)
 
   const goalsCharLimit = 280
 

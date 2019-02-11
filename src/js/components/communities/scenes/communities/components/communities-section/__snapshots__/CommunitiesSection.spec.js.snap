@@ -45,7 +45,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
         </li>
       </ul>
     }
-    showButton={false}
+    showButton={true}
     title={
       <Link
         replace={false}
@@ -139,7 +139,7 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
         </li>
       </ul>
     }
-    showButton={false}
+    showButton={true}
     title={
       <Link
         replace={false}

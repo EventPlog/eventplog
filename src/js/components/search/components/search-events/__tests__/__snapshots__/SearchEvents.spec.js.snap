@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchEvents should render correctly 1`] = `
+<div>
+  <Styled(EventsSection)
+    events={Object {}}
+    key="upcoming-events-section"
+    title="Results"
+  />
+</div>
+`;
