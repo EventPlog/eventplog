@@ -58,6 +58,7 @@ const CategorySection = ({
             <ContentPanel.Card
               key={category.id}
               {...{title, description, featured_image, meta}}
+              hideImage={true}
               showButton={showCTA && !category.following}
               titleLink={titleLink}
               btn={{onClick: () => followCategory(category), text: 'Follow'}} />
