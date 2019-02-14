@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewCommunity should render correctly 1`] = `
+<styled.div>
+  <MainContent
+    community={
+      Object {
+        "name": "A new community",
+      }
+    }
+    communitySubmitted={false}
+    handleChange={[Function]}
+    submitEmail={[Function]}
+  />
+</styled.div>
+`;

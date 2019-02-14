@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main content - New Community component should render correctly 1`] = `
+<styled.div
+  className="main-content"
+>
+  <ContentPanel
+    title="Edit Community"
+  >
+    <Form
+      as="form"
+    >
+      <Message
+        content="You've successfully updated this community"
+        header="Yes!"
+        success={true}
+      />
+      <Message
+        error={true}
+        header="An error occured!"
+      />
+      <FormField>
+        <label>
+          Name
+        </label>
+        <Styled(Input)
+          name="name"
+          placeholder="Awesome event"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Description
+        </label>
+        <Styled(Component)
+          name="description"
+          placeholder="A community of awesome people"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Slug
+        </label>
+        <FormField
+          className="same-line"
+          widths="equal"
+        >
+          eventplog.com/c/
+          <Styled(Input)
+            name="slug"
+            onChange={[Function]}
+            placeholder="something"
+          />
+        </FormField>
+      </FormField>
+      <FormField>
+        <label>
+          Link to Group
+        </label>
+        <Styled(Input)
+          name="link"
+          placeholder="http://someplace.com"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Link to logo
+        </label>
+        <Styled(Input)
+          name="logo"
+          placeholder="http://someplace.com"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Featured image url
+        </label>
+        <Styled(Input)
+          name="featured_image"
+          placeholder="http://someplace.com"
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Interests (separated by commas)
+        </label>
+        <Styled(Input)
+          name="topic_interests"
+          onChange={[Function]}
+          placeholder="technology, food"
+          value=""
+        />
+      </FormField>
+      <FormField>
+        <label>
+          Brand Color
+        </label>
+        <Styled(Input)
+          defaultValue="#493294"
+          name="brand_color"
+          options={
+            Array [
+              Object {
+                "icon": "point purple",
+                "key": "default",
+                "text": "default",
+                "value": "#493294",
+              },
+              Object {
+                "icon": "point blue",
+                "key": "blue",
+                "text": "blue",
+                "value": "#586BA4",
+              },
+              Object {
+                "icon": "point red",
+                "key": "red",
+                "text": "red",
+                "value": "#F76C5E",
+              },
+              Object {
+                "icon": "point green",
+                "key": "green",
+                "text": "green",
+                "value": "#2db528",
+              },
+              Object {
+                "icon": "point pink",
+                "key": "pink",
+                "text": "pink",
+                "value": "#F851F6",
+              },
+              Object {
+                "icon": "point orange",
+                "key": "orange",
+                "text": "orange",
+                "value": "#F68E5F",
+              },
+              Object {
+                "icon": "point yellow",
+                "key": "yellow",
+                "text": "yellow",
+                "value": "#F5DD90",
+              },
+            ]
+          }
+        />
+      </FormField>
+      <FormField>
+        <Checkbox
+          checked={true}
+          label="Make this community public"
+          type="checkbox"
+        />
+      </FormField>
+      <FormGroup>
+        <Button
+          inverted={true}
+          type="submit"
+        >
+          Save
+        </Button>
+        <Component
+          className="cancel"
+          to="/communities/undefined"
+        >
+          Back to Community Page
+        </Component>
+      </FormGroup>
+    </Form>
+  </ContentPanel>
+</styled.div>
+`;

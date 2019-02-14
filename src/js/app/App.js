@@ -34,6 +34,9 @@ const AboutUs = createLoadable(() => import('js/components/about-us' /* webpackC
 const WhyEventPlog = createLoadable(() => import('js/components/why-eventplog' /* webpackChunkName: "WhyEventPlog" */))
 // const Partners = createLoadable(() => import('js/components/partners' /* webpackChunkName: "Partners" */))
 const Search = createLoadable(() => import('js/components/search' /* webpackChunkName: "SearchPage" */))
+const Categories = createLoadable(() => import('js/components/categories' /* webpackChunkName: "SearchPage" */))
+
+const SIDEBAR_WIDTH = '150px'
 
 const StyledApp = styled.div`
   --activeLink: ${props => props.theme.activeLink};
@@ -79,6 +82,7 @@ class App extends Component {
         activeLinkBg,
         width,
         height,
+        sidebarWidth: SIDEBAR_WIDTH,
         showSidebar: sidebarVisible,
         toggleSidebar,
       }}>
@@ -112,7 +116,8 @@ class App extends Component {
                 <Route path="/c" component={Communities} />
                 <Route path="/communities" component={Communities} />
                 <Route path="/search" component={Search} />
-                {/*<Route path="/partners" component={Partners} />*/}
+                <Route path="/cat" component={Categories} />
+                <Route path="/categories" component={Categories} />
                 <Route path="/e/*" component={Events} />
                 <Route path="/ext/e/*" component={Events} />
                 <Route path="/ext/c/*" component={Communities} />

@@ -27,11 +27,12 @@ const StyledAppMenu = styles.div`
     border-radius: 0;
     
     
-    .pusher {
-      padding-right: 150px;
+     .ui.visible.thin.left.sidebar~.pusher {
+      padding-right: ${props => props.theme.sidebarWidth};
       height: 100vh;
       overflow-y: scroll;
       background-color: ${props => lighten(0.57, props.theme.activeLink)};
+      transform: translate3d(${props => props.theme.sidebarWidth},0,0);
       
       ${
         media.phone`
@@ -92,7 +93,7 @@ const StyledAppMenu = styles.div`
   }
   
   .ui.thin.left.sidebar, .ui.thin.right.sidebar {
-    /* width: 170px; */
+     width: ${props => props.theme.sidebarWidth};
     
     .menu > ul {
       flex-direction: column-reverse;
@@ -188,6 +189,7 @@ const AppMenu = ({
   user = {},
   menu = {},
   isMobile,
+  sidebarWidth,
   contextRef,
   handleContextRef,
   children,
@@ -253,6 +255,10 @@ const AppMenu = ({
               <Icon name='users' />
               Communities
             </NavLink>
+            <NavLink className="item" to="/categories">
+              <Icon name='folder outline' />
+              Categories
+            </NavLink>
             <NavLink className="item" target="_blank" to="https://blog.eventplog.com">
               <Icon name='pencil' />
               Blog
@@ -268,7 +274,7 @@ const AppMenu = ({
         </Sidebar>
 
         <Sidebar.Pusher dimmed={false && isMobile && showSidebar}
-                        style={{paddingRight: !isMobile && showSidebar ? '150px': '0'}}
+                        style={{paddingRight: !isMobile && showSidebar ? sidebarWidth : '0'}}
                         onClick={() => (showSidebar && isMobile && handleSidebarHide())}>
           <Segment basic>
             {children}

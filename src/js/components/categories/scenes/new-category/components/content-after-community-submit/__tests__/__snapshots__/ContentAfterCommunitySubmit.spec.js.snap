@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Communities::NewCommunity::ContentAfterCommunitySubmit it renders correctly 1`] = `
+<styled.div
+  className="text-center"
+>
+  <h3>
+    You just created a community!!!
+  </h3>
+  <img
+    alt="people dancing"
+    src="black-guy-celebrating2.gif"
+  />
+  <p>
+    Thank you for all you do to strengthen the ecosytem.
+  </p>
+  <p>
+    You can go ahead and change your banner image, tag line, etc.
+  </p>
+  <Component
+    className="medium lowercase"
+    to=""
+  >
+    Take me to my community update page
+  </Component>
+</styled.div>
+`;

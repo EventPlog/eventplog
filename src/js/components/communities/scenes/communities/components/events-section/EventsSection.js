@@ -24,7 +24,7 @@ export const generateMeta = (event) => (
   `${event.interested_persons} people interested`
 )
 
-const EventsSection = ({ events }) => {
+const EventsSection = ({ events, attendEvent, }) => {
   const {loading, error, data } = events
   return (
     <Sidebar title="Events you may like">

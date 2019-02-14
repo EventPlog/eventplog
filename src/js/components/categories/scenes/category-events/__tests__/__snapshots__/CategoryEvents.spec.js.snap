@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContent should render correctly 1`] = `
+<div>
+  <Styled(EventsSection)
+    community={Object {}}
+    events={Object {}}
+    key="user-upcoming-events-section"
+    title="Upcoming"
+  />
+  ,
+  <Styled(EventsSection)
+    community={Object {}}
+    events={Object {}}
+    key="user-past-events-section"
+    title="Past"
+  />
+</div>
+`;

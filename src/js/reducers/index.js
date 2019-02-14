@@ -19,6 +19,7 @@ import partners from 'js/components/partners/reducers'
 import cart from 'js/components/cart/reducers'
 import questions from 'js/components/questions/reducers'
 import search from 'js/components/search/reducers'
+import categories from 'js/components/categories/reducers'
 
 let rootReducer = combineReducers({
   auth,
@@ -41,6 +42,7 @@ let rootReducer = combineReducers({
   cart,
   questions,
   search,
+  categories,
 })
 
 export default rootReducer

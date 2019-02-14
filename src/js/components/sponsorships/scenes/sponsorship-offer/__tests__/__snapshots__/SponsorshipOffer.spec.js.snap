@@ -48,6 +48,21 @@ exports[`Sponsors should render correctly 1`] = `
         </Component>
       </div>
     </ContentPanel>
+    <ContentPanel
+      className="light-green"
+      title="About undefined"
+    >
+      <div
+        className="edit-cta"
+      >
+        <Component
+          className="btn-inline"
+          to="/e/3/backstage/settings?activeIndex=1"
+        >
+          Update event goals
+        </Component>
+      </div>
+    </ContentPanel>
     <MediaPartners
       className="blue"
       event={
