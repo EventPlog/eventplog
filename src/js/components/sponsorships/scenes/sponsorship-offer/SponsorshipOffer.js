@@ -15,6 +15,8 @@ import ContentEditable from 'js/components/shared/content-editable'
 import TargetAudience from './components/TargetAudience'
 import MediaPartners from './components/MediaPartners'
 import Members from 'js/components/shared/members'
+import AboutUser from 'js/components/user/scenes/user/components/AboutUser.js'
+
 import {
   genEventLink,
   genCommunityLink,
@@ -140,6 +142,10 @@ const StyledSponsorshipOffer = styled.div`
       background: #c0dee4;
     }
     
+    &.white {
+      background: #fff;
+    }
+    
     .content-header {
       font-size: 2rem;
     }
@@ -181,6 +187,16 @@ const StyledSponsorshipOffer = styled.div`
   
   .edit-cta {
     margin-top: 2rem;
+  }
+  
+  div, p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+  
+  .btn-inline {
+    display: inline-block;
+    margin-top: 1rem;
   }
 `
 
@@ -261,12 +277,38 @@ export const SponsorshipOffer = ({
           </ContentPanel>
         }
 
+        {(event.goals || event.is_stakeholder) &&
+          <ContentPanel className="light-green" title={`About ${event.title}`}>
+            {event.goals}
+            {event.is_stakeholder
+              ? <div className="edit-cta">
+                  <Button.Link className="btn-inline" to={`${genEventLink(event)}/backstage/settings?activeIndex=1`}>
+                    Update event goals
+                  </Button.Link>
+                </div>
+              : <div className="edit-cta">
+                  <Button.Link target="_blank"
+                               inverted
+                               className="btn-inline"
+                               to={`${genEventLink(event)}`}>
+                    View more on event page
+                  </Button.Link>
+                </div>
+            }
+          </ContentPanel>
+        }
+
         {organizers &&
-          <ContentPanel className="light-green" title="Meet the organizers">
+          <ContentPanel className="white" title="Meet the organizers">
             <Members>
-              {organizers.map(member =>
-                <Members.Member member={member} />
-              )}
+              {organizers.length > 3
+                ? organizers.map(member =>
+                    <Members.Member member={member} />
+                  )
+                : organizers.map(member =>
+                    <AboutUser {...{user: member, currentUser }}/>
+                  )
+              }
             </Members>
             {event.is_stakeholder &&
               <Button.Link className="btn-inline" to={`${genEventLink(event, event.community)}/backstage/settings`}>

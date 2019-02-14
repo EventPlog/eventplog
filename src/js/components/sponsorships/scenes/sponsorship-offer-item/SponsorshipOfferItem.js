@@ -91,7 +91,6 @@ const styles = css`
   ul:not(.meta) {
     list-style: disc;
     padding-left: 2rem;
-    line-height: 2rem;
   }
   
   h3, h4 {
@@ -143,7 +142,7 @@ export const SponsorshipOfferItem = ({
     {
       onClick: () => handleAddToCart(),
       className: 'cta-btn',
-      icon: <span><Icon name="cart"/>{`Sponsor this`}</span>,
+      icon: <span><Icon name="cart"/>{`Select this package`}</span>,
       inverted: true,
     }
 

@@ -88,6 +88,35 @@ const communities = {
   }
 }
 
+
+const categories = {
+  data: [
+    {
+      id: 1,
+      name: 'Technology',
+      description: 'A community of developers united in knowledge sharing.',
+      featured_image: '/login-bg.jpg',
+    },
+    {
+      id: 2,
+      name: 'Education',
+      description: 'A community of developers united in knowledge sharing.',
+      featured_image: '/login-bg.jpg',
+    },
+    {
+      id: 1,
+      name: 'Health',
+      description: 'A community of developers united in knowledge sharing.',
+      featured_image: '/login-bg.jpg',
+    },
+  ],
+  meta: {
+    "current_page": 1,
+    "total_pages": 1,
+    "per_page": 10
+  }
+}
+
 const events = {
   data: [
     {
@@ -271,4 +300,5 @@ export default {
   feedback,
   events,
   feedbackReport,
+  categories
 }

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Communities::Communities::EventsSection should render correctly 1`] = `
+<Sidebar
+  title="Events you may like"
+>
+  <SidebarCard
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/c/1"
+        >
+          Facebook Developer Circle Lagos
+        </Link>
+      </span>
+    }
+    featured_image="/samplePic.png"
+    key="1"
+    meta="211 people interested"
+    title={
+      <Link
+        replace={false}
+        to="/e/1"
+      >
+        Tech is in you
+      </Link>
+    }
+  />
+  <SidebarCard
+    description={
+      <span>
+        By 
+        <Link
+          replace={false}
+          to="/c/2"
+        >
+          Google Developer Group
+        </Link>
+      </span>
+    }
+    featured_image="/login-bg.jpg"
+    key="2"
+    meta="211 people interested"
+    title={
+      <Link
+        replace={false}
+        to="/e/2"
+      >
+        Writers corner workshop with writing and use of English
+      </Link>
+    }
+  />
+  <SidebarCard
+    description=""
+    featured_image="/l.jpg"
+    key="3"
+    meta="108 people interested"
+    title={
+      <Link
+        replace={false}
+        to="/e/3"
+      >
+        Figma Design Series
+      </Link>
+    }
+  />
+</Sidebar>
+`;

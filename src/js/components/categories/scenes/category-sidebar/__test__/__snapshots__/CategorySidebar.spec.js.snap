@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContent should render correctly 1`] = `
+<EventsSection
+  events={Array []}
+  title="Events you may like"
+/>
+`;

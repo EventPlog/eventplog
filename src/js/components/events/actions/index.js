@@ -30,7 +30,7 @@ export const getPastEvents = (params) => {
     data: params,
     errorMessage: 'Something prevented us from retrieving past events.',
     caller: 'leads',
-    route: `/api/v1/web/communities/${params.community_id}/events/past`,
+    route: `/api/v1/web/events/past`,
     requestMethod: 'GET'
   });
 }
@@ -105,6 +105,23 @@ export const getEvents = (eventParams = {}) => {
   })
 }
 
+export const getParentEvents = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_INDEX_START,
+    receiveType: actionTypes.EVENT_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_INDEX_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented getting events.',
+    caller: 'get events',
+    route: `/api/v1/web/events/parent_events`,
+    requestMethod: 'GET'
+  })
+}
+
 export const getEventsByVerb = (eventParams = {}) => {
   let actions = baseActions({
     requestType: actionTypes.EVENT_INDEX_START,
@@ -156,6 +173,25 @@ export const getEventsSuggestions = (eventParams = {}, limit = 2) => {
     errorMessage: 'Something prevented us getting event suggestions.',
     caller: 'get events',
     route: `/api/v1/web${communityDetails}/events/suggestions`,
+    requestMethod: 'GET'
+  })
+}
+
+export const getParentEventsSuggestions = (eventParams = {}, limit = 3) => {
+  let actions = baseActions({
+    requestType: actionTypes.EVENT_SUGGESTIONS_INDEX_START,
+    receiveType: actionTypes.EVENT_SUGGESTIONS_INDEX_COMPLETE,
+    failType: actionTypes.EVENT_SUGGESTIONS_INDEX_FAIL,
+  })
+
+  const { community_id } = eventParams
+  const communityDetails = community_id ? `/communities/${community_id}` : ''
+  return handleApiCall({
+    actions,
+    data: {...eventParams, limit},
+    errorMessage: 'Something prevented us getting event suggestions.',
+    caller: 'get events',
+    route: `/api/v1/web/events/parent_events_suggestions`,
     requestMethod: 'GET'
   })
 }

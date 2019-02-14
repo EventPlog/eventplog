@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Communities::Communities::MainContent should render correctly 1`] = `
+<MainContent
+  className="sc-gqjmRU iQJBjH"
+/>
+`;
