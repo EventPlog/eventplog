@@ -47,16 +47,10 @@ const StyledEventPlog = styled.div`
   }
 `
 
-const UserEvents = () => (
-  [
-    <Events key="user-events" />
-  ]
-)
-
 const EventPlog = ({user = {}}) => (
     <StyledEventPlog>
       <Switch>
-        <Route exact path="/" component={UserEvents} />
+        <Route exact path="/" component={Events} />
         <PrivateRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id" component={Event} />
         <PrivateRoute exact path="/e/new" component={NewEvent} />
@@ -76,7 +70,7 @@ const EventPlog = ({user = {}}) => (
 
 
         {/* maintain support for legacy routes */}
-        <PublicRoute exact path="/events" component={UserEvents} />
+        <PublicRoute exact path="/events" component={Events} />
         <PublicRoute exact path="/events/new" component={NewEvent} />
         <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
         <PublicRoute exact path="/communities/:community_id/events/:id" component={Event} />
@@ -84,7 +78,7 @@ const EventPlog = ({user = {}}) => (
         <PrivateRoute path="/communities/:community_id/events/:id/register" component={RegistrationForm} />
         <PrivateRoute path="/communities/:community_id/events/:id/feedback" component={FeedbackForm} />
 
-        <PublicRoute exact path="/ext" component={UserEvents} />
+        <PublicRoute exact path="/ext" component={Events} />
         <PublicRoute exact path="/ext/e/:id" component={Event} />
         <PublicRoute exact path="/ext/e/:id/register" component={RegistrationForm} />
         <PublicRoute exact path="/ext/c/:community_id/e/:id" component={Event} />

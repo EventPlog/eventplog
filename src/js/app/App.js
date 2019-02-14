@@ -8,6 +8,7 @@ import {Auth, PrivateRoute, PublicRoute} from 'js/auth'
 import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
 import Footer from 'js/components/footer'
+import Header from 'js/components/header/main-header'
 import Footer1 from 'js/components/footer1'
 import ExternalFooter from 'js/components/footer/ExternalFooter'
 import universalStyles from '../styles/universalStyles'
@@ -47,7 +48,7 @@ const StyledApp = styled.div`
     color: ${props => props.theme.gray};
     z-index: 10000;
     top: 0;
-    left: 150px;
+    left: 0;
     background: #1b1c1c;
     cursor: pointer;
     font-size: 1.3rem;
@@ -84,10 +85,11 @@ class App extends Component {
       
         <ScrollToTop>
           <StyledApp>
-            {sidebarVisible && !isMobile &&
+            <Header />
+            {!isMobile &&
               <div className="menu-btn"
                    onClick={toggleSidebar}>
-                <i aria-hidden="true" class="content icon">
+                <i aria-hidden="true" className="content icon">
                 </i>
               </div>
             }

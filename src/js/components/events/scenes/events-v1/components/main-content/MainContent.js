@@ -49,9 +49,9 @@ export const MainContent = ({
 
   return (
     <ContentSection className={className}>
-      Newer event
+
       <ContentSection.Body>
-        New Events
+        <Tab panes={getPanes()} {...{activeIndex}} />
       </ContentSection.Body>
 
       <ContentSection.Sidebar>

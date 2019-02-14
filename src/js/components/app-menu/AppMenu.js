@@ -211,12 +211,11 @@ const AppMenu = ({
         >
 
           <div className="sidebar-hold">
-            <div className="logo-hold">
+            {/* <div className="logo-hold">
               <Link className="logo item" to="/">
                 <img src={logo} alt='eventplog-logo' />
               </Link>
-
-            </div>
+            </div> */}
 
             <MainMenu {...{toggleSidebar, user}} />
 
@@ -272,9 +271,14 @@ const AppMenu = ({
                         style={{paddingRight: !isMobile && showSidebar ? '150px': '0'}}
                         onClick={() => (showSidebar && isMobile && handleSidebarHide())}>
           <Segment basic>
-            <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>
+            
+            {/* <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>
               <Icon name='content'  />
-            </div>
+            </div> */}
+            
+            <p>Hi</p>
+
+
             {children}
           </Segment>
         </Sidebar.Pusher>

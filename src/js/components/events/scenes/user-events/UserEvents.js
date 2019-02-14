@@ -35,12 +35,12 @@ const UserEvents = ({
   return (
     <div>
       <EventsSection key="user-upcoming-events-section"
-                     title="Upcoming" {...{events, getEvents, attendEvent }} />
-      <EventsSection key="user-past-events-section"
+                     title="Upcoming Events" {...{events, getEvents, attendEvent }} />
+      {/* <EventsSection key="user-past-events-section"
                      title="Past"
                      events={past_events}
                      getEvents={getPastEvents}
-                     attendEvent={attendEvent} />
+                     attendEvent={attendEvent} /> */}
 
     </div>
   )

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { darken } from 'polished'
 
 // internal
-import ContentPanel from 'js/components/shared/v2/content-panel'
+import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
@@ -109,6 +109,14 @@ export const EventsSection = ({
 
       {shouldDisplayData && data.length < 1 && <p>No events to display right now ...</p>}
 
+      {
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
+          ? <Pagination totalPages={meta.total_pages}
+                        activePage={meta.current_page}
+                        per_page={meta.per_page}
+                        onPageChange={getEvents} />
+          : ''
+      }
     </ContentPanel>
   )
 }
