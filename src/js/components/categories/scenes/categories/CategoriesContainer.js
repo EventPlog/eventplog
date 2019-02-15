@@ -41,6 +41,13 @@ class MainContentContainer extends Component {
     this.props.getCategoriesSuggestions({page: meta.activePage, per_page})
   }
 
+  followCategory = (category) => {
+    this.props.followCategory({
+      followable_id: category.id,
+      followable_type: 'Category'
+    })
+  }
+
   getData() {
     this.props.getCategories({page: 1, per_page: 10})
     this.props.getCategoriesSuggestions({page: 1, per_page: 10})
@@ -55,6 +62,7 @@ class MainContentContainer extends Component {
     ...this.props,
     ...this.getParams(),
     getCategories: this.getCategories,
+    followCategory: this.followCategory,
     getCategoriesSuggestions: this.getCategoriesSuggestions,
   })
 

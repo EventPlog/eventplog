@@ -2,7 +2,7 @@ import initialState from './intialState';
 import actionTypes from '../actions/types'
 import eventActionTypes from 'js/components/events/actions/types'
 
-const communityReducer = (state=initialState.community, action) => {
+const categoryReducer = (state=initialState.category, action) => {
   switch(action.type) {
     case actionTypes.CATEGORY_SHOW_START:
     case actionTypes.CATEGORY_CREATE_START:
@@ -22,11 +22,11 @@ const communityReducer = (state=initialState.community, action) => {
       return {loading: false, error: action.payload}
 
     case eventActionTypes.EVENT_SHOW_COMPLETE:
-      return {loading: false, ...action.payload.community}
+      return {loading: false, ...action.payload.category}
 
     default:
       return state;
   }
 };
 
-export default communityReducer
+export default categoryReducer

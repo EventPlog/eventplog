@@ -19,7 +19,7 @@ const communityReducer = (state=initialState.communities, action) => {
       return { ...state, data, loading: false }
 
     case actionTypes.COMMUNITY_FOLLOW_CREATE_COMPLETE:
-      data = updateItemInCollection(state.data, action.payload)
+      data = updateItemInCollection(state.data, action.payload, true)
       return {...state, data, loading: false, error: false}
 
     default:
