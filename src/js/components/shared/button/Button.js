@@ -37,7 +37,13 @@ const inverted = css`
   color: ${ colors.white};
   border-color: ${ colors.white };
   
-  &:hover {
+  &:link, &:visited {
+    background: var(--activeLink);
+    color: ${ colors.white};
+    border-color: ${ colors.white };
+  }
+  
+  &:hover, &:link:hover, &:visited:hover {
     background: ${ colors.white };
     border-color: var(--activeLink);
     color: var(--activeLink);
@@ -54,8 +60,8 @@ const StyledLink = (isAnchorTag) => {
     styled(El)`
       ${ commonStyles }
       
-      &:hover {
-        color: ${colors.white} !important;
+      &:hover, &:link:hover, &:visited:hover {
+        color: ${colors.white};
       }
     `
   )

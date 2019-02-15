@@ -20,9 +20,14 @@ const StyleEventUpdate = styled.div`
   }
   
   form.ui.form {
-  
+    font-size: 1.3rem; 
+    
     .fields {
       margin-bottom: 2rem;
+    }
+    
+    .field {
+      margin: 0 0 3em;
     }
     
     .checkbox {
@@ -76,6 +81,9 @@ const EventUpdate = ({
     start_time=(new Date()), end_time=(new Date()),
     location,
     community = {} } = event
+
+  const goalsCharLimit = 280
+
   return (
     <StyleEventUpdate>
       <ContentPanel title="Edit this event">
@@ -94,8 +102,19 @@ const EventUpdate = ({
                    onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 
+          <Form.Field className="wide email-holder">
+            <label>In a tweet (280 characters or less), tell your target audience why they should care about/attend this event.</label>
+            <TextArea name="goals"
+                      type="text"
+                      value={event.goals}
+                      maxLength={goalsCharLimit}
+                      placeholder='Event goals in a sentence or two.'
+                      onChange={(e) => handleChange(e.target.name, e.target.value)} />
+            <small>{goalsCharLimit - (event.goals || '').length} characters left.</small>
+          </Form.Field>
+
           <Form.Field>
-            <label>Description</label>
+            <label>Description (more verbose description for your event page)</label>
             <TextArea name="description"
                       value={description}
                       placeholder='An event about awesomeness'
@@ -212,7 +231,7 @@ const EventUpdate = ({
                       label='Make this event public' />
           </Form.Field>
 
-          <Button inverted type='submit' onClick={handleSubmit}>
+          <Button inverted large type='submit' onClick={handleSubmit}>
             Save
           </Button>
         </Form>

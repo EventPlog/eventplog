@@ -178,7 +178,7 @@ const MainContentCard = ({
   titleLink,
   className,
 }) => (
-  <StyledMainContentCard className={`community-card ${className}`}>
+  <StyledMainContentCard className={`content-panel-card ${className}`}>
     {!hideImage &&
       <div className="img-holder" style={{
                 backgroundImage: `url(${featured_image ? resizeImage(featured_image, 'thumbnail') : '/public/sample-bg.jpg'})`

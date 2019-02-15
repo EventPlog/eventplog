@@ -103,6 +103,11 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
                 "value": "Agriculture/Food and Beverage",
               },
               Object {
+                "key": "Business",
+                "text": "Business",
+                "value": "Business",
+              },
+              Object {
                 "key": "Construction/Real Estate",
                 "text": "Construction/Real Estate",
                 "value": "Construction/Real Estate",
@@ -163,6 +168,11 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
                 "value": "Retail and E-Commerce",
               },
               Object {
+                "key": "Relationships",
+                "text": "Relationships",
+                "value": "Relationships",
+              },
+              Object {
                 "key": "Religion",
                 "text": "Religion",
                 "value": "Religion",
@@ -173,9 +183,19 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
                 "value": "Security",
               },
               Object {
+                "key": "Self-Development",
+                "text": "Self-Development",
+                "value": "Self-Development",
+              },
+              Object {
                 "key": "Telecommunications",
                 "text": "Telecommunications",
                 "value": "Telecommunications",
+              },
+              Object {
+                "key": "Women",
+                "text": "Women",
+                "value": "Women",
               },
               Object {
                 "key": "Other",

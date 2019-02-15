@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories::Category::MainContent should render correctly 1`] = `
+<div
+  className="app-container"
+>
+  <ContentSection
+    className="category-event"
+  >
+    <ContentBody>
+      <Component />
+    </ContentBody>
+    <ContentSidebar>
+      <Component />
+    </ContentSidebar>
+  </ContentSection>
+</div>
+`;

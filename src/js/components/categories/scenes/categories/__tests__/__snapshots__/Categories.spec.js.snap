@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories should render correctly 1`] = `
+<styled.div>
+  <section
+    className="app-container"
+  >
+    <Styled(MainContent)
+      categories={
+        Array [
+          1,
+          2,
+          3,
+        ]
+      }
+    />
+  </section>
+</styled.div>
+`;

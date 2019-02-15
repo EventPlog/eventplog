@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories::Categories::CategoriesSection should render correctly 1`] = `
+<ContentPanel
+  title="Events Section"
+>
+  <MainContentCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="A community of developers united in knowledge sharing."
+    featured_image="/login-bg.jpg"
+    hideImage={false}
+    key="1"
+    meta={
+      <ul>
+        <li>
+           
+          follower
+        </li>
+        <li>
+           upcoming 
+          event
+        </li>
+      </ul>
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/cat/1"
+      >
+        Technology
+      </Link>
+    }
+    titleLink="/cat/1"
+  />
+  <MainContentCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="A community of developers united in knowledge sharing."
+    featured_image="/login-bg.jpg"
+    hideImage={false}
+    key="2"
+    meta={
+      <ul>
+        <li>
+           
+          follower
+        </li>
+        <li>
+           upcoming 
+          event
+        </li>
+      </ul>
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/cat/2"
+      >
+        Education
+      </Link>
+    }
+    titleLink="/cat/2"
+  />
+  <MainContentCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description="A community of developers united in knowledge sharing."
+    featured_image="/login-bg.jpg"
+    hideImage={false}
+    key="1"
+    meta={
+      <ul>
+        <li>
+           
+          follower
+        </li>
+        <li>
+           upcoming 
+          event
+        </li>
+      </ul>
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/cat/1"
+      >
+        Health
+      </Link>
+    }
+    titleLink="/cat/1"
+  />
+  <PaginationComponent
+    activePage={1}
+    totalPages={1}
+  />
+</ContentPanel>
+`;

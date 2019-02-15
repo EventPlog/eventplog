@@ -4,10 +4,11 @@ import styled from 'styled-components'
 // internal
 import { media } from 'js/styles/mixins'
 
+const defaultBgImage = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1550144548/comments/AOS-banner_hj0jd0.jpg'
+
 const StyledPage = styled.div`
   
   .banner {
-    background-image: url('https://img.rwgenting.com/rwgenting/uploadedImages/Images/Casino/Highlights/Earn_and_Buy_Promotion/AOS-banner.jpg?n=3717');
     min-height: 9.25rem;
     margin-bottom: 4rem;
     display: flex;
@@ -24,10 +25,12 @@ const StyledPage = styled.div`
   }
 `
 
-const Search = ({title, bannerImage, children}) => (
+const BannerPage = ({title, bannerImage, children}) => (
   <StyledPage>
     <div>
-      <div className="banner img-bg" style={bannerImage ? { backgroundImage: bannerImage } : {}}>
+      <div className="banner img-bg" style={{
+          backgroundImage: `url(${bannerImage || defaultBgImage})`
+      }}>
         <div className="overlay" />
         <div className="content app-container">
           <div className="caption">
@@ -44,4 +47,4 @@ const Search = ({title, bannerImage, children}) => (
   </StyledPage>
 )
 
-export default Search
+export default BannerPage
