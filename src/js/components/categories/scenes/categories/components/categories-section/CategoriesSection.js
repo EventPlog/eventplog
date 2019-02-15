@@ -23,9 +23,6 @@ export const generateMeta = (category = {}) => (
     <li>
       {category.no_of_upcoming_events} upcoming {pluralize('event', category.no_of_upcoming_events)}
     </li>
-    <li>
-      <span className="meta-label">Interests</span>: {category.interests && category.interests.map(interest => <span className="hashtag">{interest}</span> )}
-    </li>
   </ul>
 )
 
@@ -58,7 +55,7 @@ const CategorySection = ({
             <ContentPanel.Card
               key={category.id}
               {...{title, description, featured_image, meta}}
-              hideImage={true}
+              hideImage={!featured_image}
               showButton={showCTA && !category.following}
               titleLink={titleLink}
               btn={{onClick: () => followCategory(category), text: 'Follow'}} />
