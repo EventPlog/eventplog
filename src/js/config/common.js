@@ -4,6 +4,7 @@ export default {
     'Education',
     'Automotive/Transportation',
     'Agriculture/Food and Beverage',
+    'Business',
     'Construction/Real Estate',
     'Defence/Space',
     'Entertainment/Media',
@@ -16,9 +17,12 @@ export default {
     'Manufacturing',
     'Professional Services(Legal, Insurance, Accounting, HR, Marketing)',
     'Retail and E-Commerce',
+    'Relationships',
     'Religion',
     'Security',
+    'Self-Development',
     'Telecommunications',
+    'Women',
     'Other'
   ],
 

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SecondaryMenu should render correctly 1`] = `
+<styled.div>
+  <div
+    className="app-container"
+  >
+    <Nav
+      StackUlOnMobile={false}
+      hideOnMobile={false}
+    >
+      <Component>
+        <Link
+          replace={false}
+          to="/events"
+        >
+          Events
+        </Link>
+      </Component>
+      <Component>
+        <Link
+          replace={false}
+          to="/communities"
+        >
+          Communities
+        </Link>
+      </Component>
+    </Nav>
+  </div>
+</styled.div>
+`;

@@ -10,7 +10,12 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
-import { pluralize, genCommunityLink, genEventLink } from 'js/utils'
+import {
+  pluralize,
+  genCommunityLink,
+  genEventLink,
+  genCategoryLink
+} from 'js/utils'
 
 export const generateTitle = (event = {}, community = {}) => {
   return (
@@ -57,7 +62,9 @@ export const generateMeta = (event = {}) => ([
   </ul>,
   <ul>
     {event.category &&
-      <li className="event-category">Category: {event.category.name}</li>
+      <Link to={genCategoryLink(event.category)}>
+        <li className="event-category">Category: {event.category.name}</li>
+      </Link>
     }
   </ul>
 ])

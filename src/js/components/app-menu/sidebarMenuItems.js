@@ -2,10 +2,22 @@ import Auth from 'js/auth/actions'
 import {
   genEventLink,
   genCommunityLink,
+  genCategoryLink,
   genUserProfileLink,
 } from 'js/utils'
 
 export default [
+  {
+    path: '/cat/:id',
+    name: 'category',
+    genItems(category) {
+      const categoryLink = genCategoryLink(category)
+      const menuItems = [
+        { name: 'Back To Categories', icon: 'angle left', link: `/categories` },
+      ];
+      return {title: 'Community Links', items: menuItems}
+    }
+  },
   {
     path: '/c/:id',
     name: 'community',
@@ -21,7 +33,7 @@ export default [
   {
     path: '/e/:id/backstage',
     name: 'backstage',
-    genItems(_, event) {
+    genItems(event) {
       const eventLink = genEventLink(event)
       const isAdmin = event.organizer_role && (['admin', 'owner']
           .find(role => role == event.organizer_role.toLowerCase()))
@@ -39,7 +51,7 @@ export default [
   {
     path: '/e/:id',
     name: 'event',
-    genItems(_, event = {}) {
+    genItems(event = {}) {
       if (!event.id) return {}
 
       const eventLink = genEventLink(event)
@@ -72,7 +84,7 @@ export default [
   {
     path: '/u/:id',
     name: 'user',
-    genItems(_, event, user) {
+    genItems(user = {}) {
       const userLink = genUserProfileLink(user)
       const isLoggedInUser = user.id == Auth.currentUser().id
       const pronoun = isLoggedInUser ? 'Your' : `${user.less_formal_name}'s`

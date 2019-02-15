@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 // internal
-import CommunitiesNav from 'js/components/shared/user-secondary-menu'
 import MainContent from './components/main-content'
 import { media } from 'js/styles/mixins'
 import Loading from 'js/components/shared/loading'

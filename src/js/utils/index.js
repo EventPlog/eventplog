@@ -65,6 +65,12 @@ export const genCommunityLink = (community = {}) => (
   : ''
 )
 
+export const genCategoryLink = (category = {}) => (
+  category && category.id
+    ? `/cat/${category.slug || category.id}`
+    : ''
+)
+
 export const genUserProfileLink = (user = {}) => (
   user.id && user.less_formal_name
     ? `/u/${removeSpecialChars(user.less_formal_name)}-${user.id}`

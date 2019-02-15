@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommunityCard it renders correctly 1`] = `
+<div>
+  <div
+    className="header"
+  />
+  <div
+    className="description"
+  />
+  <div
+    className="meta"
+  >
+    <div
+      className="item"
+    />
+    <div
+      className="item"
+    />
+    <div
+      className="item"
+    />
+    <Button>
+      Follow
+    </Button>
+  </div>
+</div>
+`;
