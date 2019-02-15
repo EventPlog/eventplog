@@ -13,6 +13,7 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
     }
     description="A community of developers united in knowledge sharing."
     featured_image="/login-bg.jpg"
+    hideImage={false}
     key="1"
     meta={
       <ul>
@@ -23,14 +24,6 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
         <li>
            upcoming 
           event
-        </li>
-        <li>
-          <span
-            className="meta-label"
-          >
-            Interests
-          </span>
-          : 
         </li>
       </ul>
     }
@@ -54,6 +47,7 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
     }
     description="A community of developers united in knowledge sharing."
     featured_image="/login-bg.jpg"
+    hideImage={false}
     key="2"
     meta={
       <ul>
@@ -64,14 +58,6 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
         <li>
            upcoming 
           event
-        </li>
-        <li>
-          <span
-            className="meta-label"
-          >
-            Interests
-          </span>
-          : 
         </li>
       </ul>
     }
@@ -95,6 +81,7 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
     }
     description="A community of developers united in knowledge sharing."
     featured_image="/login-bg.jpg"
+    hideImage={false}
     key="1"
     meta={
       <ul>
@@ -105,14 +92,6 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
         <li>
            upcoming 
           event
-        </li>
-        <li>
-          <span
-            className="meta-label"
-          >
-            Interests
-          </span>
-          : 
         </li>
       </ul>
     }
