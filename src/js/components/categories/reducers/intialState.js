@@ -1,6 +1,6 @@
 export default {
-  community: {},
-  communities: {data: [], meta: {}, loading: false},
-  communities_suggestions: {data: [], meta: {}, loading: false},
-  user_communities : {data:[], meta: {}, loading: false}
+  category: {},
+  categories: {data: [], meta: {}, loading: false},
+  categories_suggestions: {data: [], meta: {}, loading: false},
+  user_categories : {data:[], meta: {}, loading: false}
 }
