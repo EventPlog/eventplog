@@ -2,20 +2,20 @@ import initialState from './intialState';
 import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
-const communityReducer = (state=initialState.communities_suggestions, action) => {
+const categoryReducer = (state=initialState.categories_suggestions, action) => {
   let data
   switch(action.type) {
-    case actionTypes.COMMUNITY_SUGGESTIONS_INDEX_START:
+    case actionTypes.CATEGORY_SUGGESTIONS_INDEX_START:
       return { ...state, loading: true }
 
-    case actionTypes.COMMUNITY_SUGGESTIONS_INDEX_COMPLETE:
+    case actionTypes.CATEGORY_SUGGESTIONS_INDEX_COMPLETE:
       return {...state, ...action.payload, loading: false}
 
-    case actionTypes.COMMUNITY_SUGGESTIONS_INDEX_FAIL:
+    case actionTypes.CATEGORY_SUGGESTIONS_INDEX_FAIL:
       return {...state, loading: false, error: action.payload}
 
-    case actionTypes.COMMUNITY_FOLLOW_CREATE_COMPLETE:
-      data = state.data.filter(commuity => commuity.id != action.payload.id)
+    case actionTypes.CATEGORY_FOLLOW_CREATE_COMPLETE:
+      data = state.data.filter(category => category.id != action.payload.id)
       return {...state, data}
 
     case actionTypes.EVENT_SUGGESTIONS_INDEX_COMPLETE:
@@ -32,4 +32,4 @@ const communityReducer = (state=initialState.communities_suggestions, action) =>
   }
 };
 
-export default communityReducer
+export default categoryReducer

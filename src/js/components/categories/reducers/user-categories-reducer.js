@@ -2,19 +2,19 @@ import initialState from './intialState'
 import actionTypes from '../actions/types'
 import UpdateItemCollection from 'js/reducers/helpers'
 
-const UserCommunitiesReducer = (state=initialState.user_communities, action) => {
+const UserCategoriesReducer = (state=initialState.user_categories, action) => {
     let data
     switch(action.type){
-        case actionTypes.USER_COMMUNITY_INDEX_START:
+        case actionTypes.USER_CATEGORY_INDEX_START:
           return {...state, loading:true}
 
-        case actionTypes.USER_COMMUNITY_INDEX_COMPLETE:
+        case actionTypes.USER_CATEGORY_INDEX_COMPLETE:
           return {...state, ...action.payload, loading: false}
 
-        case actionTypes.USER_COMMUNITY_INDEX_FAIL:
+        case actionTypes.USER_CATEGORY_INDEX_FAIL:
           return{...state, loading: false , error: action.payload}
 
-        case actionTypes.COMMUNITY_CREATE_COMPLETE:
+        case actionTypes.CATEGORY_CREATE_COMPLETE:
           data = [...state.data, action.payload]
           return { ...state, data, loading: false }
 
@@ -24,4 +24,4 @@ const UserCommunitiesReducer = (state=initialState.user_communities, action) => 
 
 }
 
-export default UserCommunitiesReducer;
+export default UserCategoriesReducer;

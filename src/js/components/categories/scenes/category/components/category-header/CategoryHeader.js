@@ -164,7 +164,7 @@ const CategoryHeader = ({
     name,
     featured_image,
     topic_interests,
-    no_of_views,
+    no_of_upcoming_events,
     is_owner,
     is_admin,
     following,
@@ -181,7 +181,7 @@ const CategoryHeader = ({
 
           <div className="details">
             {<h3>{name}</h3>}
-            <small>{no_of_followers} followers. {no_of_views} views.</small>
+            <small>{no_of_followers} followers. {no_of_upcoming_events} upcoming events.</small>
             {topic_interests &&
             <div className="hashtags-holder">
               {topic_interests.map(topic =>

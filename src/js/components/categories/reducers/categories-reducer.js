@@ -2,7 +2,7 @@ import initialState from './intialState';
 import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
-const communityReducer = (state=initialState.communities, action) => {
+const categoriesReducer = (state=initialState.categories, action) => {
   let data
   switch(action.type) {
     case actionTypes.CATEGORY_INDEX_START:
@@ -19,7 +19,7 @@ const communityReducer = (state=initialState.communities, action) => {
       return { ...state, data, loading: false }
 
     case actionTypes.CATEGORY_FOLLOW_CREATE_COMPLETE:
-      data = updateItemInCollection(state.data, action.payload)
+      data = updateItemInCollection(state.data, action.payload, true)
       return {...state, data, loading: false, error: false}
 
     default:
@@ -27,4 +27,4 @@ const communityReducer = (state=initialState.communities, action) => {
   }
 };
 
-export default communityReducer
+export default categoriesReducer

@@ -15,7 +15,7 @@ exports[`CommunityHeader should render correctly 1`] = `
         <h3 />
         <small>
            followers. 
-           views.
+           upcoming events.
         </small>
       </div>
     </Link>
