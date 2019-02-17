@@ -49,6 +49,7 @@
     "polished": "1.9.2",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
+    "prerender-node": "3.2.1",
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.2.0",
@@ -63,6 +64,7 @@
     "react-places-autocomplete": "7.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
+    "react-snap": "^1.6.1",
     "react-test-renderer": "16.3.2",
     "react-twitter-widgets": "1.7.1",
     "redux": "^3.7.2",
@@ -87,6 +89,7 @@
   "scripts": {
     "start": " node scripts/start.js",
     "build": "NODE_PATH=src node scripts/build.js",
+    "postbuild": "react-snap",
     "build:serve": "NODE_PATH=src NODE_ENV=development node server/bootstrap.js ",
     "test": "NODE_PATH=src node scripts/test.js --env=jsdom",
     "postinstall": "npm run build",
