@@ -5,7 +5,7 @@ import compression from 'compression'
 import serverRenderer from './middleware/renderer';
 import Loadable from 'react-loadable'
 import sslRedirect from 'heroku-ssl-redirect'
-
+import preRenderer from 'prerender-node'
 const PORT = process.env.PORT || 9000
 const path = require('path');
 
@@ -14,8 +14,12 @@ const path = require('path');
 const app = express();
 const router = express.Router();
 
+// use prerender as soon as possible
+app.use(preRenderer.set('prerenderToken', process.env.PRERENDER_TOKEN));
+
 // enable compression
 app.use(compression())
+
 
 // root (/) should always serve our server rendered page
 // router.use('^/$', serverRenderer);
