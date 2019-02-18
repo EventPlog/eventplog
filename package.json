@@ -46,6 +46,7 @@
     "polished": "1.9.2",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
+    "prerender-node": "3.2.1",
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.2.0",

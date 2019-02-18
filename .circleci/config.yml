@@ -5,6 +5,7 @@
 version: 2
 jobs:
   build:
+    parallelism: 3 # run three instances of this job in parallel
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
