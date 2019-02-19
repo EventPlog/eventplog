@@ -15,7 +15,7 @@ import ImageUploader from 'js/components/shared/image-uploader'
 
 const eventBannerStyles = css`
   min-height: 400px;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -27,6 +27,8 @@ const eventBannerStyles = css`
   ${
     media.phone`
       flex-direction: column;
+      min-height: 100vh;
+      height: auto;
     `
   } 
   
@@ -63,7 +65,7 @@ const eventBannerStyles = css`
     h2.title {
       font-size: 3rem;
       font-weight: 800;
-      margin-top: 4rem;
+      margin-top: 6rem;
       line-height: initial;
       color: white; 
     

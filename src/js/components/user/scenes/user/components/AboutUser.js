@@ -118,6 +118,11 @@ const StyledUser = styled.div`
     }
   }
   
+  .profile-edit-btn {
+    padding: 0.2rem 0.5rem;
+    margin: 1rem 0;
+    display: inline-block;
+  }
 `
 
 const UserProfile = ({
@@ -175,6 +180,13 @@ const UserProfile = ({
               </a>
               }
             </li>
+            {isLoggedInUser && !handleChange &&
+              <li>
+                <Button.Link className="profile-edit-btn" to={`${userProfileLink}/settings`}>
+                  <Icon name="edit" /> Edit
+                </Button.Link>
+              </li>
+            }
 
           </ul>
         </div>

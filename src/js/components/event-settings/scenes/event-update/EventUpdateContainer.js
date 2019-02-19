@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import recachePage from 'js/utils/recachePage'
+import { genEventLink } from 'js/utils'
 
 class EventUpdateContainer extends Component {
   state = { event: {}, slug_check: {} }
@@ -28,6 +30,7 @@ class EventUpdateContainer extends Component {
     return this.props.updateEvent(others).then(event => {
       this.setState({event, success: 'Event updated successfully'})
       mixpanel.track('EVENT_UPDATE')
+      recachePage(genEventLink(event))
     }).catch(error => this.setState({success: false, error: 'An error occured. Please try again.'}))
   }
 
