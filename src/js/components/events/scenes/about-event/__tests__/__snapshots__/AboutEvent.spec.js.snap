@@ -58,5 +58,21 @@ exports[`Event should render correctly 1`] = `
   >
     <Members />
   </ContentPanel>
+  <ContentPanel
+    title="Become a sponsor"
+  >
+    <TargetAudience
+      className="target-audience"
+      event={Object {}}
+      sponsorship_offer={Object {}}
+    />
+    <Component
+      className="btn-inline"
+      inverted={true}
+      to="/e/undefined/sponsors/new"
+    >
+      View sponsorship options
+    </Component>
+  </ContentPanel>
 </styled.div>
 `;

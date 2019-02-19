@@ -14,6 +14,8 @@ import Members from 'js/components/shared/members'
 import ContentEditable from 'js/components/shared/content-editable'
 import QuickFeedbackForm from 'js/components/feedback/scenes/quick-feedback-form'
 import { genEventLink } from 'js/utils'
+import TargetAudience from 'js/components/sponsorships/scenes/sponsorship-offer/components/TargetAudience'
+import AboutUser from 'js/components/user/scenes/user/components/AboutUser.js'
 
 const StyledEvent = styled.div`
   .event-description {
@@ -53,24 +55,38 @@ const StyledEvent = styled.div`
   .btn-inline {
     display: inline-block;
   }
+  
+  .code-holder {
+    background: var(--yellow);
+    padding: 1rem;
+  }
+  
+  .target-audience {
+    .content-header {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .same-line {
+    display: flex;
+  }
+  
+  .avatar-medium {
+    margin: 2rem 0;
+  }
 `
 
 const Event = ({
   event = {},
-  editorState,
   organizers,
-  community,
   activeLink,
   past_events = {},
   handleChange,
   handleSubmit,
-  attendEvent,
-  createComment,
-  updateComment,
+  currentUser,
   getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
-  onEditorStateChange,
 }) => {
 
   if (event.loading) {
@@ -80,11 +96,14 @@ const Event = ({
   const isStakeHolder = event.is_stakeholder
 
   const {title, description, is_stakeholder,
-          announcements, agenda} = event
+          announcements, agenda, sponsors = [],
+          sponsorship_offer = {}} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
 
   const eventShortLink = `${window.location.host}${genEventLink(event)}/register`
+
+  const sponsorsExist = sponsors && sponsors.length > 0
   return (
     <StyledEvent activeLink={activeLink}>
       <ContentPanel title="Description">
@@ -129,13 +148,34 @@ const Event = ({
       <ContentPanel title="Meet the organizers">
         <Members>
           {organizers && organizers.map(member =>
-            <Members.Member member={member} />
+            <Members>
+              {organizers.length > 3
+                ? organizers.map(member =>
+                  <Members.Member member={member} />
+                )
+                : organizers.map(member =>
+                  <AboutUser {...{user: member, currentUser }}/>
+                )
+              }
+            </Members>
           )}
         </Members>
         {is_stakeholder &&
-        <Button.Link className="btn-inline" to={`${genEventLink(event, event.community)}/backstage/settings`}>
+        <Button.Link className="btn-inline"
+                     to={`${genEventLink(event, event.community)}/backstage/settings`}>
           Add more organizers
         </Button.Link>}
+      </ContentPanel>
+
+      <ContentPanel title={sponsorsExist ? "Sponsors" : "Become a sponsor" }>
+        {!sponsorsExist &&
+          <TargetAudience className="target-audience" {...{ sponsorship_offer, event } }/> }
+
+        <Button.Link inverted
+                     className="btn-inline"
+                     to={`${genEventLink(event)}/sponsors/new`}>
+          View sponsorship options
+        </Button.Link>
       </ContentPanel>
 
       {is_stakeholder &&
@@ -147,7 +187,7 @@ const Event = ({
             To embed your registration form,&nbsp;
             copy and paste this embed code where you want the form to appear on your site on your site.
           </p>
-          <p>
+          <p className="code-holder">
             <code>
               {`
                 <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
@@ -159,7 +199,7 @@ const Event = ({
           <p>
             Alternatively, you can point your guests to&nbsp;
             <Link to={`${genEventLink(event)}/register`}>{eventShortLink}</Link>&nbsp;
-            to register faster.
+            to go directly to the registration form.
           </p>
         </ContentPanel>
       }

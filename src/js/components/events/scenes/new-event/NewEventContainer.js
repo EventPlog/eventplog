@@ -20,6 +20,7 @@ import {
   getCommunitiesByName,
 } from 'js/components/communities/actions'
 
+import recachePage from 'js/utils/recachePage'
 import Auth from 'js/auth'
 
 
@@ -93,6 +94,7 @@ export class EventContainer extends Component {
       this.setState({event, loading: false, eventCreated: true})
       this.props.updateState({newEvent: event})
       this.allowNext(true)
+      recachePage()
     })
       .catch(error => this.setState({loading: false, error}))
   }

@@ -113,7 +113,7 @@ exports[`Sponsors should render correctly 1`] = `
                     as="i"
                     name="plus"
                   />
-                  Add a new package
+                  Add
                 </Button>
               }
             >
