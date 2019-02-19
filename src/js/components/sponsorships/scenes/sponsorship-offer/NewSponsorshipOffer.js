@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Form, Icon, Select } from 'semantic-ui-react'
+import { Form, Icon, Select, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 // internal
@@ -9,10 +9,18 @@ import { pluralize, genEventLink } from 'js/utils'
 import { sponsorshipTypeOptions } from '../new-sponsorship-offer-item/NewSponsorshipOfferItem'
 import { TextArea, Input, Button } from 'js/components/shared'
 
-const CustomOfferForm = ({title, amount, benefits, sponsorship_type}) => {
+const CustomOfferForm = ({
+  title,
+  amount,
+  benefits,
+  accept_terms,
+  sponsorship_type
+}) => {
   return (
     <Form>
-      <div style={{paddingBottom: '2rem'}}>If you would like to help out in a way different from the packages above, you could make your own offer...</div>
+      <div style={{paddingBottom: '2rem'}}>
+        Let the organizers know how you would like to contribute.
+      </div>
       <Form.Field>
         <label>Describe the offer in a sentence.</label>
         <Input name="title"
@@ -45,10 +53,15 @@ const CustomOfferForm = ({title, amount, benefits, sponsorship_type}) => {
                   value={benefits}
                   placeholder="* 2 thank you tweets."
                   onChange={({target}) => handleChange(target.name, target.value)}/>
-        <small>Event organizers would accept your request(s) before the money gets to them.</small>
+      </Form.Field>
+
+      <Form.Field>
+        <Checkbox checked={accept_terms}
+                  onClick={(e, attr) => handleChange('accept_terms', attr.checked ) }
+                  label='I accept to be contacted by EventPlog on behalf of the organizer either by email or phone' />
       </Form.Field>
       <Button className="cta-add">
-        <Icon name="plus"/> Add this offer to my cart
+        <Icon name="send"/> Submit offer
       </Button>
     </Form>
   )
@@ -68,7 +81,7 @@ const SponsorsList = ({
 
   const newOffer = {
     title: <span>
-             Or make your own offer
+             Make a custom offer
            </span>,
     hideImage: true,
     description: <CustomOfferForm/>,

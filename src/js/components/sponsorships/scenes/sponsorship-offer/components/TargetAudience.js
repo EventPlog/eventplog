@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Table, Header, Checkbox } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Table, Header, Checkbox, Icon, Message } from 'semantic-ui-react'
 import ReactMarkdown from 'react-markdown'
 
 //=========== INTERNAL COMPONENTS ==============
 import ContentPanel from 'js/components/shared/content-panel'
 import ContentEditable from 'js/components/shared/content-editable'
+import { genEventLink } from 'js/utils'
 
 class TargetAudience extends Component {
   state = { editMode: false }
@@ -23,11 +25,11 @@ class TargetAudience extends Component {
     } = this.props
 
     const { editMode } = this.state
-    const canEdit = event.is_stakeholder
-    const { topics = [] } = event
+    const canEdit = event.is_stakeholder && handleChange
+    const { topics = [], category = {} } = event
 
     return (
-      <ContentPanel className={className} title="Target Audience">
+      <ContentPanel className={className} title="Audience Information">
         <Table basic='very' celled collapsing>
           <Table.Body>
             <Table.Row>
@@ -100,11 +102,8 @@ class TargetAudience extends Component {
                                      key,
                                      value.split(',')
                                    )}>
-                  {topics.length > 0 ? topics.join(', ') : (canEdit ? 'Add topic tags related to this event (separated by commas)' : '')}
+                  {topics.length > 0 ? topics.join(', ') : (canEdit ? 'Add topic tags related to this event (separated by commas)' : category && category.name)}
                 </ContentEditable>
-                <span className="small">
-                    Sponsoring this event gives you access to view and send messages to guests.
-                  </span>
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -134,6 +133,14 @@ class TargetAudience extends Component {
           <Checkbox toggle checked={editMode}
                     label={editMode ? "Turn off edit mode" : "Click to edit audience"}
                     onClick={this.toggleEditMode}/>
+        }
+        {event.is_stakeholder && !handleChange &&
+          <Message info content={
+            <span className="small">
+              <Icon name="info circle" />
+              Target audience information can be edited in <Link to={`${genEventLink(event)}/sponsors/new`}>the sponsorship page.</Link>
+            </span>
+          } />
         }
       </ContentPanel>
     )

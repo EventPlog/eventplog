@@ -90,9 +90,10 @@ const StyledSponsorshipOffer = styled.div`
   }
   
   button {
-    background: #f5f50f;
+    background: var(--yellow);
     border: none;
-    color: #444;
+    color: ${props => props.theme.darkGray};
+    font-size: 1.2rem;
   }
   
   .continue-btn {
@@ -198,6 +199,11 @@ const StyledSponsorshipOffer = styled.div`
     display: inline-block;
     margin-top: 1rem;
   }
+  
+  .avatar-medium {
+    margin: 2rem 0;
+  }
+  
 `
 
 export const generateTitle = (event) => {
@@ -211,7 +217,7 @@ export const generateTitle = (event) => {
                  trigger={
                     <Button>
                       <Icon name="plus"/>
-                      Add a new package
+                      Add
                     </Button>
                   }>
             <ContentPanel title="Add a package you'd like sponsored">
