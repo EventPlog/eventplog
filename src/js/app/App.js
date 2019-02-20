@@ -7,15 +7,13 @@ import 'nprogress/nprogress.css'
 import {Auth, PrivateRoute, PublicRoute} from 'js/auth'
 import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
-import Footer from 'js/components/footer'
 import Header from 'js/components/header/main-header'
-import Footer1 from 'js/components/footer1'
+import Footer from 'js/components/footer1'
 import ExternalFooter from 'js/components/footer/ExternalFooter'
 import universalStyles from '../styles/universalStyles'
 import NewInvitationBar from 'js/components/invitations/components/new-invitation-bar'
 import ScrollToTop from '../components/shared/scroll-to-top'
 import appThemeColors from 'js/styles/theme/variables'
-import BreadCrumb from 'js/components/shared/breadcrumb'
 import AppMenu from 'js/components/app-menu'
 import { lighten, darken } from 'polished'
 
@@ -98,7 +96,6 @@ class App extends Component {
               </div>
             }
             <AppMenu isInternalPath={isInternalPath}>
-              {false && isInternalPath && showBreadCrumb && <BreadCrumb {...this.props.location} />}
               {<NewInvitationBar />}
               <Switch>
                 <Route exact path="/" component={Events} />
@@ -122,7 +119,7 @@ class App extends Component {
                 <Route path="/ext/e/*" component={Events} />
                 <Route path="/ext/c/*" component={Communities} />
               </Switch>
-              {isInternalPath && <Footer1 />}
+              {isInternalPath && <Footer />}
               {!isInternalPath && <ExternalFooter />}
             </AppMenu>
           </StyledApp>
