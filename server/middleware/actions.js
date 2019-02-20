@@ -58,8 +58,10 @@ const fetchCommunityMeta = ({ path, params = {} }) => {
 
 const fetchEventMeta = ({ path,  params = {} }) => {
   return fetchData(`/api/v1/web/events/${params.id}`)
-    .then(({location = {}, ...event}) => (
-      `
+    .then(event => {
+      const { location = {} } = event
+      return (
+        `
         <title>${event.title} - EventPlog</title>
         <meta property="og:title" content="${event.title || 'Untitled Event'} - EventPlog" />
         <meta name="description" content="${event.goals || event.description || ''} - EventPlog" />
@@ -105,7 +107,8 @@ const fetchEventMeta = ({ path,  params = {} }) => {
           }
           </script>
       `
-    ))
+      )
+    })
     .catch(err => {
       console.log(err);
       return ''
