@@ -45,7 +45,7 @@ const SponsorsList = ({
         </div>
       }
 
-      <div className="pagination-wrapper">
+      <div className="pagination-wrapper" style={{marginBottom: '6rem'}}>
       {
         meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
           ? <Pagination totalPages={meta.total_pages}

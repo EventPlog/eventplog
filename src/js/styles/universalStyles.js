@@ -154,6 +154,14 @@ const styles = css`
       background-color: ${props => props.theme.red};
     }
   }
+  
+  small, .small {
+    font-size: 90%;
+  }
+  
+  .ui.form {
+    max-width: 800px;
+  }
 `
 
 export default styles;

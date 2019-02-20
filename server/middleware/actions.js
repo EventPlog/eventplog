@@ -58,16 +58,16 @@ const fetchCommunityMeta = ({ path, params = {} }) => {
 
 const fetchEventMeta = ({ path,  params = {} }) => {
   return fetchData(`/api/v1/web/events/${params.id}`)
-    .then(event => (
+    .then(({location = {}, ...event}) => (
       `
         <title>${event.title} - EventPlog</title>
-        <meta property="og:title" content="${event.title} - EventPlog" />
-        <meta name="description" content="${event.description || ''} - EventPlog" />
+        <meta property="og:title" content="${event.title || 'Untitled Event'} - EventPlog" />
+        <meta name="description" content="${event.goals || event.description || ''} - EventPlog" />
         <meta property="og:description" content="${event.goals || event.descriptionu || ''}" />
         <meta property="og:image" content="${event.featured_image}" />
         <meta property="og:url" content="https://eventplog.com${path}">
-        <meta property="twitter:title" content="${event.title} - EventPlog" />
-        <meta property="twitter:description" content="${event.description || ''}" />
+        <meta property="twitter:title" content="${event.title || 'Untitled Event'} - EventPlog" />
+        <meta property="twitter:description" content="${event.goals || event.description || ''}" />
         <meta property="twitter:image" content="${event.featured_image}" />
         <link rel="canonical" href="https://eventplog.com${path}">
         <script>window.__INITIAL_DATA__=${serialize({event})}</script>
@@ -81,16 +81,24 @@ const fetchEventMeta = ({ path,  params = {} }) => {
             "startDate": "${event.start_time}",
             "location": {
               "@type": "Place",
-              "name": "${event.venue}"
+              "name": "${location.address || event.venue}",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "${location.address}",
+                "addressLocality": "${location.region && location.region.name}",
+                "postalCode": "",
+                "addressRegion": "${location.region && location.region.name}",
+                "addressCountry": "${location.country && location.country.name}"
+              }
             },
             "image": [
               "${event.featured_image}"
              ],
-            "description": "${event.description}",
+            "description": "${event.goals || event.description || ''}",
             "endDate": "${event.end_time}",
             "offers": {
               "@type": "Offer",
-              "url": "https://eventplog.com${path}",
+              "url": "https://my.eventplog.com${path}",
               "price": "0",
               "priceCurrency": "NGN"
             }

@@ -1,5 +1,5 @@
 import actionTypes from './types'
-import { handleApiCall, baseActions } from '../../../services/actionHelpers'
+import { handleApiCall, baseActions } from 'js/services/actionHelpers'
 
 export const getCart = (params) => {
   let actions = baseActions({
