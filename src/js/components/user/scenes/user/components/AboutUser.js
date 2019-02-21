@@ -180,7 +180,7 @@ const UserProfile = ({
               </a>
               }
             </li>
-            {isLoggedInUser && !handleChange &&
+            {(isLoggedInUser || currentUser.admin) && !handleChange &&
               <li>
                 <Button.Link className="profile-edit-btn" to={`${userProfileLink}/settings`}>
                   <Icon name="edit" /> Edit
