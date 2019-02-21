@@ -129,6 +129,7 @@ const EditUserForm = ({
                         value={user.bio}
                         placeholder='A bit about yourself'
                         maxLength={1000}
+                        rows={5}
                         onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
 
