@@ -1,4 +1,4 @@
-// const webAPI = require('../../src/js/utils/webAPI')
+const { genEventLink } = require('../../src/js/utils')
 const fetch = require('isomorphic-fetch')
 const serialize = require('serialize-javascript')
 
@@ -60,6 +60,7 @@ const fetchEventMeta = ({ path,  params = {} }) => {
   return fetchData(`/api/v1/web/events/${params.id}`)
     .then(event => {
       const { location = {} } = event
+      const eventUrl = 'https://my.eventplog.com' + genEventLink(event)
       return (
         `
         <title>${event.title} - EventPlog</title>
@@ -67,7 +68,7 @@ const fetchEventMeta = ({ path,  params = {} }) => {
         <meta name="description" content="${event.goals || event.description || ''} - EventPlog" />
         <meta property="og:description" content="${event.goals || event.descriptionu || ''}" />
         <meta property="og:image" content="${event.featured_image}" />
-        <meta property="og:url" content="https://eventplog.com${path}">
+        <meta property="og:url" content="${eventUrl}">
         <meta property="twitter:title" content="${event.title || 'Untitled Event'} - EventPlog" />
         <meta property="twitter:description" content="${event.goals || event.description || ''}" />
         <meta property="twitter:image" content="${event.featured_image}" />
@@ -79,7 +80,7 @@ const fetchEventMeta = ({ path,  params = {} }) => {
             "@type": "Event",
             "@id":"#event",
             "name": "${event.title}",
-            "url": "https://eventplog.com${path}",
+            "url": "${eventUrl}",
             "startDate": "${event.start_time}",
             "location": {
               "@type": "Place",
@@ -100,7 +101,7 @@ const fetchEventMeta = ({ path,  params = {} }) => {
             "endDate": "${event.end_time}",
             "offers": {
               "@type": "Offer",
-              "url": "https://my.eventplog.com${path}",
+              "url": "${eventUrl}",
               "price": "0",
               "priceCurrency": "NGN"
             }

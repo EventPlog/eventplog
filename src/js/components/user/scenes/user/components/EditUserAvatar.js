@@ -67,7 +67,7 @@ const EditUserAvatar = ({
 
   return (
     <div className={`${className} avatar-medium`} style={{backgroundImage: `url(${userAvatar})`}}>
-      {isLoggedInUser && handleChange &&
+      {(isLoggedInUser || currentUser.admin) && handleChange &&
         <span className="upload-btn-controls">
           <ImageUploader setImage={(image) => handleChange('avatar_url', image)}
                          currentImage={userAvatar}

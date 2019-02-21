@@ -129,7 +129,7 @@ const UserProfile = ({
             {/*<Link to={`${userProfileLink}/skills`}>Skills/Projects</Link>*/}
           {/*</Nav.Item>*/}
           {
-            user.id == currentUser.id &&
+            ((user.id == currentUser.id) || currentUser.admin) &&
             <Nav.Item>
               <NavLink activeClassName="active"
                        to={`${userProfileLink}/settings`}>
