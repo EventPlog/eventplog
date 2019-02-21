@@ -93,6 +93,7 @@ exports[`EditUserForm should render correctly 1`] = `
             name="bio"
             onChange={[Function]}
             placeholder="A bit about yourself"
+            rows={5}
           />
         </FormField>
         <FormField>
