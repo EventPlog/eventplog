@@ -104,6 +104,15 @@ exports[`PlogMarkdownEditor renders correctly 1`] = `
         name="file code outline"
       />
     </div>
+    <div
+      className="cell"
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="image"
+      />
+    </div>
   </div>
   <Styled(Component)
     onBlur={[Function]}
@@ -114,15 +123,18 @@ exports[`PlogMarkdownEditor renders correctly 1`] = `
     showSubmit={true}
     value="Everyday sun"
   />
-  <Button
-    className="save-btn"
-    onClick={[Function]}
-  >
-    <Icon
-      as="i"
-      name="save"
-    />
-     Save
-  </Button>
+  <span>
+    <Button
+      className="save-btn"
+      inverted={true}
+      onClick={[Function]}
+    >
+      <Icon
+        as="i"
+        name="save"
+      />
+       Save
+    </Button>
+  </span>
 </styled.div>
 `;

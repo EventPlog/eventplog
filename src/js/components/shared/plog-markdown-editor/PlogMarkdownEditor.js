@@ -49,7 +49,7 @@ const TextEditorStyles = styled.div`
 export const format = (preCh, postCh, state, convertBr) => {
   const { selectionStart, selectionEnd, selectedText } = state;
 
-  if (selectionStart == selectionEnd) return
+  // if (selectionStart == selectionEnd) return
 
   let textValue = state.textValue;
   textValue = splice(selectionEnd, 0, textValue, postCh)
@@ -145,6 +145,10 @@ class PlogMarkdownEditor extends React.Component {
             onClick={() => this.format('```' + lineBreak, lineBreak + '```' + lineBreak)}>
             <Icon name="file code outline" />
           </div>
+          <div className="cell"
+               onClick={() => this.format('![file_name]', '(replace_with_image_url)')}>
+            <Icon name="image" />
+          </div>
         </div>
         <TextArea {...this.props}
                   onBlur={() => {} }
@@ -153,10 +157,20 @@ class PlogMarkdownEditor extends React.Component {
                   value={this.state.textValue}
                   onChange={this.onChange} />
         {this.props.showSubmit &&
-          <Button className="save-btn"
-                onClick={this.props.onSubmit}>
-          <Icon name="save" /> Save
-        </Button>}
+          <span>
+            <Button className="save-btn"
+                    inverted
+                    onClick={this.props.onSubmit}>
+              <Icon name="save" /> Save
+            </Button>
+            {this.props.onCancel &&
+              <Button className="save-btn"
+                      onClick={this.props.onCancel}>
+                <Icon name="save"/> Cancel
+              </Button>
+            }
+          </span>
+        }
       </TextEditorStyles>
     )
   }
