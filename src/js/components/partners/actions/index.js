@@ -120,6 +120,56 @@ export const deletePartner = (params = {}) => {
   })
 }
 
+export const getPartnerLead = (partnerLeadId) => {
+  let actions = baseActions({
+    requestType: actionTypes.PARTNER_SHOW_START,
+    receiveType: actionTypes.PARTNER_SHOW_COMPLETE,
+    failType: actionTypes.PARTNER_SHOW_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: partnerLeadId,
+    errorMessage: 'Something prevented us from retrieving this partner.',
+    caller: 'get partners',
+    route: `/api/v1/web/partner_leads/${partnerLeadId}`,
+    requestMethod: 'GET'
+  })
+}
+
+export const createPartnerLead = (params) => {
+  let actions = baseActions({
+    requestType: actionTypes.PARTNER_CREATE_START,
+    receiveType: actionTypes.PARTNER_CREATE_COMPLETE,
+    failType: actionTypes.PARTNER_CREATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from creating this partner. Please try again later or contact support.',
+    caller: 'create partner',
+    route: `/api/v1/web/partner_leads`,
+    requestMethod: 'POST'
+  })
+}
+
+export const updatePartnerLead = (params = {}) => {
+  let actions = baseActions({
+    requestType: actionTypes.PARTNER_UPDATE_START,
+    receiveType: actionTypes.PARTNER_UPDATE_COMPLETE,
+    failType: actionTypes.PARTNER_UPDATE_FAIL,
+  })
+
+  return handleApiCall({
+    actions,
+    data: params,
+    errorMessage: 'Something prevented us from updating this partner. Please try again later or contact support.',
+    caller: 'updatew partner',
+    route: `/api/v1/web/partner_leads/${params.partner_lead.id}`,
+    requestMethod: 'PATCH'
+  })
+}
 export const updateViewCount = (params = {}) => {
   let actions = baseActions({
     requestType: actionTypes.PARTNER_UPDATE_START,

@@ -3,6 +3,7 @@ import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import styled, {css} from 'styled-components'
 import ReactMarkdown from 'react-markdown'
+import { lighten } from 'polished'
 
 import SponsorshipOfferItems from './SponsorshipOfferItems'
 import NewSponsor from '../new-sponsorship-offer-item'
@@ -30,6 +31,7 @@ const StyledSponsorshipOffer = styled.div`
   
   &.app-container {
     margin-top: 3rem;
+    margin-bottom: 6rem;
     padding: 1rem;
     
     > div {
@@ -42,6 +44,7 @@ const StyledSponsorshipOffer = styled.div`
         margin-left: -2rem;
         width: calc(100% + 4rem);
         margin-top: 0;
+        margin: 0;
       `
     }
   
@@ -114,8 +117,8 @@ const StyledSponsorshipOffer = styled.div`
     
     ${
       media.phone`
-        padding-right: 1rem;
-        padding-left: 1rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
       `
     }
     
@@ -133,6 +136,10 @@ const StyledSponsorshipOffer = styled.div`
     
     &.purple {
       background: #ceb7fd;
+    }
+    
+    &.dark-purple {
+      background: ${props => lighten(-0.05, '#ceb7fd')};
     }
     
     &.gray {
@@ -204,6 +211,10 @@ const StyledSponsorshipOffer = styled.div`
     margin: 2rem 0;
   }
   
+  .custom-sponsor-form {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
 `
 
 export const generateTitle = (event) => {

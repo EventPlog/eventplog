@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewPartnerLeadForm should render correctly 1`] = `
+<styled.div
+  style={Object {}}
+>
+  <Form
+    as="form"
+  >
+    <Message
+      header="Success!"
+      success={true}
+    />
+    <Message
+      error={true}
+      header="Error!"
+    />
+    <div
+      className="info"
+    >
+      Request to sponsor: 
+       (
+      )
+    </div>
+    <FormField>
+      <label>
+        First Name
+      </label>
+      <Styled(Input)
+        name="first_name"
+        onChange={[Function]}
+        placeholder="Jane"
+        value="Kent"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Last Name
+      </label>
+      <Styled(Input)
+        name="last_name"
+        onChange={[Function]}
+        placeholder="Doe"
+        value="Bent"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Email
+      </label>
+      <Styled(Input)
+        name="email"
+        onChange={[Function]}
+        placeholder=""
+        type="email"
+        value="some@one.com"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Phone Number
+      </label>
+      <Styled(Input)
+        name="phone_number"
+        onChange={[Function]}
+        placeholder=""
+        type="number"
+        value="803234"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Company
+      </label>
+      <Styled(Input)
+        name="company_name"
+        onChange={[Function]}
+        placeholder="XYZ Company"
+        value="An awesome title"
+      />
+    </FormField>
+    <FormField>
+      <label>
+        Anything else you would like to add? (optional)
+      </label>
+      <Styled(Component)
+        name="extra_details"
+        onChange={[Function]}
+        placeholder="I would like to be carried along during planning"
+        value="more details"
+      />
+    </FormField>
+    <FormField>
+      <Checkbox
+        checked={true}
+        label="I accept to be contacted by EventPlog on behalf of the organizer either by email or phone"
+        onClick={[Function]}
+        type="checkbox"
+      />
+    </FormField>
+    <Button
+      disabled={false}
+      inverted={true}
+    >
+      Save
+    </Button>
+    <Button>
+      Cancel
+    </Button>
+  </Form>
+</styled.div>
+`;
