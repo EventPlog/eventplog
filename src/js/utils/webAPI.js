@@ -19,6 +19,7 @@ const requestBody = (data, method) => {
 * @return {Object} Headers containing auth details
 */
 export function requestHeaders(presetHeaders, uploadOp) {
+  if (presetHeaders.none) return {}
   if (Object.keys(presetHeaders).length > 0) return presetHeaders
   let headers =  {
     'Authorization': `Bearer ${Auth.user_token}`,
@@ -48,7 +49,7 @@ export default function processRequest({url, path, headers = {}, method = 'GET',
     body    : uploadOp ? data : requestBody(data, method)
   })
   .then(async(response) => {
-    if (response.ok) return response.json()
+    if (response.ok && response.json) return response.json()
     let message  = await response.json()
     throw(message || response.status)
   })

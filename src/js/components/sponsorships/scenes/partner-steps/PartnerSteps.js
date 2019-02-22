@@ -20,16 +20,19 @@ const SponsorshipPayment = createLoader(() =>
 
 const PartnerSteps = ({ event }) => (
   <BannerPage title={event.title} bannerImage={event.featured_image}>
-    <SteppedComponents loginRequired
-                       lastStep={{link: '/', title: 'Back to home'}}
-                       components={[
-                         {title: 'Select package(s) to sponsor', component: SponsorshipOffer},
-                         {title: 'Set organization and conditions', component: SponsorshipPartner},
-                         {title: 'Review sponsorship order', component: SponsorshipReview},
-                         {title: 'Make Payment', component: SponsorshipPayment},
-                       ]}
-    />
+    <SponsorshipOffer event={event} />
   </BannerPage>
 )
 
+/*
+ <SteppedComponents loginRequired
+ lastStep={{link: '/', title: 'Back to home'}}
+ components={[
+ {title: 'Select package(s) to sponsor', component: SponsorshipOffer},
+ {title: 'Set organization and conditions', component: SponsorshipPartner},
+ {title: 'Review sponsorship order', component: SponsorshipReview},
+ {title: 'Make Payment', component: SponsorshipPayment},
+ ]}
+ />
+ */
 export default PartnerSteps

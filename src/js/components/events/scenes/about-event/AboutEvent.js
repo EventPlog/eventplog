@@ -147,18 +147,14 @@ const Event = ({
 
       <ContentPanel title="Meet the organizers">
         <Members>
-          {organizers && organizers.map(member =>
-            <Members>
-              {organizers.length > 3
-                ? organizers.map(member =>
-                  <Members.Member member={member} />
-                )
-                : organizers.map(member =>
-                  <AboutUser {...{user: member, currentUser }}/>
-                )
-              }
-            </Members>
-          )}
+          {organizers && organizers.length > 3
+            ? organizers.map(member =>
+                <Members.Member member={member} />
+              )
+            : organizers && organizers.map(member =>
+                <AboutUser {...{user: member, currentUser }}/>
+              )
+          }
         </Members>
         {is_stakeholder &&
         <Button.Link className="btn-inline"

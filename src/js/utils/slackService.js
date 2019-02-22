@@ -1,4 +1,4 @@
-import callWebApi from './webAPI';
+import fetch from 'isomorphic-fetch';
 
 class SlackService {
   /*
@@ -8,20 +8,21 @@ class SlackService {
   static send(payload) {
     console.log('event in slack formatter: ', payload)
     let slackUrl = process.env.REACT_APP_SLACK_WEBHOOK_URL;
-    callWebApi({
-      url: slackUrl,
+    fetch(slackUrl, {
       method: 'POST',
-      data: this.format(payload)
+      body: JSON.stringify(this.format(payload)),
     })
   }
 
-  static format({id, title, description, url}) {
+  static format({id, title, description, url, prefixMsg, channel}) {
     return {
+      "channel": channel,
       "attachments":[
         {
-          "fallback":`A new request for sponsorship has been submitted: <${url}|${title}>`,
-          "pretext":`A new request for sponsorship has been submitted: <${url}|${title}>`,
+          "fallback":`${prefixMsg}: <${url}|${title}>`,
+          "pretext":`${prefixMsg}: <${url}|${title}>`,
           "color":"good",
+          "unfurl_links": true,
           "fields":[
             {
               "title":title,
