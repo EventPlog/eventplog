@@ -76,6 +76,8 @@ class ContentEditable extends React.Component {
     this.setState({isEditing: true, value})
   }
 
+  onCancel = () => this.setState({ isEditing: false })
+
   componentDidMount() {
     this.setState({value: this.props.defaultValue})
   }
@@ -133,6 +135,7 @@ class ContentEditable extends React.Component {
         return <PlogMarkdownEditor className="editor-active"
                                    {...this.getTextBoxProps()}
                                    showSubmit={true}
+                                   onCancel={this.onCancel}
                                    onSubmit={this.onBlur} />
 
       case 'datetime':

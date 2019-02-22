@@ -20,6 +20,11 @@ import AboutUser from 'js/components/user/scenes/user/components/AboutUser.js'
 const StyledEvent = styled.div`
   .event-description {
     margin-bottom: 4rem;
+    
+    img {
+      max-width: 100%;
+      margin: 1rem 0;
+    }
   }
   
   .sidebar .announcement {
@@ -119,6 +124,7 @@ const Event = ({
                            source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
 
           </ContentEditable>
+          <img src={event.featured_image} />
         </div>
       </ContentPanel>
 

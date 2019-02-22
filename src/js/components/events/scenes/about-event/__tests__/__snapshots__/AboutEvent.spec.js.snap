@@ -24,6 +24,7 @@ exports[`Event should render correctly 1`] = `
           transformLinkUri={[Function]}
         />
       </ContentEditableWrapper>
+      <img />
     </div>
   </ContentPanel>
   <ContentPanel
