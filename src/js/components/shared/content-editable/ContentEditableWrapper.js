@@ -22,6 +22,10 @@ const StyledDefaults = styled.div`
     padding: 0.5rem;
     white-space: pre-wrap;
   }
+  
+  div[type=textarea] img {
+    max-width: 100%;
+  }
 `
 const ContentEditableWrapper = ({children, canEdit, ...ownProps}) => (
   <StyledDefaults>
