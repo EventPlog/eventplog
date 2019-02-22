@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import Auth from 'js/auth/actions'
 import Validator from 'js/utils/validator'
-import { titleize } from 'js/utils'
+import { titleize, genEventLink } from 'js/utils'
+import SlackService from 'js/utils/slackService'
 import {
   updateGuest,
   deleteGuest,
@@ -28,11 +29,24 @@ const emptyUser = {
   gender: 'Male'
 }
 
+const sendToSlack = (event, user) => {
+  const slackPayload = {
+    title: event.title,
+    url: window.location.origin + genEventLink(event),
+    prefixMsg: `${user.first_name} just RSVPed for `,
+    channel: '#guests-interactions',
+    description: `
+      Details
+      Name: ${user.first_name} ${user.last_name} 
+      `
+  }
+  SlackService.send(slackPayload)
+}
 class GuestContainter extends Component {
   state = {
     id: null,
     user: {},
-    check_in_user: true,
+    check_in_user: false,
     success: false,
     loading: false,
     feedback_url: ''
@@ -163,6 +177,7 @@ class GuestContainter extends Component {
           ? successMsg
           : `You've successfully registered for ${this.props.event.title}`
 
+        sendToSlack(this.props.event, user)
         this.setState({
           success: successMsg,
           error: false,
@@ -172,6 +187,7 @@ class GuestContainter extends Component {
         })
       })
       .catch(error => {
+        console.log(error)
         this.setState({
           loading: false,
           error: 'An error occured. Please try again later.'

@@ -10,7 +10,7 @@ import Error from 'js/components/shared/loading/Error'
 import Pagination from 'js/components/shared/pagination'
 import { pluralize, genEventLink } from 'js/utils'
 import Sponsor from '../sponsorship-offer-item'
-import NewSponsorshipOffer from './NewSponsorshipOffer'
+import CustomSponsorshipOfferForm from 'js/components/sponsorships/scenes/custom-sponsorship-offer-item'
 import { TextArea, Input, Button } from 'js/components/shared'
 
 const SponsorsList = ({
@@ -55,7 +55,11 @@ const SponsorsList = ({
       }
       </div>
 
-      {process.env.REACT_APP_CUSTOM_SPONSORSHIP_OFFER_ENABLED && <NewSponsorshipOffer />}
+      {process.env.REACT_APP_CUSTOM_SPONSORSHIP_OFFER_ENABLED &&
+        <ContentPanel className="dark-purple custom-sponsor-form" title="Make a custom offer">
+          <CustomSponsorshipOfferForm />
+        </ContentPanel>
+      }
 
     </ContentPanel>
   )
