@@ -48,6 +48,7 @@ const StyledCheckInForm = styled.div`
     
     .check-user {
        margin-bottom: 2rem;
+       margin-top: 2rem;
     }
   }
   

@@ -20,9 +20,25 @@ import {
   getCommunitiesByName,
 } from 'js/components/communities/actions'
 
+import { genEventLink } from 'js/utils'
 import recachePage from 'js/utils/recachePage'
+import SlackService from 'js/utils/slackService'
 import Auth from 'js/auth'
 
+const sendToSlack = (event, user) => {
+  const slackPayload = {
+    title: event.title,
+    url: window.location.origin + genEventLink(event),
+    prefixMsg: 'A new event have been created',
+    channel: '#events-supply',
+    description: `
+      Details
+      Description: ${event.goals}
+      Created by: ${user.first_name} ${user.last_name} 
+      `
+  }
+  SlackService.send(slackPayload)
+}
 
 export class EventContainer extends Component {
   state = {
@@ -82,6 +98,8 @@ export class EventContainer extends Component {
 
   submitEvent = () => {
     this.setState({ loading: true })
+
+    if (!this.state.event.id) sendToSlack(this.state.event, Auth.currentUser())
     const callback = this.state.event.id
       ? this.props.updateEvent
       : this.props.createEvent

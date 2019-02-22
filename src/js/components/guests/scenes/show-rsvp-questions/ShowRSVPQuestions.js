@@ -49,6 +49,7 @@ const StyledCheckInForm = styled.div`
     
     .check-user {
        margin-bottom: 2rem;
+       margin-top: 2rem;
     }
   }
   
@@ -84,6 +85,7 @@ const ShowRSVPQuestions = ({
   loading,
   history,
   handleSubmit,
+  handleChange,
 }) => {
   if (loading) return <Loading />
   const eventLink = genEventLink(event)
@@ -116,6 +118,7 @@ const ShowRSVPQuestions = ({
                          category="rsvp"
                          allowNext={allowNext}
                          handleSubmit={handleSubmit}
+                         handleChange={handleChange}
                          defaultQuestions={config.defaultRSVPQuestions} />
         </ContentPanel>
       </div>

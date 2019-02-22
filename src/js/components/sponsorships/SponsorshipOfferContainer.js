@@ -39,7 +39,7 @@ class SponsorshipOfferContainer extends Component {
 
   allowNext = () => {
     const { cart, allowNext } = this.props
-    allowNext(cart.data && cart.data.length > 0)
+    allowNext && allowNext(cart.data && cart.data.length > 0)
   }
 
   componentDidUpdate(props, prevProps) {

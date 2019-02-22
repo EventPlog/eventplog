@@ -11,7 +11,9 @@ const CURRENCY = process.env.REACT_APP_CURRENCY
 import ContentPanel from 'js/components/shared/content-panel'
 import Button from 'js/components/shared/button'
 import NewSponsor from '../new-sponsorship-offer-item/NewSponsorshipOfferItem'
-import UserLink from 'js/components/shared/user-link'
+import SelectPackageButton from 'js/components/sponsorships/scenes/select-package-button'
+import { resizeImage } from 'js/utils'
+
 import {
   pluralize,
   genEventLink,
@@ -38,6 +40,14 @@ export const generateMeta = (sponsorship_offer_item, handleEdit, event) => (
   <ul className="meta">
     <li className='highlighted'>
       Preferred form: {sponsorship_offer_item.sponsorship_type || 'Cash or Kind'}
+    </li>
+    <li>
+      <SelectPackageButton offer={sponsorship_offer_item}
+                           btnText={<span><Icon name="send" /> Sponsor this package</span>}
+                           offer_item={{
+                             offer_item_id: sponsorship_offer_item.id,
+                             offer_item_type: 'SponsorshipOfferItem'
+                           }} />
     </li>
     {event.is_stakeholder &&
       <li>
@@ -140,9 +150,9 @@ export const SponsorshipOfferItem = ({
       inverted: true,
     } :
     {
-      onClick: () => handleAddToCart(),
+      onClick: () => {},
       className: 'cta-btn',
-      icon: <span><Icon name="cart"/>{`Select this package`}</span>,
+      fullBtn: <SelectPackageButton />,
       inverted: true,
     }
 
@@ -165,7 +175,7 @@ export const SponsorshipOfferItem = ({
       hideImage
       featured_image={getUserAvatar(sponsorship_offer_item.user)}
       {...{title, description, meta, btn}}
-      showButton={true} />
+      showButton={false} />
   )
 }
 

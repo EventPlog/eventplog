@@ -50,6 +50,10 @@ const styles = css`
     `
   }
   
+  &.ui.form.search-form {
+    max-width: 100%;
+  }
+  
   .same-line {
     display: flex;
     
@@ -98,7 +102,7 @@ const ExistingPartnerSearch = ({
       description: partner.tagline,
     }))
   return (
-    <Form className={className} error={!!error}>
+    <Form className={`${className} search-form`} error={!!error}>
       <Message
         error
         header="Error"
