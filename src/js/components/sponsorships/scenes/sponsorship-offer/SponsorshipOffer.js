@@ -60,6 +60,8 @@ const StyledSponsorshipOffer = styled.div`
   
   img {
     max-width: 100%;
+    margin: 1rem auto;
+    align-self: center;
   }
   
   .pagination-wrapper {
@@ -296,11 +298,15 @@ export const SponsorshipOffer = ({
 
         {(event.goals || event.is_stakeholder) &&
           <ContentPanel className="light-green" title={`About ${event.title}`}>
-            {event.goals}
+            <ReactMarkdown source={event.description || event.goals} />
+
+            <img src={event.featured_image} />
+
             {event.is_stakeholder
               ? <div className="edit-cta">
-                  <Button.Link className="btn-inline" to={`${genEventLink(event)}/backstage/settings?activeIndex=1`}>
-                    Update event goals
+                  <Button.Link className="btn-inline"
+                               to={`${genEventLink(event)}/backstage/settings?activeIndex=1`}>
+                    Update event description
                   </Button.Link>
                 </div>
               : <div className="edit-cta">
