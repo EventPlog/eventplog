@@ -4,8 +4,6 @@ import { lighten } from 'polished'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faShareSquare,
-  faHeart,
   faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,6 +14,7 @@ import Button from 'js/components/shared/button'
 import { media, maxMedia } from 'js/styles/mixins'
 import colors from '../../../../styles/theme/colors'
 import defaults from 'js/styles/theme/variables'
+import Icons from 'js/components/shared/cta-icons';
 
 
 const StyledMainContentCard = styled.div`
@@ -78,39 +77,6 @@ const StyledMainContentCard = styled.div`
     }
   }
 
-  .cta-icons {
-    position: absolute;
-    top: calc(200px - 1.5rem);
-    right: 0;
-
-    display: flex;
-    justify-content: flex-end;
-    
-    .bookmark {
-      padding: 0.7rem;
-      background: var(--activeLink);
-      color: ${colors.yellow};
-      border-radius: 50%;
-      margin: 0 0.5rem;
-      box-shadow: 0px 0px 8px ${lighten(0.3, colors.darkGray)};
-      
-      &:hover {
-        background: white;
-        color: var(--activeLink);
-      }
-      
-      &:first-child {
-        background: white;
-        color: var(--activeLink);
-      
-        &:hover {
-          color: ${colors.yellow};
-          background: var(--activeLink);
-        }
-      }
-    }
-  }
-
   .event-desc {
     color: ${lighten(0.3, colors.darkGray)};
     margin: 12.8px 0;
@@ -166,16 +132,7 @@ const MainContentCard = ({
   <StyledMainContentCard className={`community-card ${className}`}>
     <div className="background" style={{backgroundImage:  `url(${resizeImage(eventImage, 'thumbnail')})`}} />
 
-    <div className="cta-icons">
-      <Link className="bookmark" to="#">
-        <FontAwesomeIcon icon={faShareSquare}
-                          transform={{ rotate: -17 }} />
-      </Link>
-      <div className='icon-seperator' />
-      <Link className="bookmark inverted" to="#">
-        <FontAwesomeIcon icon={faHeart} className="fas" rotation={37}/>
-      </Link>
-    </div>
+    <Icons />
 
     <div className="details">
       <a href="#">
