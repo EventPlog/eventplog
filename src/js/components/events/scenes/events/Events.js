@@ -8,7 +8,7 @@ import { media } from 'js/styles/mixins'
 const StyledCommunities = styled.div`
 `
 
-const Communities = (props) => (
+const Events = (props) => (
   <div>
     <section className="app-container">
       <MainContent {...props} />
@@ -16,4 +16,4 @@ const Communities = (props) => (
   </div>
 )
 
-export default Communities
+export default Events
