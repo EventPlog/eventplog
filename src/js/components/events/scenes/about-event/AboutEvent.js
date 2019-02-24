@@ -120,8 +120,7 @@ const Event = ({
                            onChange={handleChange}
                            onSubmit={handleSubmit}>
 
-            <ReactMarkdown escapeHtml={false}
-                           source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
+            <ReactMarkdown source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
 
           </ContentEditable>
           <img src={event.featured_image} />

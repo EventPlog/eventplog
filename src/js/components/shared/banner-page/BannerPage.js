@@ -21,6 +21,9 @@ const StyledPage = styled.div`
     
     .title {
       color: ${props => props.theme.white};
+      font-family: "Poppins", "Open Sans";
+      font-size: 2.5rem;
+      line-height: 1.28571429em;
     }
   }
 `
@@ -34,9 +37,9 @@ const BannerPage = ({title, bannerImage, children}) => (
         <div className="overlay" />
         <div className="content app-container">
           <div className="caption">
-            <h2 className="title">
+            <div className="title">
               {title}
-            </h2>
+            </div>
           </div>
         </div>
       </div>

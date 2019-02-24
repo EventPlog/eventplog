@@ -52,6 +52,17 @@ exports[`Sponsors should render correctly 1`] = `
       className="light-green"
       title="About undefined"
     >
+      <ReactMarkdown
+        astPlugins={Array []}
+        escapeHtml={true}
+        plugins={Array []}
+        rawSourcePos={false}
+        renderers={Object {}}
+        skipHtml={false}
+        sourcePos={false}
+        transformLinkUri={[Function]}
+      />
+      <img />
       <div
         className="edit-cta"
       >
@@ -59,7 +70,7 @@ exports[`Sponsors should render correctly 1`] = `
           className="btn-inline"
           to="/e/3/backstage/settings?activeIndex=1"
         >
-          Update event goals
+          Update event description
         </Component>
       </div>
     </ContentPanel>
