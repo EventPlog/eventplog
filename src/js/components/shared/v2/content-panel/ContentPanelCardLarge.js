@@ -14,7 +14,7 @@ import Icons from 'js/components/shared/cta-icons'
 const StyledContentPanelCardLarge = styled.section`
   --container-height: 418px;
   height: var(--container-height);
-  width: 35vw;
+  width: 33vw;
   margin-right: 31px;
   border-radius: 8px;
   background-color: ${props => props.theme.activeLink};

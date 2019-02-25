@@ -108,7 +108,7 @@ const styles = css`
 const ContentPanelCardMedium = styled(ContentPanel.Card)`
   flex: 2.5;
   // max-width: max-content;
-  max-width: 32rem;
+  max-width: 30rem;
 `;
 
 export const EventsSection = ({
