@@ -9,10 +9,6 @@ import ContentPanelCard from './ContentPanelCard'
 
 
 const StyledContentPanel = styled.div`
-  background: white;
-  padding: 1rem;
-  box-shadow: 1px 2px 4px ${props => lighten(0.45, props.theme.activeLink)};
-    
   ${
     media.phone`
       max-width: 100%;
@@ -21,13 +17,11 @@ const StyledContentPanel = styled.div`
     `
   }
   .content-header {
-    border-bottom: 1px solid ${props => lighten(0.2, props.theme.blue)};
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.01rem;
-    margin: 0 1rem;
-    padding-bottom: 5px;
-    margin-top: 2rem;
+    color: ${props => props.theme.activeLink};
+    margin: 0;
+    // margin-bottom: 2rem;
+  }
+
     
     ${
       maxMedia.tablet`
@@ -37,7 +31,7 @@ const StyledContentPanel = styled.div`
   }
   
   > div.content-body {
-    margin: 2rem;
+    // margin: 2rem 1rem;
     
     ${
       media.tablet`
@@ -64,7 +58,7 @@ const ContentPanel = function({
   return (
     <div>
       <StyledContentPanel style={style} className={`${className} content-panel`}>
-        {title && <h5 className="content-header">{ title }</h5>}
+        {title && <h4 className="content-header">{ title }</h4>}
         <div className="content-body" style={bodyStyle}>
           { children }
         </div>

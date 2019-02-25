@@ -3,9 +3,12 @@ import styled, { css } from 'styled-components'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { darken } from 'polished'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 // internal
 import ContentPanel from 'js/components/shared/v2/content-panel'
+import ContentPanelCardLarge from 'js/components/shared/v2/content-panel/ContentPanelCardLarge'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
@@ -19,7 +22,7 @@ import {
 
 export const generateTitle = (event = {}, community = {}) => {
   return (
-    <Link to={genEventLink(event, community)}>
+    <Link to="#">
       {event.title}
     </Link>
   )
@@ -82,7 +85,31 @@ const styles = css`
     color: var(--activeLink);
     font-weight: 800;
   }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .see-more {
+    position: relative
+    font-size: 1.2rem;
+    padding-top: 1.2rem;
+    color: ${props => props.theme.activeLink};
+
+    span {
+      padding-left: 12px;
+      position: absolute;
+      top: 19px;
+    }
+  }
 `
+
+const ContentPanelCardMedium = styled(ContentPanel.Card)`
+  flex: 2.5;
+  // max-width: max-content;
+  max-width: 32rem;
+`;
 
 export const EventsSection = ({
   title,
@@ -93,29 +120,47 @@ export const EventsSection = ({
 }) => {
   const {loading, error, data = [], meta = {}} = events;
   const shouldDisplayData = (!loading && !error && data);
+  let first10Events;
+
+  if (shouldDisplayData) {
+    first10Events = data.slice(0, 10)
+  }
+  
   return (
     <ContentPanel className={className} title={title}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
-      {shouldDisplayData && data.map(({featured_image, ...event}) => {
-          const community = event.community || {}
-          const title = generateTitle(event, community)
-          const description = generateDescription(community, event)
-          const meta = generateMeta(event)
-          const btn = {onClick: () => attendEvent(event), text: 'interested'}
-          const titleLink = genEventLink(event, community)
+      <div className="container">
+        
+        {shouldDisplayData && first10Events.length >= 1 && 
+          <ContentPanelCardLarge event={first10Events[0]} />
+        } 
 
+        {shouldDisplayData && first10Events.length >= 2 && <ContentPanelCardMedium event={{...first10Events[1]}} />}
+
+        {shouldDisplayData && first10Events.slice(2,5).map((event) => {
           return (
-            <ContentPanel.Card
-              key={event.id}
-              {...{title, description, featured_image, meta, btn, titleLink}}
-              showButton={!event.is_attending} />
+            <ContentPanel.Card event={event} /> 
           )
-        }
-      )}
+        })}
 
+        {shouldDisplayData && first10Events.length >= 6 && <ContentPanelCardMedium event={first10Events[5]} />}
+        {shouldDisplayData && first10Events.length >= 7 && <ContentPanelCardLarge event={first10Events[6]} />} 
+
+        {shouldDisplayData && first10Events.length > 7 && first10Events.slice(7,9).map((event) => {
+          return (
+            <ContentPanel.Card event={event} /> 
+          )
+        })}
+
+        { shouldDisplayData && first10Events.length > 10 && 
+          <p className="see-more">
+            See more events <span><FontAwesomeIcon className="fas" icon={faAngleDown}/></span>
+          </p>
+        } 
+      </div>
       {shouldDisplayData && data.length < 1 && <p>No events to display right now ...</p>}
-
+      
     </ContentPanel>
   )
 }

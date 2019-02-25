@@ -2,11 +2,8 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 //======== Internal Components =========
-import Tab from 'js/components/shared/tab'
 import ContentSection from 'js/components/shared/content-section'
-import ContentPanel from 'js/components/shared/v2/content-panel'
-import UserEvents from 'js/components/events/scenes/user-events'
-import EventsSuggestions from 'js/components/events/scenes/events-suggestions'
+import EventSection from 'js/components/events/scenes/events/components/events-section'
 import Sidebar from 'js/components/shared/sidebar'
 import { media } from 'js/styles/mixins'
 
@@ -22,7 +19,8 @@ const styles = css`
   }
   
   .content-header {
-    margin: 0 1rem;
+    // margin: 0 1rem;
+    margin: 0;
     letter-spacing: 0.01rem;
     
     ${
@@ -32,7 +30,7 @@ const styles = css`
     } 
   }
 
-  .container {
+  .events_container {
     display: flex;
     flex-wrap: wrap;
   }
@@ -44,30 +42,19 @@ const styles = css`
 
 export const MainContent = ({
   events = {},
+  past_events = {},
   communities_suggestions = {},
   followCommunity,
   className,
   activeIndex,
 }) => {
-
-  const getPanes = () => {
-    return [
-      {name: `My events`, content: UserEvents },
-      {name: `Suggestions`, content: EventsSuggestions },
-    ]
-  }
-
   return (
     <ContentSection className={className}>
-      
+     
       <ContentSection.Body>
-        <h4 className="title">Upcoming Events</h4>
-        <div className="container">
-          <ContentPanel.Card />
-          <ContentPanel.Card />
-          <ContentPanel.Card />
-        </div>
-        
+        <div className="events_container">
+          <EventSection title="Upcoming Events" events={events} />
+        </div>    
       </ContentSection.Body>
 
       <ContentSection.Sidebar>

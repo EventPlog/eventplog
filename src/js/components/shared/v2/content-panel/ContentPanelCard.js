@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { lighten } from 'polished'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,11 +21,11 @@ const StyledMainContentCard = styled.div`
   --img-height: 200px;
   --activeLink: ${defaults.activeLink};
   border-radius: 0.5rem;
-  width: 20vw;
+  // width: 20vw;
   max-width: 294px;
   background-color: ${colors.white};
   position: relative;
-  margin: 0 2rem 2rem 0;
+  margin: 1rem 1.3rem 1rem 0;
 
   ${
     media.tablet`
@@ -118,7 +118,13 @@ const StyledMainContentCard = styled.div`
   }
 `
 
+const getAddress = (event) => (
+  event.location && event.location.address
+    ? event.location.address : event.venue
+)
+
 const MainContentCard = ({
+  event,
   title,
   description,
   featured_image,
@@ -130,28 +136,25 @@ const MainContentCard = ({
   className,
 }) => (
   <StyledMainContentCard className={`community-card ${className}`}>
-    <div className="background" style={{backgroundImage:  `url(${resizeImage(eventImage, 'thumbnail')})`}} />
+    <div className="background" style={{backgroundImage:  `url(${resizeImage(event.featured_image, 'thumbnail')})`}} />
 
     <Icons />
 
     <div className="details">
       <a href="#">
-        <h4>Event Title</h4>
+        <h4>{event.title}</h4>
       </a>
 
       <div className="event-desc">
-        <p >
-          {'Plenty Plenty event description Plenty Plenty event description Plenty Plenty event description Plenty Plenty event'.substr(0, 125) + '...'}
-        </p>
-        <small>2 interested</small>
-        </div>
-
+        <p>{"The actual description {event.description} does not render, don't know why".substr(0, 125) + '...'}</p>
+        <small>{event.interested_persons} Interested</small>
+      </div>
 
       <div>
-        <p className="event-date"><span>Saturday, May 18 2019</span></p>
+        <p className="event-date"><span>{event.start_date}</span></p>
         <div className="event-time">
           <FontAwesomeIcon icon={faMapMarkerAlt}/>&nbsp;
-          Palms shopping mall, Ilorin
+          {getAddress(event)}
         </div>
       </div>
     </div>
