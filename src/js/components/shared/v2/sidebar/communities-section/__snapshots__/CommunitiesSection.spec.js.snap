@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
+<Sidebar
+  title="Communities suggestions"
+>
+  <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description=""
+    featured_image="/login-bg.jpg"
+    key="1"
+    meta="undefined follower"
+    title={
+      <Link
+        replace={false}
+        to="/c/1"
+      >
+        Facebook Developer Circle Lagos
+      </Link>
+    }
+    titleLink="/c/1"
+  />
+  <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description=""
+    featured_image="/sampe.png"
+    key="2"
+    meta="undefined follower"
+    title={
+      <Link
+        replace={false}
+        to="/c/2"
+      >
+        Google Developer Group
+      </Link>
+    }
+    titleLink="/c/2"
+  />
+  <SidebarCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "Follow",
+      }
+    }
+    description=""
+    featured_image="/login-bg.jpg"
+    key="3"
+    meta="undefined follower"
+    title={
+      <Link
+        replace={false}
+        to="/c/3"
+      >
+        ForLoop Lagos
+      </Link>
+    }
+    titleLink="/c/3"
+  />
+</Sidebar>
+`;
