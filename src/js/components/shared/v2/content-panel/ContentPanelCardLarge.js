@@ -37,10 +37,13 @@ const StyledContentPanelCardLarge = styled.section`
   }
 
   .event-title {
-    font-family: 'proxima-nova', sans-serif;
     font-size: 1.7rem;
     text-align: center;
     padding-top: calc(var(--container-height) / 2 - 19px);
+
+    h4 {
+      color: ${props => props.theme.white};
+    }
   }
 
   .interested-persons {
@@ -101,7 +104,7 @@ const ContentPanelCardLarge = ({ event }) => {
 
     <div className="event-time">
       <FontAwesomeIcon icon={faClock} className="far eye-icon" />
-      <span>{event.start_date.slice(0,3)} {event.display_start_time}, {eventAddress}</span>
+      <span>{event.start_date.slice(0,3)} {event.display_start_time}, {eventAddress.substr(0, 45) + '...'}</span>
       <span className="date">{event.start_date.split(",")[1].slice(0, -5)}</span>
     </div>
   </StyledContentPanelCardLarge>
