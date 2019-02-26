@@ -10,12 +10,12 @@ import { genEventLink } from 'js/utils'
 
 
 const StyledCheckInForm = styled.div`
-  margin: 2rem 0;
+  margin: 0 0 2rem;
   
   .app-container {
     ${
       media.phone`
-        padding: 4rem 1rem;
+        padding: 0 1rem 4rem;
       `
     }
   }
@@ -76,6 +76,9 @@ const emptyUser = {
   gender: 'Male'
 }
 
+/*
+  @param handleClose defined if component is wrapped in modal
+ */
 const ShowRSVPQuestions = ({
   user = emptyUser,
   event = {},
@@ -85,7 +88,9 @@ const ShowRSVPQuestions = ({
   loading,
   history,
   handleSubmit,
+  handleClose,
   handleChange,
+  className,
 }) => {
   if (loading) return <Loading />
   const eventLink = genEventLink(event)
@@ -110,15 +115,17 @@ const ShowRSVPQuestions = ({
     : <span>Register for {extEventLink}</span>
 
   return (
-    <StyledCheckInForm>
+    <StyledCheckInForm className={className}>
       <div className="app-container">
-        <ContentPanel title={title}>
+        <ContentPanel title={handleClose ? 'Guest Registration Form' : title}>
           <ShowQuestions recipient_id={event.id}
                          recipient_type="Event"
                          category="rsvp"
+                         event={event}
                          allowNext={allowNext}
                          handleSubmit={handleSubmit}
                          handleChange={handleChange}
+                         handleClose={handleClose}
                          defaultQuestions={config.defaultRSVPQuestions} />
         </ContentPanel>
       </div>

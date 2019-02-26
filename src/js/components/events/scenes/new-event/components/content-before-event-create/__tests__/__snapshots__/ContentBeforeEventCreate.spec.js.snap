@@ -21,6 +21,9 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       >
         <label>
           What's the name of your event?
+          <sup>
+            *
+          </sup>
         </label>
         <Styled(Input)
           name="title"
@@ -34,6 +37,9 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       >
         <label>
           When does it start?
+          <sup>
+            *
+          </sup>
         </label>
         <[object Object]
           dateFormat="MMMM d, yyyy h:mm aa"
@@ -57,6 +63,9 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       >
         <label>
           In a tweet (280 characters or less), tell your target audience why they should care about/attend this event.
+          <sup>
+            *
+          </sup>
         </label>
         <Styled(Component)
           maxLength={280}
@@ -75,6 +84,9 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       >
         <label>
           Which industry would you classify this event under?
+          <sup>
+            *
+          </sup>
         </label>
         <Styled(Input)
           className="select-search"
@@ -212,6 +224,9 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       <FormField>
         <label>
           How'd you like people to visit your event page?
+          <sup>
+            *
+          </sup>
         </label>
         <FormField
           className="same-line"
@@ -230,6 +245,9 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       >
         <label>
           Which of the communities you admin own this event? Create one if none applies? :)
+          <sup>
+            *
+          </sup>
         </label>
         <div
           className="same-line"

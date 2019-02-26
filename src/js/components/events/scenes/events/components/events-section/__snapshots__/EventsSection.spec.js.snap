@@ -5,12 +5,6 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
   title="Events Section"
 >
   <MainContentCard
-    btn={
-      Object {
-        "onClick": [Function],
-        "text": "interested",
-      }
-    }
     description={
       <span>
         <div>
@@ -67,14 +61,173 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
       </Link>
     }
     titleLink="/e/1"
+    topBtn={
+      Array [
+        <RegistrationButton
+          event={
+              Object {
+                  "announcements": Array [
+                    Object {
+                      "announcer": Object {
+                        "avatar_url": "/steve.jpg",
+                        "first_name": "Steve",
+                        "id": 1,
+                        "last_name": "Omobola",
+                        "occupation": "Software Engineer",
+                      },
+                      "body": "We’re moving the venue from \`NG_HUB\` to \`CIVIC HIVE\`. It’s on the *2nd* floor, 42 Montgomergy road",
+                      "id": 1,
+                      "publish_date": "20th June, 2018",
+                      "publish_time": "5:04pm",
+                    },
+                    Object {
+                      "announcer": Object {
+                        "avatar_url": "/steve.jpg",
+                        "first_name": "Steve",
+                        "id": 1,
+                        "last_name": "Omobola",
+                        "occupation": "Software Engineer",
+                      },
+                      "body": "Now you can sync with your team every Wednesday between 5pm and 8pm until 28th July, 2018 at \`Civic Hive\` to work on your idea.
+              
+              Internet and Power will be free, courtesy *Civic Hive*",
+                      "id": 2,
+                      "publish_date": "20th June, 2018",
+                      "publish_time": "2:38pm",
+                    },
+                  ],
+                  "comments": Array [
+                    Object {
+                      "body": "Might it be great **if** we used \`eventbrite\` for this?&nbsp; I would love to test out my  design skills if you guys permit? 
+              
+              PS: Never done this before though. Lol!",
+                      "id": 1,
+                      "responses": Array [
+                        Object {
+                          "body": "Lol! Sounds like something to look forward to. 
+              
+              Thanks Sarah!",
+                          "id": 3,
+                          "user": Object {
+                            "avatar_url": "/s.jpg",
+                            "community_role": "Organizer",
+                            "first_name": "George",
+                            "id": 3,
+                            "last_name": "James",
+                          },
+                        },
+                      ],
+                      "user": Object {
+                        "community_role": "Top Contributor",
+                        "first_name": "Sarah",
+                        "id": 3,
+                        "last_name": "Omoloye",
+                      },
+                    },
+                    Object {
+                      "body": "Suggestions: How about we come with markers to the venue and engage in more practical workshops?",
+                      "id": 2,
+                      "responses": Array [
+                        Object {
+                          "body": "We'd love that David. Thanks for the initiative!",
+                          "id": 3,
+                          "user": Object {
+                            "avatar_url": "/steve.jpg",
+                            "community_role": "Organizer",
+                            "first_name": "George",
+                            "id": 3,
+                            "last_name": "James",
+                          },
+                        },
+                      ],
+                      "user": Object {
+                        "avatar_url": "/s.jpg",
+                        "community_role": "Contributor",
+                        "first_name": "Sunday",
+                        "id": 3,
+                        "last_name": "Bisoye",
+                      },
+                    },
+                  ],
+                  "community": Object {
+                    "description": "A community of developers united in knowledge sharing.",
+                    "featured_image": "/login-bg.jpg",
+                    "id": 1,
+                    "interests": Array [
+                      "Technology",
+                      "Software Engineering",
+                    ],
+                    "joined": true,
+                    "link_color": "#2291f9",
+                    "logo": "/dev-c-lagos-logo.png",
+                    "members": Array [
+                      Object {
+                        "avatar_url": "/steve.jpg",
+                        "first_name": "Steve",
+                        "id": 1,
+                        "last_name": "Omobola",
+                        "occupation": "Software Engineer",
+                      },
+                      Object {
+                        "avatar_url": "/sample-avatar.jpg",
+                        "first_name": "Chinwe",
+                        "id": 2,
+                        "last_name": "Ifejikara",
+                        "occupation": "Product Manager",
+                      },
+                      Object {
+                        "avatar_url": "/sunday.jpg",
+                        "first_name": "Sunday",
+                        "id": 3,
+                        "last_name": "Nzeribe",
+                        "occupation": "Digital Analyst",
+                      },
+                    ],
+                    "name": "Facebook Developer Circle Lagos",
+                    "no_of_members": 200,
+                    "no_of_upcoming_events": 2,
+                  },
+                  "description": "<p> Clear you calendars, it’s going down. this HTML file is a template. If you open it directly in the browser, you will see an empty page. </p> <p> \\"You can add webfonts, meta tags, or analytics to this file.&nbsp; The build step will place the bundled scripts into the {'<body>'} tag.&nbsp; To begin the development, run \`npm start\` or \`yarn start\`.&nbsp; To create a production bundle, use \`npm run build\` or \`yarn build\`. </p> ",
+                  "end_date": "28 June, 2018",
+                  "end_time": "01:00pm",
+                  "id": 1,
+                  "interested": true,
+                  "interested_persons": 211,
+                  "organizers": Array [
+                    Object {
+                      "avatar_url": "/steve.jpg",
+                      "first_name": "Steve",
+                      "id": 1,
+                      "last_name": "Omobola",
+                      "occupation": "Software Engineer",
+                    },
+                    Object {
+                      "avatar_url": "/sample-avatar.jpg",
+                      "first_name": "Chinwe",
+                      "id": 2,
+                      "last_name": "Ifejikara",
+                      "occupation": "Product Manager",
+                    },
+                    Object {
+                      "avatar_url": "/sunday.jpg",
+                      "first_name": "Sunday",
+                      "id": 3,
+                      "last_name": "Nzeribe",
+                      "occupation": "Digital Analyst",
+                    },
+                  ],
+                  "start_date": "28 June, 2018",
+                  "start_time": "10:00am",
+                  "title": "Tech is in you",
+                  "venue": "StartZone, Gbagada",
+                }
+          }
+      />,
+        "",
+      ]
+    }
   />
   <MainContentCard
-    btn={
-      Object {
-        "onClick": [Function],
-        "text": "interested",
-      }
-    }
     description={
       <span>
         <div>
@@ -131,14 +284,89 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
       </Link>
     }
     titleLink="/e/2"
+    topBtn={
+      Array [
+        <RegistrationButton
+          event={
+              Object {
+                  "community": Object {
+                    "description": "Developer community bringing up community interest, powereed by google",
+                    "display_name": "Google Developer Group",
+                    "featured_image": "/sampe.png",
+                    "id": 2,
+                    "interests": Array [
+                      "Developers",
+                    ],
+                    "joined": false,
+                    "link_color": "red",
+                    "members": Array [
+                      Object {
+                        "avatar_url": "/steve.jpg",
+                        "first_name": "Steve",
+                        "id": 1,
+                        "last_name": "Omobola",
+                        "occupation": "Software Engineer",
+                      },
+                      Object {
+                        "avatar_url": "/sample-avatar.jpg",
+                        "first_name": "Chinwe",
+                        "id": 2,
+                        "last_name": "Ifejikara",
+                        "occupation": "Product Manager",
+                      },
+                      Object {
+                        "avatar_url": "/sunday.jpg",
+                        "first_name": "Sunday",
+                        "id": 3,
+                        "last_name": "Nzeribe",
+                        "occupation": "Digital Analyst",
+                      },
+                    ],
+                    "name": "Google Developer Group",
+                    "no_of_members": 200,
+                    "no_of_upcoming_events": 2,
+                  },
+                  "description": "<p> Clear you calendars, it’s going down. this HTML file is a template. If you open it directly in the browser, you will see an empty page. </p> <p> \\"You can add webfonts, meta tags, or analytics to this file.&nbsp; The build step will place the bundled scripts into the {'<body>'} tag.&nbsp; To begin the development, run \`npm start\` or \`yarn start\`.&nbsp; To create a production bundle, use \`npm run build\` or \`yarn build\`. </p> ",
+                  "end_date": "28 June, 2018",
+                  "end_time": "01:00pm",
+                  "id": 2,
+                  "interested": false,
+                  "interested_persons": 211,
+                  "organizers": Array [
+                    Object {
+                      "avatar_url": "/steve.jpg",
+                      "first_name": "Steve",
+                      "id": 1,
+                      "last_name": "Omobola",
+                      "occupation": "Software Engineer",
+                    },
+                    Object {
+                      "avatar_url": "/sample-avatar.jpg",
+                      "first_name": "Chinwe",
+                      "id": 2,
+                      "last_name": "Ifejikara",
+                      "occupation": "Product Manager",
+                    },
+                    Object {
+                      "avatar_url": "/sunday.jpg",
+                      "first_name": "Sunday",
+                      "id": 3,
+                      "last_name": "Nzeribe",
+                      "occupation": "Digital Analyst",
+                    },
+                  ],
+                  "start_date": "28 June, 2018",
+                  "start_time": "10:00am",
+                  "title": "Writers corner workshop with writing and use of English",
+                  "venue": "StartZone, Gbagada",
+                }
+          }
+      />,
+        "",
+      ]
+    }
   />
   <MainContentCard
-    btn={
-      Object {
-        "onClick": [Function],
-        "text": "interested",
-      }
-    }
     description={
       <span>
         <div>
@@ -193,6 +421,86 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
       </Link>
     }
     titleLink="/e/3"
+    topBtn={
+      Array [
+        <RegistrationButton
+          event={
+              Object {
+                  "announcements": Array [
+                    Object {
+                      "announcer": Object {
+                        "avatar_url": "/steve.jpg",
+                        "first_name": "Steve",
+                        "id": 1,
+                        "last_name": "Omobola",
+                        "occupation": "Software Engineer",
+                      },
+                      "body": "We’re moving the venue from \`NG_HUB\` to \`CIVIC HIVE\`. It’s on the *2nd* floor, 42 Montgomergy road",
+                      "id": 1,
+                      "publish_date": "20th June, 2018",
+                      "publish_time": "5:04pm",
+                    },
+                    Object {
+                      "announcer": Object {
+                        "avatar_url": "/steve.jpg",
+                        "first_name": "Steve",
+                        "id": 1,
+                        "last_name": "Omobola",
+                        "occupation": "Software Engineer",
+                      },
+                      "body": "Now you can sync with your team every Wednesday between 5pm and 8pm until 28th July, 2018 at \`Civic Hive\` to work on your idea.
+              
+              Internet and Power will be free, courtesy *Civic Hive*",
+                      "id": 2,
+                      "publish_date": "20th June, 2018",
+                      "publish_time": "2:38pm",
+                    },
+                  ],
+                  "community": undefined,
+                  "description": "##### Task Ready: 
+              
+               * Article writing, 
+               * Blogging 
+               * Technical writing
+               *  Social media : define your realm of influence",
+                  "end_date": "28 June, 2018",
+                  "end_time": "01:00pm",
+                  "id": 3,
+                  "interested": false,
+                  "interested_persons": 108,
+                  "organizers": Array [
+                    Object {
+                      "avatar_url": "/steve.jpg",
+                      "first_name": "Steve",
+                      "id": 1,
+                      "last_name": "Omobola",
+                      "occupation": "Software Engineer",
+                    },
+                    Object {
+                      "avatar_url": "/sample-avatar.jpg",
+                      "first_name": "Chinwe",
+                      "id": 2,
+                      "last_name": "Ifejikara",
+                      "occupation": "Product Manager",
+                    },
+                    Object {
+                      "avatar_url": "/sunday.jpg",
+                      "first_name": "Sunday",
+                      "id": 3,
+                      "last_name": "Nzeribe",
+                      "occupation": "Digital Analyst",
+                    },
+                  ],
+                  "start_date": "28 June, 2018",
+                  "start_time": "10:00am",
+                  "title": "Figma Design Series",
+                  "venue": "StartZone, Gbagada",
+                }
+          }
+      />,
+        "",
+      ]
+    }
   />
 </ContentPanel>
 `;

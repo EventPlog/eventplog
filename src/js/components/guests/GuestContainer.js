@@ -6,6 +6,7 @@ import Auth from 'js/auth/actions'
 import Validator from 'js/utils/validator'
 import { titleize, genEventLink } from 'js/utils'
 import SlackService from 'js/utils/slackService'
+import config from 'js/config'
 import {
   updateGuest,
   deleteGuest,
@@ -34,7 +35,7 @@ const sendToSlack = (event, user) => {
     title: event.title,
     url: window.location.origin + genEventLink(event),
     prefixMsg: `${user.first_name} just RSVPed for `,
-    channel: '#guests-interactions',
+    channel: config.slack.guestsReportChannel,
     description: `
       Details
       Name: ${user.first_name} ${user.last_name} 
@@ -170,14 +171,18 @@ class GuestContainter extends Component {
         const { user = {} } = res || {}
 
         let successMsg = this.state.check_in_user
-          ? `You've successfully checked in ${titleize(user.less_formal_name || 'an unnamed person. Lol!')}. Here's a clean form so you can check in someone else.`
-          : `You've successfully registered ${titleize(user.less_formal_name || 'an unnamed person. Lol!')}. Here's a clean form so you can register someone else.`
+          ? `You've successfully checked in ${titleize(user.less_formal_name || 'an unnamed person. Lol!')}. Share this event on social media so your friends know where you are.`
+          : `You've successfully registered ${titleize(user.less_formal_name || 'an unnamed person. Lol!')}. Click on register to register someone else.`
 
         successMsg = this.props.event.is_stakeholder
           ? successMsg
           : `You've successfully registered for ${this.props.event.title}`
 
         sendToSlack(this.props.event, user)
+        this.props.handleSubmit && this.props.handleSubmit()
+
+        EVENTPLOG.toast.success({title:"Success!!", body: successMsg})
+
         this.setState({
           success: successMsg,
           error: false,
@@ -188,9 +193,12 @@ class GuestContainter extends Component {
       })
       .catch(error => {
         console.log(error)
+        const errorMsg = 'An error occured. Please try again later.'
+        EVENTPLOG.toast.error({title:"Error :(", body: error})
+
         this.setState({
           loading: false,
-          error: 'An error occured. Please try again later.'
+          error: errorMsg
         })
       })
 
@@ -231,11 +239,11 @@ class GuestContainter extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { questions } = state.questions
-  const { event } = state.events
+  const { event= {} } = state.events
 
   return {
     questions,
-    event
+    event: event.id ? event : ownProps.event
   }
 }
 

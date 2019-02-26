@@ -27,6 +27,7 @@ const generateTitle = (event) => (
       <div>
         <Button.Link inverted
                      target="_blank"
+                     className="btn"
                      to={genEventLink(event)}>
           View Event Page
         </Button.Link>

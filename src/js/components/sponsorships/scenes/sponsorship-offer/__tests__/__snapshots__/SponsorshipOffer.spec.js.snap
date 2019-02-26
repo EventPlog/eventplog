@@ -118,15 +118,7 @@ exports[`Sponsors should render correctly 1`] = `
                   "padding": "2rem 0",
                 }
               }
-              trigger={
-                <Button>
-                  <Icon
-                    as="i"
-                    name="plus"
-                  />
-                  Add
-                </Button>
-              }
+              trigger={[Function]}
             >
               <ContentPanel
                 title="Add a package you'd like sponsored"

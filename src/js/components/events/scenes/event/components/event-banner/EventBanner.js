@@ -12,6 +12,7 @@ import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
 import { validDate, pluralize, genEventLink } from 'js/utils'
 import ImageUploader from 'js/components/shared/image-uploader'
+import RegistrationButton from 'js/components/shared/event-registration-button'
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -280,7 +281,9 @@ const EventBanner = ({
   className,
   toggleVisibilityStatus,
   eventLink,
+  needs_sponsorship,
   imagePlaceholderRef,
+  showRegistrationForm,
 }) => {
   const isPrivate = visibility_status == 'private_event'
 
@@ -381,12 +384,10 @@ const EventBanner = ({
           <Button.Link isAnchorTag className="cta large" href={link} target="_blank">
             RSVP
           </Button.Link>}
-        {!is_attending &&
-          <Button className="cta large" onClick={() => {
-            link ? (window.location.href = link) : attendEvent({id})
-          }}>
-            Register
-          </Button>}
+        {(!is_attending || true) &&
+          <RegistrationButton event={{id, slug, title, needs_sponsorship}}
+                              showForm={showRegistrationForm}
+                              className="cta large" />}
         <Button.Link className={`cta large sponsor`} to={`${eventUrl}/sponsors/new`}>
           Sponsor
         </Button.Link>
