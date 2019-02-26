@@ -120,11 +120,18 @@ const StyledHeader = styled.div`
 `
 
 class Header extends Component {
-  state = { activeItem: 'UPCOMING' }
+  state = { activeItem: 'UPCOMING', searchQuery: '' }
 
   handleItemClick = (e, { name }) => {
     // this.props.history.push(`/${name.replace(' ', '_').toLowerCase()}`)
     this.setState({ activeItem: name })
+  }
+
+  setSearchQuery = (e) => this.setState({ searchQuery: e.target.value })
+
+  submitSearch = (e) => {
+    e.preventDefault()
+    this.props.history.push(`/search?title=${this.state.searchQuery}`)
   }
 
   handleLogout = (e) => {
@@ -166,9 +173,13 @@ class Header extends Component {
 
           <Menu.Menu position='right'>
             <Menu.Item>
-              <Input icon='search'
-                     placeholder='Search...'
-                     className="hidden-xs hidden-md" />
+              <form action="/search" onSubmit={this.submitSearch}>
+                <Input icon='search'
+                       name="title"
+                       placeholder='Search...'
+                       onChange={this.setSearchQuery}
+                       className="hidden-xs hidden-md" />
+              </form>
               <Link to="/search" className="hidden-lg">
                 <Icon name="search" />
               </Link>
