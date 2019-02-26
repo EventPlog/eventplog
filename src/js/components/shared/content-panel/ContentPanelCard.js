@@ -126,16 +126,28 @@ const StyledMainContentCard = styled.div`
   }
 
     
-  button.img-btn {
+  .img-btn-holder {
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    
+    ${
+      media.phone`
+        left: initial;
+        right: 0;
+      `
+    }
+  }
+  
+  .img-btn {
     font-size: 1rem;
+    font-size: 90%;
+    margin: 10px 10px 10px 0;
     
     padding: 0.8rem;
     background: #fff;
     border: none;
     box-shadow: 1px 2px 4px #444;
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
     
     &:hover {
       background: var(--activeLink);
@@ -153,8 +165,7 @@ const StyledMainContentCard = styled.div`
     
     ${
       media.phone`
-        margin: 0;
-        margin-top: 0.5rem;
+        display: inline !important;
       `
     } 
   }
@@ -177,6 +188,7 @@ const MainContentCard = ({
   meta,
   titleLink,
   className,
+  topBtn
 }) => (
   <StyledMainContentCard className={`content-panel-card ${className}`}>
     {!hideImage &&
@@ -187,12 +199,13 @@ const MainContentCard = ({
           ? <Link className="title-link" to={titleLink} />
           : <span className="title-link">{titleLink}</span>
         }
-        <div>
+        <div className="img-btn-holder">
           {showButton && btn.onClick &&
             <Button {...btn} className={`img-btn hidden-md ${btn.className}`}>
               {btn.icon}  {btn.text}
             </Button>
           }
+          {topBtn}
         </div>
       </div>
     }

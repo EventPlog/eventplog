@@ -60,7 +60,7 @@ const EventPlog = ({user = {}}) => (
         <PrivateRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id" component={Event} />
         <PrivateRoute exact path="/e/new" component={NewEvent} />
-        <PublicRoute exact path="/e/:id/register" component={RegistrationForm} />
+        <PublicRoute exact path="/e/:id/register" render={(props) => <Event showRegistrationForm={true} {...props} />} />
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
         <PublicRoute path="/e/:event_id/presentations" component={Presentations} />
         <PublicRoute path="/e/:event_id/resources" component={Resources} />

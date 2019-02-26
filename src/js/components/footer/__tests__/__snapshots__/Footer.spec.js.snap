@@ -16,7 +16,7 @@ exports[`Footer should render correctly 1`] = `
       >
         <img
           alt="eventplog-logo"
-          src="eventplog-logo-v12-alt-small.png"
+          src="eventplog-logo-v14-alt.png"
         />
       </Link>
     </div>

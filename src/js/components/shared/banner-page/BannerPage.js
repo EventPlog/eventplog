@@ -9,6 +9,7 @@ const defaultBgImage = 'https://res.cloudinary.com/eventplog/image/upload/c_scal
 const StyledPage = styled.div`
   
   .banner {
+    position: relative;
     min-height: 9.25rem;
     margin-bottom: 4rem;
     display: flex;
@@ -19,9 +20,22 @@ const StyledPage = styled.div`
       padding: 2rem 1rem;
     }
     
-    .title {
+    .title, .title a:not(.btn) {
       color: ${props => props.theme.white};
+      font-family: "Poppins", "Open Sans";
+      font-size: 2.5rem;
+      line-height: 1.28571429em;
     }
+  }
+  
+  .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.3;
   }
 `
 
@@ -34,9 +48,9 @@ const BannerPage = ({title, bannerImage, children}) => (
         <div className="overlay" />
         <div className="content app-container">
           <div className="caption">
-            <h2 className="title">
+            <div className="title">
               {title}
-            </h2>
+            </div>
           </div>
         </div>
       </div>

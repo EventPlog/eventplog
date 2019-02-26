@@ -123,6 +123,7 @@ const ContentBeforeEventCreate = ({
   const categoryOptions = formatOptions(config.event_categories)
 
   const goalsCharLimit = 280
+  const submitDisabled = !(event.title && event.start_time && event.goals && event.category_name && community.name && event.slug)
 
   return (
     <StyledContent>
@@ -139,7 +140,7 @@ const ContentBeforeEventCreate = ({
           />
 
           <Form.Field className="wide email-holder">
-            <label>What's the name of your event?</label>
+            <label>What's the name of your event?<sup>*</sup></label>
               <Input name="title"
                      type="text"
                      value={event.title}
@@ -148,7 +149,7 @@ const ContentBeforeEventCreate = ({
           </Form.Field>
 
           <Form.Field className="wide email-holder">
-            <label>When does it start?</label>
+            <label>When does it start?<sup>*</sup></label>
             <DatePicker
               selected={event.start_time}
               showTimeSelect
@@ -169,7 +170,7 @@ const ContentBeforeEventCreate = ({
           </Form.Field>
 
           <Form.Field className="wide email-holder">
-            <label>In a tweet (280 characters or less), tell your target audience why they should care about/attend this event.</label>
+            <label>In a tweet (280 characters or less), tell your target audience why they should care about/attend this event.<sup>*</sup></label>
             <TextArea name="goals"
                       type="text"
                       value={event.goals}
@@ -182,7 +183,7 @@ const ContentBeforeEventCreate = ({
           </Form.Field>
 
           <Form.Field className="search-holder">
-            <label>Which industry would you classify this event under?</label>
+            <label>Which industry would you classify this event under?<sup>*</sup></label>
             <Select
               search
               name="category_name"
@@ -199,7 +200,7 @@ const ContentBeforeEventCreate = ({
           </Form.Field>
 
           <Form.Field>
-            <label>How'd you like people to visit your event page?</label>
+            <label>How'd you like people to visit your event page?<sup>*</sup></label>
               {!!event.slug &&
                 <span>
                   {slug_check.valid &&
@@ -223,7 +224,7 @@ const ContentBeforeEventCreate = ({
           </Form.Field>
 
           <Form.Field className="search-holder">
-            <label>Which of the communities you admin own this event? Create one if none applies? :)</label>
+            <label>Which of the communities you admin own this event? Create one if none applies? :)<sup>*</sup></label>
             <div className="same-line">
 
               <Search handleSearch={getCommunitiesByName}

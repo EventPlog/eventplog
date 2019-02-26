@@ -121,10 +121,11 @@ const ExistingPartnerSearch = ({
 
           <Modal style={{margin: '4rem auto'}}
                  trigger={
-                   <Button>
-                     <Icon name="plus"/>
-                     Or add to the list
-                   </Button>
+                   (props) =>
+                     <Button {...props} >
+                       <Icon name="plus"/>
+                       Or add to the list
+                     </Button>
                  }>
             <ContentPanel className="new-partner-panel"
                           style={newPartnerPanelStyles}

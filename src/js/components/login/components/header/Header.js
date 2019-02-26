@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-import logo from '../../../../../img/eventplog-logo-v10-alt.png'
-import defaults from '../../../../styles/theme/variables'
+import logo from 'img/eventplog-logo-v23-small.png'
+import defaults from 'js/styles/theme/variables'
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid #eee;

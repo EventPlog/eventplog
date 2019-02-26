@@ -41,8 +41,8 @@ describe('Sponsors', () => {
   it('renders the right props', () => {
     let SponsorsListInstance = wrapper.find(SponsorsList).at(0)
 
-    expect(SponsorsListInstance.props().title)
-        .toEqual(generateTitle(props.event))
+    expect(JSON.stringify(SponsorsListInstance.props().title))
+        .toEqual(JSON.stringify(generateTitle(props.event)))
 
     expect(SponsorsListInstance.props().currentUser).toEqual(props.currentUser)
     expect(SponsorsListInstance.props().sponsors).toEqual(props.sponsors)

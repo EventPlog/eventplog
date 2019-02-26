@@ -61,13 +61,12 @@ class SelectPackageButton extends React.Component {
 
     return (
       <Modal style={{margin: '4rem auto'}}
-             open={this.state.modalOpen}
-             onClose={this.handleClose}
              trigger={
-                   <Button className="edit-btn" onClick={this.handleOpen}>
+               (props) =>
+                   <Button className="edit-btn" {...props}>
                      {btnText}
                    </Button>
-                 } >
+             } >
         <ContentPanel className="new-partner-panel"
                       style={newPartnerPanelStyles}
                       bodyStyle={contentBodyStyles}
