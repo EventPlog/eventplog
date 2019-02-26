@@ -29,7 +29,7 @@ class SearchContainer extends Component {
   }
 
   componentWillMount(props) {
-    this.getData()
+    this.setState({ searchQuery: this.getParams() })
   }
 
   componentDidMount() {
@@ -40,9 +40,6 @@ class SearchContainer extends Component {
     if (!checkEqual(props.match.params, this.props.match.params)) {
       this.getData()
     }
-  }
-
-  getData() {
   }
 
   handleChange = (updates) => {
