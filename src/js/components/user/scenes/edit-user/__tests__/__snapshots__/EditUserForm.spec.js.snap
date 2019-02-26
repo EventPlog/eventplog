@@ -169,7 +169,7 @@ exports[`EditUserForm should render correctly 1`] = `
           <Styled(Input)
             name="facebook_profile"
             onChange={[Function]}
-            placeholder="ciroma@chukwuma.com"
+            placeholder="facebook.com/somebody_awesome"
           />
         </FormField>
         <FormField>
@@ -179,7 +179,7 @@ exports[`EditUserForm should render correctly 1`] = `
           <Styled(Input)
             name="twitter_profile"
             onChange={[Function]}
-            placeholder="ciroma@chukwuma.com"
+            placeholder="twitter.com/somebody_awesome"
           />
         </FormField>
         <FormField>
@@ -189,7 +189,7 @@ exports[`EditUserForm should render correctly 1`] = `
           <Styled(Input)
             name="linkedin_profile"
             onChange={[Function]}
-            placeholder="linkedin.com/something"
+            placeholder="linkedin.com/somebody_awesome"
           />
         </FormField>
         <FormField>
@@ -199,7 +199,7 @@ exports[`EditUserForm should render correctly 1`] = `
           <Styled(Input)
             name="github_profile"
             onChange={[Function]}
-            placeholder="github.com/you"
+            placeholder="github.com/somebody_awesome"
           />
         </FormField>
         <FormField>

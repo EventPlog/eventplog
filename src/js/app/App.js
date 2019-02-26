@@ -1,3 +1,5 @@
+window.EVENTPLOG = {}
+
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
@@ -8,6 +10,7 @@ import {Auth, PrivateRoute, PublicRoute} from 'js/auth'
 import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
 import Footer from 'js/components/footer1'
+import Header from 'js/components/header/main-header'
 import ExternalFooter from 'js/components/footer/ExternalFooter'
 import universalStyles from '../styles/universalStyles'
 import NewInvitationBar from 'js/components/invitations/components/new-invitation-bar'
@@ -15,6 +18,8 @@ import ScrollToTop from '../components/shared/scroll-to-top'
 import appThemeColors from 'js/styles/theme/variables'
 import AppMenu from 'js/components/app-menu'
 import { lighten, darken } from 'polished'
+
+window.EVENTPLOG.toast = require('js/components/shared/ep-toast').default
 
 
 
@@ -40,20 +45,10 @@ const StyledApp = styled.div`
   --activeLinkBg: ${props => props.theme.activeLinkBg};
   --primaryLight: ${props => lighten(0.55, props.theme.activeLink)}
   position: relative;
+  padding-top: 47px;
  
   ${universalStyles}
   
-  > .menu-btn {
-    position: fixed;
-    color: ${props => props.theme.gray};
-    z-index: 10000;
-    top: 0;
-    left: ${props => props.theme.sidebarWidth};
-    background: #1b1c1c;
-    cursor: pointer;
-    font-size: 1.3rem;
-    padding: 1rem;
-  }
 `
 
 class App extends Component {
@@ -66,6 +61,7 @@ class App extends Component {
       width,
       height,
       showSidebar,
+      currentUser,
       toggleSidebar,
     } = this.props;
 
@@ -86,13 +82,7 @@ class App extends Component {
       
         <ScrollToTop>
           <StyledApp>
-            {sidebarVisible && !isMobile &&
-              <div className="menu-btn"
-                   onClick={toggleSidebar}>
-                <i aria-hidden="true" class="content icon">
-                </i>
-              </div>
-            }
+            <Header {...{store, currentUser, toggleSidebar}} />
             <AppMenu isInternalPath={isInternalPath}>
               {<NewInvitationBar />}
               <Switch>

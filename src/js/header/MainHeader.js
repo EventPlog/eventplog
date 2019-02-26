@@ -15,6 +15,13 @@ import Button from '../components/shared/button'
 const StyledHeader = styled.div`
   --bg: ${lighten(0.6, defaults.fg)};
   background: var(--bg);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid rgba(34,36,38,.15);
+  background: white;
   
   .logo, .ui.menu {
     background: #fff;
@@ -66,11 +73,11 @@ class Header extends Component {
     const menu = ['Events', 'Communities', 'Explore']
     const { activeItem } = this.state
     return (
-      <StyledHeader className="header">
-        <div className="logo">
-          <a href="/">
+      <StyledHeader className="header shim">
+        <div className="logo sh">
+          <Link to="/">
             <img src={logo} className="img-logo" />
-          </a>
+          </Link>
         </div>
         <Menu pointing secondary>
           {menu.map(item =>

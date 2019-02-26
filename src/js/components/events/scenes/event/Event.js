@@ -158,6 +158,7 @@ const Event = ({
   updateComment,
   imagePlaceholderRef,
   toggleVisibilityStatus,
+  showRegistrationForm,
   activeIndex,
 }) => {
 
@@ -179,8 +180,9 @@ const Event = ({
   const { title, description, featured_image} = event
   return (
     <StyledEvent className="event" activeLink={activeLink}>
-      <EventBanner {...{...event, community, handleChange, imagePlaceholderRef,
-        handleSubmit, attendEvent, eventLink, toggleVisibilityStatus}} />
+      <EventBanner {...{...event, community, handleChange, eventLink,
+                            imagePlaceholderRef, handleSubmit, attendEvent,
+                            toggleVisibilityStatus, showRegistrationForm}} />
 
       <div className="app-container">
         <ContentSection>

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
+import config from 'js/config'
 
 /// utilities
 import {
@@ -30,7 +31,7 @@ const sendToSlack = (event, user) => {
     title: event.title,
     url: window.location.origin + genEventLink(event),
     prefixMsg: 'A new event have been created',
-    channel: '#events-supply',
+    channel: config.slack.communityReportChannel,
     description: `
       Details
       Description: ${event.goals}

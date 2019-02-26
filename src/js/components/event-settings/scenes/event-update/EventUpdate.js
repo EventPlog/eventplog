@@ -118,6 +118,7 @@ const EventUpdate = ({
             <TextArea name="description"
                       value={description}
                       placeholder='An event about awesomeness'
+                      rows="10"
                       onChange={(e) => handleChange(e.target.name, e.target.value)}/>
           </Form.Field>
 

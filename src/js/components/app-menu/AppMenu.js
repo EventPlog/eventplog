@@ -19,6 +19,7 @@ import { genUserProfileLink } from 'js/utils'
 import MainMenu from 'js/components/header/logged-in-header/MainMenu'
 import { media } from 'js/styles/mixins'
 import Nav from 'js/components/shared/nav'
+import colors from 'js/styles/theme/variables.js'
 
 const StyledAppMenu = styles.div`
   .ui.segment.pushable {
@@ -27,12 +28,8 @@ const StyledAppMenu = styles.div`
     border-radius: 0;
     
     
-     .ui.visible.thin.left.sidebar~.pusher {
-      padding-right: ${props => props.theme.sidebarWidth};
-      height: 100vh;
-      overflow-y: scroll;
-      background-color: ${props => lighten(0.57, props.theme.activeLink)};
-      transform: translate3d(${props => props.theme.sidebarWidth},0,0);
+    .pusher {
+      background-color: ${props => lighten(0.57, colors.activeLink)};
       
       ${
         media.phone`
@@ -42,6 +39,14 @@ const StyledAppMenu = styles.div`
       }
     }
     
+    .ui.visible.thin.left.sidebar~.pusher {
+      padding-right: ${props => props.theme.sidebarWidth};
+      height: 100vh;
+      overflow-y: scroll;
+      transform: translate3d(${props => props.theme.sidebarWidth},0,0);
+      
+    }
+    
     .logo {
       padding: 1.2rem 1rem 1.2rem;
     }
@@ -49,6 +54,7 @@ const StyledAppMenu = styles.div`
     .sidebar.menu {
       height: 100vh;
       overflow-y: scroll;
+      padding-top: 3rem;
       
       .item {
         color: ${props => props.theme.grayMedium};
@@ -178,9 +184,11 @@ const StyledAppMenu = styles.div`
     cursor: pointer;
     font-size: 1.3rem;
     padding: 1rem;
+    display: none;
   }
   
 `
+
 const AppMenu = ({
   showSidebar,
   isInternalPath,
@@ -196,8 +204,6 @@ const AppMenu = ({
 }) => {
   return (
     <StyledAppMenu>
-      {false && isInternalPath &&
-        <Header toggleSidebar={toggleSidebar} />}
 
       <Sidebar.Pushable as={Segment}>
         <Sidebar
@@ -213,14 +219,6 @@ const AppMenu = ({
         >
 
           <div className="sidebar-hold">
-            <div className="logo-hold">
-              <Link className="logo item" to="/">
-                <img src={logo} alt='eventplog-logo' />
-              </Link>
-
-            </div>
-
-            <MainMenu {...{toggleSidebar, user}} />
 
             {menu.items && menu.items.map(item => (
               item.name &&
@@ -278,9 +276,6 @@ const AppMenu = ({
                         style={{paddingRight: !isMobile && showSidebar ? sidebarWidth : '0'}}
                         onClick={() => (showSidebar && isMobile && handleSidebarHide())}>
           <Segment basic>
-            <div className="menu-btn" id="menuBtn" onClick={toggleSidebar}>
-              <Icon name='content'  />
-            </div>
             {children}
           </Segment>
         </Sidebar.Pusher>
