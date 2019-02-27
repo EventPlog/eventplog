@@ -36,6 +36,7 @@ class AppContainer extends Component {
     ...this.state,
     ...this.props,
     onHideMenu: this.onHideMenu,
+    currentUser: Auth.currentUser(),
     toggleSidebar: this.toggleSidebar
   })
 

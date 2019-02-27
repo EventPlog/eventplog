@@ -41,20 +41,19 @@ const styles = css`
   }
   
   .page-title {
-    text-align: center;
-    margin-top: 5rem;
-    padding: 0 1rem;
-    width: 100%;
-    
-    small {
-      font-size: 60%;
-    }
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
   
   p {
     font-size: 1.1rem;
     font-weigth: 300;
   } 
+  
+  .main-body {
+    padding: 0 1rem;
+  }
   
   .user-banner {
     color: ${props => props.theme.gray};
@@ -133,16 +132,7 @@ export const Presentation = ({
   const canEdit = (user.id == currentUser.id) || is_stakeholder
   return (
     <div className={`${className}`}>
-      <div className="app-container">
-        <h3 className="page-title">
-          A {presentationType} for&nbsp;
-          <Link to={`${eventLink}`}
-                onClick={handleViewCount}>
-          {event.title}
-          </Link><br />
-          <small>View <Link to={`${eventLink}/presentations`}>all presentations</Link></small>
-        </h3>
-      </div>
+      <div>View <Link to={`${eventLink}/presentations`}>all presentations</Link></div>
       <div className="app-container">
         <ContentSection>
           <ContentSection.Body>

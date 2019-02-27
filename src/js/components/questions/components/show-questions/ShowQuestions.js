@@ -29,11 +29,15 @@ const ShowQuestionsStyles = styled.div`
   }
 `
 
+/*
+  @params handleClose defined if parent is wrapped in modal
+ */
 const ShowQuestions = ({
   loading,
   success,
   error,
   history,
+  handleClose,
   ...props,
 }) => {
 
@@ -97,9 +101,15 @@ const ShowQuestions = ({
                   onClick={props.handleSubmit}>
             Submit
           </Button>
-          <Button.Link to={eventLink}>
-            Cancel
-          </Button.Link>
+          {
+            handleClose
+              ? <Button onClick={handleClose}>
+                  Cancel
+                </Button>
+              : <Button.Link to={eventLink}>
+                  Cancel
+                </Button.Link>
+          }
         </div>
       </Form>
     </ShowQuestionsStyles>

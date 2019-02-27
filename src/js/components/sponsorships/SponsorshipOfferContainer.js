@@ -65,7 +65,7 @@ class SponsorshipOfferContainer extends Component {
 
     this.setState({loading: true})
 
-    this.props.getEvent(match.params.event_id)
+    this.props.getEvent(this.props.event_id || match.params.event_id)
       .then(event => {
         this.setState({loading: false})
         if (this.sponsorshipsAbsent()) this.getSponsorshipOffer(event)

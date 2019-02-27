@@ -228,10 +228,11 @@ export const generateTitle = (event) => {
         { event.is_stakeholder &&
           <Modal style={{padding: '2rem 0'}}
                  trigger={
-                    <Button>
-                      <Icon name="plus"/>
-                      Add
-                    </Button>
+                    (props) =>
+                      <Button {...props}>
+                        <Icon name="plus"/>
+                        Add
+                      </Button>
                   }>
             <ContentPanel title="Add a package you'd like sponsored">
               <NewSponsor newSponsor />

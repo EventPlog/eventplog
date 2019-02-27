@@ -9,8 +9,6 @@ import { media } from 'js/styles/mixins'
 const StyledUserAvatar = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   
   ${
     media.phone`
@@ -20,17 +18,10 @@ const StyledUserAvatar = styled.div`
     `
   }
   .avatar {
-    width: 3rem;
-    height: 3rem;
+    width: 2.7rem;
+    height: 2.7rem;
     border-radius: 50%;
     background-size: cover;
-    
-    ${
-      media.phone`
-        width: 7rem;
-        height: 7rem;
-      `
-    }
   }
   
   span {
@@ -51,7 +42,6 @@ const UserAvatar = ({
     <div className="avatar"
          style={{backgroundImage: `url(${getUserAvatar(user)})`}}>
     </div>
-    <span>{(user.less_formal_name || '').toUpperCase()}</span>
   </StyledUserAvatar>
 )
 
