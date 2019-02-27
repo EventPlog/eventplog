@@ -11,15 +11,7 @@ exports[`Presentations should render correctly 1`] = `
           "id": 1,
         }
       }
-      title={
-        <p>
-          All presentations - 
-          <Link
-            replace={false}
-            to="/e/3?utm_source=feedback_form"
-          />
-        </p>
-      }
+      title="All Presentations"
     />
     <ContentPanel
       title="Add a presentation"

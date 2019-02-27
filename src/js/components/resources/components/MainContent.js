@@ -4,13 +4,13 @@ import styled, {css} from 'styled-components'
 import Resources from './resources'
 import NewResource from './new-resource'
 import ContentPanel from 'js/components/shared/content-panel'
+import EventSubpageWrapper from 'js/components/shared/event-subpage-wrapper'
 import Loading from 'js/components/shared/loading'
 
 const styles = css`
   position: relative;
   
   &.app-container {
-    margin-top: 3rem;
     padding: 1rem;
     
     > div {
@@ -28,6 +28,10 @@ const styles = css`
   
   img {
     max-width: 100%;
+  }
+  
+  .img-holder {
+    max-width: 160px;
   }
   
   .pagination-wrapper {
@@ -51,19 +55,21 @@ const MainContent = ({
   if (error) return <Loading.Error msg={error} />
 
   return (
-    <div className={`${className} app-container`}>
-      <div>
-        <Resources title={title || "All resources"}
-                   currentUser={currentUser}
-                   requester={requester}
-                   resources={resources} />
-        {currentUser && currentUser.id &&
-        <ContentPanel title="Add a resource">
-          <NewResource editResource {...{requester}} />
-        </ContentPanel>
-        }
+    <EventSubpageWrapper>
+      <div className={`${className} app-container`}>
+        <div>
+          <Resources title={title || "All resources"}
+                     currentUser={currentUser}
+                     requester={requester}
+                     resources={resources} />
+          {currentUser && currentUser.id &&
+          <ContentPanel title="Add a resource">
+            <NewResource editResource {...{requester}} />
+          </ContentPanel>
+          }
+        </div>
       </div>
-    </div>
+    </EventSubpageWrapper>
   )
 }
 

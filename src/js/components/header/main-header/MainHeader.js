@@ -187,8 +187,8 @@ class Header extends Component {
 
             {!user.id &&
               <Menu.Item className="sidebar-btn login">
-                {matchLogin && <Button.Link to="/signup">Sign Up</Button.Link>}
-                {!matchLogin && <Button.Link to="/login">Login</Button.Link>}
+                {matchLogin && <Button.Link inverted to="/signup">Sign Up</Button.Link>}
+                {!matchLogin && <Button.Link inverted to="/login">Login</Button.Link>}
               </Menu.Item>
             }
 

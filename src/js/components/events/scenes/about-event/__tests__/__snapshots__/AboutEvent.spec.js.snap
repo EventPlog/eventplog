@@ -1,5 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Event should not render announcement when none is passed in 1`] = `
+<styled.div>
+  <ContentPanel
+    title="Description"
+  >
+    <div
+      className="event-description"
+    >
+      <ContentEditableWrapper
+        propName="description"
+        type="textarea"
+      >
+        <ReactMarkdown
+          astPlugins={Array []}
+          escapeHtml={true}
+          plugins={Array []}
+          rawSourcePos={false}
+          renderers={Object {}}
+          skipHtml={false}
+          source="None yet."
+          sourcePos={false}
+          transformLinkUri={[Function]}
+        />
+      </ContentEditableWrapper>
+      <img />
+    </div>
+  </ContentPanel>
+  <ContentPanel
+    title="Agenda"
+  >
+    <div
+      className="event-agenda"
+    >
+      <ContentEditableWrapper
+        defaultValue="somethings"
+        propName="agenda"
+        type="textarea"
+      >
+        <ReactMarkdown
+          astPlugins={Array []}
+          escapeHtml={false}
+          plugins={Array []}
+          rawSourcePos={false}
+          renderers={Object {}}
+          skipHtml={false}
+          source="somethings"
+          sourcePos={false}
+          transformLinkUri={[Function]}
+        />
+      </ContentEditableWrapper>
+    </div>
+  </ContentPanel>
+  <ContentPanel
+    title="Meet the organizers"
+  >
+    <Members>
+      <UserProfile
+        user={
+          Object {
+            "id": 1,
+          }
+        }
+      />
+    </Members>
+  </ContentPanel>
+  <ContentPanel
+    title="Become a sponsor"
+  >
+    <TargetAudience
+      className="target-audience"
+      event={
+        Object {
+          "agenda": "somethings",
+          "announcements": Object {},
+        }
+      }
+      sponsorship_offer={Object {}}
+    />
+    <Component
+      className="btn-inline"
+      inverted={true}
+      to="/e/undefined/sponsors/new"
+    >
+      View sponsorship options
+    </Component>
+  </ContentPanel>
+</styled.div>
+`;
+
 exports[`Event should render correctly 1`] = `
 <styled.div>
   <ContentPanel
@@ -34,6 +123,7 @@ exports[`Event should render correctly 1`] = `
       className="event-agenda"
     >
       <ContentEditableWrapper
+        defaultValue="somethings"
         propName="agenda"
         type="textarea"
       >
@@ -44,7 +134,7 @@ exports[`Event should render correctly 1`] = `
           rawSourcePos={false}
           renderers={Object {}}
           skipHtml={false}
-          source="None yet."
+          source="somethings"
           sourcePos={false}
           transformLinkUri={[Function]}
         />
@@ -52,19 +142,47 @@ exports[`Event should render correctly 1`] = `
     </div>
   </ContentPanel>
   <Component
+    announcements={
+      Object {
+        "data": Array [
+          Object {
+            "id": 1,
+          },
+        ],
+      }
+    }
     recipient_type="Event"
   />
   <ContentPanel
     title="Meet the organizers"
   >
-    <Members />
+    <Members>
+      <UserProfile
+        user={
+          Object {
+            "id": 1,
+          }
+        }
+      />
+    </Members>
   </ContentPanel>
   <ContentPanel
     title="Become a sponsor"
   >
     <TargetAudience
       className="target-audience"
-      event={Object {}}
+      event={
+        Object {
+          "agenda": "somethings",
+          "announcements": Object {
+            "data": Array [
+              Object {
+                "id": 1,
+              },
+            ],
+          },
+        }
+      }
       sponsorship_offer={Object {}}
     />
     <Component
