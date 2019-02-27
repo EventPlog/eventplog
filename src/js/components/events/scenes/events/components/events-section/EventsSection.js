@@ -74,14 +74,22 @@ export const generateMeta = (event = {}) => ([
   </ul>
 ])
 
-export const generateTopBtn = (event) => ([
-  <RegistrationButton event={event} />,
-  event.needs_sponsorship
-    ? <Button.Link className="img-btn" to={`${genEventLink(event)}/sponsors/new`}>
-        Sponsor
+export const generateTopBtn = (event) => (
+  event.is_past
+    ? event.has_resources
+      ? <Button.Link className="img-btn" to={`${genEventLink(event)}/resources`}>
+        Slides/Resources
       </Button.Link>
-    : ''
-])
+      : ''
+    : [
+        <RegistrationButton event={event} />,
+        event.needs_sponsorship
+          ? <Button.Link className="img-btn" to={`${genEventLink(event)}/sponsors/new`}>
+              Sponsor
+            </Button.Link>
+          : ''
+      ]
+)
 
 const styles = css`
   .event-category {

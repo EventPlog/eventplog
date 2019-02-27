@@ -1,18 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewCommunity should render correctly 1`] = `
-<styled.div
-  className="app-container feedback"
->
-  <EventUpdate
-    community={
-      Object {
-        "name": "A new community",
+<Component>
+  <styled.div
+    className="app-container feedback"
+  >
+    <EventUpdate
+      community={
+        Object {
+          "name": "A new community",
+        }
       }
-    }
-    communitySubmitted={false}
-    handleChange={[Function]}
-    submitEmail={[Function]}
-  />
-</styled.div>
+      communitySubmitted={false}
+      handleChange={[Function]}
+      submitEmail={[Function]}
+    />
+  </styled.div>
+</Component>
 `;

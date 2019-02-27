@@ -37,8 +37,8 @@ class SearchContainer extends Component {
   }
 
   componentDidUpdate(props, prevProps) {
-    if (!checkEqual(props.match.params, this.props.match.params)) {
-      this.getData()
+    if (props.location.search !== this.props.location.search) {
+      this.setState({ searchQuery: this.getParams() }, this.handleSubmit)
     }
   }
 
@@ -62,9 +62,9 @@ class SearchContainer extends Component {
     this.setState({activeTab: tabPages[data.activeIndex]})
   }
 
-  getParams = () => {
+  getParams = (props) => {
     // retrieve any '?activeIndex=1' query in url
-    return {...paramsToObj(this.props.location.search.substr(1))}
+    return {...paramsToObj((props || this.props).location.search.substr(1))}
   }
 
   getProps = () => ({

@@ -38,8 +38,8 @@ export default {
   currency: process.env.REACT_APP_CURRENCY,
 
   slack: {
-    partnerReportChannel: process.env.SLACK_PARTNER_REPORT_CHANNEL || '#bot-test',
-    communityReportChannel: process.env.SLACK_COMMUNITY_REPORT_CHANNEL || '#bot-test',
-    guestsReportChannel: process.env.SLACK_GUEST_REPORT_CHANNEL || '#bot-test'
+    partnerReportChannel: process.env.REACT_APP_SLACK_PARTNER_REPORT_CHANNEL || '#bot-test',
+    communityReportChannel: process.env.REACT_APP_SLACK_COMMUNITY_REPORT_CHANNEL || '#bot-test',
+    guestsReportChannel: process.env.REACT_APP_SLACK_GUEST_REPORT_CHANNEL || '#bot-test'
   },
 }

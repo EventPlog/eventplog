@@ -4,30 +4,14 @@ exports[`Presentation should render correctly 1`] = `
 <div
   className="undefined"
 >
-  <div
-    className="app-container"
-  >
-    <h3
-      className="page-title"
+  <div>
+    View 
+    <Link
+      replace={false}
+      to="/e/3/presentations"
     >
-      A 
-      talk
-       for 
-      <Link
-        replace={false}
-        to="/e/3"
-      />
-      <br />
-      <small>
-        View 
-        <Link
-          replace={false}
-          to="/e/3/presentations"
-        >
-          all presentations
-        </Link>
-      </small>
-    </h3>
+      all presentations
+    </Link>
   </div>
   <div
     className="app-container"
