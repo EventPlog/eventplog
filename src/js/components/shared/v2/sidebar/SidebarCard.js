@@ -12,8 +12,9 @@ import { lighten } from 'polished'
 // images
 
 const StyledSidebarCard = styled.div`
-  margin: 2rem 0;
+  margin: 1.5rem 0;
   background: white;
+ 
   
   ${
     media.tablet`
@@ -50,6 +51,8 @@ const StyledSidebarCard = styled.div`
     height: 100px;
     background-size: cover;
     position: relative;
+    height: auto;
+    border-radius: 8px;
     
     ${
       media.tablet`
@@ -73,11 +76,16 @@ const StyledSidebarCard = styled.div`
   
   .card-title {
     margin: 0 0 0.2rem;
-    font-size: 1.2rem;
     font-weight: 100;
-    
+    font-weight: 800;
+    padding: 10px;
+    font-size: 1.5rem;
+    line-height: 25px;
+    letter-spacing: 0.4px;
+    color: #fff
+
     a {
-      color: #444;
+      color: #fff;
       font-weight: 800;
       
       ${
@@ -114,13 +122,37 @@ const StyledSidebarCard = styled.div`
   
   button {
     font-size: 0.7rem;
-    padding: 0.8rem;
+    // padding: 0.8rem;
     background: #fff;
     border: none;
     box-shadow: 1px 2px 4px #444;
     position: absolute;
     right: 10px;
-    bottom: 10px;
+    top: 20px;
+    // bottom: 84px;
+    border-radius: 17px;
+  }
+
+  .follow {
+    padding: 20px 13px 13px;
+    color: white;
+    line-height: 23px;
+    font-size: 15px;
+
+    span {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  }
+  .count {
+    display: block;
+  }
+
+  .categories {
+    color: white;
+    padding-left: 13px;
+    padding-bottom: 20px;
+    padding-top: 16px;
   }
 `
 
@@ -136,29 +168,30 @@ const SidebarCard = ({
   title,
   description,
   featured_image,
+  no_of_followers,
   btn = {},
   meta,
   titleLink,
 }: itemType) => (
   <StyledSidebarCard className="sidebar-card">
     <div className="img-holder" style={{
-          backgroundImage: `url(${featured_image || "https://placeimg.com/640/480/tech"})`
-        }}>
-      <Link className="title-link" to={titleLink || "#"} />
-      {btn.text && <Button {...btn}>
-                     {btn.text}
-                   </Button>}
+      backgroundImage: `linear-gradient(rgba(37,33,56,0.7),rgba(55,49,84,0.3)), url(${featured_image || "https://placeimg.com/640/480/tech"})`
+    }}>
+      <div className="follow">
+        <span className="count">{no_of_followers}</span> Followers
+        <Link className="title-link" to={titleLink || "#"} />
+        {btn.text && <Button {...btn}>
+                      {btn.text}
+                    </Button>}
     </div>
-    <div className="card-body">
-      <div className="card-title">
-        {title}
-      </div>
-      <div className="card-description">
-        {description}
-      </div>
-      <div className="card-meta">
-        {meta}
-      </div>
+
+    <div className="card-title">
+      {title}
+    </div>
+
+    <div className="categories">
+      Programming, Startups
+    </div>
     </div>
   </StyledSidebarCard>
 )

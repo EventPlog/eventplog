@@ -9,7 +9,7 @@ const StyledMainContent = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 4rem 0;
+  margin: 3rem 0;
   flex-wrap: wrap;
   
   ${
@@ -28,7 +28,7 @@ const StyledMainContent = styled.div`
   
   .content-panel {
     margin-bottom: 1rem;
-    padding-right: 2rem;
+    padding-right: 0;
     
     ${
       media.tablet`

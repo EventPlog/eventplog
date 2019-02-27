@@ -3,9 +3,12 @@ import styled from 'styled-components'
 import { media } from 'js/styles/mixins'
 
 const StyledMainContentSidebar = styled.div`
+  padding-top: 3.2rem;
+  margin-right: -10px;
+  
   .sidebar {
     width: 300px;
-    padding: 2rem;
+    padding: 0.5rem 1rem;
     margin-bottom: 3rem;
     
     ${

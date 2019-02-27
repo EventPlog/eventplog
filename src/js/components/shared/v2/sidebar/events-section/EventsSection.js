@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // internal
-import Sidebar from 'js/components/shared/sidebar'
+import Sidebar from 'js/components/shared/v2/sidebar'
 import Loading from 'js/components/shared/loading'
 import { pluralize, genCommunityLink, genEventLink } from 'js/utils'
 

@@ -22,7 +22,7 @@ import {
 
 export const generateTitle = (event = {}, community = {}) => {
   return (
-    <Link to="#">
+    <Link to={genEventLink(event)}>
       {event.title}
     </Link>
   )
@@ -91,6 +91,10 @@ const styles = css`
     flex-wrap: wrap;
   }
 
+  .container div:nth-child(5n) {
+    margin-right: 0;
+  }
+
   .see-more {
     position: relative
     font-size: 1.2rem;
@@ -109,6 +113,7 @@ const ContentPanelCardMedium = styled(ContentPanel.Card)`
   flex: 2.5;
   // max-width: max-content;
   max-width: 30rem;
+  margin-right: 0;
 `;
 
 export const EventsSection = ({
@@ -130,8 +135,8 @@ export const EventsSection = ({
     <ContentPanel className={className} title={title}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
-      <div className="container">
-        
+
+      <div className="container"> 
         {shouldDisplayData && first10Events.length >= 1 && 
           <ContentPanelCardLarge event={first10Events[0]} />
         } 

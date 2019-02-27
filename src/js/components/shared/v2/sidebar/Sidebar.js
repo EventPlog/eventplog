@@ -32,7 +32,7 @@ const StyledSidebar = styled.div`
     border-bottom: 1px solid #ccc;
     margin: 1rem 0;
     color: ${props => props.theme.activeLink};
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     text-align: center;
     padding-bottom: 1rem;
   }

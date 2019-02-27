@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media, maxMedia } from 'js/styles/mixins'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
@@ -8,13 +8,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { lighten } from 'polished'
 
+//========= INTERNAL ===========
+import { media, maxMedia } from 'js/styles/mixins'
+import { genEventLink } from 'js/utils'
+
+
 
 import Icons from 'js/components/shared/cta-icons'
 
 const StyledContentPanelCardLarge = styled.section`
-  --container-height: 418px;
+  --container-height: 415px;
   height: var(--container-height);
-  width: 33vw;
+  width: 35rem;
   margin-right: 31px;
   border-radius: 8px;
   background-color: ${props => props.theme.activeLink};
@@ -91,9 +96,9 @@ const ContentPanelCardLarge = ({ event }) => {
     <Icons bigCard />
 
     <div className="event-title">
-      <a href="#">
+      <Link to={genEventLink(event)}>
         <h4>{event.title}</h4>
-      </a>
+      </Link>
     </div>
     
 
@@ -104,7 +109,7 @@ const ContentPanelCardLarge = ({ event }) => {
 
     <div className="event-time">
       <FontAwesomeIcon icon={faClock} className="far eye-icon" />
-      <span>{event.start_date.slice(0,3)} {event.display_start_time}, {eventAddress.substr(0, 45) + '...'}</span>
+      <span>{event.start_date.slice(0,3)} {event.display_start_time}, {eventAddress && eventAddress.substr(0, 40) + '...'}</span>
       <span className="date">{event.start_date.split(",")[1].slice(0, -5)}</span>
     </div>
   </StyledContentPanelCardLarge>

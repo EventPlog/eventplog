@@ -2,9 +2,9 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 //======== Internal Components =========
-import ContentSection from 'js/components/shared/content-section'
+import ContentSection from 'js/components/shared/v2/content-section'
 import EventSection from 'js/components/events/scenes/events/components/events-section'
-import Sidebar from 'js/components/shared/sidebar'
+import Sidebar from 'js/components/shared/v2/sidebar'
 import { media } from 'js/styles/mixins'
 
 const styles = css`
@@ -58,8 +58,8 @@ export const MainContent = ({
       </ContentSection.Body>
 
       <ContentSection.Sidebar>
-        Sidebar removed to stop data loading
-        {/* <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} /> */}
+        {/* Sidebar removed to stop data loading */}
+        <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} />
       </ContentSection.Sidebar>
 
     </ContentSection>

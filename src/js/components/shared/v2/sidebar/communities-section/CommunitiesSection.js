@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 // internal
 import Sidebar from 'js/components/shared/v2/sidebar'
@@ -21,6 +23,19 @@ export const generateMeta = (community) => (
   `${community.no_of_followers} ${pluralize('follower', community.no_of_followers)}`
 )
 
+const StyledSeeMore = styled.div`
+  position: relative
+  font-size: 1.2rem;
+  padding-bottom: 1.2rem;
+  text-align: center;
+  color: ${props => props.theme.activeLink};
+
+  span {
+    padding-left: 8px;
+    position: absolute;
+    top: 2px;
+  }
+`
 const CommunitiesSection = ({
   title,
   communities = {data: [], meta: {}},
@@ -31,20 +46,28 @@ const CommunitiesSection = ({
   return (
     <Sidebar title={title || "Communities you may know"}>
       {loading && <Loading />}
-      {error && <Loading.Error msg={error} />}
-      {data && data.map(({featured_image, ...community}) => {
+      {data && data.slice(0,4).map(({featured_image, ...community}) => {
           const title = generateTitle(community);
           const description = generateDescription(community.topic_interests)
           const meta = generateMeta(community)
           const titleLink = genCommunityLink(community)
+          const no_of_followers = community.no_of_followers
           const btn = community.following
                         ? {}
                         : {onClick: () => {followCommunity(community)}, text: 'Follow'}
           return (
-            <Sidebar.Card key={community.id} {...{title, description, featured_image, btn, meta, titleLink}} />
+            <Sidebar.Card key={community.id} {...{title, description, featured_image, btn, meta, titleLink, no_of_followers}} />
           )
         }
       )}
+
+      { data && data.length > 4 &&
+          <Link to="">
+            <StyledSeeMore className="see-more">
+              See more communities <span><FontAwesomeIcon className="fas" icon={faAngleDown}/></span>
+            </StyledSeeMore>
+          </Link>
+        } 
     </Sidebar>
   )
 }
