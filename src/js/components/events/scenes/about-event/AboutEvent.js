@@ -158,7 +158,7 @@ const Event = ({
       {((organizers && organizers.length > 0) || is_stakeholder) &&
         <ContentPanel title="Meet the organizers">
           <Members>
-            {organizers.length > 5
+            {organizers && organizers.length > 5
               ? organizers.map(member =>
                 <Members.Member member={member}/>
               )
