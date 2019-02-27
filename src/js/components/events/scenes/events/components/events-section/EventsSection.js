@@ -57,7 +57,7 @@ export const generateMeta = (event = {}) => ([
   </ul>,
   <ul key={`rating${event.id}`}>
     <li>
-      {event.interested_persons} {pluralize('person', event.interested_persons)} interested
+      {event.interested_persons < 10 ? '' : `${event.interested_persons} ${pluralize('person', event.interested_persons)} interested. `}{event.no_of_views} views.
     </li>
     {(parseInt(event.no_of_reviews) > 0) &&
       <li>

@@ -63,3 +63,4 @@ const BannerPage = ({title, bannerImage, children}) => (
 )
 
 export default BannerPage
+

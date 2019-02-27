@@ -384,7 +384,7 @@ const EventBanner = ({
                     </a>
                   }
                 </li>}
-              <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>
+              <li>{interested_persons < 10 ? '' : `${interested_persons} ${pluralize('person', interested_persons)} interested. `}{no_of_views} page views.</li>
             </ul>
             <ul>
             </ul>
@@ -396,11 +396,11 @@ const EventBanner = ({
           <Button.Link className={`cta large ${isPrivate ? 'inverted' : ''}`} to={`${eventUrl}/backstage/settings?activeIndex=1`}>
             <Icon name="settings" /> Settings
           </Button.Link>}
-        {is_attending && !is_owner && !!link &&
+        {!is_attending && !is_owner && !is_past && link &&
           <Button.Link isAnchorTag className="cta large" href={link} target="_blank">
-            RSVP
+            Register
           </Button.Link>}
-        {!is_attending && !is_past &&
+        {!is_attending && !is_past && !link &&
           <RegistrationButton event={{id, slug, title, needs_sponsorship}}
                               showForm={showRegistrationForm}
                               className="cta large" />}
