@@ -36,7 +36,7 @@ const StyledPage = styled.div`
     top: 0;
     bottom: 0;
     background: #000;
-    opacity: 0.3;
+    opacity: 0.5;
   }
 `
 
@@ -63,3 +63,4 @@ const BannerPage = ({title, bannerImage, children}) => (
 )
 
 export default BannerPage
+

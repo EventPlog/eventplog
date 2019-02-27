@@ -42,10 +42,8 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
       </ul>,
         <ul>
           <li>
-              211
-               
-              people
-               interested
+              211 people registered. 
+               views.
           </li>
       </ul>,
         <ul />,
@@ -265,10 +263,8 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
       </ul>,
         <ul>
           <li>
-              211
-               
-              people
-               interested
+              211 people registered. 
+               views.
           </li>
       </ul>,
         <ul />,
@@ -402,10 +398,8 @@ exports[`Communities::Communities::EventsSection should render correctly 1`] = `
       </ul>,
         <ul>
           <li>
-              108
-               
-              people
-               interested
+              108 people registered. 
+               views.
           </li>
       </ul>,
         <ul />,
