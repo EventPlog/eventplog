@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import defaults from 'js/styles/theme/variables'
 import MainContent from './components/main-content'
 import { media, maxMedia } from 'js/styles/mixins'
-import FeedbackReport from 'js/components/feedback/scenes/feedback-report'
+import EventSubpageWrapper from 'js/components/shared/event-subpage-wrapper'
 
 const StyledQuickFeedbackForm = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const StyledQuickFeedbackForm = styled.div`
   padding-bottom: 200px;
   
   &.app-container.feedback {
-    margin: 2rem auto;
+    margin: 0 auto;
   }
   
   .main-content {
@@ -42,9 +42,11 @@ type FeedbackFormType = {
 }
 
 const QuickFeedbackForm = (props: FeedbackFormType) => (
-  <StyledQuickFeedbackForm className="app-container feedback">
-    <MainContent {...props } />
-  </StyledQuickFeedbackForm>
+  <EventSubpageWrapper>
+    <StyledQuickFeedbackForm className="app-container feedback">
+      <MainContent {...props } />
+    </StyledQuickFeedbackForm>
+  </EventSubpageWrapper>
 )
 
 export default QuickFeedbackForm

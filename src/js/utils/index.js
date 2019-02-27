@@ -37,10 +37,11 @@ export const serialize = function(obj) {
 }
 
 export const paramsToObj = (params) => {
+  if (!params) return {}
   const obj = {}
   params.split('&').forEach(param => {
     const [key, val] = param.split('=')
-    obj[key] = val
+    obj[key] = decodeURI(val)
   })
   return obj
 }
