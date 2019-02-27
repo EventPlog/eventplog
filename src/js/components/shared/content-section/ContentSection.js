@@ -9,7 +9,7 @@ const StyledMainContent = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 0;
+  margin: 4rem 0;
   flex-wrap: wrap;
   
   ${
