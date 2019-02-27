@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 // internal
 import { media } from 'js/styles/mixins'
+import { resizeImage } from 'js/utils'
 
 const defaultBgImage = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1550144548/comments/AOS-banner_hj0jd0.jpg'
 
@@ -43,7 +44,7 @@ const BannerPage = ({title, bannerImage, children}) => (
   <StyledPage>
     <div>
       <div className="banner img-bg" style={{
-          backgroundImage: `url(${bannerImage || defaultBgImage})`
+          backgroundImage: `url(${resizeImage(bannerImage || defaultBgImage, 'thumbnail')})`
       }}>
         <div className="overlay" />
         <div className="content app-container">
