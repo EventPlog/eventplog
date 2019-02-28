@@ -10,7 +10,7 @@ import { lighten } from 'polished'
 
 //========= INTERNAL ===========
 import { media, maxMedia } from 'js/styles/mixins'
-import { genEventLink } from 'js/utils'
+import { genEventLink, resizeImage } from 'js/utils'
 
 
 
@@ -19,11 +19,10 @@ import Icons from 'js/components/shared/cta-icons'
 const StyledContentPanelCardLarge = styled.section`
   --container-height: 415px;
   height: var(--container-height);
-  width: 35rem;
-  margin-right: 31px;
+  width: 58%;
   border-radius: 8px;
   background-color: ${props => props.theme.activeLink};
-  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.7), rgba(55, 49, 84, 0.7)), url(${props.image})`};
+  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.1), rgba(55, 49, 84, 0.2)), url(${props.image})`};
   background-size: cover;
   margin: 1rem 1.3rem 0 0;
   position: relative;
@@ -49,6 +48,7 @@ const StyledContentPanelCardLarge = styled.section`
   .event-title {
     font-size: 1.7rem;
     text-align: center;
+    text-shadow: 0 2px 2px ${props => props.theme.black};
     padding-top: calc(var(--container-height) / 2 - 19px);
 
     ${
@@ -123,7 +123,7 @@ const getAddress = (event) => (
 const ContentPanelCardLarge = ({ event }) => {
   const eventAddress = getAddress(event)
   return (
-  <StyledContentPanelCardLarge className="main-body" image={event.featured_image}>
+  <StyledContentPanelCardLarge className="main-body" image={resizeImage(event.featured_image, 'medium')}>
     <Icons bigCard />
 
     <div className="event-title">

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 //======== Internal Components =========
 import ContentSection from 'js/components/shared/v2/content-section'
-import EventSection from 'js/components/events/scenes/events/components/events-section'
+import HomepageEventsSection from 'js/components/events/scenes/events/components/events-section/HomepageEventsSection'
 import Sidebar from 'js/components/shared/v2/sidebar'
 import { media } from 'js/styles/mixins'
 
@@ -53,13 +53,12 @@ export const MainContent = ({
      
       <ContentSection.Body>
         <div className="events_container">
-          <EventSection title="Upcoming Events" events={events} />
+          <HomepageEventsSection title="Upcoming Events" events={events} />
         </div>    
       </ContentSection.Body>
 
       <ContentSection.Sidebar>
-        {/* Sidebar removed to stop data loading */}
-        <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} />
+        {/* <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} /> */}
       </ContentSection.Sidebar>
 
     </ContentSection>

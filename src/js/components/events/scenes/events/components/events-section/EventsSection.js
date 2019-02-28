@@ -3,27 +3,28 @@ import styled, { css } from 'styled-components'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { darken } from 'polished'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 // internal
-import ContentPanel from 'js/components/shared/v2/content-panel'
-import ContentPanelCardLarge from 'js/components/shared/v2/content-panel/ContentPanelCardLarge'
+import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
-import { media, maxMedia } from 'js/styles/mixins'
+// import RegistrationButton from 'js/components/shared/event-registration-button'
 import {
   pluralize,
   genCommunityLink,
   genEventLink,
-  genCategoryLink
+  genCategoryLink,
 } from 'js/utils'
+
+
+// const Sponsorships = createLoader(() =>
+//   import('js/components/sponsorships/scenes/sponsorship-offer' /* webpackChunkName: "Resources" */), 'Sponsors')
 
 export const generateTitle = (event = {}, community = {}) => {
   return (
-    <Link to={genEventLink(event)}>
+    <Link to={genEventLink(event, community)}>
       {event.title}
     </Link>
   )
@@ -56,7 +57,7 @@ export const generateMeta = (event = {}) => ([
   </ul>,
   <ul key={`rating${event.id}`}>
     <li>
-      {event.interested_persons} {pluralize('person', event.interested_persons)} interested
+    {event.interested_persons} {pluralize('person', event.interested_persons)} interested
     </li>
     {(parseInt(event.no_of_reviews) > 0) &&
       <li>
@@ -86,49 +87,7 @@ const styles = css`
     color: var(--activeLink);
     font-weight: 800;
   }
-
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .container div:nth-child(5n) {
-    margin-right: 0;
-  }
-
-  .see-more {
-    position: relative
-    font-size: 1.2rem;
-    padding-top: 1.2rem;
-    color: ${props => props.theme.activeLink};
-
-    span {
-      padding-left: 12px;
-      position: absolute;
-      top: 19px;
-    }
-  }
 `
-
-const ContentPanelCardMedium = styled(ContentPanel.Card)`
-  flex: 2.5;
-  // max-width: max-content;
-  max-width: 30rem;
-  margin-right: 0;
-
-  ${
-    media.tablet`
-      min-width: 20rem;
-      max-width: 100%;
-    `
-  }
-  
-  ${
-    media.phone`
-      min-width: 20rem;
-    `
-  }
-`;
 
 export const EventsSection = ({
   title,
@@ -139,47 +98,37 @@ export const EventsSection = ({
 }) => {
   const {loading, error, data = [], meta = {}} = events;
   const shouldDisplayData = (!loading && !error && data);
-  let first10Events;
-
-  if (shouldDisplayData) {
-    first10Events = data.slice(0, 10)
-  }
-  
   return (
     <ContentPanel className={className} title={title}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
+      {shouldDisplayData && data.map(({featured_image, ...event}) => {
+          const community = event.community || {}
+          const title = generateTitle(event, community)
+          const description = generateDescription(community, event)
+          const meta = generateMeta(event)
+          // const topBtn = generateTopBtn(event)
+          const titleLink = genEventLink(event, community)
 
-      <div className="container"> 
-        {shouldDisplayData && first10Events.length >= 1 && 
-          <ContentPanelCardLarge event={first10Events[0]} />
-        } 
-
-        {shouldDisplayData && first10Events.length >= 2 && <ContentPanelCardMedium event={{...first10Events[1]}} />}
-
-        {shouldDisplayData && first10Events.slice(2,5).map((event) => {
           return (
-            <ContentPanel.Card event={event} /> 
+            <ContentPanel.Card
+              key={event.id}
+              {...{title, description, featured_image, meta, titleLink}}
+              showButton={!event.is_attending} />
           )
-        })}
+        }
+      )}
 
-        {shouldDisplayData && first10Events.length >= 6 && <ContentPanelCardMedium event={first10Events[5]} />}
-        {shouldDisplayData && first10Events.length >= 7 && <ContentPanelCardLarge event={first10Events[6]} />} 
-
-        {shouldDisplayData && first10Events.length > 7 && first10Events.slice(7,9).map((event) => {
-          return (
-            <ContentPanel.Card event={event} /> 
-          )
-        })}
-
-        { shouldDisplayData && first10Events.length > 10 && 
-          <p className="see-more">
-            See more events <span><FontAwesomeIcon className="fas" icon={faAngleDown}/></span>
-          </p>
-        } 
-      </div>
       {shouldDisplayData && data.length < 1 && <p>No events to display right now ...</p>}
-      
+
+      {
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
+          ? <Pagination totalPages={meta.total_pages}
+                        activePage={meta.current_page}
+                        per_page={meta.per_page}
+                        onPageChange={getEvents} />
+          : ''
+      }
     </ContentPanel>
   )
 }

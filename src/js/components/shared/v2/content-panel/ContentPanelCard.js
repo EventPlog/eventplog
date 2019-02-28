@@ -8,8 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 // internal
-import eventImage from '../../../../../img/tmn_bar_code.png'
-import { resizeImage } from 'js/utils'
+import { resizeImage, genEventLink } from 'js/utils'
 import Button from 'js/components/shared/button'
 import { media, maxMedia } from 'js/styles/mixins'
 import colors from '../../../../styles/theme/colors'
@@ -21,7 +20,6 @@ const StyledMainContentCard = styled.div`
   --img-height: 200px;
   --activeLink: ${defaults.activeLink};
   border-radius: 0.5rem;
-  // width: 20vw;
   width: 32.4%;
   background-color: ${colors.white};
   position: relative;
@@ -123,6 +121,14 @@ const getAddress = (event) => (
     ? event.location.address : event.venue
 )
 
+export const generateTitle = (event = {}, community = {}) => {
+  return (
+    <Link to={genEventLink(event)}>
+      {event.title}
+    </Link>
+  )
+}
+
 const MainContentCard = ({
   event,
   title,
@@ -136,14 +142,12 @@ const MainContentCard = ({
   className,
 }) => (
   <StyledMainContentCard className={`community-card ${className}`}>
-    <div className="background" style={{backgroundImage:  `url(${resizeImage(event.featured_image, 'thumbnail')})`}} />
+    <div className="background" style={{backgroundImage:  `url(${resizeImage(event.featured_image, 'medium')})`}} />
 
     <Icons />
 
     <div className="details">
-      <a href="#">
-        <h4>{event.title}</h4>
-      </a>
+      <h4>{generateTitle(event)}</h4>
 
       <div className="event-desc">
         <p>{"The actual description {event.description} does not render, don't know why".substr(0, 125) + '...'}</p>
