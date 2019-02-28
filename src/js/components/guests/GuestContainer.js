@@ -133,15 +133,16 @@ class GuestContainter extends Component {
       check_in: user
     }
     this.props.checkInByForm(payload).then(res => {
-      const successMsg = `${res.user ? res.user.display_name : 'User'} has been checked in successfully.`
+      const successMsg = `${res.user ? titleize(res.user.display_name) : 'User'} has been checked in successfully.`
 
       this.setState({
         loading: false,
         sucess: successMsg,
         user: res
       })
+      EVENTPLOG.toast.success({title: 'Success!', body: successMsg})
       this.props.showChildrenSuccess(successMsg)
-    })
+    }).catch(e => EVENTPLOG.toast.error({title: 'An error occured!', body: `Something prevented us from checking in ${user.display_name}`}))
     mixpanel.track('GUEST_CHECK_IN_BUTTON_CLICKED')
   }
 

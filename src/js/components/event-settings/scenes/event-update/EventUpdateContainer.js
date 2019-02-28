@@ -29,9 +29,13 @@ class EventUpdateContainer extends Component {
     const {commuity, ...others} = this.state.event
     return this.props.updateEvent(others).then(event => {
       this.setState({event, success: 'Event updated successfully'})
+      EVENTPLOG.toast.success({title: 'Update Sucessful!', body: 'You have successfully updated this event.'})
       mixpanel.track('EVENT_UPDATE')
       recachePage(genEventLink(event))
-    }).catch(error => this.setState({success: false, error: 'An error occured. Please try again.'}))
+    }).catch(error => {
+      this.setState({success: false, error: 'An error occured. Please try again.'})
+      EVENTPLOG.toast.error({title: 'Error!', body: 'An error occured. Please try again'})
+    })
   }
 
   checkForValidSlug = () => {
