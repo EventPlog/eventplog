@@ -22,14 +22,14 @@ const StyledMainContentCard = styled.div`
   --activeLink: ${defaults.activeLink};
   border-radius: 0.5rem;
   // width: 20vw;
-  max-width: 32.4%;
+  width: 32.4%;
   background-color: ${colors.white};
   position: relative;
   margin: 1rem 0.8rem 1rem 0;
 
   ${
     media.tablet`
-      width: calc(50vw - 3rem);
+      width: 100%;
       margin: 1rem 0;
     `
   }

@@ -25,7 +25,7 @@ const styles = css`
     
     ${
       media.phone`
-        margin: 0 0 2rem 0;
+        margin: 0;
       `
     } 
   }

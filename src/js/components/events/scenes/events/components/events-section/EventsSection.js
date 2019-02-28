@@ -13,6 +13,7 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
+import { media, maxMedia } from 'js/styles/mixins'
 import {
   pluralize,
   genCommunityLink,
@@ -114,6 +115,19 @@ const ContentPanelCardMedium = styled(ContentPanel.Card)`
   // max-width: max-content;
   max-width: 30rem;
   margin-right: 0;
+
+  ${
+    media.tablet`
+      min-width: 20rem;
+      max-width: 100%;
+    `
+  }
+  
+  ${
+    media.phone`
+      min-width: 20rem;
+    `
+  }
 `;
 
 export const EventsSection = ({

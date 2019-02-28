@@ -63,7 +63,7 @@ const StyledSidebarCard = styled.div`
     
     ${
       media.featurePhone`
-        height: 100px;
+        // height: 100px;
       `
     }
   }

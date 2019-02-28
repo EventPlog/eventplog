@@ -4,7 +4,6 @@ import { media } from 'js/styles/mixins'
 
 const StyledMainContentSidebar = styled.div`
   padding-top: 3.2rem;
-  margin-right: -10px;
   
   .sidebar {
     width: 300px;
@@ -14,12 +13,14 @@ const StyledMainContentSidebar = styled.div`
     ${
       media.tablet`
         width: 100%;
+        margin-bottom: 3rem;
       `
     }
     
     ${
       media.phone`
         width: 100%;
+        margin-bottom: 0;
       `
     }
   }

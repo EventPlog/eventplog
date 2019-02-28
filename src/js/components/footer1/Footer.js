@@ -25,6 +25,7 @@ const StyledFooter = styled.footer`
     ${
       media.phone`
         flex-direction: column;
+        padding-top: 0;
       `
     }
 

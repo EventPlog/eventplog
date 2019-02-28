@@ -85,6 +85,7 @@ const StyledAppMenu = styles.div`
     
     .ui.basic.segment {
       padding: 0;
+      width: 101%
     }
   }
   

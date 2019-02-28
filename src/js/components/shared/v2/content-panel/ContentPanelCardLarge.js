@@ -31,13 +31,18 @@ const StyledContentPanelCardLarge = styled.section`
 
   ${
     media.tablet`
-      padding: 0 2rem;
+      padding: 0 1.5rem;
+      margin-right: 0;
+      width: 100%;
     `
   }
   
   ${
     media.phone`
-      padding: 0 2rem;
+      --container-height: 320px;
+      padding: 0 1.5rem;
+      margin-right: 0;
+      width: 100%;
     `
   }
 
@@ -45,6 +50,12 @@ const StyledContentPanelCardLarge = styled.section`
     font-size: 1.7rem;
     text-align: center;
     padding-top: calc(var(--container-height) / 2 - 19px);
+
+    ${
+      media.phone`
+        padding-top: calc(var(--container-height) / 2 - 30px);
+      `
+    }
 
     h4 {
       color: ${props => props.theme.white};
@@ -57,6 +68,13 @@ const StyledContentPanelCardLarge = styled.section`
     display: flex;
     border-bottom: 2px solid ${props => lighten(0.3, props.theme.darkGray)};
     padding-bottom: 1rem;
+
+    ${
+      media.phone`
+        padding-left: 0;
+        padding-top: 4.5rem;
+      `
+    }
 
     span {
       padding-top: 2px;
@@ -72,6 +90,12 @@ const StyledContentPanelCardLarge = styled.section`
     display: flex;
     padding: 1.5rem;
 
+    ${
+      media.phone`
+      padding: 1rem 0;
+      `
+    }
+
     span {
       font-size: 12px;
       padding-top: 2px;
@@ -80,6 +104,13 @@ const StyledContentPanelCardLarge = styled.section`
     .date {
       position: absolute;
       right: 1.5rem;
+
+      ${
+        media.phone`
+          position: relative;
+          right: 0;
+        `
+      }
     }
   }
 `
