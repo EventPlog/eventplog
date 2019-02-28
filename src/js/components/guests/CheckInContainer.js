@@ -112,7 +112,10 @@ class CheckInContainer extends Component {
       })
       EVENTPLOG.toast.success({title: 'Success!', body: successMsg})
       this.props.showChildrenSuccess(successMsg)
-    }).catch(e => EVENTPLOG.toast.error({title: 'An error occured!', body: `Something prevented us from checking in ${user.display_name}`}))
+    }).catch(e => {
+      EVENTPLOG.toast.error({title: 'An error occured!', body: `Something prevented us from checking in ${user.display_name}`})
+      this.setState({success: false})
+    })
     mixpanel.track('GUEST_CHECK_IN_BUTTON_CLICKED')
   }
 
@@ -184,7 +187,12 @@ class CheckInContainer extends Component {
     if (!confirmed) { return }
     const { guest } = this.props
     this.props.deleteGuest(guest.id).then(res => {
-      this.props.showChildrenSuccess(`${guest.user ? guest.user.display_name : 'User'} has been deleted successfully.`)
+      const successMsg = `${guest.user ? guest.user.display_name : 'User'} has been deleted successfully.`
+      EVENTPLOG.toast.success({title: 'Success!', body: successMsg})
+      this.props.showChildrenSuccess(successMsg)
+    }).catch(err => {
+      EVENTPLOG.toast.error({title: 'Error!', body: 'An error occured while deleting this guest. Please try again or contact support.'})
+      this.setState({success: false})
     })
     mixpanel.track('GUEST_DELETE_BUTTON_CLICKED')
   }
