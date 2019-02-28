@@ -43,7 +43,7 @@ const sendToSlack = (event, user) => {
   }
   SlackService.send(slackPayload)
 }
-class GuestContainter extends Component {
+class CheckInContainer extends Component {
   state = {
     id: null,
     user: {},
@@ -72,38 +72,8 @@ class GuestContainter extends Component {
   )
 
   getData() {
-    const { event = {}, match} = this.props
-    if (event.id || !match.params.id) return this.getQuestions()
-
-    if(this.eventFetchedFromServer()) {
-      const event = window.__INITIAL_DATA__.event
-      this.setState({loading: false, event})
-      this.props.addEventToStore(event)
-      return
-    }
-
-    this.setState({loading: true})
-
-    this.props.getEvent(match.params.id)
-      .then(event => {
-        this.setState({loading: false})
-      })
-      .catch(error => {
-        this.setState({loading: false, error})
-      })
   }
 
-  getQuestions = () => {
-    this.setState({loading: true})
-
-    const { event = {}, recipient_id, recipient_type } = this.props
-    const payload = {
-      event_id: event.id,
-      recipient_id, recipient_type
-    }
-    this.props.getQuestions(payload)
-      .then(questions => this.setState({ questions, loading: false }))
-  }
 
   handleChange = (key, value) => {
     this.setState({user: {
@@ -142,7 +112,10 @@ class GuestContainter extends Component {
       })
       EVENTPLOG.toast.success({title: 'Success!', body: successMsg})
       this.props.showChildrenSuccess(successMsg)
-    }).catch(e => EVENTPLOG.toast.error({title: 'An error occured!', body: `Something prevented us from checking in ${user.display_name}`}))
+    }).catch(e => {
+      EVENTPLOG.toast.error({title: 'An error occured!', body: `Something prevented us from checking in ${user.display_name}`})
+      this.setState({success: false})
+    })
     mixpanel.track('GUEST_CHECK_IN_BUTTON_CLICKED')
   }
 
@@ -214,7 +187,12 @@ class GuestContainter extends Component {
     if (!confirmed) { return }
     const { guest } = this.props
     this.props.deleteGuest(guest.id).then(res => {
-      this.props.showChildrenSuccess(`${guest.user ? guest.user.display_name : 'User'} has been deleted successfully.`)
+      const successMsg = `${guest.user ? guest.user.display_name : 'User'} has been deleted successfully.`
+      EVENTPLOG.toast.success({title: 'Success!', body: successMsg})
+      this.props.showChildrenSuccess(successMsg)
+    }).catch(err => {
+      EVENTPLOG.toast.error({title: 'Error!', body: 'An error occured while deleting this guest. Please try again or contact support.'})
+      this.setState({success: false})
     })
     mixpanel.track('GUEST_DELETE_BUTTON_CLICKED')
   }
@@ -260,4 +238,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GuestContainter))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CheckInContainer))
