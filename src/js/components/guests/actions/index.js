@@ -56,7 +56,7 @@ export const checkInByForm = (payload = {}) => {
   return handleApiCall({
     actions,
     data: payload,
-    errorMessage: 'Something prevented creating an event',
+    errorMessage: 'Something prevented checking into this event.',
     caller: 'check in guest',
     route: `/api/v1/web/events/${payload.event_id}/check_ins`,
     requestMethod: 'POST'
