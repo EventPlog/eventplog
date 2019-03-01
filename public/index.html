@@ -66,24 +66,30 @@
         }
 
         .ovals-loading {
-          width: 10vh;
-          height: 10vh;
+          width: 5vh;
+          height: 5vh;
           position: absolute;
-          border: 2rem solid #493294;
+          border: 01rem solid #493294;
           border-radius: 100%;
           margin-top: 4rem;
-          animation: spin 3s linear .0000000001s infinite;
-          margin-left: -2.5rem;
-          border-top-color: #8c69fb;
+          animation: spin 1s linear .0000000001s infinite;
+          margin-left: -1.2rem;
+          border-top-color: #f7e198;
           opacity: 0.9;
+          border-block-start-style: groove;
+          border-block-start-width: 15px;
+          border-inline-start-color: #493294;
+          border-inline-end-color: #493294;
         }
 
         .ovals-loading:nth-child(2) {
            /*animation-delay: 1s;*/
-           border-color: #F5DD90;
-           margin-left: 2.5rem;
-           border-top-color: #f7bd04;
-           animation-duration: 3s;
+          border-color: #a02ea0;
+          margin-left: 1.2rem;
+          border-top-color: #f8e59e;
+          animation-duration: 1.2s;
+          border-inline-start-color: #a02ea0;
+          border-inline-end-color: #a02ea0;
          }
 
         @media only screen and (max-width: 600px) {
