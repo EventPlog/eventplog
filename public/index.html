@@ -54,20 +54,42 @@
         @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
         @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
         @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-        .ovals-loading {
-          width: 4rem;
-          height: 4rem;
-          border-width: 4rem;
+        .fan-blades {
+          width: 6rem;
+          height: 28rem;
+          border-width: 8rem;
           position: absolute;
-          border: 4rem solid #493294;
-          border-radius: 50% 0;
+          border: 1.5rem solid #493294;
+          border-radius: 100% 0;
           margin-top: 4rem;
-          animation: spin 4s linear 0.0000000001s infinite alternate;
+          animation: spin 2s linear .0000000001s infinite;
+        }
+
+        .ovals-loading {
+          width: 5vh;
+          height: 5vh;
+          position: absolute;
+          border: 01rem solid #493294;
+          border-radius: 100%;
+          margin-top: 4rem;
+          animation: spin 1s linear .0000000001s infinite;
+          margin-left: -1.2rem;
+          border-top-color: #f7e198;
+          opacity: 0.9;
+          border-block-start-style: groove;
+          border-block-start-width: 15px;
+          border-inline-start-color: #493294;
+          border-inline-end-color: #493294;
         }
 
         .ovals-loading:nth-child(2) {
-           animation-delay: 1s;
-           border-color: #F5DD90;
+           /*animation-delay: 1s;*/
+          border-color: #a02ea0;
+          margin-left: 1.2rem;
+          border-top-color: #f8e59e;
+          animation-duration: 1.2s;
+          border-inline-start-color: #a02ea0;
+          border-inline-end-color: #a02ea0;
          }
 
         @media only screen and (max-width: 600px) {

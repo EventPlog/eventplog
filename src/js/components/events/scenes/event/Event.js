@@ -22,7 +22,6 @@ import {genEventLink} from "js/utils";
 import colors from 'js/styles/theme/colors'
 
 const StyledEvent = styled.div`
-  background: ${props => lighten(0.57, colors.primary)};
   
   ${
     media.phone`
