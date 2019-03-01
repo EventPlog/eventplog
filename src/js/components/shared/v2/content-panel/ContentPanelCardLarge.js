@@ -1,11 +1,7 @@
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faClock,
-  faEye
-} from '@fortawesome/free-solid-svg-icons';
 import { lighten } from 'polished'
 
 //========= INTERNAL ===========
@@ -134,12 +130,13 @@ const ContentPanelCardLarge = ({ event }) => {
     
 
     <div className="interested-persons">
-      <FontAwesomeIcon icon={faEye} className="fas eye-icon" />
+      <Icon name="eye" className="far eye-icon" />
       <span>{event.interested_persons} Interested</span>
     </div>
 
     <div className="event-time">
-      <FontAwesomeIcon icon={faClock} className="far eye-icon" />
+      <Icon name="map marker alternate" className="far eye-icon" />
+
       <span>{event.start_date.slice(0,3)} {event.display_start_time}, {eventAddress && eventAddress.substr(0, 40) + '...'}</span>
       <span className="date">{event.start_date.split(",")[1].slice(0, -5)}</span>
     </div>

@@ -1,14 +1,11 @@
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
-import colors from '../../../styles/theme/colors'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faShareSquare,
-  faHeart
-} from '@fortawesome/free-solid-svg-icons';
 
+//========== INTERNAL ============
+import colors from '../../../styles/theme/colors'
 
 const StyledIcons = styled.div`
   position: absolute;
@@ -47,12 +44,11 @@ const StyledIcons = styled.div`
 const Icons = (props) => (
   <StyledIcons bigCard={props.bigCard}>
     <Link className="bookmark" to="#">
-      <FontAwesomeIcon icon={faShareSquare}
-                        transform={{ rotate: -17 }} />
+      <Icon name="share square" />
     </Link>
 
     <Link className="bookmark inverted" to="#">
-      <FontAwesomeIcon icon={faHeart} className="fas" rotation={37}/>
+      <Icon name="heart" />
     </Link>
   </StyledIcons>
 )

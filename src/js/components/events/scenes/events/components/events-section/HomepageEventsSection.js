@@ -3,8 +3,6 @@ import styled, { css } from 'styled-components'
 import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { darken } from 'polished'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 // internal
 import ContentPanel from 'js/components/shared/v2/content-panel'
@@ -182,7 +180,7 @@ export const EventsSection = ({
 
         { shouldDisplayData && first10Events.length > 10 && 
           <p className="see-more">
-            See more events <span><FontAwesomeIcon className="fas" icon={faAngleDown}/></span>
+            See more events <span><Icon name="angle down" /></span>
           </p>
         } 
       </div>

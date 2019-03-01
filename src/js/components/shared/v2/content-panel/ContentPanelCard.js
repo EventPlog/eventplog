@@ -1,11 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 import styled, { css } from 'styled-components'
 import { lighten } from 'polished'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMapMarkerAlt
-} from '@fortawesome/free-solid-svg-icons';
 
 // internal
 import { resizeImage, genEventLink } from 'js/utils'
@@ -63,8 +60,6 @@ const StyledMainContentCard = styled.div`
     } 
 
     h4, .next-event-title {
-      white-space: nowrap;
-      overflow: hidden;
       text-overflow: ellipsis;
       
       ${
@@ -157,7 +152,7 @@ const MainContentCard = ({
       <div>
         <p className="event-date"><span>{event.start_date}</span></p>
         <div className="event-time">
-          <FontAwesomeIcon icon={faMapMarkerAlt}/>&nbsp;
+          <Icon name="map marker alternate" />&nbsp;
           {getAddress(event)}
         </div>
       </div>

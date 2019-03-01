@@ -1,8 +1,7 @@
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 // internal
 import Sidebar from 'js/components/shared/v2/sidebar'
@@ -64,7 +63,7 @@ const CommunitiesSection = ({
       { data && data.length > 4 &&
           <Link to="">
             <StyledSeeMore className="see-more">
-              See more communities <span><FontAwesomeIcon className="fas" icon={faAngleDown}/></span>
+              See more communities <span><Icon name="angle down" /></span>
             </StyledSeeMore>
           </Link>
         } 
