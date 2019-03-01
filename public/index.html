@@ -54,20 +54,36 @@
         @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
         @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
         @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-        .ovals-loading {
-          width: 4rem;
-          height: 4rem;
-          border-width: 4rem;
+        .fan-blades {
+          width: 6rem;
+          height: 28rem;
+          border-width: 8rem;
           position: absolute;
-          border: 4rem solid #493294;
-          border-radius: 50% 0;
+          border: 1.5rem solid #493294;
+          border-radius: 100% 0;
           margin-top: 4rem;
-          animation: spin 4s linear 0.0000000001s infinite alternate;
+          animation: spin 2s linear .0000000001s infinite;
+        }
+
+        .ovals-loading {
+          width: 10vh;
+          height: 10vh;
+          position: absolute;
+          border: 2rem solid #493294;
+          border-radius: 100%;
+          margin-top: 4rem;
+          animation: spin 3s linear .0000000001s infinite;
+          margin-left: -2.5rem;
+          border-top-color: #8c69fb;
+          opacity: 0.9;
         }
 
         .ovals-loading:nth-child(2) {
-           animation-delay: 1s;
+           /*animation-delay: 1s;*/
            border-color: #F5DD90;
+           margin-left: 2.5rem;
+           border-top-color: #f7bd04;
+           animation-duration: 3s;
          }
 
         @media only screen and (max-width: 600px) {
