@@ -23,8 +23,6 @@ const StyledHeader = styled.div`
   height: 47px;
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
-=======
   position: fixed;
   left: 0;
   right: 0;
@@ -32,24 +30,14 @@ const StyledHeader = styled.div`
   z-index: 100;
   border-bottom: 2px solid rgba(34,36,38,.15);
   background: white;
->>>>>>> feature/new-events-landing-page
   
   .logo, .ui.menu {
     background: #fff;
   }
-<<<<<<< HEAD
-
-  .ui.secondary.menu  {
-    margin-top: 0;
-  }
-
-  .ui.secondary.menu .item {
-=======
    .ui.secondary.menu  {
     margin-top: 0;
   }
    .ui.secondary.menu .item {
->>>>>>> feature/new-events-landing-page
     
     &.active {
       color: var(--activeLink);
@@ -57,12 +45,6 @@ const StyledHeader = styled.div`
     }
   }
   
-<<<<<<< HEAD
-  .logo img {
-    margin: 15px;
-    max-width: 170px;
-    padding-left: 50px;
-=======
   .logo {
     display: flex;
     
@@ -96,7 +78,6 @@ const StyledHeader = styled.div`
       padding: 0;
       padding-right: 1rem;
     }
->>>>>>> feature/new-events-landing-page
   }
   
   .ui.secondary.menu a.item.create-event-btn {
@@ -113,45 +94,16 @@ const StyledHeader = styled.div`
     margin: -.5em 0;
     padding: 0.7rem 1rem;
   }
-<<<<<<< HEAD
-
-  .input input {
-    border-radius: 50px;
-  }
-
-  div.item.avatar {
-=======
   
    .input input {
     border-radius: 50px;
   }
    div.item.avatar {
->>>>>>> feature/new-events-landing-page
     height  100%;
     padding-bottom: 0px !important;
     padding-top: 0px !important;
     padding-left: 10px !important;
     margin-right: 16px !important;
-<<<<<<< HEAD
-
-    img {
-      border-radius: 50px;
-    }  
-  }
-
-  .ui.menu .right.menu .dropdown:last-child .menu {
-    right: -22px;
-    box-shadow: 0 0 32px -5px rgba(0,0,0,0.1);
-  }
-
-  div.ui.pointing.dropdown.link.item {
-    padding-left: 0;
-  }
-`
-
-class Header extends Component {
-  state = { activeItem: 'UPCOMING' }
-=======
      img {
       border-radius: 50px;
     }  
@@ -169,15 +121,12 @@ class Header extends Component {
 
 class Header extends Component {
   state = { activeItem: 'UPCOMING', searchQuery: '' }
->>>>>>> feature/new-events-landing-page
 
   handleItemClick = (e, { name }) => {
     // this.props.history.push(`/${name.replace(' ', '_').toLowerCase()}`)
     this.setState({ activeItem: name })
   }
 
-<<<<<<< HEAD
-=======
   setSearchQuery = (e) => this.setState({ searchQuery: e.target.value })
 
   submitSearch = (e) => {
@@ -185,48 +134,12 @@ class Header extends Component {
     this.props.history.push(`/search?title=${this.state.searchQuery}`)
   }
 
->>>>>>> feature/new-events-landing-page
   handleLogout = (e) => {
     this.props.logout()
       .then(res => window.location.replace('/login'))
   }
 
   render() {
-<<<<<<< HEAD
-    const menu = ['UPCOMING', 'COMMUNITIES', 'PAST EVENTS']
-    const { activeItem } = this.state
-    return (
-      <StyledHeader className="header">
-        <div className="logo">
-          <a href="/">
-            <img src={logo} className="img-logo" />
-          </a>
-        </div>
-        <Menu pointing secondary>
-          {menu.map(item =>
-            <Menu.Item key={item} name={item}
-                       active ={activeItem === item}
-                       onClick={this.handleItemClick} />
-          )}
-          <Menu.Menu position='right'>
-            <Menu.Item>
-              <Input icon='search' placeholder='Search...' />
-            </Menu.Item>
-
-            <Menu.Item className="avatar">
-              <img src={avatar} />
-              <Dropdown pointing className='link item'>
-                <Dropdown.Menu>
-                  <Dropdown.Item>REMINDERS <span> (0)</span></Dropdown.Item>
-                  <Dropdown.Item>FOLLOWING <span> (16)</span></Dropdown.Item>
-                  <Dropdown.Item>LIKED <span> (0)</span></Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item>ACCOUNT</Dropdown.Item>
-                  <Dropdown.Item>LOGOUT</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Menu.Item>
-=======
     const menu = [{title: 'Join us on Spectrum', link: 'https://spectrum.chat/eventplog'}]
     const { activeItem } = this.state
     const { currentUser: user = {}, toggleSidebar } = this.props
@@ -307,7 +220,6 @@ class Header extends Component {
               </Dropdown>
             </Menu.Item>
             }
->>>>>>> feature/new-events-landing-page
           </Menu.Menu>
         </Menu>
       </StyledHeader>

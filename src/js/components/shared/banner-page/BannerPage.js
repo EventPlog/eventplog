@@ -7,8 +7,6 @@ import { resizeImage } from 'js/utils'
 
 const defaultBgImage = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1550144548/comments/AOS-banner_hj0jd0.jpg'
 
-const defaultBgImage = 'https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1550144548/comments/AOS-banner_hj0jd0.jpg'
-
 const StyledPage = styled.div`
   
   .banner {
@@ -46,11 +44,7 @@ const BannerPage = ({title, bannerImage, children}) => (
   <StyledPage>
     <div>
       <div className="banner img-bg" style={{
-<<<<<<< HEAD
-          backgroundImage: `url(${bannerImage || defaultBgImage})`
-=======
           backgroundImage: `url(${resizeImage(bannerImage || defaultBgImage, 'thumbnail')})`
->>>>>>> feature/new-events-landing-page
       }}>
         <div className="overlay" />
         <div className="content app-container">
@@ -68,9 +62,5 @@ const BannerPage = ({title, bannerImage, children}) => (
   </StyledPage>
 )
 
-<<<<<<< HEAD
-export default BannerPage
-=======
 export default BannerPage
 
->>>>>>> feature/new-events-landing-page

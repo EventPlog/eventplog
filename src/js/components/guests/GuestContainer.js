@@ -180,13 +180,10 @@ class GuestContainter extends Component {
           : `You've successfully registered for ${this.props.event.title}`
 
         sendToSlack(this.props.event, user)
-<<<<<<< HEAD
-=======
         this.props.handleSubmit && this.props.handleSubmit()
 
         EVENTPLOG.toast.success({title:"Success!!", body: successMsg})
 
->>>>>>> feature/new-events-landing-page
         this.setState({
           success: successMsg,
           error: false,
@@ -197,12 +194,9 @@ class GuestContainter extends Component {
       })
       .catch(error => {
         console.log(error)
-<<<<<<< HEAD
-=======
         const errorMsg = 'An error occured. Please try again later.'
         EVENTPLOG.toast.error({title:"Error :(", body: error})
 
->>>>>>> feature/new-events-landing-page
         this.setState({
           loading: false,
           error: errorMsg

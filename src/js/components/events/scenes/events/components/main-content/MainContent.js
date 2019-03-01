@@ -57,10 +57,6 @@ export const MainContent = ({
         </div>    
       </ContentSection.Body>
 
-      <ContentSection.Sidebar>
-        {/* <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} /> */}
-      </ContentSection.Sidebar>
-
     </ContentSection>
   )
 }
