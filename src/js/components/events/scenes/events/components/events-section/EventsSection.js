@@ -10,12 +10,12 @@ import Loading from 'js/components/shared/loading'
 import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
-// import RegistrationButton from 'js/components/shared/event-registration-button'
+import RegistrationButton from 'js/components/shared/event-registration-button'
 import {
   pluralize,
   genCommunityLink,
   genEventLink,
-  genCategoryLink,
+  genCategoryLink
 } from 'js/utils'
 
 
@@ -57,7 +57,7 @@ export const generateMeta = (event = {}) => ([
   </ul>,
   <ul key={`rating${event.id}`}>
     <li>
-    {event.interested_persons} {pluralize('person', event.interested_persons)} interested
+      {event.interested_persons < 10 ? '' : `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
     </li>
     {(parseInt(event.no_of_reviews) > 0) &&
       <li>
@@ -74,10 +74,21 @@ export const generateMeta = (event = {}) => ([
   </ul>
 ])
 
-export const generateCTA = (handleClick) => (
-  <Button onClick={handleClick}>
-    Interested
-  </Button>
+export const generateTopBtn = (event) => (
+  event.is_past
+    ? event.has_resources
+      ? <Button.Link className="img-btn" to={`${genEventLink(event)}/resources`}>
+        Slides/Resources
+      </Button.Link>
+      : ''
+    : [
+        <RegistrationButton event={event} />,
+        event.needs_sponsorship
+          ? <Button.Link className="img-btn" to={`${genEventLink(event)}/sponsors/new`}>
+              Sponsor
+            </Button.Link>
+          : ''
+      ]
 )
 
 const styles = css`
@@ -107,13 +118,13 @@ export const EventsSection = ({
           const title = generateTitle(event, community)
           const description = generateDescription(community, event)
           const meta = generateMeta(event)
-          // const topBtn = generateTopBtn(event)
+          const topBtn = generateTopBtn(event)
           const titleLink = genEventLink(event, community)
 
           return (
             <ContentPanel.Card
               key={event.id}
-              {...{title, description, featured_image, meta, titleLink}}
+              {...{title, description, featured_image, meta, topBtn, titleLink}}
               showButton={!event.is_attending} />
           )
         }

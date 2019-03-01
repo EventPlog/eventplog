@@ -12,7 +12,6 @@ const styles = css`
   position: relative;
   
   &.app-container {
-    margin-top: 3rem;
     padding: 1rem;
     
     > div {
@@ -32,15 +31,14 @@ const styles = css`
     max-width: 100%;
   }
   
+  .img-holder {
+    max-width: 200px;
+  }
+  
   .pagination-wrapper {
     display: flex;
   }
 `
-
-export const generateTitle = (event) => {
-  const title = <Link to={`${genEventLink(event, event.community)}?utm_source=feedback_form`}>{event.title}</Link>
-  return <p>All presentations - {title}</p>
-}
 
 export const Presentations = ({
   className,
@@ -55,18 +53,18 @@ export const Presentations = ({
   if (error) return <Loading.Error msg={error} />
 
   return (
-    <div className={`${className} presentations app-container`}>
-      <div>
-        <PresentationsList title={generateTitle(event)}
-                  currentUser={currentUser}
-                  presentations={presentations} />
-        { event.is_stakeholder &&
-          <ContentPanel title="Add a presentation">
-            <NewPresentation newPresentation />
-          </ContentPanel>
-        }
+      <div className={`${className} presentations app-container`}>
+        <div>
+          <PresentationsList title={`All Presentations`}
+                    currentUser={currentUser}
+                    presentations={presentations} />
+          { event.is_stakeholder &&
+            <ContentPanel title="Add a presentation">
+              <NewPresentation newPresentation />
+            </ContentPanel>
+          }
+        </div>
       </div>
-    </div>
   )
 }
 

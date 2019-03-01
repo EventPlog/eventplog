@@ -1,5 +1,5 @@
 import React from 'react';
-import { Presentations, generateTitle } from '../Presentations';
+import { Presentations } from '../Presentations';
 import PresentationsList from '../PresentationsList';
 import NewPresentation from '../../new-presentation'
 import ContentPanel from 'js/components/shared/content-panel'
@@ -37,7 +37,7 @@ describe('Presentations', () => {
     let PresentationsListInstance = wrapper.find(PresentationsList).at(0)
 
     expect(PresentationsListInstance.props().title)
-        .toEqual(generateTitle(props.event))
+        .toEqual('All Presentations')
 
     expect(PresentationsListInstance.props().currentUser).toEqual(props.currentUser)
 

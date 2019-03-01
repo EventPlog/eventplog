@@ -6,12 +6,13 @@ import moment from 'moment'
 import { lighten, adjustHue } from 'polished'
 
 // internal
-import { media } from 'js/styles/mixins'
+import { media, maxMedia } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
 import { validDate, pluralize, genEventLink } from 'js/utils'
 import ImageUploader from 'js/components/shared/image-uploader'
+import RegistrationButton from 'js/components/shared/event-registration-button'
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -25,7 +26,7 @@ const eventBannerStyles = css`
   background-size: cover;
 
   ${
-    media.phone`
+    maxMedia.tablet`
       flex-direction: column;
       min-height: 100vh;
       height: auto;
@@ -83,6 +84,7 @@ const eventBannerStyles = css`
       display: flex;
       color: ${props => lighten(0.1, props.theme.black)};
       text-shadow: none;
+      margin-right: 2rem;
       
       ${
         media.desktop`
@@ -108,8 +110,13 @@ const eventBannerStyles = css`
     flex-direction: column;
     
     ${
-      media.phone`
+      maxMedia.tablet`
         align-self: flex-start;
+      `
+    }
+    
+    ${
+      media.phone`
         width: 100%;
       `
     }
@@ -251,6 +258,14 @@ const eventBannerStyles = css`
   .whatsapp-green.item {
     background-color: ${props => props.theme.green};
   }
+  
+  sub, sup {
+    ${
+      maxMedia.tablet`
+        top: 0;
+      `
+    } 
+  }
 `
 
 
@@ -275,12 +290,16 @@ const EventBanner = ({
   is_attending,
   is_stakeholder,
   is_owner,
+  is_past,
+  has_resources,
   visibility_status,
   no_of_views,
   className,
   toggleVisibilityStatus,
   eventLink,
+  needs_sponsorship,
   imagePlaceholderRef,
+  showRegistrationForm,
 }) => {
   const isPrivate = visibility_status == 'private_event'
 
@@ -365,7 +384,7 @@ const EventBanner = ({
                     </a>
                   }
                 </li>}
-              <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>
+              <li>{interested_persons < 10 ? '' : `${interested_persons} ${pluralize('person', interested_persons)} interested. `}{no_of_views} page views.</li>
             </ul>
             <ul>
             </ul>
@@ -377,19 +396,24 @@ const EventBanner = ({
           <Button.Link className={`cta large ${isPrivate ? 'inverted' : ''}`} to={`${eventUrl}/backstage/settings?activeIndex=1`}>
             <Icon name="settings" /> Settings
           </Button.Link>}
-        {is_attending && !is_owner && !!link &&
+        {!is_attending && !is_owner && !is_past && link &&
           <Button.Link isAnchorTag className="cta large" href={link} target="_blank">
-            RSVP
-          </Button.Link>}
-        {!is_attending &&
-          <Button className="cta large" onClick={() => {
-            link ? (window.location.href = link) : attendEvent({id})
-          }}>
             Register
-          </Button>}
-        <Button.Link className={`cta large sponsor`} to={`${eventUrl}/sponsors/new`}>
-          Sponsor
+          </Button.Link>}
+        {!is_attending && !is_past && !link &&
+          <RegistrationButton event={{id, slug, title, needs_sponsorship}}
+                              showForm={showRegistrationForm}
+                              className="cta large" />}
+        {!is_past &&
+          <Button.Link className={`cta large sponsor`} to={`${eventUrl}/sponsors/new`}>
+            Sponsor
+          </Button.Link>
+        }
+        {is_past && has_resources &&
+        <Button.Link className={`cta large sponsor`} to={`${eventUrl}/resources`}>
+          Slides/Resources
         </Button.Link>
+        }
         {is_stakeholder && isPrivate &&
           <Button inverted className={`cta large ${visibility_status}`} onClick={() => toggleVisibilityStatus({id, visibility_status})}>
             Make event {isPrivate ? 'public' : 'private'}

@@ -26,7 +26,7 @@ export class NewEventStepsContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   const { event = {} } = state.events
   return {
-    event,
+    event: event.id ? event : ownProps.event || {},
   }
 }
 

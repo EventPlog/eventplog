@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import { genEventLink } from 'js/utils'
 import Auth from 'js/auth'
 import SlackService from 'js/utils/slackService'
+import config from 'js/config'
 
 const CURRENCY = process.env.REACT_APP_CURRENCY
 
@@ -39,7 +40,11 @@ const sendToSlack = (partner_lead, event, offer) => {
     title: `${offer.title} - ${CURRENCY}${offer.amount}`,
     url: window.location.origin + genEventLink(event),
     prefixMsg: 'A new sponsorship request have just been submitted',
+<<<<<<< HEAD
     channel: '#events-demand',
+=======
+    channel: config.slack.partnerReportChannel,
+>>>>>>> feature/new-events-landing-page
     description: `
       Details
       Name: ${partner_lead.user.first_name} ${partner_lead.user.last_name} 
@@ -115,12 +120,24 @@ class PartnerLeadContainer extends Component {
     sendToSlack(partner_lead, this.props.event, this.props.offer)
 
     this.props.createPartnerLead(payload).then(response => {
+<<<<<<< HEAD
+=======
+      const successMsg =  "Thank you for your interest in sponsoring this event! " +
+        "A partner advocate at EventPlog will contact you via email or phone within 2 business days."
+
+      EVENTPLOG.toast.success({title:"Success!!", body: successMsg})
+
+>>>>>>> feature/new-events-landing-page
       this.setState(() => ({
         partner_lead: {},
         loading: false,
         error: false,
+<<<<<<< HEAD
         success: "Thank you for your interest in sponsoring this event! " +
                   "A partner advocate at EventPlog will contact you via email or phone within 2 business days."
+=======
+        success: successMsg
+>>>>>>> feature/new-events-landing-page
       }))
 
     }).catch(error => this.setState(() => ({error, loading: false})))

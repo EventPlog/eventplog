@@ -1,34 +1,55 @@
 import React, { Component }  from 'react'
-import logo from 'img/eventplog-logo-v13.png'
-import colors from '../../../styles/theme/colors'
-import { Menu, Input, Icon, Dropdown } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, matchPath } from 'react-router-dom'
 import { darken, lighten } from 'polished'
-import defaults from 'js/styles/theme/variables'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { Auth } from 'js/auth/actions'
+import { Menu, Input, Icon, Dropdown } from 'semantic-ui-react'
 
+
+//============ INTERNAL ============
+import defaults from 'js/styles/theme/variables'
+import { Auth } from 'js/auth/actions'
+import logo from 'img/eventplog-logo-v23-small.png'
+import colors from '../../../styles/theme/colors'
 import styled from 'styled-components'
-import avatar from '../../../../img/avatar/jenny.jpg'
+import UserAvatar from 'js/components/header/logged-in-header/UserAvatar'
+import { genUserProfileLink } from 'js/utils'
 import Button from 'js/components/shared/button'
+
 
 const StyledHeader = styled.div`
   --bg: ${lighten(0.6, defaults.fg)};
   height: 47px;
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
+=======
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid rgba(34,36,38,.15);
+  background: white;
+>>>>>>> feature/new-events-landing-page
   
   .logo, .ui.menu {
     background: #fff;
   }
+<<<<<<< HEAD
 
   .ui.secondary.menu  {
     margin-top: 0;
   }
 
   .ui.secondary.menu .item {
+=======
+   .ui.secondary.menu  {
+    margin-top: 0;
+  }
+   .ui.secondary.menu .item {
+>>>>>>> feature/new-events-landing-page
     
     &.active {
       color: var(--activeLink);
@@ -36,10 +57,46 @@ const StyledHeader = styled.div`
     }
   }
   
+<<<<<<< HEAD
   .logo img {
     margin: 15px;
     max-width: 170px;
     padding-left: 50px;
+=======
+  .logo {
+    display: flex;
+    
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    img {
+      margin: 15px 15px 7px 0;
+      max-width: 120px;
+    }
+    
+    .menu-btn {
+      color: var(--activeLink);
+      cursor: pointer;
+      font-size: 1.3rem;
+      padding: 1rem;
+    }
+  }
+  
+  .ui.secondary.pointing.menu {
+    border-bottom: 0;
+    
+    .item {
+      align-self: center;
+    }
+    
+    .item.sidebar-btn {
+      padding: 0;
+      padding-right: 1rem;
+    }
+>>>>>>> feature/new-events-landing-page
   }
   
   .ui.secondary.menu a.item.create-event-btn {
@@ -56,17 +113,26 @@ const StyledHeader = styled.div`
     margin: -.5em 0;
     padding: 0.7rem 1rem;
   }
+<<<<<<< HEAD
 
   .input input {
     border-radius: 50px;
   }
 
   div.item.avatar {
+=======
+  
+   .input input {
+    border-radius: 50px;
+  }
+   div.item.avatar {
+>>>>>>> feature/new-events-landing-page
     height  100%;
     padding-bottom: 0px !important;
     padding-top: 0px !important;
     padding-left: 10px !important;
     margin-right: 16px !important;
+<<<<<<< HEAD
 
     img {
       border-radius: 50px;
@@ -85,18 +151,48 @@ const StyledHeader = styled.div`
 
 class Header extends Component {
   state = { activeItem: 'UPCOMING' }
+=======
+     img {
+      border-radius: 50px;
+    }  
+  }
+   .ui.menu .right.menu .dropdown:last-child .menu {
+    right: -22px;
+    box-shadow: 0 0 32px -5px rgba(0,0,0,0.1);
+  }
+  
+   div.ui.pointing.dropdown.link.item {
+    padding: 0;
+  }
+  
+`
+
+class Header extends Component {
+  state = { activeItem: 'UPCOMING', searchQuery: '' }
+>>>>>>> feature/new-events-landing-page
 
   handleItemClick = (e, { name }) => {
     // this.props.history.push(`/${name.replace(' ', '_').toLowerCase()}`)
     this.setState({ activeItem: name })
   }
 
+<<<<<<< HEAD
+=======
+  setSearchQuery = (e) => this.setState({ searchQuery: e.target.value })
+
+  submitSearch = (e) => {
+    e.preventDefault()
+    this.props.history.push(`/search?title=${this.state.searchQuery}`)
+  }
+
+>>>>>>> feature/new-events-landing-page
   handleLogout = (e) => {
     this.props.logout()
       .then(res => window.location.replace('/login'))
   }
 
   render() {
+<<<<<<< HEAD
     const menu = ['UPCOMING', 'COMMUNITIES', 'PAST EVENTS']
     const { activeItem } = this.state
     return (
@@ -130,6 +226,88 @@ class Header extends Component {
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Item>
+=======
+    const menu = [{title: 'Join us on Spectrum', link: 'https://spectrum.chat/eventplog'}]
+    const { activeItem } = this.state
+    const { currentUser: user = {}, toggleSidebar } = this.props
+
+    const matchLogin = matchPath(location.pathname, '/login')
+    return (
+      <StyledHeader className="header">
+        <div className="logo">
+          <div className="menu-btn"
+               onClick={toggleSidebar}>
+            <i aria-hidden="true" class="content icon">
+            </i>
+          </div>
+          <Link to="/">
+            <img src={logo} className="img-logo" />
+          </Link>
+        </div>
+
+        <Menu pointing secondary>
+          {menu.map(item =>
+            <Menu.Item key={item.title}
+                       className="hidden-xs hidden-md"
+                       active ={activeItem === item}
+                       onClick={this.handleItemClick}>
+              <Link target="_blank" to={item.link}>
+                {item.title}
+              </Link>
+            </Menu.Item>
+          )}
+
+
+          <Menu.Menu position='right'>
+            <Menu.Item>
+              <form action="/search" onSubmit={this.submitSearch}>
+                <Input icon='search'
+                       name="title"
+                       placeholder='Search...'
+                       onChange={this.setSearchQuery}
+                       className="hidden-xs hidden-md" />
+              </form>
+              <Link to="/search" className="hidden-lg">
+                <Icon name="search" />
+              </Link>
+            </Menu.Item>
+
+            {!user.id &&
+              <Menu.Item className="sidebar-btn login">
+                {matchLogin && <Button.Link inverted to="/signup">Sign Up</Button.Link>}
+                {!matchLogin && <Button.Link inverted to="/login">Login</Button.Link>}
+              </Menu.Item>
+            }
+
+            {user.id &&
+              <Menu.Item className="avatar">
+              <Dropdown text={<UserAvatar user={user} />}
+                        pointing
+                        className='link item'>
+                <Dropdown.Menu>
+                  <Dropdown.Item>
+                    <Link to={genUserProfileLink(user)}>
+                      <Icon name="user circle"/> My Profile
+                    </Link>
+                  </Dropdown.Item>
+
+                  <Dropdown.Item>
+                    <Link to={`${genUserProfileLink(user)}/settings`}>
+                      <Icon name="settings"/> Settings
+                    </Link>
+                  </Dropdown.Item>
+
+                  <Dropdown.Divider />
+                  <Dropdown.Item>
+                    <Link to="/logout">
+                      <Icon name="lock open"/> Log out
+                    </Link>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Menu.Item>
+            }
+>>>>>>> feature/new-events-landing-page
           </Menu.Menu>
         </Menu>
       </StyledHeader>

@@ -1,3 +1,5 @@
+window.EVENTPLOG = {}
+
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
@@ -7,8 +9,13 @@ import 'nprogress/nprogress.css'
 import {Auth, PrivateRoute, PublicRoute} from 'js/auth'
 import createLoadable from '../components/shared/loading/createLoadable'
 import handleLogout from '../utils/handleLogout'
+<<<<<<< HEAD
 import Header from 'js/components/header/main-header'
 import Footer from 'js/components/footer1'
+=======
+import Footer from 'js/components/footer1'
+import Header from 'js/components/header/main-header'
+>>>>>>> feature/new-events-landing-page
 import ExternalFooter from 'js/components/footer/ExternalFooter'
 import universalStyles from '../styles/universalStyles'
 import NewInvitationBar from 'js/components/invitations/components/new-invitation-bar'
@@ -16,6 +23,8 @@ import ScrollToTop from '../components/shared/scroll-to-top'
 import appThemeColors from 'js/styles/theme/variables'
 import AppMenu from 'js/components/app-menu'
 import { lighten, darken } from 'polished'
+
+window.EVENTPLOG.toast = require('js/components/shared/ep-toast').default
 
 
 
@@ -41,9 +50,11 @@ const StyledApp = styled.div`
   --activeLinkBg: ${props => props.theme.activeLinkBg};
   --primaryLight: ${props => lighten(0.55, props.theme.activeLink)}
   position: relative;
+  padding-top: 47px;
  
   ${universalStyles}
   
+<<<<<<< HEAD
   > .menu-btn {
     position: fixed;
     color: ${props => props.theme.gray};
@@ -55,6 +66,8 @@ const StyledApp = styled.div`
     font-size: 1.3rem;
     padding: 1rem;
   }
+=======
+>>>>>>> feature/new-events-landing-page
 `
 
 class App extends Component {
@@ -67,6 +80,7 @@ class App extends Component {
       width,
       height,
       showSidebar,
+      currentUser,
       toggleSidebar,
     } = this.props;
 
@@ -87,6 +101,7 @@ class App extends Component {
       
         <ScrollToTop>
           <StyledApp>
+<<<<<<< HEAD
             <Header />
             {!isMobile &&
               <div className="menu-btn"
@@ -95,6 +110,9 @@ class App extends Component {
                 </i>
               </div>
             }
+=======
+            <Header {...{store, currentUser, toggleSidebar}} />
+>>>>>>> feature/new-events-landing-page
             <AppMenu isInternalPath={isInternalPath}>
               {<NewInvitationBar />}
               <Switch>

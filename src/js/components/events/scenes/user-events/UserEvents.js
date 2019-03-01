@@ -6,6 +6,21 @@ import styled, { css } from 'styled-components'
 import EventsSection from 'js/components/events/scenes/events/components/events-section'
 import { media } from 'js/styles/mixins'
 
+const generateTitle = (toggleShowEventToSponsor) => (
+  <div className="header">
+    Upcoming Events
+    <Form>
+      <Form.Field>
+        <Checkbox checked={visibility_status == 'public_event'}
+                  onClick={(e, attr) =>
+                        handleChange('visibility_status',
+                                      attr.checked ? 'public_event' : 'private_event' ) }
+                  label='Make this event public' />
+      </Form.Field>
+    </Form>
+
+  </div>
+)
 const UserEvents = ({
   events = {},
   past_events = {},

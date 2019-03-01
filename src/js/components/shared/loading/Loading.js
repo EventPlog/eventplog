@@ -4,8 +4,24 @@ import styled from 'styled-components'
 import Error from './Error'
 
 const StyledLoading = styled.div`
-  margin: 100px;
+  min-height: 100px;
+  display: flex;
+  
+  .loader {
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
 `
+
+const LoaderComp = () => (
+  <div className="loader">
+    <div class="ovals-loading"></div>
+    <div class="ovals-loading"></div>
+  </div>
+)
 
 const renderError = (error) => {
   console.log(error)
@@ -17,7 +33,7 @@ function Loading (props) {
     <StyledLoading>
       { props.error
         ? renderError(props.error)
-        : <Loader active inline='centered'/>
+        : <LoaderComp />
       }
     </StyledLoading>
   )

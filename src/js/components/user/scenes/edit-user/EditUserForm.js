@@ -154,7 +154,7 @@ const EditUserForm = ({
               <label>Facebook</label>
               <Input name="facebook_profile"
                      value={user.facebook_profile}
-                     placeholder='ciroma@chukwuma.com'
+                     placeholder='facebook.com/somebody_awesome'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
 
@@ -162,7 +162,7 @@ const EditUserForm = ({
               <label>Twitter</label>
               <Input name="twitter_profile"
                      value={user.twitter_profile}
-                     placeholder='ciroma@chukwuma.com'
+                     placeholder='twitter.com/somebody_awesome'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
 
@@ -170,7 +170,7 @@ const EditUserForm = ({
               <label>LinkedIn</label>
               <Input name="linkedin_profile"
                      value={user.linkedin_profile}
-                     placeholder='linkedin.com/something'
+                     placeholder='linkedin.com/somebody_awesome'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
 
@@ -178,7 +178,7 @@ const EditUserForm = ({
               <label>Github</label>
               <Input name="github_profile"
                      value={user.github_profile}
-                     placeholder='github.com/you'
+                     placeholder='github.com/somebody_awesome'
                      onChange={({target}) => handleChange(target.name, target.value)}/>
             </Form.Field>
 

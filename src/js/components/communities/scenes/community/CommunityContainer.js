@@ -53,15 +53,20 @@ class CommunityContainer extends Component {
 
   handleSubmit = () => {
     this.setState({ loading: true })
+    const updateVerb = this.state.community.id ? 'updated' : 'created'
     this.props.updateCommunity(this.state.community)
       .then(community => {
-        const updateVerb = this.state.community.id ? 'updated' : 'created'
         this.setState({community,
           loading: false, error: false,
           communityCreated: true,
           success: `You've successfully ${updateVerb} this community.`})
+
+        EVENTPLOG.toast.success({title: 'Success!', body: `You've sucessfully ${updateVerb} this community.`})
       })
-      .catch(error => this.setState({loading: false, success: false, error}))
+      .catch(error => {
+        this.setState({loading: false, success: false, error})
+        EVENTPLOG.toast.error({title: 'Error!', body: `An error prevented this community from being ${updateVerb}. Please try again or contact support.`})
+      })
   }
 
   getParams = () => {

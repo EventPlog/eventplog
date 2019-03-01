@@ -35,5 +35,11 @@ export default {
 
   platform_cost: process.env.REACT_APP_PLATFORM_COST || 0.10,
 
-  currency: process.env.REACT_APP_CURRENCY
+  currency: process.env.REACT_APP_CURRENCY,
+
+  slack: {
+    partnerReportChannel: process.env.REACT_APP_SLACK_PARTNER_REPORT_CHANNEL || '#bot-test',
+    communityReportChannel: process.env.REACT_APP_SLACK_COMMUNITY_REPORT_CHANNEL || '#bot-test',
+    guestsReportChannel: process.env.REACT_APP_SLACK_GUEST_REPORT_CHANNEL || '#bot-test'
+  },
 }

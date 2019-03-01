@@ -22,7 +22,6 @@ import {genEventLink} from "js/utils";
 import colors from 'js/styles/theme/colors'
 
 const StyledEvent = styled.div`
-  background: ${props => lighten(0.57, colors.primary)};
   
   ${
     media.phone`
@@ -158,6 +157,7 @@ const Event = ({
   updateComment,
   imagePlaceholderRef,
   toggleVisibilityStatus,
+  showRegistrationForm,
   activeIndex,
 }) => {
 
@@ -179,8 +179,9 @@ const Event = ({
   const { title, description, featured_image} = event
   return (
     <StyledEvent className="event" activeLink={activeLink}>
-      <EventBanner {...{...event, community, handleChange, imagePlaceholderRef,
-        handleSubmit, attendEvent, eventLink, toggleVisibilityStatus}} />
+      <EventBanner {...{...event, community, handleChange, eventLink,
+                            imagePlaceholderRef, handleSubmit, attendEvent,
+                            toggleVisibilityStatus, showRegistrationForm}} />
 
       <div className="app-container">
         <ContentSection>

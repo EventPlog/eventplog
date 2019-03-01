@@ -101,7 +101,7 @@ const Event = ({
   const isStakeHolder = event.is_stakeholder
 
   const {title, description, is_stakeholder,
-          announcements, agenda, sponsors = [],
+          announcements = {}, agenda, sponsors = [],
           sponsorship_offer = {}} = event
 
   const noOrganizersYet = !organizers || !Object.keys(organizers).length > 0
@@ -120,53 +120,70 @@ const Event = ({
                            onChange={handleChange}
                            onSubmit={handleSubmit}>
 
-            <ReactMarkdown escapeHtml={false}
-                           source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
+            <ReactMarkdown source={description || (is_stakeholder ?'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
 
           </ContentEditable>
           <img src={event.featured_image} />
         </div>
       </ContentPanel>
 
-      <ContentPanel title="Agenda">
-        <div className="event-agenda">
-          <ContentEditable propName="agenda"
-                           type="textarea"
-                           canEdit={isStakeHolder}
-                           defaultValue={agenda}
-                           onChange={handleChange}
-                           onSubmit={handleSubmit}>
+      {(agenda || is_stakeholder) &&
+        <ContentPanel title="Agenda">
+          <div className="event-agenda">
+            <ContentEditable propName="agenda"
+                             type="textarea"
+                             canEdit={isStakeHolder}
+                             defaultValue={agenda}
+                             onChange={handleChange}
+                             onSubmit={handleSubmit}>
 
-            <ReactMarkdown escapeHtml={false}
-                           source={agenda || (is_stakeholder ? 'Click to edit. In markdown, if you wish :)' : 'None yet.')} />
+              <ReactMarkdown escapeHtml={false}
+                             source={agenda || (is_stakeholder ? 'Click to edit. In markdown, if you wish :)' : 'None yet.')}/>
 
-          </ContentEditable>
-        </div>
-      </ContentPanel>
+            </ContentEditable>
+          </div>
+        </ContentPanel>
+      }
 
-      <Announcements {...{announcements, getAnnouncements,
-        createAnnouncement, updateAnnouncement,
-        canCreateAnnouncement: is_stakeholder,
-        recipient_id: event.id,
-        recipient_type: 'Event'}} />
+      {((announcements.data && announcements.data.length > 0) || is_stakeholder) &&
+        <Announcements {...{
+          announcements, getAnnouncements,
+          createAnnouncement, updateAnnouncement,
+          canCreateAnnouncement: is_stakeholder,
+          recipient_id: event.id,
+          recipient_type: 'Event' }} />
+      }
 
 
-      <ContentPanel title="Meet the organizers">
-        <Members>
-          {organizers && organizers.length > 3
-            ? organizers.map(member =>
-                <Members.Member member={member} />
+      {((organizers && organizers.length > 0) || is_stakeholder) &&
+        <ContentPanel title="Meet the organizers">
+          <Members>
+            {organizers && organizers.length > 5
+              ? organizers.map(member =>
+                <Members.Member member={member}/>
               )
-            : organizers && organizers.map(member =>
-                <AboutUser {...{user: member, currentUser }}/>
+              : organizers && organizers.map(member =>
+                <AboutUser {...{user: member, currentUser}}/>
               )
-          }
-        </Members>
-        {is_stakeholder &&
-        <Button.Link className="btn-inline"
-                     to={`${genEventLink(event, event.community)}/backstage/settings`}>
-          Add more organizers
-        </Button.Link>}
+            }
+          </Members>
+          {is_stakeholder &&
+          <Button.Link className="btn-inline"
+                       to={`${genEventLink(event, event.community)}/backstage/settings`}>
+            Add more organizers
+          </Button.Link>}
+        </ContentPanel>
+      }
+
+      <ContentPanel title={sponsorsExist ? "Sponsors" : "Become a sponsor" }>
+        {!sponsorsExist &&
+          <TargetAudience className="target-audience" {...{ sponsorship_offer, event } }/> }
+
+        <Button.Link inverted
+                     className="btn-inline"
+                     to={`${genEventLink(event)}/sponsors/new`}>
+          View sponsorship options
+        </Button.Link>
       </ContentPanel>
 
       <ContentPanel title={sponsorsExist ? "Sponsors" : "Become a sponsor" }>
