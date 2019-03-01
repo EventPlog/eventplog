@@ -30,6 +30,9 @@ const StyledAppMenu = styles.div`
     
     .pusher {
       background-color: ${props => lighten(0.57, colors.activeLink)};
+      background-image: url(https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1551435402/comments/bg-image2_f1xeaw.png);
+      background-blend-mode: color-burn;
+      background-size: contain;
       
       ${
         media.phone`
