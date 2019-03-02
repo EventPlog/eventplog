@@ -24,7 +24,7 @@ export const generateMeta = (community) => (
 
 const StyledSeeMore = styled.div`
   position: relative
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding-bottom: 1.2rem;
   text-align: center;
   color: ${props => props.theme.activeLink};

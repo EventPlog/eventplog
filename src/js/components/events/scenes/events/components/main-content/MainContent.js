@@ -4,10 +4,13 @@ import styled, { css } from 'styled-components'
 //======== Internal Components =========
 import ContentSection from 'js/components/shared/v2/content-section'
 import HomepageEventsSection from 'js/components/events/scenes/events/components/events-section/HomepageEventsSection'
+import EventsSection from 'js/components/events/scenes/events/components/events-section'
 import Sidebar from 'js/components/shared/v2/sidebar'
 import { media } from 'js/styles/mixins'
 
 const styles = css`
+  width: 100%;
+
   .ui.tab {
     box-shadow: none;
     border: 0;
@@ -19,7 +22,6 @@ const styles = css`
   }
   
   .content-header {
-    // margin: 0 1rem;
     margin: 0;
     letter-spacing: 0.01rem;
     
@@ -33,6 +35,15 @@ const styles = css`
   .events_container {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .content-panel {
+    flex: 1;
+
+    h5.content-header {
+      margin-top: 2rem;
+    }
   }
 
   .title {
@@ -43,21 +54,39 @@ const styles = css`
 export const MainContent = ({
   events = {},
   past_events = {},
+  getPastEvents,
+  attendEvent,
   communities_suggestions = {},
   followCommunity,
   className,
   activeIndex,
 }) => {
   return (
-    <ContentSection className={className}>
-     
-      <ContentSection.Body>
-        <div className="events_container">
-          <HomepageEventsSection title="Upcoming Events" events={events} />
-        </div>    
-      </ContentSection.Body>
+    <div className={className}>
+      <ContentSection>
+        <ContentSection.Body>
+          <div className="events_container">
+            <HomepageEventsSection title="Upcoming Events" events={events} />
+          </div>    
+        </ContentSection.Body>
+      </ContentSection>
 
-    </ContentSection>
+      <ContentSection>
+        <ContentSection.Body>
+          <div className="events_container">
+            <EventsSection key="user-past-events-section"
+                          title="Past"
+                          events={past_events}
+                          getEvents={getPastEvents}
+                          attendEvent={attendEvent} />
+          </div>    
+        </ContentSection.Body>
+        <ContentSection.Sidebar>
+          <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} />
+        </ContentSection.Sidebar>
+      </ContentSection>
+
+    </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
 //========= INTERNAL ==========
 import Button from 'js/components/shared/button'
@@ -37,6 +38,7 @@ class RegistrationButton extends React.Component {
         trigger={
         ({className, ...props}) =>
           <Button {...props} className={`img-btn ${className} ${btnClass}`}>
+            <Icon name="plus circle" />
             Register
           </Button>
       } >

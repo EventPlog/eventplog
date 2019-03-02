@@ -31,10 +31,7 @@ const StyledSidebar = styled.div`
   .header {
     border-bottom: 1px solid #ccc;
     margin: 1rem 0;
-    color: ${props => props.theme.activeLink};
-    font-size: 1.2rem;
-    text-align: center;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 `
 
@@ -45,9 +42,9 @@ const Sidebar = function({
 }) {
   return (
     <StyledSidebar className="sidebar" {...otherProps}>
-      <p className="header">
+      <h5 className="header">
         {title}
-      </p>
+      </h5>
       {children}
     </StyledSidebar>
   )

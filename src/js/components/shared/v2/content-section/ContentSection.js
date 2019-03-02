@@ -22,7 +22,7 @@ const StyledMainContent = styled.div`
     media.phone`
       flex-direction: column;
       margin: 0;
-      margin: 2rem 2rem 0 2rem;
+      margin: 2rem 0;
     `
   }
   

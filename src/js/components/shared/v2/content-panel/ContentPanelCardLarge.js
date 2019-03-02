@@ -6,7 +6,7 @@ import { lighten } from 'polished'
 
 //========= INTERNAL ===========
 import { media, maxMedia } from 'js/styles/mixins'
-import { genEventLink, resizeImage } from 'js/utils'
+import { genEventLink, resizeImage, pluralize } from 'js/utils'
 
 
 
@@ -14,21 +14,23 @@ import Icons from 'js/components/shared/cta-icons'
 
 const StyledContentPanelCardLarge = styled.section`
   --container-height: 415px;
-  height: var(--container-height);
-  width: 58%;
+  min-height: var(--container-height);
+  flex: 40%;
   border-radius: 8px;
   background-color: ${props => props.theme.activeLink};
-  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.1), rgba(55, 49, 84, 0.2)), url(${props.image})`};
+  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.1), rgba(55, 49, 84, 0.4)), url(${props.image})`};
   background-size: cover;
-  margin: 1rem 1.3rem 0 0;
+  margin: 0.5rem;
   position: relative;
   color: ${props => props.theme.white};
+  display: flex;
+  flex-direction: column;
 
   ${
-    media.tablet`
+    maxMedia.tablet`
       padding: 0 1.5rem;
-      margin-right: 0;
-      width: 100%;
+      margin: 0.5rem 0;
+      flex: 100%;
     `
   }
   
@@ -36,8 +38,6 @@ const StyledContentPanelCardLarge = styled.section`
     media.phone`
       --container-height: 320px;
       padding: 0 1.5rem;
-      margin-right: 0;
-      width: 100%;
     `
   }
 
@@ -45,7 +45,11 @@ const StyledContentPanelCardLarge = styled.section`
     font-size: 1.7rem;
     text-align: center;
     text-shadow: 0 2px 2px ${props => props.theme.black};
-    padding-top: calc(var(--container-height) / 2 - 19px);
+    flex: 1;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     ${
       media.phone`
@@ -59,7 +63,7 @@ const StyledContentPanelCardLarge = styled.section`
   }
 
   .interested-persons {
-    padding-top: 7rem;
+    padding-top: 1rem;
     padding-left: 1.5rem;
     display: flex;
     border-bottom: 2px solid ${props => lighten(0.3, props.theme.darkGray)};
@@ -109,6 +113,21 @@ const StyledContentPanelCardLarge = styled.section`
       }
     }
   }
+
+  .cta-holder {
+    position: absolute;
+    top: 20px;
+    right: 12px;
+    display: flex;
+    justify-content: flex-end;  
+
+    ${
+      media.phone`
+        left: 1rem;
+        justify-content: flex-start;
+      `
+    }
+  }
 `
 
 const getAddress = (event) => (
@@ -120,7 +139,9 @@ const ContentPanelCardLarge = ({ event }) => {
   const eventAddress = getAddress(event)
   return (
   <StyledContentPanelCardLarge className="main-body" image={resizeImage(event.featured_image, 'medium')}>
-    <Icons bigCard />
+    <div class="cta-holder">
+      <Icons event={event} />
+    </div>
 
     <div className="event-title">
       <Link to={genEventLink(event)}>
@@ -131,7 +152,9 @@ const ContentPanelCardLarge = ({ event }) => {
 
     <div className="interested-persons">
       <Icon name="eye" className="far eye-icon" />
-      <span>{event.interested_persons} Interested</span>
+      <span>
+        {event.interested_persons < 1 ? '' : `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
+      </span>
     </div>
 
     <div className="event-time">

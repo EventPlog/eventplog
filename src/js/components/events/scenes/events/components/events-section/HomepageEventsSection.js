@@ -90,16 +90,12 @@ const styles = css`
     flex-wrap: wrap;
   }
 
-  .container div:nth-child(5n) {
-    margin-right: 0;
-  }
+  h4.content-header {
+    margin-bottom: 1rem;
 
-  
-
-  .container section:nth-child(7n) {
     ${
-      media.desktop `
-        margin: 1rem 0 0 1.3rem
+      maxMedia.tablet`
+        margin-bottom: 1rem;
       `
     }
   }
@@ -119,22 +115,30 @@ const styles = css`
 `
 
 const ContentPanelCardMedium = styled(ContentPanel.Card)`
-  width: 39.5%;
-  margin-right: 0;
+  flex: 2;
 
   ${
-    media.tablet`
-      width: 100%;
+    maxMedia.tablet`
+      flex: 100%;
     `
   }
   
-  ${
-    media.phone`
-      // min-width: 20rem;
-      width: 100%;
-    `
-  }
 `;
+
+const getContentPanel = ({index, ...props}) => {
+  switch(true) {
+    case index == 0:
+    case (index % 6) == 0:
+      return <ContentPanelCardLarge {...props} />
+    
+    case index == 1:
+    case (index % 5) == 0:
+      return <ContentPanelCardMedium {...props} />
+
+    default:
+      return <ContentPanel.Card {...props} />
+  }
+}
 
 export const EventsSection = ({
   title,
@@ -145,11 +149,6 @@ export const EventsSection = ({
 }) => {
   const {loading, error, data = [], meta = {}} = events;
   const shouldDisplayData = (!loading && !error && data);
-  let first10Events;
-
-  if (shouldDisplayData) {
-    first10Events = data.slice(0, 10)
-  }
   
   return (
     <ContentPanel className={className} title={title}>
@@ -157,33 +156,14 @@ export const EventsSection = ({
       {error && <Loading.Error msg={events.error} />}
 
       <div className="container"> 
-        {shouldDisplayData && first10Events.length >= 1 && 
-          <ContentPanelCardLarge event={first10Events[0]} />
-        } 
-
-        {shouldDisplayData && first10Events.length >= 2 && <ContentPanelCardMedium event={{...first10Events[1]}} />}
-
-        {shouldDisplayData && first10Events.slice(2,5).map((event) => {
-          return (
-            <ContentPanel.Card event={event} /> 
-          )
-        })}
-
-        {shouldDisplayData && first10Events.length >= 6 && <ContentPanelCardMedium event={first10Events[5]} />}
-        {shouldDisplayData && first10Events.length >= 7 && <ContentPanelCardLarge event={first10Events[6]} />} 
-
-        {shouldDisplayData && first10Events.length > 7 && first10Events.slice(7,9).map((event) => {
-          return (
-            <ContentPanel.Card event={event} /> 
-          )
-        })}
-
-        { shouldDisplayData && first10Events.length > 10 && 
+        {shouldDisplayData && data.length > 0 && 
+          data.map((event, index) => getContentPanel({event, index})) }
+      </div>
+      { shouldDisplayData && meta && 
           <p className="see-more">
             See more events <span><Icon name="angle down" /></span>
           </p>
         } 
-      </div>
       {shouldDisplayData && data.length < 1 && <p>No events to display right now ...</p>}
       
     </ContentPanel>

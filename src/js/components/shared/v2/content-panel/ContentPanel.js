@@ -17,12 +17,9 @@ const StyledContentPanel = styled.div`
     `
   }
   .content-header {
-    color: ${props => props.theme.activeLink};
     margin: 0;
-    // margin-bottom: 2rem;
   }
 
-    
     ${
       maxMedia.tablet`
         margin: 0 0 1rem;

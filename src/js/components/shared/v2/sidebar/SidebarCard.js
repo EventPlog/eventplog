@@ -175,7 +175,7 @@ const SidebarCard = ({
 }: itemType) => (
   <StyledSidebarCard className="sidebar-card">
     <div className="img-holder" style={{
-      backgroundImage: `linear-gradient(rgba(37,33,56,0.7),rgba(55,49,84,0.3)), url(${featured_image || "https://placeimg.com/640/480/tech"})`
+      backgroundImage: `linear-gradient(rgba(29, 8, 128, 0.7), rgba(55, 49, 84, 0.3)), url(${featured_image || "https://placeimg.com/640/480/tech"})`
     }}>
       <div className="follow">
         <span className="count">{no_of_followers}</span> Followers

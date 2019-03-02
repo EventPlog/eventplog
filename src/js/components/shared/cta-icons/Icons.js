@@ -5,26 +5,28 @@ import { Link } from 'react-router-dom'
 import { lighten } from 'polished'
 
 //========== INTERNAL ============
-import colors from '../../../styles/theme/colors'
+import colors from 'js/styles/theme/colors'
+import RegistrationButton from 'js/components/shared/event-registration-button'
+import {
+  genEventLink,
+} from 'js/utils'
 
 const StyledIcons = styled.div`
-  position: absolute;
-  top: ${props => props.bigCard ? '20px' : "calc(200px - 1.5rem)"};
-  right: ${props => props.bigCard ? "12px" : "0px"};
-
   display: flex;
-  justify-content: flex-end;
-  
+  justify-content: space-between;
+  width: 100%;
+
   .bookmark {
-    height: ${props => props.bigCard ? '50px' : ''};
-    width: ${props => props.bigCard ? '50px' : ''};
-    padding: ${props => props.bigCard ? '1.25rem' : '0.7rem'};
+    padding: 0.7rem;
     background: var(--activeLink);
     color: ${colors.yellow};
-    border-radius: 50%;
+    border-radius: 10rem;
     margin: 0 0.5rem;
     box-shadow: 0px 0px 8px ${lighten(0.3, colors.darkGray)};
-    
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
     &:hover {
       background: white;
       color: var(--activeLink);
@@ -41,15 +43,27 @@ const StyledIcons = styled.div`
     }
 `
 
-const Icons = (props) => (
-  <StyledIcons bigCard={props.bigCard}>
-    <Link className="bookmark" to="#">
-      <Icon name="share square" />
-    </Link>
+export const generateTopBtn = (event) => (
+  event.is_past
+    ? event.has_resources
+      ? <Link className="bookmark" to={`${genEventLink(event)}/resources`}>
+          Slides/Resources
+        </Link>
+      : ''
+    : [
+        <RegistrationButton event={event} className="bookmark" />,
+        event.needs_sponsorship
+          ? <Link className="bookmark inverted" to={`${genEventLink(event)}/sponsors/new`}>
+              <Icon name="heart" />
+              Sponsor
+            </Link>
+          : ''
+      ]
+)
 
-    <Link className="bookmark inverted" to="#">
-      <Icon name="heart" />
-    </Link>
+const Icons = ({bigCard, event = {}}) => (
+  <StyledIcons bigCard={bigCard}>
+    {generateTopBtn(event)}
   </StyledIcons>
 )
 

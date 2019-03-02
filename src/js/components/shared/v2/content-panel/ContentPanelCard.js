@@ -17,29 +17,23 @@ const StyledMainContentCard = styled.div`
   --img-height: 200px;
   --activeLink: ${defaults.activeLink};
   border-radius: 0.5rem;
-  width: 32.4%;
+  flex: 1;
   background-color: ${colors.white};
   position: relative;
-  margin: 1rem 0.8rem 1rem 0;
+  margin: 0.5rem;
+  min-width: 30%;
 
   ${
-    media.tablet`
-      width: 100%;
-      margin: 1rem 0;
+    maxMedia.tablet`
+      flex: 100%;
+      margin: 0.5rem 0;
     `
   }
-  
-  ${
-    media.phone`
-      width: auto;
-      margin: 1rem 0;
-    `
-  }
-  
 
   .background {
     background-size: cover;
     height: var(--img-height);
+    border-radius: 0.5rem 0.5rem 0 0;
   }
 
   a, a:hover {
@@ -60,7 +54,6 @@ const StyledMainContentCard = styled.div`
     } 
 
     h4, .next-event-title {
-      text-overflow: ellipsis;
       
       ${
         media.phone`
@@ -99,15 +92,21 @@ const StyledMainContentCard = styled.div`
   .event-time {
     font-size: 0.9rem;
     color: ${lighten(0.2, colors.darkGray)};
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     
     ${
       media.phone`
         white-space: pre-wrap;
       `
     }
+  }
+
+  .cta-holder {
+    position: absolute;
+    top: calc(200px - 1.5rem);
+    right: 0;
+  
+    display: flex;
+    justify-content: flex-end;  
   }
 `
 
@@ -125,7 +124,7 @@ export const generateTitle = (event = {}, community = {}) => {
 }
 
 const MainContentCard = ({
-  event,
+  event = {},
   title,
   description,
   featured_image,
@@ -137,20 +136,26 @@ const MainContentCard = ({
   className,
 }) => (
   <StyledMainContentCard className={`community-card ${className}`}>
-    <div className="background" style={{backgroundImage:  `url(${resizeImage(event.featured_image, 'medium')})`}} />
+    <div className="background" style={{backgroundImage:  `url(${resizeImage(event.featured_image || '', 'medium')})`}} />
 
-    <Icons />
+    <div class="cta-holder">
+      <Icons event={event} />
+    </div>
 
     <div className="details">
       <h4>{generateTitle(event)}</h4>
 
       <div className="event-desc">
-        <p>{"The actual description {event.description} does not render, don't know why".substr(0, 125) + '...'}</p>
+        <p>{event.goals || event.description}</p>
         <small>{event.interested_persons} Interested</small>
       </div>
 
       <div>
-        <p className="event-date"><span>{event.start_date}</span></p>
+        <p className="event-date">
+          <span>
+            {event.start_date}
+          </span>
+        </p>
         <div className="event-time">
           <Icon name="map marker alternate" />&nbsp;
           {getAddress(event)}
