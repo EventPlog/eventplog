@@ -27,6 +27,7 @@ const StyledMainContentCard = styled.div`
     background-size: contain;
     position: relative;
     background-color: var(--activeLink);
+    border-radius: 10px;
     
     ${
       media.phone`

@@ -150,8 +150,9 @@ exports[`Communities::Communities::CommunitiesSection should render correctly 1`
     }
     titleLink="/c/3"
   />
-  <PaginationComponent
+  <Component
     activePage={1}
+    className="show-more-btn"
     totalPages={1}
   />
 </ContentPanel>
