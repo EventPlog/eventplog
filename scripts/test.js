@@ -24,7 +24,7 @@ if (!process.env.CI && argv.indexOf('--coverage') < 0) {
 }
 
 if (process.env.CI) {
-  argv.push('--maxWorkers=3')
+  argv.push(' -- -u --maxWorkers=3')
 }
 
 
