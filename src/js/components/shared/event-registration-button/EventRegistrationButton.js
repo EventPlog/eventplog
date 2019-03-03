@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
 //========= INTERNAL ==========
 import Button from 'js/components/shared/button'
@@ -30,13 +31,22 @@ class RegistrationButton extends React.Component {
     const { showModal } = this.state
 
     const setShowModal = this.setShowModal
-    if (!(event && event.needs_sponsorship)) return ''
+    if (!event || event.is_past) return ''
+    if (!event.is_past && event.link) {
+      return (
+        <Button.Link to={event.link} target="_blank" className={`img-btn ${btnClass}`}>
+          <Icon name="plus circle" />
+          Register
+        </Button.Link>
+      )
+    }
 
     return (
       <Modal
         trigger={
         ({className, ...props}) =>
           <Button {...props} className={`img-btn ${className} ${btnClass}`}>
+            <Icon name="plus circle" />
             Register
           </Button>
       } >

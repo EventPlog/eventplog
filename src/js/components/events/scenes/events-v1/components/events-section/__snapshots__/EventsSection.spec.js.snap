@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Communities::Communities::EventsSection should render correctly 1`] = `
+<ContentPanel
+  title="Events Section"
+>
+  <MainContentCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "interested",
+      }
+    }
+    description={
+      <span>
+        <div>
+          By 
+          <Link
+            replace={false}
+            to="/c/1"
+          >
+            Facebook Developer Circle Lagos
+          </Link>
+          <p />
+        </div>
+      </span>
+    }
+    featured_image="/samplePic.png"
+    key="1"
+    meta={
+      Array [
+        <ul>
+          <li>
+              <Icon
+                  as="i"
+                  name="calendar outline"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="clock"
+              />
+               
+          </li>
+          StartZone, Gbagada
+      </ul>,
+        <ul>
+          <li>
+              211
+               
+              people
+               interested
+          </li>
+      </ul>,
+        <ul />,
+      ]
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/e/1"
+      >
+        Tech is in you
+      </Link>
+    }
+    titleLink="/e/1"
+  />
+  <MainContentCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "interested",
+      }
+    }
+    description={
+      <span>
+        <div>
+          By 
+          <Link
+            replace={false}
+            to="/c/2"
+          >
+            Google Developer Group
+          </Link>
+          <p />
+        </div>
+      </span>
+    }
+    featured_image="/login-bg.jpg"
+    key="2"
+    meta={
+      Array [
+        <ul>
+          <li>
+              <Icon
+                  as="i"
+                  name="calendar outline"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="clock"
+              />
+               
+          </li>
+          StartZone, Gbagada
+      </ul>,
+        <ul>
+          <li>
+              211
+               
+              people
+               interested
+          </li>
+      </ul>,
+        <ul />,
+      ]
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/e/2"
+      >
+        Writers corner workshop with writing and use of English
+      </Link>
+    }
+    titleLink="/e/2"
+  />
+  <MainContentCard
+    btn={
+      Object {
+        "onClick": [Function],
+        "text": "interested",
+      }
+    }
+    description={
+      <span>
+        <div>
+          By 
+          <Link
+            replace={false}
+            to=""
+          />
+          <p />
+        </div>
+      </span>
+    }
+    featured_image="/l.jpg"
+    key="3"
+    meta={
+      Array [
+        <ul>
+          <li>
+              <Icon
+                  as="i"
+                  name="calendar outline"
+              />
+               
+          </li>
+          <li>
+              <Icon
+                  as="i"
+                  name="clock"
+              />
+               
+          </li>
+          StartZone, Gbagada
+      </ul>,
+        <ul>
+          <li>
+              108
+               
+              people
+               interested
+          </li>
+      </ul>,
+        <ul />,
+      ]
+    }
+    showButton={true}
+    title={
+      <Link
+        replace={false}
+        to="/e/3"
+      >
+        Figma Design Series
+      </Link>
+    }
+    titleLink="/e/3"
+  />
+</ContentPanel>
+`;

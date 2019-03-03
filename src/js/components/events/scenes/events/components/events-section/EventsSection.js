@@ -11,6 +11,7 @@ import Error from 'js/components/shared/loading/Error'
 import Button from 'js/components/shared/button'
 import Pagination from 'js/components/shared/pagination'
 import RegistrationButton from 'js/components/shared/event-registration-button'
+import { media } from 'js/styles/mixins'
 import {
   pluralize,
   genCommunityLink,
@@ -92,6 +93,21 @@ export const generateTopBtn = (event) => (
 )
 
 const styles = css`
+  background-color: transparent;
+  box-shadow: none;
+  flex: 5;
+  
+  .img-holder {
+    height: 300px;
+    border-radius: 10px;
+    
+    ${
+      media.phone`
+        height: 200px;
+      `
+    }
+  }
+  
   .event-category {
     background: ${props => darken(0.2, props.theme.yellow)};
     padding: 0.2rem 0.4rem;
@@ -108,11 +124,11 @@ export const EventsSection = ({
   className,
 }) => {
   const {loading, error, data = [], meta = {}} = events;
-  const shouldDisplayData = (!loading && !error && data);
+  const shouldDisplayData = (data && (data.length > 0));
   return (
     <ContentPanel className={className} title={title}>
-      {loading && <Loading />}
-      {error && <Loading.Error msg={events.error} />}
+      {loading && !shouldDisplayData &&  <Loading />}
+      {error && !shouldDisplayData && <Loading.Error msg={events.error} />}
       {shouldDisplayData && data.map(({featured_image, ...event}) => {
           const community = event.community || {}
           const title = generateTitle(event, community)
@@ -133,12 +149,14 @@ export const EventsSection = ({
       {shouldDisplayData && data.length < 1 && <p>No events to display right now ...</p>}
 
       {
-        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1)
-          ? <Pagination totalPages={meta.total_pages}
-                        activePage={meta.current_page}
-                        per_page={meta.per_page}
-                        onPageChange={getEvents} />
-          : ''
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1) &&
+          <Pagination.ShowMoreButton totalPages={meta.total_pages}
+                                     activePage={meta.current_page}
+                                     className="show-more-btn"
+                                     loading={loading}
+                                     error={error}
+                                     onPageChange={getEvents} />
+
       }
     </ContentPanel>
   )

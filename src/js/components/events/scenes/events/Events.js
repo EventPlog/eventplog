@@ -5,15 +5,18 @@ import styled from 'styled-components'
 import MainContent from './components/main-content'
 import { media } from 'js/styles/mixins'
 
-const StyledCommunities = styled.div`
+const StyledEvents = styled.div`
+  > .app-container {
+    max-width: 2000px;
+  }
 `
 
-const Communities = (props) => (
-  <div>
+const Events = (props) => (
+  <StyledEvents>
     <section className="app-container">
       <MainContent {...props} />
     </section>
-  </div>
+  </StyledEvents>
 )
 
-export default Communities
+export default Events

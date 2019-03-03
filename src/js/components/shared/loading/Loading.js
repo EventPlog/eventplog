@@ -7,7 +7,7 @@ const StyledLoading = styled.div`
   min-height: 100px;
   display: flex;
   
-  .loader {
+  .loader-holder {
     width: 100%;
     height: 100%;
     display:flex;
@@ -17,7 +17,7 @@ const StyledLoading = styled.div`
 `
 
 const LoaderComp = () => (
-  <div className="loader">
+  <div className="loader-holder">
     <div class="ovals-loading"></div>
     <div class="ovals-loading"></div>
   </div>

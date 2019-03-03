@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommunityHeader should render correctly 1`] = `
+<styled.div>
+  <div
+    className="app-container logo"
+  >
+    <Link
+      replace={false}
+      to=""
+    >
+      <div
+        className="details"
+      >
+        <h3 />
+        <small>
+           followers. 
+           views.
+        </small>
+      </div>
+    </Link>
+    <div
+      className="right-pull"
+    />
+  </div>
+  <div
+    className="nav-holder"
+  >
+    <div
+      className="app-container"
+    >
+      <Nav
+        StackUlOnMobile={false}
+        hideOnMobile={false}
+      >
+        <Component>
+          <Link
+            replace={false}
+            to="/e"
+          >
+            Events
+          </Link>
+        </Component>
+      </Nav>
+    </div>
+  </div>
+</styled.div>
+`;

@@ -15,7 +15,7 @@ const app = express();
 const router = express.Router();
 
 // use prerender as soon as possible
-app.use(preRenderer.set('prerenderToken', process.env.REACT_APP_PRERENDER_TOKEN));
+// app.use(preRenderer.set('prerenderToken', process.env.REACT_APP_PRERENDER_TOKEN));
 
 // enable compression
 app.use(compression())

@@ -7,7 +7,7 @@ import CommunitiesSection, {
 } from './CommunitiesSection';
 import { shallow } from 'enzyme';
 
-import Sidebar from 'js/components/shared/sidebar'
+import Sidebar from 'js/components/shared/v2/sidebar'
 import data from 'js/mock-api/data'
 
 describe('Events::Events::CommunitiesSection', () => {
@@ -18,7 +18,7 @@ describe('Events::Events::CommunitiesSection', () => {
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(Sidebar).length).toEqual(1);
-    expect(wrapper.find(Sidebar).props().title).toEqual('Communities suggestions');
+    expect(wrapper.find(Sidebar).props().title).toEqual('Communities you may know');
     expect(wrapper.find(Sidebar.Card).length).toEqual(communities.data.length);
   })
 

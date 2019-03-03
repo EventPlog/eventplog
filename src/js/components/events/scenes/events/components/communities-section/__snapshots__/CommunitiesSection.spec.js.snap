@@ -2,7 +2,7 @@
 
 exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
 <Sidebar
-  title="Communities suggestions"
+  title="Communities you may know"
 >
   <SidebarCard
     btn={

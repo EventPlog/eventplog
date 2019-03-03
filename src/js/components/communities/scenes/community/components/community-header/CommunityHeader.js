@@ -13,6 +13,10 @@ import { genCommunityLink } from 'js/utils'
 
 const StyledHeader = styled.div`
 
+  .app-container {
+    max-width: 2000px;
+  }
+  
   > .logo {
     padding: 2rem;
     justify-content: space-between;

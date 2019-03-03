@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import {
   getEvents,
+  getParentEvents,
   getPastEvents,
   attendEvent,
 } from 'js/components/events/actions'
@@ -41,18 +42,22 @@ class CommunityContainer extends Component {
   getData() {
     const community_id = this.getCommunityId()
     const community_slug = this.props.slug
-    this.props.getEvents({ community_id, community_slug, page: 1, per_page: 10})
+    this.props.getParentEvents({
+      parent_id: community_id || community_slug,
+      page: 1, per_page: 3,
+      parent_type: 'Community',
+    })
     this.props.getPastEvents({ community_id, community_slug, page: 1, per_page: 10})
   }
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    this.props.getEvents({
-      page: meta.activePage, per_page,
-      community_id: this.getCommunityId(),
-      community_slug: this.props.slug,
-    }).then(() => document.querySelector('.pusher').scrollTop = 0)
     mixpanel.track('COMMUNITY_CURRENT_EVENTS_INDEX_PAGINATION_CLICK', {meta})
+    return this.props.getParentEvents({
+      page: meta.activePage, per_page,
+      parent_id: this.getCommunityId() || this.props.slug,
+      parent_type: 'Community',
+    })
   }
 
   getPastEvents = (e, meta) => {
@@ -91,6 +96,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getEvents,
     getPastEvents,
+    getParentEvents,
     attendEvent: secureAction(attendEvent),
   }, dispatch)
 }

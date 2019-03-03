@@ -40,9 +40,8 @@ class SearchCommunitiesContainer extends Component {
 
   getCommunities = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    this.props.getCommunitiesByName({...this.getNameFromProps(), page: meta.activePage, per_page})
-      .then(() => document.querySelector('.pusher').scrollTop = 0)
     mixpanel.track('SEARCH_COMMUNITIES_INDEX_PAGINATION_CLICK', {meta})
+    return this.props.getCommunitiesByName({...this.getNameFromProps(), page: meta.activePage, per_page})
   }
 
   getProps = () => ({

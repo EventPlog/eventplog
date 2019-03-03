@@ -21,7 +21,6 @@ const styles = css`
   }
   
   .content-header {
-    /*font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;*/
     margin: 0 1rem;
     letter-spacing: 0.01rem;
     font-weight: 600;

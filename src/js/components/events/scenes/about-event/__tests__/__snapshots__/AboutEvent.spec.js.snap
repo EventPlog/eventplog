@@ -86,6 +86,27 @@ exports[`Event should not render announcement when none is passed in 1`] = `
       View sponsorship options
     </Component>
   </ContentPanel>
+  <ContentPanel
+    title="Become a sponsor"
+  >
+    <TargetAudience
+      className="target-audience"
+      event={
+        Object {
+          "agenda": "somethings",
+          "announcements": Object {},
+        }
+      }
+      sponsorship_offer={Object {}}
+    />
+    <Component
+      className="btn-inline"
+      inverted={true}
+      to="/e/undefined/sponsors/new"
+    >
+      View sponsorship options
+    </Component>
+  </ContentPanel>
 </styled.div>
 `;
 
@@ -165,6 +186,33 @@ exports[`Event should render correctly 1`] = `
         }
       />
     </Members>
+  </ContentPanel>
+  <ContentPanel
+    title="Become a sponsor"
+  >
+    <TargetAudience
+      className="target-audience"
+      event={
+        Object {
+          "agenda": "somethings",
+          "announcements": Object {
+            "data": Array [
+              Object {
+                "id": 1,
+              },
+            ],
+          },
+        }
+      }
+      sponsorship_offer={Object {}}
+    />
+    <Component
+      className="btn-inline"
+      inverted={true}
+      to="/e/undefined/sponsors/new"
+    >
+      View sponsorship options
+    </Component>
   </ContentPanel>
   <ContentPanel
     title="Become a sponsor"

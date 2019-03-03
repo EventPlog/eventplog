@@ -25,6 +25,7 @@ const styles = css`
     box-shadow: none;
     border: 0;
     padding: 1rem 0;
+    background: transparent;
     
     .pagination.secondary.menu {
        display: inline-flex;
