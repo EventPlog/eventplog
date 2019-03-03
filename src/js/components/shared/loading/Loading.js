@@ -2,22 +2,32 @@ import React from 'react'
 import { Loader } from 'semantic-ui-react'
 import styled from 'styled-components'
 import Error from './Error'
+import { media } from 'js/styles/mixins'
 
 const StyledLoading = styled.div`
   min-height: 100px;
   display: flex;
   
-  .loader {
+  .loader-holder {
     width: 100%;
     height: 100%;
     display:flex;
     justify-content: center;
     align-items: center;
   }
+  
+  .ovals-loading {
+    ${
+      media.phone`
+        width: 2rem;
+        height: 2rem;
+      `
+    }
+  }
 `
 
 const LoaderComp = () => (
-  <div className="loader">
+  <div className="loader-holder">
     <div class="ovals-loading"></div>
     <div class="ovals-loading"></div>
   </div>

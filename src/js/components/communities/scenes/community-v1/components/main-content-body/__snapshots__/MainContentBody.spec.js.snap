@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Communities::Community::MainContent should render correctly 1`] = `
+<div
+  className="app-container"
+>
+  <ContentSection
+    className="community-event"
+  >
+    <ContentBody>
+      <Component />
+    </ContentBody>
+    <ContentSidebar>
+      <Component />
+    </ContentSidebar>
+  </ContentSection>
+</div>
+`;

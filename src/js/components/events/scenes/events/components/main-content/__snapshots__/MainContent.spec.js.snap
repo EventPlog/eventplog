@@ -1,27 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainContent should render correctly 1`] = `
-<ContentSection>
-  <ContentBody>
-    <TmnTab
-      panes={
-        Array [
-          Object {
-            "content": [Function],
-            "name": "My events",
-          },
-          Object {
-            "content": [Function],
-            "name": "Suggestions",
-          },
-        ]
-      }
-    />
-  </ContentBody>
-  <ContentSidebar>
-    <CommunitiesSection
-      communities={Object {}}
-    />
-  </ContentSidebar>
-</ContentSection>
+<div>
+  <ContentSection>
+    <ContentBody>
+      <div
+        className="events_container"
+      >
+        <Styled(Component)
+          events={Object {}}
+          title="Upcoming Events"
+        />
+      </div>
+    </ContentBody>
+  </ContentSection>
+  <ContentSection>
+    <ContentBody
+      className="body-holder"
+    >
+      <div
+        className="events_container"
+      >
+        <Styled(EventsSection)
+          events={Object {}}
+          key="user-past-events-section"
+          title="Past"
+        />
+      </div>
+    </ContentBody>
+    <ContentSidebar
+      className="sidebar-holder"
+    >
+      <Styled(CommunitiesSection)
+        communities={Object {}}
+      />
+    </ContentSidebar>
+  </ContentSection>
+</div>
 `;

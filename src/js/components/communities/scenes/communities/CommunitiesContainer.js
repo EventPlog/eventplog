@@ -32,13 +32,12 @@ class MainContentContainer extends Component {
 
   getCommunities = (e, meta) => {
     const { per_page } = this.props.communities.meta || {}
-    this.props.getCommunities({page: meta.activePage, per_page})
-      .then(() => document.querySelector('.pusher').scrollTop = 0)
+    return this.props.getCommunities({page: meta.activePage, per_page})
   }
 
   getCommunitiesSuggestions = (e, meta) => {
     const { per_page } = this.props.communities_suggestions.meta || {}
-    this.props.getCommunitiesSuggestions({page: meta.activePage, per_page})
+    return this.props.getCommunitiesSuggestions({page: meta.activePage, per_page})
   }
 
   getData() {

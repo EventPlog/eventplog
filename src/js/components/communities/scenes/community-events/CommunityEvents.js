@@ -15,7 +15,7 @@ const CommunityEvents = ({
   slug,
 }) => {
   return (
-    <div>
+    <div className="community-events">
       <EventsSection key="user-upcoming-events-section"
                      title="Upcoming" {...{events, getEvents, attendEvent, community }} />,
       <EventsSection key="user-past-events-section"

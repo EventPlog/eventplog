@@ -16,6 +16,25 @@ const fetchData = (path) => {
     });
 }
 
+const fetchEvents = ({ path, params = {} }) => {
+  return fetchData(`/api/v1/web/events?page=1&per_page=15`)
+    .then(events => (
+      `
+        <script>window.__INITIAL_DATA__=${serialize({events})}</script>
+      `
+    ))
+    .catch(err => {console.log(err); return ''})
+}
+const fetchUpcomingEvents = ({ path, params = {} }) => {
+  return fetchData(`/api/v1/web/events?page=1&per_page=15`)
+    .then(events => (
+      `
+        <script>window.__INITIAL_DATA__=${serialize({events})}</script>
+      `
+    ))
+    .catch(err => {console.log(err); return ''})
+}
+
 const fetchUserMeta = ({ path, params = {} }) => {
   return fetchData(`/api/v1/web/users/${params.id.split('-').pop()}`)
     .then(user => (
@@ -120,4 +139,6 @@ module.exports = {
   fetchUserMeta,
   fetchCommunityMeta,
   fetchEventMeta,
+  fetchEvents,
+  fetchUpcomingEvents
 }

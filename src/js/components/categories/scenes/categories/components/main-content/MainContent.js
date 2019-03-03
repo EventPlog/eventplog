@@ -14,6 +14,7 @@ const styles = css`
     box-shadow: none;
     border: 0;
     padding: 1rem 0;
+    background: none;
     
     .pagination.secondary.menu {
        display: inline-flex;
@@ -21,7 +22,6 @@ const styles = css`
   }
   
   .content-header {
-    /*font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;*/
     margin: 0 1rem;
     letter-spacing: 0.01rem;
     font-weight: 600;
@@ -32,6 +32,11 @@ const styles = css`
         margin: 0 0 2rem 0;
       `
     } 
+  }
+  
+  .content-panel {
+    background: transparent;
+    box-shadow: none;
   }
 `
 
@@ -49,12 +54,14 @@ const MainContent = ({
 
   const UserCategories = () =>
     <CategoriesSection showCTA={!Auth.isLoggedIn}
+                       title="Categories"
       {...{categories, getCategories, followCategory}} />
 
   const CategoriesSuggestions = () =>
     <CategoriesSection getCategories={getCategoriesSuggestions}
-                        followCategory={followCategory}
-                        categories={categories_suggestions} />
+                       title="Categories"
+                       followCategory={followCategory}
+                       categories={categories_suggestions} />
 
   const getPanes = () => {
     return [

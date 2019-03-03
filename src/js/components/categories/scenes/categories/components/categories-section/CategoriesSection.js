@@ -36,18 +36,13 @@ const CategorySection = ({
 }) => {
 
   const {loading, error, data = [], meta = {}} = categories;
-
-  if (loading) {
-    return <Loading />
-  }
-
-  if (error) {
-    return <Error msg={categories.error} />
-  }
+  const shouldDisplayData = (data && (data.length > 0));
 
   return (
     <ContentPanel title={title}>
-      {data && data.map(({description, featured_image, ...category}) => {
+      {loading && !shouldDisplayData &&  <Loading />}
+      {error && !shouldDisplayData && <Loading.Error msg={error} />}
+      {shouldDisplayData && data.map(({description, featured_image, ...category}) => {
           const title = generateTitle(category)
           const meta = generateMeta(category)
           const titleLink = genCategoryLink(category)
@@ -55,20 +50,21 @@ const CategorySection = ({
             <ContentPanel.Card
               key={category.id}
               {...{title, description, featured_image, meta}}
-              hideImage={!featured_image}
               showButton={showCTA && !category.following}
               titleLink={titleLink}
               btn={{onClick: () => followCategory(category), text: 'Follow'}} />
           )
         }
       )}
-      {data && data.length < 1 && <p className="no-records-msg">{noRecordsMsg || "This hall for categories seem empty ..."}</p>}
+      {!loading && !error && data && data.length < 1 && <p className="no-records-msg">{noRecordsMsg || "This hall for categories seem empty ..."}</p>}
       {
-        meta && meta.total_pages && data.length > 0
-          ? <Pagination totalPages={meta.total_pages}
-                        activePage={meta.current_page}
-                        onPageChange={getCategories} />
-          : ''
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1) &&
+          <Pagination.ShowMoreButton totalPages={meta.total_pages}
+                                     activePage={meta.current_page}
+                                     className="show-more-btn"
+                                     loading={loading}
+                                     error={error}
+                                     onPageChange={getCategories} />
       }
     </ContentPanel>
   )

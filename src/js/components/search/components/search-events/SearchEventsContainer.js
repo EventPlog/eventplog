@@ -35,9 +35,8 @@ class SearchEventsContainer extends Component {
 
   getEvents = (e, meta) => {
     const { per_page } = this.props.events.meta || {}
-    this.props.searchEvents({...this.props.query, page: meta.activePage, per_page})
-      .then(() => document.querySelector('.pusher').scrollTop = 0)
     mixpanel.track('SEARCH_EVENTS_INDEX_PAGINATION_CLICK', {meta})
+    return this.props.searchEvents({...this.props.query, page: meta.activePage, per_page})
   }
 
   getProps = () => ({

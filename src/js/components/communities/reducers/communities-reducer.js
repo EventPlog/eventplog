@@ -3,13 +3,19 @@ import actionTypes from '../actions/types'
 import { updateItemInCollection } from 'js/reducers/helpers'
 
 const communityReducer = (state=initialState.communities, action) => {
-  let data
+  let data = []
   switch(action.type) {
     case actionTypes.COMMUNITY_INDEX_START:
-      return {...state, loading: true};
+      data = action.payload.data && action.payload.data.page == 1
+              ? []
+              : state.data
+      return {...state, data, loading: true};
 
     case actionTypes.COMMUNITY_INDEX_COMPLETE:
-      return {...state, ...action.payload, loading: false, error: false}
+      data = action.payload.meta && action.payload.meta.current_page == 1
+              ? action.payload.data
+              : [...state.data, ...action.payload.data]
+      return {...state, ...action.payload, data, loading: false, error: false}
 
     case actionTypes.COMMUNITY_INDEX_FAIL:
       return {...state, loading: false, error: action.payload}

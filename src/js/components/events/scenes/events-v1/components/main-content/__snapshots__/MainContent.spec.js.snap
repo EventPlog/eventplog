@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContent should render correctly 1`] = `
+<ContentSection>
+  <ContentBody>
+    <TmnTab
+      panes={
+        Array [
+          Object {
+            "content": [Function],
+            "name": "My events",
+          },
+          Object {
+            "content": [Function],
+            "name": "Suggestions",
+          },
+        ]
+      }
+    />
+  </ContentBody>
+  <ContentSidebar>
+    <CommunitiesSection
+      communities={Object {}}
+    />
+  </ContentSidebar>
+</ContentSection>
+`;

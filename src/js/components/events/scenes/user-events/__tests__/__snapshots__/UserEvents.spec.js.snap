@@ -5,7 +5,7 @@ exports[`MainContent should render correctly 1`] = `
   <Styled(EventsSection)
     events={Object {}}
     key="user-upcoming-events-section"
-    title="Upcoming"
+    title="Upcoming Events"
   />
   <Styled(EventsSection)
     events={Object {}}

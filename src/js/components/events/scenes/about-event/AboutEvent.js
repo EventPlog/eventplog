@@ -186,6 +186,17 @@ const Event = ({
         </Button.Link>
       </ContentPanel>
 
+      <ContentPanel title={sponsorsExist ? "Sponsors" : "Become a sponsor" }>
+        {!sponsorsExist &&
+          <TargetAudience className="target-audience" {...{ sponsorship_offer, event } }/> }
+
+        <Button.Link inverted
+                     className="btn-inline"
+                     to={`${genEventLink(event)}/sponsors/new`}>
+          View sponsorship options
+        </Button.Link>
+      </ContentPanel>
+
       {is_stakeholder &&
         <ContentPanel title="Embed your registration form">
           <Message info>

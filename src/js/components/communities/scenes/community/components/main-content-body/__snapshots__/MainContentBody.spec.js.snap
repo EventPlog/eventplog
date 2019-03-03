@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Communities::Community::MainContent should render correctly 1`] = `
-<div
+<styled.div
   className="app-container"
 >
   <ContentSection
@@ -14,5 +14,5 @@ exports[`Communities::Community::MainContent should render correctly 1`] = `
       <Component />
     </ContentSidebar>
   </ContentSection>
-</div>
+</styled.div>
 `;

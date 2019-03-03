@@ -56,7 +56,7 @@ class CategoryContainer extends Component {
     this.props.getParentEvents({
       page: meta.activePage, per_page,
       ...this.getParentParams()
-    }).then(() => document.querySelector('.pusher').scrollTop = 0)
+    })
     mixpanel.track('CATEGORY_CURRENT_EVENTS_INDEX_PAGINATION_CLICK', {meta})
   }
 
