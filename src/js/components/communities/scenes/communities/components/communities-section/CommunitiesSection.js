@@ -61,7 +61,7 @@ const CommunitySection = ({
       )}
       {!loading && !error && data && data.length < 1 && <p className="no-records-msg">{noRecordsMsg || "This hall for communities seem empty ..."}</p>}
       {
-        meta && meta.total_pages && data.length > 0 &&
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1) &&
           <Pagination.ShowMoreButton totalPages={meta.total_pages}
                                      activePage={meta.current_page}
                                      className="show-more-btn"

@@ -14,6 +14,7 @@ const styles = css`
     box-shadow: none;
     border: 0;
     padding: 1rem 0;
+    background: none;
     
     .pagination.secondary.menu {
        display: inline-flex;
@@ -32,6 +33,11 @@ const styles = css`
       `
     } 
   }
+  
+  .content-panel {
+    background: transparent;
+    box-shadow: none;
+  }
 `
 
 const MainContent = ({
@@ -48,12 +54,14 @@ const MainContent = ({
 
   const UserCategories = () =>
     <CategoriesSection showCTA={!Auth.isLoggedIn}
+                       title="Categories"
       {...{categories, getCategories, followCategory}} />
 
   const CategoriesSuggestions = () =>
     <CategoriesSection getCategories={getCategoriesSuggestions}
-                        followCategory={followCategory}
-                        categories={categories_suggestions} />
+                       title="Categories"
+                       followCategory={followCategory}
+                       categories={categories_suggestions} />
 
   const getPanes = () => {
     return [

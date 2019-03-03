@@ -13,7 +13,6 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
     }
     description="A community of developers united in knowledge sharing."
     featured_image="/login-bg.jpg"
-    hideImage={false}
     key="1"
     meta={
       <ul>
@@ -47,7 +46,6 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
     }
     description="A community of developers united in knowledge sharing."
     featured_image="/login-bg.jpg"
-    hideImage={false}
     key="2"
     meta={
       <ul>
@@ -81,7 +79,6 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
     }
     description="A community of developers united in knowledge sharing."
     featured_image="/login-bg.jpg"
-    hideImage={false}
     key="1"
     meta={
       <ul>
@@ -106,8 +103,9 @@ exports[`Categories::Categories::CategoriesSection should render correctly 1`] =
     }
     titleLink="/cat/1"
   />
-  <PaginationComponent
+  <Component
     activePage={1}
+    className="show-more-btn"
     totalPages={1}
   />
 </ContentPanel>

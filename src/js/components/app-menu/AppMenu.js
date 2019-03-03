@@ -38,6 +38,7 @@ const StyledAppMenu = styles.div`
         media.phone`
           padding-right: 0;
           background-color: ${props => props.theme.white};
+          background-image: none;
         `
       }
     }

@@ -7,14 +7,14 @@ const communityReducer = (state=initialState.communities, action) => {
   switch(action.type) {
     case actionTypes.COMMUNITY_INDEX_START:
       data = action.payload.data && action.payload.data.page == 1
-        ? []
-        : state.data
+              ? []
+              : state.data
       return {...state, data, loading: true};
 
     case actionTypes.COMMUNITY_INDEX_COMPLETE:
       data = action.payload.meta && action.payload.meta.current_page == 1
-        ? action.payload.data
-        : [...state.data, ...action.payload.data]
+              ? action.payload.data
+              : [...state.data, ...action.payload.data]
       return {...state, ...action.payload, data, loading: false, error: false}
 
     case actionTypes.COMMUNITY_INDEX_FAIL:

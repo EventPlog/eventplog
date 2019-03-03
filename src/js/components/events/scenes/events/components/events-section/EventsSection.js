@@ -146,7 +146,7 @@ export const EventsSection = ({
         }
       )}
 
-      {shouldDisplayData && data.length < 1 && <p>No events to display right now ...</p>}
+      {!loading && !error && data && data.length < 1 && <p>No events to display right now ...</p>}
 
       {
         meta && meta.total_pages && (data.length > 0 || meta.current_page > 1) &&
