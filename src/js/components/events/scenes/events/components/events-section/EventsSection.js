@@ -128,7 +128,7 @@ export const EventsSection = ({
   return (
     <ContentPanel className={className} title={title}>
       {loading && !shouldDisplayData &&  <Loading />}
-      {error && !shouldDisplayData && <Loading.Error msg={events.error} />}
+      {error && !shouldDisplayData && <Loading.Error msg={error} />}
       {shouldDisplayData && data.map(({featured_image, ...event}) => {
           const community = event.community || {}
           const title = generateTitle(event, community)

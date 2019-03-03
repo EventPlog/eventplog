@@ -124,10 +124,11 @@ const ContentPanelCardMedium = styled(ContentPanel.Card)`
   
 `;
 
-const getContentPanel = ({index, ...props}) => {
+const getContentPanel = ({index, total, ...props}) => {
   switch(true) {
     case index == 0:
     case (index % 6) == 0:
+    case index == (total - 1):
       return <ContentPanelCardLarge {...props} />
     
     case index == 1:
@@ -156,7 +157,7 @@ export const EventsSection = ({
 
       <div className="container"> 
         {shouldDisplayData &&
-          data.map((event, index) => getContentPanel({event, index})) }
+          data.map((event, index) => getContentPanel({event, index, total: data.length})) }
       </div>
       {
         meta && meta.total_pages && (data.length > 0 || meta.current_page > 1) &&

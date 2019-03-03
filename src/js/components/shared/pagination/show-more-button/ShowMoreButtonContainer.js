@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 
 class ShowMoreButtonContainer extends Component {
-  state = {loading: false, error: false}
+  state = {}
 
   onPageChange = (e) => {
     this.setState(() => ({loading: true}))

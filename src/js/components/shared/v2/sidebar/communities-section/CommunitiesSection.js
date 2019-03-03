@@ -70,7 +70,7 @@ const CommunitiesSection = ({
       { data && data.length > 4 &&
           <Link to="/communities">
             <div className="see-more">
-              See more communities <span><Icon name="angle down" /></span>
+              See more communities <span><Icon name="angle right" /></span>
             </div>
           </Link>
         } 

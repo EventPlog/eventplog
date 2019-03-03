@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 // internal
 import ContentPanel from 'js/components/shared/content-panel'
 import Loading from 'js/components/shared/loading'
-import Error from 'js/components/shared/loading/Error'
 import Pagination from 'js/components/shared/pagination'
 import { pluralize, genCommunityLink } from 'js/utils'
 
@@ -40,17 +39,13 @@ const CommunitySection = ({
 
   const {loading, error, data = [], meta = {}} = communities;
 
-  if (loading) {
-    return <Loading />
-  }
-
-  if (error) {
-    return <Error msg={communities.error} />
-  }
+  const shouldDisplayData = (data && (data.length > 0));
 
   return (
     <ContentPanel title={title}>
-      {data && data.map(({description, featured_image, ...community}) => {
+      {loading && !shouldDisplayData &&  <Loading />}
+      {error && !shouldDisplayData && <Loading.Error msg={error} />}
+      {shouldDisplayData && data.map(({description, featured_image, ...community}) => {
           const title = generateTitle(community)
           const meta = generateMeta(community)
           const titleLink = genCommunityLink(community)
@@ -64,13 +59,15 @@ const CommunitySection = ({
           )
         }
       )}
-      {data && data.length < 1 && <p className="no-records-msg">{noRecordsMsg || "This hall for communities seem empty ..."}</p>}
+      {!loading && !error && data && data.length < 1 && <p className="no-records-msg">{noRecordsMsg || "This hall for communities seem empty ..."}</p>}
       {
-        meta && meta.total_pages && data.length > 0
-          ? <Pagination totalPages={meta.total_pages}
-                        activePage={meta.current_page}
-                        onPageChange={getCommunities} />
-          : ''
+        meta && meta.total_pages && data.length > 0 &&
+          <Pagination.ShowMoreButton totalPages={meta.total_pages}
+                                     activePage={meta.current_page}
+                                     className="show-more-btn"
+                                     loading={loading}
+                                     error={error}
+                                     onPageChange={getCommunities} />
       }
     </ContentPanel>
   )
