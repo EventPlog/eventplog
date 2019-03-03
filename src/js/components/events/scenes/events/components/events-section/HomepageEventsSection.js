@@ -104,12 +104,11 @@ const styles = css`
     position: relative
     font-size: 1.2rem;
     padding-top: 1.2rem;
+    text-align: center;
     color: ${props => props.theme.activeLink};
 
     span {
       padding-left: 12px;
-      position: absolute;
-      top: 19px;
     }
   }
 `
@@ -148,24 +147,32 @@ export const EventsSection = ({
   className,
 }) => {
   const {loading, error, data = [], meta = {}} = events;
-  const shouldDisplayData = (!loading && !error && data);
+  const shouldDisplayData = (data && (data.length > 0));
   
   return (
     <ContentPanel className={className} title={title}>
-      {loading && <Loading />}
-      {error && <Loading.Error msg={events.error} />}
+      {loading && !shouldDisplayData && <Loading />}
+      {error && !shouldDisplayData && <Loading.Error msg={events.error} />}
 
       <div className="container"> 
-        {shouldDisplayData && data.length > 0 && 
+        {shouldDisplayData &&
           data.map((event, index) => getContentPanel({event, index})) }
       </div>
-      { shouldDisplayData && meta && 
-          <p className="see-more">
+      {
+        meta && meta.total_pages && (data.length > 0 || meta.current_page > 1) &&
+        <p className="see-more">
+          <Pagination.ShowMoreButton totalPages={meta.total_pages}
+                                     activePage={meta.current_page}
+                                     className="show-more-btn"
+                                     loading={loading}
+                                     error={error}
+                                     onPageChange={getEvents}>
             See more events <span><Icon name="angle down" /></span>
-          </p>
-        } 
+          </Pagination.ShowMoreButton>
+        </p>
+      }
       {shouldDisplayData && data.length < 1 && <p>No events to display right now ...</p>}
-      
+
     </ContentPanel>
   )
 }

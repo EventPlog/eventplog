@@ -54,6 +54,10 @@ const StyledSidebarCard = styled.div`
     height: auto;
     border-radius: 8px;
     
+    > * {
+      position: relative;
+    }
+  
     ${
       media.tablet`
         flex: 1;
@@ -154,6 +158,13 @@ const StyledSidebarCard = styled.div`
     padding-bottom: 20px;
     padding-top: 16px;
   }
+  
+  .overlay {
+    position: absolute;
+    opacity: 0.8;
+    border-radius: 10px;
+    background-color: ${props => props.brandColor || props.theme.activeLink};
+  }
 `
 
 type itemType = {
@@ -172,13 +183,15 @@ const SidebarCard = ({
   btn = {},
   meta,
   titleLink,
+  brand_color,
 }: itemType) => (
-  <StyledSidebarCard className="sidebar-card">
+  <StyledSidebarCard className="sidebar-card" brandColor={brand_color}>
     <div className="img-holder" style={{
-      backgroundImage: `linear-gradient(rgba(29, 8, 128, 0.7), rgba(55, 49, 84, 0.3)), url(${featured_image || "https://placeimg.com/640/480/tech"})`
+      backgroundImage: `url(${featured_image || "https://placeimg.com/640/480/tech"})`
     }}>
+      <div className="overlay" />
       <div className="follow">
-        <span className="count">{no_of_followers}</span> Followers
+        {meta}
         <Link className="title-link" to={titleLink || "#"} />
         {btn.text && <Button {...btn}>
                       {btn.text}
@@ -190,7 +203,7 @@ const SidebarCard = ({
     </div>
 
     <div className="categories">
-      Programming, Startups
+      {description}
     </div>
     </div>
   </StyledSidebarCard>

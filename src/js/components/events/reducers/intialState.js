@@ -1,6 +1,6 @@
 export default {
   event: {},
-  events: {},
+  events: { data: [] },
   past_events: {data: [], meta: {}, loading: false},
   events_suggestions: {data: [], meta: {}, loading: false},
 }

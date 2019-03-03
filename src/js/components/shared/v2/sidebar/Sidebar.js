@@ -16,6 +16,7 @@ const StyledSidebar = styled.div`
   box-shadow: 1px 2px 4px ${props => lighten(0.47, props.theme.activeLink)};
   color: ${props => props.theme.darkGray};
   border-radius: 0;
+  width: 100%;
   
   p {
     color: ${props => props.theme.darkGray};

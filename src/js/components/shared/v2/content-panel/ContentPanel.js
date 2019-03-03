@@ -53,14 +53,12 @@ const ContentPanel = function({
   children
 }) {
   return (
-    <div>
-      <StyledContentPanel style={style} className={`${className} content-panel`}>
-        {title && <h4 className="content-header">{ title }</h4>}
-        <div className="content-body" style={bodyStyle}>
-          { children }
-        </div>
-      </StyledContentPanel>
-    </div>
+    <StyledContentPanel style={style} className={`${className} content-panel`}>
+      {title && <h4 className="content-header">{ title }</h4>}
+      <div className="content-body" style={bodyStyle}>
+        { children }
+      </div>
+    </StyledContentPanel>
   )
 }
 

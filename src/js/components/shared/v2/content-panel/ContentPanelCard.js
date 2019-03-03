@@ -5,19 +5,24 @@ import styled, { css } from 'styled-components'
 import { lighten } from 'polished'
 
 // internal
-import { resizeImage, genEventLink } from 'js/utils'
 import Button from 'js/components/shared/button'
 import { media, maxMedia } from 'js/styles/mixins'
 import colors from '../../../../styles/theme/colors'
 import defaults from 'js/styles/theme/variables'
 import Icons from 'js/components/shared/cta-icons';
+import {
+  resizeImage,
+  pluralize,
+  genEventLink,
+  genCommunityLink
+} from 'js/utils'
 
 
 const StyledMainContentCard = styled.div`
   --img-height: 200px;
   --activeLink: ${defaults.activeLink};
   border-radius: 0.5rem;
-  flex: 1;
+  flex: 2;
   background-color: ${colors.white};
   position: relative;
   margin: 0.5rem;
@@ -136,7 +141,9 @@ const MainContentCard = ({
   className,
 }) => (
   <StyledMainContentCard className={`community-card ${className}`}>
-    <div className="background" style={{backgroundImage:  `url(${resizeImage(event.featured_image || '', 'medium')})`}} />
+    <Link to={genEventLink(event)}>
+      <div className="background" style={{backgroundImage:  `url(${resizeImage(event.featured_image || '', 'medium')})`}} />
+    </Link>
 
     <div class="cta-holder">
       <Icons event={event} />
@@ -146,8 +153,16 @@ const MainContentCard = ({
       <h4>{generateTitle(event)}</h4>
 
       <div className="event-desc">
+        {event.community &&
+          <p>
+            By <Link to={genCommunityLink(event.community)}>{event.community.name}</Link>
+          </p>
+        }
         <p>{event.goals || event.description}</p>
-        <small>{event.interested_persons} Interested</small>
+
+        <small>
+          {event.interested_persons < 10 ? '' : `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
+        </small>
       </div>
 
       <div>

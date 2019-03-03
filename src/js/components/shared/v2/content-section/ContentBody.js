@@ -21,8 +21,8 @@ const StyledMainContentBody = styled.section`
   }
 `
 
-const ContentBody = ({ children }) => (
-  <StyledMainContentBody className="main-body">
+const ContentBody = ({ className, children }) => (
+  <StyledMainContentBody className={`main-body ${className}`}>
     { children }
   </StyledMainContentBody>
 )

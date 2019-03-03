@@ -98,7 +98,7 @@ export const getEvents = (eventParams = {}) => {
   return handleApiCall({
     actions,
     data: eventParams,
-    errorMessage: 'Something prevented getting an event.',
+    errorMessage: 'Something prevented us from retrieving events.',
     caller: 'get events',
     route: `/api/v1/web/events`,
     requestMethod: 'GET'
@@ -336,5 +336,12 @@ export const addEventToStore = (event) => {
   return (dispatch) => dispatch({
     type: actionTypes.EVENT_SHOW_COMPLETE,
     payload: event
+  })
+}
+
+export const addEventsToStore = (events) => {
+  return (dispatch) => dispatch({
+    type: actionTypes.EVENT_INDEX_COMPLETE,
+    payload: events
   })
 }

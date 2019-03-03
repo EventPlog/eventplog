@@ -23,9 +23,10 @@ const StyledMainContentCard = styled.div`
     width: 100%;
     height: 200px;
     margin-right: 2rem;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat-x: repeat;
+    background-size: contain;
     position: relative;
+    background-color: var(--activeLink);
     
     ${
       media.phone`
@@ -193,7 +194,7 @@ const MainContentCard = ({
   <StyledMainContentCard className={`content-panel-card ${className}`}>
     {!hideImage &&
       <div className="img-holder" style={{
-                backgroundImage: `url(${featured_image ? resizeImage(featured_image, 'thumbnail') : '/public/sample-bg.jpg'})`
+                backgroundImage: `url(${featured_image ? resizeImage(featured_image, 'medium') : '/public/sample-bg.jpg'})`
               }}>
         {titleLink
           ? <Link className="title-link" to={titleLink} />

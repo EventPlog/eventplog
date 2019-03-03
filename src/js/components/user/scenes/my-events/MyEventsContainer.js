@@ -60,12 +60,11 @@ class MainContentContainer extends Component {
   getEventsByVerb = (page = 1, per_page = 10) => {
     const { labelVerbMapping, activeItem } = this.state
 
-    this.props.getEventsByVerb({
+    return this.props.getEventsByVerb({
       verb: labelVerbMapping[activeItem],
       page, per_page,
       user_id: this.props.user.id,
     })
-      .then(() => document.querySelector('.pusher').scrollTop = 0)
 
   }
 

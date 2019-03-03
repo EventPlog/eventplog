@@ -21,7 +21,7 @@ describe('MainContent', () => {
     const eventSectionInstances = wrapper.find(EventsSection)
 
     // assert titles
-    expect(eventSectionInstances.at(0).props().title).toEqual("Upcoming")
+    expect(eventSectionInstances.at(0).props().title).toEqual("Upcoming Events")
     expect(eventSectionInstances.at(1).props().title).toEqual("Past")
   })
 });

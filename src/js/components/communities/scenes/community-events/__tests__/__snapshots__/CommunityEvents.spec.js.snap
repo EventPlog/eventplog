@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainContent should render correctly 1`] = `
-<div>
+<div
+  className="community-events"
+>
   <Styled(EventsSection)
     community={Object {}}
     events={Object {}}

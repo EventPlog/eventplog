@@ -2,6 +2,6 @@
 
 exports[`Communities::Communities::MainContent should render correctly 1`] = `
 <MainContent
-  className="sc-gqjmRU iQJBjH"
+  className="sc-VigVT bAEbrZ"
 />
 `;

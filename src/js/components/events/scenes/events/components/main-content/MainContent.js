@@ -49,6 +49,14 @@ const styles = css`
   .title {
     color: ${props => props.theme.activeLink};
   }
+  
+  .sidebar-holder {
+    flex: 2;
+  }
+  
+  .body-holder {
+    flex: 5;
+  }
 `
 
 export const MainContent = ({
@@ -56,6 +64,7 @@ export const MainContent = ({
   past_events = {},
   getPastEvents,
   attendEvent,
+  getEvents,
   communities_suggestions = {},
   followCommunity,
   className,
@@ -66,13 +75,15 @@ export const MainContent = ({
       <ContentSection>
         <ContentSection.Body>
           <div className="events_container">
-            <HomepageEventsSection title="Upcoming Events" events={events} />
+            <HomepageEventsSection title="Upcoming Events"
+                                   getEvents={getEvents}
+                                   events={events} />
           </div>    
         </ContentSection.Body>
       </ContentSection>
 
       <ContentSection>
-        <ContentSection.Body>
+        <ContentSection.Body className="body-holder">
           <div className="events_container">
             <EventsSection key="user-past-events-section"
                           title="Past"
@@ -81,7 +92,7 @@ export const MainContent = ({
                           attendEvent={attendEvent} />
           </div>    
         </ContentSection.Body>
-        <ContentSection.Sidebar>
+        <ContentSection.Sidebar className="sidebar-holder">
           <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} />
         </ContentSection.Sidebar>
       </ContentSection>

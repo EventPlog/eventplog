@@ -50,12 +50,12 @@ class MainContentContainer extends Component {
   }
 
   getCommunitiesByVerb(label, page = 1, per_page = 10) {
-    this.props.getCommunitiesByVerb({
+    return this.props.getCommunitiesByVerb({
       verb: labelVerbMapping[label],
       page,
       per_page,
       user_id: this.props.user.id
-    }).then(() => document.querySelector('.pusher').scrollTop = 0)
+    })
   }
 
   getCommunities = (e, meta) => {

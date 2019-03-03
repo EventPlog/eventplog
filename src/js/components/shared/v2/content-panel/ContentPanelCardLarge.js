@@ -6,7 +6,7 @@ import { lighten } from 'polished'
 
 //========= INTERNAL ===========
 import { media, maxMedia } from 'js/styles/mixins'
-import { genEventLink, resizeImage, pluralize } from 'js/utils'
+import { genEventLink, genCommunityLink, resizeImage, pluralize } from 'js/utils'
 
 
 
@@ -19,7 +19,8 @@ const StyledContentPanelCardLarge = styled.section`
   border-radius: 8px;
   background-color: ${props => props.theme.activeLink};
   background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.1), rgba(55, 49, 84, 0.4)), url(${props.image})`};
-  background-size: cover;
+  background-repeat-x: repeat;
+  background-size: contain;
   margin: 0.5rem;
   position: relative;
   color: ${props => props.theme.white};
@@ -44,12 +45,14 @@ const StyledContentPanelCardLarge = styled.section`
   .event-title {
     font-size: 1.7rem;
     text-align: center;
-    text-shadow: 0 2px 2px ${props => props.theme.black};
+    text-shadow: 0 2px 8px ${props => props.theme.black};
     flex: 1;
-    padding-top: 2rem;
+    padding-top: 6rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 
     ${
       media.phone`
@@ -59,6 +62,18 @@ const StyledContentPanelCardLarge = styled.section`
 
     h4 {
       color: ${props => props.theme.white};
+    }
+    
+    small {
+      color: ${props => props.theme.white};
+      font-size: 80%;
+      margin: 1rem 0;
+
+      
+      a {
+        color: ${props => props.theme.white};
+        font-weight: 800;
+      }
     }
   }
 
@@ -128,6 +143,10 @@ const StyledContentPanelCardLarge = styled.section`
       `
     }
   }
+  
+  .overlay.title-link {
+    background: transparent;
+  }
 `
 
 const getAddress = (event) => (
@@ -135,35 +154,42 @@ const getAddress = (event) => (
     ? event.location.address : event.venue
 )
 
-const ContentPanelCardLarge = ({ event }) => {
+const ContentPanelCardLarge = ({ event = {} }) => {
   const eventAddress = getAddress(event)
   return (
-  <StyledContentPanelCardLarge className="main-body" image={resizeImage(event.featured_image, 'medium')}>
-    <div class="cta-holder">
-      <Icons event={event} />
-    </div>
+    <StyledContentPanelCardLarge className="main-body" image={resizeImage(event.featured_image, 'medium')}>
+      <Link className="overlay title-link" to={genEventLink(event)} />
 
-    <div className="event-title">
-      <Link to={genEventLink(event)}>
-        <h4>{event.title}</h4>
-      </Link>
-    </div>
-    
+      <div class="cta-holder">
+        <Icons event={event} />
+      </div>
 
-    <div className="interested-persons">
-      <Icon name="eye" className="far eye-icon" />
-      <span>
-        {event.interested_persons < 1 ? '' : `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
-      </span>
-    </div>
+      <div className="event-title">
+        <Link to={genEventLink(event)}>
+          <h4>{event.title}</h4>
+        </Link>
+        {event.community &&
+          <small>
+            By <Link to={genCommunityLink(event.community)}>{event.community.name}</Link>
+          </small>
+        }
+      </div>
 
-    <div className="event-time">
-      <Icon name="map marker alternate" className="far eye-icon" />
 
-      <span>{event.start_date.slice(0,3)} {event.display_start_time}, {eventAddress && eventAddress.substr(0, 40) + '...'}</span>
-      <span className="date">{event.start_date.split(",")[1].slice(0, -5)}</span>
-    </div>
-  </StyledContentPanelCardLarge>
+      <div className="interested-persons">
+        <Icon name="eye" className="far eye-icon" />
+        <span>
+          {event.interested_persons < 10 ? '' : `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
+        </span>
+      </div>
+
+      <div className="event-time">
+        <Icon name="map marker alternate" className="far eye-icon" />
+
+        <span>{event.start_date.slice(0,3)} {event.display_start_time}, {eventAddress && eventAddress.substr(0, 40) + '...'}</span>
+        <span className="date">{event.start_date.split(",")[1].slice(0, -5)}</span>
+      </div>
+    </StyledContentPanelCardLarge>
   )
 }
 

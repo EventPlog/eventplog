@@ -18,8 +18,8 @@ const StyledIcons = styled.div`
 
   .bookmark {
     padding: 0.7rem;
-    background: var(--activeLink);
-    color: ${colors.yellow};
+    color: var(--activeLink);
+    background: ${colors.yellow};
     border-radius: 10rem;
     margin: 0 0.5rem;
     box-shadow: 0px 0px 8px ${lighten(0.3, colors.darkGray)};
@@ -35,7 +35,8 @@ const StyledIcons = styled.div`
     &:first-child {
       background: white;
       color: var(--activeLink);
-    
+      border: none;
+      
       &:hover {
         color: ${colors.yellow};
         background: var(--activeLink);

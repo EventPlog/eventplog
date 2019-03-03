@@ -26,7 +26,7 @@ const ErrorComponent = ({className, msg}) => {
       <div>
         <h1> 😌 </h1>
         <h3> Oops ... Something went wrong. </h3>
-        <p>{msg.toString()}</p>
+        <p>{msg && msg.toString()}</p>
         <p>Confirm your internet connection,&nbsp;
       then <Button.Link to="#" onClick={() => window.location.reload()}>refresh</Button.Link></p>
       </div>

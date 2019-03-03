@@ -32,13 +32,12 @@ class MainContentContainer extends Component {
 
   getCategories = (e, meta) => {
     const { per_page } = this.props.categories.meta || {}
-    this.props.getCategories({page: meta.activePage, per_page})
-      .then(() => document.querySelector('.pusher').scrollTop = 0)
+    return this.props.getCategories({page: meta.activePage, per_page})
   }
 
   getCategoriesSuggestions = (e, meta) => {
     const { per_page } = this.props.categories_suggestions.meta || {}
-    this.props.getCategoriesSuggestions({page: meta.activePage, per_page})
+    return this.props.getCategoriesSuggestions({page: meta.activePage, per_page})
   }
 
   followCategory = (category) => {
