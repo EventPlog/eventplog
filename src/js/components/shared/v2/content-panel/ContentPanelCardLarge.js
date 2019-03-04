@@ -18,7 +18,7 @@ const StyledContentPanelCardLarge = styled.section`
   flex: 40%;
   border-radius: 8px;
   background-color: ${props => props.theme.activeLink};
-  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.1), rgba(55, 49, 84, 0.4)), url(${props.image})`};
+  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.1), rgba(55, 49, 84, 0.8)), url(${props.image})`};
   background-repeat-x: repeat;
   background-size: contain;
   margin: 0.5rem;
@@ -42,10 +42,14 @@ const StyledContentPanelCardLarge = styled.section`
     `
   }
 
+  > * {
+    position: relative;
+  }
+  
   .event-title {
     font-size: 1.7rem;
     text-align: center;
-    text-shadow: 0 2px 8px ${props => props.theme.black};
+    text-shadow: 0 2px 4px ${props => props.theme.black};
     flex: 1;
     padding-top: 6rem;
     display: flex;
@@ -146,6 +150,7 @@ const StyledContentPanelCardLarge = styled.section`
   
   .overlay.title-link {
     background: transparent;
+    position: absolute;
   }
 `
 

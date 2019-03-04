@@ -15,6 +15,7 @@ import {
   splice,
   addDays,
   subtractDays,
+  hexToRgb,
 } from '../index'
 import Auth from '../../auth/actions'
 
@@ -229,5 +230,15 @@ describe('subtractDays()', () => {
 
     expect(subtractDays(1, today).toDateString()).toEqual(yesterday)
     expect(subtractDays(7, today).toDateString()).toEqual(pastWeek)
+  })
+})
+
+describe('hexToRgb', () => {
+  it('converts a hex color string to rgb', () => {
+    expect(hexToRgb('#493294')).toEqual('rgb(73, 50, 148, 0)')
+  })
+
+  it('adds an alpha value to the generated rgb if passed in', () => {
+    expect(hexToRgb('#493294', 0.4)).toEqual('rgb(73, 50, 148, 0.4)')
   })
 })
