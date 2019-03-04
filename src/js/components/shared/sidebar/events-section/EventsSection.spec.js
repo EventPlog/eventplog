@@ -7,7 +7,7 @@ import EventsSection, {
 } from './EventsSection';
 import { shallow } from 'enzyme';
 
-import Sidebar from 'js/components/shared/sidebar'
+import Sidebar from 'js/components/shared/v2/sidebar'
 import data from 'js/mock-api/data'
 
 describe('Sidebar > EventsSection', () => {
