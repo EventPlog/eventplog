@@ -55,6 +55,7 @@ const StyledSidebarCard = styled.div`
     position: relative;
     height: auto;
     border-radius: 8px;
+    background-color: ${props => props.bgColor};
     background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || colors.primary, 0.1) } 0%, ${hexToRgb(props.bgColor || colors.primary, 0.9)} 100%), url(${props.image})`};
     
     > * {
