@@ -14,7 +14,14 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     description="Generic community"
     featured_image="/login-bg.jpg"
     key="1"
-    meta="undefined followers"
+    meta={
+      Array [
+        <span
+          className="count"
+      />,
+        "Follower",
+      ]
+    }
     title={
       <Link
         replace={false}
@@ -35,7 +42,14 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     description="Generic community"
     featured_image="/sampe.png"
     key="2"
-    meta="undefined followers"
+    meta={
+      Array [
+        <span
+          className="count"
+      />,
+        "Follower",
+      ]
+    }
     title={
       <Link
         replace={false}
@@ -56,7 +70,14 @@ exports[`Events::Events::CommunitiesSection should render correctly 1`] = `
     description="Generic community"
     featured_image="/login-bg.jpg"
     key="3"
-    meta="undefined followers"
+    meta={
+      Array [
+        <span
+          className="count"
+      />,
+        "Follower",
+      ]
+    }
     title={
       <Link
         replace={false}
