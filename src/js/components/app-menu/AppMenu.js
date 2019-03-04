@@ -4,20 +4,15 @@ import styles from 'styled-components'
 import { lighten } from 'polished'
 import {
   Icon,
-  Image,
   Menu,
   Segment,
-  Dropdown,
   Sidebar,
   Sticky
 } from 'semantic-ui-react'
 
 import Button from 'js/components/shared/button'
-import Header from 'js/components/header'
-import logo from 'img/eventplog-logo-v14-alt.png'
 import { genUserProfileLink } from 'js/utils'
-import MainMenu from 'js/components/header/logged-in-header/MainMenu'
-import { media } from 'js/styles/mixins'
+import { media, maxMedia } from 'js/styles/mixins'
 import Nav from 'js/components/shared/nav'
 import colors from 'js/styles/theme/variables.js'
 
@@ -35,7 +30,7 @@ const StyledAppMenu = styles.div`
       background-size: contain;
       
       ${
-        media.phone`
+        maxMedia.tablet`
           padding-right: 0;
           background-color: ${props => props.theme.white};
           background-image: none;

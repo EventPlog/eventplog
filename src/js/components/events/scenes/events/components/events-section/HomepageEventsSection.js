@@ -149,7 +149,7 @@ export const EventsSection = ({
 }) => {
   const {loading, error, data = [], meta = {}} = events;
   const shouldDisplayData = (data && (data.length > 0));
-  
+
   return (
     <ContentPanel className={className} title={title}>
       {loading && !shouldDisplayData && <Loading />}
