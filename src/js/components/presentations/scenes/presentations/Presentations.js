@@ -33,6 +33,7 @@ const styles = css`
   
   .img-holder {
     max-width: 200px;
+    background-size: cover;
   }
   
   .pagination-wrapper {

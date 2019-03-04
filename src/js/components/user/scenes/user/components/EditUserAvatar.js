@@ -19,6 +19,8 @@ import {
 const styles = css`
     width: 13rem;
     height: 13rem;
+    min-width: 13rem;
+    min-height: 13rem;
     background-size: cover;
     display: flex;
     justify-content: center;

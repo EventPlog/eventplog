@@ -55,7 +55,8 @@ const StyledSidebarCard = styled.div`
     position: relative;
     height: auto;
     border-radius: 8px;
-    background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || colors.primary, 0.1) } 0%, ${hexToRgb(props.bgColor || colors.primary, 0.9)} 100%), url(${props.image})`};
+    background-color: ${props => props.bgColor || props.theme.activeLink};
+    background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.1) } 0%, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.9)} 100%), url(${props.image})`};
     
     > * {
       position: relative;
@@ -90,7 +91,7 @@ const StyledSidebarCard = styled.div`
     font-size: 1.5rem;
     line-height: 25px;
     letter-spacing: 0.4px;
-    color: #fff
+    color: #fff;
 
     a {
       color: #fff;
@@ -162,14 +163,8 @@ const StyledSidebarCard = styled.div`
     padding-bottom: 20px;
     padding-top: 16px;
   }
-  
-  .overlay {
-    position: absolute;
-    opacity: 0.8;
-    border-radius: 10px;
-    background-color: ${props => props.brandColor || props.theme.activeLink};
-  }
 `
+
 type itemType = {
   title: string,
   description: string,

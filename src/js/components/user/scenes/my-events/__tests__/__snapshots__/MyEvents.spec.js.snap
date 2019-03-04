@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyEvents should render correctly 1`] = `
-<styled.div>
+<MyEvents__StyledEvents>
   <Grid
     className="app-container"
   >
@@ -19,11 +19,11 @@ exports[`MyEvents should render correctly 1`] = `
       width={12}
     >
       <Segment>
-        <Styled(EventsSection)
+        <EventsSection
           key="user-upcoming-events-section"
         />
       </Segment>
     </GridColumn>
   </Grid>
-</styled.div>
+</MyEvents__StyledEvents>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
-<styled.div>
+<ContentBeforeEmailSubmit__StyledContent>
   <p>
     Type in your email address so we send you an email with specific instructions on how to reset it.
   </p>
@@ -22,7 +22,7 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
         <FormField
           className="wide email-holder"
         >
-          <Styled(Input)
+          <Input
             name="email"
             placeholder="ciroma@chukwuma.com"
             type="email"
@@ -34,5 +34,5 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
       </FormGroup>
     </Form>
   </div>
-</styled.div>
+</ContentBeforeEmailSubmit__StyledContent>
 `;

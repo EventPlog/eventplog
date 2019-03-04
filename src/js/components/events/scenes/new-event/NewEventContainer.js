@@ -35,7 +35,7 @@ const sendToSlack = (event, user) => {
     description: `
       Details
       Description: ${event.goals}
-      Created by: ${user.first_name} ${user.last_name} 
+      Created by: ${user.display_name}
       `
   }
   SlackService.send(slackPayload)

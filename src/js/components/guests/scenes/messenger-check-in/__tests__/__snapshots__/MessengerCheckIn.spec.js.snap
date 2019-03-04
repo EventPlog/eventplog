@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MessengerCheckIn should render correctly 1`] = `
-<styled.div>
+<MessengerCheckIn__StyleMessengerCheckIn>
   <p>
     Ask guests to scan this code on Facebook messenger to check into this event.
   </p>
   <img
     src="tmn_bar_code.png"
   />
-</styled.div>
+</MessengerCheckIn__StyleMessengerCheckIn>
 `;

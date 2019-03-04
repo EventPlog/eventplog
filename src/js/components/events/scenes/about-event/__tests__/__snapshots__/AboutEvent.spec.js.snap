@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Event should not render announcement when none is passed in 1`] = `
-<styled.div>
+<AboutEvent__StyledEvent>
   <ContentPanel
     title="Description"
   >
@@ -107,11 +107,11 @@ exports[`Event should not render announcement when none is passed in 1`] = `
       View sponsorship options
     </Component>
   </ContentPanel>
-</styled.div>
+</AboutEvent__StyledEvent>
 `;
 
 exports[`Event should render correctly 1`] = `
-<styled.div>
+<AboutEvent__StyledEvent>
   <ContentPanel
     title="Description"
   >
@@ -241,5 +241,5 @@ exports[`Event should render correctly 1`] = `
       View sponsorship options
     </Component>
   </ContentPanel>
-</styled.div>
+</AboutEvent__StyledEvent>
 `;

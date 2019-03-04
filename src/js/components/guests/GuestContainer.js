@@ -38,8 +38,8 @@ const sendToSlack = (event, user) => {
     channel: config.slack.guestsReportChannel,
     description: `
       Details
-      Name: ${user.first_name} ${user.last_name} 
-      `
+      Name: ${user.display_name}
+    `
   }
   SlackService.send(slackPayload)
 }

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
-<styled.div>
+<ContentBeforePasswordChange__StyledContent>
   <p>
     Type in your new password and then click submit. Your password should be less than 8 characters. It's a good idea to add in some numbers.
   </p>
@@ -22,7 +22,7 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
         <FormField
           className="wide password-holder"
         >
-          <Styled(Input)
+          <Input
             name="password"
             placeholder="****"
             type="password"
@@ -34,5 +34,5 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
       </FormGroup>
     </Form>
   </div>
-</styled.div>
+</ContentBeforePasswordChange__StyledContent>
 `;

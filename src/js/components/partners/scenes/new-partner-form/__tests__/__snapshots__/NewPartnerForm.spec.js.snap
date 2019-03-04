@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewPartner should render correctly 1`] = `
-<styled.div
+<NewPartnerForm__StyledPartner
   style={Object {}}
 >
   <Form
@@ -19,7 +19,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         Name
       </label>
-      <Styled(Input)
+      <Input
         name="name"
         onChange={[Function]}
         placeholder="XYZ Company"
@@ -30,7 +30,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         Tagline
       </label>
-      <Styled(Input)
+      <Input
         name="tagline"
         onChange={[Function]}
         placeholder="A brief catchy phrase the organization goes by"
@@ -41,7 +41,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         Description
       </label>
-      <Styled(Component)
+      <TextArea
         name="description"
         onChange={[Function]}
         placeholder="Describe what this company or brand stands for."
@@ -54,7 +54,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         Official address
       </label>
-      <Styled(PlaceSelector)
+      <PlaceSelector
         location={
           Object {
             "address": "somewhere",
@@ -67,7 +67,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         Contact Phone Number
       </label>
-      <Styled(Input)
+      <Input
         name="phone_number"
         onChange={[Function]}
         placeholder="08023456789"
@@ -78,7 +78,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         twitter Username
       </label>
-      <Styled(Input)
+      <Input
         name="tw_username"
         onChange={[Function]}
         placeholder="username without the @"
@@ -89,7 +89,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         Facebook Username
       </label>
-      <Styled(Input)
+      <Input
         name="fb_username"
         onChange={[Function]}
         placeholder="username without the @"
@@ -100,7 +100,7 @@ exports[`NewPartner should render correctly 1`] = `
       <label>
         Site Link
       </label>
-      <Styled(Input)
+      <Input
         name="site_link"
         onChange={[Function]}
         placeholder="@twitter_username"
@@ -112,5 +112,5 @@ exports[`NewPartner should render correctly 1`] = `
       Save
     </Button>
   </Form>
-</styled.div>
+</NewPartnerForm__StyledPartner>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
-<styled.div>
+<ContentBeforeEventCreate__StyledContent>
   <p>
     A few details about your event, and you're on your way!
   </p>
@@ -25,7 +25,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
             *
           </sup>
         </label>
-        <Styled(Input)
+        <Input
           name="title"
           onChange={[Function]}
           placeholder="Event title"
@@ -54,7 +54,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         <label>
           Where is the venue?
         </label>
-        <Styled(PlaceSelector)
+        <PlaceSelector
           locationField="location"
         />
       </FormField>
@@ -67,7 +67,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
             *
           </sup>
         </label>
-        <Styled(Component)
+        <TextArea
           maxLength={280}
           name="goals"
           onChange={[Function]}
@@ -88,7 +88,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
             *
           </sup>
         </label>
-        <Styled(Input)
+        <Select
           className="select-search"
           name="category_name"
           onChange={[Function]}
@@ -233,7 +233,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         >
           eventplog.com
           /e/
-          <Styled(Input)
+          <Input
             name="slug"
             onChange={[Function]}
             placeholder="amazing-event"
@@ -252,7 +252,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
         <div
           className="same-line"
         >
-          <Styled(SearchBox)
+          <Search
             className="select-search"
             handleSelect={[Function]}
             options={Array []}
@@ -291,5 +291,5 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       </Button>
     </Form>
   </div>
-</styled.div>
+</ContentBeforeEventCreate__StyledContent>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`main content - join a community component should render correctly 1`] = `
-<styled.div
+<MainContent__StyledMainContent
   className="main-content app-container"
 >
   <h2>
@@ -69,5 +69,5 @@ exports[`main content - join a community component should render correctly 1`] =
       className="options"
     />
   </div>
-</styled.div>
+</MainContent__StyledMainContent>
 `;

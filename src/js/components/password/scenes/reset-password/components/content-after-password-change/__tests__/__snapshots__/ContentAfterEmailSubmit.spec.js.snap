@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
-<styled.div>
+<ContentAfterPasswordChange__StyledContent>
   <p>
     You've changed your password! 
   </p>
@@ -19,5 +19,5 @@ exports[`ContentBeforeEmailSubmit it renders correctly 1`] = `
     </Link>
      if you want to log out and log back in with your new password.
   </p>
-</styled.div>
+</ContentAfterPasswordChange__StyledContent>
 `;

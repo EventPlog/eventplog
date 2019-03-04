@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Event should render correctly 1`] = `
-<styled.div
+<Event__StyledEvent
   className="event"
 >
-  <Styled(EventBanner)
+  <EventBanner__StyledEventBanner
     community={Object {}}
     eventLink="/e/undefined"
   />
@@ -65,5 +65,5 @@ exports[`Event should render correctly 1`] = `
       </FullRow>
     </ContentSection>
   </div>
-</styled.div>
+</Event__StyledEvent>
 `;

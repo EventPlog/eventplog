@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EditUserForm it should render correctly 1`] = `
-<styled.div
+<EditPresentationForm__StyledEditUserForm
   className=""
 >
   <div
@@ -29,7 +29,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             First Name
           </label>
-          <Styled(Input)
+          <Input
             disabled={false}
             name="first_name"
             onChange={[Function]}
@@ -41,7 +41,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Last Name
           </label>
-          <Styled(Input)
+          <Input
             disabled={false}
             name="last_name"
             onChange={[Function]}
@@ -53,7 +53,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Gender
           </label>
-          <Styled(Input)
+          <Select
             defaultValue="male"
             name="gender"
             onChange={[Function]}
@@ -79,7 +79,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Email
           </label>
-          <Styled(Input)
+          <Input
             disabled={true}
             name="unconfirmed_email"
             onChange={[Function]}
@@ -91,7 +91,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Bio
           </label>
-          <Styled(Component)
+          <TextArea
             maxLength={1000}
             name="bio"
             onChange={[Function]}
@@ -103,7 +103,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Occupation
           </label>
-          <Styled(Input)
+          <Input
             name="occupation"
             onChange={[Function]}
             placeholder="Content Creator"
@@ -114,7 +114,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Facebook
           </label>
-          <Styled(Input)
+          <Input
             name="facebook_profile"
             onChange={[Function]}
             placeholder="ciroma@chukwuma.com"
@@ -124,7 +124,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Twitter
           </label>
-          <Styled(Input)
+          <Input
             name="twitter_profile"
             onChange={[Function]}
             placeholder="ciroma@chukwuma.com"
@@ -135,7 +135,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             LinkedIn
           </label>
-          <Styled(Input)
+          <Input
             name="linkedin_profile"
             onChange={[Function]}
             placeholder="linkedin.com/something"
@@ -146,7 +146,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Github
           </label>
-          <Styled(Input)
+          <Input
             name="github_profile"
             onChange={[Function]}
             placeholder="github.com/you"
@@ -157,7 +157,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Personal website/blog
           </label>
-          <Styled(Input)
+          <Input
             name="site_link"
             onChange={[Function]}
             placeholder="ciroma@chukwuma.com"
@@ -168,7 +168,7 @@ exports[`EditUserForm it should render correctly 1`] = `
           <label>
             Presentation Image
           </label>
-          <Styled(EditUserAvatar)
+          <EditUserAvatar
             currentUser={
               Object {
                 "avatar_url": "http://sample-avatar.com/a.jpg",
@@ -219,5 +219,5 @@ exports[`EditUserForm it should render correctly 1`] = `
       </Form>
     </ContentPanel>
   </div>
-</styled.div>
+</EditPresentationForm__StyledEditUserForm>
 `;

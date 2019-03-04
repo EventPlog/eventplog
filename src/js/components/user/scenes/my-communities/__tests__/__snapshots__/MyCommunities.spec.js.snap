@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyCommunities should render correctly 1`] = `
-<styled.div>
+<MyCommunities__StyledCommunities>
   <Grid
     className="app-container"
   >
@@ -25,5 +25,5 @@ exports[`MyCommunities should render correctly 1`] = `
       </Segment>
     </GridColumn>
   </Grid>
-</styled.div>
+</MyCommunities__StyledCommunities>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JoinACommunity should render correctly 1`] = `
-<styled.div>
+<JoinACommunity__StyledLogin>
   <MainContent />
-</styled.div>
+</JoinACommunity__StyledLogin>
 `;
