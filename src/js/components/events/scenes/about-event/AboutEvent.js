@@ -78,6 +78,9 @@ const StyledEvent = styled.div`
   
   .avatar-medium {
     margin: 2rem 0;
+    min-width: 13rem;
+    min-height: 13rem;
+    margin-right: 1rem;
   }
 `
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewPresentation should render correctly 1`] = `
-<styled.div>
+<NewPresentation__StyledPresentation>
   <Form
     as="form"
   >
@@ -20,7 +20,7 @@ exports[`NewPresentation should render correctly 1`] = `
       <small>
         You can add more details later.
       </small>
-      <Styled(Input)
+      <Input
         name="email"
         onChange={[Function]}
         placeholder="someone@example.com"
@@ -31,7 +31,7 @@ exports[`NewPresentation should render correctly 1`] = `
       <Label>
         What's the title of this presentation?
       </Label>
-      <Styled(Input)
+      <Input
         name="title"
         onChange={[Function]}
         placeholder="The revolution of education"
@@ -42,7 +42,7 @@ exports[`NewPresentation should render correctly 1`] = `
       <Label>
         What's the nature of this presentation?
       </Label>
-      <Styled(Input)
+      <Select
         defaultValue="talk"
         name="presentation_type"
         onChange={[Function]}
@@ -85,7 +85,7 @@ exports[`NewPresentation should render correctly 1`] = `
       <Label>
         Give a summary of the presentation
       </Label>
-      <Styled(Component)
+      <TextArea
         name="summary"
         onChange={[Function]}
         placeholder="At a glance, what's the presentation about?"
@@ -96,7 +96,7 @@ exports[`NewPresentation should render correctly 1`] = `
       <Label>
         Detailed description
       </Label>
-      <Styled(Component)
+      <TextArea
         name="details"
         onChange={[Function]}
         placeholder="For the nerds, give a lot more details of what to expect"
@@ -108,5 +108,5 @@ exports[`NewPresentation should render correctly 1`] = `
       Save
     </Button>
   </Form>
-</styled.div>
+</NewPresentation__StyledPresentation>
 `;

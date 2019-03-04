@@ -2,7 +2,7 @@
 
 exports[`NewCommunity should render correctly 1`] = `
 <Component>
-  <styled.div
+  <QuickFeedbackForm__StyledQuickFeedbackForm
     className="app-container feedback"
   >
     <EventUpdate
@@ -15,6 +15,6 @@ exports[`NewCommunity should render correctly 1`] = `
       handleChange={[Function]}
       submitEmail={[Function]}
     />
-  </styled.div>
+  </QuickFeedbackForm__StyledQuickFeedbackForm>
 </Component>
 `;

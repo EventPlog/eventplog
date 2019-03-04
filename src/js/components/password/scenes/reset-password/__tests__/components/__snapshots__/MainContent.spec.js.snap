@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`main content - forgot password component should render correctly 1`] = `
-<styled.div
+<MainContent__StyledMainContent
   className="main-content app-container"
 >
   <h3>
     One step left...
   </h3>
   <ContentBeforePasswordChange />
-</styled.div>
+</MainContent__StyledMainContent>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sponsors should render correctly 1`] = `
-<styled.div
+<SponsorshipOffer__StyledSponsorshipOffer
   className="undefined sponsors app-container"
 >
   <div>
@@ -112,7 +112,7 @@ exports[`Sponsors should render correctly 1`] = `
           <div
             className="right"
           >
-            <Styled(ModalComponent)
+            <Modal
               style={
                 Object {
                   "padding": "2rem 0",
@@ -127,11 +127,11 @@ exports[`Sponsors should render correctly 1`] = `
                   newSponsor={true}
                 />
               </ContentPanel>
-            </Styled(ModalComponent)>
+            </Modal>
           </div>
         </div>
       }
     />
   </div>
-</styled.div>
+</SponsorshipOffer__StyledSponsorshipOffer>
 `;

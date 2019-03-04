@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewPartnerLeadForm should render correctly 1`] = `
-<styled.div
+<NewPartnerLeadForm__StyledPartner
   style={Object {}}
 >
   <Form
@@ -26,7 +26,7 @@ exports[`NewPartnerLeadForm should render correctly 1`] = `
       <label>
         First Name
       </label>
-      <Styled(Input)
+      <Input
         name="first_name"
         onChange={[Function]}
         placeholder="Jane"
@@ -37,7 +37,7 @@ exports[`NewPartnerLeadForm should render correctly 1`] = `
       <label>
         Last Name
       </label>
-      <Styled(Input)
+      <Input
         name="last_name"
         onChange={[Function]}
         placeholder="Doe"
@@ -48,7 +48,7 @@ exports[`NewPartnerLeadForm should render correctly 1`] = `
       <label>
         Email
       </label>
-      <Styled(Input)
+      <Input
         name="email"
         onChange={[Function]}
         placeholder=""
@@ -60,7 +60,7 @@ exports[`NewPartnerLeadForm should render correctly 1`] = `
       <label>
         Phone Number
       </label>
-      <Styled(Input)
+      <Input
         name="phone_number"
         onChange={[Function]}
         placeholder=""
@@ -72,7 +72,7 @@ exports[`NewPartnerLeadForm should render correctly 1`] = `
       <label>
         Company
       </label>
-      <Styled(Input)
+      <Input
         name="company_name"
         onChange={[Function]}
         placeholder="XYZ Company"
@@ -83,7 +83,7 @@ exports[`NewPartnerLeadForm should render correctly 1`] = `
       <label>
         Anything else you would like to add? (optional)
       </label>
-      <Styled(Component)
+      <TextArea
         name="extra_details"
         onChange={[Function]}
         placeholder="I would like to be carried along during planning"
@@ -108,5 +108,5 @@ exports[`NewPartnerLeadForm should render correctly 1`] = `
       Cancel
     </Button>
   </Form>
-</styled.div>
+</NewPartnerLeadForm__StyledPartner>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CsvImport should render correctly 1`] = `
-<styled.div>
+<CsvImport__StyleMessengerCheckIn>
   <ContentPanel
     title="Import a guest lists as CSV."
   >
@@ -23,7 +23,7 @@ exports[`CsvImport should render correctly 1`] = `
         <label>
           Upload a CSV file
         </label>
-        <Styled(Input)
+        <Input
           accept=".csv"
           id="csv_upload"
           name="csv"
@@ -37,5 +37,5 @@ exports[`CsvImport should render correctly 1`] = `
       </FormField>
     </Form>
   </ContentPanel>
-</styled.div>
+</CsvImport__StyleMessengerCheckIn>
 `;

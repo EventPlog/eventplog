@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Guests should render correctly 1`] = `
-<styled.div>
+<Guests__StyledTable>
   <p
     className="check-in-form"
   >
@@ -75,5 +75,5 @@ exports[`Guests should render correctly 1`] = `
       </TableRow>
     </TableFooter>
   </Table>
-</styled.div>
+</Guests__StyledTable>
 `;

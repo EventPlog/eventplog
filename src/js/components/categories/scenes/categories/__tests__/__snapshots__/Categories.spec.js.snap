@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Categories should render correctly 1`] = `
-<styled.div>
+<Categories__StyledCategories>
   <section
     className="app-container"
   >
-    <Styled(MainContent)
+    <MainContent
       categories={
         Array [
           1,
@@ -15,5 +15,5 @@ exports[`Categories should render correctly 1`] = `
       }
     />
   </section>
-</styled.div>
+</Categories__StyledCategories>
 `;

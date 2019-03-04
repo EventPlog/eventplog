@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CommunityHeader should render correctly 1`] = `
-<styled.div>
+<CommunityHeader__StyledHeader>
   <div
     className="app-container logo"
   >
@@ -44,5 +44,5 @@ exports[`CommunityHeader should render correctly 1`] = `
       </Nav>
     </div>
   </div>
-</styled.div>
+</CommunityHeader__StyledHeader>
 `;

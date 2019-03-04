@@ -52,7 +52,6 @@ const CommunitiesSection = ({
       {loading && <Loading />}
       {error && <Loading.Error />}
       {data && data.map(({featured_image, ...community}) => {
-        console.log(community)
           const title = generateTitle(community);
           const description = generateDescription(community.topic_interests)
           const meta = generateMeta(community)

@@ -2,7 +2,7 @@
 
 exports[`SearchEvents should render correctly 1`] = `
 <div>
-  <Styled(EventsSection)
+  <EventsSection
     events={Object {}}
     noRecordsMsg="We couldn't find any event matching undefined"
     title="Results (0)"

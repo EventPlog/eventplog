@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckInForm should render correctly 1`] = `
-<styled.div
+<CheckInForm__StyledCheckInForm
   className=""
 >
   <div
@@ -32,7 +32,7 @@ exports[`CheckInForm should render correctly 1`] = `
           <label>
             First Name
           </label>
-          <Styled(Input)
+          <Input
             name="first_name"
             onChange={[Function]}
             placeholder="Ciroma"
@@ -43,7 +43,7 @@ exports[`CheckInForm should render correctly 1`] = `
           <label>
             Last Name
           </label>
-          <Styled(Input)
+          <Input
             name="last_name"
             onChange={[Function]}
             placeholder="Chukwuma"
@@ -79,7 +79,7 @@ exports[`CheckInForm should render correctly 1`] = `
           <label>
             Email
           </label>
-          <Styled(Input)
+          <Input
             name="email"
             onChange={[Function]}
             placeholder="ciroma@chukwuma.com"
@@ -102,5 +102,5 @@ exports[`CheckInForm should render correctly 1`] = `
       </Form>
     </ContentPanel>
   </div>
-</styled.div>
+</CheckInForm__StyledCheckInForm>
 `;

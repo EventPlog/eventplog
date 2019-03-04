@@ -3,16 +3,17 @@ import { Icon, Menu } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import styled, { css } from 'styled-components'
 import moment from 'moment'
-import { lighten, adjustHue } from 'polished'
+import { lighten } from 'polished'
 
 // internal
 import { media, maxMedia } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
-import { validDate, pluralize, genEventLink } from 'js/utils'
+import { validDate, pluralize, genEventLink, hexToRgb } from 'js/utils'
 import ImageUploader from 'js/components/shared/image-uploader'
 import RegistrationButton from 'js/components/shared/event-registration-button'
+import colors from 'js/styles/theme/colors'
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -24,6 +25,7 @@ const eventBannerStyles = css`
   padding-bottom: 4rem; 
   margin: 0;
   background-size: cover;
+  
 
   ${
     maxMedia.tablet`
@@ -195,7 +197,7 @@ const eventBannerStyles = css`
     position: absolute;
     z-index: 100;
     bottom: 0;
-    left: 0
+    left: 0;
     
     ${
       media.phone`
@@ -211,7 +213,7 @@ const eventBannerStyles = css`
     opacity: 0.9;
     
     a {
-      color: ${props => props.theme.gray};
+      color: ${props => props.theme.white};
       
       &:hover {
         color: var(--activeLink);
@@ -283,6 +285,7 @@ const EventBanner = ({
   hashtags,
   show_feedback_form,
   community = {},
+  brand_color,
   handleChange,
   handleSubmit,
   attendEvent,
@@ -310,10 +313,10 @@ const EventBanner = ({
   const encodedDescription = encodeURIComponent((description || '').substr(140) + '... @eventplog ' + window.location.href)
 
   return (
-    <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
-          backgroundImage: `url(${featured_image || '/login-bg.jpg'})`
+    <ContentSection.FullRow className={`banner img-bg ${className}`} image={featured_image} style={{
+          backgroundColor: colors.primary,
+          backgroundImage: `linear-gradient(to bottom left, ${hexToRgb(colors.primary, 0.1) } 0%, ${hexToRgb(colors.darkGray, 0.9)} 100%), url(${featured_image})`
         }}>
-      <div className="overlay" />
 
       {is_stakeholder &&
         <span className="upload-btn-controls">
