@@ -17,7 +17,7 @@ const StyledHeader = styled.div`
     max-width: 2000px;
   }
   
-  > .logo {
+  > .community-logo {
     padding: 2rem;
     justify-content: space-between;
     
@@ -177,7 +177,7 @@ const CommunityHeader = ({
   const communityLink = genCommunityLink(community)
   return (
     <StyledHeader>
-      <div className="app-container logo">
+      <div className="app-container community-logo">
 
         <Link to={communityLink} >
           {logo && <img src={logo} />}

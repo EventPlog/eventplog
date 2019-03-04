@@ -3,7 +3,7 @@
 exports[`CommunityHeader should render correctly 1`] = `
 <CommunityHeader__StyledHeader>
   <div
-    className="app-container logo"
+    className="app-container community-logo"
   >
     <Link
       replace={false}

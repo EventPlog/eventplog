@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // internal
-import Sidebar from 'js/components/shared/sidebar'
+import Sidebar from 'js/components/shared/v2/sidebar'
 import Loading from 'js/components/shared/loading'
 import { pluralize, genCommunityLink, genEventLink } from 'js/utils'
 
@@ -20,10 +20,16 @@ export const generateDescription = (community = {}) => (
   </span>
 )
 
-export const generateMeta = (event) => (
-  `${event.interested_persons} ${pluralize('person', event.interested_persons)} interested`
-)
+// export const generateMeta = (event) => (
+//   `${event.interested_persons} interested`
+// )
 
+export const generateMeta = ({ interested_persons = 0 }) => (
+  [
+    <span className="count">{interested_persons}</span>,
+    'interested'
+  ]
+)
 
 const EventsSection = ({
   title,
@@ -40,9 +46,9 @@ const EventsSection = ({
           const description = community ? generateDescription(community) : '';
           const meta = generateMeta(event)
           const titleLink = genEventLink(event, community)
-          const btn = event.is_attending
+          const btn = event.is_attending || event.is_past
                       ? {}
-                      : {onClick: () => attendEvent(event), text: 'Interested'}
+                      : {onClick: () => attendEvent(event), text: 'Attend'}
           return (
             <Sidebar.Card key={event.id}
                            {...{title, description, titleLink,

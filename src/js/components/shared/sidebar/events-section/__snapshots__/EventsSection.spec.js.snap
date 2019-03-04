@@ -8,7 +8,7 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
     btn={
       Object {
         "onClick": [Function],
-        "text": "Interested",
+        "text": "Attend",
       }
     }
     description={
@@ -24,7 +24,16 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
     }
     featured_image="/samplePic.png"
     key="1"
-    meta="211 people interested"
+    meta={
+      Array [
+        <span
+          className="count"
+      >
+          211
+      </span>,
+        "interested",
+      ]
+    }
     title={
       <Link
         replace={false}
@@ -39,7 +48,7 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
     btn={
       Object {
         "onClick": [Function],
-        "text": "Interested",
+        "text": "Attend",
       }
     }
     description={
@@ -55,7 +64,16 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
     }
     featured_image="/login-bg.jpg"
     key="2"
-    meta="211 people interested"
+    meta={
+      Array [
+        <span
+          className="count"
+      >
+          211
+      </span>,
+        "interested",
+      ]
+    }
     title={
       <Link
         replace={false}
@@ -70,13 +88,22 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
     btn={
       Object {
         "onClick": [Function],
-        "text": "Interested",
+        "text": "Attend",
       }
     }
     description=""
     featured_image="/l.jpg"
     key="3"
-    meta="108 people interested"
+    meta={
+      Array [
+        <span
+          className="count"
+      >
+          108
+      </span>,
+        "interested",
+      ]
+    }
     title={
       <Link
         replace={false}

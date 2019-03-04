@@ -315,7 +315,7 @@ const EventBanner = ({
   return (
     <ContentSection.FullRow className={`banner img-bg ${className}`} image={featured_image} style={{
           backgroundColor: colors.primary,
-          backgroundImage: `linear-gradient(to bottom left, ${hexToRgb(colors.primary, 0.1) } 0%, ${hexToRgb(colors.darkGray, 0.9)} 100%), url(${featured_image})`
+          backgroundImage: `linear-gradient(to bottom, ${hexToRgb(colors.primary, 0.1) } 20%, ${hexToRgb(colors.primary, 0.9)} 100%), url(${featured_image})`
         }}>
 
       {is_stakeholder &&

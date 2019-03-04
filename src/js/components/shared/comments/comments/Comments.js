@@ -59,7 +59,7 @@ const StyledComments = styled.div`
       }
       .avatar {
         width: 30px;
-        height: 30px
+        height: 30px;
         
         ${
           media.phone`

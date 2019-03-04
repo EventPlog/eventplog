@@ -56,7 +56,7 @@ const StyledSidebarCard = styled.div`
     height: auto;
     border-radius: 8px;
     background-color: ${props => props.bgColor || props.theme.activeLink};
-    background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.1) } 0%, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.9)} 100%), url(${props.image})`};
+    background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.2) } 0%, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.9)} 100%), url(${props.image})`};
     
     > * {
       position: relative;
@@ -162,6 +162,11 @@ const StyledSidebarCard = styled.div`
     padding-left: 13px;
     padding-bottom: 20px;
     padding-top: 16px;
+    
+    a {
+      color: white;
+      text-decoration: underline;
+    }
   }
 `
 
@@ -184,7 +189,7 @@ const SidebarCard = ({
   theme,
 }: itemType) => (
   <StyledSidebarCard className="sidebar-card"
-                     bgColor={brand_color}
+                     bgColor={brand_color || colors.primary}
                      image={featured_image || "https://placeimg.com/640/480/tech"}>
     <div className="img-holder">
       <div className="follow">

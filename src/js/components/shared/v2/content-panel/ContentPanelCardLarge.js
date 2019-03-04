@@ -77,6 +77,7 @@ const StyledContentPanelCardLarge = styled.section`
       a {
         color: ${props => props.theme.white};
         font-weight: 800;
+        text-decoration: underline;
       }
     }
   }
