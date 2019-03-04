@@ -37,19 +37,19 @@ const defaultPartnerLead = {
 
 const sendToSlack = (partner_lead, event, offer) => {
   const slackPayload = {
-    title: `${offer.title} - ${CURRENCY}${offer.amount}`,
+    title: `${offer.title || 'Unnamed Sponsorship'} - ${CURRENCY}${offer.amount}`,
     url: window.location.origin + genEventLink(event),
     prefixMsg: 'A new sponsorship request have just been submitted',
     channel: config.slack.partnerReportChannel,
     description: `
       Details
-      Name: ${partner_lead.user.first_name} ${partner_lead.user.last_name} 
+      Name: ${partner_lead.user.display_name}
       Email: ${partner_lead.user.email || ''}
       Phone Number: ${partner_lead.user.phone_number || ''}
       Company: ${partner_lead.company_name || ''}
       Sponsorship Type: ${offer.sponsorship_type} 
       Additional Details: ${partner_lead.extra_details || ''}
-      `
+    `
   }
   SlackService.send(slackPayload)
 }

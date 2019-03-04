@@ -3,14 +3,14 @@ import { Icon, Menu } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import styled, { css } from 'styled-components'
 import moment from 'moment'
-import { lighten, adjustHue } from 'polished'
+import { lighten } from 'polished'
 
 // internal
 import { media, maxMedia } from 'js/styles/mixins'
 import Button from 'js/components/shared/button'
 import ContentSection from 'js/components/shared/content-section'
 import ContentEditable from 'js/components/shared/content-editable'
-import { validDate, pluralize, genEventLink } from 'js/utils'
+import { validDate, pluralize, genEventLink, hexToRgb } from 'js/utils'
 import ImageUploader from 'js/components/shared/image-uploader'
 import RegistrationButton from 'js/components/shared/event-registration-button'
 
@@ -24,6 +24,7 @@ const eventBannerStyles = css`
   padding-bottom: 4rem; 
   margin: 0;
   background-size: cover;
+  
 
   ${
     maxMedia.tablet`
@@ -283,6 +284,7 @@ const EventBanner = ({
   hashtags,
   show_feedback_form,
   community = {},
+  brand_color,
   handleChange,
   handleSubmit,
   attendEvent,
@@ -310,10 +312,10 @@ const EventBanner = ({
   const encodedDescription = encodeURIComponent((description || '').substr(140) + '... @eventplog ' + window.location.href)
 
   return (
-    <ContentSection.FullRow className={`banner img-bg ${className}`} style={{
-          backgroundImage: `url(${featured_image || '/login-bg.jpg'})`
-        }}>
-      <div className="overlay" />
+    <ContentSection.FullRow className={`banner img-bg ${className}`} image={featured_image} css={`
+          background-color: ${props => props.theme.activeLink};
+          background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.theme.activeLink, 0.1) } 0%, ${hexToRgb(props.theme.activeLink, 0.4)} 100%), url(${props.image})`};
+        `}>
 
       {is_stakeholder &&
         <span className="upload-btn-controls">
