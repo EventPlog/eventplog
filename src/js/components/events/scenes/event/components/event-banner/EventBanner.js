@@ -13,6 +13,7 @@ import ContentEditable from 'js/components/shared/content-editable'
 import { validDate, pluralize, genEventLink, hexToRgb } from 'js/utils'
 import ImageUploader from 'js/components/shared/image-uploader'
 import RegistrationButton from 'js/components/shared/event-registration-button'
+import colors from 'js/styles/theme/colors'
 
 const eventBannerStyles = css`
   min-height: 400px;
@@ -196,7 +197,7 @@ const eventBannerStyles = css`
     position: absolute;
     z-index: 100;
     bottom: 0;
-    left: 0
+    left: 0;
     
     ${
       media.phone`
@@ -212,7 +213,7 @@ const eventBannerStyles = css`
     opacity: 0.9;
     
     a {
-      color: ${props => props.theme.gray};
+      color: ${props => props.theme.white};
       
       &:hover {
         color: var(--activeLink);
@@ -312,10 +313,10 @@ const EventBanner = ({
   const encodedDescription = encodeURIComponent((description || '').substr(140) + '... @eventplog ' + window.location.href)
 
   return (
-    <ContentSection.FullRow className={`banner img-bg ${className}`} image={featured_image} css={`
-          background-color: ${props => props.theme.activeLink};
-          background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.theme.activeLink, 0.1) } 0%, ${hexToRgb(props.theme.activeLink, 0.4)} 100%), url(${props.image})`};
-        `}>
+    <ContentSection.FullRow className={`banner img-bg ${className}`} image={featured_image} style={{
+          backgroundColor: colors.primary,
+          backgroundImage: `linear-gradient(to bottom left, ${hexToRgb(colors.primary, 0.1) } 0%, ${hexToRgb(colors.darkGray, 0.9)} 100%), url(${featured_image})`
+        }}>
 
       {is_stakeholder &&
         <span className="upload-btn-controls">

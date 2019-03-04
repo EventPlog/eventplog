@@ -2,6 +2,6 @@
 
 exports[`GuestRow should render correctly 1`] = `
 <GuestRow
-  className="sc-bxivhb bvSKPM"
+  className="GuestRow-sc-1xnj4yn-0 bNUWHN"
 />
 `;

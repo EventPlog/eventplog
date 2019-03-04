@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
-<styled.div>
+<ContentAfterFeedbackSubmit__StyledContent>
   <Message
     positive={true}
   >
@@ -9,5 +9,5 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
       Thank you for sharing your thoughts!
     </MessageHeader>
   </Message>
-</styled.div>
+</ContentAfterFeedbackSubmit__StyledContent>
 `;

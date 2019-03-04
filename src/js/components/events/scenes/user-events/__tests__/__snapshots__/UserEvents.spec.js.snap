@@ -2,12 +2,12 @@
 
 exports[`MainContent should render correctly 1`] = `
 <div>
-  <Styled(EventsSection)
+  <EventsSection
     events={Object {}}
     key="user-upcoming-events-section"
     title="Upcoming Events"
   />
-  <Styled(EventsSection)
+  <EventsSection
     events={Object {}}
     key="user-past-events-section"
     title="Past"

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ConfirmEmail should render correctly 1`] = `
-<styled.div
+<MainContent__StyledMainContent
   className="main-content app-container"
 >
   <h1>
@@ -20,5 +20,5 @@ exports[`ConfirmEmail should render correctly 1`] = `
   >
     Continue
   </Component>
-</styled.div>
+</MainContent__StyledMainContent>
 `;

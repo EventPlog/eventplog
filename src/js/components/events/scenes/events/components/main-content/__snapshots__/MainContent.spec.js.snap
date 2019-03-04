@@ -7,7 +7,7 @@ exports[`MainContent should render correctly 1`] = `
       <div
         className="events_container"
       >
-        <Styled(Component)
+        <HomepageEventsSection
           events={Object {}}
           title="Upcoming Events"
         />
@@ -21,7 +21,7 @@ exports[`MainContent should render correctly 1`] = `
       <div
         className="events_container"
       >
-        <Styled(EventsSection)
+        <EventsSection
           events={Object {}}
           key="user-past-events-section"
           title="Past"
@@ -31,7 +31,7 @@ exports[`MainContent should render correctly 1`] = `
     <ContentSidebar
       className="sidebar-holder"
     >
-      <Styled(CommunitiesSection)
+      <CommunitiesSection
         communities={Object {}}
       />
     </ContentSidebar>

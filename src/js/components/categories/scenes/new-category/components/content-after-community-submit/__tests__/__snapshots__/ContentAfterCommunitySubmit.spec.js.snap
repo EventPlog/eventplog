@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Communities::NewCommunity::ContentAfterCommunitySubmit it renders correctly 1`] = `
-<styled.div
+<ContentAfterCommunitySubmit__StyledContent
   className="text-center"
 >
   <h3>
@@ -23,5 +23,5 @@ exports[`Communities::NewCommunity::ContentAfterCommunitySubmit it renders corre
   >
     Take me to my community update page
   </Component>
-</styled.div>
+</ContentAfterCommunitySubmit__StyledContent>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlogMarkdownEditor renders correctly 1`] = `
-<styled.div>
+<PlogMarkdownEditor__TextEditorStyles>
   <div
     className="toolbox"
   >
@@ -114,7 +114,7 @@ exports[`PlogMarkdownEditor renders correctly 1`] = `
       />
     </div>
   </div>
-  <Styled(Component)
+  <TextArea
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -136,5 +136,5 @@ exports[`PlogMarkdownEditor renders correctly 1`] = `
        Save
     </Button>
   </span>
-</styled.div>
+</PlogMarkdownEditor__TextEditorStyles>
 `;

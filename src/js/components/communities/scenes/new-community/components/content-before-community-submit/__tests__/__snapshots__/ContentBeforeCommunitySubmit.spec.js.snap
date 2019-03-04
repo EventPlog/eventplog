@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
-<styled.div>
+<ContentBeforeCommunitySubmit__StyledContent>
   <h3>
     Create a community
   </h3>
@@ -25,7 +25,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         <label>
           What's the name of your community?
         </label>
-        <Styled(Input)
+        <Input
           name="name"
           onChange={[Function]}
           placeholder="Super awesome community"
@@ -38,7 +38,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         <label>
           Could you describe this community? Who are you? What do you stand for?
         </label>
-        <Styled(Input)
+        <Input
           name="description"
           onChange={[Function]}
           placeholder="Description here ..."
@@ -49,7 +49,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
         <label>
           What's your brand color?
         </label>
-        <Styled(Input)
+        <Select
           defaultValue="#493294"
           name="brand_color"
           onChange={[Function]}
@@ -110,7 +110,7 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
           widths="equal"
         >
           eventplog.com/c/
-          <Styled(Input)
+          <Input
             name="slug"
             onChange={[Function]}
             placeholder="something"
@@ -124,5 +124,5 @@ exports[`ContentAfterCommunitySubmit it renders correctly 1`] = `
       </Button>
     </Form>
   </div>
-</styled.div>
+</ContentBeforeCommunitySubmit__StyledContent>
 `;

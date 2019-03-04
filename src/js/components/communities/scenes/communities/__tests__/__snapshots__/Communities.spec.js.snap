@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Communities should render correctly 1`] = `
-<styled.div>
+<Communities__StyledCommunities>
   <section
     className="app-container"
   >
-    <Styled(MainContent)
+    <MainContent
       communities={
         Array [
           1,
@@ -15,5 +15,5 @@ exports[`Communities should render correctly 1`] = `
       }
     />
   </section>
-</styled.div>
+</Communities__StyledCommunities>
 `;
