@@ -122,3 +122,14 @@ export const subtractDays = function(days, date = (new Date())) {
   newDate.setDate(newDate.getDate() - days);
   return newDate;
 }
+
+export const hexToRgb = (hex, alpha = 0)  => {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  result = result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  return `rgb(${result.r}, ${result.g}, ${result.b}, ${alpha})`
+}
+

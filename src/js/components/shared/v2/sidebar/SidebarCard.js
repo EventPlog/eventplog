@@ -8,8 +8,10 @@ import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
 import colors from 'js/styles/theme/colors';
 import { lighten } from 'polished'
+import { hexToRgb } from 'js/utils'
 
 // images
+
 
 const StyledSidebarCard = styled.div`
   margin: 1.5rem 0;
@@ -49,13 +51,15 @@ const StyledSidebarCard = styled.div`
   .img-holder {
     width: 100%;
     height: 100px;
-    background-size: cover;
+    background-size: contain;
     position: relative;
     height: auto;
     border-radius: 8px;
+    background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || colors.primary, 0.1) } 0%, ${hexToRgb(props.bgColor || colors.primary, 0.9)} 100%), url(${props.image})`};
     
     > * {
       position: relative;
+      text-shadow: 0px 0px 2px ${props => props.theme.darkGray};
     }
   
     ${
@@ -166,14 +170,12 @@ const StyledSidebarCard = styled.div`
     background-color: ${props => props.brandColor || props.theme.activeLink};
   }
 `
-
 type itemType = {
   title: string,
   description: string,
   featuredImage?: string,
   children: any
 }
-
 const SidebarCard = ({
   id,
   title,
@@ -184,12 +186,12 @@ const SidebarCard = ({
   meta,
   titleLink,
   brand_color,
+  theme,
 }: itemType) => (
-  <StyledSidebarCard className="sidebar-card" brandColor={brand_color}>
-    <div className="img-holder" style={{
-      backgroundImage: `url(${featured_image || "https://placeimg.com/640/480/tech"})`
-    }}>
-      <div className="overlay" />
+  <StyledSidebarCard className="sidebar-card"
+                     bgColor={brand_color}
+                     image={featured_image || "https://placeimg.com/640/480/tech"}>
+    <div className="img-holder">
       <div className="follow">
         {meta}
         <Link className="title-link" to={titleLink || "#"} />
