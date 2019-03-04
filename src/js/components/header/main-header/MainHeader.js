@@ -140,7 +140,7 @@ class Header extends Component {
   }
 
   render() {
-    const menu = [{title: 'Join us on Spectrum', link: 'https://spectrum.chat/eventplog'}]
+    const menu = [{title: 'Reach us on Spectrum', link: 'https://spectrum.chat/eventplog'}]
     const { activeItem } = this.state
     const { currentUser: user = {}, toggleSidebar } = this.props
 

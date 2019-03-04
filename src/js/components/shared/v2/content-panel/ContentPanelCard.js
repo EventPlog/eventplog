@@ -75,12 +75,6 @@ const StyledMainContentCard = styled.div`
     p {
       font-size: 1rem;
       line-height: 1.5rem;
-    
-      ${
-        maxMedia.tablet`
-          font-size: 0.8rem;
-        `
-      }
     }
   }
 
@@ -161,7 +155,7 @@ const MainContentCard = ({
         <p>{event.goals || event.description}</p>
 
         <small>
-          {event.interested_persons < 10 ? '' : `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
+          {event.interested_persons < 10 && `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
         </small>
       </div>
 

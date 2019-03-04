@@ -21,7 +21,7 @@ describe('Event', () => {
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(Announcements).length).toEqual(1);
-    expect(wrapper.find(ContentPanel).length).toEqual(5);
+    expect(wrapper.find(ContentPanel).length).toEqual(4);
   })
 
   it('should not render announcement when none is passed in', () => {
@@ -29,6 +29,6 @@ describe('Event', () => {
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(Announcements).length).toEqual(0);
-    expect(wrapper.find(ContentPanel).length).toEqual(5);
+    expect(wrapper.find(ContentPanel).length).toEqual(4);
   })
 });

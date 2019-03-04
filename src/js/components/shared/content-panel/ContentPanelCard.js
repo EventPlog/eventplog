@@ -24,7 +24,7 @@ const StyledMainContentCard = styled.div`
     height: 200px;
     margin-right: 2rem;
     background-repeat-x: repeat;
-    background-size: contain;
+    background-size: cover;
     position: relative;
     background-color: var(--activeLink);
     border-radius: 10px;
