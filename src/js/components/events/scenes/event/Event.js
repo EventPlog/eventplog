@@ -19,10 +19,13 @@ import Tab from "js/components/shared/tab";
 import Report from "js/components/feedback/scenes/feedback-report";
 import {media} from "js/styles/mixins";
 import {genEventLink} from "js/utils";
-import colors from 'js/styles/theme/colors'
+import createLoader from 'js/components/shared/loading/createLoadable'
+
+
+const EventNotFound = createLoader(() =>
+  import('js/components/events/scenes/event/components/not-found' /* webpackChunkName: "EventNotFound" */), 'EventWithContainer')
 
 const StyledEvent = styled.div`
-  
   ${
     media.phone`
       background: ${props => props.theme.white};
@@ -162,7 +165,7 @@ const Event = ({
 }) => {
 
   if (loading || event.loading) return <Loading />
-  if (error || event.error) return <Loading.Error msg={error || event.error} />
+  if (error || event.error) return <EventNotFound />
 
   const getPanes = () => {
     return [

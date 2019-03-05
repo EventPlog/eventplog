@@ -113,7 +113,10 @@ class EventContainer extends Component {
           this.setState({loading: false, event})
           this.updateViewCount()
         })
-        .catch(error => this.setState({loading: false, error}))
+        .catch(error => {
+          this.setState({loading: false, error})
+          // this.props.history.push('/events/not-found')
+        })
     }
     else {
       this.setState({event: this.props.event, loading: false})

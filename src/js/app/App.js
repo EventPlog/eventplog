@@ -25,8 +25,8 @@ window.EVENTPLOG.toast = require('js/components/shared/ep-toast').default
 
 //const Homepage = createLoadable(() => import('./homepage'  /* webpackChunkName: "homepage" */))
 const Login = createLoadable(() => import('js/components/login'  /* webpackChunkName: "login" */))
-const Events = createLoadable(() => import('js/components/events'  /* webpackChunkName: "EventPlog" */))
-const User = createLoadable(() => import('js/components/user'  /* webpackChunkName: "EventPlog" */))
+const Events = createLoadable(() => import('js/components/events'  /* webpackChunkName: "EventPage" */))
+const User = createLoadable(() => import('js/components/user'  /* webpackChunkName: "UserPage" */))
 const Communities = createLoadable(() => import('js/components/communities' /* webpackChunkName: "JoinACommunity" */))
 const Community = createLoadable(() => import('js/components/communities/scenes/community' /* webpackChunkName: "JoinACommunity" */))
 const Password = createLoadable(() => import('js/components/password' /* webpackChunkName: "Password" */))
@@ -37,13 +37,14 @@ const WhyEventPlog = createLoadable(() => import('js/components/why-eventplog' /
 // const Partners = createLoadable(() => import('js/components/partners' /* webpackChunkName: "Partners" */))
 const Search = createLoadable(() => import('js/components/search' /* webpackChunkName: "SearchPage" */))
 const Categories = createLoadable(() => import('js/components/categories' /* webpackChunkName: "SearchPage" */))
+// const Sponsors = createLoadable(() => import('js/components/sponsors'  /* webpackChunkName: "SponsorPage" */))
 
 const SIDEBAR_WIDTH = '150px'
 
 const StyledApp = styled.div`
   --activeLink: ${props => props.theme.activeLink};
   --activeLinkBg: ${props => props.theme.activeLinkBg};
-  --primaryLight: ${props => lighten(0.55, props.theme.activeLink)}
+  --primaryLight: ${props => lighten(0.55, props.theme.activeLink)};
   position: relative;
   padding-top: 47px;
  
@@ -98,6 +99,7 @@ class App extends Component {
                 <Route path="/about-us" component={AboutUs} />
                 <Route path="/why-eventplog" component={WhyEventPlog} />
                 <Route path="/events" component={Events} />
+                {/*<Route path="/sponsors" component={Sponsors} />*/}
                 <Route path="/c" component={Communities} />
                 <Route path="/communities" component={Communities} />
                 <Route path="/search" component={Search} />

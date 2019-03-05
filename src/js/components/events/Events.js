@@ -11,7 +11,10 @@ const Events = createLoader(() =>
   import('./scenes/events/index'  /* webpackChunkName: "Events" */), 'Events')
 
 const Event = createLoader(() =>
-  import('./scenes/event' /* webpackChunkName: "EventWithContainer" */), 'EventWithContainer')
+  import('./scenes/event' /* webpackChunkName: "EventWithContainer" */), 'EventNotFound')
+
+const EventNotFound = createLoader(() =>
+  import('./scenes/event/components/not-found' /* webpackChunkName: "EventWithContainer" */), 'EventWithContainer')
 
 const NewEvent = createLoader(() =>
   import('./scenes/new-event/components/new-event-steps' /* webpackChunkName: "NewEvent" */), 'NewEvent')
@@ -52,14 +55,17 @@ const EventPlog = ({user = {}}) => (
       <Switch>
         <Route exact path="/" component={Events} />
         <PrivateRoute exact path="/e/new" component={NewEvent} />
+        <PublicRoute exact path="/e/not-found" component={EventNotFound} />
         <PublicRoute exact path="/e/:id" component={Event} />
-        <PrivateRoute exact path="/e/new" component={NewEvent} />
         <PublicRoute exact path="/e/:id/register" render={(props) => <Event showRegistrationForm={true} {...props} />} />
         <PublicRoute exact path="/e/:id/feedback" component={FeedbackForm} />
         <PublicRoute path="/e/:event_id/presentations" component={Presentations} />
         <PublicRoute path="/e/:event_id/resources" component={Resources} />
         <PublicRoute path="/e/:event_id/sponsors" component={Sponsorships} />
         <PrivateRoute path="/e/:id/backstage" component={BackStage} />
+        <PublicRoute exact path="/e/*" component={EventNotFound} />
+        <PublicRoute exact path="/events/new" component={NewEvent} />
+        <PublicRoute exact path="/events/*" component={EventNotFound} />
 
         <PrivateRoute exact path="/c/:community_id/e/new" component={NewEvent} />
         <PublicRoute exact path="/c/:community_id/e/:id" component={Event} />
@@ -72,6 +78,7 @@ const EventPlog = ({user = {}}) => (
         {/* maintain support for legacy routes */}
         <PublicRoute exact path="/events" component={Events} />
         <PublicRoute exact path="/events/new" component={NewEvent} />
+        <PublicRoute exact path="/events/:id" component={Event} />
         <PrivateRoute exact path="/communities/:community_id/events/new" component={NewEvent} />
         <PublicRoute exact path="/communities/:community_id/events/:id" component={Event} />
         <PrivateRoute path="/communities/:community_id/events/:id/backstage" component={BackStage} />

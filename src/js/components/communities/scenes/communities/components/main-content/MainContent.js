@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { Icon } from 'semantic-ui-react'
 import Auth from 'js/auth'
 
 //======== Internal Components =========
@@ -7,6 +8,7 @@ import Tab from 'js/components/shared/tab'
 import CommunitiesSection from '../communities-section'
 import ContentSection from 'js/components/shared/content-section'
 import Sidebar from 'js/components/shared/sidebar'
+import Button from 'js/components/shared/button'
 import { media } from 'js/styles/mixins'
 
 const styles = css`
@@ -38,6 +40,18 @@ const styles = css`
     background: transparent;
     box-shadow: none;
   }
+  
+  .community-title {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    .btn {
+      padding: 0.5rem;
+    }
+  }
 `
 
 const MainContent = ({
@@ -52,14 +66,24 @@ const MainContent = ({
   className,
 }) => {
 
+  const Title = (
+    <div className="community-title">
+      Communities
+      <Button.Link className="btn" to="/communities/new">
+        <Icon name="plus circle" />
+        New
+      </Button.Link>
+    </div>
+  )
+
   const UserCommunities = () =>
     <CommunitiesSection showCTA={!Auth.isLoggedIn}
-                        title="Communities"
+                        title={Title}
       {...{communities, getCommunities, followCommunity}} />
 
   const CommunitiesSuggestions = () =>
     <CommunitiesSection getCommunities={getCommunitiesSuggestions}
-                        title="Communities"
+                        title={Title}
                         followCommunity={followCommunity}
                         communities={communities_suggestions} />
 
