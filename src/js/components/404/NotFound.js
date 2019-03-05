@@ -76,7 +76,7 @@ const EventNotFound = ({message}) => {
       <ol className="description">
         <li>Confirm you're visiting the right route.</li>
         <li><Button onclick={() => window.location.reload()}>Refresh</Button> this page.</li>
-        <li>Take a screenshot of this error and share with us <Link to="https://spectrum.chat/eventplog">on spectrum.</Link></li>
+        <li>Take a screenshot of this error and share with us <Link target="_blank" to="https://spectrum.chat/eventplog">on spectrum.</Link></li>
         <li>Click on the
           <span className="chat-icon">
             <Icon name="envelope circle" />&nbsp;
