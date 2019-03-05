@@ -26,7 +26,7 @@ const StyledMainContentCard = styled.div`
   background-color: ${colors.white};
   position: relative;
   margin: 0.5rem;
-  min-width: 350px;
+  min-width: 370px;
   display: flex;
   flex-direction: column;
   
