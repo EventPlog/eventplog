@@ -70,7 +70,7 @@ const EventNotFound = ({message}) => {
       </h3>
 
       <p className="description">
-        {message || `We've searched every party but couldn't find what you're looking for. Here's how you could help:`}
+        {message || `We've searched every party 🎉but couldn't find what you're looking for. Here's how you could help:`}
       </p>
 
       <ol className="description">
