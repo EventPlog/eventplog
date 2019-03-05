@@ -26,10 +26,22 @@ const StyledMainContentCard = styled.div`
   background-color: ${colors.white};
   position: relative;
   margin: 0.5rem;
-  min-width: 30%;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  
+  p {
+    color: ${props => props.theme.darkGray};
+  }
 
   ${
     maxMedia.tablet`
+    `
+  }
+  
+  ${
+    media.phone`
+      min-width: 0;
       flex: 100%;
       margin: 0.5rem 0;
     `
@@ -51,6 +63,9 @@ const StyledMainContentCard = styled.div`
 
   .details {
     padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
     h4 {
       letter-spacing: 1.2px;
@@ -82,6 +97,7 @@ const StyledMainContentCard = styled.div`
     font-size: 1.4rem;
     margin-bottom: 0px;
     font-weight: 800;
+    margin: 0.5rem 0;
 
     span {
       color: ${colors.darkGray};
@@ -106,6 +122,13 @@ const StyledMainContentCard = styled.div`
   
     display: flex;
     justify-content: flex-end;  
+  }
+  
+  .card-meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 `
 
@@ -153,13 +176,12 @@ const MainContentCard = ({
           </p>
         }
         <p>{event.goals || event.description}</p>
+      </div>
 
+      <div className="card-meta">
         <small>
           {event.interested_persons < 10 && `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
         </small>
-      </div>
-
-      <div>
         <p className="event-date">
           <span>
             {event.start_date}

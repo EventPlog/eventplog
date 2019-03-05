@@ -2,7 +2,7 @@
 
 exports[`v2::sidebar::CommunitiesSection should render correctly 1`] = `
 <CommunitiesSection
-  className="CommunitiesSection-sc-1ce2e1-0 jyCYnU"
+  className="CommunitiesSection-sc-1ce2e1-0 jjjjCr"
   communities={
     Object {
       "data": Array [
