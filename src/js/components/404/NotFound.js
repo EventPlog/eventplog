@@ -5,6 +5,10 @@ import { Icon } from 'semantic-ui-react'
 
 //======== INTERNAL ============
 import Button from 'js/components/shared/button'
+import createLoader from 'js/components/shared/loading/createLoadable'
+
+const SuggestionsWidget = createLoader(() =>
+  import('./components/suggestions-widget' /* webpackChunkName: "SuggestionsWidget" */), 'SuggestionsWidget')
 
 const StyledNotFound = styled.div`
   width: 100%;
@@ -57,21 +61,22 @@ const EventNotFound = ({message}) => {
 
       <p className="description">
         {message || `We've searched every party but couldn't find what you're looking for. Here's how you could help:`}
-        <ol>
-          <li>Confirm you're visiting the right route.</li>
-          <li><Button onclick={() => window.location.reload()}>Refresh</Button> this page.</li>
-          <li>Take a screenshot of this error and share with us <Link to="https://spectrum.chat/eventplog">on spectrum.</Link></li>
-          <li>Click on the
-            <span className="chat-icon">
-              <Icon name="envelope circle" />&nbsp;
-            </span>
-            icon by the bottom left to start a chat with a member of the team.
-
-          </li>
-        </ol>
       </p>
 
+      <ol className="description">
+        <li>Confirm you're visiting the right route.</li>
+        <li><Button onclick={() => window.location.reload()}>Refresh</Button> this page.</li>
+        <li>Take a screenshot of this error and share with us <Link to="https://spectrum.chat/eventplog">on spectrum.</Link></li>
+        <li>Click on the
+          <span className="chat-icon">
+            <Icon name="envelope circle" />&nbsp;
+          </span>
+          icon at the bottom left of your screen to start a chat with an advocate.
 
+        </li>
+      </ol>
+
+      <SuggestionsWidget />
     </StyledNotFound>
   )
 }

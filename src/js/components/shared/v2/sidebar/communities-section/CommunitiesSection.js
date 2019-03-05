@@ -26,6 +26,8 @@ export const generateMeta = ({ no_of_followers }) => (
 )
 
 const styles = css`
+  padding-bottom: 2rem;
+
   .see-more {
     position: relative
     font-size: 1rem;
@@ -44,13 +46,14 @@ const CommunitiesSection = ({
   title,
   communities = {data: [], meta: {}},
   followCommunity,
-  slug
+  children,
 }) => {
   const { loading, error, data = []} = communities
   return (
     <Sidebar title={title || "Communities you may know"}>
       {loading && <Loading />}
       {error && <Loading.Error />}
+      <div className="events-list">
       {data && data.map(({featured_image, ...community}) => {
           const title = generateTitle(community);
           const description = generateDescription(community.topic_interests)
@@ -65,14 +68,8 @@ const CommunitiesSection = ({
           )
         }
       )}
-
-      { data && data.length > 4 &&
-          <Link to="/communities">
-            <div className="see-more">
-              See more communities <span><Icon name="angle right" /></span>
-            </div>
-          </Link>
-        } 
+      </div>
+      {children}
     </Sidebar>
   )
 }
