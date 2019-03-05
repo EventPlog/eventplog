@@ -4,115 +4,119 @@ exports[`Sidebar > EventsSection should render correctly 1`] = `
 <Sidebar
   title="Events you may like"
 >
-  <SidebarCard
-    btn={
-      Object {
-        "onClick": [Function],
-        "text": "Attend",
+  <div
+    className="events-list"
+  >
+    <SidebarCard
+      btn={
+        Object {
+          "onClick": [Function],
+          "text": "Attend",
+        }
       }
-    }
-    description={
-      <span>
-        By 
+      description={
+        <span>
+          By 
+          <Link
+            replace={false}
+            to="/c/1"
+          >
+            Facebook Developer Circle Lagos
+          </Link>
+        </span>
+      }
+      featured_image="/samplePic.png"
+      key="1"
+      meta={
+        Array [
+          <span
+            className="count"
+        >
+            211
+        </span>,
+          "interested",
+        ]
+      }
+      title={
         <Link
           replace={false}
-          to="/c/1"
+          to="/e/1"
         >
-          Facebook Developer Circle Lagos
+          Tech is in you
         </Link>
-      </span>
-    }
-    featured_image="/samplePic.png"
-    key="1"
-    meta={
-      Array [
-        <span
-          className="count"
-      >
-          211
-      </span>,
-        "interested",
-      ]
-    }
-    title={
-      <Link
-        replace={false}
-        to="/e/1"
-      >
-        Tech is in you
-      </Link>
-    }
-    titleLink="/e/1"
-  />
-  <SidebarCard
-    btn={
-      Object {
-        "onClick": [Function],
-        "text": "Attend",
       }
-    }
-    description={
-      <span>
-        By 
+      titleLink="/e/1"
+    />
+    <SidebarCard
+      btn={
+        Object {
+          "onClick": [Function],
+          "text": "Attend",
+        }
+      }
+      description={
+        <span>
+          By 
+          <Link
+            replace={false}
+            to="/c/2"
+          >
+            Google Developer Group
+          </Link>
+        </span>
+      }
+      featured_image="/login-bg.jpg"
+      key="2"
+      meta={
+        Array [
+          <span
+            className="count"
+        >
+            211
+        </span>,
+          "interested",
+        ]
+      }
+      title={
         <Link
           replace={false}
-          to="/c/2"
+          to="/e/2"
         >
-          Google Developer Group
+          Writers corner workshop with writing and use of English
         </Link>
-      </span>
-    }
-    featured_image="/login-bg.jpg"
-    key="2"
-    meta={
-      Array [
-        <span
-          className="count"
-      >
-          211
-      </span>,
-        "interested",
-      ]
-    }
-    title={
-      <Link
-        replace={false}
-        to="/e/2"
-      >
-        Writers corner workshop with writing and use of English
-      </Link>
-    }
-    titleLink="/e/2"
-  />
-  <SidebarCard
-    btn={
-      Object {
-        "onClick": [Function],
-        "text": "Attend",
       }
-    }
-    description=""
-    featured_image="/l.jpg"
-    key="3"
-    meta={
-      Array [
-        <span
-          className="count"
-      >
-          108
-      </span>,
-        "interested",
-      ]
-    }
-    title={
-      <Link
-        replace={false}
-        to="/e/3"
-      >
-        Figma Design Series
-      </Link>
-    }
-    titleLink="/e/3"
-  />
+      titleLink="/e/2"
+    />
+    <SidebarCard
+      btn={
+        Object {
+          "onClick": [Function],
+          "text": "Attend",
+        }
+      }
+      description=""
+      featured_image="/l.jpg"
+      key="3"
+      meta={
+        Array [
+          <span
+            className="count"
+        >
+            108
+        </span>,
+          "interested",
+        ]
+      }
+      title={
+        <Link
+          replace={false}
+          to="/e/3"
+        >
+          Figma Design Series
+        </Link>
+      }
+      titleLink="/e/3"
+    />
+  </div>
 </Sidebar>
 `;

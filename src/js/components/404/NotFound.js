@@ -22,6 +22,15 @@ const StyledNotFound = styled.div`
   padding: 1rem;
 
 
+  .search-gif {
+    width: 300px;
+    height: 200px;
+    background-color: var(--activeLink);
+    background-image: url(https://res.cloudinary.com/eventplog/image/upload/c_scale,w_auto,dpr_auto/v1551826020/comments/searching_a4pgps.gif);
+    background-size: cover;
+    
+  }
+  
   button {
     padding: 0.5rem;
   } 
@@ -55,6 +64,7 @@ const StyledNotFound = styled.div`
 const EventNotFound = ({message}) => {
   return (
     <StyledNotFound>
+      <div className="search-gif" />
       <h3 className="heading">
         We're sorry! 😞
       </h3>
