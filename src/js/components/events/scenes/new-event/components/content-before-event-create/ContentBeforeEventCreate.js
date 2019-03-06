@@ -123,7 +123,7 @@ const ContentBeforeEventCreate = ({
   const categoryOptions = formatOptions(config.event_categories)
 
   const goalsCharLimit = 280
-  const submitDisabled = !(event.title && event.start_time && event.goals && event.category_name && community.name && event.slug)
+  const submitDisabled = !(event.title && event.start_time && event.goals && event.category_name && community.name && !slug_check.error)
 
   return (
     <StyledContent>
@@ -250,7 +250,7 @@ const ContentBeforeEventCreate = ({
 
 
           <Button className="btn-create"
-                  disabled={slug_check.error}
+                  disabled={submitDisabled}
                   onClick={submitEvent}>
             {event.id ? 'Update' : 'Create'}
           </Button>
