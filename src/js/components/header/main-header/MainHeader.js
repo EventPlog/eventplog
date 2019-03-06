@@ -117,6 +117,17 @@ const StyledHeader = styled.div`
     padding: 0;
   }
   
+  i.larger {
+    font-size: 110%;
+  }
+  
+  .btn {
+    padding: 0.5rem 0.7rem;
+  }
+  
+  .btn + .btn {
+    margin-left: 2rem;
+  }
 `
 
 class Header extends Component {
@@ -140,7 +151,11 @@ class Header extends Component {
   }
 
   render() {
-    const menu = [{title: 'Reach us on Spectrum', link: 'https://spectrum.chat/eventplog'}]
+    const menu = [
+      {title: 'Events', link: '/events', icon: 'table tennis' },
+      {title: 'Communities', link: '/communities', icon: 'users' },
+      {title: 'Blog', link: '/blog', icon: 'pencil' },
+    ]
     const { activeItem } = this.state
     const { currentUser: user = {}, toggleSidebar } = this.props
 
@@ -159,17 +174,31 @@ class Header extends Component {
         </div>
 
         <Menu pointing secondary>
+          {/*<Menu.Item className="hidden-xs hidden-md">*/}
+            {/*<Button.Link to="/events/new">*/}
+              {/*Create Event*/}
+            {/*</Button.Link>*/}
+          {/*</Menu.Item>*/}
           {menu.map(item =>
             <Menu.Item key={item.title}
                        className="hidden-xs hidden-md"
-                       active ={activeItem === item}
+                       active ={activeItem === item.link}
                        onClick={this.handleItemClick}>
-              <Link target="_blank" to={item.link}>
+              <Link to={item.link}>
+                {item.icon && <Icon className='larger' name={item.icon} />}
                 {item.title}
               </Link>
             </Menu.Item>
           )}
 
+          <Menu.Item className="hidden-xs hidden-md">
+            <Button.Link inverted className="btn" to="/events/new">
+              Create Event
+            </Button.Link>
+            {/*<Button.Link className="btn" to="/sponsors/new">*/}
+              {/*Become a sponsor*/}
+            {/*</Button.Link>*/}
+          </Menu.Item>
 
           <Menu.Menu position='right'>
             <Menu.Item>
@@ -187,8 +216,8 @@ class Header extends Component {
 
             {!user.id &&
               <Menu.Item className="sidebar-btn login">
-                {matchLogin && <Button.Link inverted to="/signup">Sign Up</Button.Link>}
-                {!matchLogin && <Button.Link inverted to="/login">Login</Button.Link>}
+                {matchLogin && <Button.Link className="btn" to="/signup">Sign Up</Button.Link>}
+                {!matchLogin && <Button.Link className="btn" to="/login">Login</Button.Link>}
               </Menu.Item>
             }
 

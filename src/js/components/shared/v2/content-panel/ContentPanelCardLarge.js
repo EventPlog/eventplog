@@ -70,7 +70,7 @@ const StyledContentPanelCardLarge = styled.section`
     
     small {
       color: ${props => props.theme.white};
-      font-size: 80%;
+      font-size: 60%;
       margin: 1rem 0;
 
       
@@ -140,6 +140,7 @@ const StyledContentPanelCardLarge = styled.section`
     right: 12px;
     display: flex;
     justify-content: flex-end;  
+    z-index: 1;
 
     ${
       media.phone`

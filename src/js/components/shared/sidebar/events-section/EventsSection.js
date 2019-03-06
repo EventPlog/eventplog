@@ -41,6 +41,7 @@ const EventsSection = ({
     <Sidebar title={title || "Events you may like"}>
       {loading && <Loading />}
       {error && <Loading.Error msg={events.error} />}
+      <div className="events-list">
       {(!loading && !error && data) && data.map(({community, description: d, featured_image, ...event}) => {
           const title = generateTitle(event, community);
           const description = community ? generateDescription(community) : '';
@@ -56,6 +57,7 @@ const EventsSection = ({
           )
         }
       )}
+      </div>
     </Sidebar>
   )
 }

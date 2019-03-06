@@ -1,5 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
 //======== Internal Components =========
 import ContentSection from 'js/components/shared/v2/content-section'
@@ -70,6 +72,8 @@ export const MainContent = ({
   className,
   activeIndex,
 }) => {
+  const shouldShowSeeMore = communities_suggestions && communities_suggestions.data
+
   return (
     <div className={className}>
       <ContentSection>
@@ -93,7 +97,16 @@ export const MainContent = ({
           </div>    
         </ContentSection.Body>
         <ContentSection.Sidebar className="sidebar-holder">
-          <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}} />
+          <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}}>
+
+            { shouldShowSeeMore &&
+              <Link to="/communities">
+                <div className="see-more">
+                  See more communities <span><Icon name="angle right" /></span>
+                </div>
+              </Link>
+            }
+          </Sidebar.Communities>
         </ContentSection.Sidebar>
       </ContentSection>
 
