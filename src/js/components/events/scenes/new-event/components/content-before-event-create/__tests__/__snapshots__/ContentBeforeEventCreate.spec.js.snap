@@ -286,6 +286,7 @@ exports[`ContentBeforeCommunitySubmit it renders correctly 1`] = `
       </FormField>
       <Button
         className="btn-create"
+        disabled={true}
       >
         Create
       </Button>
