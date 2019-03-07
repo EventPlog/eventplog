@@ -25,13 +25,13 @@ const StyledMainContentCard = styled.div`
   flex: 2;
   background-color: ${colors.white};
   position: relative;
-  margin: 0.5rem;
+  margin: 1rem;
   min-width: 370px;
   display: flex;
   flex-direction: column;
   
   p {
-    color: ${props => props.theme.darkGray};
+    color: ${props => props.theme.grayMedium};
   }
 
   ${
@@ -175,7 +175,7 @@ const MainContentCard = ({
             By <Link to={genCommunityLink(event.community)}>{event.community.name}</Link>
           </p>
         }
-        <p>{event.goals || event.description}</p>
+        <p>{(event.goals || event.description).substr(0, 150) + '...'}</p>
       </div>
 
       <div className="card-meta">

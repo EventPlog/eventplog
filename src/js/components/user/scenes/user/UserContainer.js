@@ -34,6 +34,7 @@ class EventContainer extends Component {
 
   componentWillMount() {
     this.getData()
+    this.props.allowNext && this.props.allowNext(true)
   }
 
   componentDidUpdate(props, prevProps) {
@@ -83,6 +84,8 @@ class EventContainer extends Component {
     const { id } = match.params
 
     if (isLoggedIn && !id) return this.setUserToCurrent()
+
+    if(!id) return
 
     const userId = id.split('-').pop()
     if (isLoggedIn && userId == currentUser.id) {
