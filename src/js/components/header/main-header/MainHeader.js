@@ -187,12 +187,14 @@ class Header extends Component {
           )}
 
           <Menu.Item className="hidden-xs hidden-md">
-            <Button.Link className="btn" to="/events/new">
+            <Button.Link inverted className="btn" to="/events/new">
               Create Event
             </Button.Link>
-            <Button.Link inverted className="btn" to="/sponsors/new">
-              Become a sponsor
-            </Button.Link>
+            {process.env.REACT_APP_SPONSOR_REG_ENABLED &&
+              <Button.Link className="btn" to="/sponsors/new">
+                Become a sponsor
+              </Button.Link>
+            }
           </Menu.Item>
 
           <Menu.Menu position='right'>
