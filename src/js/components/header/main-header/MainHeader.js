@@ -174,11 +174,6 @@ class Header extends Component {
         </div>
 
         <Menu pointing secondary>
-          {/*<Menu.Item className="hidden-xs hidden-md">*/}
-            {/*<Button.Link to="/events/new">*/}
-              {/*Create Event*/}
-            {/*</Button.Link>*/}
-          {/*</Menu.Item>*/}
           {menu.map(item =>
             <Menu.Item key={item.title}
                        className="hidden-xs hidden-md"
@@ -192,12 +187,12 @@ class Header extends Component {
           )}
 
           <Menu.Item className="hidden-xs hidden-md">
-            <Button.Link inverted className="btn" to="/events/new">
+            <Button.Link className="btn" to="/events/new">
               Create Event
             </Button.Link>
-            {/*<Button.Link className="btn" to="/sponsors/new">*/}
-              {/*Become a sponsor*/}
-            {/*</Button.Link>*/}
+            <Button.Link inverted className="btn" to="/sponsors/new">
+              Become a sponsor
+            </Button.Link>
           </Menu.Item>
 
           <Menu.Menu position='right'>

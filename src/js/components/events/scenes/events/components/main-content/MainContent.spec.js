@@ -15,8 +15,8 @@ describe('MainContent', () => {
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(ContentSection).length).toEqual(2)
     expect(wrapper.find(ContentSection.Body).length).toEqual(2)
-    expect(wrapper.find(ContentSection.Sidebar).length).toEqual(1)
-    expect(wrapper.find(Sidebar.Communities).length).toEqual(1)
+    expect(wrapper.find(ContentSection.Sidebar).length).toEqual(2)
+    expect(wrapper.find(Sidebar.Communities).length).toEqual(2)
   })
 
 });

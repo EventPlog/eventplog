@@ -3,7 +3,9 @@
 exports[`MainContent should render correctly 1`] = `
 <div>
   <ContentSection>
-    <ContentBody>
+    <ContentBody
+      className="body-holder"
+    >
       <div
         className="events_container"
       >
@@ -13,6 +15,13 @@ exports[`MainContent should render correctly 1`] = `
         />
       </div>
     </ContentBody>
+    <ContentSidebar
+      className="sidebar-holder"
+    >
+      <CommunitiesSection
+        communities={Object {}}
+      />
+    </ContentSidebar>
   </ContentSection>
   <ContentSection>
     <ContentBody
