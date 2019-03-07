@@ -56,7 +56,7 @@ export const generateTopBtn = (event) => (
         event.needs_sponsorship
           ? <Link className="bookmark inverted" to={`${genEventLink(event)}/sponsors/new`}>
               <Icon name="heart" />
-              Sponsor
+              Sponsors Deck
             </Link>
           : ''
       ]

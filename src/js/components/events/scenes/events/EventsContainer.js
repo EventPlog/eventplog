@@ -51,7 +51,7 @@ class EventsContainer extends Component {
       this.setState({loading: false, events})
       this.props.addEventsToStore(events)
     } else {
-      this.props.getEvents({page: 1, per_page: 15});
+      this.props.getEvents({page: 1, per_page: 10});
     }
     this.props.getPastEvents({page: 1, per_page: 10});
     this.props.getCommunitiesSuggestions({page: 1, per_page: 10});

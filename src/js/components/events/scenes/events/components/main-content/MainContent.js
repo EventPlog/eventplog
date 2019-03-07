@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
+import { darken } from 'polished'
 
 //======== Internal Components =========
 import ContentSection from 'js/components/shared/v2/content-section'
@@ -54,6 +55,7 @@ const styles = css`
   
   .sidebar-holder {
     flex: 2;
+    max-width: 350px;
   }
   
   .body-holder {
@@ -77,13 +79,25 @@ export const MainContent = ({
   return (
     <div className={className}>
       <ContentSection>
-        <ContentSection.Body>
+        <ContentSection.Body className="body-holder">
           <div className="events_container">
             <HomepageEventsSection title="Upcoming Events"
                                    getEvents={getEvents}
                                    events={events} />
           </div>    
         </ContentSection.Body>
+        <ContentSection.Sidebar className="sidebar-holder">
+          <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}}>
+
+            { shouldShowSeeMore &&
+            <Link to="/communities">
+              <div className="see-more">
+                See more communities <span><Icon name="angle right" /></span>
+              </div>
+            </Link>
+            }
+          </Sidebar.Communities>
+        </ContentSection.Sidebar>
       </ContentSection>
 
       <ContentSection>

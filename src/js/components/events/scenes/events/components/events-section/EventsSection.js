@@ -86,7 +86,7 @@ export const generateTopBtn = (event) => (
         <RegistrationButton event={event} />,
         event.needs_sponsorship
           ? <Button.Link className="img-btn" to={`${genEventLink(event)}/sponsors/new`}>
-              Sponsor
+              Sponsor's Deck
             </Button.Link>
           : ''
       ]

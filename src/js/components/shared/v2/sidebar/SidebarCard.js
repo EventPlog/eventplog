@@ -16,6 +16,7 @@ import { hexToRgb } from 'js/utils'
 const StyledSidebarCard = styled.div`
   margin: 1.5rem 0;
   background: white;
+  border-radius: 10px;
  
   
   ${
@@ -23,7 +24,6 @@ const StyledSidebarCard = styled.div`
       display: flex;
       flex-direction: row-reverse;
       padding: 1rem;
-      border-radius: 10px;
     `
   }
   
