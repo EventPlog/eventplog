@@ -31,7 +31,7 @@ const StyledMainContentCard = styled.div`
   flex-direction: column;
   
   p {
-    color: ${props => props.theme.grayMediu};
+    color: ${props => props.theme.grayMedium};
   }
 
   ${
