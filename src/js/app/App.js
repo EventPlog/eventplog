@@ -38,7 +38,7 @@ const WhyEventPlog = createLoadable(() => import('js/components/why-eventplog' /
 const Search = createLoadable(() => import('js/components/search' /* webpackChunkName: "SearchPage" */))
 const Categories = createLoadable(() => import('js/components/categories' /* webpackChunkName: "SearchPage" */))
 const NotFound = createLoadable(() => import('js/components/404' /* webpackChunkName: "NotFoundPage" */))
-const Sponsors = createLoadable(() => import('js/components/sponsors'  /* webpackChunkName: "SponsorPage" */))
+// const Sponsors = createLoadable(() => import('js/components/sponsors'  /* webpackChunkName: "SponsorPage" */))
 
 const SIDEBAR_WIDTH = '150px'
 
@@ -100,7 +100,7 @@ class App extends Component {
                 <Route path="/about-us" component={AboutUs} />
                 <Route path="/why-eventplog" component={WhyEventPlog} />
                 <Route path="/events" component={Events} />
-                <Route path="/sponsors" component={Sponsors} />
+                {/*<Route path="/sponsors" component={Sponsors} />*/}
                 <Route path="/c" component={Communities} />
                 <Route path="/communities" component={Communities} />
                 <Route path="/search" component={Search} />
