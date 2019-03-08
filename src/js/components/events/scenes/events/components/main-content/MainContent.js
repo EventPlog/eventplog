@@ -56,6 +56,16 @@ const styles = css`
   .sidebar-holder {
     flex: 2;
     max-width: 350px;
+    
+    &.top {
+      display: none;
+      
+      ${
+        media.maxDisplay`
+          display: block;
+        `
+      }
+    }
   }
   
   .body-holder {
@@ -86,7 +96,7 @@ export const MainContent = ({
                                    events={events} />
           </div>    
         </ContentSection.Body>
-        <ContentSection.Sidebar className="sidebar-holder">
+        <ContentSection.Sidebar className="top sidebar-holder">
           <Sidebar.Communities {...{communities: communities_suggestions, followCommunity}}>
 
             { shouldShowSeeMore &&

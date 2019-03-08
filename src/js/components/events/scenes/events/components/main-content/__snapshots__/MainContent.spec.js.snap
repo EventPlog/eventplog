@@ -16,7 +16,7 @@ exports[`MainContent should render correctly 1`] = `
       </div>
     </ContentBody>
     <ContentSidebar
-      className="sidebar-holder"
+      className="top sidebar-holder"
     >
       <CommunitiesSection
         communities={Object {}}

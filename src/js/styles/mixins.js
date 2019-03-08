@@ -1,6 +1,7 @@
 import { css } from 'styled-components'
 
 const sizes = {
+  maxDisplay: {min: 1800, max: 5000},
   desktop: {min: 960, max: 5000},
   tablet: {min: 600, max: 960},
   phone: {min: 0, max: 600},
