@@ -29,6 +29,7 @@ const StyledMainContentCard = styled.div`
   min-width: 370px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 18px ${lighten(0.4, colors.darkGray)};
   
   p {
     color: ${props => props.theme.grayMedium};
@@ -180,7 +181,7 @@ const MainContentCard = ({
 
       <div className="card-meta">
         <small>
-          {event.interested_persons < 10 && `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
+          {event.interested_persons > 10 && `${event.interested_persons} ${pluralize('person', event.interested_persons)} registered. `}{event.no_of_views} views.
         </small>
         <p className="event-date">
           <span>
