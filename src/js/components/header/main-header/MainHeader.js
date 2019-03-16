@@ -154,7 +154,7 @@ class Header extends Component {
     const menu = [
       {title: 'Events', link: '/events', icon: 'table tennis' },
       {title: 'Communities', link: '/communities', icon: 'users' },
-      {title: 'Blog', link: '/blog', icon: 'pencil' },
+      {title: 'Blog', href: 'https://blog.eventplog.com', icon: 'pencil' },
     ]
     const { activeItem } = this.state
     const { currentUser: user = {}, toggleSidebar } = this.props
@@ -179,10 +179,16 @@ class Header extends Component {
                        className="hidden-xs hidden-md"
                        active ={activeItem === item.link}
                        onClick={this.handleItemClick}>
-              <Link to={item.link}>
-                {item.icon && <Icon className='larger' name={item.icon} />}
-                {item.title}
-              </Link>
+              {item.link
+                ? <Link to={item.link}>
+                    {item.icon && <Icon className='larger' name={item.icon} />}
+                    {item.title}
+                  </Link>
+                : <a target="_blank" href={item.href}>
+                    {item.icon && <Icon className='larger' name={item.icon} />}
+                    {item.title}
+                  </a>
+              }
             </Menu.Item>
           )}
 

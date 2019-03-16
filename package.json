@@ -142,9 +142,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "engines": {
-    "node": "10.0.0"
-  },
   "devDependencies": {
     "enzyme-to-json": "3.3.4",
     "flow-bin": "^0.69.0",
