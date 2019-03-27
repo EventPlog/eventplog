@@ -50,9 +50,9 @@ export const generateMeta = (event = {}) => ([
     <li>
       <Icon name="clock" /> {event.time}
     </li>
-    {event.venue || event.location &&
+    {(event.venue || event.location) &&
       <li>
-        <Icon name="map marker alternate"/> {event.location ? event.location.address : event.venue}
+        <Icon name="map marker alternate"/> {event.location && event.location.address ? event.location.address : event.venue}
       </li>
     }
   </ul>,

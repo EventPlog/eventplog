@@ -27,6 +27,7 @@ const styles = css`
   .content-header {
     margin: 0;
     letter-spacing: 0.01rem;
+    color: ${props => props.theme.gray};
     
     ${
       media.phone`
@@ -39,6 +40,10 @@ const styles = css`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+  
+    .see-more {
+      color: ${props => props.theme.gray};
+    }
   }
 
   .content-panel {
@@ -70,6 +75,17 @@ const styles = css`
   
   .body-holder {
     flex: 5;
+  }
+  
+  .content-panel-card {
+    border-bottom: none;
+    .card-title, .card-description, .card-meta {
+      color: ${props => props.theme.gray};
+      
+      a, li:not(.event-category) {
+        color: ${props => props.theme.gray};
+      }
+    }
   }
 `
 
