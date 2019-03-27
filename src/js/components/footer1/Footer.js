@@ -160,6 +160,11 @@ const StyledFooter = styled.footer`
             margin-top: 3rem;
           `
         }
+        
+        &.social-header {
+          margin-bottom: 0;
+          margin-top: 3rem;
+        }
       }
       
       p {
@@ -397,7 +402,7 @@ const Footer = () => {
               </Button>
             </form>
 
-            <h3>Reach out on social media</h3>
+            <h3 className="social-header">Reach out on social media</h3>
             <div className="social">
               <a href="https://facebook.com/eventplog" target="_blank">
                 <Icon name="facebook"/>
