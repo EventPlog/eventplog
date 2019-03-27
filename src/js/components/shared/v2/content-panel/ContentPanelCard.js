@@ -176,7 +176,7 @@ const MainContentCard = ({
             By <Link to={genCommunityLink(event.community)}>{event.community.name}</Link>
           </p>
         }
-        <p>{(event.goals || event.description).substr(0, 150) + '...'}</p>
+        {/*<p>{(event.goals || event.description).substr(0, 150) + '...'}</p>*/}
       </div>
 
       <div className="card-meta">
