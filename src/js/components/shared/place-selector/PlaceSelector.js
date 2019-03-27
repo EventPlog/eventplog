@@ -47,7 +47,8 @@ class PlaceSelector extends React.Component {
         const lng = results[0].geometry.location.lng()
         const location = {country, region, lat, lng, address}
 
-        this.props.handleChange(this.props.locationField, location)
+        // use handleSelect if it's passed in. If not, handleChange
+        (this.props.handleSelect || this.props.handleChange)(this.props.locationField, location)
       })
       .catch(error => console.error('Error', error));
   }
