@@ -29,7 +29,7 @@ const StyledMainContentCard = styled.div`
   min-width: 370px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 18px ${lighten(0.4, colors.darkGray)};
+  /*box-shadow: 0px 0px 18px ${lighten(0.4, colors.darkGray)};*/
   
   p {
     color: ${props => props.theme.grayMedium};

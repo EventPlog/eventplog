@@ -105,7 +105,7 @@ const styles = css`
     font-size: 1.2rem;
     padding-top: 1.2rem;
     text-align: center;
-    color: ${props => props.theme.activeLink};
+    color: ${props => props.theme.gray};
 
     span {
       padding-left: 12px;

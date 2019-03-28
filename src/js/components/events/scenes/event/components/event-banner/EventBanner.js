@@ -387,7 +387,7 @@ const EventBanner = ({
                     </a>
                   }
                 </li>}
-              <li>{interested_persons < 10 ? '' : `${interested_persons} ${pluralize('person', interested_persons)} interested. `}{no_of_views} page views.</li>
+              <li>{interested_persons} {pluralize('person', interested_persons)} interested. {no_of_views} page views.</li>
             </ul>
             <ul>
             </ul>
