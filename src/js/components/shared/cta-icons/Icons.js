@@ -17,7 +17,7 @@ const StyledIcons = styled.div`
   width: 100%;
 
   .bookmark {
-    padding: 0.5rem 0.7rem;
+    padding: 0.7rem;
     color: var(--activeLink);
     background: ${colors.yellow};
     border-radius: 10rem;

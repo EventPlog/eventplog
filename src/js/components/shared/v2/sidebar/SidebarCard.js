@@ -56,7 +56,7 @@ const StyledSidebarCard = styled.div`
     height: auto;
     border-radius: 8px;
     background-color: ${props => props.bgColor || props.theme.activeLink};
-    background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.2) } 0%, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.9)} 100%), url(${props.image})`};
+    background-image: ${props => `linear-gradient(to bottom left, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.4) } 0%, ${hexToRgb(props.bgColor || props.theme.activeLink, 0.9)} 50%), url(${props.image})`};
     
     > * {
       position: relative;
