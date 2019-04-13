@@ -18,7 +18,7 @@ const StyledContentPanelCardLarge = styled.section`
   flex: 40%;
   border-radius: 8px;
   background-color: ${props => props.theme.activeLink};
-  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.1), rgba(55, 49, 84, 0.5)), url(${props.image})`};
+  background-image: ${props => `linear-gradient(rgba(37, 33, 56, 0.5), rgba(55, 49, 84, 0.9)), url(${props.image})`};
   background-repeat-x: repeat;
   background-size: contain;
   margin: 0.5rem;
